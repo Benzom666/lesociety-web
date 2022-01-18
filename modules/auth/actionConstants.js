@@ -1,0 +1,9 @@
+export const AUTHENTICATE = 'AUTHENTICATE';
+export const DEAUTHENTICATE = 'DEAUTHENTICATE';
+export const RESTORE_AUTH_STATE  = "RESTORE_AUTH_STATE";
+export const GENDER = "SET_NAME"
+export const SIGNUP1 = "AUTH/SIGNUP1"
+export const SIGNUP2 = "AUTH/SIGNUP2"
+export const SIGNUP3 = "AUTH/SIGNUP3"
+export const LOGIN = "AUTH/LOGIN"
+export const AUTHENTICATE_UPDATE = 'AUTHENTICATE_UPDATE';
