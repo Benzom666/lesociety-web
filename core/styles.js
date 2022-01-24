@@ -1,6 +1,5 @@
 export const drowdownStyles = {
     control: (provided, state) => {
-        console.log('Style', state)
         return {
         ...provided,
         minHeight: '50px',

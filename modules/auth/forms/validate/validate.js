@@ -42,7 +42,6 @@ const validate = values => {
     errors.imageUpload = 'Image is Required'
   }
   if (!values.location?.value) {
-    debugger
     errors.location = 'Location is Required'
   }
   if (!values.enter_city) {

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, updateSyncErrors } from 'redux-form';
 import { useSelector, useDispatch } from "react-redux";
 import { Inputs } from 'core';
 import Link from 'next/link'
 import * as Yup from "yup";
 import { toast } from 'react-toastify';
 import useWindowSize from "../../../utils/useWindowSize";
+import { apiRequest } from '../../../utils/Utilities'
 import validate from './validate/validate'
 
 const SimpleForm = props => {
@@ -13,14 +14,28 @@ const SimpleForm = props => {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
   const [showText, setShowText] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     email: "",
   });
 
+  const toggle = () => setShowText(!showText);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    setShowText(!showText);
+  const submitHandler = async (values) => {
+    setLoading(true);
+    try {
+      const res = await apiRequest({
+        data: values,
+        method: 'POST',
+        url: `user/forget-password`
+      })
+      if(!res.error) {
+        setShowText(!showText);
+      }
+    } catch(error) {
+      dispatch(updateSyncErrors('forgotpassword', {email: error.response?.data?.message}))
+    }
+    setLoading(false);
   }
 
   const handleClickBack = () => {
@@ -30,7 +45,7 @@ const SimpleForm = props => {
   const { handleSubmit, invalid, pristine, reset, submitting } = props
 
   return (
-    <form className="forgot-password" autoComplete="off" onSubmit={submitHandler}>
+    <form className="forgot-password" autoComplete="off" onSubmit={handleSubmit(submitHandler)}>
       <>
         <Field
           name="email"
@@ -52,6 +67,7 @@ const SimpleForm = props => {
               name="login"
               disabled={invalid}
               label="Next"
+              loading={loading}
             />
           }
           {showText &&
