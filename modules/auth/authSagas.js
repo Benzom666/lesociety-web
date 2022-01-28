@@ -74,7 +74,7 @@ function* signup(data) {
     } catch (error) {
         console.log('object', error)
         data.loader(false)
-        yield put(stopSubmit('RegisterForm', error?.response ? error.response.data.data : {}))
+        yield put(stopSubmit(data.payload?.gender === 'male' ? 'RegisterFormMale' : 'RegisterForm', error?.response ? error.response.data.data : {}))
         // showToast("Something went wrong", 'error')
     }
 }
@@ -109,6 +109,7 @@ function* signupStep2(data) {
 }
 
 function* signupStep3(data) {
+    data.loader(true)
     try {
         const response = yield race({
             success: call(apiRequest, {
@@ -124,6 +125,7 @@ function* signupStep3(data) {
                 type: AUTHENTICATE_UPDATE,
                 payload: {step_completed: 3}
             });
+            data.loader(false)
            // showToast(response.success.data.message, 'success')
             //yield put(reset('signupStep3'))
         }
@@ -131,6 +133,7 @@ function* signupStep3(data) {
     } catch (error) {
         yield put(stopSubmit('signupStep3', error?.response ? error.response.data.data : {}))
         showToast(error?.response ? error.response.data.message : error.message, 'error')
+        data.loader(false)
     }
 }
 

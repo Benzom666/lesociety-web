@@ -127,6 +127,7 @@ const ThirdStep = props => {
     const [tallValue, setTallValue] = useState(10);
     const { width } = useWindowSize();
     const [tallValueUnit, setTallValueUnit] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [loadMore, setLoadMore] = useState(false);
     const dispatch = useDispatch()
     const user = useSelector(state => state.authReducer.user)
@@ -146,7 +147,7 @@ const ThirdStep = props => {
         values.height = tallValue
         values.email = user.email
         values.step_completed = 3
-        dispatch(signupStep3(values))
+        dispatch(signupStep3(values, setLoading))
     }
 
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
@@ -226,8 +227,12 @@ const ThirdStep = props => {
                         <FiChevronLeft />
                     </a>
                     <button type="submit" className="next" disabled={invalid}>
-                        Next
-                        <FiArrowRight />
+                        {loading ? <span className="spin-loader-button"></span> :
+                            <>
+                                Next
+                                <FiArrowRight />
+                            </>
+                        }
                     </button>
                 </div>
             </div>

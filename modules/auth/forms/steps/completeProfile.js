@@ -3,7 +3,6 @@ import useWindowSize from "../../../../utils/useWindowSize";
 
 
 const CompleteProfile = props => {
-    const { width } = useWindowSize();
 
     return (
         <div className="upload-pics profile-completion">
@@ -27,6 +26,9 @@ const CompleteProfile = props => {
                 {/* 
                 You're one step away from <span> meeting generous gents</span> */}
             </p>
+            <span className="resend-mail-text profile">
+            Resend an email
+            </span>
             <label className="text-label">
                 Don’t wait any longer, start earning <br />
                 now by posting your first date!

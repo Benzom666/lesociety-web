@@ -63,6 +63,6 @@ export function signupStep2(data, setLoader) {
     return { type: SIGNUP2, payload: data, loader: setLoader }
 }
 
-export function signupStep3(data) {
-    return { type: SIGNUP3, payload: data }
+export function signupStep3(data, setLoader) {
+    return { type: SIGNUP3, payload: data, loader: setLoader }
 }
