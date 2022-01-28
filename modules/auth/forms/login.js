@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Inputs } from 'core';
 import Link from 'next/link';
 import useWindowSize from "../../../utils/useWindowSize";
-import Router from 'next/router'
 import validate from './validate/validate';
 import { login } from '../authActions'
 

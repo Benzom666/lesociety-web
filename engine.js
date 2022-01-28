@@ -3,8 +3,8 @@ import createSagaMiddleware from "redux-saga";
 import { combineReducers } from "redux";
 import { all } from "redux-saga/effects";
 import { reducer as reduxFormReducer } from 'redux-form';
-
-const reducers = { form: reduxFormReducer };
+import authReducer from "./modules/auth/authReducer";
+const reducers = { authReducer, form: reduxFormReducer };
 const sagasAll = [];
 
 process.env.modules.map( (active, index) => {

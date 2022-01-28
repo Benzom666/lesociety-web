@@ -7,6 +7,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { FiChevronLeft } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import useWindowSize from "../../../../../utils/useWindowSize";
+import { imageUploader } from "../../../../../utils/Utilities"
 
 const imageRequired = value => (!value ? "Image is required" : undefined);
 
@@ -18,6 +19,7 @@ const SecondStep = props => {
   const [uploadError, setUploadError] = useState(false);
   const [loading, setLoader] = useState(false);
   const [isImageValid, setImageError] = useState(false);
+  const [isImageTouched, setImageTouched] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedChildImage, setSelectedChildImage] = useState(null);
   const [selectedChildImageTwo, setSelectedChildImageTwo] = useState(null);
@@ -39,6 +41,8 @@ const SecondStep = props => {
   }
 
   const onSubmit = (values) => {
+    // const imageUploaded = imageUploader([values.imageUpload, values.imageUpload2, values.imageUpload3, values.imageUpload4]);
+    // console.log('object', imageUploaded)
     values.images = JSON.stringify(profileImages)
     values.email = user.email
     values.step_completed = 2
@@ -111,6 +115,7 @@ const SecondStep = props => {
                   event.preventDefault();
                 } else {
                   setImageError(false);
+                  setImageTouched(true);
                   change('imageUpload', event.target.files[0])
                 }
               }}
@@ -140,6 +145,7 @@ const SecondStep = props => {
                         event.preventDefault();
                       } else {
                         setImageError(false);
+                        setImageTouched(true);
                         change('imageUpload2', event.target.files[0])
                       }
                     }}
@@ -168,6 +174,7 @@ const SecondStep = props => {
                         event.preventDefault();
                       } else {
                         setImageError(false);
+                        setImageTouched(true);
                         change('imageUpload3', event.target.files[0])
                       }
                     }}
@@ -196,6 +203,7 @@ const SecondStep = props => {
                         event.preventDefault();
                       } else {
                         setImageError(false);
+                        setImageTouched(true);
                         change('imageUpload4', event.target.files[0])
                       }
                     }}
@@ -212,7 +220,7 @@ const SecondStep = props => {
                 </label>
               </div>
         </div>
-        {!reduxValues?.imageUpload || !reduxValues?.imageUpload2 || !reduxValues?.imageUpload3 || !reduxValues?.imageUpload4  ?
+        {isImageTouched && (!reduxValues?.imageUpload || !reduxValues?.imageUpload2 || !reduxValues?.imageUpload3 || !reduxValues?.imageUpload4)  ?
           <span className="error">* Upload at least 4 photos</span>
           : (isImageValid ? "Please Select Image Only" : "")}
         <Field

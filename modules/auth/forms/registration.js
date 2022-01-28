@@ -38,6 +38,7 @@ const RegisterForm = props => {
   const nextPageFemale = () => {
     setPage(page + 1)
     setFemale(!female);
+    setGender(gender)
     window.scrollTo(0, 0);
   }
 

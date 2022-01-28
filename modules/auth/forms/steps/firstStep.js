@@ -91,7 +91,7 @@ const FirstStep = props => {
     const fetch = async () => {
       const location = await fetchLocation();
       if(location) {
-        const locationOption = location.map(item => item.isAvailable === 1 && {
+        const locationOption = location?.map(item => item.isAvailable === 1 && {
           label: item.name,
           value: item.name
        })
@@ -235,7 +235,7 @@ const FirstStep = props => {
 }
 
 export default reduxForm({
-  form: 'RegisterForm',
+  form: 'RegisterFormMale',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate

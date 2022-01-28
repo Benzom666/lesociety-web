@@ -13,6 +13,30 @@ export const apiRequest = async(args = {}) => {
     })
 }
 
+export const imageUploader = async files => {
+    if(files.length > 0) {
+        const formData = new FormData();
+        files.forEach((file, index) => formData.append(`file`, file[0], file[0].name))
+        // formData.append(
+        //    "file",
+        //    files[0],
+        //    files[0].name
+        //  );
+       const res = await apiRequest({
+         url: 'files',
+         method: 'POST',
+         data: formData
+       }).then(success => {
+         return success
+       }).catch(error => {
+         return false
+       })
+       return res.data.data.files
+    } else {
+        return false;
+    }
+}
+
 export const showToast = (message, type) => {
     if (type === 'error') {
         toast.error(message)

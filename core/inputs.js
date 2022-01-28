@@ -32,7 +32,7 @@ export const renderDropdown = ({ input, options, id, valueField, name, type, pla
                   className={touched && error && 'error-dropdown'}
                   name={name}
                   {...props}
-                  onBlur={(value) => console.log("v", value)}
+                  onBlur={(e) => console.log("v", e.target.value)}
                   selectedValue={input.value}
               />
           </div>
@@ -100,7 +100,7 @@ export function selectField({ input: { onChange, defaultOption, value, ...inputP
     <label>{label}</label>
     <select {...inputProps} onChange={value => onChange(value)} >
       {defaultOption && <option value=''> {defaultOption} </option>}
-      {options.map((data, index) =>
+      {options?.map((data, index) =>
         <option key={data.id} value={data.id} selected={value == data.id}>{index === 0 ? data.name : data.name}</option>
       )}
     </select>
@@ -112,7 +112,7 @@ export function radioField({ input, options, label, meta: { touched, error, warn
   return <div className={`secret-input type-checkbox`}>
     <label>{label}</label>
     <div className="multi-radio">
-      {options.map((option, index) => {
+      {options?.map((option, index) => {
         return <React.Fragment>
         {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
           <div className="label-box">
@@ -139,7 +139,7 @@ export function radioField({ input, options, label, meta: { touched, error, warn
 export function checkboxField({ label, input, options, meta: { touched, error, warning } }) {
   return <div className={`secret-input type-checkbox checkbox_wrap`}>
     <label>{label}</label>
-    {options.map((option, index) => {
+    {options?.map((option, index) => {
       return <React.Fragment>
         <label htmlFor={`${input.name}_${option.id}`}>
           <input

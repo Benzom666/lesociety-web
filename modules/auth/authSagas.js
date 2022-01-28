@@ -72,9 +72,10 @@ function* signup(data) {
         }
 
     } catch (error) {
+        console.log('object', error)
         data.loader(false)
         yield put(stopSubmit('RegisterForm', error?.response ? error.response.data.data : {}))
-        showToast("Something went wrong", 'error')
+        // showToast("Something went wrong", 'error')
     }
 }
 

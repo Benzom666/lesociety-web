@@ -383,10 +383,10 @@
                     box-shadow: none;
                     font-size: 14px;
                     font-family: "Helvetica-Light";
-                    &:active {
-                        border-color: #3371cd;
-                    }
-                    &:focus {
+                    // &:active {
+                    //     border-color: #3371cd;
+                    // }
+                    &:active, &:focus {
                         border: 3px solid #272c33;
                     }
                     // &:focus+.has-check {
@@ -561,6 +561,11 @@
                             margin-left: 9px;
                             &::after {
                                 display: none;
+                            }
+                            &:focus,
+                            &:active {
+                                // box-shadow: none;
+                                outline: none !important;
                             }
                         }
                         .rangeslider__handle-tooltip {
@@ -981,6 +986,20 @@
             @media only screen and (max-width: 767px) {
                 padding-bottom: 0;
             }
+        }
+        .resend-mail-text {
+            font-family: Helvetica;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: 0.002em;
+            text-decoration-line: underline;
+            color: #FFFFFF;
+            text-align: center;
+            margin: 5px;
+            cursor: pointer;
+            display: block;
         }
         .check-mail-text {
             font-size: 14px;
@@ -2500,7 +2519,8 @@ body .verification_card_header {
 }
 
 .spin-loader {
-    border: 4px solid rgba(255, 255, 255, 0.3);
+    // border: 4px solid rgba(255, 255, 255, 0.3);
+    border: 4px solid white;
     border-radius: 50%;
     border-top: 4px solid #F24462;
     width: 25px;

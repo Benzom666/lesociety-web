@@ -1,4 +1,7 @@
 export const drowdownStyles = {
+    indicatorsContainer: (provided, state) => ({
+        display: 'none'
+    }),
     control: (provided, state) => {
         return {
         ...provided,

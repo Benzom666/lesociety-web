@@ -9,7 +9,7 @@ import { FiPlus } from "react-icons/fi";
 import useWindowSize from "../../../../utils/useWindowSize";
 import { useDispatch, useSelector } from 'react-redux'
 import { signupStep2 } from '../../authActions'
-import { apiRequest } from '../../../../utils/Utilities'
+import { apiRequest, imageUploader } from '../../../../utils/Utilities'
 
 const imageRequired = value => '';
 
@@ -22,6 +22,7 @@ const SecondStep = props => {
   const [profileImages, setProfileImage] = useState([]);
   const [loading, setLoader] = useState(false);
   const [isImageValid, setImageError] = useState(false);
+  const [isImageTouched, setImageTouched] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedChildImage, setSelectedChildImage] = useState(null);
   const [selectedChildImageTwo, setSelectedChildImageTwo] = useState(null);
@@ -41,28 +42,30 @@ const SecondStep = props => {
     setImagesURLs(newImageUrls);
   }, [images]);
 
-  function onImageChange(e) {
-     const formData = new FormData();
-     let files = e.target.files
-     formData.append(
-        "file",
-        files[0],
-        files[0].name
-      );
-    apiRequest({
-      url: 'files',
-      method: 'POST',
-      data: formData
-    }).then(success => {
-      setImages([...images, ...files]);
-      setProfileImage([...profileImages, success.data.data.url])
-    }).catch(error => {
-      console.log('Error', error)
-    })
+  // function imageuploader(files) {
+  //    const formData = new FormData();
+  //    let files = e.target.files
+  //    formData.append(
+  //       "file",
+  //       files[0],
+  //       files[0].name
+  //     );
+  //   apiRequest({
+  //     url: 'files',
+  //     method: 'POST',
+  //     data: formData
+  //   }).then(success => {
+  //     setImages([...images, ...files]);
+  //     setProfileImage([...profileImages, success.data.data.url])
+  //   }).catch(error => {
+  //     console.log('Error', error)
+  //   })
     
-  }
+  // }
     
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
+      // const imageUploaded = await imageUploader([values.imageUpload, values.imageUpload2, values.imageUpload3, values.imageUpload4]);
+
         values.images = JSON.stringify(profileImages)
         values.email = user.email
         values.step_completed = 2
@@ -136,6 +139,7 @@ const SecondStep = props => {
                   event.preventDefault();
                 } else {
                   setImageError(false);
+                  setImageTouched(true)
                   change('imageUpload', event.target.files[0])
                 }
               }}
@@ -165,6 +169,7 @@ const SecondStep = props => {
                         event.preventDefault();
                       } else {
                         setImageError(false);
+                        setImageTouched(true)
                         change('imageUpload2', event.target.files[0])
                       }
                     }}
@@ -193,6 +198,7 @@ const SecondStep = props => {
                         event.preventDefault();
                       } else {
                         setImageError(false);
+                        setImageTouched(true)
                         change('imageUpload3', event.target.files[0])
                       }
                     }}
@@ -221,6 +227,7 @@ const SecondStep = props => {
                         event.preventDefault();
                       } else {
                         setImageError(false);
+                        setImageTouched(true)
                         change('imageUpload4', event.target.files[0])
                       }
                     }}
@@ -237,7 +244,7 @@ const SecondStep = props => {
                 </label>
               </div>
         </div>
-        {!reduxValues?.imageUpload || !reduxValues?.imageUpload2 || !reduxValues?.imageUpload3 || !reduxValues?.imageUpload4  ?
+        {isImageTouched && (!reduxValues?.imageUpload || !reduxValues?.imageUpload2 || !reduxValues?.imageUpload3 || !reduxValues?.imageUpload4)  ?
           <span className="error">* Upload at least 4 photos</span>
           : (isImageValid ? "Please Select Image Only" : "")}
         <Field

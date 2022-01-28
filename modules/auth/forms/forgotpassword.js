@@ -30,7 +30,7 @@ const SimpleForm = props => {
         url: `user/forget-password`
       })
       if(!res.error) {
-        setShowText(!showText);
+        setShowText(true);
       }
     } catch(error) {
       dispatch(updateSyncErrors('forgotpassword', {email: error.response?.data?.message}))
@@ -58,6 +58,11 @@ const SimpleForm = props => {
           <p className="check-mail-text text-center">
             Please check your email and follow the link to recover your password.
           </p>
+        }
+        {showText &&
+          <span onClick={handleSubmit(submitHandler)} className="resend-mail-text">
+            Resend an email
+          </span>
         }
         <div className="bottom-mobile">
           {!showText &&
