@@ -235,7 +235,7 @@ const FirstStep = props => {
 }
 
 export default reduxForm({
-  form: 'RegisterFormMale',
+  form: 'RegisterForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate
