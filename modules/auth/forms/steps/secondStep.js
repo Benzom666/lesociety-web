@@ -32,6 +32,16 @@ const SecondStep = props => {
   const user = useSelector(state => state.authReducer.user)
 
   useEffect(() => {
+    if(user?.tagline){
+      const data = {
+        tagline: user?.tagline,
+        description: user?.description
+      }
+      props.initialize(data)
+    }
+  }, [user])
+
+  useEffect(() => {
     if (images.length < 4) {
       setUploadError(!uploadError);
     } else{
@@ -287,5 +297,6 @@ export default reduxForm({
   form: 'signupStep2', // <------ same form name
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  enableReinitialize: true,
   validate
 })(SecondStep)

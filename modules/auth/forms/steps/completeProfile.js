@@ -1,8 +1,51 @@
-import React from 'react';
-import useWindowSize from "../../../../utils/useWindowSize";
-
+import React, { useEffect } from 'react';
+import { apiRequest, showToast } from "../../../../utils/Utilities";
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 const CompleteProfile = props => {
+    const user = useSelector(state => state.authReducer.user);
+    const router = useRouter();
+
+    const handleResendMail = async () => {
+        if(user?.email) {
+            try {
+                const res = await apiRequest({
+                    data: {
+                    email: user.email
+                    },
+                    method: 'POST',
+                    url: `/user/verify-email`
+                })
+                showToast(res.data.message, 'success')
+            } catch(err) {
+                console.log('error', err)
+            }
+        }
+    }
+
+    useEffect(() => {
+        const verifyEmail = async () => {
+            if(router?.query?.token) {
+                try {
+                    const res = await apiRequest({
+                        data: {
+                        email: user.email
+                        },
+                        method: 'POST',
+                        url: `/user/email-verification`,
+                        params: {
+                            token: router?.query?.token
+                        }
+                    })
+                    showToast(res.data.message, 'success')
+                } catch(err) {
+                    console.log('error', err)
+                }
+            }
+        }
+        verifyEmail();
+    }, [router?.query?.token])
 
     return (
         <div className="upload-pics profile-completion">
@@ -26,7 +69,7 @@ const CompleteProfile = props => {
                 {/* 
                 You're one step away from <span> meeting generous gents</span> */}
             </p>
-            <span className="resend-mail-text profile">
+            <span className="resend-mail-text profile" onClick={handleResendMail}>
             Resend an email
             </span>
             <label className="text-label">
@@ -34,9 +77,9 @@ const CompleteProfile = props => {
                 now by posting your first date!
             </label>
             <div className="secret-input type-submit">
-                <a href="/create-date/choose-city" className="next disable">
+                <button onClick={() => router.push("/create-date/choose-city")} className={`next ${!user?.email_verified ? 'disable' : ''}`} disabled={!user?.email_verified}>
                     CREATE NEW DATE
-                </a>
+                </button>
                 {/* <a className="later-my-profile">Later, take me to My profile</a> */}
             </div>
         </div>

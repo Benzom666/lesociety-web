@@ -23,17 +23,21 @@ export function* login(action) {
                 payload: response.success.data.data
             });
           //  showToast(response.success.data.message, 'success')
-           // yield put(reset('LoginForm'))
            action.loader(false);
             if(response.success.data.data.step_completed === 1 || response.success.data.data.step_completed === 2){
                 Router.push({
                     pathname: '/auth/profile',
                 })    
-            }else{
-                Router.push({
-                    pathname: '/user/user-list',
-                })
+            } else {
+                if(response.success.data.data.email_verified) {
+                    Router.push({
+                        pathname: '/user/user-list',
+                    })
+                } else {
+                    Router.push('/auth/profile')
+                }
             }
+            yield put(reset('LoginForm'));
         }
 
     } catch (error) {
@@ -63,16 +67,19 @@ function* signup(data) {
                 type: AUTHENTICATE,
                 payload: response.success.data.data
             });
-            //showToast(response.success.data.message, 'success')
-            //yield put(reset('RegisterForm'))
             data.loader(false)
             Router.push({
                 pathname: '/auth/profile',
             })
+            if(data.payload?.gender === 'male') {
+                yield put(reset('RegisterFormMale'));
+            } else {
+                yield put(reset('RegisterForm'));
+            }
+            yield put(reset('signupStep2'))
         }
 
     } catch (error) {
-        console.log('object', error)
         data.loader(false)
         yield put(stopSubmit(data.payload?.gender === 'male' ? 'RegisterFormMale' : 'RegisterForm', error?.response ? error.response.data.data : {}))
         // showToast("Something went wrong", 'error')
@@ -127,7 +134,8 @@ function* signupStep3(data) {
             });
             data.loader(false)
            // showToast(response.success.data.message, 'success')
-            //yield put(reset('signupStep3'))
+            yield put(reset('signupStep3'))
+            yield put(reset('signupStep2'))
         }
 
     } catch (error) {
