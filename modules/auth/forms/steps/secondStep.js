@@ -1,32 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link'
 import { Field, reduxForm, change } from 'redux-form'
 import validate from '../validate/validate'
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
-import { FiChevronLeft } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import useWindowSize from "../../../../utils/useWindowSize";
 import { useDispatch, useSelector } from 'react-redux'
 import { signupStep2 } from '../../authActions'
-import { apiRequest, imageUploader } from '../../../../utils/Utilities'
-
-const imageRequired = value => '';
-
+import { imageUploader } from '../../../../utils/Utilities'
 
 const SecondStep = props => {
-  const { width } = useWindowSize();
-  const [images, setImages] = useState([]);
-  const [imageURLs, setImagesURLs] = useState([]);
-  const [uploadError, setUploadError] = useState(false);
-  const [profileImages, setProfileImage] = useState([]);
   const [loading, setLoader] = useState(false);
   const [isImageValid, setImageError] = useState(false);
   const [isImageTouched, setImageTouched] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedChildImage, setSelectedChildImage] = useState(null);
-  const [selectedChildImageTwo, setSelectedChildImageTwo] = useState(null);
-  const [selectedChildImageThree, setSelectedChildImageThree] = useState(null);
   const dispatch = useDispatch()
 
   const user = useSelector(state => state.authReducer.user)
@@ -35,48 +21,22 @@ const SecondStep = props => {
     if(user?.tagline){
       const data = {
         tagline: user?.tagline,
-        description: user?.description
+        description: user?.description,
+        imageUpload: user?.images.length > 0 && user?.images[0],
+        imageUpload2: user?.images.length > 0 && user?.images[1],
+        imageUpload3: user?.images.length > 0 && user?.images[2],
+        imageUpload4: user?.images.length > 0 && user?.images[3]
       }
       props.initialize(data)
     }
   }, [user])
 
-  useEffect(() => {
-    if (images.length < 4) {
-      setUploadError(!uploadError);
-    } else{
-      setUploadError(!uploadError);
-    }
-    const newImageUrls = [];
-    images.forEach(images => newImageUrls.push(URL.createObjectURL(images)));
-    setImagesURLs(newImageUrls);
-  }, [images]);
-
-  // function imageuploader(files) {
-  //    const formData = new FormData();
-  //    let files = e.target.files
-  //    formData.append(
-  //       "file",
-  //       files[0],
-  //       files[0].name
-  //     );
-  //   apiRequest({
-  //     url: 'files',
-  //     method: 'POST',
-  //     data: formData
-  //   }).then(success => {
-  //     setImages([...images, ...files]);
-  //     setProfileImage([...profileImages, success.data.data.url])
-  //   }).catch(error => {
-  //     console.log('Error', error)
-  //   })
-    
-  // }
-    
-    const onSubmit = async (values) => {
-      // const imageUploaded = await imageUploader([values.imageUpload, values.imageUpload2, values.imageUpload3, values.imageUpload4]);
-
-        values.images = JSON.stringify(profileImages)
+  const onSubmit = async (values) => {
+    try {
+      setLoader(true);
+      const imageUploaded = await imageUploader([values.imageUpload, values.imageUpload2, values.imageUpload3, values.imageUpload4]);
+      if (imageUploaded) {
+        values.images = imageUploaded.map(image => image?.url)
         values.email = user.email
         values.step_completed = 2
         const formData = new FormData();
@@ -84,9 +44,13 @@ const SecondStep = props => {
           formData.append(key, values[key]);
         })
         dispatch(signupStep2(values, setLoader))
+      }
+    } catch (err) {
+      setLoader(false);
     }
+  }
 
-  const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
+  const { handleSubmit, invalid, previousPage } = props
 
   const reduxValues = useSelector(state => state.form.signupStep2.values)
 
@@ -155,7 +119,7 @@ const SecondStep = props => {
               }}
             />
             {reduxValues?.imageUpload?.length > 0 ?
-              <img alt="not fount" width={"250px"} src={URL.createObjectURL(reduxValues?.imageUpload[0])} />
+              <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload === 'string' ? reduxValues?.imageUpload : URL.createObjectURL(reduxValues?.imageUpload[0])} />
               : <>
                 <FiPlus />
                 <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -185,7 +149,7 @@ const SecondStep = props => {
                     }}
                   />
                   {reduxValues?.imageUpload2?.length > 0 ?
-                    <img alt="not fount" width={"250px"} src={URL.createObjectURL(reduxValues?.imageUpload2[0])} />
+                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload2 === 'string' ? reduxValues?.imageUpload2 : URL.createObjectURL(reduxValues?.imageUpload2[0])} />
                     : <>
                       <FiPlus />
                       <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -214,7 +178,7 @@ const SecondStep = props => {
                     }}
                   />
                   {reduxValues?.imageUpload3?.length > 0 ?
-                    <img alt="not fount" width={"250px"} src={URL.createObjectURL(reduxValues?.imageUpload3[0])} />
+                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload3 === 'string' ? reduxValues?.imageUpload3 : URL.createObjectURL(reduxValues?.imageUpload3[0])} />
                     : <>
                       <FiPlus />
                       <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -243,7 +207,7 @@ const SecondStep = props => {
                     }}
                   />
                   {reduxValues?.imageUpload4?.length > 0  ?
-                    <img alt="not fount" width={"250px"} src={URL.createObjectURL(reduxValues?.imageUpload4[0])} />
+                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload4 === 'string' ? reduxValues?.imageUpload4 : URL.createObjectURL(reduxValues?.imageUpload4[0])} />
                     : <>
                       <FiPlus />
                       <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -13,7 +13,7 @@ const RegisterForm = props => {
    const router = useRouter()
   const [page, setPage] = useState(0);
   const [male, setMale] = useState(false);
-  const [gender, setGender] = useState(false);
+  const [gender, setGender] = useState('');
   const [female, setFemale] = useState(false);
   const dispatch = useDispatch()
 
@@ -35,7 +35,7 @@ const RegisterForm = props => {
     window.scrollTo(0, 0);
   }
 
-  const nextPageFemale = () => {
+  const nextPageFemale = (gender) => {
     setPage(page + 1)
     setFemale(!female);
     setGender(gender)

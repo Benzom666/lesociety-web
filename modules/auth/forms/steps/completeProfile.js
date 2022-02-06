@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { apiRequest, showToast } from "../../../../utils/Utilities";
-import { useSelector } from 'react-redux';
+import { AUTHENTICATE_UPDATE } from '../../actionConstants';
+import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
 const CompleteProfile = props => {
     const user = useSelector(state => state.authReducer.user);
+    const [isVerified, setVerified] = useState(false);
+    const dispatch = useDispatch();
     const router = useRouter();
 
     const handleResendMail = async () => {
@@ -38,6 +41,11 @@ const CompleteProfile = props => {
                             token: router?.query?.token
                         }
                     })
+                    dispatch({
+                        type: AUTHENTICATE_UPDATE,
+                        payload: {email_verified: true}
+                    })
+                    setVerified(true);
                     showToast(res.data.message, 'success')
                 } catch(err) {
                     console.log('error', err)
@@ -62,23 +70,25 @@ const CompleteProfile = props => {
                 </svg>
             </span>
             <h2>
-                Profile Completed
+                {user?.email_verified ? 'Email Verified' : 'Profile Completed'}
             </h2>
             <p>
-                Please verify your email address, by clicking on the link in the email that was delivered to your inbox.
-                {/* 
-                You're one step away from <span> meeting generous gents</span> */}
+                {!user?.email_verified ? 
+                'Please verify your email address, by clicking on the link in the email that was delivered to your inbox.'
+                : 
+                `You're one step away from meeting ${user?.gender === "male" ? 'beautiful ladies' : 'generous gents'}` }
             </p>
+            {!user?.email_verified && 
             <span className="resend-mail-text profile" onClick={handleResendMail}>
             Resend an email
-            </span>
+            </span>}
             <label className="text-label">
                 Don’t wait any longer, start earning <br />
                 now by posting your first date!
             </label>
             <div className="secret-input type-submit">
                 <button onClick={() => router.push("/create-date/choose-city")} className={`next ${!user?.email_verified ? 'disable' : ''}`} disabled={!user?.email_verified}>
-                    CREATE NEW DATE
+                    {user?.gender === "male" ? 'GO TO GALLERY' : 'CREATE NEW DATE'}
                 </button>
                 {/* <a className="later-my-profile">Later, take me to My profile</a> */}
             </div>

@@ -16,12 +16,7 @@ export const apiRequest = async(args = {}) => {
 export const imageUploader = async files => {
     if(files.length > 0) {
         const formData = new FormData();
-        files.forEach((file, index) => formData.append(`file`, file[0], file[0].name))
-        // formData.append(
-        //    "file",
-        //    files[0],
-        //    files[0].name
-        //  );
+        files.forEach(file => formData.append(`files`, file[0]))
        const res = await apiRequest({
          url: 'files',
          method: 'POST',

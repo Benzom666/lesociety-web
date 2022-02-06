@@ -25,13 +25,14 @@ const router = useRouter()
                         <ul className="d-flex justify-content-end mb-0">
                             {!_.isEmpty(user) ? 
                                 <li>
-                                    <a href="javascript:void(0)" onClick={()=> {
+                                    <Link href="/auth/login">
+                                    <a onClick={()=> {
                                             dispatch(deAuthenticateAction())
-                                            router.push('/auth/login')
                                         }}
                                     >
                                         Sign Out
                                     </a>
+                                    </Link>
                                 </li>
                                 :
                                 <>
