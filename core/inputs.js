@@ -65,14 +65,14 @@ export function inputField({ input, label, icon, placeholder, type, meta, meta: 
     </React.Fragment>
   </div>
 }
-export function inputFieldWithIcon({ input, label, icon, placeholder, type, meta: { touched, error, warning } }) {
+export function inputFieldWithIcon({ iconClick, input, label, icon, placeholder, type, meta: { touched, error, warning } }) {
   return <div className={`secret-input type-${type}`}>
     <React.Fragment>
       {(label && (type == 'text' || type == 'password' || type == 'number')) && <label>{label}</label>}
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
       <span className="pos-relative ">
         <input {...input} autoComplete="off" className="form-control" placeholder={placeholder} type={type} />
-        <span className="location-diduct-icon">{icon}</span>
+        <span className="location-diduct-icon" onClick={iconClick}>{icon}</span>
       </span>
       {(label && (type != 'text' && type != 'password' && type != 'number')) && <label>{label}</label>}
     </React.Fragment>

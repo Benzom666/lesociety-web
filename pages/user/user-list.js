@@ -1,6 +1,7 @@
 import HeaderLoggedIn from 'core/loggedInHeader'
 import Footer from 'core/footer'
 import UserCardList from '@/core/UserCardList';
+import LocationPopup from '@/core/locationPopup';
  
 function UserList ({dispatch} ) {
 	return (
@@ -52,6 +53,7 @@ function UserList ({dispatch} ) {
             </div>    
         </div>
       <Footer />
+      <LocationPopup />
     </div>
   )
 }

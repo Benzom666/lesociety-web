@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { stopSubmit } from 'redux-form';
-import { put } from 'redux-saga/effects';
+import axios from "axios"; 
 import { apiRequest } from '../../../../utils/Utilities'
 
 export const existEmail = _.debounce(async (value, setLoader, setValid, dispatch) => {
@@ -69,3 +69,46 @@ export const fetchLocation = async () => {
         console.log(e)
     }
 }
+
+export const fetchLiveLocation = async (lat, long, countries) => {
+    try {
+        const res = await axios({
+            method: 'GET',
+            url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?types=place%2Cpostcode%2Caddress&limit=1&access_token=${process.env.MAPBOX_TOKEN}`,
+            params: { 
+                country: countries || undefined
+            }
+        })
+        return res.data.features
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+
+export const fetchRealLocation = _.debounce(async (values, countries, setPlaces) => {
+    if (values) {
+    try {
+        const res = await axios({
+            url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${values}.json?types=place,postcode,address&access_token=${process.env.MAPBOX_TOKEN}`,
+            params :{
+                country: countries || undefined
+            }
+        })
+        if(res.data.features.length > 0) {
+            const places = res.data.features.map(place => {
+                return {
+                    name: place.text,
+                    country: place.context.filter(item => item.id.includes('country')),
+                }
+            })
+            setPlaces(places);
+        }
+        else {
+            return false;
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+}, 1000);

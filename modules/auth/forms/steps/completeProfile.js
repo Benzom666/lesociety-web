@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { apiRequest, showToast } from "../../../../utils/Utilities";
 import { AUTHENTICATE_UPDATE } from '../../actionConstants';
 import { useSelector, useDispatch } from 'react-redux';
@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 
 const CompleteProfile = props => {
     const user = useSelector(state => state.authReducer.user);
-    const [isVerified, setVerified] = useState(false);
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -45,7 +44,6 @@ const CompleteProfile = props => {
                         type: AUTHENTICATE_UPDATE,
                         payload: {email_verified: true}
                     })
-                    setVerified(true);
                     showToast(res.data.message, 'success')
                 } catch(err) {
                     console.log('error', err)
@@ -87,7 +85,7 @@ const CompleteProfile = props => {
                 now by posting your first date!
             </label>
             <div className="secret-input type-submit">
-                <button onClick={() => router.push("/create-date/choose-city")} className={`next ${!user?.email_verified ? 'disable' : ''}`} disabled={!user?.email_verified}>
+                <button onClick={() => user?.gender === "male" ? router.push('/user/user-list') : router.push("/create-date/choose-city")} className={`next ${!user?.email_verified ? 'disable' : ''}`} disabled={!user?.email_verified}>
                     {user?.gender === "male" ? 'GO TO GALLERY' : 'CREATE NEW DATE'}
                 </button>
                 {/* <a className="later-my-profile">Later, take me to My profile</a> */}

@@ -6,7 +6,8 @@ module.exports = {
     buildActivity: false,
   },
   env: {
-    modules: ['auth', "event"]
+    modules: ['auth', "event"],
+    MAPBOX_TOKEN: 'pk.eyJ1Ijoic2VjcmV0dGltZSIsImEiOiJja3poN3dhY2IwZXk3Mm5vMmlqdnpqMDNxIn0.RELof70VoVmL4Y4-C8HHmw'
   },
   async redirects() {
     return [

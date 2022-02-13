@@ -1079,6 +1079,259 @@
     }
 }
 
+.open-modal-body {
+    overflow: hidden;
+    header {
+        border-bottom: none;
+    }
+    .overlay-modal {
+        .ReactModal__Overlay--after-open{
+        background-color: rgb(0, 0, 0,0.8) !important;
+        @media only screen and (max-width: 767px) {
+            background-color: unset !important;
+        }
+    }
+        .ReactModal__Overlay--after-open::before{
+            display: none;
+        }
+   }
+}
+
+ .city-modal {
+    overflow: hidden;
+    border: 1px solid rgb(204, 204, 204);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+    @media only screen and (max-width: 767px) {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px !important;
+        backdrop-filter: blur(8px);
+        background: transparent !important;
+        .inner-page header{
+            border: 0px;
+        }
+    }
+    .city-wrapper {
+        .location {
+            padding: 15px 23px !important;
+        }
+        h5 {
+            font-size: 20px !important;
+        }
+        .todo-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+          }
+          
+          .todo-list li {
+            position: relative;
+            font-size: 24px;
+            box-shadow: 0 -1px 0 #ededed;
+            overflow: hidden;
+          }
+          
+          .todo-list li:last-child {
+            border-bottom: none;
+          }
+          
+          .todo-list li.editing {
+            border-bottom: none;
+            padding: 0;
+          }
+          
+          .todo-list li.editing .edit {
+            display: block;
+            width: 506px;
+            padding: 13px 17px 12px 17px;
+            margin: 0 0 0 43px;
+          }
+          
+          .todo-list li.editing .view {
+            display: none;
+          }
+          
+          .todo-list li .toggle {
+            text-align: center;
+            width: 40px;
+            /* auto, since non-WebKit browsers doesn't support input styling */
+            height: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            border: none; /* Mobile Safari */
+            -webkit-appearance: none;
+            appearance: none;
+          }
+          
+          .todo-list li .toggle:after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+          }
+          
+          .todo-list li .toggle:checked:after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+          }
+          
+          .todo-list li label {
+            white-space: pre;
+            word-break: break-word;
+            padding: 15px 60px 15px 15px;
+            margin-left: 45px;
+            display: block;
+            line-height: 1.2;
+            transition: color 0.4s;
+          }
+          
+          .todo-list li.completed label {
+            color: #d9d9d9;
+            text-decoration: line-through;
+          }
+          
+          .todo-list li .destroy {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 10px;
+            bottom: 0;
+            width: 40px;
+            height: 40px;
+            margin: auto 0;
+            font-size: 30px;
+            color: #cc9a9a;
+            margin-bottom: 11px;
+            transition: color 0.2s ease-out;
+          }
+          
+          .todo-list li .destroy:hover {
+            color: #af5b5e;
+          }
+          
+          .todo-list li .destroy:after {
+            content: '×';
+          }
+          
+          .todo-list li:hover .destroy {
+            display: block;
+          }
+          
+          .todo-list li .edit {
+            display: none;
+          }
+          
+          .todo-list li.editing:last-child {
+            margin-bottom: -1px;
+          }
+        .radio-list{
+            overflow: auto;
+            max-height: 500px;
+            padding: 20px;
+            ul {
+                list-style: none;
+                padding-left: 0rem;
+            }
+            li {
+                border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+                padding: 10px;
+                text-align: start;
+                span{
+                    font-size: 18px;
+                }
+            }
+            li::before {
+                content: "";
+                background: #F24462;
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                margin-left: -10px;
+                border-radius: 50%;
+                margin-right: 7px;
+            }
+            ul li input[type=radio]{
+                float: right;
+                visibility: hidden;
+              }
+              ul li .check::before {
+                display: block;
+                content: '';
+                border-radius: 100%;
+                height: 16px;
+                width: 16px;
+                top: 5px;
+                left: 5px;
+                margin: auto;
+                transition: 0.25s linear;
+                -webkit-transition: 0.25s linear;
+              }
+              ul li .check{
+                margin-top: 1px;
+                margin-right: -20px;
+                float: right;
+                display: block;
+                border: 2px solid #C9C9C9;
+                border-radius: 100%;
+                height: 24px;
+                width: 24px;
+                top: 30px;
+                left: 20px;
+                z-index: 5;
+                transition: border .25s linear;
+                -webkit-transition: border .25s linear;
+              }
+              ul li input[type=radio]:checked ~ .check::before{
+                background: #F24462;
+                margin-top: 2px;
+                margin-left: 2px;
+              }
+        }
+        .city-popup {
+            padding: 0px 10px;
+            .location-diduct-icon {
+                width: 50px;
+                height: 100%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-align-items: center;
+                align-items: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                border: none;
+                border-left: 1px solid #323131;
+                background: transparent;
+                border-radius: 0px 5px 5px 0;
+                svg {
+                    height: 24px;
+                    width: 24px;
+                }
+            }
+            .secret-input { 
+                margin: 0px 10px;
+            }
+            input{
+                min-height: 50px;
+                background-color: #151515;
+                border: none;
+                border-radius: 8px;
+                color: #d0d0d0;
+                outline: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                font-size: 14px;
+                font-family: "Helvetica-Light";
+            }
+        }
+    }
+}
+
 .auth-section.create-date-wrap {
     width: 100%;
     @media only screen and (max-width: 767px) {
@@ -1553,6 +1806,10 @@ body {
     .model_content {
         .icon_wrap {
             padding: 15px 20px;
+        }
+        .location{
+            display: flex;
+            justify-content: space-between;
         }
         .sub-heading {
             font-size: 12px;
