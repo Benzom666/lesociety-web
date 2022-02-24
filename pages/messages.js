@@ -18,7 +18,7 @@ import Link from 'next/link'
 import { CustomIcon } from 'core/icon';
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { FiChevronRight } from "react-icons/fi";
-import withAuth from "../../core/withAuth";
+import withAuth from "../core/withAuth";
 
 const Messages = props =>  {
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
