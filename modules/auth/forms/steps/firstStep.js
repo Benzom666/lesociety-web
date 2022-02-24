@@ -167,6 +167,7 @@ const FirstStep = props => {
           valueField='value'
           id="location1"
           options={locationOptions}
+          withIcon={false}
         />
         <div className="age-field">
           <Field

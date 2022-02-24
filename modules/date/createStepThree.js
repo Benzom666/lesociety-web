@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
+import { useSelector } from 'react-redux';
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import validate from 'modules/auth/forms/validate/validate'
@@ -40,7 +41,8 @@ const education_plan = [
 ];
   
 const CreateStepThree = props => {
-    const { handleSubmit, previousPage, invalid, pristine, reset, submitting } = props
+    const { handleSubmit, previousPage, invalid, pristine, reset, submitting, onClose } = props
+    const state = useSelector(state => state.form.CreateStepThree)
     const { width } = useWindowSize();
     return (
         <>
@@ -50,7 +52,7 @@ const CreateStepThree = props => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     </a>
                     <h6 className="m-0 text-white-50">Create a New Date</h6>
-                    <IoIosClose size={32} />
+                    <IoIosClose size={32} onClick={onClose}/>
                 </div>
                 {width > 767 && (
                     <h3 className="text-center">Create a New Date</h3>
@@ -88,12 +90,13 @@ const CreateStepThree = props => {
                                 options={education_plan}
                                 value={education_plan}
                                 component={Inputs.radioField}
+                                hideText={true}
                             />
                         </div>
                     </div>
                     <div className="bottom-mobile register-bottom">
                             <div className="secret-input type-submit next-prev">
-                                <button type="submit" className="next" disabled={invalid}>  
+                                <button type="submit" className="next" disabled={!state.values?.education || invalid}>  
                                     Next <FiArrowRight />
                                 </button>    
                             </div>
@@ -105,5 +108,6 @@ const CreateStepThree = props => {
 }
 export default reduxForm({
     form: 'CreateStepThree',
+    destroyOnUnmount: false,
     validate
   })(CreateStepThree);

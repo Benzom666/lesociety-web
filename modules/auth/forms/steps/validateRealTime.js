@@ -79,6 +79,19 @@ export const fetchLiveLocation = async (lat, long, countries) => {
                 country: countries || undefined
             }
         })
+        if(res.data.features.length > 0) {
+            const places = res.data.features.map(place => {
+                return {
+                    name: place.text,
+                    country: place.context.filter(item => item.id.includes('country')),
+                    label: place.text
+                }
+            })
+            return places
+        }
+        else {
+            return false;
+        }
         return res.data.features
     }
     catch (e) {
@@ -100,9 +113,10 @@ export const fetchRealLocation = _.debounce(async (values, countries, setPlaces)
                 return {
                     name: place.text,
                     country: place.context.filter(item => item.id.includes('country')),
+                    label: place.text
                 }
             })
-            setPlaces(places);
+            setPlaces(places)
         }
         else {
             return false;

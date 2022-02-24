@@ -2,6 +2,7 @@ import HeaderLoggedIn from 'core/loggedInHeader'
 import Footer from 'core/footer'
 import UserCardList from '@/core/UserCardList';
 import LocationPopup from '@/core/locationPopup';
+import withAuth from "../../core/withAuth";
  
 function UserList ({dispatch} ) {
 	return (
@@ -58,4 +59,4 @@ function UserList ({dispatch} ) {
   )
 }
 
-export default UserList ;
+export default withAuth(UserList);

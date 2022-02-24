@@ -31,6 +31,13 @@ const validate = values => {
   } else if (values.description.length > 350) {
     errors.description = '* Min 30 - Max 350 characters'
   }
+  if (!values.date_description) {
+    errors.date_description = '* Min 50 - Max 150 characters'
+  } else if (values.date_description.length < 50) {
+    errors.date_description = '* Min 50 - Max 150 characters'
+  } else if (values.date_description.length > 150) {
+    errors.date_description = '* Min 50 - Max 150 characters'
+  }
   if (!values.offer) {
     errors.offer = '* Min 30 - Max 350 characters'
   } else if (values.offer.length < 30) {
@@ -43,6 +50,9 @@ const validate = values => {
   }
   if (!values.location?.value) {
     errors.location = 'Location is Required'
+  }
+  if (!values.enter_country?.value) {
+    errors.enter_country = 'Country is Required'
   }
   if (!values.enter_city) {
     errors.enter_city = 'City name is Required'

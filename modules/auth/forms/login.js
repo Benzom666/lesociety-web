@@ -3,17 +3,18 @@ import { Field, reduxForm } from 'redux-form';
 import { useSelector, useDispatch } from "react-redux";
 import { Inputs } from 'core';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import useWindowSize from "../../../utils/useWindowSize";
 import validate from './validate/validate';
 import { login } from '../authActions'
-
-const userRequired = value => (!value ? "Username is required" : undefined);
-const passwordRequired = value => (!value ? "Password is required" : undefined);
+import { useEffect } from 'react';
 
 const SimpleForm = props => {
-
   const { width } = useWindowSize();
   const dispatch = useDispatch();
+  const router = useRouter();
+  const authState = useSelector(state => state.authReducer)
+  const userLogin = authState?.user;
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     name: "",
@@ -38,6 +39,24 @@ const SimpleForm = props => {
     event.preventDefault();
   }
 
+  useEffect(() => {
+    if(authState?.isLoggedIn) {
+      if (userLogin?.step_completed === 1 || userLogin?.step_completed === 2) {
+        router.push({
+          pathname: '/auth/profile',
+        })
+      } else {
+        if (userLogin?.email_verified) {
+          router.push({
+            pathname: '/user/user-list',
+          })
+        } else {
+          router.push('/auth/profile')
+        }
+      }
+    }
+  }, [userLogin])
+
   const { handleSubmit, invalid, pristine, reset, submitting, submitSucceeded } = props
 
   return (
@@ -50,7 +69,7 @@ const SimpleForm = props => {
             type="text"
             label="Username"
             value={user.name}
-            onKeyPress = {handleKeyPress}
+            onKeyPress={handleKeyPress}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
             placeholder="Visible by all members"
           />
@@ -119,12 +138,12 @@ const SimpleForm = props => {
               <p>Don't have an account? <Link href="/auth/registration">Register</Link></p>
             </div>
             <Inputs.buttonField
-            type="submit"
-            name="login"
-            disabled={invalid}
-            label="Sign In"
-            loading={loading}
-          />
+              type="submit"
+              name="login"
+              disabled={invalid}
+              label="Sign In"
+              loading={loading}
+            />
           </div>
         </>
       )}

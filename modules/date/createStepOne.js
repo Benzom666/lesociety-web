@@ -9,9 +9,11 @@ import { ImSpoonKnife } from "react-icons/im";
 import { CustomIcon } from 'core/icon';
 import { IoIosClose } from 'react-icons/io';
 import useWindowSize from "utils/useWindowSize"; 
+import { useSelector } from 'react-redux';
 
 const CreateStepOne = props => {
-    const { handleSubmit, previousPage, invalid, pristine, reset, submitting } = props
+    const { handleSubmit, previousPage, invalid, pristine, reset, submitting, onClose } = props
+    const state = useSelector(state => state.form.CreateStepOne)
     const { width } = useWindowSize();
     return (
         <>
@@ -21,7 +23,7 @@ const CreateStepOne = props => {
                         {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
                     </a>
                     <h6 className="m-0 text-white-50">Create a New Date</h6>
-                    <IoIosClose size={32} />
+                    <IoIosClose size={32} onClick={onClose}/>
                 </div>
                 {width > 767 && (
                     <h3 className="text-center">Create a New Date</h3>
@@ -54,7 +56,7 @@ const CreateStepOne = props => {
                     <div className="inner_container">
                         <div className="mb-5">
                             <div className=" d-flex align-items-center justify-content-between">
-                                <H5>Standart Class Dates</H5>
+                                <H5>Standard Class Dates</H5>
                                 <span className="price-tag">$</span>
                             </div>
                             <SubHeading title="Higher response rate" />
@@ -66,17 +68,23 @@ const CreateStepOne = props => {
                                     {
                                         label: 'Morning Beverage',
                                         id: 'MorningBeverage',
+                                        iconName: 'CustomIcon.Sun',
                                         icon : <CustomIcon.Sun color={'#4F4E54'} size={30}/>,
+                                        category: "standard_class_date"
                                     },
                                     {
                                         label: 'Outdoor Adventure',
                                         id: 'OutdoorAdventure',
                                         icon : <CustomIcon.OutdoorAdventure color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.OutdoorAdventure',
+                                        category: "standard_class_date"
                                     },
                                     {
                                         label: 'Evening Date',
                                         id: 'EveningDate',
                                         icon : <CustomIcon.Moon color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.Moon',
+                                        category: "standard_class_date"
                                     },
                                 ]}
                                 component={ClassSelection}
@@ -97,16 +105,22 @@ const CreateStepOne = props => {
                                         label: 'Take A Class',
                                         id: 'TakeClass',
                                         icon: <CustomIcon.TakeClass color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.TakeClass',
+                                        category: "middle_class_date"
                                     },
                                     {
                                         label: 'Entertainment & sports ',
                                         id: 'Entertainmentsports',
                                         icon : <CustomIcon.EntertainmentSports color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.EntertainmentSports',
+                                        category: "middle_class_date"
                                     },
                                     {
                                         label: 'Wine & Dine ',
                                         id: 'WineDine',
                                         icon : <CustomIcon.WineDine color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.WineDine',
+                                        category: "middle_class_date"
                                     },
                                 ]}
                                 component={ClassSelection}
@@ -127,16 +141,22 @@ const CreateStepOne = props => {
                                         label: 'Casino & Drinks',
                                         id: 'CasinoDrinks',
                                         icon : <CustomIcon.CasinoDrinks color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.CasinoDrinks',
+                                        category: "executive_class_date"
                                     },
                                     {
                                         label: 'Champaign & Caviar',
                                         id: 'ChampaignCaviar',
                                         icon : <CustomIcon.ChampaignCaviar color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.ChampaignCaviar',
+                                        category: "executive_class_date"
                                     },
                                     {
                                         label: 'Bottles & Dance',
                                         id: 'BottlesDance',
                                         icon : <CustomIcon.BottlesDance color={'#4F4E54'} size={30}/>,
+                                        iconName: 'CustomIcon.BottlesDance',
+                                        category: "executive_class_date"
                                     },
                                 ]}
                                 component={ClassSelection}
@@ -144,7 +164,7 @@ const CreateStepOne = props => {
                         </div>
                         <div className="bottom-mobile register-bottom">
                             <div className="secret-input type-submit next-prev">
-                                <button type="submit" className="next" disabled={invalid}>  
+                                <button type="submit" className="next" disabled={!state.values?.search_type || invalid}>  
                                     Next <FiArrowRight />
                                 </button>    
                             </div>
@@ -157,5 +177,6 @@ const CreateStepOne = props => {
 }
 export default reduxForm({
     form: 'CreateStepOne',
+    destroyOnUnmount: false,
     validate
   })(CreateStepOne);

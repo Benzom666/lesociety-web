@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import withAuth from "../../core/withAuth";
 
 function Home({ items })  {
   return (
@@ -14,4 +15,4 @@ function Home({ items })  {
     </>
   )
 }
-  export default Home
+  export default withAuth(Home)

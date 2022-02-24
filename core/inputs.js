@@ -1,6 +1,7 @@
 import { FiCheck } from "react-icons/fi";
 import React from "react";
 import Select from 'react-select';
+import { IoMdLocate } from 'react-icons/io';
 import { drowdownStyles } from './styles';
 
 export function uploadFileField({ accept, input, onChange, value, type, meta: { touched, error, warning } }) {
@@ -12,29 +13,41 @@ export function uploadFileField({ accept, input, onChange, value, type, meta: { 
   </div>
 }
 
-export const renderDropdown = ({ input, options, id, valueField, name, type, placeholder, label, meta: { touched, error, warning }, ...props }) => {
+export const renderDropdown = ({ loading, iconClick, withIcon, subLabel, input, options, id, valueField, name, type, placeholder, label, meta: { touched, error, warning }, ...props }) => {
   let borderColor = ''
    if(touched && error){
     borderColor = '#F24462'
-  }else if (!error) {
+  } else if (!error) {
     borderColor = ""
   }
-  
+
   return (
       <React.Fragment>
           <div className={`secret-input type-${type}`}>
          {label && <label>{label}</label>}
+         {subLabel && <p className="subLabel">{subLabel}</p>}
          {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
+              <div className="dropdwon-wrapper">
               <Select {...input} id={id} value={input.value} onChange={(value) => input.onChange(value)}
                   options={options}
                   placeholder={placeholder}
                   styles={drowdownStyles}
-                  className={touched && error && 'error-dropdown'}
+                  // className={touched && error && 'error-dropdown'}
                   name={name}
+                  touched={touched}
+                  error={error}
                   {...props}
-                  onBlur={(e) => console.log("v", e.target.value)}
+                  onBlur={(value) => input.onBlur()}
                   selectedValue={input.value}
+                  // components={{ DropdownIndicator }}
+                  autoFocus={false}
+                  withIcon={withIcon}
+                  // menuIsOpen={false}
+                  // openMenuOnClick={false}
               />
+            {loading && <span className="spin-loader"></span> }
+            {!loading && withIcon && <span className={`location-diduct-icon`} onClick={iconClick}><IoMdLocate /></span>}
+            </div>
           </div>
       </React.Fragment>
   )
@@ -65,10 +78,11 @@ export function inputField({ input, label, icon, placeholder, type, meta, meta: 
     </React.Fragment>
   </div>
 }
-export function inputFieldWithIcon({ iconClick, input, label, icon, placeholder, type, meta: { touched, error, warning } }) {
+export function inputFieldWithIcon({ subLabel, iconClick, input, label, icon, placeholder, type, meta: { touched, error, warning } }) {
   return <div className={`secret-input type-${type}`}>
     <React.Fragment>
       {(label && (type == 'text' || type == 'password' || type == 'number')) && <label>{label}</label>}
+      {subLabel && <p className="subLabel">{subLabel}</p>}
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
       <span className="pos-relative ">
         <input {...input} autoComplete="off" className="form-control" placeholder={placeholder} type={type} />
@@ -84,7 +98,7 @@ export function textarea({ input, label, placeholder, type, meta: { touched, err
     <React.Fragment>
       <label>{label}</label>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
-      <textarea {...input} autoComplete="off" className="form-control" placeholder={placeholder} />
+      <textarea {...input} autoComplete="off" className={`form-control`} style={touched && error ? {border: '3px solid #F24462'} : {}} placeholder={placeholder} />
     </React.Fragment>
   </div>
 }
@@ -108,7 +122,7 @@ export function selectField({ input: { onChange, defaultOption, value, ...inputP
   </div>
 }
 
-export function radioField({ input, options, label, meta: { touched, error, warning } }) {
+export function radioField({ input, hideText, onlyLabel, options, label, meta: { touched, error, warning } }) {
   return <div className={`secret-input type-checkbox`}>
     <label>{label}</label>
     <div className="multi-radio">
@@ -120,11 +134,11 @@ export function radioField({ input, options, label, meta: { touched, error, warn
               {...input}
               id={`${input.name}_${option.id}`}
               type='radio'
-              value={option.id}
-              checked={option.id == input.value}
+              value={onlyLabel ? option.price : ( option.price ? option.price+option.suptag : option.id)}
+              checked={onlyLabel ? option.price == input.value : ( option.price ? option.price+option.suptag == input.value : option.id == input.value)}
             />
-            <label className="value-label" htmlFor={`${input.name}_${option.id}`}>
-              <span>{option.name}</span>
+           <label className="value-label" htmlFor={`${input.name}_${option.id}`}>
+              {!hideText && <span>{option.name}</span>}
               <span className="price_wrap">
                 <span className="price"><sup>{option.suptag}</sup>{option.price}</span>
               </span>

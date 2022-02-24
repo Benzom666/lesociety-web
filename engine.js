@@ -4,6 +4,7 @@ import { combineReducers } from "redux";
 import { all } from "redux-saga/effects";
 import { reducer as reduxFormReducer } from 'redux-form';
 import authReducer from "./modules/auth/authReducer";
+import { composeWithDevTools } from 'redux-devtools-extension'
 const reducers = { authReducer, form: reduxFormReducer };
 const sagasAll = [];
 
@@ -33,7 +34,7 @@ const bindMiddleware = middleware => {
 };
 
 function configureStore() {
-  const store = createStore(combineReducers(reducers), bindMiddleware(sagaMiddleware));
+  const store = createStore(combineReducers(reducers), composeWithDevTools(bindMiddleware(sagaMiddleware)));
 
   store.runSagaTask = () => {
     store.sagaTask = sagaMiddleware.run(sagas);

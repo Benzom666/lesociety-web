@@ -1,8 +1,5 @@
 import {RESTORE_AUTH_STATE, AUTHENTICATE, DEAUTHENTICATE, AUTHENTICATE_UPDATE} from "./actionConstants";
-
-
 import {getCookie, setCookie, removeCookie} from '../../utils/cookie';
-
 
 let initialState;
 if (typeof localStorage !== "undefined") {

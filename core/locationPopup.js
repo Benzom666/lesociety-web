@@ -12,7 +12,7 @@ import { countriesCode } from '../utils/Utilities';
 import { fetchLocation, fetchRealLocation, fetchLiveLocation } from "../modules/auth/forms/steps/validateRealTime"
 
 function LocationPopup() {
-    const [modalIsOpen, setIsOpen] = useState(true);
+    const [modalIsOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
     const router = useRouter();
     const [countries, setCountry] = useState('');
@@ -158,7 +158,7 @@ function LocationPopup() {
                 />
                 </div>
                 <div className="radio-list">
-                <TransitionMotion
+          <TransitionMotion
             defaultStyles={getDefaultStyles()}
             styles={getStyles()}
             willLeave={willLeave}

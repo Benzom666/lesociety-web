@@ -17,6 +17,7 @@ import useWindowSize from "utils/useWindowSize";
 import { CustomIcon } from 'core/icon';
 import Modal from 'react-modal';
 import Link from 'next/link'
+import withAuth from "../../core/withAuth";
  
 const imageRequired = value => (!value ? "asd.jpg" : 'asd');
 
@@ -369,4 +370,4 @@ export default reduxForm({
     destroyOnUnmount: false, // <------ preserve form data
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
     validate
-  })(UserProfile)
+  })(withAuth(UserProfile))

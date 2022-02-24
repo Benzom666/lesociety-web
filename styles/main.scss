@@ -921,6 +921,47 @@
             }
         }
         &.choose-city {
+            .secret-input {
+                .dropdwon-wrapper {
+                    .spin-loader {
+                        // border: 4px solid rgba(255, 255, 255, 0.3);
+                        border: 4px solid white;
+                        border-radius: 50%;
+                        border-top: 4px solid #151515;
+                        width: 25px;
+                        // display: none;
+                        height: 25px;
+                        -webkit-animation: spin 2s linear infinite;
+                        /* Safari */
+                        animation: spin 1s linear infinite;
+                        position: absolute;
+                        right: 10px;
+                        bottom: 13px;
+                        top: unset;
+                    }
+                    .location-diduct-icon {
+                        height: 50px;
+                        bottom: 0;
+                        top: unset;
+                        cursor: pointer;
+                    }
+                    .error-dropdown-icon {
+                        bottom: 3px !important;
+                    }
+                }
+                svg {
+                    height: 24px;
+                    width: 24px;
+                }
+                .subLabel{
+                    font-weight: 400;
+                    color: #767676;
+                    font-size: 1rem;
+                    letter-spacing: unset;
+                    line-height: unset;
+                    text-align: unset;
+                }
+            }
             form {
                 padding-top: 0;
             }
@@ -1095,6 +1136,72 @@
             display: none;
         }
    }
+}
+
+.date-wrapper {
+    overflow: hidden;
+    border: 1px solid rgb(204, 204, 204);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+    padding: 0;
+    .button-wrapper {
+        padding: 40px;
+        .next-button{
+            background-color: #F24462;
+        }
+        .close-button {
+            background-color: unset;
+            border: 1px solid;
+        }
+        button {
+            width: 100%;
+            color: #fff;
+            border: none;
+            line-height: 46px;
+            cursor: pointer;
+            outline: none;
+            min-height: 50px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-family: "Helvetica-Light";
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+    }
+    .header {
+        padding: 10px 50px;
+        background: rgba(0, 0, 0, 0.8);
+        p {
+            line-height: 1.3rem;
+            font-weight: 400;
+            text-align: center;
+            color: #767676;
+            font-size: 18px;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px !important;
+        backdrop-filter: blur(2px);
+        background: transparent !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .inner-page header{
+            border: 0px;
+        }
+    }
 }
 
  .city-modal {
@@ -1516,6 +1623,11 @@
                     color: $primary-color;
                 }
             }
+            .price_per_hour {
+                min-width: 80px;
+                text-align: right;
+                float: right;
+            }
             .user_location {
                 width: 100%;
                 margin-bottom: 15px;
@@ -1526,10 +1638,6 @@
                         word-break: break-all;
                     }
                 }
-                .price_per_hour {
-                    min-width: 80px;
-                    text-align: right;
-                }
             }
             .tag_wrap {
                 ul {
@@ -1538,14 +1646,27 @@
                     margin-bottom: 0;
                     padding: 0;
                     li {
-                        padding: 10px 10px;
-                        margin-right: 10px;
+                        padding: 8px;
                         background: linear-gradient( 231.4deg, rgba(46, 49, 58, 0.40422) 18.16%, rgba(25, 25, 25, 0.415923) 95.56%);
                         color: $white-color;
                         border: 0.607143px solid #293036;
                         backdrop-filter: blur(10.9286px);
                         border-radius: 8px;
                         cursor: pointer;
+                        margin-top: -6px;
+                        .icon-white {
+                                svg {
+                                    color: $white-color;
+                                    fill: $white-color;
+                                    height: 20px;
+                                    width: 20px;
+                                    path,
+                                    g,
+                                    rect {
+                                        fill: $white-color;
+                                    }
+                                }
+                        }
                         span {
                             font-size: 15px;
                             font-weight: 300;
@@ -1586,6 +1707,7 @@
             line-height: 22px;
             font-weight: 300;
             text-align: left !important;
+            word-wrap: break-word;
             color: rgba(255, 255, 255, 0.8);
             @media only screen and (max-width: 767px) {
                 font-size: 14px;
@@ -2583,6 +2705,19 @@ body .verification_card_header {
                     backdrop-filter: blur(10.9286px);
                     border-radius: 8px;
                     cursor: pointer;
+                    .icon-white {
+                        svg {
+                            color: $white-color;
+                            fill: $white-color;
+                            height: 20px;
+                            width: 20px;
+                            path,
+                            g,
+                            rect {
+                                fill: $white-color;
+                            }
+                        }
+                }
                     span {
                         font-size: 14px;
                         font-weight: 300;
@@ -2791,7 +2926,7 @@ body .verification_card_header {
     // border: 4px solid rgba(255, 255, 255, 0.3);
     border: 4px solid white;
     border-radius: 50%;
-    border-top: 4px solid #F24462;
+    border-top: 4px solid #151515;
     width: 25px;
     // display: none;
     height: 25px;

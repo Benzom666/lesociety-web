@@ -18,6 +18,7 @@ import Link from 'next/link'
 import { CustomIcon } from 'core/icon';
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { FiChevronRight } from "react-icons/fi";
+import withAuth from "../../core/withAuth";
 
 const Messages = props =>  {
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
@@ -435,4 +436,4 @@ export default reduxForm({
     destroyOnUnmount: false, // <------ preserve form data
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
     validate
-})(Messages)
+})(withAuth(Messages))

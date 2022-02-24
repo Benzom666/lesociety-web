@@ -2,6 +2,7 @@ import  Createdates   from 'modules/date/Createdates';
 import Header from 'core/header'
 import Footer from 'core/footer'
 import useWindowSize from "/utils/useWindowSize";
+import withAuth from "../../core/withAuth";
  
 function Step1 ({dispatch} ) {
   const { width } = useWindowSize();
@@ -18,4 +19,4 @@ function Step1 ({dispatch} ) {
   )
 }
 
-export default Step1 ;
+export default withAuth(Step1);

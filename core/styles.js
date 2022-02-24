@@ -1,42 +1,85 @@
 export const drowdownStyles = {
-    indicatorsContainer: (provided, state) => ({
-        display: 'none'
+    indicatorsContainer: (provided, state) => { 
+        // if (state?.selectProps?.withIcon) {
+        //     return {
+        //         ...provided,
+        //         color: 'hsl(0, 0%, 90%) !important',
+        //         width: '50px',
+        //         height: '50px',
+        //         justifyContent: 'center',
+        //         "svg": {
+        //             height: '24px',
+        //             width: '24px'
+        //         },
+        //         "div": {
+        //             color: 'hsl(0, 0%, 90%) !important',
+        //         }
+        //     } 
+        // } else {
+        //     return {
+        //         ...provided,
+        //         color: 'hsl(0, 0%, 90%) !important',
+        //         width: '50px',
+        //         height: '50px',
+        //         justifyContent: 'center',
+        //         display: 'none',
+        //         "div": {
+        //             color: 'hsl(0, 0%, 90%) !important',
+        //         }
+        //     }
+        // }
+        return { 
+            display: 'none'
+        }
+    },
+    indicatorSeparator: (provided, state) => ({
+        ...provided,
+            display: 'none',
+        marginBottom: "0px",
+        marginTop: "0px",
+        backgroundColor: 'rgba(255, 255, 255, 0.2)'
     }),
     control: (provided, state) => {
+        const isMobile = typeof window  !== "undefined" && window.matchMedia('only screen and (max-width: 760px)').matches;
         return {
         ...provided,
         minHeight: '50px',
+        height: "50px",
         backgroundColor: '#151515',
-        border: state.menuIsOpen ? '3px solid #272c33' : '1px solid rgba(255, 255, 255, 0.2)',
-        borderRadius: '8px',
+        border: state.menuIsOpen && !state?.selectProps?.withIcon ? '3px solid #272c33' : !state.menuIsOpen && state?.selectProps.touched && state?.selectProps.error  ? "3px solid #F24462" : '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: state.menuIsOpen && state?.selectProps?.withIcon ? '8px 8px 0px 0px' : '8px',
         color: '#d0d0d0',
         outline: 'none',
         webkitBoxShadow: 'none',
         boxShadow: 'none',
-        fontSize: '14px',
+        fontSize: isMobile ? "16px" : '14px',
         fontFamily: "Helvetica-Light",
         ":hover": {
-            border: state.menuIsOpen ? '3px solid #272c33' : '1px solid rgba(255, 255, 255, 0.2) !important',
+            border: state.menuIsOpen && !state?.selectProps?.withIcon ? '3px solid #272c33' : !state.menuIsOpen && state?.selectProps.touched && state?.selectProps.error  ? "3px solid #F24462" : '1px solid rgba(255, 255, 255, 0.2) !important',
         }
     }},
-    menuList: (provided, state) => ({
-        ...provided,
-        minHeight: '50px',
+    menuList: (provided, state) => {
+        const isMobile = window !== "undefined" && window.matchMedia('only screen and (max-width: 760px)').matches;
+        return { ...provided,
+        minHeight: '55px',
         backgroundColor: '#151515',
         border: '1px solid rgba(255, 255, 255, 0.2)',
-        borderRadius: '8px',
+        borderRadius: state?.selectProps?.withIcon ? '0px 0px 8px 8px' : "8px",
         color: '#d0d0d0',
         outline: 'none',
         webkitBoxShadow: 'none',
         boxShadow: 'none',
-        fontSize: '14px',
-        fontFamily: "Helvetica-Light"
-    }),
-    menu: (provided, state) => ({
+        fontSize: isMobile ? "16px" : '14px',
+        fontFamily: "Helvetica-Light"}
+    },
+    menu: (provided, state) => { 
+        return {
         ...provided,
         borderRadius: '8px',
-        color: '#d0d0d0'
-    }),
+        color: '#d0d0d0',
+        borderRadius: state?.selectProps?.withIcon ? '0px 0px 8px 8px' : "8px",
+        marginTop: state?.selectProps?.withIcon ?  '-1px' : '4px'
+    }},
     singleValue: (provided, state) => ({
         ...provided,
         color: '#d0d0d0',
@@ -45,7 +88,7 @@ export const drowdownStyles = {
         ...provided,
         backgroundColor: "#151515",
         ':active': {
-            backgroundColor: '#F24462'
+            backgroundColor: '#272c33'
         },
         ':hover': {
             backgroundColor: '#151515"'

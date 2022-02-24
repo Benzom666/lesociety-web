@@ -1,5 +1,6 @@
 import React from "react";
 import App, { Container } from "next/app";
+import Head from 'next/head'
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
@@ -13,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
-
+    
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps({ ctx });
     }
@@ -21,11 +22,13 @@ class MyApp extends App {
   }
 
   render() {
-    
-
     const { Component, pageProps, store } = this.props;
     return (
         <Provider store={store}>
+          <Head>
+        	<title>Secret Time</title>
+        	<link rel="icon" href="/favicon.svg" />
+      	</Head>
           <Component {...pageProps} />
           <ToastContainer />
         </Provider>

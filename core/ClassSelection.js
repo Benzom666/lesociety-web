@@ -10,7 +10,7 @@ const ClassSelection = (props) => {
     useEffect(() => {
         if(props.defaultChecked) props.input.onChange(props.defaultChecked)
     }, [])
-    const {icon, id, input, meta: { touched, error }} = props  
+    const { input, meta: { warning, touched, error }} = props  
 
     return(
         <ClassSelectionStyle className="class_select_wrap" style={{color: props.textColor}} checkColor={{checked: props.checkedColor}}>
@@ -19,9 +19,9 @@ const ClassSelection = (props) => {
                         <input 
                             type="radio"
                             id={option.id}
-                            checked={option.id === input.value}
+                            checked={option.id === input.value.id}
                             key={index} 
-                            onChange={()=>onChange(option.id)}
+                            onChange={()=>onChange({id: option.id, label: option.label, icon: option.icon, category: option.category})}
                         />
                         <div className="active_class">
                             <span>{option.icon}</span>
