@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import withAuth from "../../core/withAuth";
+import withAuth from "../core/withAuth";
 
 function Home({ items })  {
   return (
