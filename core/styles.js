@@ -46,8 +46,8 @@ export const drowdownStyles = {
         minHeight: '50px',
         height: "50px",
         backgroundColor: '#151515',
-        border: state.menuIsOpen && !state?.selectProps?.withIcon ? '3px solid #272c33' : !state.menuIsOpen && state?.selectProps.touched && state?.selectProps.error  ? "3px solid #F24462" : '1px solid rgba(255, 255, 255, 0.2)',
-        borderRadius: state.menuIsOpen && state?.selectProps?.withIcon ? '8px 8px 0px 0px' : '8px',
+        border: state.menuIsOpen && !state?.selectProps?.withIcon ? '1px solid rgba(255, 255, 255, 0.2)' : !state.menuIsOpen && state?.selectProps.touched && state?.selectProps.error  ? "3px solid #F24462" : '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: state.menuIsOpen ? '8px 8px 0px 0px' : '8px',
         color: '#d0d0d0',
         outline: 'none',
         webkitBoxShadow: 'none',
@@ -55,7 +55,7 @@ export const drowdownStyles = {
         fontSize: isMobile ? "16px" : '14px',
         fontFamily: "Helvetica-Light",
         ":hover": {
-            border: state.menuIsOpen && !state?.selectProps?.withIcon ? '3px solid #272c33' : !state.menuIsOpen && state?.selectProps.touched && state?.selectProps.error  ? "3px solid #F24462" : '1px solid rgba(255, 255, 255, 0.2) !important',
+            border: state.menuIsOpen && !state?.selectProps?.withIcon ? '1px solid rgba(255, 255, 255, 0.2)' : !state.menuIsOpen && state?.selectProps.touched && state?.selectProps.error  ? "3px solid #F24462" : '1px solid rgba(255, 255, 255, 0.2) !important',
         }
     }},
     menuList: (provided, state) => {
@@ -64,7 +64,8 @@ export const drowdownStyles = {
         minHeight: '55px',
         backgroundColor: '#151515',
         border: '1px solid rgba(255, 255, 255, 0.2)',
-        borderRadius: state?.selectProps?.withIcon ? '0px 0px 8px 8px' : "8px",
+        // borderRadius: state?.selectProps?.withIcon ? '0px 0px 8px 8px' : "8px",
+        borderRadius: '0px 0px 8px 8px',
         color: '#d0d0d0',
         outline: 'none',
         webkitBoxShadow: 'none',
@@ -77,8 +78,10 @@ export const drowdownStyles = {
         ...provided,
         borderRadius: '8px',
         color: '#d0d0d0',
-        borderRadius: state?.selectProps?.withIcon ? '0px 0px 8px 8px' : "8px",
-        marginTop: state?.selectProps?.withIcon ?  '-1px' : '4px'
+        borderRadius: '0px 0px 8px 8px',
+        marginTop: '-1px'
+        // borderRadius: state?.selectProps?.withIcon ? '0px 0px 8px 8px' : "8px",
+        // marginTop: state?.selectProps?.withIcon ?  '-1px' : '4px'
     }},
     singleValue: (provided, state) => ({
         ...provided,

@@ -54,11 +54,11 @@ const RegisterForm = props => {
   return (
     <div>
 
-      {page == 0 && <SecondStep previousPage={previousPage} onSubmit={nextPage} /> }
+      {page == 0 && !router?.query?.token && <SecondStep previousPage={previousPage} onSubmit={nextPage} /> }
 
-      {page == 1 && <ThirdStep previousPage={previousPage} onSubmit={nextPage} /> }
+      {page == 1 && !router?.query?.token && <ThirdStep previousPage={previousPage} onSubmit={nextPage} /> }
 
-      {page == 2 && <CompleteProfile /> }
+      {(page == 2 || router?.query?.token) && <CompleteProfile /> }
 
     </div>
   )

@@ -6,7 +6,6 @@ import useWindowSize from "utils/useWindowSize";
 import { IoIosClose } from 'react-icons/io';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import { apiRequest } from 'utils/Utilities'; 
 import UserCardDetail from '@/core/UserCardDetail';
 
 const DatePreview = props => {
@@ -21,37 +20,37 @@ const DatePreview = props => {
     const timeState = useSelector(state => state?.form?.CreateStepThree?.values);
     const dateDescription = useSelector(state => state?.form?.CreateStepFour?.values)
 
-    const postDate = async () => {
-        const data = {
-            location: cityState?.enter_city?.name,
-            country_code: cityState?.enter_city?.country[0]?.short_code,
-            [dateSuggestion?.search_type?.category]: dateSuggestion?.search_type?.label,
-            // date_length: timeState?.education,
-            date_length: 1,
-            price: priceState?.education, 
-            date_details: dateDescription?.date_description,
-            user_name: user?.user_name,
-            date_status: false
-        }
+    const postDate = () => {
+        // const data = {
+        //     location: cityState?.enter_city?.name,
+        //     country_code: cityState?.enter_city?.country[0]?.short_code,
+        //     [dateSuggestion?.search_type?.category]: dateSuggestion?.search_type?.label,
+        //     // date_length: timeState?.education,
+        //     date_length: 1,
+        //     price: priceState?.education, 
+        //     date_details: dateDescription?.date_description,
+        //     user_name: user?.user_name,
+        //     date_status: false
+        // }
         
-        try {
-        const res = await apiRequest({
-            method: 'POST',
-            url: `/date`,
-            data: data
-        })
-        if(res.data.data) {
+        // try {
+        // const res = await apiRequest({
+        //     method: 'POST',
+        //     url: `/date`,
+        //     data: data
+        // })
+        // if(res.data.data) {
             router.push("/user/user-list");
             dispatch(reset('ChooseCity'))
             dispatch(reset('CreateStepOne'))
             dispatch(reset('CreateStepTwo'))
             dispatch(reset('CreateStepThree'))
             dispatch(reset('CreateStepFour'))
-        }
-        }
-        catch (e) {
-            console.log(e)
-        }
+        // }
+        // }
+        // catch (e) {
+        //     console.log(e)
+        // }
     }
 
     return (

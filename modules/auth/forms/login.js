@@ -64,14 +64,14 @@ const SimpleForm = props => {
       {width > 767 && (
         <>
           <Field
-            name="user_name"
+            name="email"
             component={Inputs.inputField}
             type="text"
-            label="Username"
+            label="User Email"
             value={user.name}
             onKeyPress={handleKeyPress}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
-            placeholder="Visible by all members"
+            placeholder="Please enter you email"
           />
           <div className="password-fields">
             <Field
@@ -105,14 +105,14 @@ const SimpleForm = props => {
       {width < 767 && (
         <>
           <Field
-            name="user_name"
+            name="email"
             component={Inputs.inputField}
             type="text"
-            label="Username"
+            label="User Email"
             // validate={[userRequired] || apiError}
             value={user.name}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
-            placeholder="Visible by all members"
+            placeholder="Please enter you email"
           />
           <div className="password-fields mobile-side-password">
             <Field

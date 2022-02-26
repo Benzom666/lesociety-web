@@ -7,10 +7,50 @@ import validate from 'modules/auth/forms/validate/validate'
 import { CustomIcon } from 'core/icon';
 import useWindowSize from "utils/useWindowSize";  
 import { IoIosClose } from 'react-icons/io';
+import { apiRequest } from 'utils/Utilities'; 
 
 const CreateStepFour = props => {
     const { handleSubmit, previousPage, invalid, pristine, reset, submitting, onClose } = props
     const state = useSelector(state => state?.form?.CreateStepFour)
+    const dispatch = useDispatch();
+    const router = useRouter();
+    const [loader, setLoader] = useState(false);
+    const user = useSelector(state => state?.authReducer.user);
+    const cityState = useSelector(state => state?.form?.ChooseCity?.values);
+    const dateSuggestion = useSelector(state => state?.form?.CreateStepOne?.values);
+    const priceState = useSelector(state => state?.form?.CreateStepTwo?.values);
+    const timeState = useSelector(state => state?.form?.CreateStepThree?.values);
+    const dateDescription = useSelector(state => state?.form?.CreateStepFour?.values)
+
+    const postDate = async () => {
+        setLoader(true)
+        const data = {
+            location: cityState?.enter_city?.name,
+            country_code: cityState?.enter_city?.country[0]?.short_code,
+            [dateSuggestion?.search_type?.category]: dateSuggestion?.search_type?.label,
+            date_length: timeState?.education,
+            price: priceState?.education, 
+            date_details: dateDescription?.date_description,
+            user_name: user?.user_name,
+            date_status: false
+        }
+        
+        try {
+        const res = await apiRequest({
+            method: 'POST',
+            url: `/date`,
+            data: data
+        })
+        if(res.data.data) {
+            router.push("/user/user-list");
+        }
+        setLoader(false)
+        }
+        catch (e) {
+            setLoader(false);
+        }
+    }
+
     const { width } = useWindowSize();
     return (
         <>
@@ -98,7 +138,7 @@ const CreateStepFour = props => {
                     </div>
                     <div className="bottom-mobile register-bottom">
                         <div className="secret-input type-submit next-prev">
-                            <button type="submit" className="next" disabled={!state?.values?.date_description || invalid}>  
+                            <button type="submit" className="next" onClick={postDate} disabled={!state?.values?.date_description || invalid}>  
                                 Next <FiArrowRight />
                             </button>    
                         </div>

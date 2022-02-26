@@ -94,7 +94,7 @@ const FirstStep = props => {
         const locationOption = location?.map(item => item.isAvailable === 1 && {
           label: item.name,
           value: item.name
-       })
+       })?.filter(item => item)
        setLocation(locationOption);
     }
     };
