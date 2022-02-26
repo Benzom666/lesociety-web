@@ -1,6 +1,9 @@
 const path = require('path')
 
 module.exports = {
+  images: {
+    domains: ['secrettime-cdn.s3.eu-west-2.amazonaws.com'],
+  },
   devIndicators: {
     autoPrerender: false,
     buildActivity: false,

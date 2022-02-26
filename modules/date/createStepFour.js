@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import { useSelector } from 'react-redux';
 import validate from 'modules/auth/forms/validate/validate'
 import { CustomIcon } from 'core/icon';
+import { useRouter } from 'next/router';
 import useWindowSize from "utils/useWindowSize";  
 import { IoIosClose } from 'react-icons/io';
 import { apiRequest } from 'utils/Utilities'; 
@@ -12,7 +13,6 @@ import { apiRequest } from 'utils/Utilities';
 const CreateStepFour = props => {
     const { handleSubmit, previousPage, invalid, pristine, reset, submitting, onClose } = props
     const state = useSelector(state => state?.form?.CreateStepFour)
-    const dispatch = useDispatch();
     const router = useRouter();
     const [loader, setLoader] = useState(false);
     const user = useSelector(state => state?.authReducer.user);
@@ -41,9 +41,6 @@ const CreateStepFour = props => {
             url: `/date`,
             data: data
         })
-        if(res.data.data) {
-            router.push("/user/user-list");
-        }
         setLoader(false)
         }
         catch (e) {
@@ -138,8 +135,12 @@ const CreateStepFour = props => {
                     </div>
                     <div className="bottom-mobile register-bottom">
                         <div className="secret-input type-submit next-prev">
-                            <button type="submit" className="next" onClick={postDate} disabled={!state?.values?.date_description || invalid}>  
-                                Next <FiArrowRight />
+                            <button type="submit" className="next" onClick={postDate} disabled={!state?.values?.date_description || invalid}>
+                                {loader ? <span className="spin-loader-button"></span> :
+                                    <>
+                                        Next <FiArrowRight />
+                                    </>
+                                }
                             </button>    
                         </div>
                     </div>
