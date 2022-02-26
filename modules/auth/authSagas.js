@@ -43,7 +43,7 @@ export function* login(action) {
     } catch (error) {
         action.loader(false);
         if(error.response?.status === 401) {
-            yield put(stopSubmit('LoginForm', {[error.response && error.response?.data?.message === 'Given user name is not registered' ? 'user_name' : 'password']: error?.response ? error.response.data.message : error.message}))
+            yield put(stopSubmit('LoginForm', {[error.response && (error.response?.data?.message === 'Given user name is not registered' || error.response?.data?.message === 'Given user email is not registered') ? 'email' : 'password']: error?.response ? error.response.data.message : error.message}))
         } else {
             showToast("Something went wrong", 'error')
         }
