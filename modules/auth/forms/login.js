@@ -71,7 +71,7 @@ const SimpleForm = props => {
             value={user.name}
             onKeyPress={handleKeyPress}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
-            placeholder="Please enter you email"
+            placeholder="E.g. Janedoe@gmail.com"
           />
           <div className="password-fields">
             <Field
@@ -112,7 +112,7 @@ const SimpleForm = props => {
             // validate={[userRequired] || apiError}
             value={user.name}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
-            placeholder="Please enter you email"
+            placeholder="E.g. Janedoe@gmail.com"
           />
           <div className="password-fields mobile-side-password">
             <Field
