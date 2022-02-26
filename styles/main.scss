@@ -1194,6 +1194,7 @@
         height: 100%;
         border-radius: 0px !important;
         backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
         background: transparent !important;
         display: flex;
         justify-content: center;
@@ -1218,6 +1219,7 @@
         height: 100%;
         border-radius: 0px !important;
         backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         background: transparent !important;
         .inner-page header{
             border: 0px;
