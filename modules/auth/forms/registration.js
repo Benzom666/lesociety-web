@@ -20,9 +20,11 @@ const RegisterForm = props => {
   const nextPage = (values, loader) => {
     if(page === 0){
       setPage(page + 1)
-    }else{
+    } else {
+      debugger
       values.gender = gender
-      values.location = values.location.label;
+      values.country = values.location.country;
+      values.location = values.location.value;
       dispatch(registration(values, loader))
       // router.push('/auth/profile')
     }

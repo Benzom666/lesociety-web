@@ -1,58 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, change } from 'redux-form'
 import { useDispatch } from 'react-redux'
 import validate from '../../validate/validate'
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import useWindowSize from "../../../../../utils/useWindowSize";
-import { existEmail, existUsername, fetchLocation } from "../validateRealTime";
-
-const bodyType = [
-  {
-    id: '1',
-    name: 'Slim'
-  },
-  {
-    id: '2',
-    name: 'Fit'
-  },
-  {
-    id: '3',
-    name: 'Average'
-  },
-  {
-    id: '4',
-    name: 'Curvy'
-  },
-  {
-    id: '5',
-    name: 'Full Figured'
-  }
-];
-
-const Ethnicity = [
-  {
-    id: '1',
-    name: 'White'
-  },
-  {
-    id: '2',
-    name: 'Black'
-  },
-  {
-    id: '3',
-    name: 'Hispanic'
-  },
-  {
-    id: '4',
-    name: 'Asian'
-  },
-  {
-    id: '5',
-    name: 'Other'
-  }
-];
+import { bodyType, Ethnicity, countriesCode } from '../../../../../utils/Utilities';
+import { existEmail, existUsername, fetchLocation, fetchLiveLocation, fetchRealLocation } from "../validateRealTime";
 
 const FirstStep = props => {
   const [showPassword, setShowPassword] = useState(false);
@@ -62,8 +17,12 @@ const FirstStep = props => {
   const [loadingUsername, setLoaderUsername] = useState(false);
   const [isValidUsername, setValidUsername] = useState(false);
   const [locationOptions, setLocation] = useState([]);
+  const [loadingLive, setLoadingLive] = useState(false);
   const { width } = useWindowSize();
   const dispatch = useDispatch()
+  const [places, setPlaces] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [countries, setCountry] = useState('');
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -90,16 +49,39 @@ const FirstStep = props => {
   useEffect(() => {
     const fetch = async () => {
       const location = await fetchLocation();
-      if(location) {
-        const locationOption = location?.map(item => item.isAvailable === 1 && {
-          label: item.name,
-          value: item.name
-       })?.filter(item => item)
-       setLocation(locationOption);
-    }
+      if (location) {
+        const locationOption = location?.map(item => item.isAvailable === 1 ? countriesCode[item.name] : null).filter(item => item !== null).join();
+        setCountry(locationOption);
+      }
     };
     fetch();
   }, [])
+
+  const handleIcon = () => {
+    setLoadingLive(true);
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      if (position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
+        const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
+        const data = { label: location[0].label+", "+location[0].country[0].short_code?.toUpperCase(), value: location[0].label, country: location[0].country[0].text }
+        props.change('location', data);
+        setLoadingLive(false)
+      }
+    }, (err) => setLoadingLive(false), { enableHighAccuracy: true });
+  }
+
+  const handleChange = async (value, inputAction) => {
+    if (inputAction.action === 'input-change') {
+      setInputValue(value)
+      fetchRealLocation(value, countries, setPlaces);
+    }
+  }
+
+  useEffect(() => {
+    if (places.length > 0) {
+      const options = places.map(item => ({ label: item.label + ', ' + item.country[0].short_code.toUpperCase(), country: item.country[0].text, value: item.label }))
+      setLocation(options)
+    }
+  }, [places])
 
   const { handleSubmit, previousPage, invalid, pristine, reset, submitting } = props
 
@@ -158,7 +140,7 @@ const FirstStep = props => {
         </span>
       </div>
       <div>
-      <Field
+        <Field
           name="location"
           type="text"
           component={Inputs.renderDropdown}
@@ -166,7 +148,18 @@ const FirstStep = props => {
           placeholder="Enter the city you currently reside in"
           valueField='value'
           id="location1"
+          withIcon={true}
           options={locationOptions}
+          iconClick={handleIcon}
+          loading={loadingLive}
+          openMenuOnClick={false}
+          inputValue={inputValue}
+          onInputChange={handleChange}
+          menuIsOpen={inputValue && locationOptions.length}
+          onChange={(value) => {
+            setInputValue("");
+            change('location', value)
+          }}
         />
         <div className="age-field">
           <Field
@@ -202,12 +195,12 @@ const FirstStep = props => {
             </div>
             <div className="bottom-mobile register-bottom">
               <div className="secret-input type-submit">
-              <button type="submit" className="next" disabled={invalid}>
+                <button type="submit" className="next" disabled={invalid}>
                   {loadingSubmit ? <span className="spin-loader-button"></span> :
-                  <>
-                   Next
-                  <FiArrowRight />
-                  </>
+                    <>
+                      Next
+                      <FiArrowRight />
+                    </>
                   }
                 </button>
               </div>
@@ -218,13 +211,13 @@ const FirstStep = props => {
           <div className="bottom-mobile register-bottom">
             <div className="secret-input type-submit">
               <button type="submit" className="next" disabled={invalid}>
-                  {loadingSubmit ? <span className="spin-loader-button"></span> :
+                {loadingSubmit ? <span className="spin-loader-button"></span> :
                   <>
-                   Next
-                  <FiArrowRight />
+                    Next
+                    <FiArrowRight />
                   </>
-                  }
-                </button>
+                }
+              </button>
             </div>
             <p className="next-text">By clicking “Next” I certify that I’m at least 18 years old and agree to the Secret Time <Link href="/">PrivacyPolicy</Link> and <Link href="/">Terms</Link></p>
           </div>

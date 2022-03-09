@@ -5,54 +5,9 @@ import validate from '../validate/validate'
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import useWindowSize from "../../../../utils/useWindowSize";
-import { existEmail, existUsername, fetchLocation } from "./validateRealTime";
+import { existEmail, existUsername, fetchLocation, fetchLiveLocation, fetchRealLocation } from "./validateRealTime";
 import { useDispatch } from 'react-redux'
-
-const bodyType = [
-  {
-    id: 'Slim',
-    name: 'Slim'
-  },
-  {
-    id: 'Fit',
-    name: 'Fit'
-  },
-  {
-    id: 'Average',
-    name: 'Average'
-  },
-  {
-    id: 'Curvy',
-    name: 'Curvy'
-  },
-  {
-    id: 'Full Figured',
-    name: 'Full Figured'
-  }
-];
-
-const Ethnicity = [
-  {
-    id: 'White',
-    name: 'White'
-  },
-  {
-    id: 'Black',
-    name: 'Black'
-  },
-  {
-    id: 'Hispanic',
-    name: 'Hispanic'
-  },
-  {
-    id: 'Asian',
-    name: 'Asian'
-  },
-  {
-    id: 'Other',
-    name: 'Other'
-  }
-];
+import { bodyType, Ethnicity, countriesCode } from '../../../../utils/Utilities';
 
 const FirstStep = props => {
   const [showPassword, setShowPassword] = useState(false);
@@ -64,6 +19,10 @@ const FirstStep = props => {
   const [locationOptions, setLocation] = useState([]);  
   const dispatch = useDispatch()
   const { width } = useWindowSize();
+  const [places, setPlaces] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [countries, setCountry] = useState('');
+  const [loadingLive, setLoadingLive] = useState(false);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -90,16 +49,39 @@ const FirstStep = props => {
   useEffect(() => {
     const fetch = async () => {
       const location = await fetchLocation();
-      if(location) {
-        const locationOption = location?.map(item => item.isAvailable === 1 && {
-          label: item.name,
-          value: item.name
-       })?.filter(item => item)
-       setLocation(locationOption);
-    }
+      if (location) {
+        const locationOption = location?.map(item => item.isAvailable === 1 ? countriesCode[item.name] : null).filter(item => item !== null).join();
+        setCountry(locationOption);
+      }
     };
     fetch();
   }, [])
+
+  const handleIcon = () => {
+    setLoadingLive(true);
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      if (position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
+        const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
+        const data = { label: location[0].label+", "+location[0].country[0].short_code?.toUpperCase(), value: location[0].label, country: location[0].country[0].text }
+        props.change('location', data);
+        setLoadingLive(false)
+      }
+    }, (err) => setLoadingLive(false), { enableHighAccuracy: true });
+  }
+
+  const handleChange = async (value, inputAction) => {
+    if (inputAction.action === 'input-change') {
+      setInputValue(value)
+      fetchRealLocation(value, countries, setPlaces);
+    }
+  }
+
+  useEffect(() => {
+    if (places.length > 0) {
+      const options = places.map(item => ({ label: item.label + ', ' + item.country[0].short_code.toUpperCase(), country: item.country[0].text, value: item.label }))
+      setLocation(options)
+    }
+  }, [places])
 
   const { handleSubmit, previousPage, invalid, pristine, reset, submitting } = props
 
@@ -166,8 +148,18 @@ const FirstStep = props => {
           placeholder="Enter the city you currently reside in"
           valueField='value'
           id="location1"
+          withIcon={true}
           options={locationOptions}
-          withIcon={false}
+          iconClick={handleIcon}
+          loading={loadingLive}
+          openMenuOnClick={false}
+          inputValue={inputValue}
+          onInputChange={handleChange}
+          menuIsOpen={inputValue && locationOptions.length}
+          onChange={(value) => {
+            setInputValue("");
+            change('location', value)
+          }}
         />
         <div className="age-field">
           <Field

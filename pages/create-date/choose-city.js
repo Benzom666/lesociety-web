@@ -26,8 +26,6 @@ const ChooseCity = props => {
         if(inputAction.action === 'input-change') {
             setInputValue(value)
             fetchRealLocation(value, countriesCode[state?.enter_country?.value], setPlaces);
-            // console.log(place)
-            // setPlaces(place)
         }
     }
 

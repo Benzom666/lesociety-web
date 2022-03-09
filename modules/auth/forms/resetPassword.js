@@ -22,7 +22,7 @@ const SimpleForm = props => {
       const res = await apiRequest({
         data: values,
         method: 'POST',
-        url: `user/reset-password?${router.query.token}`
+        url: `user/reset-password?token=${router.query.token}`
       })
       if(!res.error) {
         router.push("/auth/login")

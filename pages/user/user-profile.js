@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import HeaderLoggedIn from 'core/loggedInHeader'
+import { useSelector } from 'react-redux';
 import UserImg from 'assets/img/userimg.jpg';
 import UserImg2 from 'assets/img/profile.png';
 import UserImg3 from 'assets/img/user-3.png';
@@ -14,10 +15,12 @@ import validate from 'modules/auth/forms/validate/validate'
 import H5 from '@/core/H5';
 import SubHeading from '@/core/SubHeading';
 import useWindowSize from "utils/useWindowSize";
+import { bodyType, Ethnicity } from 'utils/Utilities';
 import { CustomIcon } from 'core/icon';
 import Modal from 'react-modal';
 import Link from 'next/link'
 import withAuth from "../../core/withAuth";
+import moment from 'moment';
  
 const imageRequired = value => (!value ? "asd.jpg" : 'asd');
 
@@ -26,6 +29,9 @@ function UserProfile ({dispatch} ) {
     const { width } = useWindowSize();
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [dateModalOpen, dateSetIsOpen] = React.useState(false);
+    const user = useSelector(state => state.authReducer.user)
+
+    const convertToFeet = cmValue => (cmValue*0.0328084).toPrecision(2);
     
     function openModal() {
      setIsOpen(true);
@@ -108,7 +114,7 @@ function UserProfile ({dispatch} ) {
                                 </div>
                                 <div className="col-xl-8 col-lg-7 col-md-12 col-12 padd0-responsive">
                                     <div className="userdetails resposnive-data-profile">
-                                        <h4>Anna Jonson, <span className="user_age">21</span></h4>
+                                        <h4>{user.user_name}, <span className="user_age">{user.age}</span></h4>
                                         {width > 991 && (
                                             <p>Money CAN buy happiness</p>
                                         )}
@@ -312,42 +318,42 @@ function UserProfile ({dispatch} ) {
                                                 </div>
                                                 <div className="about_me_card_inner">
                                                     <div className="inner-box-me">
-                                                        <H5>University</H5>
+                                                        <H5>{user.max_education}</H5>
                                                         <p>Education Completed </p>
                                                     </div>
                                                 </div>
                                                 <div className="about_me_card_inner">
                                                     <div className="inner-box-me">
-                                                        <H5>5'7</H5>
+                                                        <H5>{convertToFeet(user?.height)}</H5>
                                                         <p>Height</p>
                                                     </div>
                                                 </div>
                                                 <div className="about_me_card_inner">
                                                     <div className="inner-box-me">
-                                                        <H5>No</H5>
+                                                        <H5>{user.is_smoker}</H5>
                                                         <p>Smoker</p>
                                                     </div>
                                                 </div>
                                                 <div className="about_me_card_inner">
                                                     <div className="inner-box-me">
-                                                        <H5>Mixed</H5>
+                                                        <H5>{user.ethnicity}</H5>
                                                         <p>Ethnicity</p>
                                                     </div>
                                                 </div>
                                                 <div className="about_me_card_inner">
                                                     <div className="inner-box-me">
-                                                        <H5>Finance</H5>
+                                                        <H5>{user.occupation}</H5>
                                                         <p>Occupation </p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="more_content pt-3">
                                                 <div className="text-center">
-                                                    <h6 className="mb-0">More about AnnaJonson</h6>
+                                                    <h6 className="mb-0">More about {user.user_name}</h6>
                                                     <svg width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
-                                                    <p>Business owner and part-time student looking for someone to enjoy my free time with. Love to travel and I’m always down to try something new.</p>
+                                                    <p>{user.description}</p>
                                                     <div className="member-since">
-                                                        <p>Member since Jan 2021</p>
+                                                        <p>Member since {moment(user?.created_at).format('MMM YYYY')}</p>
                                                     </div>    
                                                 </div>
                                             </div>

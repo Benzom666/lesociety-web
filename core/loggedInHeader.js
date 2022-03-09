@@ -52,7 +52,7 @@ export default function HeaderLoggedIn() {
                         <nav>
                             <ul className="d-flex justify-content-end mb-0 align-items-center">
                                 <li>
-                                    <button className="message_link" onClick={() => router.push('/messages')} type="button">
+                                    <button id='message-icon' className="message_link" onClick={() => router.push('/messages')} type="button">
                                         <CustomIcon.Envelope color={'#fff'} size={20} />
                                         {width > 767 &&
                                             <>

@@ -3,6 +3,7 @@ import { apiRequest, showToast } from "../../../../utils/Utilities";
 import { AUTHENTICATE_UPDATE } from '../../actionConstants';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
+import { route } from 'next/dist/server/router';
 
 const CompleteProfile = props => {
     const user = useSelector(state => state.authReducer.user);
@@ -17,7 +18,7 @@ const CompleteProfile = props => {
                     email: user.email
                     },
                     method: 'POST',
-                    url: `/user/verify-email`
+                    url: `user/verify-email`
                 })
                 showToast(res.data.message, 'success')
             } catch(err) {
@@ -28,22 +29,24 @@ const CompleteProfile = props => {
 
     useEffect(() => {
         const verifyEmail = async () => {
-            if(router?.query?.token) {
+            if(router?.query?.token && router?.query?.email) {
                 try {
                     const res = await apiRequest({
                         data: {
-                        email: user.email
+                            email: router?.query?.email,
+                            token: router?.query?.token,
                         },
                         method: 'POST',
-                        url: `/user/email-verification`,
-                        params: {
-                            token: router?.query?.token
-                        }
+                        url: `user/email-verification`,
                     })
+                    // dispatch({
+                    //     type: AUTHENTICATE_UPDATE,
+                    //     payload: {email_verified: true}
+                    // })
                     dispatch({
-                        type: AUTHENTICATE_UPDATE,
-                        payload: {email_verified: true}
-                    })
+                        type: AUTHENTICATE,
+                        payload: response.data.data
+                    });
                     showToast(res.data.message, 'success')
                 } catch(err) {
                     console.log('error', err)

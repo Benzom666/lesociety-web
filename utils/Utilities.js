@@ -2,13 +2,14 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
 import configureStore from '../engine';
+import { CustomIcon } from 'core/icon';
 
 export const apiRequest = async(args = {}) => {
     args.url = `${'https://staging-api.secrettime.com/api/v1'}/${args.url}`
     return axios({
         ...args,
         headers: {
-            'token': configureStore().getState().authReducer.user?.token || ''
+            'Authorization': `Bearer ${configureStore().getState().authReducer.user?.token || ''}`
         }
     })
 }
@@ -46,6 +47,72 @@ export const redirect = (route) => {
     const router = useRouter()
     router.push(route)
 }
+
+export const dateCategory = [
+  {
+      label: 'Morning Beverage',
+      id: 'MorningBeverage',
+      iconName: 'CustomIcon.Sun',
+      icon : <CustomIcon.Sun color={'white'} size={20}/>,
+      category: "standard_class_date"
+  },
+  {
+      label: 'Outdoor Adventure',
+      id: 'OutdoorAdventure',
+      icon : <CustomIcon.OutdoorAdventure color={'white'} size={20}/>,
+      iconName: 'CustomIcon.OutdoorAdventure',
+      category: "standard_class_date"
+  },
+  {
+      label: 'Evening Date',
+      id: 'EveningDate',
+      icon : <CustomIcon.Moon color={'white'} size={20}/>,
+      iconName: 'CustomIcon.Moon',
+      category: "standard_class_date"
+  },
+  {
+    label: 'Take A Class',
+    id: 'TakeClass',
+    icon: <CustomIcon.TakeClass color={'white'} size={20}/>,
+    iconName: 'CustomIcon.TakeClass',
+    category: "middle_class_date"
+},
+{
+    label: 'Entertainment & sports ',
+    id: 'Entertainmentsports',
+    icon : <CustomIcon.EntertainmentSports color={'white'} size={20}/>,
+    iconName: 'CustomIcon.EntertainmentSports',
+    category: "middle_class_date"
+},
+{
+    label: 'Wine & Dine ',
+    id: 'WineDine',
+    icon : <CustomIcon.WineDine color={'white'} size={20}/>,
+    iconName: 'CustomIcon.WineDine',
+    category: "middle_class_date"
+},
+{
+  label: 'Casino & Drinks',
+  id: 'CasinoDrinks',
+  icon : <CustomIcon.CasinoDrinks color={'white'} size={20}/>,
+  iconName: 'CustomIcon.CasinoDrinks',
+  category: "executive_class_date"
+},
+{
+  label: 'Champaign & Caviar',
+  id: 'ChampaignCaviar',
+  icon : <CustomIcon.ChampaignCaviar color={'white'} size={20}/>,
+  iconName: 'CustomIcon.ChampaignCaviar',
+  category: "executive_class_date"
+},
+{
+  label: 'Bottles & Dance',
+  id: 'BottlesDance',
+  icon : <CustomIcon.BottlesDance color={'white'} size={20}/>,
+  iconName: 'CustomIcon.BottlesDance',
+  category: "executive_class_date"
+},
+]
 
 export const countriesCode = {
     'Andorra': 'AD',
@@ -297,4 +364,50 @@ export const countriesCode = {
     'South Africa': 'ZA',
     'Zambia': 'ZM',
     'Zimbabwe': 'ZW',
+}
+
+export const bodyType = [
+    {
+      id: 'Slim',
+      name: 'Slim'
+    },
+    {
+      id: 'Fit',
+      name: 'Fit'
+    },
+    {
+      id: 'Average',
+      name: 'Average'
+    },
+    {
+      id: 'Curvy',
+      name: 'Curvy'
+    },
+    {
+      id: 'Full Figured',
+      name: 'Full Figured'
     }
+];
+
+export const Ethnicity = [
+    {
+      id: 'White',
+      name: 'White'
+    },
+    {
+      id: 'Black',
+      name: 'Black'
+    },
+    {
+      id: 'Hispanic',
+      name: 'Hispanic'
+    },
+    {
+      id: 'Asian',
+      name: 'Asian'
+    },
+    {
+      id: 'Other',
+      name: 'Other'
+    }
+];
