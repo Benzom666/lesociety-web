@@ -1626,6 +1626,24 @@
     }
 }
 
+div[id='scrolldiv'] {
+    -moz-transition: padding-top 1s;
+    -ms-transition: padding-top 1s;
+    -o-transition: padding-top 1s;
+    -webkit-transition: padding-top 1s;
+    transition: padding-top 1s;
+    transition-delay: .2s ;
+    padding-top: 100px;
+  }
+
+  .scrollActive {
+    padding-top: 1px !important;
+  }
+
+  .scrollHide {
+    padding-top: 100px;
+  }
+
 .date_card_wrap {
     border-radius: 12px;
     margin-bottom: 30px;

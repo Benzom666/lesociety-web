@@ -12,7 +12,7 @@ export const existEmail = _.debounce(async (value, setLoader, setValid, dispatch
             email: value
             },
             method: 'POST',
-            url: `/user/validatebyEmail`
+            url: `user/validatebyEmail`
         })
         if(res.data.data.isValid) {
             setLoader(false);
@@ -39,7 +39,7 @@ export const existUsername = _.debounce(async (values, setLoader, setValid, disp
             user_name: values
             },
             method: 'POST',
-            url: `/user/validatebyUsername`
+            url: `user/validatebyUsername`
         })
         if(res.data.data.isValid) {
             setLoader(false);
@@ -61,7 +61,7 @@ export const fetchLocation = async () => {
     try {
         const res = await apiRequest({
             method: 'GET',
-            url: `/country`
+            url: `country`
         })
         return res.data.data
     }

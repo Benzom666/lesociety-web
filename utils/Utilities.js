@@ -1,17 +1,22 @@
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
-import configureStore from '../engine';
 import { CustomIcon } from 'core/icon';
+import { getCookie } from "./cookie";
 
-export const apiRequest = async(args = {}) => {
-    args.url = `${'https://staging-api.secrettime.com/api/v1'}/${args.url}`
-    return axios({
-        ...args,
-        headers: {
-            'Authorization': `Bearer ${configureStore().getState().authReducer.user?.token || ''}`
-        }
-    })
+export const apiRequest = async (args = {}) => {
+  let token = ''
+  const authCookie = getCookie('auth');
+  if (authCookie) {
+    token = JSON.parse(decodeURIComponent(authCookie))?.user?.token;
+  }
+  args.url = `${'https://staging-api.secrettime.com/api/v1'}/${args.url}`
+  return axios({
+    ...args,
+    headers: {
+      'Authorization': `Bearer ${token || ''}`
+    }
+  })
 }
 
 export const imageUploader = async files => {

@@ -21,7 +21,6 @@ const RegisterForm = props => {
     if(page === 0){
       setPage(page + 1)
     } else {
-      debugger
       values.gender = gender
       values.country = values.location.country;
       values.location = values.location.value;

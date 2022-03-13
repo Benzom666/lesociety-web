@@ -16,7 +16,6 @@ export function* login(action) {
             }),
             cancel: take('ROUTE/CHANGE')
         });
-        
         if (response.success) {
             yield put({
                 type: AUTHENTICATE,

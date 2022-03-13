@@ -39,13 +39,14 @@ const CompleteProfile = props => {
                         method: 'POST',
                         url: `user/email-verification`,
                     })
-                    // dispatch({
-                    //     type: AUTHENTICATE_UPDATE,
-                    //     payload: {email_verified: true}
-                    // })
+                    debugger
+                    dispatch({
+                        type: AUTHENTICATE_UPDATE,
+                        payload: {email_verified: true}
+                    })
                     dispatch({
                         type: AUTHENTICATE,
-                        payload: response.data.data
+                        payload: res.data.data
                     });
                     showToast(res.data.message, 'success')
                 } catch(err) {

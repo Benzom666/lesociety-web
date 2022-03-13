@@ -16,6 +16,8 @@ function UserList({ dispatch }) {
     const [textClass, setTextSlideClass] = React.useState('');
     const [locationPopup, setLocationPoup] = React.useState(false);
     const [selectedLocation, setLocation] = React.useState({});
+    const [page, setPage] = React.useState(1);
+    const [pagination, setPagination] = React.useState('')
     const user = useSelector(state => state.authReducer.user)
     const country = user?.country && countriesCode[user.country]
 
@@ -25,7 +27,12 @@ function UserList({ dispatch }) {
                 url: "date",
                 params: params
             })
-            setDates(res?.data?.data?.dates)
+            if(res?.data?.data?.pagination?.current_page !== 1) {
+                setDates([...dates,...res?.data?.data?.dates])
+            } else {
+                setDates(res?.data?.data?.dates)
+            }
+            setPagination(res?.data?.data?.pagination);
         } catch (err) {
             console.log(err)
         }
@@ -33,7 +40,8 @@ function UserList({ dispatch }) {
 
     useEffect(() => {
         if(selectedLocation?.city) {
-            fetchDate({location: selectedLocation?.city}) 
+            const params = {location: selectedLocation?.city, current_page: page, per_page: 5};
+            fetchDate(params) 
         }
     }, [selectedLocation])
 
@@ -90,6 +98,27 @@ function UserList({ dispatch }) {
         }, 1000)
     }
 
+    document.addEventListener('scroll', function () {
+            const reveals = document.querySelectorAll("#scrolldiv");
+          
+            for (let i = 0; i < reveals.length; i++) {
+              const windowHeight = window.innerHeight;
+              const elementTop = reveals[i].getBoundingClientRect().top;
+            //   const elementVisible = reveals[i]?.clientHeight;
+              if (elementTop < windowHeight) {
+                reveals[i].classList.add("scrollActive");
+              } else {
+                reveals[i].classList.remove("scrollActive");
+              } 
+            }         
+    });
+
+    const nextPage = () => {
+        const params = {location: selectedLocation?.city, current_page: page+1, per_page: 5};
+        setPage(page+1)
+        fetchDate(params);
+    }
+
     return (
         <div className="inner-page" id="infiniteScroll">
             <HeaderLoggedIn />
@@ -112,12 +141,12 @@ function UserList({ dispatch }) {
                                 <InfiniteScroll 
                                     scrollableTarget="infiniteScroll"
                                     dataLength={dates.length}
-                                    next={() => console.log('first')}
-                                    hasMore={true}
+                                    next={nextPage}
+                                    hasMore={pagination?.total_pages !== page}
                                 >
                                 <div className="row">
                                 {dates.length > 0 && dates.map((item, index) => 
-                                    <div className="col-xl-6 col-lg-12">
+                                    <div className={`col-xl-6 col-lg-12 ${index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
                                         <UserCardList setDateId={setDateId} date={item} cardId={`grow-${index}`} openPopup={openPopup} closePopup={closePopup} growDiv={growDiv} dateId={dateId} />
                                     </div>
                                 )}

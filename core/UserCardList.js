@@ -68,7 +68,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup }) 
             <div className="date_card_wrap">
                 <figure className="user_img_date" onClick={() => growDiv(cardId)}>
                     <Image
-                        src={(user?.images.length > 0 && user?.images[0]) || UserImg}
+                        src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
                         alt="user image"
                         width={500}
                         height={500}
@@ -106,9 +106,10 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup }) 
                         <h4>Date Details</h4>
                         <p>{date?.date_details}</p>
                         <div className="button-wrapper">
-                            <button onClick={openPopup} className="next">
+                            {user?.gender === 'male' &&
+                             <button onClick={openPopup} className="next">
                                 Message
-                            </button>
+                            </button>}
                             <button type="button" className="edit">
                                 <a>view profile</a>
                             </button>
