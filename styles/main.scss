@@ -1806,7 +1806,7 @@ div[id='scrolldiv'] {
             }
         }
         &>div {
-            display: block !important;
+            display: block;
         }
     }
 
@@ -1818,6 +1818,68 @@ div[id='scrolldiv'] {
         transition: height 1s;
         // height: 0;
         overflow: hidden;
+      }
+      .date_details_desktop {
+        display: flex !important;
+        justify-content: space-between;
+        flex-direction: column;
+        border-radius: 15px;
+        padding: 20px 20px;
+        height: 440px;
+        background: #151515;
+        border: 0.607143px solid #2930362e;
+        border-top: transparent;
+        backdrop-filter: blur(10.9286px);
+        .less-txt {
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            text-transform: capitalize;
+            color: #5F5F5F;
+            cursor: pointer;
+        }
+        .button-wrapper {
+            display: flex;
+            column-gap: 10px;
+            .edit {
+                background-color: transparent;
+                border: 1px solid $white-color;
+                font-size: 14px;
+                line-height: 22px;
+                color: $white-color;
+                border-radius: 10px;
+                width: 40%;
+                min-height: 50px;
+            }
+            button[type="submit"],
+            .next {
+                width: 60%;
+                background-color: $primary-color;
+                color: $white-color;
+                border: none;
+                line-height: 46px;
+                cursor: pointer;
+                outline: none;
+                min-height: 50px;
+                border-radius: 10px;
+                text-transform: uppercase;
+                text-decoration: none;
+                font-family: "Helvetica-Light";
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:disabled {
+                    background-color: #222326;
+                    color: rgba(255, 255, 255, 0.6);
+                }
+                svg {
+                    font-size: 18px;
+                    margin-left: 8px;
+                    vertical-align: middle;
+                }
+            }
+        }
       }
       
     .date_details {
@@ -1832,6 +1894,7 @@ div[id='scrolldiv'] {
                 color: $white-color;
                 border-radius: 10px;
                 width: 40%;
+                min-height: 50px;
             }
             button[type="submit"],
             .next {

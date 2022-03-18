@@ -27,6 +27,13 @@ export default function HeaderLoggedIn() {
         document.addEventListener('click', sidbarCloseOutsideClick)
     }, [])
 
+    useEffect(() => {
+        return () => {
+            setActive(false);
+            document.body.classList.remove("open-sidebar");
+        }
+    }, []);
+
     const toggleClass = () => {
         setActive(!isActive);
         document.body.classList.toggle("open-sidebar");

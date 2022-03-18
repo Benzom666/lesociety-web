@@ -13,8 +13,10 @@ import { fetchLiveLocation } from "../../modules/auth/forms/steps/validateRealTi
 import { useSelector } from 'react-redux';
 import DatePopup from 'core/createDatePopup';
 import router from 'next/router';
+import useWindowSize from "utils/useWindowSize";
 
 function UserList() {
+    const { width } = useWindowSize();
     const [dateId, setDateId] = React.useState('');
     const [dates, setDates] = React.useState([]);
     const [classPopup, setPopupClass] = React.useState('hide');
@@ -170,7 +172,17 @@ function UserList() {
                                     <div className="row">
                                         {dates.length > 0 ? dates.map((item, index) =>
                                             <div className={`col-xl-6 col-lg-12 ${index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
-                                                <UserCardList setDateId={setDateId} date={item} cardId={`grow-${index}`} openPopup={openPopup} closePopup={closePopup} growDiv={growDiv} dateId={dateId} />
+                                               {width > 767 ? 
+                                               <UserCardList 
+                                                setDateId={setDateId} 
+                                                date={item} 
+                                                cardId={`grow-${index}`} 
+                                                openPopup={openPopup} 
+                                                closePopup={closePopup} 
+                                                dateId={dateId}
+                                                isDesktopView={true}
+                                                 />  : 
+                                               <UserCardList setDateId={setDateId} date={item} cardId={`grow-${index}`} openPopup={openPopup} closePopup={closePopup} growDiv={growDiv} dateId={dateId} />}
                                             </div>
                                         ): !loading && 
                                          <div className="no-message-card-date">

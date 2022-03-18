@@ -54,7 +54,7 @@ export default function SideBar() {
                     </div>
                     <SubHeading title="Stay ahead of the crowd" />
                     <div className="d-flex align-items-center mb-0 mt-3 header_btn_wrap">
-                        <button type="button" className="create-date">Create New Date</button>
+                        <button onClick={()=> router.push('/create-date/choose-city')} type="button" className="create-date">Create New Date</button>
                     </div>
                 </div> 
                 <div className="user-card-sidebar">
