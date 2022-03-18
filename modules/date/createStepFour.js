@@ -87,7 +87,7 @@ const CreateStepFour = props => {
             </div>
             <form onSubmit={handleSubmit} className="date-class-section choose-gender" style={{paddingRight: '10px', paddingLeft: '10px'}}>
                 <div className="inner_container">
-                    <div className="mb-5" className="date-description">
+                    <div className="mb-5 date-description">
                         <Field
                             name="date_description"
                             type="text"

@@ -32,11 +32,11 @@ const validate = values => {
     errors.description = '* Min 30 - Max 500 characters'
   }
   if (!values.date_description) {
-    errors.date_description = '* Min 50 - Max 150 characters'
+    errors.date_description = '* Min 50 - Max 500 characters'
   } else if (values.date_description.length < 50) {
-    errors.date_description = '* Min 50 - Max 150 characters'
-  } else if (values.date_description.length > 150) {
-    errors.date_description = '* Min 50 - Max 150 characters'
+    errors.date_description = '* Min 50 - Max 500 characters'
+  } else if (values.date_description.length > 500) {
+    errors.date_description = '* Min 50 - Max 500 characters'
   }
   if (!values.offer) {
     errors.offer = '* Min 30 - Max 350 characters'
