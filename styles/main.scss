@@ -1589,6 +1589,26 @@
             margin-bottom: 0px !important; 
         }
     }
+
+    .date-Preview-text {
+        h6 {
+            font-weight: 700;
+            font-size: 22px;
+            font-family: 'Helvetica';
+            font-style: normal;
+        }
+        padding: 0px 0;
+        text-align: center;
+        p {
+            font-family: 'Helvetica';
+            font-size: 16px;
+            line-height: 18px;
+            color: #AFABAB;
+            text-align: center;
+            font-weight: 300;
+            margin-bottom: 0px !important; 
+        }
+    }
     .date-class-section {
         padding-top: 40px !important;
         .price-tag {
@@ -1655,6 +1675,8 @@
                         font-size: 14px;
                         line-height: 22px;
                         text-decoration: none;
+                        font-weight: bold;
+                        font-family: 'Helvetica';
                     }
                 }
             }

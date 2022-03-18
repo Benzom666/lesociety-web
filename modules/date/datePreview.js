@@ -38,14 +38,14 @@ const DatePreview = props => {
                     </a>
                 </div>
             </div>    
-            <div className="date-suggetion-text mt-4">
+            <div className="date-Preview-text ">
                 <div className="inner_container">
                     <h6>Date Preview</h6>
                     <p>Please check all the details of your date before posting. You will have a chance to edit it in the future</p>   
                 </div>
             </div>
             <form onSubmit={handleSubmit} className="date-class-section choose-gender date-preview-card">
-               <div className="inner_container">
+               <div className="inner_container inner_container_Date_Preview_width">
                     <UserCardDetail 
                         user={user}
                         cityState={cityState}
