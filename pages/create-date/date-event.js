@@ -1,5 +1,5 @@
 import  Createdates   from 'modules/date/Createdates';
-import Header from 'core/header'
+import HeaderLoggedIn from '@/core/loggedInHeader';
 import Footer from 'core/footer'
 import useWindowSize from "/utils/useWindowSize";
 import withAuth from "../../core/withAuth";
@@ -8,7 +8,7 @@ function Step1 ({dispatch} ) {
   const { width } = useWindowSize();
 	return (
     <div className="inner-page">
-      <Header />
+      <HeaderLoggedIn />
         <div className="inner-part-page">
           <div className="auth-section create-date-wrap">
               <Createdates />

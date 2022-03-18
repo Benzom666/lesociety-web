@@ -17,7 +17,6 @@ import router from 'next/router';
 function UserList() {
     const [dateId, setDateId] = React.useState('');
     const [dates, setDates] = React.useState([]);
-    const [modalIsOpen, setIsOpen] = React.useState(true);
     const [classPopup, setPopupClass] = React.useState('hide');
     const [textClass, setTextSlideClass] = React.useState('');
     const [locationPopup, setLocationPoup] = React.useState(false);
@@ -27,6 +26,7 @@ function UserList() {
     const [pagination, setPagination] = React.useState('')
     const user = useSelector(state => state.authReducer.user)
     const country = user?.country && countriesCode[user.country]
+    const [modalIsOpen, setIsOpen] = React.useState(user.gender === "female");
 
     function openModal() {
         setIsOpen(true);

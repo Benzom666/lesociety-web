@@ -94,7 +94,8 @@ export const dateCategory = [
     id: 'WineDine',
     icon : <CustomIcon.WineDine color={'white'} size={20}/>,
     iconName: 'CustomIcon.WineDine',
-    category: "middle_class_date"
+    category: "middle_class_date",
+    class: "test1"
 },
 {
   label: 'Casino & Drinks',

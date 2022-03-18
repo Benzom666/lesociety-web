@@ -25,7 +25,7 @@ const ClassSelection = (props) => {
                         />
                         <div className="active_class">
                             <span>{option.icon}</span>
-                            <label htmlFor={option.id}>{option.label}</label> 
+                            <label className={option.id === "WineDine" && "manage-width"} htmlFor={option.id}>{option.label}</label> 
                         </div>
                         {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
                     </div>

@@ -1287,6 +1287,7 @@
     padding: 20px;
     width: 400px;
     margin: auto;
+    margin-top: 8%;
     @media only screen and (max-width: 767px) {
         width: 100%;
         height: 100%;
@@ -1916,6 +1917,9 @@ div[id='scrolldiv'] {
             span {
                 display: inline-block;
                 margin-bottom: 10px;
+            }
+            .manage-width{
+                width: 3rem;
             }
             @media only screen and (max-width: 767px) {
                 span {
