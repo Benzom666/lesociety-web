@@ -7,7 +7,7 @@ const UserCardDetail = ({ user, cityState, dateSuggestion, timeState, priceState
         <div className="date_card_wrap">
             <figure className="user_img_date">
                 <Image
-                    src={(user?.images.length > 0 && user?.images[0]) || UserImg}
+                    src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
                     alt="user image"
                     width={500}
                     height={500}

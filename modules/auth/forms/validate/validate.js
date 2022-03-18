@@ -18,18 +18,18 @@ const validate = values => {
     errors.password = 'Min 6 characters Required'
   } 
   if (!values.tagline) {
-    errors.tagline = '* Min 8 - Max 60 characters'
+    errors.tagline = '* Min 8 - Max 100 characters'
   } else if (values.tagline.length < 8) {
-    errors.tagline = '* Min 8 - Max 60 characters'
-  } else if (values.tagline.length > 60) {
-    errors.tagline = '* Min 8 - Max 60 characters'
+    errors.tagline = '* Min 8 - Max 100 characters'
+  } else if (values.tagline.length > 100) {
+    errors.tagline = '* Min 8 - Max 100 characters'
   }
   if (!values.description) {
-    errors.description = '* Min 30 - Max 350 characters'
+    errors.description = '* Min 30 - Max 500 characters'
   } else if (values.description.length < 30) {
-    errors.description = '* Min 30 - Max 350 characters'
-  } else if (values.description.length > 350) {
-    errors.description = '* Min 30 - Max 350 characters'
+    errors.description = '* Min 30 - Max 500 characters'
+  } else if (values.description.length > 500) {
+    errors.description = '* Min 30 - Max 500 characters'
   }
   if (!values.date_description) {
     errors.date_description = '* Min 50 - Max 150 characters'

@@ -40,10 +40,10 @@ const CompleteProfile = props => {
                         url: `user/email-verification`,
                     })
                     debugger
-                    dispatch({
-                        type: AUTHENTICATE_UPDATE,
-                        payload: {email_verified: true}
-                    })
+                    // dispatch({
+                    //     type: AUTHENTICATE_UPDATE,
+                    //     payload: {email_verified: true}
+                    // })
                     dispatch({
                         type: AUTHENTICATE,
                         payload: res.data.data
@@ -84,11 +84,11 @@ const CompleteProfile = props => {
             <span className="resend-mail-text profile" onClick={handleResendMail}>
             Resend an email
             </span>}
-            <label className="text-label">
+            {/* <label className="text-label">
                 Don’t wait any longer, start earning <br />
                 now by posting your first date!
-            </label>
-            <div className="secret-input type-submit">
+            </label> */}
+            <div className="secret-input type-submit" style={{ marginTop: '75px' }}>
                 <button onClick={() => user?.gender === "male" ? router.push('/user/user-list') : router.push("/create-date/choose-city")} className={`next ${!user?.email_verified ? 'disable' : ''}`} disabled={!user?.email_verified}>
                     {user?.gender === "male" ? 'GO TO GALLERY' : 'CREATE NEW DATE'}
                 </button>

@@ -54,7 +54,7 @@ export const renderDropdown = ({ loading, iconClick, withIcon, subLabel, input, 
 }
 
 
-export function inputField({ input, label, icon, placeholder, type, meta, meta: { touched, error, warning }, isValid, loading }) {
+export function inputField({ ignoreTouch, input, label, icon, placeholder, type, meta, meta: { touched, error, warning }, isValid, loading }) {
   let borderColor = ''
   if(meta.active || input.input === ""){
     borderColor = ''
@@ -68,7 +68,7 @@ export function inputField({ input, label, icon, placeholder, type, meta, meta: 
     <React.Fragment>
       
       {(label && (type == 'text' || type == 'password' || type == 'number')) && <label>{label}</label>}
-      {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
+      {(ignoreTouch || touched) && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
       <span className="pos-relative ">
         <input {...input} autoComplete="new-password" className="form-control" style={{borderColor}} placeholder={placeholder} type={type} />
         {loading && <span className="spin-loader"></span> }

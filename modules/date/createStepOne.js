@@ -46,13 +46,13 @@ const CreateStepOne = props => {
                 </div>  
             </div>    
             <div className="date-suggetion-text">
-                <div className="inner_container">
+                <div className="inner_container" style={{paddingRight: '35px', paddingLeft: '35px'}}>
                     <h6>Date Suggestions</h6>
                     <p>Create a simple date or try your luck with something more upscale. Please select 2 options and keep in mind these are only suggestions </p>   
                 </div>
             </div>
             <div className="date-class-section choose-gender">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{paddingRight: '10px', paddingLeft: '10px', paddingTop: '0px'}}>
                     <div className="inner_container">
                         <div className="mb-5">
                             <div className=" d-flex align-items-center justify-content-between">
@@ -162,7 +162,7 @@ const CreateStepOne = props => {
                                 component={ClassSelection}
                             />
                         </div>
-                        <div className="bottom-mobile register-bottom">
+                        <div className="bottom-mobile register-bottom" style={{ paddingTop: '0px' }}>
                             <div className="secret-input type-submit next-prev">
                                 <button type="submit" className="next" disabled={!state.values?.search_type || invalid}>  
                                     Next <FiArrowRight />

@@ -26,7 +26,7 @@ const CreateStepFour = props => {
         setLoader(true)
         const data = {
             location: cityState?.enter_city?.name,
-            country_code: cityState?.enter_city?.country[0]?.short_code,
+            country_code: cityState?.enter_country?.value,
             [dateSuggestion?.search_type?.category]: dateSuggestion?.search_type?.label,
             date_length: timeState?.education,
             price: priceState?.education, 
@@ -80,14 +80,14 @@ const CreateStepFour = props => {
                 </div>  
             </div>    
             <div className="date-suggetion-text">
-                <div className="inner_container">
+                <div className="inner_container" style={{paddingRight: '35px', paddingLeft: '35px'}}>
                     <h6>Describe Date Details</h6>
                     <p>Write about your date suggestions in more detail and why someone should select you as their date</p>   
                 </div>
             </div>
-            <form onSubmit={handleSubmit} className="date-class-section choose-gender">
+            <form onSubmit={handleSubmit} className="date-class-section choose-gender" style={{paddingRight: '10px', paddingLeft: '10px'}}>
                 <div className="inner_container">
-                    <div className="mb-5">
+                    <div className="mb-5" className="date-description">
                         <Field
                             name="date_description"
                             type="text"

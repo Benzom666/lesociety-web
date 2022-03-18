@@ -5,6 +5,7 @@ import validate from 'modules/auth/forms/validate/validate'
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import { IoIosClose } from 'react-icons/io';
+import PriceSelection from 'core/priceSelection'
 import useWindowSize from "utils/useWindowSize";
 
 const education = [
@@ -12,19 +13,19 @@ const education = [
         id: '1',
         name: 'The date is short and sweet',
         suptag:'$',
-        price:'40'
+        price:'80'
     },
     {
         id: '2',
         name: 'Ok, lets make some money!',
         suptag:'$',
-        price:'80'
+        price:'100'
     },
     {
         id: '3',
         name: 'I’m as beatiful as they come, he’ll be lucky to date me',
         suptag:'$',
-        price:'100'
+        price:'125'
     },
     {
         id: '4',
@@ -36,13 +37,25 @@ const education = [
         id: '5',
         name: 'I’m drop dead gergeous. Period',
         suptag:'$',
-        price:'200'
+        price:'175'
     },
     {
         id: '6',
         name: 'Crème de la crème',
         suptag:'$',
+        price:'200'
+    },
+    {
+        id: '7',
+        name: 'Crème de la crème',
+        suptag:'$',
         price:'250'
+    },
+    {
+        id: '8',
+        name: 'Crème de la crème',
+        suptag:'$',
+        price:'300'
     }
 ];
   
@@ -81,13 +94,13 @@ const CreateStepTwo = props => {
                 </div>  
             </div>    
             <div className="date-suggetion-text">
-                <div className="inner_container">
+                <div className="inner_container" style={{paddingRight: '20px', paddingLeft: '20px'}}>
                     <h6>What’s Your Price?</h6>
-                    <p>Determine how expensive you are and please consider he’s paying for the outing as well</p>   
+                    <p>Determine how expensive you are and please consider he’s paying for the <br/> outing as well</p>   
                 </div>
             </div>
             <div className="date-class-section choose-gender">
-                <form onSubmit={handleSubmit} className="inner_container">
+                <form onSubmit={handleSubmit} className="inner_container" style={{paddingRight: '30px', paddingLeft: '30px', paddingTop: '0px'}}>
                     <div className="mb-5">
                         <div className="auth-radio inner-radio">
                             <Field
@@ -95,13 +108,12 @@ const CreateStepTwo = props => {
                                 name="education"
                                 options={education}
                                 value={education}
-                                component={Inputs.radioField}
-                                hideText={true}
+                                component={PriceSelection}
                                 onlyLabel={true}
                             />
                         </div>
                     </div>
-                    <div className="bottom-mobile register-bottom">
+                    <div className="bottom-mobile register-bottom"  style={{ paddingTop: '0px' }}>
                         <div className="secret-input type-submit next-prev">
                             <button type="submit" className="next" disabled={!state.values?.education || invalid}>  
                                 Next <FiArrowRight />

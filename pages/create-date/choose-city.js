@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Field, reduxForm, change } from 'redux-form'
 import validate from 'modules/auth/forms/validate/validate'
 import { FiArrowRight } from "react-icons/fi";
-import Header from 'core/header'
+import HeaderLoggedIn from 'core/loggedInHeader'
 import Footer from 'core/footer'
 import { Inputs } from 'core';
 import { IoIosClose } from 'react-icons/io';
@@ -21,6 +21,7 @@ const ChooseCity = props => {
     const [confirmPopup, setConfirmPopup] = useState(false);
     const dispatch = useDispatch();
     const state = useSelector(state => state.form.ChooseCity?.values)
+    const user = useSelector(state => state.authReducer.user)
 
     const handleChange = async (value, inputAction) => {
         if(inputAction.action === 'input-change') {
@@ -37,12 +38,22 @@ const ChooseCity = props => {
           if(location) {
             const locationOption = location?.map(item => item.isAvailable === 1 && {
               label: item.name,
-              value: item.name
+              value: countriesCode[item.name]
            })?.filter(item => item)
            setLocation(locationOption);
         }
         };
         fetch();
+        if(user.country && user.location) {
+            const data = {
+                enter_country:  {label: user.country, value: countriesCode[user.country]},
+                enter_city: {
+                    name: user.location,
+                    country: user.country,
+                    label: user.location }
+            }
+            props.initialize(data);
+        }
       }, [])
 
       const handleIcon = () => {
@@ -51,7 +62,7 @@ const ChooseCity = props => {
             if(position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
                 const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
                 const data = {
-                    enter_country:  {label: location[0].country[0].text, value: location[0].country[0].text},
+                    enter_country:  {label: location[0].country[0].text, value: location[0].country[0].short_code},
                     enter_city: location[0]
                 }
                 props.initialize(data);
@@ -63,7 +74,7 @@ const ChooseCity = props => {
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
     return (
         <div className="inner-page">
-            <Header />
+            <HeaderLoggedIn />
                 <div className="inner-part-page">
                     <div className="container">
                         <div className="auth-section choose-city">
@@ -92,8 +103,8 @@ const ChooseCity = props => {
                                 </div>
                                 <div className="content-section">
                                     <p>Please select the location where you would like to be showcased.</p>
-                                    <p>Each post is showcased in one location of your choice. </p>
-                                    <p>Hence if you wish to have presence in multiple location, you will need several posts.</p>
+                                    <p>Each post is showcased in one location <br/> of your choice. </p>
+                                    <p>Hence if you wish to have presence in multiple location, you <br/> will need several posts.</p>
                                 </div>
                                 <div>
                                     <Field

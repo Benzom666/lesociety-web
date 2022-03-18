@@ -10,6 +10,7 @@ import useWindowSize from "../../../../utils/useWindowSize";
 import Slider from 'react-rangeslider'
 import { signupStep3 } from '../../authActions'
 import { useDispatch, useSelector } from 'react-redux'
+import _ from 'lodash';
 
 const education = [
     {
@@ -44,12 +45,12 @@ const education = [
 
 const smoker = [
     {
-        id: 'yes',
-        name: 'yes'
+        id: 'Yes',
+        name: 'Yes'
     },
     {
-        id: 'no',
-        name: 'no'
+        id: 'No',
+        name: 'No'
     }
 ]
 
@@ -124,7 +125,7 @@ const imageRequired = value => (!value ? "Image is required" : undefined);
 const setValue = '';
 
 const ThirdStep = props => {
-    const [tallValue, setTallValue] = useState(10);
+    const [tallValue, setTallValue] = useState(100);
     const { width } = useWindowSize();
     const [tallValueUnit, setTallValueUnit] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -166,7 +167,7 @@ const ThirdStep = props => {
             {width < 767 && (
                 <div className="top-head">
                     <p>More About</p>
-                    <h2>{user?.user_name || ''}</h2>
+                    <h2 style={{textTransform: 'capitalize'}} >{user?.user_name || ''}</h2>
                     <img src="/images/line.png" alt="line" />
                 </div>
             )}
@@ -186,8 +187,8 @@ const ThirdStep = props => {
                 <Slider
                     value={tallValue}
                     tooltip={true}
-                    handleLabel={tallValueUnit ? convertToFeet(tallValue) : tallValue}
-                    min={0}
+                    handleLabel={tallValueUnit ? convertToFeet(tallValue).replace('.', "'") : tallValue}
+                    min={100}
                     max={250}
                     onChange={val => setTallValue(val)}
                 />

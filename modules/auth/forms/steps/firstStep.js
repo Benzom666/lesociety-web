@@ -6,8 +6,24 @@ import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import useWindowSize from "../../../../utils/useWindowSize";
 import { existEmail, existUsername, fetchLocation, fetchLiveLocation, fetchRealLocation } from "./validateRealTime";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { bodyType, Ethnicity, countriesCode } from '../../../../utils/Utilities';
+
+const emailValidate = value =>  !value ? 'Email is Required' :  (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : 'User already exists');
+const notRealValidate = value => !value ? 'Email is Required' :  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' :  ''
+
+const userValidate = value =>  !value ? 'Username is Required' :  ( value.length < 3 ? 'Min 3 characters Required' : (value.length > 15 ? 'Username should not longer than 15 characters' : 'User already exists') )
+const notRealUserValidate = value => !value ? 'Username is Required' :  ( value.length < 3 ? 'Min 3 characters Required' : (value.length > 15 ? 'Username should not longer than 15 characters' : '') )
+
+const passwordValidate = values => !values ? 'Password is Required' : (values.length < 6 ? 'Min 6 characters Required' : '')
+
+const ethnicityValidate = values => !values ? 'Please Select Ethnicity' : ''
+
+const bodyValidate = values => !values ? 'Please Select body type' : ''
+
+const ageValidate = values =>  !values ? 'Age is Required' : (values < 18 ? '* Minimum 18 years' : values > 99 ? '* Maximun 99 years' : '' )
+
+const locationValidate = values =>  !values?.value ? 'Location is Required' : ''
 
 const FirstStep = props => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,12 +33,15 @@ const FirstStep = props => {
   const [loadingUsername, setLoaderUsername] = useState(false);
   const [isValidUsername, setValidUsername] = useState(false);
   const [locationOptions, setLocation] = useState([]);  
+  const [mailTest, setMailTest] = useState(false);
+  const [userTest, setUserTest] = useState(false);
   const dispatch = useDispatch()
   const { width } = useWindowSize();
   const [places, setPlaces] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [countries, setCountry] = useState('');
   const [loadingLive, setLoadingLive] = useState(false);
+  const error = useSelector(state => state.form.RegisterFormMale?.syncErrors)
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -34,12 +53,14 @@ const FirstStep = props => {
 
   const handleChangeEmail = (event) => {
     setValid(false);
-    existEmail(event.target.value, setLoader, setValid, dispatch);
+    setMailTest(false);
+    existEmail(event.target.value, setLoader, setValid, dispatch, props?.gender, error, setMailTest);
   };
 
   const handleChangeUser = (event) => {
     setValidUsername(false);
-    existUsername(event.target.value, setLoaderUsername, setValidUsername, dispatch);
+    setUserTest(false);
+    existUsername(event.target.value, setLoaderUsername, setValidUsername, dispatch, props?.gender, error, setUserTest);
   };
 
   const submitHandler = (values) => {
@@ -112,6 +133,8 @@ const FirstStep = props => {
         onChange={handleChangeEmail}
         loading={loading}
         isValid={isValid}
+        validate={mailTest && !isValid ? emailValidate : notRealValidate}
+        ignoreTouch={mailTest && !isValid}
       />
       <Field
         name="user_name"
@@ -122,6 +145,8 @@ const FirstStep = props => {
         onChange={handleChangeUser}
         loading={loadingUsername}
         isValid={isValidUsername}
+        validate={userTest && !isValidUsername ? userValidate : notRealUserValidate}
+        ignoreTouch={userTest && !isValidUsername}
       />
       <div className="password-fields">
         <Field
@@ -130,6 +155,7 @@ const FirstStep = props => {
           type={showPassword ? "text" : "password"}
           label="Password"
           placeholder="Minimum 6 character"
+          validate={passwordValidate}
         />
         <span className="icon" aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
           <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,8 +184,9 @@ const FirstStep = props => {
           menuIsOpen={inputValue && locationOptions.length}
           onChange={(value) => {
             setInputValue("");
-            change('location', value)
+            props.change('location', value)
           }}
+          validate={locationValidate}
         />
         <div className="age-field">
           <Field
@@ -167,6 +194,7 @@ const FirstStep = props => {
             type="number"
             component={Inputs.inputField}
             label="Age"
+            validate={ageValidate}
           />
         </div>
         <div className="auth-radio">
@@ -176,6 +204,7 @@ const FirstStep = props => {
             options={bodyType}
             value={bodyType}
             component={Inputs.radioField}
+            validate={bodyValidate}
           />
         </div>
         <div className="auth-radio">
@@ -185,6 +214,7 @@ const FirstStep = props => {
             options={Ethnicity}
             value={Ethnicity}
             component={Inputs.radioField}
+            validate={ethnicityValidate}
           />
         </div>
 
@@ -231,5 +261,5 @@ export default reduxForm({
   form: 'RegisterFormMale',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate
+  // validate
 })(FirstStep)

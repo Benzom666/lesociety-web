@@ -74,7 +74,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup }) 
                         height={500}
                     />
                     <div className="user-details">
-                        <h5>{user?.user_name}, <span className="user_age">{user?.age}</span>
+                        <h5>{date?.user_name}, <span className="user_age">{date?.age || '-'}</span>
                             <span className="price_per_hour">
                             ${date?.price} / <small>{date?.date_length}</small>
                             </span>

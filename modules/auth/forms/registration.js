@@ -21,10 +21,12 @@ const RegisterForm = props => {
     if(page === 0){
       setPage(page + 1)
     } else {
-      values.gender = gender
-      values.country = values.location.country;
-      values.location = values.location.value;
-      dispatch(registration(values, loader))
+      const data = {...values,
+        gender: gender,
+        country: values.location.country,
+        location: values.location.value
+       }
+      dispatch(registration(data, loader))
       // router.push('/auth/profile')
     }
   }
@@ -73,9 +75,9 @@ const RegisterForm = props => {
       {page == 1 && 
         <>
         {female ?
-          <FemaleFirstStep previousPage={previousPage} onSubmit={nextPage} />
+          <FemaleFirstStep previousPage={previousPage} onSubmit={nextPage} gender={gender}/>
           :
-          <MaleFirstStep previousPage={previousPage} onSubmit={nextPage} />
+          <MaleFirstStep previousPage={previousPage} onSubmit={nextPage} gender={gender}/>
         }
       </>
      }

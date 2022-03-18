@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
-import FirstStep from './steps/firstStep'
 import SecondStep from './steps/secondStep'
 import ThirdStep from './steps/thirdStep'
 import CompleteProfile from './steps/completeProfile'
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const RegisterForm = props => {
   const router = useRouter()

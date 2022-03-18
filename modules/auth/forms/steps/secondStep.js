@@ -78,9 +78,9 @@ const SecondStep = props => {
         </svg>
       </span>
       <p className="auth-register-p-text">
-        Registration completed
+        Registration Completed
       </p>
-      <h2>
+      <h2 style={{ textTransform: 'capitalize'}}>
         Welcome, {user?.user_name || ''}
       </h2>
       <div className="text-center">

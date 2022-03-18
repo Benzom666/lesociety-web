@@ -43,12 +43,12 @@ const education = [
 
 const smoker = [
     {
-        id: '1',
-        name: 'yes'
+        id: 'Yes',
+        name: 'Yes'
     },
     {
-        id: '2',
-        name: 'no'
+        id: 'No',
+        name: 'No'
     }
 ]
 
@@ -176,7 +176,7 @@ const ThirdStep = props => {
                     value={tallValue}
                     tooltip={true}
                     min={0}
-                    handleLabel={tallValueUnit ? convertToFeet(tallValue) : tallValue}
+                    handleLabel={tallValueUnit ? convertToFeet(tallValue).replace('.', "'") : tallValue}
                     max={250}
                     onChange={val => setTallValue(val)}
                 />

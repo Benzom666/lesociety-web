@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import Link from 'next/link'
 import { CustomIcon } from 'core/icon';
 import UserImg from 'assets/img/profile.png';
-import Image from 'next/image'
 import SideBar from "./sidebar";
 import useWindowSize from "utils/useWindowSize";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import _ from 'lodash'
 import { useRouter } from "next/router";
 
@@ -54,7 +53,7 @@ export default function HeaderLoggedIn() {
                                 <li>
                                     <button id='message-icon' className="message_link" onClick={() => router.push('/messages')} type="button">
                                         <CustomIcon.Envelope color={'#fff'} size={20} />
-                                        {width > 767 &&
+                                        {width?.width > 767 &&
                                             <>
                                                 <Link href="/messages"><a className="forgot-passwrd">Messages</a></Link>
                                                 <span className="top-bages">3</span>

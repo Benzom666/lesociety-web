@@ -27,10 +27,10 @@ const CompleteProfile = props => {
 {/* 
                 You're one step away from <span> meeting generous gents</span> */}
             </p>
-            <label className="text-label">
+            {/* <label className="text-label">
                 Don’t wait any longer, start earning <br />
                 now by posting your first date!
-            </label>
+            </label> */}
             <div className="secret-input type-submit">
                 <a href="/create-date/choose-city" className="next disable">
                     CREATE NEW DATE

@@ -6,7 +6,6 @@ import Image from 'next/image'
 import SubHeading from "./SubHeading";
 import H5 from "./H5";
 import { HiBadgeCheck } from "react-icons/hi";
-import Modal from 'react-modal';
 import { FiChevronRight } from "react-icons/fi";
 import { useSelector, useDispatch } from "react-redux";
 import { deAuthenticateAction } from '../modules/auth/authActions'
@@ -14,26 +13,10 @@ import { useRouter } from 'next/router'
 import _ from 'lodash'
 
 export default function SideBar() {
-    const [modalIsOpen, setIsOpen] = React.useState(false);
     const user = useSelector(state => state.authReducer.user)
     const dispatch = useDispatch();
     const router = useRouter()
-    function openModal() {
-        setIsOpen(true);
-      }
-      function closeModal() {
-        setIsOpen(false);
-      }
-      const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-        },
-      };
+      
   return (
         <>
             <div className="sidebar_wrap">
@@ -71,24 +54,8 @@ export default function SideBar() {
                     </div>
                     <SubHeading title="Stay ahead of the crowd" />
                     <div className="d-flex align-items-center mb-0 mt-3 header_btn_wrap">
-                        <button type="button" onClick={openModal} className="create-date">Create New Date</button>
+                        <button type="button" className="create-date">Create New Date</button>
                     </div>
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                    >
-                        <div className="model_content">
-                            <div className="icon_wrap">
-                                <CustomIcon.Diamond color={'#fff'} size={70} />    
-                            </div>
-                            <H5>What are you waiting for?</H5>
-                            <SubHeading title="Post your own date and start earning now" />
-                            <div className="d-flex align-items-center my-4 header_btn_wrap">
-                                <Link href="/create-date/choose-city"><a className="create-date">Create New Date</a></Link>
-                            </div>
-                        </div>
-                    </Modal>
                 </div> 
                 <div className="user-card-sidebar">
                     <div className="sidebar_nav_links">

@@ -1169,6 +1169,48 @@
    }
 }
 
+.date-description {
+    textarea {
+    @media screen and (min-width: 767px) {
+        height: 300px !important;
+    } 
+}   
+}
+
+.create-date-modal-body {
+    overflow: hidden;
+    width: 100%;
+    header {
+        border-bottom: none;
+    }
+    .overlay-modal {
+        .ReactModal__Content.ReactModal__Content--after-open {
+            @media only screen and (max-width: 767px) {
+                width: 100% !important;
+                margin-left: 0% !important;
+            }
+            margin-left: 20%;
+            width: 60% !important;
+            inset: unset !important;
+            bottom: 0 !important;
+            position: fixed !important;
+            height: 250px;
+            background: linear-gradient(231.4deg, rgba(46, 49, 58, 0.80844) 18.16%, rgba(25, 25, 25, 0.831845) 95.56%);
+            backdrop-filter: blur(27.1828px);
+            border-radius: 30px 30px 0px 0px !important;
+            overflow: hidden !important;
+        }
+        .ReactModal__Overlay.ReactModal__Overlay--after-open {
+            background-color: transparent !important;
+        }
+        .ReactModal__Overlay--after-open::before{
+            display: none;
+            width: 100%;
+            background-color: transparent !important;
+        }
+   }
+}
+
 .date-wrapper {
     overflow: hidden;
     border: 1px solid rgb(204, 204, 204);
@@ -1245,6 +1287,9 @@
     padding: 20px;
     width: 400px;
     margin: auto;
+    @media screen and (min-width: 767px) {
+        transform: translateY(40%);
+    }
     @media only screen and (max-width: 767px) {
         width: 100%;
         height: 100%;
@@ -1489,7 +1534,7 @@
             justify-content: space-around;
             padding: 0;
             max-width: 170px;
-            margin: 0 auto;
+            margin:  0 0 0 22%;
             li {
                 flex: 1;
                 text-align: center;
@@ -1529,17 +1574,21 @@
         }
     }
     .date-suggetion-text {
+        h6 {
+            font-weight: 700;
+        }
         padding: 20px 0;
         text-align: center;
         border-top: 1px solid #222326;
         border-bottom: 1px solid #222326;
         background: #0b0b0b;
         p {
-            font-size: 12px;
+            font-size: 14px;
             line-height: 18px;
             color: #afabab;
             text-align: center;
             font-weight: 300;
+            margin-bottom: 0px !important; 
         }
     }
     .date-class-section {
@@ -1668,7 +1717,7 @@ div[id='scrolldiv'] {
             justify-content: end;
             background: linear-gradient(180deg, rgba(21, 21, 21, 0.0001) 0%, #151515 96.04%);
             mix-blend-mode: normal;
-            padding: 30px 20px;
+            padding: 20px 20px;
             h5 {
                 .user_age {
                     color: $primary-color;
@@ -1792,7 +1841,7 @@ div[id='scrolldiv'] {
                 }
             }
         }
-        padding: 40px 20px;
+        padding: 20px 20px;
         background: #151515;
         border: 0.607143px solid #2930362e;
         border-top: transparent;
@@ -1811,6 +1860,7 @@ div[id='scrolldiv'] {
             text-align: left !important;
             word-wrap: break-word;
             color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0px;
             @media only screen and (max-width: 767px) {
                 font-size: 14px;
                 text-align: left !important;
@@ -1820,6 +1870,15 @@ div[id='scrolldiv'] {
     @media only screen and (max-width: 767px) {
         margin-bottom: 15px;
     }
+}
+
+.no-message-card-date {
+    margin: auto;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
 }
 
 .user_list_wrap {
@@ -1882,7 +1941,7 @@ div[id='scrolldiv'] {
             z-index: 1;
             opacity: 0;
             &~div.active_class label {
-                font-size: 14px;
+                font-size: 13px !important;
                 font-weight: 500;
                 line-height: 18px;
                 padding-left: 0px;

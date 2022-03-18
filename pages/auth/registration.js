@@ -1,9 +1,6 @@
-import Head from 'next/head'
-import { connect } from "react-redux";
 import  Registration   from 'modules/auth/forms/registration';
 import Header from 'core/header'
 import Footer from 'core/footer'
-import Link from 'next/link'
 import useWindowSize from "../../utils/useWindowSize";
  
 function RegistrationPage ({dispatch} ) {

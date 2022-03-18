@@ -1,7 +1,7 @@
-import { call, put, all, race, take, takeLatest } from 'redux-saga/effects';
-import { apiRequest, showToast, redirect } from '../../utils/Utilities'
-import { AUTHENTICATE, DEAUTHENTICATE, AUTHENTICATE_UPDATE } from "./actionConstants";
-import { stopSubmit, startSubmit, reset, SubmissionError, updateSyncErrors, registerField, initialize } from 'redux-form';
+import { call, put, race, take, takeLatest } from 'redux-saga/effects';
+import { apiRequest, showToast } from '../../utils/Utilities'
+import { AUTHENTICATE, AUTHENTICATE_UPDATE } from "./actionConstants";
+import { stopSubmit, reset } from 'redux-form';
 import Router from 'next/router'
 import {SIGNUP1, SIGNUP2, SIGNUP3, LOGIN} from "./actionConstants";
 
@@ -105,6 +105,7 @@ function* signupStep2(data) {
            // showToast(response.success.data.message, 'success')
             //yield put(reset('signupStep2'))
             data.loader(false)
+            window.scrollTo(0, 0);
         }
 
     } catch (error) {
@@ -132,6 +133,7 @@ function* signupStep3(data) {
                 payload: {step_completed: 3}
             });
             data.loader(false)
+            window.scrollTo(0, 0);
            // showToast(response.success.data.message, 'success')
             yield put(reset('signupStep3'))
             yield put(reset('signupStep2'))

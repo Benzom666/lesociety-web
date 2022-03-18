@@ -6,37 +6,33 @@ import { FiArrowRight } from "react-icons/fi";
 import validate from 'modules/auth/forms/validate/validate'
 import { IoIosClose } from 'react-icons/io';
 import useWindowSize from "utils/useWindowSize";
+import PriceSelection from 'core/priceSelection'
 
 const education_plan = [
     {
         id: '1',
         name: 'Lets get straight to the point',
-        suptag:'min',
-        price:'30'
+        price:'1/2H'
     },
     {
         id: '2',
         name: 'This should be fair enough',
-        suptag:'HR',
-        price:'1'
+        price:'1H'
     },
     {
         id: '3',
         name: 'He will be spending a lot',
-        suptag:'HR',
-        price:'2'
+        price:'2H'
     },
     {
         id: '4',
         name: 'He deserves the change',
-        suptag:'HR',
-        price:'2.5'
+        price:'3H'
     },
     {
         id: '5',
         name: 'This is necessary for my date',
-        suptag:'HR',
-        price:'3+'
+        price:'4H'
     }
 ];
   
@@ -75,13 +71,13 @@ const CreateStepThree = props => {
                 </div>  
             </div>    
             <div className="date-suggetion-text">
-                <div className="inner_container">
+                <div className="inner_container" style={{paddingRight: '20px', paddingLeft: '20px'}}>
                     <h6>Approximate Length</h6>
                     <p>How long will your date last? The length should reflect your price</p>   
                 </div>
             </div>
             <div className="date-class-section choose-gender">
-                <form onSubmit={handleSubmit} className="inner_container">
+                <form onSubmit={handleSubmit} className="inner_container" style={{paddingRight: '30px', paddingLeft: '30px', paddingTop: '0px'}}>
                     <div className="mb-5">
                         <div className="auth-radio inner-radio">
                             <Field
@@ -89,12 +85,12 @@ const CreateStepThree = props => {
                                 name="education"
                                 options={education_plan}
                                 value={education_plan}
-                                component={Inputs.radioField}
-                                hideText={true}
+                                component={PriceSelection}
+                                onlyLabel={true}
                             />
                         </div>
                     </div>
-                    <div className="bottom-mobile register-bottom">
+                    <div className="bottom-mobile register-bottom" style={{paddingTop: '0px'}}>
                             <div className="secret-input type-submit next-prev">
                                 <button type="submit" className="next" disabled={!state.values?.education || invalid}>  
                                     Next <FiArrowRight />

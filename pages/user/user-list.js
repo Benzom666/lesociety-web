@@ -1,52 +1,74 @@
 import React, { useEffect } from 'react'
 import HeaderLoggedIn from 'core/loggedInHeader'
+import NoImage from 'assets/img/no-image.png'
+import Image from 'next/image'
 import Footer from 'core/footer'
+import SubHeading from '@/core/SubHeading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import UserCardList from '@/core/UserCardList';
 import LocationPopup from '@/core/locationPopup';
 import withAuth from "../../core/withAuth";
-import { apiRequest, countriesCode} from 'utils/Utilities';
+import { apiRequest, countriesCode } from 'utils/Utilities';
 import { fetchLiveLocation } from "../../modules/auth/forms/steps/validateRealTime"
 import { useSelector } from 'react-redux';
+import DatePopup from 'core/createDatePopup';
+import router from 'next/router';
 
-function UserList({ dispatch }) {
+function UserList() {
     const [dateId, setDateId] = React.useState('');
     const [dates, setDates] = React.useState([]);
+    const [modalIsOpen, setIsOpen] = React.useState(true);
     const [classPopup, setPopupClass] = React.useState('hide');
     const [textClass, setTextSlideClass] = React.useState('');
     const [locationPopup, setLocationPoup] = React.useState(false);
     const [selectedLocation, setLocation] = React.useState({});
     const [page, setPage] = React.useState(1);
+    const [loading, setLoader] = React.useState(false);
     const [pagination, setPagination] = React.useState('')
     const user = useSelector(state => state.authReducer.user)
     const country = user?.country && countriesCode[user.country]
 
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
     const fetchDate = async (params) => {
         try {
+            setLoader(true);
             const res = await apiRequest({
                 url: "date",
                 params: params
             })
-            if(res?.data?.data?.pagination?.current_page !== 1) {
-                setDates([...dates,...res?.data?.data?.dates])
+            if (res?.data?.data?.pagination?.current_page !== 1) {
+                setDates([...dates, ...res?.data?.data?.dates])
             } else {
                 setDates(res?.data?.data?.dates)
             }
             setPagination(res?.data?.data?.pagination);
+            setLoader(false);
         } catch (err) {
-            console.log(err)
+            setDates([])
+            setLoader(false);
         }
     }
 
     useEffect(() => {
-        if(selectedLocation?.city) {
-            const params = {location: selectedLocation?.city, current_page: page, per_page: 5};
-            fetchDate(params) 
+        if (selectedLocation?.city) {
+            const params = { location: selectedLocation?.city, current_page: page, per_page: 5 };
+            fetchDate(params)
         }
     }, [selectedLocation])
 
     useEffect(() => {
-        setLocation({city: user.location, country: country})
+        if(router?.query?.city) {
+            setLocation({ city: router?.query?.city, country: router?.query?.country })
+        } else {
+            setLocation({ city: user.location, country: country })
+        }
     }, [user?.location])
 
     const closePopup = () => {
@@ -92,30 +114,30 @@ function UserList({ dispatch }) {
             target.scrollIntoView();
         }
         setTimeout(() => {
-        element.style.opacity = 0;
-        closePopup();
-        setTextSlideClass('');
+            element.style.opacity = 0;
+            closePopup();
+            setTextSlideClass('');
         }, 1000)
     }
 
     document.addEventListener('scroll', function () {
-            const reveals = document.querySelectorAll("#scrolldiv");
-          
-            for (let i = 0; i < reveals.length; i++) {
-              const windowHeight = window.innerHeight;
-              const elementTop = reveals[i].getBoundingClientRect().top;
+        const reveals = document.querySelectorAll("#scrolldiv");
+
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
             //   const elementVisible = reveals[i]?.clientHeight;
-              if (elementTop < windowHeight) {
+            if (elementTop < windowHeight) {
                 reveals[i].classList.add("scrollActive");
-              } else {
+            } else {
                 reveals[i].classList.remove("scrollActive");
-              } 
-            }         
+            }
+        }
     });
 
     const nextPage = () => {
-        const params = {location: selectedLocation?.city, current_page: page+1, per_page: 5};
-        setPage(page+1)
+        const params = { location: selectedLocation?.city, current_page: page + 1, per_page: 5 };
+        setPage(page + 1)
         fetchDate(params);
     }
 
@@ -133,24 +155,38 @@ function UserList({ dispatch }) {
                                         <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3">
                                             <span className="hidden-sm">Nearby</span>
                                             <div onClick={() => setLocationPoup(true)} className="selct-wrap-sort">
-                                                <label><span style={{'margin-right': '5px'}} >{selectedLocation?.city}, {selectedLocation?.country?.toUpperCase()}</span></label>
+                                                <label><span style={{ 'margin-right': '5px' }} >{selectedLocation?.city}, {selectedLocation?.country?.toUpperCase()}</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <InfiniteScroll 
+                                <InfiniteScroll
                                     scrollableTarget="infiniteScroll"
                                     dataLength={dates.length}
                                     next={nextPage}
                                     hasMore={pagination?.total_pages !== page}
+                                    style={{ overflowX: 'hidden' }}
                                 >
-                                <div className="row">
-                                {dates.length > 0 && dates.map((item, index) => 
-                                    <div className={`col-xl-6 col-lg-12 ${index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
-                                        <UserCardList setDateId={setDateId} date={item} cardId={`grow-${index}`} openPopup={openPopup} closePopup={closePopup} growDiv={growDiv} dateId={dateId} />
+                                    <div className="row">
+                                        {dates.length > 0 ? dates.map((item, index) =>
+                                            <div className={`col-xl-6 col-lg-12 ${index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
+                                                <UserCardList setDateId={setDateId} date={item} cardId={`grow-${index}`} openPopup={openPopup} closePopup={closePopup} growDiv={growDiv} dateId={dateId} />
+                                            </div>
+                                        ): !loading && 
+                                         <div className="no-message-card-date">
+                                            <figure>
+                                                <Image
+                                                    src={NoImage}
+                                                    alt="NoImage"
+                                                    width={205}
+                                                    height={140}
+                                                />
+                                            </figure>
+                                            <h6>Sorry, no dates found for the selected location</h6>
+                                            <SubHeading title="Find a date by changing the location!" />
+                                        </div> 
+                                        }   
                                     </div>
-                                )}
-                                </div>
                                 </InfiniteScroll>
                             </div>
                             <div className="col-md-2"></div>
@@ -178,11 +214,15 @@ function UserList({ dispatch }) {
                 </div>
                 <p className='tip'>Tip: ask her which date she prefers</p>
             </div>
-            <LocationPopup 
-            modalIsOpen={locationPopup}
-            closeModal={() => setLocationPoup(false)}
-            selectedLocation={selectedLocation}
-            setLocation={setLocation} />
+            <DatePopup 
+            modalIsOpen={modalIsOpen}
+            closeModal={closeModal}
+            />
+            <LocationPopup
+                modalIsOpen={locationPopup}
+                closeModal={() => setLocationPoup(false)}
+                selectedLocation={selectedLocation}
+                setLocation={setLocation} />
         </div>
     )
 }

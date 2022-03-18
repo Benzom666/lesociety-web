@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import { stopSubmit } from 'redux-form';
+import { stopSubmit, updateSyncErrors } from 'redux-form';
 import axios from "axios"; 
 import { apiRequest } from '../../../../utils/Utilities'
 
-export const existEmail = _.debounce(async (value, setLoader, setValid, dispatch) => {
+export const existEmail = _.debounce(async (value, setLoader, setValid, dispatch, gender, error, setMailTest) => {
     if (value && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
     setLoader(true);
     try {
@@ -21,16 +21,23 @@ export const existEmail = _.debounce(async (value, setLoader, setValid, dispatch
         else {
             setLoader(false);
             setValid(false);
-            dispatch(stopSubmit('RegisterForm', {email: res.data.message}))
+            // return res.data.message;
+            if(gender === 'male') {
+              dispatch(stopSubmit('RegisterFormMale', {...error, email: res.data.message}))
+            } else {
+                dispatch(stopSubmit('RegisterForm', {...error, email: res.data.message}))
+            }
         }
+        setMailTest(true);
     } catch (err) {
         setLoader(false);
+        setMailTest(true);
         // dispatch(stopSubmit('RegisterForm', {email: 'checking'}))
     }
 }
 }, 1000);
     
-export const existUsername = _.debounce(async (values, setLoader, setValid, dispatch) => {
+export const existUsername = _.debounce(async (values, setLoader, setValid, dispatch, gender, error, setUserTest) => {
     if (values && values.length >= 3 && values.length <= 15) {
     setLoader(true);
     try {
@@ -48,10 +55,16 @@ export const existUsername = _.debounce(async (values, setLoader, setValid, disp
         else {
             setLoader(false);
             setValid(false);
-            dispatch(stopSubmit('RegisterForm', {user_name: res.data.message}))
+            if(gender === 'male') {
+                dispatch(stopSubmit('RegisterFormMale', {...error, user_name: res.data.message}))
+              } else {
+                dispatch(stopSubmit('RegisterForm', {...error, user_name: res.data.message}))
+              }
         }
-    } catch (err) {
+        setUserTest(true)
+        } catch (err) {
         setLoader(false);
+        setUserTest(true)
         // dispatch(stopSubmit('RegisterForm', {email: 'checking'}))
     }
 }

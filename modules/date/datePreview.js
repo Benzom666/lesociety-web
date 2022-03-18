@@ -21,36 +21,12 @@ const DatePreview = props => {
     const dateDescription = useSelector(state => state?.form?.CreateStepFour?.values)
 
     const postDate = () => {
-        // const data = {
-        //     location: cityState?.enter_city?.name,
-        //     country_code: cityState?.enter_city?.country[0]?.short_code,
-        //     [dateSuggestion?.search_type?.category]: dateSuggestion?.search_type?.label,
-        //     // date_length: timeState?.education,
-        //     date_length: 1,
-        //     price: priceState?.education, 
-        //     date_details: dateDescription?.date_description,
-        //     user_name: user?.user_name,
-        //     date_status: false
-        // }
-        
-        // try {
-        // const res = await apiRequest({
-        //     method: 'POST',
-        //     url: `/date`,
-        //     data: data
-        // })
-        // if(res.data.data) {
-            router.push("/user/user-list");
+            router.push({pathname: '/user/user-list', query: { city:  cityState?.enter_city?.name, country: cityState.enter_country?.value}}, '/user/user-list');
             dispatch(reset('ChooseCity'))
             dispatch(reset('CreateStepOne'))
             dispatch(reset('CreateStepTwo'))
             dispatch(reset('CreateStepThree'))
             dispatch(reset('CreateStepFour'))
-        // }
-        // }
-        // catch (e) {
-        //     console.log(e)
-        // }
     }
 
     return (
@@ -60,12 +36,7 @@ const DatePreview = props => {
                     <a onClick={previousPage}>
                         {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
                     </a>
-                    <h6 className="m-0 text-white-50">Create a New Date</h6>
-                    <IoIosClose size={32} onClick={onClose}/>
                 </div>
-                {width > 767 && (
-                    <h3 className="text-center">Create a New Date</h3>
-                )}
             </div>    
             <div className="date-suggetion-text mt-4">
                 <div className="inner_container">

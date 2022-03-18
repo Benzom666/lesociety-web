@@ -206,6 +206,11 @@ body{
             padding: 0;
         }
     }
+    .date-padding {
+        @media only screen and (max-width: 767px) {
+            padding:0px 20px !important;
+        } 
+    }
     .inner_container{
         max-width: 340px;
         margin: 0 auto;

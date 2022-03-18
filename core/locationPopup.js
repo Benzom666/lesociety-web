@@ -20,23 +20,23 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
   const [loading, setLoading] = useState(false);
   const [todo, setTodo] = useState([
     // key is creation date
-    { key: "t1", data: { name: "Indore", country: 'India', short_code: 'IN' } },
-    { key: "t2", data: { name: "Delhi", country: 'India', short_code: 'IN' } },
-    {
-      key: "t4",
-      data: { name: "Jaipur", country: 'India', short_code: 'IN' }
-    },
-    {
-      key: "t6",
-      data: { name: "Hyderabad", country: 'India', short_code: 'IN' }
-    },
-    { key: "t7", data: { name: "Bangalore", country: 'India', short_code: 'IN' } },
-    { key: "t8", data: { name: "Pune", country: 'India', short_code: 'IN' } },
-    {
-      key: "t9",
-      data: { name: "Noida", country: 'India', short_code: 'IN' }
-    },
-    { key: "t11", data: { name: "Chennai", country: 'India', short_code: 'IN' } }
+    // { key: "t1", data: { name: "Indore", country: 'India', short_code: 'IN' } },
+    // { key: "t2", data: { name: "Delhi", country: 'India', short_code: 'IN' } },
+    // {
+    //   key: "t4",
+    //   data: { name: "Jaipur", country: 'India', short_code: 'IN' }
+    // },
+    // {
+    //   key: "t6",
+    //   data: { name: "Hyderabad", country: 'India', short_code: 'IN' }
+    // },
+    // { key: "t7", data: { name: "Bangalore", country: 'India', short_code: 'IN' } },
+    // { key: "t8", data: { name: "Pune", country: 'India', short_code: 'IN' } },
+    // {
+    //   key: "t9",
+    //   data: { name: "Noida", country: 'India', short_code: 'IN' }
+    // },
+    // { key: "t11", data: { name: "Chennai", country: 'India', short_code: 'IN' } }
   ])
 
   const handleFetchLocation = async (cities) => {
