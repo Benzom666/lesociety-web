@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { apiRequest, showToast } from "../../../../utils/Utilities";
-import { AUTHENTICATE_UPDATE } from '../../actionConstants';
+import { AUTHENTICATE  } from '../../actionConstants';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { route } from 'next/dist/server/router';
+import { useState } from 'react';
 
 const CompleteProfile = props => {
     const user = useSelector(state => state.authReducer.user);
+    const [tokenValid, setTokenValid] = useState(true);
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -50,7 +52,7 @@ const CompleteProfile = props => {
                     });
                     showToast(res.data.message, 'success')
                 } catch(err) {
-                    console.log('error', err)
+                    setTokenValid(false)
                 }
             }
         }
@@ -72,11 +74,13 @@ const CompleteProfile = props => {
                 </svg>
             </span>
             <h2>
-                {user?.email_verified ? 'Email Verified' : 'Profile Completed'}
+                {router?.query?.token ? (user?.email_verified ? 'Email Verified' : 'Email Verification') : 'Profile Completed'}
             </h2>
             <p>
                 {!user?.email_verified ? 
-                'Please verify your email address, by clicking on the link in the email that was delivered to your inbox.'
+                (!tokenValid ? 
+                'Token is expired. Please verify your email address, by clicking on the resend mail button.'  :
+                'Please verify your email address, by clicking on the link in the email that was delivered to your inbox.')
                 : 
                 `You're one step away from meeting ${user?.gender === "male" ? 'beautiful ladies' : 'generous gents'}` }
             </p>
