@@ -73,11 +73,10 @@ export default function SideBar() {
                     </div>
                 </div> 
                 <div className="bottom-footer-sidebar">
-                    <div className="d-flex align-items-center mb-0 header_btn_wrap">
-                        <p onClick={()=> {
+                    <div className="d-flex align-items-center mb-0 header_btn_wrap log-btn">
+                        <button className="log-btn" type="button" onClick={()=> {
                             dispatch(deAuthenticateAction())
-                            router.push('/auth/login')
-                        }} disabled>Log Out</p>
+                            router.push('/auth/login') }} >Log Out</button>
                     </div>
                     <SubHeading title="SecretTime. Copywrite 2021" />
                 </div>    

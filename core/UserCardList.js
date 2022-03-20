@@ -140,12 +140,12 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
 
                 </figure>
                 {!isDesktopView && <div id={cardId}
-                    style={dateId !== cardId ? { height: 0 } : {}}
+                    style={dateId !== cardId ? { height: 200 } : {}}
                 >
                     <div className="date_details">
                         <h4>Date Details</h4>
                         <p>{date?.date_details}</p>
-                        <div className="button-wrapper">
+                        <div className="button-wrapper mt-3">
                             {user?.gender === 'male' &&
                                 <button onClick={openPopup} className="next">
                                     Message
