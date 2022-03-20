@@ -1738,6 +1738,13 @@ div[id='scrolldiv'] {
             background: linear-gradient(180deg, rgba(21, 21, 21, 0.0001) 0%, #151515 96.04%);
             mix-blend-mode: normal;
             padding: 20px 20px;
+            .user-top-sec{
+                width: 100%;
+                h5 {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
             h5 {
                 .user_age {
                     color: $primary-color;

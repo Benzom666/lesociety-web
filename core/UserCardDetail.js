@@ -13,11 +13,13 @@ const UserCardDetail = ({ user, cityState, dateSuggestion, timeState, priceState
                     height={500}
                 />
                 <div className="user-details">
-                    <h5>{user?.user_name}, <span className="user_age">{user?.age}</span>
+                  <div className="user-top-sec">
+                    <h5><span>{user?.user_name}, <span className="user_age">{user?.age}</span></span>
                         <span className="price_per_hour">
                             ${priceState?.education} / <small>{timeState?.education}</small>
                         </span>
                     </h5>
+                  </div>
                     <div className="user_location">
                         <span className="d-flex align-items-start">
                             <span className="address-wrap">
