@@ -18,6 +18,7 @@ import { HiLockOpen } from "react-icons/hi";
 const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, isDesktopView }) => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
+    const [msgModal, setMsgModal] = React.useState(false);
     const user = useSelector(state => state.authReducer.user)
 
     function openModal() {
@@ -41,6 +42,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
     }
 
     const toggle = () => setDateDetailsIsOpen(!dateDetailsIsOpen);
+    const toggleMsgModal = () => setMsgModal(!msgModal);
 
     const settings = {
         dots: false,
@@ -102,7 +104,22 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                                 </span>
                             </div>
                         </div>
-                    </> : <div className="date_details_desktop">
+                    </> : msgModal ? <div><div id="message-popup" className={`message-popup`}>
+                <span onClick={toggle} className='close-button'>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.9924 12.9926L1.00244 1.00006" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12.9887 1.00534L1.00873 12.9853" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <p className='msg'>“If you’re not amazed by the stars then we can’t hang”</p>
+                <div>
+                    <input className="" placeholder="Type your message here…" />
+                    <svg onClick={toggleMsgModal} className='icon-move-1' width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.6048 0.407386C13.2546 0.0480202 12.7364 -0.0858618 12.2532 0.0550622L0.9856 3.33166C0.47579 3.4733 0.114443 3.87988 0.0171013 4.39639C-0.0823407 4.92205 0.265006 5.58935 0.718788 5.86838L4.24193 8.03376C4.60328 8.25573 5.06967 8.20008 5.36869 7.89845L9.40303 3.83901C9.6061 3.62762 9.94224 3.62762 10.1454 3.83901C10.3484 4.04336 10.3484 4.37455 10.1454 4.58594L6.104 8.64612C5.80426 8.94698 5.74826 9.41556 5.96883 9.77914L8.12154 13.3377C8.37361 13.7604 8.80782 14 9.28396 14C9.34003 14 9.40303 14 9.4591 13.9929C10.0053 13.9225 10.4395 13.5491 10.6005 13.0206L13.9409 1.76735C14.088 1.2882 13.9549 0.766759 13.6048 0.407386Z" fill="#686868" />
+                    </svg>
+                </div>
+                <p className='tip'>Tip: ask her which date she prefers</p>
+            </div></div> : <div className="date_details_desktop">
                         <div onClick={toggle} className="less-txt">Show less</div>
                         <div>
                             <h4>Date Details</h4>
@@ -138,7 +155,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                     </div>
                 </div>}
             </div>
-            <Modal
+            {!isDesktopView && <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
@@ -210,7 +227,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                         <p>Clark Kent has granted you the access to his profile</p>
                     </div>
                 </div>
-            </Modal>
+            </Modal>}
         </>
     );
 }
