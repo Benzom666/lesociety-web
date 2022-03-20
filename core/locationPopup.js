@@ -191,7 +191,10 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
                     style={style}
                     onClick={() => {
                       setLocation({ city: data?.name, country: data?.short_code })
-                      closeModal();
+                      setTimeout(() => {
+                        closeModal();
+                       }, 1000);
+                      // closeModal();
                     }}
                   >
                     <span>{data?.name}</span>
