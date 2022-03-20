@@ -48,7 +48,7 @@ export default function SideBar() {
                         <button type="button" disabled>PENDING VERIFICATION</button>
                     </div>
                 </div>
-                <div className="verification_card_header text-center mb-2">
+                {user.gender === "female" && <div className="verification_card_header text-center mb-2">
                     <div className="mb-2">
                         <CustomIcon.ChampaignCaviar color={'#AFABAB'} size={50} />
                     </div>
@@ -56,7 +56,7 @@ export default function SideBar() {
                     <div className="d-flex align-items-center mb-0 mt-3 header_btn_wrap">
                         <button onClick={()=> router.push('/create-date/choose-city')} type="button" className="create-date">Create New Date</button>
                     </div>
-                </div> 
+                </div> }
                 <div className="user-card-sidebar">
                     <div className="sidebar_nav_links">
                         <ul>
