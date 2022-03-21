@@ -60,7 +60,7 @@ function UserList() {
 
     useEffect(() => {
         if (selectedLocation?.city) {
-            const params = { location: selectedLocation?.city, current_page: page, per_page: 5 };
+            const params = { location: selectedLocation?.city, current_page: page, per_page: 10 };
             fetchDate(params)
         }
     }, [selectedLocation])
@@ -138,7 +138,7 @@ function UserList() {
     });
 
     const nextPage = () => {
-        const params = { location: selectedLocation?.city, current_page: page + 1, per_page: 5 };
+        const params = { location: selectedLocation?.city, current_page: page + 1, per_page: 10 };
         setPage(page + 1)
         fetchDate(params);
     }
