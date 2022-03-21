@@ -171,7 +171,7 @@ function UserList() {
                                 >
                                     <div className="row">
                                         {dates.length > 0 ? dates.map((item, index) =>
-                                            <div className={`col-xl-6 col-lg-12 ${index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
+                                            <div className={`col-xl-6 col-lg-12 ${(width > 767 && (index === 2 || index === 3 ) ) || index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
                                                {width > 767 ? 
                                                <UserCardList 
                                                 setDateId={setDateId} 
