@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import UserImg from 'assets/img/profile.png';
 import UserImg3 from 'assets/img/user-3.png';
 import UserImg4 from 'assets/img/user-4.png';
@@ -20,6 +20,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
     const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
     const [msgModal, setMsgModal] = React.useState(false);
     const user = useSelector(state => state.authReducer.user)
+    const growRef=useRef(null)
 
     function openModal() {
         setIsOpen(true);
@@ -30,14 +31,14 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
 
     const category = dateCategory.find(item => item?.label === date?.standard_class_date || item?.label === date?.middle_class_dates || item?.label === date?.executive_class_dates)
 
-    function growDiv(id) {
+    async function growDiv(id) {
         closePopup();
+        
         let growDiv = document.getElementById(id);
         if (growDiv?.clientHeight) {
             growDiv.style.height = 0;
         } else {
-            const wrapper = document.querySelector('.date_details');
-            growDiv.style.height = wrapper.clientHeight + "px";
+            growDiv.style.height = growRef.current.clientHeight + "px";
         }
     }
 
@@ -139,10 +140,11 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                     </div>}
 
                 </figure>
-                {!isDesktopView && <div id={cardId}
-                    style={dateId !== cardId ? { height: 0 } : {}}
+                {!isDesktopView && 
+                <div 
+                style={dateId !== cardId ? { height: 0 } : {}} id={cardId}  
                 >
-                    <div className="date_details">
+                    <div ref={growRef} className="date_details">
                         <h4>Date Details</h4>
                         <p>{date?.date_details}</p>
                         <div className="button-wrapper mt-3">
