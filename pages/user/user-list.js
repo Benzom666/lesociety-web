@@ -60,7 +60,7 @@ function UserList() {
 
     useEffect(() => {
         if (selectedLocation?.city) {
-            const params = { location: selectedLocation?.city, current_page: page, per_page: 5 };
+            const params = { location: selectedLocation?.city, current_page: page, per_page: 10 };
             fetchDate(params)
         }
     }, [selectedLocation])
@@ -138,7 +138,7 @@ function UserList() {
     });
 
     const nextPage = () => {
-        const params = { location: selectedLocation?.city, current_page: page + 1, per_page: 5 };
+        const params = { location: selectedLocation?.city, current_page: page + 1, per_page: 10 };
         setPage(page + 1)
         fetchDate(params);
     }
@@ -171,7 +171,7 @@ function UserList() {
                                 >
                                     <div className="row">
                                         {dates.length > 0 ? dates.map((item, index) =>
-                                            <div className={`col-xl-6 col-lg-12 ${index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
+                                            <div className={`col-xl-6 col-lg-12 ${(width > 767 && (index === 2 || index === 3 ) ) || index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
                                                {width > 767 ? 
                                                <UserCardList 
                                                 setDateId={setDateId} 
