@@ -28,7 +28,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
         setIsOpen(false);
     }
 
-    const category = dateCategory.find(item => item?.label === date?.standard_class_date || item?.label === date?.middle_class_date || item?.label === date?.executive_class_date)
+    const category = dateCategory.find(item => item?.label === date?.standard_class_date || item?.label === date?.middle_class_dates || item?.label === date?.executive_class_dates)
 
     function growDiv(id) {
         closePopup();
