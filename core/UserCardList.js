@@ -140,7 +140,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
 
                 </figure>
                 {!isDesktopView && <div id={cardId}
-                    style={dateId !== cardId ? { height: 200 } : {}}
+                    style={dateId !== cardId ? { height: 0 } : {}}
                 >
                     <div className="date_details">
                         <h4>Date Details</h4>
