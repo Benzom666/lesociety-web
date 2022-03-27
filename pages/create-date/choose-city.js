@@ -12,6 +12,7 @@ import { countriesCode } from '../../utils/Utilities';
 import { useDispatch, useSelector } from 'react-redux';
 import ConfirmDate from './../../modules/date/confirmDate'
 import withAuth from "../../core/withAuth";
+import useWindowSize from 'utils/useWindowSize';
 
 const ChooseCity = props => {
     const [locationOptions, setLocation] = useState([]);
@@ -20,6 +21,7 @@ const ChooseCity = props => {
     const [loadingLive, setLoadingLive] = useState(false);
     const [confirmPopup, setConfirmPopup] = useState(false);
     const dispatch = useDispatch();
+    const { width } = useWindowSize()
     const state = useSelector(state => state.form.ChooseCity?.values)
     const user = useSelector(state => state.authReducer.user)
 
@@ -74,7 +76,7 @@ const ChooseCity = props => {
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
     return (
         <div className="inner-page">
-            <HeaderLoggedIn />
+           {width > 767 && <HeaderLoggedIn />}
                 <div className="inner-part-page">
                     <div className="container">
                         <div className="auth-section choose-city">
@@ -90,7 +92,7 @@ const ChooseCity = props => {
                                     <p></p>
                                     <h2>Spark A New Adventure</h2>
                                     <h6 className="text-white pt-1">Select Your Territory</h6>
-                                    <svg width="86" height="2" viewBox="0 0 86 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="86" height="2" viewBox="0 0 86 2" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '-28px'}}>
                                         <path d="M0 1H86" stroke="url(#paint0_linear_1502:2374)" />
                                         <defs>
                                             <linearGradient id="paint0_linear_1502:2374" x1="96.6181" y1="-1.73994" x2="7.45495" y2="-1.73994" gradientUnits="userSpaceOnUse">

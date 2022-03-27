@@ -76,7 +76,7 @@ const CreateStepTwo = props => {
                 {width > 767 && (
                     <h3 className="text-center">Create a New Date</h3>
                 )}
-                <div className="step-wraps">
+                <div className="step-wraps" style={{marginLeft: '10px'}}>
                     <ul>
                         <li className="complete active">
                             <span></span>

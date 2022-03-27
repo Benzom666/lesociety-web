@@ -75,14 +75,14 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                 <figure className="user_img_date" onClick={isDesktopView ? !dateDetailsIsOpen && toggle : () => growDiv(cardId)}>
                     {!dateDetailsIsOpen ? <>
                         <Image
-                            src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
+                            src={date?.user_data[0]?.images[0]}
                             alt="user image"
                             width={500}
                             height={500}
                         />
                         <div className="user-details">
                             <div className="user-top-sec">
-                                <h5><span> {date?.user_name}, <span className="user_age">{date?.age || '-'}</span></span>
+                                <h5><span> {date?.user_name}, <span className="user_age">{date?.user_data[0]?.age || '-'}</span></span>
                                     <span className="price_per_hour">
                                         ${date?.price} / <small>{date?.date_length}</small>
                                     </span>

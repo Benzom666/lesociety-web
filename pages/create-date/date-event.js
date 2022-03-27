@@ -8,7 +8,7 @@ function Step1 ({dispatch} ) {
   const { width } = useWindowSize();
 	return (
     <div className="inner-page">
-      <HeaderLoggedIn />
+      {width > 767 && <HeaderLoggedIn />}
         <div className="inner-part-page">
           <div className="auth-section create-date-wrap">
               <Createdates />

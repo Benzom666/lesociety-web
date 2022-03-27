@@ -53,21 +53,23 @@ header{
                         img{
                             border-radius: 50%;
                         }
-                        &::before,&::after{
-                            position: absolute;
-                            left: calc(100% - 4px);
-                            top: calc(50% - 4px);
-                            height: 6px;
-                            width: 2px;
-                            background: $white-color;
-                            content: '';
-                            transform: rotate(45deg);
-                            pointer-events: none;
-                            cursor: pointer;
-                        }
-                        &::after{
-                            left: calc(100% - 7.5px);
-                            transform: rotate(-45deg);
+                        @media only screen and (min-width:767px){
+                            &::before,&::after{
+                                position: absolute;
+                                left: calc(100% - 4px);
+                                top: calc(50% - 4px);
+                                height: 6px;
+                                width: 2px;
+                                background: $white-color;
+                                content: '';
+                                transform: rotate(45deg);
+                                pointer-events: none;
+                                cursor: pointer;
+                            }
+                            &::after{
+                                left: calc(100% - 7.5px);
+                                transform: rotate(-45deg);
+                            }
                         }
                     }
                 }
