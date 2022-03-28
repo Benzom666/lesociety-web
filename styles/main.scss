@@ -1743,7 +1743,7 @@ div[id='scrolldiv'] {
             justify-content: end;
             background: linear-gradient(180deg, rgba(21, 21, 21, 0.0001) 0%, #151515 96.04%);
             mix-blend-mode: normal;
-            padding: 20px 20px;
+            padding: 10px 20px;
             .user-top-sec{
                 width: 100%;
                 h5 {
@@ -1763,7 +1763,7 @@ div[id='scrolldiv'] {
             }
             .user_location {
                 width: 100%;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
                 .address-wrap {
                     flex: 1;
                     .address {
@@ -1964,7 +1964,7 @@ div[id='scrolldiv'] {
         }
     }
     @media only screen and (max-width: 767px) {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 }
 
