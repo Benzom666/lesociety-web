@@ -16,13 +16,7 @@ function RegisterPage ({dispatch} ) {
     <div className="inner-page">
       <Header />
       {/* {_.isEmpty(user) ? <Header /> : <LoggedInHeader/>} */}
-        <div className="inner-part-page auth-section">
-          <div className="container">
-            <div className="auth-section auth-section-register">
               <Profile />
-             </div>
-           </div>
-        </div>
       <Footer />
     </div>
   )

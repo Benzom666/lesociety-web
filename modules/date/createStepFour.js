@@ -32,7 +32,8 @@ const CreateStepFour = props => {
             price: priceState?.education, 
             date_details: dateDescription?.date_description,
             user_name: user?.user_name,
-            date_status: false
+            date_status: false,
+            isUpdate: router?.query?.edit ? Boolean(router?.query.edit) : undefined
         }
         
         try {

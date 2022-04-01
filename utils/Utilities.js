@@ -22,17 +22,25 @@ export const apiRequest = async (args = {}) => {
 export const imageUploader = async files => {
     if(files.length > 0) {
         const formData = new FormData();
-        files.forEach(file => formData.append(`files`, file[0]))
-       const res = await apiRequest({
-         url: 'files',
-         method: 'POST',
-         data: formData
-       }).then(success => {
-         return success
-       }).catch(error => {
-         return false
-       })
-       return res.data.data.files
+        const image_url = [];
+        let res = [];
+        files.forEach(file => file[0]?.name ? formData.append(`files`, file[0]) : image_url.push({url: file}))
+        if(formData.getAll('files').length > 0) {
+          res = await apiRequest({
+            url: 'files',
+            method: 'POST',
+            data: formData
+          }).then(success => {
+            return success
+          }).catch(error => {
+            return false
+          })
+        }
+        if(res?.data) {
+          return image_url.concat(res.data.data.files)
+        } else {
+          return image_url;
+        }
     } else {
         return false;
     }

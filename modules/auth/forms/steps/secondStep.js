@@ -34,7 +34,8 @@ const SecondStep = props => {
   const onSubmit = async (values) => {
     try {
       setLoader(true);
-      const imageUploaded = await imageUploader([values.imageUpload, values.imageUpload2, values.imageUpload3, values.imageUpload4]);
+      const imageUploaded = await imageUploader([values.imageUpload?.length > 0 ? values?.imageUpload : user?.images[0], values.imageUpload2?.length > 0 ? values.imageUpload2 : user?.images[1], values.imageUpload3?.length > 0 ? values.imageUpload3 : user?.images[2], values.imageUpload4?.length > 0 ? values.imageUpload4 : user?.images[3]]);
+      console.log('first', imageUploaded, values)
       if (imageUploaded) {
         values.images = imageUploaded.map(image => image?.url)
         values.email = user.email
@@ -55,7 +56,7 @@ const SecondStep = props => {
   const reduxValues = useSelector(state => state.form.signupStep2.values)
 
   return (
-    <form className="upload-pics" onSubmit={handleSubmit(onSubmit)}>
+    <form className="upload-pics" onSubmit={(e) =>{ e.preventDefault(); handleSubmit(onSubmit(reduxValues))}}>
       <div className="d-block d-md-none login-text mb-0">
         <a onClick={previousPage}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -108,18 +109,20 @@ const SecondStep = props => {
               type="file"
               accept="image/*"
               onChange={(event) => {
-                if (!event.target.files[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                if (!event.target.files[0]?.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                   setImageError(true);
                   event.preventDefault();
                 } else {
                   setImageError(false);
                   setImageTouched(true)
-                  change('imageUpload', event.target.files[0])
+                  if(event.target.files?.length > 0 ) {
+                    dispatch(change('imageUpload', event.target.files[0]))
+                  }
                 }
               }}
             />
-            {reduxValues?.imageUpload?.length > 0 ?
-              <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload === 'string' ? reduxValues?.imageUpload : URL.createObjectURL(reduxValues?.imageUpload[0])} />
+            {reduxValues?.imageUpload?.length > 0 || (user?.images && user?.images[0]) ?
+              <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload === 'string' ? reduxValues?.imageUpload : (reduxValues?.imageUpload?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload[0]) : user.images[0])} />
               : <>
                 <FiPlus />
                 <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +141,7 @@ const SecondStep = props => {
                     type="file"
                     accept="image/*"
                     onChange={(event) => {
-                      if (!event.target.files[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                      if (!event.target.files[0]?.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                         setImageError(true);
                         event.preventDefault();
                       } else {
@@ -148,8 +151,8 @@ const SecondStep = props => {
                       }
                     }}
                   />
-                  {reduxValues?.imageUpload2?.length > 0 ?
-                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload2 === 'string' ? reduxValues?.imageUpload2 : URL.createObjectURL(reduxValues?.imageUpload2[0])} />
+                  {reduxValues?.imageUpload2?.length > 0 || (user?.images && user?.images[1]) ?
+                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload2 === 'string' ? reduxValues?.imageUpload2 : (reduxValues?.imageUpload2?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload2[0]) : user?.images[1])} />
                     : <>
                       <FiPlus />
                       <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -167,7 +170,7 @@ const SecondStep = props => {
                     type="file"
                     accept="image/*"
                     onChange={(event) => {
-                      if (!event.target.files[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                      if (!event.target.files[0]?.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                         setImageError(true);
                         event.preventDefault();
                       } else {
@@ -177,8 +180,8 @@ const SecondStep = props => {
                       }
                     }}
                   />
-                  {reduxValues?.imageUpload3?.length > 0 ?
-                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload3 === 'string' ? reduxValues?.imageUpload3 : URL.createObjectURL(reduxValues?.imageUpload3[0])} />
+                  {reduxValues?.imageUpload3?.length > 0 || (user?.images && user.images[2]) ?
+                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload3 === 'string' ? reduxValues?.imageUpload3 : reduxValues?.imageUpload3?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload3[0]) : user?.images[2]} />
                     : <>
                       <FiPlus />
                       <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,7 +199,7 @@ const SecondStep = props => {
                     type="file"
                     accept="image/*"
                     onChange={(event) => {
-                      if (!event.target.files[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                      if (!event.target.files[0]?.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                         setImageError(true);
                         event.preventDefault();
                       } else {
@@ -206,8 +209,8 @@ const SecondStep = props => {
                       }
                     }}
                   />
-                  {reduxValues?.imageUpload4?.length > 0  ?
-                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload4 === 'string' ? reduxValues?.imageUpload4 : URL.createObjectURL(reduxValues?.imageUpload4[0])} />
+                  {reduxValues?.imageUpload4?.length > 0 || (user?.images && user.images[3]) ?
+                    <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload4 === 'string' ? reduxValues?.imageUpload4 : reduxValues?.imageUpload4?.length > 0 ?  URL.createObjectURL(reduxValues?.imageUpload4[0]) : user?.images[3]} />
                     : <>
                       <FiPlus />
                       <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -218,7 +221,7 @@ const SecondStep = props => {
                 </label>
               </div>
         </div>
-        {isImageTouched && (!reduxValues?.imageUpload || !reduxValues?.imageUpload2 || !reduxValues?.imageUpload3 || !reduxValues?.imageUpload4)  ?
+        {isImageTouched && (!reduxValues?.imageUpload?.length > 0 || !reduxValues?.imageUpload2?.length > 0 || !reduxValues?.imageUpload3?.length > 0 || !reduxValues?.imageUpload4?.length > 0)  ?
           <span className="error">* Upload at least 4 photos</span>
           : (isImageValid ? "Please Select Image Only" : "")}
         <Field
@@ -262,5 +265,6 @@ export default reduxForm({
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
   validate
 })(SecondStep)

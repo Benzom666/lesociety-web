@@ -4,7 +4,7 @@ import Select from 'react-select';
 import { IoMdLocate } from 'react-icons/io';
 import { drowdownStyles } from './styles';
 
-export function uploadFileField({ accept, input, onChange, value, type, meta: { touched, error, warning } }) {
+export function uploadFileField({ accept, input, value, type, meta: { touched, error, warning } }) {
   return <div className={`secret-input type-${type}`}>
     <React.Fragment>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}

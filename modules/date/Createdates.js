@@ -33,15 +33,15 @@ const CreateDate = props => {
   }
   return (
     <div>
-      {page == 0 &&
+      {!router.query.drafted && page == 0 &&
         <CreateStepOne onSubmit={nextPage} onClose={toggle} />
       }
-      {page == 1 &&
+      {!router.query.drafted && page == 1 &&
         <>
           <CreateStepTwo previousPage={previousPage} onSubmit={nextPage} onClose={toggle} />
         </>
       }
-      {page == 2 && (
+      {!router.query.drafted && page == 2 && (
         <>
           <CreateStepThree
             previousPage={previousPage}
@@ -51,7 +51,7 @@ const CreateDate = props => {
 
         </>
       )}
-      {page == 3 && (
+      {!router.query.drafted && page == 3 && (
         <>
           <CreateStepFour
             previousPage={previousPage}
@@ -60,7 +60,7 @@ const CreateDate = props => {
           />
         </>
       )}
-      {page == 4 && (
+      {(router.query.drafted || page == 4) && (
         <>
           <DatePreview />
         </>

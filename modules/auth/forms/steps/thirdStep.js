@@ -120,10 +120,6 @@ const loadMoreOptions = [
     }
 ]
 
-const imageRequired = value => (!value ? "Image is required" : undefined);
-
-const setValue = '';
-
 const ThirdStep = props => {
     const [tallValue, setTallValue] = useState(100);
     const { width } = useWindowSize();
@@ -143,6 +139,19 @@ const ThirdStep = props => {
     }
 
     const convertToFeet = cmValue => (cmValue*0.0328084).toPrecision(2);
+
+    useEffect(() => {
+        if(user?.height){
+          const data = {
+            height: user?.height,
+            max_education: user?.max_education,
+            is_smoker: user?.is_smoker,
+            occupation: user?.occupation,
+          }
+          setTallValue(user?.height)
+          props.initialize(data)
+        }
+      }, [user])
 
     const onSubmit = (values) => {
         values.height = tallValue
@@ -245,5 +254,7 @@ export default reduxForm({
     form: 'signupStep3', // <------ same form name
     destroyOnUnmount: false, // <------ preserve form data
     forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-    validate
+    validate,
+    enableReinitialize: true,
+    keepDirtyOnReinitialize: true,
 })(ThirdStep)

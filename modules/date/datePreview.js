@@ -57,7 +57,7 @@ const DatePreview = props => {
                     <div className="bottom-mobile register-bottom">
                         <div className="secret-input type-submit next-prev">
                             <button type="button" className="edit next">  
-                                <Link href="/create-date/choose-city"><a>Edit</a></Link>
+                                <Link href="/create-date/choose-city?edit=true"><a>Edit</a></Link>
                             </button>  
                             <button type="button" className="next" onClick={postDate}>  
                                 <a className="forgot-passwrd">Post Date</a>

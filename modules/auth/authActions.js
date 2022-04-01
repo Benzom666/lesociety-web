@@ -1,4 +1,4 @@
-import {RESTORE_AUTH_STATE, AUTHENTICATE, DEAUTHENTICATE, SIGNUP1, SIGNUP2, SIGNUP3, LOGIN} from "./actionConstants";
+import {RESTORE_AUTH_STATE, AUTHENTICATE, DEAUTHENTICATE, SIGNUP1, SIGNUP2, SIGNUP3, SIGNUP4, LOGIN} from "./actionConstants";
 
 
 export const authenticateAction = (user) => {
@@ -65,4 +65,8 @@ export function signupStep2(data, setLoader) {
 
 export function signupStep3(data, setLoader) {
     return { type: SIGNUP3, payload: data, loader: setLoader }
+}
+
+export function signupStep4(data, setLoader) {
+    return { type: SIGNUP4, payload: data, loader: setLoader }
 }

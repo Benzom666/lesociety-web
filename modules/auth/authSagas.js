@@ -3,7 +3,7 @@ import { apiRequest, showToast } from '../../utils/Utilities'
 import { AUTHENTICATE, AUTHENTICATE_UPDATE } from "./actionConstants";
 import { stopSubmit, reset } from 'redux-form';
 import Router from 'next/router'
-import {SIGNUP1, SIGNUP2, SIGNUP3, LOGIN} from "./actionConstants";
+import {SIGNUP1, SIGNUP2, SIGNUP3, LOGIN, SIGNUP4 } from "./actionConstants";
 
 export function* login(action) {
     action.loader(true);
@@ -23,6 +23,11 @@ export function* login(action) {
             });
           //  showToast(response.success.data.message, 'success')
            action.loader(false);
+           if( response.success.data.data.step_completed === 4 ) {
+            Router.push({
+                pathname: '/auth/profile',
+            })  
+           }
             if(response.success.data.data.step_completed === 1 || response.success.data.data.step_completed === 2){
                 Router.push({
                     pathname: '/auth/profile',
@@ -100,7 +105,7 @@ function* signupStep2(data) {
         if (response.success) {
             yield put({
                 type: AUTHENTICATE_UPDATE,
-                payload: {step_completed: 2}
+                payload: {description: data?.payload?.description, tagline: data?.payload?.tagline, images: data?.payload?.images, step_completed: 2}
             });
            // showToast(response.success.data.message, 'success')
             //yield put(reset('signupStep2'))
@@ -130,9 +135,9 @@ function* signupStep3(data) {
         if (response.success) {
             yield put({
                 type: AUTHENTICATE_UPDATE,
-                payload: {step_completed: 3}
+                payload: {height: data.payload?.height, is_smoker: data.payload?.is_smoker, occupation : data.payload?.occupation, max_education: data.payload?.max_education, step_completed: 3}
             });
-            data.loader(false)
+            data?.loader(false)
             window.scrollTo(0, 0);
            // showToast(response.success.data.message, 'success')
             yield put(reset('signupStep3'))
@@ -146,9 +151,39 @@ function* signupStep3(data) {
     }
 }
 
+function* signupStep4(data) {
+    debugger
+    data.loader(true)
+    try {
+        const response = yield race({
+            success: call(apiRequest, {
+                data: data.payload,
+                method: 'POST',
+                url: `user/signup/step4`
+            }),
+            cancel: take('ROUTE/CHANGE')
+        });
+
+        if (response.success) {
+            yield put({
+                type: AUTHENTICATE_UPDATE,
+                payload: {step_completed: 4}
+            });
+            data.loader(false)
+            window.scrollTo(0, 0);
+           // showToast(response.success.data.message, 'success')
+        }
+
+    } catch (error) {
+        showToast(error?.response ? error.response.data.message : error.message, 'error')
+        data.loader(false)
+    }
+}
+
 export default function* authWatcher() {
   yield takeLatest(SIGNUP1, signup)
   yield takeLatest(SIGNUP2, signupStep2)
   yield takeLatest(SIGNUP3, signupStep3)
+  yield takeLatest(SIGNUP4, signupStep4)
   yield takeLatest(LOGIN, login);
 }

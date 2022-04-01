@@ -5,7 +5,6 @@ import ClassSelection from 'core/ClassSelection'
 import { Field, reduxForm } from 'redux-form'
 import validate from 'modules/auth/forms/validate/validate'
 import { FiArrowRight } from "react-icons/fi";
-import { ImSpoonKnife } from "react-icons/im";
 import { CustomIcon } from 'core/icon';
 import { IoIosClose } from 'react-icons/io';
 import useWindowSize from "utils/useWindowSize"; 
@@ -106,21 +105,21 @@ const CreateStepOne = props => {
                                         id: 'TakeClass',
                                         icon: <CustomIcon.TakeClass color={'#4F4E54'} size={30}/>,
                                         iconName: 'CustomIcon.TakeClass',
-                                        category: "middle_class_date"
+                                        category: "middle_class_dates"
                                     },
                                     {
                                         label: 'Entertainment & sports ',
                                         id: 'Entertainmentsports',
                                         icon : <CustomIcon.EntertainmentSports color={'#4F4E54'} size={30}/>,
                                         iconName: 'CustomIcon.EntertainmentSports',
-                                        category: "middle_class_date"
+                                        category: "middle_class_dates"
                                     },
                                     {
                                         label: 'Wine & Dine ',
                                         id: 'WineDine',
                                         icon : <CustomIcon.WineDine color={'#4F4E54'} size={30}/>,
                                         iconName: 'CustomIcon.WineDine',
-                                        category: "middle_class_date"
+                                        category: "middle_class_dates"
                                     },
                                 ]}
                                 component={ClassSelection}
@@ -142,21 +141,21 @@ const CreateStepOne = props => {
                                         id: 'CasinoDrinks',
                                         icon : <CustomIcon.CasinoDrinks color={'#4F4E54'} size={30}/>,
                                         iconName: 'CustomIcon.CasinoDrinks',
-                                        category: "executive_class_date"
+                                        category: "executive_class_dates"
                                     },
                                     {
                                         label: 'Champaign & Caviar',
                                         id: 'ChampaignCaviar',
                                         icon : <CustomIcon.ChampaignCaviar color={'#4F4E54'} size={30}/>,
                                         iconName: 'CustomIcon.ChampaignCaviar',
-                                        category: "executive_class_date"
+                                        category: "executive_class_dates"
                                     },
                                     {
                                         label: 'Bottles & Dance',
                                         id: 'BottlesDance',
                                         icon : <CustomIcon.BottlesDance color={'#4F4E54'} size={30}/>,
                                         iconName: 'CustomIcon.BottlesDance',
-                                        category: "executive_class_date"
+                                        category: "executive_class_dates"
                                     },
                                 ]}
                                 component={ClassSelection}
@@ -178,5 +177,6 @@ const CreateStepOne = props => {
 export default reduxForm({
     form: 'CreateStepOne',
     destroyOnUnmount: false,
-    validate
+    validate,
+    enableReinitialize: true
   })(CreateStepOne);

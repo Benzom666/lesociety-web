@@ -14,11 +14,14 @@ import { useSelector } from 'react-redux';
 import DatePopup from 'core/createDatePopup';
 import router from 'next/router';
 import useWindowSize from "utils/useWindowSize";
+import { set } from 'lodash'
 
 function UserList() {
     const { width } = useWindowSize();
     const [dateId, setDateId] = React.useState('');
     const [dates, setDates] = React.useState([]);
+    const [scrollPosition, setScrollPosition] = React.useState(0)
+    const [scrollType, setScrollType] = React.useState('down')
     const [classPopup, setPopupClass] = React.useState('hide');
     const [textClass, setTextSlideClass] = React.useState('');
     const [locationPopup, setLocationPoup] = React.useState(false);
@@ -143,18 +146,38 @@ function UserList() {
         fetchDate(params);
     }
 
+    const handleScroll = () => {
+        const position = window.pageYOffset
+        if(scrollPosition > position) {
+            setScrollType('up')
+        } else {
+            setScrollType('down')
+        }
+        setScrollPosition(position);
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true })
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [scrollPosition])
+
     return (
         <div className="inner-page" id="infiniteScroll">
-            <HeaderLoggedIn />
+            <HeaderLoggedIn fixed={true}/>
             <div className="inner-part-page">
                 <div className="pt-5 pb-4">
                     <div className="container user_list_wrap">
                         <div className="row">
                             <div className="col-md-2"></div>
                             <div className="col-md-8">
-                                <div className="row">
+                                <div className="row">    
                                     <div className="col-md-12">
-                                        <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3">
+                                        <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3" 
+                                        style={scrollType === 'up' && scrollPosition > 500 && !locationPopup ? { position: 'fixed', left: '42%', zIndex: '99'} : {position: 'relative'}}
+                                        >
                                             <span className="hidden-sm">Nearby</span>
                                             <div onClick={() => setLocationPoup(true)} className="selct-wrap-sort">
                                                 <label><span style={{ 'margin-right': '5px' }} >{selectedLocation?.city}, {selectedLocation?.country?.toUpperCase()}</span></label>

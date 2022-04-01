@@ -3,7 +3,6 @@ import { apiRequest, showToast } from "../../../../utils/Utilities";
 import { AUTHENTICATE  } from '../../actionConstants';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { route } from 'next/dist/server/router';
 import { useState } from 'react';
 
 const CompleteProfile = props => {

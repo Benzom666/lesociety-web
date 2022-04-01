@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Field, reduxForm, change } from 'redux-form'
+import { Field, reduxForm, change, initialize } from 'redux-form'
 import validate from 'modules/auth/forms/validate/validate'
 import { FiArrowRight } from "react-icons/fi";
 import HeaderLoggedIn from 'core/loggedInHeader'
@@ -8,11 +8,12 @@ import { Inputs } from 'core';
 import { IoIosClose } from 'react-icons/io';
 import Link from 'next/link'
 import { fetchLocation, fetchLiveLocation, fetchRealLocation } from "../../modules/auth/forms/steps/validateRealTime";
-import { countriesCode } from '../../utils/Utilities';
+import { countriesCode, apiRequest, dateCategory } from '../../utils/Utilities';
 import { useDispatch, useSelector } from 'react-redux';
 import ConfirmDate from './../../modules/date/confirmDate'
 import withAuth from "../../core/withAuth";
 import useWindowSize from 'utils/useWindowSize';
+import router from 'next/router';
 
 const ChooseCity = props => {
     const [locationOptions, setLocation] = useState([]);
@@ -26,7 +27,7 @@ const ChooseCity = props => {
     const user = useSelector(state => state.authReducer.user)
 
     const handleChange = async (value, inputAction) => {
-        if(inputAction.action === 'input-change') {
+        if (inputAction.action === 'input-change') {
             setInputValue(value)
             fetchRealLocation(value, countriesCode[state?.enter_country?.value], setPlaces);
         }
@@ -34,134 +35,174 @@ const ChooseCity = props => {
 
     const toggle = () => setConfirmPopup(!confirmPopup)
 
+    const fetchDraftedDate = async () => {
+        try {
+            const res = await apiRequest({
+                url: "date",
+                params: {
+                    user_name: user?.user_name
+                }
+            })
+            if (res.data.data?.dates) {
+                const draftedDate = res.data.data?.dates.find(item => item?.date_status === false)
+                if (draftedDate) {
+                    const category = dateCategory.find(item => item?.label === draftedDate?.standard_class_date || item?.label === draftedDate?.middle_class_dates || item?.label === draftedDate?.executive_class_dates)
+                    const country = Object.keys(countriesCode).find(key => countriesCode[key]?.toLowerCase() === draftedDate.country_code?.toLowerCase())
+                    dispatch(initialize('ChooseCity', {
+                        enter_country: { label: country, value: draftedDate.country_code },
+                        enter_city: {
+                            name: draftedDate?.location,
+                            country: [{
+                                short_code: draftedDate.country_code,
+                                text: country
+                            }],
+                            label: draftedDate?.location
+                        }
+                    }));
+                    dispatch(initialize('CreateStepOne', { 'search_type': category }));
+                    dispatch(initialize('CreateStepTwo', { education: draftedDate?.price }))
+                    dispatch(initialize('CreateStepThree', { education: draftedDate?.date_length }))
+                    dispatch(initialize('CreateStepFour', { date_description: draftedDate?.date_details }))
+                    router.push('/create-date/date-event?drafted=true')
+                }
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     useEffect(() => {
         const fetch = async () => {
-          const location = await fetchLocation();
-          if(location) {
-            const locationOption = location?.map(item => item.isAvailable === 1 && {
-              label: item.name,
-              value: countriesCode[item.name]
-           })?.filter(item => item)
-           setLocation(locationOption);
-        }
+            const location = await fetchLocation();
+            if (location) {
+                const locationOption = location?.map(item => item.isAvailable === 1 && {
+                    label: item.name,
+                    value: countriesCode[item.name]
+                })?.filter(item => item)
+                setLocation(locationOption);
+            }
         };
         fetch();
-        if(user.country && user.location) {
+        if (user.country && user.location) {
             const data = {
-                enter_country:  {label: user.country, value: countriesCode[user.country]},
+                enter_country: { label: user.country, value: countriesCode[user.country] },
                 enter_city: {
                     name: user.location,
                     country: user.country,
-                    label: user.location }
+                    label: user.location
+                }
             }
             props.initialize(data);
         }
-      }, [])
+        if(!router?.query.edit) {
+            fetchDraftedDate();
+        }
+    }, [])
 
-      const handleIcon = () => {
+    const handleIcon = () => {
         setLoadingLive(true);
         navigator.geolocation.getCurrentPosition(async (position) => {
-            if(position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
+            if (position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
                 const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
                 const data = {
-                    enter_country:  {label: location[0].country[0].text, value: location[0].country[0].short_code},
+                    enter_country: { label: location[0].country[0].text, value: location[0].country[0].short_code },
                     enter_city: location[0]
                 }
                 props.initialize(data);
                 setLoadingLive(false)
             }
-        }, (err) => setLoadingLive(false), {enableHighAccuracy: true});
+        }, (err) => setLoadingLive(false), { enableHighAccuracy: true });
     }
 
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
     return (
         <div className="inner-page">
-           {width > 767 && <HeaderLoggedIn />}
-                <div className="inner-part-page">
-                    <div className="container">
-                        <div className="auth-section choose-city">
-                            <form onSubmit={handleSubmit} >
-                                <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
-                                    <a onClick={previousPage}>
-                                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
-                                    </a>
-                                    <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
-                                    <IoIosClose size={32} onClick={toggle}/>
-                                </div>
-                                <div className="top-head mt-5 mb-3 text-center">
-                                    <p></p>
-                                    <h2>Spark A New Adventure</h2>
-                                    <h6 className="text-white pt-1">Select Your Territory</h6>
-                                    <svg width="86" height="2" viewBox="0 0 86 2" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '-28px'}}>
-                                        <path d="M0 1H86" stroke="url(#paint0_linear_1502:2374)" />
-                                        <defs>
-                                            <linearGradient id="paint0_linear_1502:2374" x1="96.6181" y1="-1.73994" x2="7.45495" y2="-1.73994" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#FA789B" stopOpacity="0.01" />
-                                                <stop offset="0.489981" stopColor="#F02D4E" />
-                                                <stop offset="1" stopColor="#F24362" stopOpacity="0.01" />
-                                            </linearGradient>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div className="content-section">
-                                    <p>Please select the location where you would like to be showcased.</p>
-                                    <p>Each post is showcased in one location <br/> of your choice. </p>
-                                    <p>Hence if you wish to have presence in multiple location, you <br/> will need several posts.</p>
-                                </div>
-                                <div>
-                                    <Field
-                                        name="enter_country"
-                                        type="text"
-                                        component={Inputs.renderDropdown}
-                                        placeholder="Enter Country"
-                                        withIcon={true}
-                                        label="Country"
-                                        subLabel="Traveling? Set up dates prior to you landing"
-                                        options={locationOptions}
-                                        iconClick={handleIcon}
-                                        openMenuOnClick={false}
-                                        loading={loadingLive}
-                                    />
-                                    <Field
-                                        name="enter_city"
-                                        type="text"
-                                        label="Select your city or state"
-                                        component={Inputs.renderDropdown}
-                                        options={places}
-                                        placeholder="Enter City"
-                                        withIcon={true}
-                                        iconClick={handleIcon}
-                                        openMenuOnClick={false}
-                                        inputValue={inputValue}
-                                        onInputChange={handleChange}
-                                        isDisabled={!state?.enter_country?.value}
-                                        menuIsOpen={inputValue && places.length}
-                                        onChange={(value) => {
-                                            setInputValue("");
-                                            change('enter_city', value)
-                                        }}
-                                        loading={loadingLive}
-                                    />
-                                </div>
-                                <div className="bottom-mobile register-bottom">
-                                    <div className="secret-input type-submit next-prev">
-                                        <Link href="/create-date/date-event" >
-                                            <button className="next" disabled={invalid}>  
+            {width > 767 && <HeaderLoggedIn />}
+            <div className="inner-part-page">
+                <div className="container">
+                    <div className="auth-section choose-city">
+                        <form onSubmit={handleSubmit} >
+                            <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+                                <a onClick={previousPage}>
+                                    {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
+                                </a>
+                                <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
+                                <IoIosClose size={32} onClick={toggle} />
+                            </div>
+                            <div className="top-head mt-5 mb-3 text-center">
+                                <p></p>
+                                <h2>Spark A New Adventure</h2>
+                                <h6 className="text-white pt-1">Select Your Territory</h6>
+                                <svg width="86" height="2" viewBox="0 0 86 2" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '-28px' }}>
+                                    <path d="M0 1H86" stroke="url(#paint0_linear_1502:2374)" />
+                                    <defs>
+                                        <linearGradient id="paint0_linear_1502:2374" x1="96.6181" y1="-1.73994" x2="7.45495" y2="-1.73994" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FA789B" stopOpacity="0.01" />
+                                            <stop offset="0.489981" stopColor="#F02D4E" />
+                                            <stop offset="1" stopColor="#F24362" stopOpacity="0.01" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div className="content-section">
+                                <p>Please select the location where you would like to be showcased.</p>
+                                <p>Each post is showcased in one location <br /> of your choice. </p>
+                                <p>Hence if you wish to have presence in multiple location, you <br /> will need several posts.</p>
+                            </div>
+                            <div>
+                                <Field
+                                    name="enter_country"
+                                    type="text"
+                                    component={Inputs.renderDropdown}
+                                    placeholder="Enter Country"
+                                    withIcon={true}
+                                    label="Country"
+                                    subLabel="Traveling? Set up dates prior to you landing"
+                                    options={locationOptions}
+                                    iconClick={handleIcon}
+                                    openMenuOnClick={false}
+                                    loading={loadingLive}
+                                />
+                                <Field
+                                    name="enter_city"
+                                    type="text"
+                                    label="Select your city or state"
+                                    component={Inputs.renderDropdown}
+                                    options={places}
+                                    placeholder="Enter City"
+                                    withIcon={true}
+                                    iconClick={handleIcon}
+                                    openMenuOnClick={false}
+                                    inputValue={inputValue}
+                                    onInputChange={handleChange}
+                                    isDisabled={!state?.enter_country?.value}
+                                    menuIsOpen={inputValue && places.length}
+                                    onChange={(value) => {
+                                        setInputValue("");
+                                        change('enter_city', value)
+                                    }}
+                                    loading={loadingLive}
+                                />
+                            </div>
+                            <div className="bottom-mobile register-bottom">
+                                <div className="secret-input type-submit next-prev">
+                                    <Link href="/create-date/date-event?edit=true" >
+                                        <button className="next" disabled={invalid}>
                                             {/* <span className="spin-loader-button"></span> */}
-                                                Next <FiArrowRight />
-                                            </button>    
-                                        </Link>
-                                    </div>
+                                            Next <FiArrowRight />
+                                        </button>
+                                    </Link>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
             <Footer />
             <ConfirmDate
-        isOpen={confirmPopup}
-        toggle={toggle}
-      />
+                isOpen={confirmPopup}
+                toggle={toggle}
+            />
         </div>
     )
 }

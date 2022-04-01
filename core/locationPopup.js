@@ -145,8 +145,8 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
       style={{
         overlay: {
           // background: 'transparent',
-          height: 'calc(100vh - 67px)',
-          top: '67px',
+          height: 'calc(100vh - 46px)',
+          top: '46px',
         }
       }}
       className="city-modal"
