@@ -24,6 +24,7 @@ const SimpleForm = props => {
   const [showPassword, setShowPassword] = useState(false);
 
   const submitHandler = async (values) => {
+    values.email = values.email?.toLowerCase();
     dispatch(login(values, setLoading))
   }
 

@@ -24,7 +24,8 @@ const RegisterForm = props => {
       const data = {...values,
         gender: gender,
         country: values.location.country,
-        location: values.location.value
+        location: values.location.value,
+        email: values.email?.toLowerCase()
        }
       dispatch(registration(data, loader))
       // router.push('/auth/profile')

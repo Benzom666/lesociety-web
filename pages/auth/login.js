@@ -1,11 +1,7 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import Login from '../../modules/auth/forms/login';
-import { connect } from "react-redux";
 import Header from '../../core/header'
-import Footer from '../../core/footer'
 import useWindowSize from "../../utils/useWindowSize";
-import { FaAngleLeft } from "react-icons/fa";
 
 function LoginPage({ dispatch }) {
   const { width } = useWindowSize();

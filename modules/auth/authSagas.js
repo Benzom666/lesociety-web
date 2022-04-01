@@ -23,7 +23,7 @@ export function* login(action) {
             });
           //  showToast(response.success.data.message, 'success')
            action.loader(false);
-           if( response.success.data.data.step_completed === 4 ) {
+           if(response.success.data.data.step_completed === 3 ) {
             Router.push({
                 pathname: '/auth/profile',
             })  
