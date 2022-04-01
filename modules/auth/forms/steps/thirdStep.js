@@ -11,6 +11,7 @@ import Slider from 'react-rangeslider'
 import { signupStep3 } from '../../authActions'
 import { useDispatch, useSelector } from 'react-redux'
 import _ from 'lodash';
+import { useRouter } from 'next/router';
 
 const education = [
     {
@@ -127,6 +128,7 @@ const ThirdStep = props => {
     const [loading, setLoading] = useState(false);
     const [loadMore, setLoadMore] = useState(false);
     const dispatch = useDispatch()
+    const router = useRouter();
     const user = useSelector(state => state.authReducer.user)
 
     const handleTallValueUnit = () => {
@@ -157,7 +159,7 @@ const ThirdStep = props => {
         values.height = tallValue
         values.email = user.email
         values.step_completed = 3
-        dispatch(signupStep3(values, setLoading))
+        dispatch(signupStep3({...values, isUpdate: router?.query?.edit}, setLoading))
     }
 
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props

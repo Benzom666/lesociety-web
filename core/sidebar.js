@@ -37,7 +37,7 @@ export default function SideBar() {
                     </div>
                     <div className="d-flex align-items-center mb-0 header_btn_wrap">
                         <Link href="/user/user-profile"><a>View Profile</a></Link>
-                        <Link href="/create-date/choose-city"><a>Edit Profile</a></Link>
+                        <Link href="/auth/profile?edit=true"><a>Edit Profile</a></Link>
                     </div>
                 </div> 
                 <div className="verification_card_header text-center mb-3">

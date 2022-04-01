@@ -31,16 +31,22 @@ const RegisterForm = props => {
   }
 
   useEffect(() => {
-    if (user.step_completed === 2) {
-      setPage(1)
-    }
-    if (user.step_completed === 3) {
-      setPage(2)
-    }
-    if (user.step_completed === 4) {
-      setPage(3)
-    }
+      if (user.step_completed === 2) {
+        setPage(1)
+      }
+      if (user.step_completed === 3) {
+        setPage(2)
+      }
+      if (user.step_completed === 4) {
+        setPage(3)
+      }
   }, [user])
+
+  useEffect(() => {
+    if(router?.query?.edit) {
+      setPage(0)
+    }
+}, [router?.query])
 
   return (
     <>

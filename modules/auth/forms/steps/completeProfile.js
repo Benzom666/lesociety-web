@@ -73,7 +73,7 @@ const CompleteProfile = props => {
                 </svg>
             </span>
             <h2>
-                {router?.query?.token ? (user?.email_verified ? 'Email Verified' : 'Email Verification') : 'Profile Completed'}
+                {router?.query?.token ? (user?.email_verified ? 'Email Verified' : 'Email Verification') : router?.query?.edit ? 'Profile Updated' : 'Profile Completed'}
             </h2>
             <p>
                 {!user?.email_verified ? 

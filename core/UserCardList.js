@@ -14,12 +14,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { HiLockOpen } from "react-icons/hi";
+import { useRouter } from "next/router";
 
 const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, isDesktopView }) => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
     const [msgModal, setMsgModal] = React.useState(false);
     const user = useSelector(state => state.authReducer.user)
+    const router = useRouter();
     const growRef=useRef(null)
 
     function openModal() {
@@ -133,7 +135,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                                 <button onClick={openPopup} className="next">
                                     Message
                                 </button>}
-                            <button type="button" className="edit">
+                            <button type="button" className="edit" onClick={() => router.push(`/user/user-profile/${date?.user_name}`)}>
                                 <a>View profile</a>
                             </button>
                         </div>
@@ -152,7 +154,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                                 <button onClick={openPopup} className="next">
                                     Message
                                 </button>}
-                            <button type="button" className="edit">
+                            <button type="button" className="edit" onClick={() => router.push(`/user/user-profile/${date?.user_name}`)}>
                                 <a>View profile</a>
                             </button>
                         </div>

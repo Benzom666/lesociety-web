@@ -4,15 +4,16 @@ import validate from '../validate/validate'
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
-import useWindowSize from "../../../../utils/useWindowSize";
 import { useDispatch, useSelector } from 'react-redux'
 import { signupStep2 } from '../../authActions'
 import { imageUploader } from '../../../../utils/Utilities'
+import { useRouter } from 'next/router';
 
 const SecondStep = props => {
   const [loading, setLoader] = useState(false);
   const [isImageValid, setImageError] = useState(false);
   const [isImageTouched, setImageTouched] = useState(false);
+  const router = useRouter();
   const dispatch = useDispatch()
 
   const user = useSelector(state => state.authReducer.user)
@@ -35,16 +36,17 @@ const SecondStep = props => {
     try {
       setLoader(true);
       const imageUploaded = await imageUploader([values.imageUpload?.length > 0 ? values?.imageUpload : user?.images[0], values.imageUpload2?.length > 0 ? values.imageUpload2 : user?.images[1], values.imageUpload3?.length > 0 ? values.imageUpload3 : user?.images[2], values.imageUpload4?.length > 0 ? values.imageUpload4 : user?.images[3]]);
-      console.log('first', imageUploaded, values)
       if (imageUploaded) {
         values.images = imageUploaded.map(image => image?.url)
         values.email = user.email
-        values.step_completed = 2
+        // if(!router?.query?.edit) {
+          values.step_completed = 2
+        // }
         const formData = new FormData();
         Object.keys(values).forEach(key => {
           formData.append(key, values[key]);
         })
-        dispatch(signupStep2(values, setLoader))
+        dispatch(signupStep2({...values, isUpdate: router?.query?.edit }, setLoader))
       }
     } catch (err) {
       setLoader(false);
