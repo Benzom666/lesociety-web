@@ -1548,6 +1548,19 @@ $GradientColor-second:  rgba(#191919, .8);
             padding: 0;
             max-width: 170px;
             margin:  0 0 0 22%;
+            @media only screen and (max-width: 435px) {
+                margin:  0 0 0 26%;
+            }
+            @media only screen and (max-width: 390px) {
+                margin: 0 0 0 84px;
+            }
+            @media only screen and (max-width: 375px) {
+                margin: 0 0 0 78px;
+            }
+            @media only screen and (max-width: 340px) {
+                margin: 0 0 0 64px;
+            }
+            
             li {
                 flex: 1;
                 text-align: center;
