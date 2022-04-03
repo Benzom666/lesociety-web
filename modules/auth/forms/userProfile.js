@@ -103,21 +103,22 @@ function UserProfile({ preview, editHandle }) {
 
     const editDate = () => {
         const country = Object.keys(countriesCode).find(key => countriesCode[key]?.toLowerCase() === selectedDate.country_code?.toLowerCase())
-        dispatch(initialize('ChooseCity', { 
+        dispatch(initialize('ChooseCity', {
             enter_country: { label: country, value: selectedDate.country_code },
             enter_city: {
-            name: selectedDate?.location,
-            country: [{
-                short_code: selectedDate.country_code,
-                text: country
-            }],
-            label: selectedDate?.location
-        } }));
+                name: selectedDate?.location,
+                country: [{
+                    short_code: selectedDate.country_code,
+                    text: country
+                }],
+                label: selectedDate?.location
+            }
+        }));
         dispatch(initialize('CreateStepOne', { 'search_type': selectedDateCategory }));
-                    dispatch(initialize('CreateStepTwo', { education: selectedDate?.price }))
-                    dispatch(initialize('CreateStepThree', { education: selectedDate?.date_length }))
-                    dispatch(initialize('CreateStepFour', { date_description: selectedDate?.date_details }))
-                    router.push('/create-date/choose-city?edit=true')
+        dispatch(initialize('CreateStepTwo', { education: selectedDate?.price }))
+        dispatch(initialize('CreateStepThree', { education: selectedDate?.date_length }))
+        dispatch(initialize('CreateStepFour', { date_description: selectedDate?.date_details }))
+        router.push('/create-date/choose-city?edit=true')
     }
 
     const deleteDate = async () => {
@@ -135,7 +136,7 @@ function UserProfile({ preview, editHandle }) {
         }
     }
 
-    
+
     return (
         <div className="inner-page">
             {!preview && <HeaderLoggedIn />}
@@ -239,11 +240,12 @@ function UserProfile({ preview, editHandle }) {
                                                                 {userDates.length > 0 ? userDates.map(date => {
                                                                     const category = dateCategory.find(item => item?.label === date?.standard_class_date || item?.label === date?.middle_class_dates || item?.label === date?.executive_class_dates)
                                                                     return (
-                                                                        <div className="availabe_card_inner" onClick={() =>{ 
-                                                                            if(!router?.query?.userName ) {
+                                                                        <div className="availabe_card_inner" onClick={() => {
+                                                                            if (!router?.query?.userName) {
                                                                                 setSelectedDate(date);
                                                                                 dateModalIsOpen()
-                                                                            } }}>
+                                                                            }
+                                                                        }}>
                                                                             <ul className="date_list">
                                                                                 <li>
                                                                                     <span className="icon_wrap">
@@ -251,10 +253,16 @@ function UserProfile({ preview, editHandle }) {
                                                                                     </span>
                                                                                     <p>{category?.label}</p>
                                                                                 </li>
-                                                                                <span className="top-card_tag"><span className="top-badge"></span> ${date?.price}</span>
-                                                                                <span className="bottom_price_tag">
-                                                                                    <h2><sup>H</sup> {date?.date_length.replace('H', '')}</h2>
+                                                                                <span className="top-card_tag">
+                                                                                    <span className="top-badge"></span>
+                                                                                    <div className='price-card-name'>
+                                                                                        <span>${date?.price}</span>
+                                                                                        <span className="hour">
+                                                                                            <span>{date?.date_length.replace('H', '')}H</span>
+                                                                                        </span>
+                                                                                    </div>
                                                                                 </span>
+
                                                                             </ul>
                                                                         </div>)
                                                                 }) : null}
@@ -271,20 +279,20 @@ function UserProfile({ preview, editHandle }) {
                                                                         <SubHeading title="Available dates" />
                                                                         <div className="availabe_card_inner">
                                                                             <ul className="date_list">
-                                                                                {selectedDate ? 
-                                                                                <>
-                                                                                            <li>
-                                                                                                <span className="icon_wrap">
-                                                                                                    {selectedDateCategory?.icon}
-                                                                                                </span>
-                                                                                                <p>{selectedDateCategory?.label}</p>
-                                                                                            </li>
-                                                                                            <span className="top-card_tag"><span className="top-badge"></span> ${selectedDate?.price}</span>
-                                                                                            <span className="bottom_price_tag">
-                                                                                                <h2><sup>H</sup> {selectedDate?.date_length.replace('H', '')}</h2>
+                                                                                {selectedDate ?
+                                                                                    <>
+                                                                                        <li>
+                                                                                            <span className="icon_wrap">
+                                                                                                {selectedDateCategory?.icon}
                                                                                             </span>
-                                                                                        </>
-                                                                                 : null}
+                                                                                            <p>{selectedDateCategory?.label}</p>
+                                                                                        </li>
+                                                                                        <span className="top-card_tag"><span className="top-badge"></span> ${selectedDate?.price}</span>
+                                                                                        <span className="bottom_price_tag">
+                                                                                            <h2><sup>H</sup> {selectedDate?.date_length.replace('H', '')}</h2>
+                                                                                        </span>
+                                                                                    </>
+                                                                                    : null}
                                                                             </ul>
                                                                         </div>
                                                                     </div>
