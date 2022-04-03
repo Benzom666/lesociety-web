@@ -140,7 +140,7 @@ function UserProfile({ preview, editHandle }) {
         <div className="inner-page">
             {!preview && <HeaderLoggedIn />}
             <div className="inner-part-page">
-                <div className="pt-2 pb-0 pt-5-lg-4 pb-5-lg-4">
+                <div className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${preview ? "space-top" : ""}`}>
                     <div className="container user_profile_page">
                         <div className="row">
                             <div className="col-md-2"></div>
@@ -176,13 +176,13 @@ function UserProfile({ preview, editHandle }) {
                                             )}
                                             {width < 991 && (
                                                 <div className="text-center">
-                                                    <svg width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
+                                                    <svg className="left-space" width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
                                                 </div>
                                             )}
                                             <div className="selct-wrap-sort mx-3">
                                                 <span>{userDetail?.location || user?.location}</span>
                                             </div>
-                                            <div className="user-images-wrap mt-1 mt-lg-4 user_img_profile">
+                                            <div className="user-images-wrap mt-3 mt-lg-4 user_img_profile">
                                                 <figure className="user_img_profile show-responsive_div pt-2 pt-lg-3">
                                                     <div className="big-image">
                                                         <label>
@@ -350,9 +350,9 @@ function UserProfile({ preview, editHandle }) {
                                                     </div>
                                                 </div>
                                                 <div className="more_content pt-3">
-                                                    <div className="text-center">
-                                                        <h6 className="mb-0">More about {userDetail?.user_name || user.user_name}</h6>
-                                                        <svg width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
+                                                    <div className="text-left-more">
+                                                        <h6 className="mb-3 text-left-more mt-3">More about {userDetail?.user_name || user.user_name}</h6>
+                                                        <svg className="d-none" width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
                                                         <p>{user.description}</p>
                                                         {preview && <div className="button-wrapper">
                                                             <button type="button" className="edit" onClick={editHandle}>

@@ -2213,7 +2213,11 @@ body {
         }
     }
 }
+.space-top {
+    padding-top: 55px !important;
+}
 
+.top-spase{padding-top: 0.5rem}
 .user_profile_page {
     .user_img_profile {
         margin: 0;
@@ -2260,7 +2264,7 @@ body {
         }
     }
     .userdetails {
-        overflow: auto;
+        overflow-x: hidden;
         h4 {
             font-weight: 600;
         }
@@ -3364,11 +3368,12 @@ body .verification_card_header {
     border: 3px solid #F24462;
     border-radius:11px;
 }
+
 .button-wrapper {
     display: flex;
     justify-content: space-between;
     overflow-x: hidden;
-    margin: 0px -15px 0px -15px;
+    // margin: 0px -15px 0px -15px;
     .next{
         background-color: #F24462;
     }
@@ -3401,6 +3406,13 @@ body .verification_card_header {
         align-items: center;
         -webkit-justify-content: center;
         justify-content: center;
-        margin-bottom: 30px;
+        // margin-bottom: 30px;
     }
+}
+.left-space {
+    margin-right: 16px;
+    margin-top: -12px;
+}
+.text-left-more {
+    text-align: left;
 }
