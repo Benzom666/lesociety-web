@@ -25,7 +25,10 @@ const CreateStepOne = props => {
                     <IoIosClose size={32} onClick={onClose}/>
                 </div>
                 {width > 767 && (
-                    <h3 className="text-center">Create a New Date</h3>
+                   <div className="d-flex justify-content-center">
+                        <h3 className="text-center">Create a New Date</h3>
+                        <IoIosClose className='desk-close-icon' size={32} onClick={onClose}/>
+                 </div>
                 )}
                 <div className="step-wraps">
                     <ul>

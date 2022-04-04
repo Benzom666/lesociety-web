@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 import validate from 'modules/auth/forms/validate/validate'
 import { CustomIcon } from 'core/icon';
 import { useRouter } from 'next/router';
-import useWindowSize from "utils/useWindowSize";  
+import useWindowSize from "utils/useWindowSize";
 import { IoIosClose } from 'react-icons/io';
-import { apiRequest } from 'utils/Utilities'; 
+import { apiRequest } from 'utils/Utilities';
 
 const CreateStepFour = props => {
     const { handleSubmit, previousPage, invalid, pristine, reset, submitting, onClose } = props
@@ -29,20 +29,20 @@ const CreateStepFour = props => {
             country_code: cityState?.enter_country?.value,
             [dateSuggestion?.search_type?.category]: dateSuggestion?.search_type?.label,
             date_length: timeState?.education,
-            price: priceState?.education, 
+            price: priceState?.education,
             date_details: dateDescription?.date_description,
             user_name: user?.user_name,
             date_status: false,
             isUpdate: router?.query?.edit ? Boolean(router?.query.edit) : undefined
         }
-        
+
         try {
-        const res = await apiRequest({
-            method: 'POST',
-            url: `/date`,
-            data: data
-        })
-        setLoader(false)
+            const res = await apiRequest({
+                method: 'POST',
+                url: `/date`,
+                data: data
+            })
+            setLoader(false)
         }
         catch (e) {
             setLoader(false);
@@ -58,14 +58,17 @@ const CreateStepFour = props => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     </a>
                     <h6 className="m-0 text-white-50">Create a New Date</h6>
-                    <IoIosClose size={32} onClick={onClose}/>
+                    <IoIosClose size={32} onClick={onClose} />
                 </div>
                 {width > 767 && (
-                    <h3 className="text-center">Create a New Date</h3>
+                    <div className="d-flex justify-content-center">
+                        <h3 className="text-center">Create a New Date</h3>
+                        <IoIosClose className='desk-close-icon' size={32} onClick={onClose} />
+                    </div>
                 )}
-                <div className="step-wraps" style={{marginLeft: '10px'}}>
+                <div className="step-wraps" style={{ marginLeft: '10px' }}>
                     <ul>
-                    <li className="complete active">
+                        <li className="complete active">
                             <span></span>
                         </li>
                         <li className="complete active">
@@ -78,15 +81,15 @@ const CreateStepFour = props => {
                             <span></span>
                         </li>
                     </ul>
-                </div>  
-            </div>    
-            <div className="date-suggetion-text">
-                <div className="inner_container" style={{paddingRight: '35px', paddingLeft: '35px'}}>
-                    <h6>Describe Date Details</h6>
-                    <p>Write about your date suggestions in more detail and why someone should select you as their date</p>   
                 </div>
             </div>
-            <form onSubmit={handleSubmit} className="date-class-section choose-gender" style={{paddingRight: '10px', paddingLeft: '10px'}}>
+            <div className="date-suggetion-text">
+                <div className="inner_container" style={{ paddingRight: '35px', paddingLeft: '35px' }}>
+                    <h6>Describe Date Details</h6>
+                    <p>Write about your date suggestions in more detail and why someone should select you as their date</p>
+                </div>
+            </div>
+            <form onSubmit={handleSubmit} className="date-class-section choose-gender" style={{ paddingRight: '10px', paddingLeft: '10px' }}>
                 <div className="inner_container">
                     <div className="mb-5 date-description">
                         <Field
@@ -127,9 +130,9 @@ const CreateStepFour = props => {
                                 />
                             </div> */}
                             <div className="mb-2 text-center">
-                                <CustomIcon.Diamond color={'#fff'} size={120}/>
+                                <CustomIcon.Diamond color={'#fff'} size={120} />
                             </div>
-                        </>    
+                        </>
                     )}
                     <div className="mb-8 bottom-content text-center">
                         <p>Thank you for being one of our early adopters! To show you our appreciation, we will keep your posts active until you delete it. This allows you to earn multiple times for each post. Goodluck!</p>
@@ -142,7 +145,7 @@ const CreateStepFour = props => {
                                         Next <FiArrowRight />
                                     </>
                                 }
-                            </button>    
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -154,4 +157,4 @@ export default reduxForm({
     form: 'CreateStepFour',
     destroyOnUnmount: false,
     validate
-  })(CreateStepFour);
+})(CreateStepFour);
