@@ -65,11 +65,12 @@ const CreateDate = props => {
           <DatePreview />
         </>
       )}
-      {width < 767 && (
+      {/* {width < 767 && ( */}
         <ConfirmDate
           isOpen={confirmPopup}
           toggle={toggle}
-        />)}
+        />
+        {/* )} */}
     </div>
   )
 }

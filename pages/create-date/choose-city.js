@@ -33,7 +33,7 @@ const ChooseCity = props => {
         }
     }
 
-    const toggle = () => setConfirmPopup(!confirmPopup)
+    const toggle = () => setConfirmPopup(!confirmPopup);
 
     const fetchDraftedDate = async () => {
         try {
@@ -94,7 +94,7 @@ const ChooseCity = props => {
             }
             props.initialize(data);
         }
-        if(!router?.query.edit) {
+        if (!router?.query.edit) {
             fetchDraftedDate();
         }
     }, [])
@@ -117,7 +117,7 @@ const ChooseCity = props => {
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
     return (
         <div className="inner-page">
-            {width > 767 && <HeaderLoggedIn />}
+            {/* {width > 767 && <HeaderLoggedIn />} */}
             <div className="inner-part-page">
                 <div className="container">
                     <div className="auth-section choose-city">
@@ -129,6 +129,12 @@ const ChooseCity = props => {
                                 <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
                                 <IoIosClose size={32} onClick={toggle} />
                             </div>
+                            {width > 767 && (
+                                <div className='d-flex justify-content-center'>
+                                    <h3 className="text-center">Create a New Date</h3>
+                                    <IoIosClose className="desk-close-first" size={32} onClick={toggle} />
+                                </div>
+                            )}
                             <div className="top-head mt-5 mb-3 text-center">
                                 <p></p>
                                 <h2>Spark A New Adventure</h2>
