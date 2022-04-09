@@ -33,7 +33,7 @@ const ChooseCity = props => {
         }
     }
 
-    const toggle = () => setConfirmPopup(!confirmPopup)
+    const toggle = () => setConfirmPopup(!confirmPopup);
 
     const fetchDraftedDate = async () => {
         try {
@@ -132,7 +132,7 @@ const ChooseCity = props => {
                             {width > 767 && (
                                 <div className='d-flex justify-content-center'>
                                     <h3 className="text-center">Create a New Date</h3>
-                                    <IoIosClose className="desk-close-icon" size={32} onClick={toggle} />
+                                    <IoIosClose className="desk-close-first" size={32} onClick={toggle} />
                                 </div>
                             )}
                             <div className="top-head mt-5 mb-3 text-center">
