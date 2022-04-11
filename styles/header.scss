@@ -1,28 +1,33 @@
-header{
-    nav{
-        ul{
-            li{
+header {
+    nav {
+        ul {
+            li {
                 margin-left: 30px;
-                
-                a , button{
+
+                a,
+                button {
                     color: $white-color;
                     text-decoration: none;
                     font-size: 16px;
                     font-weight: 300;
                     letter-spacing: 1px;
                 }
-                button{
+
+                button {
                     background: transparent;
-                    border:none;
+                    border: none;
                     outline: none;
-                    &.message_link{
+
+                    &.message_link {
                         position: relative;
-                        & > span{
+
+                        &>span {
                             margin-right: 8px;
                             position: relative;
                             bottom: 1px;
                         }
-                        .top-bages{
+
+                        .top-bages {
                             position: absolute;
                             min-width: 12px;
                             height: 12px;
@@ -40,21 +45,27 @@ header{
                         }
                     }
                 }
-                .user-profile-details{
-                    figure{
+
+                .user-profile-details {
+                    figure {
                         margin: 0;
                         padding: 0;
                         position: relative;
                         padding-right: 15px;
                         cursor: pointer;
-                        & > div{
+
+                        &>div {
                             top: 3px;
                         }
-                        img{
+
+                        img {
                             border-radius: 50%;
                         }
-                        @media only screen and (min-width:767px){
-                            &::before,&::after{
+
+                        @media only screen and (min-width:767px) {
+
+                            &::before,
+                            &::after {
                                 position: absolute;
                                 left: calc(100% - 4px);
                                 top: calc(50% - 4px);
@@ -66,18 +77,21 @@ header{
                                 pointer-events: none;
                                 cursor: pointer;
                             }
-                            &::after{
+
+                            &::after {
                                 left: calc(100% - 7.5px);
                                 transform: rotate(-45deg);
                             }
                         }
                     }
                 }
-                @media only screen and (max-width:767px){
-                    margin-left: 20px;
+
+                @media only screen and (max-width:767px) {
+                    margin-left: 5px;
                 }
             }
         }
+
         .sidebar-nav {
             position: fixed;
             top: 0;
@@ -88,10 +102,11 @@ header{
             z-index: 991;
             opacity: 0;
             transition: all 300ms ease-in-out;
+
             // @media only screen and (max-width:767px){
             //     height: 100%;
             // }
-            &::before{
+            &::before {
                 position: fixed;
                 background: rgba($color: #000000, $alpha: 0.6);
                 content: '';
@@ -99,35 +114,48 @@ header{
                 width: 100%;
                 height: 100%;
                 right: calc(0% + 400px);
-                top :0;
+                top: 0;
                 display: none;
             }
-            &.open_nav_menu{
+
+            &.open_nav_menu {
                 opacity: 1;
                 right: 0;
-                &::before{
+
+                &::before {
                     display: block;
                 }
             }
-            @media only screen and (max-width:767px){
+
+            @media only screen and (max-width:767px) {
                 width: 300px;
-                &:before{
+
+                &:before {
                     right: calc(0% + 300px);
                 }
             }
         }
     }
-    @media only screen and (max-width:767px){
+
+    @media only screen and (max-width:767px) {
         display: none;
-        &.loggedin_user{
+
+        &.loggedin_user {
             display: block;
         }
     }
+
+    .st-logo {
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: 700;
+    }
 }
 
-.inner-page{
-    header{
+.inner-page {
+    header {
         border-bottom: 0.7px solid #4F4E54;
+
         @media only screen and (max-width: 767px) {
             border-bottom: 0 !important;
         }

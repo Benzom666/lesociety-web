@@ -40,14 +40,14 @@ export default function HeaderLoggedIn({ fixed }) {
     };
 
     return (
-        <header style={fixed ? { position: 'fixed', width: '100%', zIndex: '99'} : {}} className="py-2 py-md-4 loggedin_user">
+        <header style={fixed ? { position: 'fixed', width: '100%', zIndex: '99' } : {}} className="py-3 py-md-4 loggedin_user">
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-md-4 col-2">
                         <div className="logo">
 
                             <>
-                                <h3 className="d-md-none mb-0">ST</h3>
+                                <h3 className="d-md-none mb-0 st-logo">ST</h3>
                                 <Link href="/auth/login" >
                                     <img src="/images/logo.svg" width="159" alt="Logo" className="d-none d-md-block" />
                                 </Link>
