@@ -24,7 +24,7 @@ const DatePreview = props => {
     const toggle = () => setConfirmPopup(!confirmPopup);
 
     const postDate = () => {
-        router.push({ pathname: '/user/user-list', query: { city: cityState?.enter_city?.name, country: cityState.enter_country?.value } }, '/user/user-list');
+        router.push({ pathname: '/user/user-list', query: { city: cityState?.enter_city?.name, country: cityState.enter_country?.value, province: cityState?.enter_city?.province[0]?.short_code?.split("-")[1] ? cityState?.enter_city?.province[0]?.short_code?.split("-")[1] : cityState?.enter_city?.province[0]?.short_code } }, '/user/user-list');
         dispatch(reset('ChooseCity'))
         dispatch(reset('CreateStepOne'))
         dispatch(reset('CreateStepTwo'))

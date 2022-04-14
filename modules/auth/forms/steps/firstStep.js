@@ -5,6 +5,7 @@ import validate from '../validate/validate'
 import { Inputs } from 'core';
 import { FiArrowRight } from "react-icons/fi";
 import useWindowSize from "../../../../utils/useWindowSize";
+import { components } from 'react-select';
 import { existEmail, existUsername, fetchLocation, fetchLiveLocation, fetchRealLocation } from "./validateRealTime";
 import { useDispatch, useSelector } from 'react-redux'
 import { bodyType, Ethnicity, countriesCode } from '../../../../utils/Utilities';
@@ -83,7 +84,7 @@ const FirstStep = props => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       if (position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
         const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
-        const data = { label: location[0].label+", "+location[0].country[0].short_code?.toUpperCase(), value: location[0].label, country: location[0].country[0].text }
+        const data = { label: location[0].label+", "+location[0].province[0]?.short_code?.split('-')[1], value: location[0].name, country: location[0].country[0], province: location[0].province[0] }
         props.change('location', data);
         setLoadingLive(false)
       }
@@ -99,7 +100,7 @@ const FirstStep = props => {
 
   useEffect(() => {
     if (places.length > 0) {
-      const options = places.map(item => ({ label: item.label + ', ' + item.country[0].short_code.toUpperCase(), country: item.country[0].text, value: item.label }))
+      const options = places.map(item => ({ label: item.label , country: item.country[0], value: item.name, province: item.province[0] }))
       setLocation(options)
     }
   }, [places])
@@ -187,6 +188,12 @@ const FirstStep = props => {
             props.change('location', value)
           }}
           validate={locationValidate}
+          components={{
+            Option: ({ children, ...rest }) => (
+              <components.Option {...rest}>
+               <> <h6>{children.split(",")[0]}</h6> <span>{rest.data?.province?.text}, {rest.data?.country?.text}</span></>
+              </components.Option>
+            )}}
         />
         <div className="age-field">
           <Field

@@ -1712,7 +1712,7 @@ $GradientColor-second: rgba(#191919, .8);
             }
 
             ul li .check {
-                margin-top: 1px;
+                margin-top: -12px;
                 margin-right: -20px;
                 float: right;
                 display: block;
@@ -2442,6 +2442,7 @@ div[id='scrolldiv'] {
 
             img {
                 border-radius: 50%;
+                object-fit: cover;
             }
 
             &>div {

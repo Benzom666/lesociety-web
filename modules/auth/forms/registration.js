@@ -23,7 +23,9 @@ const RegisterForm = props => {
     } else {
       const data = {...values,
         gender: gender,
-        country: values.location.country,
+        country: values.location.country?.text,
+        country_code: values.location.country?.short_code,
+        province: values?.location?.province?.short_code?.split('-')[1],
         location: values.location.value,
         email: values.email?.toLowerCase()
        }

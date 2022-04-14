@@ -27,6 +27,8 @@ const CreateStepFour = props => {
         const data = {
             location: cityState?.enter_city?.name,
             country_code: cityState?.enter_country?.value,
+            country: cityState?.enter_country?.label,
+            province: cityState?.enter_city?.province[0]?.short_code?.split("-")[1] ? cityState?.enter_city?.province[0]?.short_code?.split("-")[1] : cityState?.enter_city?.province[0]?.short_code,
             [dateSuggestion?.search_type?.category]: dateSuggestion?.search_type?.label,
             date_length: timeState?.education,
             price: priceState?.education,

@@ -97,7 +97,12 @@ export const fetchLiveLocation = async (lat, long, countries) => {
                 return {
                     name: place.text,
                     country: place.context.filter(item => item.id.includes('country')),
-                    label: place.text
+                    label: place.text,
+                    province: place.place_type?.includes('region') ? [{
+                        "id": "region",
+                        "short_code": place?.properties?.short_code,
+                        "text": place.text
+                    }] : place.context.filter(item => item.id.includes('region'))
                 }
             })
             return places
@@ -123,10 +128,17 @@ export const fetchRealLocation = _.debounce(async (values, countries, setPlaces)
         })
         if(res.data.features.length > 0) {
             const places = res.data.features.map(place => {
+                const province_code = place.place_type?.includes('region') ? 
+                place?.properties?.short_code?.toUpperCase() : place.context.find(item => item.id.includes('region'))?.short_code?.toUpperCase()
                 return {
                     name: place.text,
                     country: place.context.filter(item => item.id.includes('country')),
-                    label: place.text
+                    label: place.text + ", " + province_code?.split("-")[1],
+                    province: place.place_type?.includes('region') ? [{
+                        "id": "region",
+                        "short_code": place?.properties?.short_code,
+                        "text": place.text
+                    }] : place.context.filter(item => item.id.includes('region'))
                 }
             })
             setPlaces(places)

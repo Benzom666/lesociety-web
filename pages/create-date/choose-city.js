@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Field, reduxForm, change, initialize } from 'redux-form'
 import validate from 'modules/auth/forms/validate/validate'
 import { FiArrowRight } from "react-icons/fi";
-import HeaderLoggedIn from 'core/loggedInHeader'
 import Footer from 'core/footer'
 import { Inputs } from 'core';
 import { IoIosClose } from 'react-icons/io';
@@ -14,6 +13,7 @@ import ConfirmDate from './../../modules/date/confirmDate'
 import withAuth from "../../core/withAuth";
 import useWindowSize from 'utils/useWindowSize';
 import router from 'next/router';
+import { components } from 'react-select';
 
 const ChooseCity = props => {
     const [locationOptions, setLocation] = useState([]);
@@ -56,7 +56,8 @@ const ChooseCity = props => {
                                 short_code: draftedDate.country_code,
                                 text: country
                             }],
-                            label: draftedDate?.location
+                            label: draftedDate?.location + ", " + draftedDate?.province,
+                            province: [{short_code: draftedDate?.province?.toUpperCase()}]
                         }
                     }));
                     dispatch(initialize('CreateStepOne', { 'search_type': category }));
@@ -89,7 +90,8 @@ const ChooseCity = props => {
                 enter_city: {
                     name: user.location,
                     country: user.country,
-                    label: user.location
+                    label: user.location + ", " + user?.province?.toUpperCase(),
+                    province: [{short_code: user?.province?.toUpperCase()}] 
                 }
             }
             props.initialize(data);
@@ -106,8 +108,13 @@ const ChooseCity = props => {
                 const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
                 const data = {
                     enter_country: { label: location[0].country[0].text, value: location[0].country[0].short_code },
-                    enter_city: location[0]
+                    enter_city: {
+                        name: location[0].name,
+                        country: location[0].country[0],
+                        label: location[0].name + ", " +location[0].province[0]?.short_code?.split("-")[1]?.toUpperCase(),
+                        province: location[0]?.province
                 }
+            }
                 props.initialize(data);
                 setLoadingLive(false)
             }
@@ -188,11 +195,17 @@ const ChooseCity = props => {
                                         change('enter_city', value)
                                     }}
                                     loading={loadingLive}
+                                    components={{
+                                        Option: ({ children, ...rest }) => (
+                                          <components.Option {...rest}>
+                                           <> <h6>{children.split(",")[0]}</h6> <span>{rest.data?.province[0]?.text}, {rest.data?.country[0]?.text}</span></>
+                                          </components.Option>
+                                        )}}
                                 />
                             </div>
                             <div className="bottom-mobile register-bottom">
                                 <div className="secret-input type-submit next-prev">
-                                    <Link href="/create-date/date-event?edit=true" >
+                                    <Link href={router?.query.edit ? "/create-date/date-event?edit=true" : "/create-date/date-event"} >
                                         <button className="next" disabled={invalid}>
                                             {/* <span className="spin-loader-button"></span> */}
                                             Next <FiArrowRight />

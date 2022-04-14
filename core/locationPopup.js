@@ -4,7 +4,7 @@ import { TransitionMotion, spring, presets } from "react-motion";
 import { Inputs } from 'core';
 import H5 from "./H5";
 import Modal from 'react-modal';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router'
 import { IoMdLocate } from 'react-icons/io';
 import _ from 'lodash'
@@ -18,26 +18,8 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
   const [places, setPlaces] = useState('');
   const [city, setCity] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [todo, setTodo] = useState([
-    // key is creation date
-    // { key: "t1", data: { name: "Indore", country: 'India', short_code: 'IN' } },
-    // { key: "t2", data: { name: "Delhi", country: 'India', short_code: 'IN' } },
-    // {
-    //   key: "t4",
-    //   data: { name: "Jaipur", country: 'India', short_code: 'IN' }
-    // },
-    // {
-    //   key: "t6",
-    //   data: { name: "Hyderabad", country: 'India', short_code: 'IN' }
-    // },
-    // { key: "t7", data: { name: "Bangalore", country: 'India', short_code: 'IN' } },
-    // { key: "t8", data: { name: "Pune", country: 'India', short_code: 'IN' } },
-    // {
-    //   key: "t9",
-    //   data: { name: "Noida", country: 'India', short_code: 'IN' }
-    // },
-    // { key: "t11", data: { name: "Chennai", country: 'India', short_code: 'IN' } }
-  ])
+  const [todo, setTodo] = useState([])
+  const user = useSelector(state => state?.authReducer?.user)
 
   const handleFetchLocation = async (cities) => {
     const alreadyInList = todo.find(item => item.data?.name?.toLowerCase()?.includes(cities?.toLowerCase()));
@@ -61,7 +43,7 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
 
   useEffect(() => {
     if (city.length > 0) {
-      const list = city.map(item => ({ key: 't' + item.name + item.country[0]?.id, data: { name: item.name, country: item?.country[0]?.text, short_code: item?.country[0]?.short_code } }))
+      const list = city.map(item => ({ key: 't' + item.name + item.country[0]?.id, data: { name: item.name, country: item?.country[0]?.text, short_code: item?.country[0]?.short_code, province: item?.province[0] } }))
       const data = [...todo, ...list];
       const finalTodo = data?.filter((item, index) => data?.findIndex(ele => ele.data.name.toLowerCase() === item?.data?.name?.toLowerCase()) === index)
       setTodo(finalTodo);
@@ -77,7 +59,7 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
         setPlaces(location?.name);
         const alreadyInList = todo.find(item => item.data.name?.toLowerCase()?.includes(location?.name?.toLowerCase()));
         if (!alreadyInList) {
-          setTodo([...todo, { key: 't' + location.name + location.country[0]?.id, data: { name: location.name, country: location?.country[0]?.text, short_code: location?.country[0]?.short_code } }])
+          setTodo([...todo, { key: 't' + location.name + location.country[0]?.id, data: { name: location.name, country: location?.country[0]?.text, short_code: location?.country[0]?.short_code, province: location?.province[0] } }])
         }
         dispatch(change('LocationPopup', 'enter_city', location?.name))
         setLoading(false)
@@ -93,7 +75,11 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
         setCountry(locationOption);
       }
     };
-    fetch();
+    if(user?.gender === "male") {
+      setCountry(user?.country_code)
+    } else {
+      fetch();
+    }
   }, [])
 
   const getDefaultStyles = () => {
@@ -114,7 +100,7 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
         return {
           ...todo,
           style: {
-            height: spring(48, presets.gentle),
+            height: spring(70, presets.gentle),
             opacity: spring(1, presets.gentle)
           }
         };
@@ -190,15 +176,16 @@ function LocationPopup({ modalIsOpen, closeModal, selectedLocation, setLocation 
                     key={key}
                     style={style}
                     onClick={() => {
-                      setLocation({ city: data?.name, country: data?.short_code })
+                      setLocation({ city: data?.name, country: data?.short_code, province: data?.province?.short_code?.split("-")[1] })
                       setTimeout(() => {
                         closeModal();
                        }, 1000);
                       // closeModal();
                     }}
                   >
-                    <span>{data?.name}</span>
-                    <input type="radio" checked={selectedLocation?.city === data?.name} />
+                    <span>{data?.name}</span><br/>
+                    <span style={{fontSize: '16px', marginLeft: '5px'}}>{data?.province?.text}, {data?.country}</span>
+                    <input type="radio" checked={selectedLocation?.city?.toLowerCase() === data?.name?.toLowerCase()} />
                     <div className="check"></div>
                   </li>
                 ))}

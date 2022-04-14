@@ -62,16 +62,16 @@ function UserList() {
 
     useEffect(() => {
         if (selectedLocation?.city) {
-            const params = { location: selectedLocation?.city, current_page: page, per_page: 10 };
+            const params = { location: selectedLocation?.city, current_page: page, per_page: 10, province: selectedLocation?.province };
             fetchDate(params)
         }
     }, [selectedLocation])
 
     useEffect(() => {
         if(router?.query?.city) {
-            setLocation({ city: router?.query?.city, country: router?.query?.country })
+            setLocation({ city: router?.query?.city, country: router?.query?.country, province: router?.query?.province })
         } else {
-            setLocation({ city: user.location, country: country })
+            setLocation({ city: user.location, country: country, province: user?.province })
         }
     }, [user?.location])
 
@@ -140,7 +140,7 @@ function UserList() {
     });
 
     const nextPage = () => {
-        const params = { location: selectedLocation?.city, current_page: page + 1, per_page: 10 };
+        const params = { location: selectedLocation?.city, province: selectedLocation?.province, current_page: page + 1, per_page: 10 };
         setPage(page + 1)
         fetchDate(params);
     }
@@ -179,7 +179,7 @@ function UserList() {
                                         >
                                             <span className="hidden-sm">Nearby</span>
                                             <div onClick={() => setLocationPoup(true)} className="selct-wrap-sort">
-                                                <label><span style={{ 'margin-right': '5px' }} >{selectedLocation?.city}, {selectedLocation?.country?.toUpperCase()}</span></label>
+                                                <label><span style={{ 'margin-right': '5px' }} >{selectedLocation?.city}, {selectedLocation?.province?.toUpperCase()}</span></label>
                                             </div>
                                         </div>
                                     </div>
