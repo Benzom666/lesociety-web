@@ -8,7 +8,7 @@ export function uploadFileField({ accept, input, value, type, meta: { touched, e
   return <div className={`secret-input type-${type}`}>
     <React.Fragment>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
-      <input {...input} value={value} autoComplete="off" className="form-control" type={type} accept={accept} />
+      <input {...input} onBlur={() => console.log('hello')} value={value} autoComplete="off" className="form-control" type={type} accept={accept} />
     </React.Fragment>
   </div>
 }

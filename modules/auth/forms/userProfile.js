@@ -189,11 +189,11 @@ function UserProfile({ preview, editHandle }) {
                                                         <label>
                                                             <>
                                                                 <div className="pos-relative">
-                                                                    <Image
+                                                                    <img
                                                                         src={userDetail?.images ? userDetail?.images[0] : user.images && user.images[0]}
                                                                         alt="user image"
-                                                                        width={240}
-                                                                        height={300}
+                                                                        width="350"
+                                                                        height="350"
                                                                     />
                                                                     <span className="verified_check_tag">
                                                                         <HiBadgeCheck color={'white'} size={20} />
