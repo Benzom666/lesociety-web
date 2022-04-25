@@ -1310,6 +1310,14 @@ $GradientColor-second: rgba(#191919, .8);
     .selct-wrap-sort {
         position: relative;
 
+        .state-txt {
+            text-transform: uppercase;
+        }
+
+        .city-txt {
+            text-transform: capitalize;
+        }
+
         select {
             background: transparent;
             appearance: none;
@@ -2034,6 +2042,10 @@ div[id='scrolldiv'] {
         position: relative;
         overflow: hidden;
 
+        .date-preview-img {
+            object-fit: cover;
+        }
+
         img {
             border-radius: 5px;
         }
@@ -2083,6 +2095,7 @@ div[id='scrolldiv'] {
                     .address {
                         font-size: 14px;
                         word-break: break-all;
+                        text-transform: capitalize;
                     }
                 }
             }
@@ -2536,6 +2549,12 @@ body {
                     box-shadow: none;
                     outline: none;
                 }
+            }
+
+            &.edit-photo-btn {
+                background: #151515;
+                text-transform: capitalize;
+                cursor: pointer;
             }
 
             &.add_photo {

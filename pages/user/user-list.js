@@ -68,7 +68,7 @@ function UserList() {
     }, [selectedLocation])
 
     useEffect(() => {
-        if(router?.query?.city) {
+        if (router?.query?.city) {
             setLocation({ city: router?.query?.city, country: router?.query?.country, province: router?.query?.province })
         } else {
             setLocation({ city: user.location, country: country, province: user?.province })
@@ -147,7 +147,7 @@ function UserList() {
 
     const handleScroll = () => {
         const position = window.pageYOffset
-        if(scrollPosition > position) {
+        if (scrollPosition > position) {
             setScrollType('up')
         } else {
             setScrollType('down')
@@ -165,21 +165,21 @@ function UserList() {
 
     return (
         <div className="inner-page" id="infiniteScroll">
-            <HeaderLoggedIn fixed={width < 767}/>
+            <HeaderLoggedIn fixed={width < 767} />
             <div className="inner-part-page">
                 <div className="pt-5 pb-4">
                     <div className="container user_list_wrap">
                         <div className="row">
                             <div className="col-md-2"></div>
                             <div className="col-md-8">
-                                <div className="row">    
+                                <div className="row">
                                     <div className="col-md-12">
-                                        <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3" 
-                                        style={scrollType === 'up' && scrollPosition > 250 && !locationPopup ? (width > 767 ? { position: 'fixed', width: '59%', zIndex: '99' } : { position: 'fixed', left: '42%', zIndex: '99' }) : {position: 'relative'}}
+                                        <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3"
+                                            style={scrollType === 'up' && scrollPosition > 250 && !locationPopup ? (width > 767 ? { position: 'fixed', width: '59%', zIndex: '99' } : { position: 'fixed', left: '42%', zIndex: '99' }) : { position: 'relative' }}
                                         >
                                             <span className="hidden-sm">Nearby</span>
                                             <div onClick={() => setLocationPoup(true)} className="selct-wrap-sort">
-                                                <label><span style={{ 'margin-right': '5px' }} >{selectedLocation?.city}, {selectedLocation?.province?.toUpperCase()}</span></label>
+                                                <label><span className='city-txt' style={{ 'margin-right': '5px' }} >{selectedLocation?.city}, {selectedLocation?.province?.toUpperCase()}</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -193,21 +193,21 @@ function UserList() {
                                 >
                                     <div className="row">
                                         {dates.length > 0 ? dates.map((item, index) =>
-                                            <div className={`col-xl-6 col-lg-12 ${(width > 767 && (index === 2 || index === 3 ) ) || index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
-                                               {width > 767 ? 
-                                               <UserCardList 
-                                                setDateId={setDateId} 
-                                                date={item} 
-                                                cardId={`grow-${index}`} 
-                                                openPopup={openPopup} 
-                                                closePopup={closePopup} 
-                                                dateId={dateId}
-                                                isDesktopView={true}
-                                                 />  : 
-                                               <UserCardList setDateId={setDateId} date={item} cardId={`grow-${index}`} openPopup={openPopup} closePopup={closePopup} growDiv={growDiv} dateId={dateId} />}
+                                            <div className={`col-xl-6 col-lg-12 ${(width > 767 && (index === 2 || index === 3)) || index === 0 || index === 1 ? 'scrollActive' : ''}`} id={`scrolldiv`}>
+                                                {width > 767 ?
+                                                    <UserCardList
+                                                        setDateId={setDateId}
+                                                        date={item}
+                                                        cardId={`grow-${index}`}
+                                                        openPopup={openPopup}
+                                                        closePopup={closePopup}
+                                                        dateId={dateId}
+                                                        isDesktopView={true}
+                                                    /> :
+                                                    <UserCardList setDateId={setDateId} date={item} cardId={`grow-${index}`} openPopup={openPopup} closePopup={closePopup} growDiv={growDiv} dateId={dateId} />}
                                             </div>
-                                        ): !loading && 
-                                         <div className="no-message-card-date">
+                                        ) : !loading &&
+                                        <div className="no-message-card-date">
                                             <figure>
                                                 <Image
                                                     src={NoImage}
@@ -218,8 +218,8 @@ function UserList() {
                                             </figure>
                                             <h6>Sorry, no dates found for the selected location</h6>
                                             <SubHeading title="Find a date by changing the location!" />
-                                        </div> 
-                                        }   
+                                        </div>
+                                        }
                                     </div>
                                 </InfiniteScroll>
                             </div>
@@ -248,9 +248,9 @@ function UserList() {
                 </div>
                 <p className='tip'>Tip: ask her which date she prefers</p>
             </div>
-            <DatePopup 
-            modalIsOpen={modalIsOpen}
-            closeModal={closeModal}
+            <DatePopup
+                modalIsOpen={modalIsOpen}
+                closeModal={closeModal}
             />
             <LocationPopup
                 modalIsOpen={locationPopup}

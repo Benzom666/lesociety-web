@@ -22,7 +22,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
     const [msgModal, setMsgModal] = React.useState(false);
     const user = useSelector(state => state.authReducer.user)
     const router = useRouter();
-    const growRef=useRef(null)
+    const growRef = useRef(null)
 
     function openModal() {
         setIsOpen(true);
@@ -35,7 +35,7 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
 
     async function growDiv(id) {
         closePopup();
-        
+
         let growDiv = document.getElementById(id);
         if (growDiv?.clientHeight) {
             growDiv.style.height = 0;
@@ -142,24 +142,24 @@ const UserCardList = ({ date, cardId, growDiv, dateId, openPopup, closePopup, is
                     </div>}
 
                 </figure>
-                {!isDesktopView && 
-                <div 
-                style={dateId !== cardId ? { height: 0 } : {}} id={cardId}  
-                >
-                    <div ref={growRef} className="date_details">
-                        <h4>Date Details</h4>
-                        <p>{date?.date_details}</p>
-                        <div className="button-wrapper mt-3">
-                            {user?.gender === 'male' &&
-                                <button onClick={openPopup} className="next">
-                                    Message
-                                </button>}
-                            <button type="button" className="edit" onClick={() => router.push(`/user/user-profile/${date?.user_name}`)}>
-                                <a>View profile</a>
-                            </button>
+                {!isDesktopView &&
+                    <div
+                        style={dateId !== cardId ? { height: 0 } : {}} id={cardId}
+                    >
+                        <div ref={growRef} className="date_details">
+                            <h4>Date Details</h4>
+                            <p>{date?.date_details}</p>
+                            <div className="button-wrapper mt-3">
+                                {user?.gender === 'male' &&
+                                    <button onClick={openPopup} className="next">
+                                        Message
+                                    </button>}
+                                <button type="button" className="edit" onClick={() => router.push(`/user/user-profile/${date?.user_name}`)}>
+                                    <a>View profile</a>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>}
+                    </div>}
             </div>
             {!isDesktopView && <Modal
                 isOpen={modalIsOpen}

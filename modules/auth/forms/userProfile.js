@@ -88,6 +88,7 @@ function UserProfile({ preview, editHandle }) {
     }, [router?.query])
 
     useEffect(() => {
+        console.log("====userDetail====", userDetail)
         if (user?.gender === 'female' && user?.user_name && !router?.query?.userName) {
             fetchDates(user?.user_name)
         }
@@ -165,6 +166,9 @@ function UserProfile({ preview, editHandle }) {
                                                             </span>
                                                         </div>
                                                     </label>
+                                                    {/* <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap">
+                                                        <button type="button" className="edit-photo-btn">Edit Photos</button>
+                                                    </div> */}
                                                 </div>
                                             </figure>
                                         )}
@@ -181,7 +185,8 @@ function UserProfile({ preview, editHandle }) {
                                                 </div>
                                             )}
                                             <div className="selct-wrap-sort mx-3">
-                                                <span>{userDetail?.location || user?.location}</span>
+                                                <span className="city-txt">{userDetail?.location || user?.location}, </span>
+                                                <span className="state-txt">{userDetail?.province || user?.province}</span>
                                             </div>
                                             <div className="user-images-wrap mt-3 mt-lg-4 user_img_profile">
                                                 <figure className="user_img_profile show-responsive_div pt-2 pt-lg-3">
@@ -231,16 +236,17 @@ function UserProfile({ preview, editHandle }) {
                                                     </figure>
                                                 </div>
                                                 <>
-                                                    <h4 className="mb-5 mt-4">{userDetail?.tagline || user?.tagline}</h4>
+                                                    {/* <h4 className="mb-5 mt-4">{userDetail?.tagline || user?.tagline}</h4> */}
 
                                                     {!preview && user?.gender === 'female' &&
                                                         <>
                                                             <SubHeading title="Available dates" />
                                                             <div className="verification_card_header text-center mb-5 mt-4">
+                                                                {/* <div className='d-flex '> */}
                                                                 {userDates.length > 0 ? userDates.map(date => {
                                                                     const category = dateCategory.find(item => item?.label === date?.standard_class_date || item?.label === date?.middle_class_dates || item?.label === date?.executive_class_dates)
                                                                     return (
-                                                                        <div className="availabe_card_inner" onClick={() => {
+                                                                        <div className="availabe_card_inner mr-3" onClick={() => {
                                                                             if (!router?.query?.userName) {
                                                                                 setSelectedDate(date);
                                                                                 dateModalIsOpen()
@@ -266,6 +272,8 @@ function UserProfile({ preview, editHandle }) {
                                                                             </ul>
                                                                         </div>)
                                                                 }) : null}
+                                                                {/* </div> */}
+
                                                                 <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap">
                                                                     <button type="button" onClick={() => router.push('/create-date/choose-city')} className="create-date">Create New Date</button>
                                                                 </div>
