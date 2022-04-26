@@ -2856,6 +2856,11 @@ body {
 }
 
 body .verification_card_header {
+    .available-dates-box {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
     .sub-heading {
         text-align: center;
 
@@ -2877,6 +2882,9 @@ body .verification_card_header {
         align-items: flex-end;
         min-height: 90px;
         margin-bottom: 12px;
+        margin-right: 12px;
+        flex: 1;
+        // min-width: 48%;
 
         .date_list {
             margin: 0;

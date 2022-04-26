@@ -242,7 +242,7 @@ function UserProfile({ preview, editHandle }) {
                                                         <>
                                                             <SubHeading title="Available dates" />
                                                             <div className="verification_card_header text-center mb-5 mt-4">
-                                                                {/* <div className='d-flex '> */}
+                                                                {/* <div className='d-flex available-dates-box'> */}
                                                                 {userDates.length > 0 ? userDates.map(date => {
                                                                     const category = dateCategory.find(item => item?.label === date?.standard_class_date || item?.label === date?.middle_class_dates || item?.label === date?.executive_class_dates)
                                                                     return (
