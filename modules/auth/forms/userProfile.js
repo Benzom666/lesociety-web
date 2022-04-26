@@ -88,7 +88,6 @@ function UserProfile({ preview, editHandle }) {
     }, [router?.query])
 
     useEffect(() => {
-        console.log("====userDetail====", userDetail)
         if (user?.gender === 'female' && user?.user_name && !router?.query?.userName) {
             fetchDates(user?.user_name)
         }
@@ -175,10 +174,10 @@ function UserProfile({ preview, editHandle }) {
                                     </div>
                                     <div className="col-xl-8 col-lg-7 col-md-12 col-12 padd0-responsive">
                                         <div className="userdetails resposnive-data-profile">
-                                            <h4>{userDetail?.user_name || user.user_name}, <span className="user_age">{userDetail?.age || user.age}</span></h4>
-                                            {width > 991 && (
+                                            <h4>{userDetail?.user_name || user.user_name}, <span>{userDetail?.age || user.age}</span></h4>
+                                            {/* {width > 991 && (
                                                 <p>{userDetail?.tagline || user?.tagline}</p>
-                                            )}
+                                            )} */}
                                             {width < 991 && (
                                                 <div className="text-center">
                                                     <svg className="left-space" width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
@@ -209,6 +208,7 @@ function UserProfile({ preview, editHandle }) {
                                                         </label>
                                                     </div>
                                                 </figure>
+                                                <SubHeading title="Photos" />
                                                 <div className="image_wrap_slider pt-3 pb-4">
                                                     <figure>
                                                         <Image
@@ -236,7 +236,7 @@ function UserProfile({ preview, editHandle }) {
                                                     </figure>
                                                 </div>
                                                 <>
-                                                    {/* <h4 className="mb-5 mt-4">{userDetail?.tagline || user?.tagline}</h4> */}
+                                                    <h4 className="mb-5 mt-4 text-center tagline-font">"{userDetail?.tagline || user?.tagline}"</h4>
 
                                                     {!preview && user?.gender === 'female' &&
                                                         <>
@@ -367,7 +367,7 @@ function UserProfile({ preview, editHandle }) {
                                                 </div>
                                                 <div className="more_content pt-3">
                                                     <div className="text-left-more">
-                                                        <h6 className="mb-3 text-left-more mt-3">More about {userDetail?.user_name || user.user_name}</h6>
+                                                        <h6 className="mb-3 text-left-more mt-3 more-about">More about <span>{userDetail?.user_name || user.user_name}</span></h6>
                                                         <svg className="d-none" width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
                                                         <p>{user.description}</p>
                                                         {preview && <div className="button-wrapper">
@@ -376,7 +376,7 @@ function UserProfile({ preview, editHandle }) {
                                                             </button>
                                                             <button className="next" onClick={onSubmit}>
                                                                 {loading ? <span className="spin-loader-button"></span> :
-                                                                    'Next'
+                                                                    'Finish'
                                                                 }
                                                             </button>
                                                         </div>}

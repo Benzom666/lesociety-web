@@ -2083,6 +2083,11 @@ div[id='scrolldiv'] {
                 min-width: 80px;
                 text-align: right;
                 float: right;
+
+                small {
+                    font-size: 14px;
+                    font-family: 'Helvetica';
+                }
             }
 
             .user_location {
@@ -2625,7 +2630,7 @@ body {
 
         .verified_check_tag {
             position: absolute;
-            bottom: 20px;
+            bottom: 40px;
             right: 0;
             padding: 5px 10px;
             background: linear-gradient(261.67deg, rgba(58, 62, 71, 0.7) 14.2%, rgba(46, 49, 58, 0.7) 92.52%);
@@ -2680,6 +2685,13 @@ body {
         }
 
         .user-images-wrap {
+            .tagline-font {
+                font-family: 'Helvetica';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+            }
+
             .image_wrap_slider {
                 display: flex;
                 align-items: center;
@@ -2719,10 +2731,16 @@ body {
                         min-height: 120px;
                         text-align: center;
 
+                        h5 {
+                            font-size: 18px;
+                        }
+
                         p {
                             color: #4F4E54;
-                            font-weight: 500;
-                            font-family: "Helvetica-bold";
+                            font-weight: 700;
+                            font-family: 'Helvetica';
+                            font-style: normal;
+                            font-size: 14px;
                             margin-bottom: 0;
                         }
                     }
@@ -4002,4 +4020,14 @@ body .verification_card_header {
 
 .text-left-more {
     text-align: left;
+}
+
+.more-about {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 300;
+
+    span {
+        font-weight: bold;
+    }
 }
