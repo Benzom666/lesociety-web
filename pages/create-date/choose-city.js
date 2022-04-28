@@ -57,7 +57,7 @@ const ChooseCity = props => {
                                 text: country
                             }],
                             label: draftedDate?.location + ", " + draftedDate?.province,
-                            province: [{short_code: draftedDate?.province?.toUpperCase()}]
+                            province: [{ short_code: draftedDate?.province?.toUpperCase() }]
                         }
                     }));
                     dispatch(initialize('CreateStepOne', { 'search_type': category }));
@@ -91,7 +91,7 @@ const ChooseCity = props => {
                     name: user.location,
                     country: user.country,
                     label: user.location + ", " + user?.province?.toUpperCase(),
-                    province: [{short_code: user?.province?.toUpperCase()}] 
+                    province: [{ short_code: user?.province?.toUpperCase() }]
                 }
             }
             props.initialize(data);
@@ -111,10 +111,10 @@ const ChooseCity = props => {
                     enter_city: {
                         name: location[0].name,
                         country: location[0].country[0],
-                        label: location[0].name + ", " +location[0].province[0]?.short_code?.split("-")[1]?.toUpperCase(),
+                        label: location[0].name + ", " + location[0].province[0]?.short_code?.split("-")[1]?.toUpperCase(),
                         province: location[0]?.province
+                    }
                 }
-            }
                 props.initialize(data);
                 setLoadingLive(false)
             }
@@ -133,7 +133,7 @@ const ChooseCity = props => {
                                 <a onClick={previousPage}>
                                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
                                 </a>
-                                <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
+                                <h6 className="m-0 text-white-50">Create a New Date</h6>
                                 <IoIosClose size={32} onClick={toggle} />
                             </div>
                             {width > 767 && (
@@ -197,10 +197,11 @@ const ChooseCity = props => {
                                     loading={loadingLive}
                                     components={{
                                         Option: ({ children, ...rest }) => (
-                                          <components.Option {...rest}>
-                                           <> <h6>{children.split(",")[0]}</h6> <span>{rest.data?.province[0]?.text}, {rest.data?.country[0]?.text}</span></>
-                                          </components.Option>
-                                        )}}
+                                            <components.Option {...rest}>
+                                                <> <h6>{children.split(",")[0]}</h6> <span>{rest.data?.province[0]?.text}, {rest.data?.country[0]?.text}</span></>
+                                            </components.Option>
+                                        )
+                                    }}
                                 />
                             </div>
                             <div className="bottom-mobile register-bottom">
