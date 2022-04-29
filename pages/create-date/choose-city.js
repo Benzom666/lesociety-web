@@ -206,12 +206,12 @@ const ChooseCity = props => {
                             </div>
                             <div className="bottom-mobile register-bottom">
                                 <div className="secret-input type-submit next-prev">
-                                    <Link href={router?.query.edit ? "/create-date/date-event?edit=true" : "/create-date/date-event"} >
+                                    {!confirmPopup && <Link href={router?.query.edit ? "/create-date/date-event?edit=true" : "/create-date/date-event"} >
                                         <button className="next" disabled={invalid}>
                                             {/* <span className="spin-loader-button"></span> */}
                                             Next <FiArrowRight />
                                         </button>
-                                    </Link>
+                                    </Link>}
                                 </div>
                             </div>
                         </form>
