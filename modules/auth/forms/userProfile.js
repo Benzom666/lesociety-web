@@ -165,9 +165,9 @@ function UserProfile({ preview, editHandle }) {
                                                             </span>
                                                         </div>
                                                     </label>
-                                                    {/* <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap">
+                                                    {router?.query?.userName && <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap">
                                                         <button type="button" className="edit-photo-btn">Edit Photos</button>
-                                                    </div> */}
+                                                    </div>}
                                                 </div>
                                             </figure>
                                         )}

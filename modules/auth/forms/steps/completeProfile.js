@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { apiRequest, showToast } from "../../../../utils/Utilities";
-import { AUTHENTICATE  } from '../../actionConstants';
+import { AUTHENTICATE } from '../../actionConstants';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -12,17 +12,17 @@ const CompleteProfile = props => {
     const router = useRouter();
 
     const handleResendMail = async () => {
-        if(user?.email) {
+        if (user?.email) {
             try {
                 const res = await apiRequest({
                     data: {
-                    email: user.email
+                        email: user.email
                     },
                     method: 'POST',
                     url: `user/verify-email`
                 })
                 showToast(res.data.message, 'success')
-            } catch(err) {
+            } catch (err) {
                 console.log('error', err)
             }
         }
@@ -30,7 +30,7 @@ const CompleteProfile = props => {
 
     useEffect(() => {
         const verifyEmail = async () => {
-            if(router?.query?.token && router?.query?.email) {
+            if (router?.query?.token && router?.query?.email) {
                 try {
                     const res = await apiRequest({
                         data: {
@@ -50,7 +50,7 @@ const CompleteProfile = props => {
                         payload: res.data.data
                     });
                     showToast(res.data.message, 'success')
-                } catch(err) {
+                } catch (err) {
                     setTokenValid(false)
                 }
             }
@@ -76,17 +76,17 @@ const CompleteProfile = props => {
                 {router?.query?.token ? (user?.email_verified ? 'Email Verified' : 'Email Verification') : router?.query?.edit ? 'Profile Updated' : 'Profile Completed'}
             </h2>
             <p>
-                {!user?.email_verified ? 
-                (!tokenValid ? 
-                'Token is expired. Please verify your email address, by clicking on the resend mail button.'  :
-                'Please verify your email address, by clicking on the link in the email that was delivered to your inbox.')
-                : 
-                `You're one step away from meeting ${user?.gender === "male" ? 'beautiful ladies' : 'generous gents'}` }
+                {!user?.email_verified ?
+                    (!tokenValid ?
+                        'Token is expired. Please verify your email address, by clicking on the resend mail button.' :
+                        'Please verify your email address, by clicking on the link in the email that was delivered to your inbox.')
+                    :
+                    `You're one step away from meeting ${user?.gender === "male" ? 'beautiful ladies' : 'generous gents'}`}
             </p>
-            {!user?.email_verified && 
-            <span className="resend-mail-text profile" onClick={handleResendMail}>
-            Resend an email
-            </span>}
+            {!user?.email_verified &&
+                <span className="resend-mail-text profile mt-5" onClick={handleResendMail}>
+                    Resend an email
+                </span>}
             {/* <label className="text-label">
                 Don’t wait any longer, start earning <br />
                 now by posting your first date!
