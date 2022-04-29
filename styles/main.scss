@@ -31,10 +31,13 @@ $GradientColor-second: rgba(#191919, .8);
         }
 
         h2 {
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 700;
             font-size: 32px;
             line-height: 37px;
             color: #fff;
-            font-weight: 600;
+
             letter-spacing: 1px;
             padding-bottom: 15px;
             margin: 0;
@@ -1197,7 +1200,7 @@ $GradientColor-second: rgba(#191919, .8);
                     @media only screen and (max-width: 767px) {
                         line-height: 1.3rem;
                         font-weight: 400;
-                        text-align: center;
+                        text-align: left;
                     }
                 }
             }
@@ -1471,6 +1474,7 @@ $GradientColor-second: rgba(#191919, .8);
 
         .next-button {
             background-color: #F24462;
+            margin-right: 10px;
         }
 
         .close-button {
@@ -1519,7 +1523,7 @@ $GradientColor-second: rgba(#191919, .8);
         border-radius: 0px !important;
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
-        background: transparent !important;
+        background: #000 !important;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2292,15 +2296,17 @@ div[id='scrolldiv'] {
 
         padding: 20px 20px;
         background: #151515;
-        border: 0.607143px solid #2930362e;
+        border: 0.607143px solid #7f868c2e;
         border-top: transparent;
         border-radius: 0 0 12px 12px;
         backdrop-filter: blur(10.9286px);
 
         h4 {
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 700;
             font-size: 19px;
             line-height: 24px;
-            font-weight: 500;
             margin-bottom: 15px;
         }
 

@@ -227,6 +227,13 @@ body {
         max-width: 340px;
         margin: 0 auto;
 
+        .price-text {
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
         @media only screen and (max-width: 767px) {
             padding: 0px 15px;
         }

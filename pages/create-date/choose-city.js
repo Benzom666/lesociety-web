@@ -169,8 +169,8 @@ const ChooseCity = props => {
                                     component={Inputs.renderDropdown}
                                     placeholder="Enter Country"
                                     withIcon={true}
-                                    label="Country"
-                                    subLabel="Traveling? Set up dates prior to you landing"
+                                    label="Traveling? Set up dates prior to you landing"
+                                    subLabel="Country"
                                     options={locationOptions}
                                     iconClick={handleIcon}
                                     openMenuOnClick={false}

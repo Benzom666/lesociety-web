@@ -98,7 +98,7 @@ const CreateStepTwo = props => {
             </div>
             <div className="date-suggetion-text">
                 <div className="inner_container" style={{ paddingRight: '20px', paddingLeft: '20px' }}>
-                    <h6>What’s Your Price?</h6>
+                    <h6 className="price-text">What’s Your Price?</h6>
                     <p>Determine how expensive you are and please consider he’s paying for the <br /> outing as well</p>
                 </div>
             </div>
