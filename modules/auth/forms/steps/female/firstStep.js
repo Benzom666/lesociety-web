@@ -10,11 +10,11 @@ import { components } from 'react-select';
 import { bodyType, Ethnicity, countriesCode } from '../../../../../utils/Utilities';
 import { existEmail, existUsername, fetchLocation, fetchLiveLocation, fetchRealLocation } from "../validateRealTime";
 
-const emailValidate = value =>  !value ? 'Email is Required' :  (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : 'User already exists');
-const notRealValidate = value => !value ? 'Email is Required' :  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' :  ''
+const emailValidate = value => !value ? 'Email is Required' : (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : 'User already exists');
+const notRealValidate = value => !value ? 'Email is Required' : !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : ''
 
-const userValidate = value =>  !value ? 'Username is Required' :  ( value.length < 3 ? 'Min 3 characters Required' : (value.length > 15 ? 'Username should not longer than 15 characters' : 'User already exists') )
-const notRealUserValidate = value => !value ? 'Username is Required' :  ( value.length < 3 ? 'Min 3 characters Required' : (value.length > 15 ? 'Username should not longer than 15 characters' : '') )
+const userValidate = value => !value ? 'Username is Required' : (value.length < 3 ? 'Min 3 characters Required' : (value.length > 15 ? 'Username should not longer than 15 characters' : 'User already exists'))
+const notRealUserValidate = value => !value ? 'Username is Required' : (value.length < 3 ? 'Min 3 characters Required' : (value.length > 15 ? 'Username should not longer than 15 characters' : ''))
 
 const passwordValidate = values => !values ? 'Password is Required' : (values.length < 6 ? 'Min 6 characters Required' : '')
 
@@ -22,9 +22,9 @@ const ethnicityValidate = values => !values ? 'Please Select Ethnicity' : ''
 
 const bodyValidate = values => !values ? 'Please Select body type' : ''
 
-const ageValidate = values =>  !values ? 'Age is Required' : (values < 18 ? '* Minimum 18 years' : values > 99 ? '* Maximun 99 years' : '' )
+const ageValidate = values => !values ? 'Age is Required' : (values < 18 ? '* Minimum 18 years' : values > 99 ? '* Maximun 99 years' : '')
 
-const locationValidate = values =>  !values?.value ? 'Location is Required' : ''
+const locationValidate = values => !values?.value ? 'Location is Required' : ''
 
 const FirstStep = props => {
   const [showPassword, setShowPassword] = useState(false);
@@ -84,7 +84,7 @@ const FirstStep = props => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       if (position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
         const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
-        const data = { label: location[0].label+", "+location[0].province[0]?.short_code?.split('-')[1], value: location[0].name, country: location[0].country[0], province: location[0].province[0] }
+        const data = { label: location[0].label + ", " + location[0].province[0]?.short_code?.split('-')[1], value: location[0].name, country: location[0].country[0], province: location[0].province[0] }
         props.change('location', data);
         setLoadingLive(false)
       }
@@ -100,7 +100,7 @@ const FirstStep = props => {
 
   useEffect(() => {
     if (places.length > 0) {
-      const options = places.map(item => ({ label: item.label , country: item.country[0], value: item.name, province: item.province[0] }))
+      const options = places.map(item => ({ label: item.label, country: item.country[0], value: item.name, province: item.province[0] }))
       setLocation(options)
     }
   }, [places])
@@ -172,7 +172,7 @@ const FirstStep = props => {
           type="text"
           component={Inputs.renderDropdown}
           label="Location"
-          placeholder="Enter the city you currently reside in"
+          placeholder="Enter your city"
           valueField='value'
           id="location1"
           withIcon={true}
@@ -191,9 +191,10 @@ const FirstStep = props => {
           components={{
             Option: ({ children, ...rest }) => (
               <components.Option {...rest}>
-               <> <h6>{children.split(",")[0]}</h6> <span>{rest.data?.province?.text}, {rest.data?.country?.text}</span></>
+                <> <h6>{children.split(",")[0]}</h6> <span>{rest.data?.province?.text}, {rest.data?.country?.text}</span></>
               </components.Option>
-            )}}
+            )
+          }}
         />
         <div className="age-field">
           <Field
