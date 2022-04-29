@@ -1058,7 +1058,8 @@ $GradientColor-second: rgba(#191919, .8);
             min-height: 100vh;
 
             .bottom-mobile {
-                position: fixed;
+                // position: fixed;
+                position: relative;
                 bottom: 0;
                 left: 50%;
                 transform: translateX(-50%);
