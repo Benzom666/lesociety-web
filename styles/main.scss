@@ -1210,6 +1210,7 @@ $GradientColor-second: rgba(#191919, .8);
         .desk-close-icon-new {
             position: relative;
             left: 145px;
+            cursor: pointer;
 
             @media only screen and (max-width: 767px) {
                 left: 99px

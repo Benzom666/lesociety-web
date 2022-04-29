@@ -7,6 +7,7 @@ import { IoIosClose } from 'react-icons/io';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import UserCardDetail from '@/core/UserCardDetail';
+import ConfirmDate from './../../modules/date/confirmDate';
 
 const DatePreview = props => {
     const { handleSubmit, previousPage, invalid, pristine, submitting, onClose } = props
@@ -74,6 +75,10 @@ const DatePreview = props => {
                     </div>
                 </div>
             </form>
+            <ConfirmDate
+                isOpen={confirmPopup}
+                toggle={toggle}
+            />
         </>
     )
 }

@@ -245,6 +245,7 @@ body {
         .desk-close-icon {
             position: relative;
             right: -42px;
+            cursor: pointer;
         }
     }
 
@@ -327,4 +328,6 @@ body {
     }
 }
 
-.intrested_model {}
+.mouse-point {
+    cursor: pointer;
+}

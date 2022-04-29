@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { fetchLocation, fetchLiveLocation, fetchRealLocation } from "../../modules/auth/forms/steps/validateRealTime";
 import { countriesCode, apiRequest, dateCategory } from '../../utils/Utilities';
 import { useDispatch, useSelector } from 'react-redux';
-import ConfirmDate from './../../modules/date/confirmDate'
+import ConfirmDate from './../../modules/date/confirmDate';
 import withAuth from "../../core/withAuth";
 import useWindowSize from 'utils/useWindowSize';
 import router from 'next/router';
@@ -134,12 +134,12 @@ const ChooseCity = props => {
                                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
                                 </a>
                                 <h6 className="m-0 text-white-50">Create a New Date</h6>
-                                <IoIosClose size={32} onClick={toggle} />
+                                <IoIosClose className="mouse-point" size={32} onClick={toggle} />
                             </div>
                             {width > 767 && (
                                 <div className='d-flex justify-content-center'>
                                     <h3 className="text-center">Create a New Date</h3>
-                                    <IoIosClose className="desk-close-first" size={32} onClick={toggle} />
+                                    <IoIosClose className="desk-close-first mouse-point" size={32} onClick={toggle} />
                                 </div>
                             )}
                             <div className="top-head mt-5 mb-3 text-center">
