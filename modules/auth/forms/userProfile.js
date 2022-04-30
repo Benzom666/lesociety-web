@@ -208,7 +208,7 @@ function UserProfile({ preview, editHandle }) {
                                                         </label>
                                                     </div>
                                                 </figure>
-                                                <SubHeading title="Photos" />
+                                                {width > 991 && <SubHeading title="Photos" />}
                                                 <div className="image_wrap_slider pt-3 pb-4">
                                                     <figure>
                                                         <Image

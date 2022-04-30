@@ -40,7 +40,7 @@ const CompleteProfile = props => {
                         method: 'POST',
                         url: `user/email-verification`,
                     })
-                    debugger
+                    // debugger
                     // dispatch({
                     //     type: AUTHENTICATE_UPDATE,
                     //     payload: {email_verified: true}

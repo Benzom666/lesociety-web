@@ -2,9 +2,9 @@ const validate = values => {
   const errors = {}
   if (!values.user_name) {
     errors.user_name = 'Username is Required'
-  } else if(values.user_name.length < 3) {
+  } else if (values.user_name.length < 3) {
     errors.user_name = 'Min 3 characters Required'
-  } else if(values.user_name.length > 15) {
+  } else if (values.user_name.length > 15) {
     errors.user_name = 'Username should not longer than 15 characters'
   }
   if (!values.email) {
@@ -16,7 +16,7 @@ const validate = values => {
     errors.password = 'Password is Required'
   } else if (values.password.length < 6) {
     errors.password = 'Min 6 characters Required'
-  } 
+  }
   if (!values.tagline) {
     errors.tagline = '* Min 8 - Max 100 characters'
   } else if (values.tagline.length < 8) {
@@ -39,11 +39,11 @@ const validate = values => {
     errors.date_description = '* Min 50 - Max 500 characters'
   }
   if (!values.offer) {
-    errors.offer = '* Min 30 - Max 350 characters'
+    errors.offer = '* Min 30 - Max 500 characters'
   } else if (values.offer.length < 30) {
-    errors.offer = '* Min 30 - Max 350 characters'
-  } else if (values.offer.length > 350) {
-    errors.offer = '* Min 30 - Max 350 characters'
+    errors.offer = '* Min 30 - Max 500 characters'
+  } else if (values.offer.length > 500) {
+    errors.offer = '* Min 30 - Max 500 characters'
   }
   if (!values.imageUpload) {
     errors.imageUpload = 'Image is Required'
