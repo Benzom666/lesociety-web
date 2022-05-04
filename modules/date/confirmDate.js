@@ -20,19 +20,17 @@ const ConfirmDate = ({ toggle, isOpen }) => {
         >
             <div className="model_content city-wrapper ">
                 <div className="header">
-                    <h4>End Create Date</h4>
+                    <h4 className="text-bold-h4">Not Ready To Commit?</h4>
                     <p>If you close this page you will have start over again</p>
                 </div>
                 <div className="button-wrapper">
                     <button type="submit" className="next-button" onClick={toggle}>
-                        Continue
-                        {/* creating */}
-                    </button>
-
-                    <button type="submit" className="close-button" onClick={redirect}>
-                        Close page
+                        Continue Creating
                     </button>
                 </div>
+                <p type="submit" className="a-wrapper" onClick={redirect}>
+                    Close page
+                </p>
 
             </div>
         </Modal>

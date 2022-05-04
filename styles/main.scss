@@ -1570,6 +1570,10 @@ $GradientColor-second: rgba(#191919, .8);
             font-size: 20px !important;
         }
 
+        .text-bold-h4 {
+            font-weight: bold;
+        }
+
         .todo-list {
             margin: 0;
             padding: 0;
@@ -1790,6 +1794,13 @@ $GradientColor-second: rgba(#191919, .8);
                 font-size: 14px;
                 font-family: "Helvetica-Light";
             }
+        }
+
+        .a-wrapper {
+            color: #ffffff !important;
+            text-decoration: underline;
+            font-size: 18px;
+            cursor: pointer;
         }
     }
 }
