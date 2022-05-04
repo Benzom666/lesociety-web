@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link'
 import { Field, reduxForm } from 'redux-form'
 import validate from '../validate/validate'
@@ -43,6 +43,7 @@ const FirstStep = props => {
   const [countries, setCountry] = useState('');
   const [loadingLive, setLoadingLive] = useState(false);
   const error = useSelector(state => state.form.RegisterFormMale?.syncErrors)
+  const locationRef = useRef(null);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -187,6 +188,7 @@ const FirstStep = props => {
             setInputValue("");
             props.change('location', value)
           }}
+          refName={locationRef}
           validate={locationValidate}
           components={{
             Option: ({ children, ...rest }) => (

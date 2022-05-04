@@ -95,9 +95,9 @@ export const fetchLiveLocation = async (lat, long, countries) => {
         if(res.data.features.length > 0) {
             const places = res.data.features.map(place => {
                 return {
-                    name: place.text,
+                    name: place.place_type?.includes('address') ? place.context.find(item => item.id.includes('place'))?.text : place.text,
                     country: place.context.filter(item => item.id.includes('country')),
-                    label: place.text,
+                    label: place.place_type?.includes('address') ? place.context.find(item => item.id.includes('place'))?.text : place.text,
                     province: place.place_type?.includes('region') ? [{
                         "id": "region",
                         "short_code": place?.properties?.short_code,

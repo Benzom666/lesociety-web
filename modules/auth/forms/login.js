@@ -8,6 +8,7 @@ import useWindowSize from "../../../utils/useWindowSize";
 import validate from './validate/validate';
 import { login } from '../authActions'
 import { useEffect } from 'react';
+import { useRef } from 'react';
 
 const SimpleForm = props => {
   const { width } = useWindowSize();
@@ -22,6 +23,7 @@ const SimpleForm = props => {
   });
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const passRef = useRef(null);
 
   const submitHandler = async (values) => {
     values.email = values.email?.toLowerCase();
@@ -34,6 +36,11 @@ const SimpleForm = props => {
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
+    if(passRef.current) {
+      setTimeout(() => {
+        passRef.current.setSelectionRange(password.password.length, password.password.length);
+      }, 10);
+    }
   };
 
   const handleMouseDownPassword = (event) => {
@@ -83,6 +90,8 @@ const SimpleForm = props => {
               label="Password"
               // validate={[passwordRequired]}
               placeholder="Password"
+              refName={passRef}
+              withRef={true}
             />
             <span className="icon" aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -124,6 +133,8 @@ const SimpleForm = props => {
               type={showPassword ? "text" : "password"}
               label="Password"
               placeholder="Enter your password"
+              refName={passRef}
+              withRef={true}
             />
             <span className="icon" aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
