@@ -336,7 +336,7 @@ function UserProfile({ preview, editHandle }) {
                                                     </div>
                                                     <div className="about_me_card_inner">
                                                         <div className="inner-box-me">
-                                                            <H5>{userDetail?.max_education || user.max_education}</H5>
+                                                            <h5 className="education-font">{userDetail?.max_education || user.max_education}</h5>
                                                             <p>Education Completed </p>
                                                         </div>
                                                     </div>
@@ -360,7 +360,7 @@ function UserProfile({ preview, editHandle }) {
                                                     </div>
                                                     <div className="about_me_card_inner">
                                                         <div className="inner-box-me">
-                                                            <H5>{userDetail?.occupation || user.occupation}</H5>
+                                                            <h5 className="administrat-font">{userDetail?.occupation || user.occupation}</h5>
                                                             <p>Occupation </p>
                                                         </div>
                                                     </div>
