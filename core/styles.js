@@ -105,4 +105,8 @@ export const drowdownStyles = {
         ...provided,
         color: "#d0d0d0"
     }),
+    placeholder: provided => ({
+        ...provided,
+        color: "#6C757D !important"
+    })
 };
