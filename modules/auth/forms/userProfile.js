@@ -370,7 +370,7 @@ function UserProfile({ preview, editHandle }) {
                                                         <h6 className="mb-3 text-left-more mt-3 more-about">More about <span>{userDetail?.user_name || user.user_name}</span></h6>
                                                         <svg className="d-none" width="60" height="2" viewBox="0 0 95 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.110596 1.36728H94.3167" stroke="url(#paint0_linear)"></path><defs><linearGradient id="paint0_linear" x1="105.948" y1="-1.61543" x2="8.2769" y2="-1.61543" gradientUnits="userSpaceOnUse"><stop stop-color="#FA789B" stop-opacity="0.01"></stop><stop offset="0.489981" stop-color="#F02D4E"></stop><stop offset="1" stop-color="#F24362" stop-opacity="0.01"></stop></linearGradient></defs></svg>
                                                         <p>{user.description}</p>
-                                                        {preview && <div className="button-wrapper">
+                                                        {preview && <div className="button-wrapper profile-btn">
                                                             <button type="button" className="edit" onClick={editHandle}>
                                                                 <a>Edit</a>
                                                             </button>
