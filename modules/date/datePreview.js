@@ -57,15 +57,16 @@ const DatePreview = props => {
                     <a onClick={previousPage}>
                         {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
                     </a>
-                    {/* <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6> */}
+                    <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
+                    <IoIosClose className="" size={32} onClick={toggle} />
 
                 </div>
             </div>
-            <div className="date-Preview-text ">
+            <div className={`${width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"} `}>
                 <div className="inner_container">
                     <div className="d-flex justify-content-center">
                         <h6>Date Preview</h6>
-                        <IoIosClose className="desk-close-icon-new" size={32} onClick={toggle} />
+                        {width > 767 && (<IoIosClose className="desk-close-icon-new" size={32} onClick={toggle} />)}
                     </div>
                     <p>Please check all the details of your date before posting. You will have a chance to edit it in the future</p>
                 </div>
@@ -81,7 +82,7 @@ const DatePreview = props => {
                         dateDescription={dateDescription}
                     />
                     {!confirmPopup && <div className="bottom-mobile register-bottom">
-                        <div className="secret-input type-submit next-prev prev-space">
+                        <div className="secret-input type-submit next-prev">
                             <button type="button" className="edit next">
                                 <Link href="/create-date/choose-city?edit=true"><a>Edit</a></Link>
                             </button>
