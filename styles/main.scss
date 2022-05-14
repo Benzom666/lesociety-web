@@ -1057,6 +1057,10 @@ $GradientColor-second: rgba(#191919, .8);
             padding-bottom: 160px;
             min-height: 100vh;
 
+            .prev-space {
+                bottom: 50px;
+            }
+
             .bottom-mobile {
                 position: fixed;
                 // position: relative;
@@ -1898,7 +1902,8 @@ $GradientColor-second: rgba(#191919, .8);
         background: #0b0b0b;
 
         p {
-            font-size: 14px;
+            font-family: 'Helvetica';
+            font-size: 17px;
             line-height: 18px;
             color: #afabab;
             text-align: center;

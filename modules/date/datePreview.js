@@ -81,7 +81,7 @@ const DatePreview = props => {
                         dateDescription={dateDescription}
                     />
                     {!confirmPopup && <div className="bottom-mobile register-bottom">
-                        <div className="secret-input type-submit next-prev">
+                        <div className="secret-input type-submit next-prev prev-space">
                             <button type="button" className="edit next">
                                 <Link href="/create-date/choose-city?edit=true"><a>Edit</a></Link>
                             </button>

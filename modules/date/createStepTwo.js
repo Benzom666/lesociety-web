@@ -79,7 +79,7 @@ const CreateStepTwo = props => {
                         <IoIosClose className="desk-close-icon mouse-point" size={32} onClick={onClose} />
                     </div>
                 )}
-                <div className="step-wraps" style={{ marginLeft: '10px' }}>
+                <div className="step-wraps" style={{ marginLeft: '9px' }}>
                     <ul>
                         <li className="complete active">
                             <span></span>
