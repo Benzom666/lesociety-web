@@ -174,7 +174,7 @@ function UserList() {
                             <div className="col-md-8">
                                 <div className="row">
                                     <div className="col-md-12">
-                                        <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3"
+                                        <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3 top-space"
                                             style={scrollType === 'up' && scrollPosition > 250 && !locationPopup ? (width > 767 ? { position: 'fixed', width: '59%', zIndex: '99' } : { position: 'fixed', left: '42%', zIndex: '99' }) : { position: 'relative' }}
                                         >
                                             <span className="hidden-sm">Nearby</span>

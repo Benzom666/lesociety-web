@@ -74,8 +74,8 @@ export default function HeaderLoggedIn({ fixed }) {
                                             <img
                                                 src={!_.isEmpty(user) ? user.images[0] : UserImg}
                                                 alt="user image"
-                                                width={30}
-                                                height={30}
+                                                width={32}
+                                                height={32}
                                             />
                                         </figure>
                                     </div>
