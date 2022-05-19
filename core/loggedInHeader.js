@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import _ from 'lodash'
 import { useRouter } from "next/router";
 
-export default function HeaderLoggedIn({ fixed }) {
+export default function HeaderLoggedIn({ fixed, isBlack }) {
     const [isActive, setActive] = useState(false);
     const width = useWindowSize();
     const router = useRouter()
@@ -40,7 +40,7 @@ export default function HeaderLoggedIn({ fixed }) {
     };
 
     return (
-        <header style={fixed ? { position: 'fixed', width: '100%', zIndex: '99' } : {}} className="py-3 py-md-4 loggedin_user">
+        <header style={fixed ? { position: 'fixed', width: '100%', zIndex: '99' } : {}} className={`py-3 py-md-4 loggedin_user ${isBlack && 'is-black-head'}`}>
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-md-4 col-2">

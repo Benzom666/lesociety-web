@@ -1164,11 +1164,14 @@ $GradientColor-second: rgba(#191919, .8);
 
                 .subLabel {
                     font-weight: 400;
-                    color: #767676;
-                    font-size: 1rem;
+                    font-size: 15px;
                     letter-spacing: unset;
                     line-height: unset;
                     text-align: unset;
+                    color: #EEEEEE;
+                    font-family: "Helvetica-Light";
+                    margin-bottom: 7px;
+
                 }
             }
 
@@ -1321,6 +1324,13 @@ $GradientColor-second: rgba(#191919, .8);
 
         .city-txt {
             text-transform: capitalize;
+        }
+
+        .city-txt-gallary {
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-size: 18px;
+            margin-right: 5px;
         }
 
         select {
@@ -2648,7 +2658,7 @@ body {
 
         img {
             border-radius: 12px;
-            object-fit: contain;
+            object-fit: cover;
             width: 100%;
         }
 
@@ -4082,4 +4092,13 @@ body .verification_card_header {
     span {
         font-weight: bold;
     }
+}
+
+.under-line-size {
+    margin-left: -28px;
+    width: 53px;
+}
+
+.is-black-head {
+    background: #000 !important;
 }

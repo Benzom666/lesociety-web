@@ -146,7 +146,7 @@ const ChooseCity = props => {
                                 <p></p>
                                 <h2>Spark A New Adventure</h2>
                                 <h6 className="text-white pt-1">Select Your Territory</h6>
-                                <svg width="86" height="2" viewBox="0 0 86 2" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '-28px' }}>
+                                <svg width="86" height="2" viewBox="0 0 86 2" fill="none" xmlns="http://www.w3.org/2000/svg" className="under-line-size">
                                     <path d="M0 1H86" stroke="url(#paint0_linear_1502:2374)" />
                                     <defs>
                                         <linearGradient id="paint0_linear_1502:2374" x1="96.6181" y1="-1.73994" x2="7.45495" y2="-1.73994" gradientUnits="userSpaceOnUse">

@@ -165,7 +165,7 @@ function UserList() {
 
     return (
         <div className="inner-page" id="infiniteScroll">
-            <HeaderLoggedIn fixed={width < 767} />
+            <HeaderLoggedIn fixed={width < 767} isBlack={locationPopup} />
             <div className="inner-part-page">
                 <div className="pt-5 pb-4">
                     <div className="container user_list_wrap">
@@ -179,7 +179,7 @@ function UserList() {
                                         >
                                             <span className="hidden-sm">Nearby</span>
                                             <div onClick={() => setLocationPoup(true)} className="selct-wrap-sort">
-                                                <label><span className='city-txt' style={{ 'margin-right': '5px' }} >{selectedLocation?.city}, {selectedLocation?.province?.toUpperCase()}</span></label>
+                                                <label><span className='city-txt city-txt-gallary' >{selectedLocation?.city}, {selectedLocation?.province?.toUpperCase()}</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -256,7 +256,8 @@ function UserList() {
                 modalIsOpen={locationPopup}
                 closeModal={() => setLocationPoup(false)}
                 selectedLocation={selectedLocation}
-                setLocation={setLocation} />
+                setLocation={setLocation}
+            />
         </div>
     )
 }
