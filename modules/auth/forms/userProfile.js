@@ -187,7 +187,7 @@ function UserProfile({ preview, editHandle }) {
                                                 <span className="city-txt">{userDetail?.location || user?.location}, </span>
                                                 <span className="state-txt">{userDetail?.province || user?.province}</span>
                                             </div>
-                                            <div className="user-images-wrap mt-3 mt-lg-4 user_img_profile">
+                                            <div className="user-images-wrap mt-3 mt-lg-4 user_img_profile user_container">
                                                 <figure className="user_img_profile show-responsive_div pt-2 pt-lg-3">
                                                     <div className="big-image">
                                                         <label>

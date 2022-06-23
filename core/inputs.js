@@ -15,65 +15,66 @@ export function uploadFileField({ accept, input, value, type, meta: { touched, e
 
 export const renderDropdown = ({ loading, iconClick, withIcon, subLabel, input, options, id, valueField, name, type, placeholder, label, meta: { touched, error, warning }, ...props }) => {
   let borderColor = ''
-   if(touched && error){
+  if (touched && error) {
     borderColor = '#F24462'
   } else if (!error) {
     borderColor = ""
   }
 
   return (
-      <React.Fragment>
-          <div className={`secret-input type-${type}`}>
-         {label && <label>{label}</label>}
-         {subLabel && <p className="subLabel">{subLabel}</p>}
-         {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
-              <div className="dropdwon-wrapper">
-              <Select {...input} id={id} value={input.value} onChange={(value) => input.onChange(value)}
-                  options={options}
-                  placeholder={placeholder}
-                  styles={drowdownStyles}
-                  // className={touched && error && 'error-dropdown'}
-                  name={name}
-                  touched={touched}
-                  error={error}
-                  {...props}
-                  onBlur={(value) => input.onBlur()}
-                  selectedValue={input.value}
-                  // components={{ DropdownIndicator }}
-                  autoFocus={false}
-                  withIcon={withIcon}
-                  // menuIsOpen={false}
-                  // openMenuOnClick={false}
-              />
-            {loading && <span className="spin-loader"></span> }
-            {!loading && withIcon && <span className={`location-diduct-icon`} onClick={iconClick}><IoMdLocate /></span>}
-            </div>
-          </div>
-      </React.Fragment>
+    <React.Fragment>
+      <div className={`secret-input type-${type}`}>
+        {label && <label>{label}</label>}
+        {subLabel && <p className="subLabel">{subLabel}</p>}
+        {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
+        <div className="dropdwon-wrapper text-capitalize">
+          <Select {...input} id={id} value={input.value} onChange={(value) => input.onChange(value)}
+            options={options}
+            placeholder={placeholder}
+            styles={drowdownStyles}
+            // className={touched && error && 'error-dropdown'}
+            name={name}
+            touched={touched}
+            error={error}
+            {...props}
+            onBlur={(value) => input.onBlur()}
+            selectedValue={input.value}
+            // components={{ DropdownIndicator }}
+            autoFocus={false}
+            withIcon={withIcon}
+          // menuIsOpen={false}
+          // openMenuOnClick={false}
+          />
+          {loading && <span className="spin-loader"></span>}
+          {!loading && withIcon && <span className={`location-diduct-icon`} onClick={iconClick}><IoMdLocate /></span>}
+        </div>
+      </div>
+    </React.Fragment>
   )
 }
 
 
 export function inputField({ refName, ignoreTouch, input, label, icon, placeholder, type, meta, meta: { touched, error, warning }, isValid, loading }) {
   let borderColor = ''
-  if(meta.active || input.input === ""){
+  if (meta.active || input.input === "") {
     borderColor = ''
-  }else if(touched && error){
+  } else if (touched && error) {
     borderColor = '#F24462'
-  }else if (!error) {
+  } else if (!error) {
     borderColor = ""
   }
 
   return <div className={`secret-input type-${type}`}>
     <React.Fragment>
-      
+
       {(label && (type == 'text' || type == 'password' || type == 'number')) && <label>{label}</label>}
       {(ignoreTouch || touched) && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
       <span className="pos-relative ">
-        <input ref={refName} {...input} autoComplete="new-password" className="form-control" style={{borderColor}} placeholder={placeholder} type={type} />
-        {loading && <span className="spin-loader"></span> }
+        <input ref={refName} {...input} autoComplete="new-password" className="form-control" style={{ borderColor }} placeholder={placeholder} type={type} />
+        {loading && <span className="spin-loader"></span>}
         {isValid && <span className="has-check"><FiCheck /></span>}
       </span>
+      <span className="position-absolute end-0">{label == 'Your tagline' ? input.value.length : ''}</span>
       {(label && (type != 'text' && type != 'password' && type != 'number')) && <label>{label}</label>}
     </React.Fragment>
   </div>
@@ -87,7 +88,7 @@ export function inputFieldWithIcon({ loading, subLabel, iconClick, input, label,
       <span className="pos-relative ">
         <input {...input} autoComplete="off" className="form-control" placeholder={placeholder} type={type} />
         {!loading && <span className="location-diduct-icon" onClick={iconClick}>{icon}</span>}
-        {loading && <span className="spin-loader"></span> }
+        {loading && <span className="spin-loader"></span>}
       </span>
       {(label && (type != 'text' && type != 'password' && type != 'number')) && <label>{label}</label>}
     </React.Fragment>
@@ -99,7 +100,8 @@ export function textarea({ input, label, placeholder, type, meta: { touched, err
     <React.Fragment>
       <label>{label}</label>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
-      <textarea {...input} autoComplete="off" className={`form-control`} style={touched && error ? {border: '3px solid #F24462'} : {}} placeholder={placeholder} />
+      <textarea {...input} autoComplete="off" className={`form-control`} style={touched && error ? { border: '3px solid #F24462' } : {}} placeholder={placeholder} />
+      <span className="position-absolute end-0">{label == 'What do you offer?' ? input.value.length : ''}</span>
     </React.Fragment>
   </div>
 }
@@ -129,16 +131,16 @@ export function radioField({ input, hideText, onlyLabel, options, label, meta: {
     <div className="multi-radio">
       {options?.map((option, index) => {
         return <React.Fragment>
-        {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
+          {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
           <div className="label-box">
             <input
               {...input}
               id={`${input.name}_${option.id}`}
               type='radio'
-              value={onlyLabel ? option.price : ( option.price ? option.price+option.suptag : option.id)}
-              checked={onlyLabel ? option.price == input.value : ( option.price ? option.price+option.suptag == input.value : option.id == input.value)}
+              value={onlyLabel ? option.price : (option.price ? option.price + option.suptag : option.id)}
+              checked={onlyLabel ? option.price == input.value : (option.price ? option.price + option.suptag == input.value : option.id == input.value)}
             />
-           <label className="value-label" htmlFor={`${input.name}_${option.id}`}>
+            <label className="value-label" htmlFor={`${input.name}_${option.id}`}>
               {!hideText && <span>{option.name}</span>}
               <span className="price_wrap">
                 <span className="price"><sup>{option.suptag}</sup>{option.price}</span>

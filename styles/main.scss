@@ -926,6 +926,9 @@ $GradientColor-second: rgba(#191919, .8);
                 }
 
                 .completion-sign {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     margin-bottom: 40px;
                 }
 
@@ -985,8 +988,9 @@ $GradientColor-second: rgba(#191919, .8);
             }
 
             .completion-sign {
-                display: block;
-                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 margin-bottom: 15px;
             }
 
@@ -2718,6 +2722,10 @@ body {
             color: $primary-color;
         }
 
+        .user_container {
+            margin-bottom: 75px;
+        }
+
         .user-images-wrap {
             .tagline-font {
                 font-family: 'Helvetica';
@@ -4022,12 +4030,12 @@ body .verification_card_header {
     border-radius: 11px;
 }
 
-// .profile-btn {
-//     position: fixed;
-//     bottom: 0;
-//     left: 0;
-//     width: 100%;
-// }
+.profile-btn {
+    position: fixed;
+    bottom: 0;
+    width: 93%;
+    margin-bottom: 15px
+}
 
 .button-wrapper {
     display: flex;
@@ -4101,4 +4109,30 @@ body .verification_card_header {
 
 .is-black-head {
     background: #000 !important;
+}
+
+.success_svg {
+    display: block;
+    height: 50px;
+    width: 50px;
+    color: #53eb12;
+    /* SVG path use currentColor to inherit this */
+}
+
+.circle {
+    stroke-dasharray: 76;
+    stroke-dashoffset: 76;
+    animation: draw 1s forwards;
+}
+
+.tick {
+    stroke-dasharray: 18;
+    stroke-dashoffset: 18;
+    animation: draw 1s forwards 1s;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0
+    }
 }
