@@ -104,6 +104,7 @@ const CreateStepFour = props => {
                             name="date_description"
                             type="text"
                             component={Inputs.textarea}
+                            label='Describe_Date_Details'
                             placeholder="Write details here (expectations, itinerary, rules, etc.)"
                         />
                     </div>

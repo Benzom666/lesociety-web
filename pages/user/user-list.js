@@ -47,9 +47,16 @@ function UserList() {
                 url: "date",
                 params: params
             })
+            console.log("res", res);
             if (res?.data?.data?.pagination?.current_page !== 1) {
+                res?.data?.data?.dates.sort(function (a, b) {
+                    return new Date(b.created_at) - new Date(a.created_at);
+                });
                 setDates([...dates, ...res?.data?.data?.dates])
             } else {
+                res?.data?.data?.dates.sort(function (a, b) {
+                    return new Date(b.created_at) - new Date(a.created_at);
+                });
                 setDates(res?.data?.data?.dates)
             }
             setPagination(res?.data?.data?.pagination);
@@ -248,10 +255,10 @@ function UserList() {
                 </div>
                 <p className='tip'>Tip: ask her which date she prefers</p>
             </div>
-            <DatePopup
+            {/* <DatePopup
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
-            />
+            /> */}
             <LocationPopup
                 modalIsOpen={locationPopup}
                 closeModal={() => setLocationPoup(false)}

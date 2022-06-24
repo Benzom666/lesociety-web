@@ -187,7 +187,7 @@ function UserProfile({ preview, editHandle }) {
                                                 <span className="city-txt">{userDetail?.location || user?.location}, </span>
                                                 <span className="state-txt">{userDetail?.province || user?.province}</span>
                                             </div>
-                                            <div className="user-images-wrap mt-3 mt-lg-4 user_img_profile user_container">
+                                            <div className="user-images-wrap mt-3 mt-lg-4 user_img_profile">
                                                 <figure className="user_img_profile show-responsive_div pt-2 pt-lg-3">
                                                     <div className="big-image">
                                                         <label>
@@ -236,7 +236,7 @@ function UserProfile({ preview, editHandle }) {
                                                     </figure>
                                                 </div>
                                                 <>
-                                                    <h4 className="mb-5 mt-4 text-center tagline-font">"{userDetail?.tagline || user?.tagline}"</h4>
+                                                    <h4 className="mb-5 mt-4 text-center tagline-font  word-break: break-word">“{userDetail?.tagline || user?.tagline}”</h4>
 
                                                     {!preview && user?.gender === 'female' &&
                                                         <>
@@ -327,7 +327,7 @@ function UserProfile({ preview, editHandle }) {
                                                         </>}
                                                 </>
                                                 <SubHeading title="About me" />
-                                                <div className="image_wrap_slider about_me_card mb-3">
+                                                <div className="image_wrap_slider about_me_card">
                                                     <div className="about_me_card_inner">
                                                         <div className="inner-box-me">
                                                             <H5>{userDetail?.body_type || user?.body_type}</H5>

@@ -21,7 +21,7 @@ const CompleteProfile = props => {
                     method: 'POST',
                     url: `user/verify-email`
                 })
-                showToast(res.data.message, 'success')
+                // showToast(res.data.message, 'success')
             } catch (err) {
                 console.log('error', err)
             }
@@ -49,7 +49,7 @@ const CompleteProfile = props => {
                         type: AUTHENTICATE,
                         payload: res.data.data
                     });
-                    showToast(res.data.message, 'success')
+                    // showToast(res.data.message, 'success')
                 } catch (err) {
                     setTokenValid(false)
                 }

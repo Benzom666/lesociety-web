@@ -24,7 +24,13 @@ $GradientColor-second: rgba(#191919, .8);
                 color: #989898;
             }
         }
-
+        .Territory_title{
+            letter-spacing: 0.08px;
+            font-size: 20px;
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+        }
         h2,
         p {
             text-align: center;
@@ -34,11 +40,11 @@ $GradientColor-second: rgba(#191919, .8);
             font-family: 'Helvetica';
             font-style: normal;
             font-weight: 700;
-            font-size: 32px;
-            line-height: 37px;
+            font-size: 26px !important;
+            line-height: 40px;
             color: #fff;
 
-            letter-spacing: 1px;
+            letter-spacing: 1.08333px;
             padding-bottom: 15px;
             margin: 0;
 
@@ -1484,6 +1490,7 @@ $GradientColor-second: rgba(#191919, .8);
     width: 400px;
     margin: auto;
     padding: 0;
+    margin-top: 20%;
 
     .button-wrapper {
         padding: 40px;
@@ -2722,16 +2729,14 @@ body {
             color: $primary-color;
         }
 
-        .user_container {
-            margin-bottom: 75px;
-        }
-
         .user-images-wrap {
             .tagline-font {
                 font-family: 'Helvetica';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 20px;
+                margin-left: 20px !important;
+                margin-right: 20px !important;
             }
 
             .image_wrap_slider {
@@ -2842,9 +2847,7 @@ body {
                     justify-content: center;
                     border-radius: 8px;
                     border: 1px solid #293036;
-                    margin-top: 1.5rem;
-                    margin-bottom: 7rem;
-
+                    margin-top: 1.875rem;
                     p {
                         margin-bottom: 0;
                     }
@@ -2860,6 +2863,7 @@ body {
 
                 @media only screen and (max-width:575px) {
                     padding: 0 15px;
+                    margin-bottom: 75px;
                 }
             }
         }
@@ -4031,12 +4035,14 @@ body .verification_card_header {
 }
 
 .profile-btn {
-    position: fixed;
-    bottom: 0;
-    width: 93%;
-    margin-bottom: 15px
+    position: block;
+    @media only screen and (max-width: 767px) {
+        position: fixed;
+        bottom: 0;
+        width: 93%;
+        margin-bottom: 15px;
+    }
 }
-
 .button-wrapper {
     display: flex;
     justify-content: space-between;

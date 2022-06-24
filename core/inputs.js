@@ -101,7 +101,7 @@ export function textarea({ input, label, placeholder, type, meta: { touched, err
       <label>{label}</label>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
       <textarea {...input} autoComplete="off" className={`form-control`} style={touched && error ? { border: '3px solid #F24462' } : {}} placeholder={placeholder} />
-      <span className="position-absolute end-0">{label == 'What do you offer?' ? input.value.length : ''}</span>
+      <span className="position-absolute end-0">{label == 'What do you offer?' || 'Describe_Date_Details' ? input.value.length : ''}</span>
     </React.Fragment>
   </div>
 }
