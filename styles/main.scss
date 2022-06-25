@@ -1379,22 +1379,27 @@ $GradientColor-second: rgba(#191919, .8);
             font-size: 16px;
             padding-right: 8px;
 
-            &::before,
-            &::after {
+            &::before{
                 position: absolute;
-                left: calc(100% - 4px);
+                left: calc(100% - -2px);
                 top: calc(50% - 5px);
-                height: 6px;
+                height: 10px;
                 width: 2px;
                 background: $white-color;
                 content: "";
                 transform: rotate(45deg);
                 pointer-events: none;
             }
-
             &::after {
-                left: calc(100% - 7px);
+                position: absolute;
+                left: calc(100% - 4px);
+                top: calc(50% - 5px);
+                height: 10px;
+                width: 2px;
+                background: $white-color;
+                content: "";
                 transform: rotate(-45deg);
+                pointer-events: none;
             }
         }
     }
@@ -2378,6 +2383,10 @@ div[id='scrolldiv'] {
 .user_list_wrap {
     .top-space {
         margin-top: 18px;
+        padding-right: 7px;
+        @media only screen and (max-width: 767px) {
+            padding-left: 14px;
+        }
     }
 
     .date_card_wrap {

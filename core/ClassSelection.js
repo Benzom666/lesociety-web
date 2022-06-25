@@ -47,6 +47,7 @@ const ClassSelectionStyle = styled.div`
         width: 33.3%;
         position:relative;
         .active_class {
+            height:133px;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -61,11 +62,12 @@ const ClassSelectionStyle = styled.div`
                 margin-bottom:10px;
             }
             @media only screen and (max-width: 767px) {
+                height:100px;
                 span{
                     margin-bottom:5px;
                     svg{
-                        width:20px;
-                        height:20px;
+                        width:24px;
+                        height:24px;
                     }
                 }
             }
