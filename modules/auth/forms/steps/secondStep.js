@@ -103,14 +103,10 @@ const SecondStep = props => {
         </span> */}
       </div>
       <span className="completion-sign">
-        <svg width="60" height="54" viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14.355 21.772C14.355 21.772 17.9122 25.0209 19.8321 27.215C21.7519 29.4091 25.3092 34.291 25.3092 34.291C25.3092 34.291 33.2014 22.7392 39.5496 16.8733C45.8978 11.0073 56.5286 5.44287 56.5286 5.44287" stroke="white" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round" />
-          <rect x="0.114502" width="53.6756" height="53.3418" rx="16" fill="white" />
-          <mask id="mask0" maskUnits="userSpaceOnUse" x="0" y="0" width="54" height="54">
-            <rect x="0.114502" width="53.6756" height="53.3418" rx="16" fill="white" />
-          </mask>
-          <g mask="url(#mask0)">
-            <path d="M15.4504 21.772C15.4504 21.772 19.0077 25.0209 20.9275 27.215C22.8474 29.4091 26.4046 34.291 26.4046 34.291C26.4046 34.291 34.2969 22.7392 40.6451 16.8733C46.9933 11.0073 57.6241 5.44287 57.6241 5.44287" stroke="black" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round" />
+        <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" className='success_svg'>
+          <g stroke="currentColor" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+            <path class="circle" d="M13 1C6.372583 1 1 6.372583 1 13s5.372583 12 12 12 12-5.372583 12-12S19.627417 1 13 1z" />
+            <path class="tick" d="M6.5 13.5L10 17 l8.808621-8.308621" />
           </g>
         </svg>
       </span>
@@ -154,7 +150,7 @@ const SecondStep = props => {
               }}
             />
             {reduxValues?.imageUpload?.length > 0 || (user?.images && user?.images[0]) ?
-              <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload === 'string' ? reduxValues?.imageUpload : (reduxValues?.imageUpload?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload[0]) : user.images[0])} />
+              <img alt="not fount" style={{ objectFit: 'cover' }} width={"250px"} src={typeof reduxValues?.imageUpload === 'string' ? reduxValues?.imageUpload : (reduxValues?.imageUpload?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload[0]) : user.images[0])} />
               : <>
                 <FiPlus />
                 <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +178,7 @@ const SecondStep = props => {
                 }}
               />
               {reduxValues?.imageUpload2?.length > 0 || (user?.images && user?.images[1]) ?
-                <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload2 === 'string' ? reduxValues?.imageUpload2 : (reduxValues?.imageUpload2?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload2[0]) : user?.images[1])} />
+                <img alt="not fount" style={{ objectFit: 'cover' }} width={"250px"} src={typeof reduxValues?.imageUpload2 === 'string' ? reduxValues?.imageUpload2 : (reduxValues?.imageUpload2?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload2[0]) : user?.images[1])} />
                 : <>
                   <FiPlus />
                   <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -209,7 +205,7 @@ const SecondStep = props => {
                 }}
               />
               {reduxValues?.imageUpload3?.length > 0 || (user?.images && user.images[2]) ?
-                <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload3 === 'string' ? reduxValues?.imageUpload3 : reduxValues?.imageUpload3?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload3[0]) : user?.images[2]} />
+                <img alt="not fount" style={{ objectFit: 'cover' }} width={"250px"} src={typeof reduxValues?.imageUpload3 === 'string' ? reduxValues?.imageUpload3 : reduxValues?.imageUpload3?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload3[0]) : user?.images[2]} />
                 : <>
                   <FiPlus />
                   <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -236,7 +232,7 @@ const SecondStep = props => {
                 }}
               />
               {reduxValues?.imageUpload4?.length > 0 || (user?.images && user.images[3]) ?
-                <img alt="not fount" width={"250px"} src={typeof reduxValues?.imageUpload4 === 'string' ? reduxValues?.imageUpload4 : reduxValues?.imageUpload4?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload4[0]) : user?.images[3]} />
+                <img alt="not fount" style={{ objectFit: 'cover' }} width={"250px"} src={typeof reduxValues?.imageUpload4 === 'string' ? reduxValues?.imageUpload4 : reduxValues?.imageUpload4?.length > 0 ? URL.createObjectURL(reduxValues?.imageUpload4[0]) : user?.images[3]} />
                 : <>
                   <FiPlus />
                   <svg className="dahsed-border" width="424" height="429" viewBox="0 0 424 429" fill="none" xmlns="http://www.w3.org/2000/svg">

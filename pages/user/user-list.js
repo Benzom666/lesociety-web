@@ -48,8 +48,14 @@ function UserList() {
                 params: params
             })
             if (res?.data?.data?.pagination?.current_page !== 1) {
+                res?.data?.data?.dates.sort(function (a, b) {
+                    return new Date(b.created_at) - new Date(a.created_at);
+                });
                 setDates([...dates, ...res?.data?.data?.dates])
             } else {
+                res?.data?.data?.dates.sort(function (a, b) {
+                    return new Date(b.created_at) - new Date(a.created_at);
+                });
                 setDates(res?.data?.data?.dates)
             }
             setPagination(res?.data?.data?.pagination);
@@ -175,7 +181,7 @@ function UserList() {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3 top-space"
-                                            style={scrollType === 'up' && scrollPosition > 250 && !locationPopup ? (width > 767 ? { position: 'fixed', width: '59%', zIndex: '99' } : { position: 'fixed', left: '42%', zIndex: '99' }) : { position: 'relative' }}
+                                            style={(scrollType === 'up' || 'down') && (scrollPosition > 5) && !locationPopup ? (width > 767 ? { position: 'fixed', width: '59%', zIndex: '99' } : { position: 'fixed', left: '34%', zIndex: '99' }) : { position: 'relative' }}
                                         >
                                             <span className="hidden-sm">Nearby</span>
                                             <div onClick={() => setLocationPoup(true)} className="selct-wrap-sort">
@@ -248,10 +254,10 @@ function UserList() {
                 </div>
                 <p className='tip'>Tip: ask her which date she prefers</p>
             </div>
-            <DatePopup
+            {/* <DatePopup
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
-            />
+            /> */}
             <LocationPopup
                 modalIsOpen={locationPopup}
                 closeModal={() => setLocationPoup(false)}

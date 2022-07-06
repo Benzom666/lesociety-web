@@ -130,10 +130,10 @@ const ChooseCity = props => {
                     <div className="auth-section choose-city">
                         <form onSubmit={handleSubmit} >
                             <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
-                                <a onClick={previousPage}>
+                                <a onClick={previousPage} style={{width:'21px'}}>
                                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
                                 </a>
-                                <h6 className="m-0 text-white-50">Create a New Date</h6>
+                                <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
                                 <IoIosClose className="mouse-point" size={32} onClick={toggle} />
                             </div>
                             {width > 767 && (
@@ -144,8 +144,8 @@ const ChooseCity = props => {
                             )}
                             <div className="top-head mt-5 mb-3 text-center">
                                 <p></p>
-                                <h2>Spark A New Adventure</h2>
-                                <h6 className="text-white pt-1">Select Your Territory</h6>
+                                <h2>Spark a New Adventure</h2>
+                                <h6 className="text-white pt-1 Territory_title">Select Your Territory</h6>
                                 <svg width="86" height="2" viewBox="0 0 86 2" fill="none" xmlns="http://www.w3.org/2000/svg" className="under-line-size">
                                     <path d="M0 1H86" stroke="url(#paint0_linear_1502:2374)" />
                                     <defs>

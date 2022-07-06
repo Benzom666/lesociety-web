@@ -224,7 +224,7 @@ body {
     }
 
     .inner_container {
-        max-width: 340px;
+        max-width: 400px;
         margin: 0 auto;
 
         .price-text {
@@ -293,6 +293,7 @@ body {
 
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
     background: rgba(0, 0, 0, 0.4) !important;
+    z-index: 999 !important;
 
     &:before {
         position: absolute;

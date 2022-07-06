@@ -24,7 +24,13 @@ $GradientColor-second: rgba(#191919, .8);
                 color: #989898;
             }
         }
-
+        .Territory_title{
+            letter-spacing: 0.08px;
+            font-size: 20px;
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+        }
         h2,
         p {
             text-align: center;
@@ -34,11 +40,11 @@ $GradientColor-second: rgba(#191919, .8);
             font-family: 'Helvetica';
             font-style: normal;
             font-weight: 700;
-            font-size: 32px;
-            line-height: 37px;
+            font-size: 26px !important;
+            line-height: 40px;
             color: #fff;
 
-            letter-spacing: 1px;
+            letter-spacing: 1.08333px;
             padding-bottom: 15px;
             margin: 0;
 
@@ -926,6 +932,9 @@ $GradientColor-second: rgba(#191919, .8);
                 }
 
                 .completion-sign {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     margin-bottom: 40px;
                 }
 
@@ -985,8 +994,9 @@ $GradientColor-second: rgba(#191919, .8);
             }
 
             .completion-sign {
-                display: block;
-                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 margin-bottom: 15px;
             }
 
@@ -1369,22 +1379,27 @@ $GradientColor-second: rgba(#191919, .8);
             font-size: 16px;
             padding-right: 8px;
 
-            &::before,
-            &::after {
+            &::before{
                 position: absolute;
-                left: calc(100% - 4px);
+                left: calc(100% - -2px);
                 top: calc(50% - 5px);
-                height: 6px;
+                height: 10px;
                 width: 2px;
                 background: $white-color;
                 content: "";
                 transform: rotate(45deg);
                 pointer-events: none;
             }
-
             &::after {
-                left: calc(100% - 7px);
+                position: absolute;
+                left: calc(100% - 4px);
+                top: calc(50% - 5px);
+                height: 10px;
+                width: 2px;
+                background: $white-color;
+                content: "";
                 transform: rotate(-45deg);
+                pointer-events: none;
             }
         }
     }
@@ -1480,6 +1495,7 @@ $GradientColor-second: rgba(#191919, .8);
     width: 400px;
     margin: auto;
     padding: 0;
+    margin-top: 20%;
 
     .button-wrapper {
         padding: 40px;
@@ -2367,6 +2383,10 @@ div[id='scrolldiv'] {
 .user_list_wrap {
     .top-space {
         margin-top: 18px;
+        padding-right: 7px;
+        @media only screen and (max-width: 767px) {
+            padding-left: 14px;
+        }
     }
 
     .date_card_wrap {
@@ -2724,6 +2744,8 @@ body {
                 font-style: normal;
                 font-weight: 400;
                 font-size: 20px;
+                margin-left: 20px !important;
+                margin-right: 20px !important;
             }
 
             .image_wrap_slider {
@@ -2834,9 +2856,7 @@ body {
                     justify-content: center;
                     border-radius: 8px;
                     border: 1px solid #293036;
-                    margin-top: 1.5rem;
-                    margin-bottom: 7rem;
-
+                    margin-top: 1.875rem;
                     p {
                         margin-bottom: 0;
                     }
@@ -2852,6 +2872,7 @@ body {
 
                 @media only screen and (max-width:575px) {
                     padding: 0 15px;
+                    margin-bottom: 75px;
                 }
             }
         }
@@ -4022,13 +4043,15 @@ body .verification_card_header {
     border-radius: 11px;
 }
 
-// .profile-btn {
-//     position: fixed;
-//     bottom: 0;
-//     left: 0;
-//     width: 100%;
-// }
-
+.profile-btn {
+    position: block;
+    @media only screen and (max-width: 767px) {
+        position: fixed;
+        bottom: 0;
+        width: 93%;
+        margin-bottom: 15px;
+    }
+}
 .button-wrapper {
     display: flex;
     justify-content: space-between;
@@ -4101,4 +4124,30 @@ body .verification_card_header {
 
 .is-black-head {
     background: #000 !important;
+}
+
+.success_svg {
+    display: block;
+    height: 50px;
+    width: 50px;
+    color: #53eb12;
+    /* SVG path use currentColor to inherit this */
+}
+
+.circle {
+    stroke-dasharray: 76;
+    stroke-dashoffset: 76;
+    animation: draw 1s forwards;
+}
+
+.tick {
+    stroke-dasharray: 18;
+    stroke-dashoffset: 18;
+    animation: draw 1s forwards 1s;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0
+    }
 }

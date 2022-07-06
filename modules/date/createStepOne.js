@@ -66,24 +66,17 @@ const CreateStepOne = props => {
                                 <H5>Standard Class Dates</H5>
                                 <span className="price-tag">$</span>
                             </div>
-                            <SubHeading title="Higher response rate" />
+                            <div style={{color:'#AFABAB',fontFamily: "Helvetica"}}>Higher response rate</div>
                             <Field
                                 name="search_type"
                                 textColor={'#4F4E54'}
                                 checkedColor={'white'}
                                 options={[
                                     {
-                                        label: 'Morning Beverage',
+                                        label: 'Morning Date',
                                         id: 'MorningBeverage',
                                         iconName: 'CustomIcon.Sun',
                                         icon: <CustomIcon.Sun color={'#4F4E54'} size={30} />,
-                                        category: "standard_class_date"
-                                    },
-                                    {
-                                        label: 'Outdoor Adventure',
-                                        id: 'OutdoorAdventure',
-                                        icon: <CustomIcon.OutdoorAdventure color={'#4F4E54'} size={30} />,
-                                        iconName: 'CustomIcon.OutdoorAdventure',
                                         category: "standard_class_date"
                                     },
                                     {
@@ -91,6 +84,13 @@ const CreateStepOne = props => {
                                         id: 'EveningDate',
                                         icon: <CustomIcon.Moon color={'#4F4E54'} size={30} />,
                                         iconName: 'CustomIcon.Moon',
+                                        category: "standard_class_date"
+                                    },
+                                    {
+                                        label: 'Outdoor Adventure',
+                                        id: 'OutdoorAdventure',
+                                        icon: <CustomIcon.OutdoorAdventure color={'#4F4E54'} size={30} />,
+                                        iconName: 'CustomIcon.OutdoorAdventure',
                                         category: "standard_class_date"
                                     },
                                 ]}
@@ -102,7 +102,7 @@ const CreateStepOne = props => {
                                 <H5>Middle Class Dates</H5>
                                 <span className="price-tag">$$</span>
                             </div>
-                            <SubHeading title="Average response rate" />
+                            <div style={{color:'#AFABAB',fontFamily: "Helvetica"}}>Average response rate</div>
                             <Field
                                 name="search_type"
                                 textColor={'#4F4E54'}
@@ -138,7 +138,7 @@ const CreateStepOne = props => {
                                 <H5>Executive Class Dates</H5>
                                 <span className="price-tag">$$$</span>
                             </div>
-                            <SubHeading title="Lower response rate" />
+                            <div style={{color:'#AFABAB',fontFamily: "Helvetica"}}>Lower response rate</div>
                             <Field
                                 name="search_type"
                                 textColor={'#4F4E54'}
