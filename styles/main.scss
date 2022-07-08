@@ -4137,7 +4137,7 @@ body .verification_card_header {
 .circle {
     stroke-dasharray: 76;
     stroke-dashoffset: 76;
-    animation: draw 1s forwards;
+    animation: draw 2s forwards;
 }
 
 .tick {
@@ -4150,4 +4150,8 @@ body .verification_card_header {
     to {
         stroke-dashoffset: 0
     }
+}
+
+.f-11 {
+    font-size: 11px;
 }
