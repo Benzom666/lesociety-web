@@ -568,7 +568,7 @@ function UserProfile({ preview, editHandle }) {
                                 </linearGradient>
                               </defs>
                             </svg>
-                            <p>{user.description}</p>
+                            <p className="">{user.description}</p>
                             {preview && (
                               <div className="button-wrapper profile-btn">
                                 <button
