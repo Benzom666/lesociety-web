@@ -4113,7 +4113,7 @@ body .verification_card_header {
     font-family: 'Helvetica';
     font-style: normal;
     font-weight: 300;
-
+    margin-left: 30px;
     span {
         font-weight: bold;
     }
@@ -4160,4 +4160,24 @@ body .verification_card_header {
 
 .word-break {
     word-break: break-word !important;
+}
+
+.bg-tranparent {
+    background: transparent !important;
+}
+
+.no-conversation-text {    
+  font-size: 20px;
+  color: #fff;
+  cursor: default;
+}
+
+.message-confirmation {
+    text-align: center;
+    font-size: 14px;
+}
+
+.message-confirmation > div {
+    display: flex;
+    justify-content: center;
 }
