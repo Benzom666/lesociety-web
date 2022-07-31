@@ -2602,6 +2602,7 @@ body {
                 background: $primary-color;
                 color: $white-color;
                 text-transform: uppercase;
+                cursor: pointer;
 
                 &:focus,
                 &:active {
@@ -4180,4 +4181,10 @@ body .verification_card_header {
 .message-confirmation > div {
     display: flex;
     justify-content: center;
+}
+
+.chat_message_scroll {
+    height: calc(100vh - 350px);
+    // overflow-y: scroll;
+    // overflow-x: hidden;
 }

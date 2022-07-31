@@ -21,13 +21,18 @@ import { FiChevronRight } from "react-icons/fi";
 import withAuth from "../core/withAuth";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
-import { apiRequest, apiRequestChatHistory } from "utils/Utilities";
+import {
+  apiRequest,
+  apiRequestChatHistory,
+  dateCategory,
+} from "utils/Utilities";
 import { format } from "timeago.js";
 import qs from "qs";
 import { getCookie } from "utils/cookie";
 import axios from "axios";
+import UserCardListForMessage from "./../core/UserCardListForMessage";
 
-const socket = io.connect("ws://staging-api.secrettime.com/");
+const socket = io.connect("http://staging-api.secrettime.com/");
 
 const Messages = (props) => {
   const {
@@ -49,7 +54,6 @@ const Messages = (props) => {
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
-  // const socket = useRef();
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -74,43 +78,57 @@ const Messages = (props) => {
     }
   };
 
-  const postApprovedConversation = async (currentChat) => {
-    try {
-      const data = {
-        chatRoomId: currentChat?.message?.room_id,
-        senderId: user?._id,
-      };
-      const res = await apiRequest({
-        data,
-        method: "POST",
-        url: `chat/accept`,
-      });
-      getConversations();
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+  const sendMessage = async (e) => {
+    e.preventDefault();
 
-  const sendMessage = async () => {
     const data = {
-      chatRoomId: currentChat?.message?.room_id,
-      recieverId: currentChat?.user?._id,
+      chatRoomId: currentChat?.message?.room_id ?? "",
+      recieverId: currentChat?.user?.id ?? "",
       message: newMessage,
     };
+
     socket.emit("sendMessage", data);
+    setNewMessage("");
+    getChatHistory(currentChat);
   };
 
+  // receive arrival message from server
+
+  // useEffect(() => {
+  //   console.log("user._id", `recieve-${user._id}`);
+  //   socket.on(`recieve-${user._id}`, (message) => {
+  // setMessages((prev) => [
+  //   ...prev,
+  //   {
+  //     message: message.message,
+  //     sender: message.sender,
+  //     sent_time: Date.now(),
+  //   },
+  // ]);
+  //   });
+  // }, [socket]);
+
   useEffect(() => {
-    socket.emit(`recieve-${currentChat?.user?._id}`, (message) => {
-      console.log("message socket on", message);
+    socket.on("recieve-62dfe204f55bc61453ea6213", (message) => {
+      console.log(message);
+      setMessages((prev) => [
+        ...prev,
+        {
+          message: message.message,
+          sender_id: message.sender_id,
+          sent_time: Date.now(),
+        },
+      ]);
     });
-  }, []);
+  }, [socket]);
+
+  // useEffect(() => {
+  //   arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+  // }, [arrivalMessage, currentChat]);
+
   useEffect(() => {
-    arrivalMessage &&
-      currentChat?.members.includes(arrivalMessage.sender) &&
-      setMessages((prev) => [...prev, arrivalMessage]);
-  }, [arrivalMessage, currentChat]);
-  const receiveMessage = async () => {};
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const getChatHistory = async (currentChat) => {
     try {
@@ -129,6 +147,13 @@ const Messages = (props) => {
     }
   };
 
+  const category = dateCategory.find(
+    (item) =>
+      item?.label === currentChat?.date_id?.standard_class_date ||
+      item?.label === currentChat?.date_id?.middle_class_dates ||
+      item?.label === currentChat?.date_id?.executive_class_dates
+  );
+
   const sidbarCloseOutsideClick = (event) => {
     const target = document.querySelector("#action_dropdown");
     const withinBoundaries = event.composedPath().includes(target);
@@ -146,8 +171,9 @@ const Messages = (props) => {
   };
 
   // consoles
-  console.log("conversations", conversations);
-  console.log("currentChat", currentChat);
+
+  console.log("messages", messages);
+  console.log("socket", socket);
 
   return (
     <div className="inner-page">
@@ -170,15 +196,12 @@ const Messages = (props) => {
                       <TabList>
                         <Tab>Conversations</Tab>
                         <Tab>
-                          <span>
-                            {conversations?.length > 0
-                              ? conversations.filter((c) => c.status == 0)
-                                  ?.length > 0 &&
-                                conversations.filter((c) => c.status == 0)
-                                  ?.length
-                              : ""}
-                          </span>{" "}
-                          Requests
+                          <UserCardListForMessage
+                            conversations={conversations}
+                            getConversations={getConversations}
+                            user={user}
+                            setCurrentChat={setCurrentChat}
+                          />
                         </Tab>
                       </TabList>
                       <TabPanel>
@@ -226,40 +249,10 @@ const Messages = (props) => {
                       <TabPanel>
                         <div className="user-list-wrap">
                           <ul>
-                            {conversations?.length > 0
-                              ? conversations.filter((c) => c.status == 0)
-                                  ?.length > 0
-                                ? conversations
-                                    .filter((c) => c.status == 0)
-                                    ?.map((c) => {
-                                      return (
-                                        <li
-                                          onClick={() => setCurrentChat(c)}
-                                          className="unread"
-                                        >
-                                          <figure>
-                                            <Image
-                                              src={
-                                                c.user?.images?.length > 0 &&
-                                                c.user?.images
-                                                  ? c.user?.images[0]
-                                                  : (user.images &&
-                                                      user.images[0]) ||
-                                                    NoImage
-                                              }
-                                              alt="user image"
-                                              width={40}
-                                              height={40}
-                                            />
-                                          </figure>
-                                          <span className="user-details">
-                                            <h3>{c?.user?.user_name ?? ""}</h3>
-                                          </span>
-                                        </li>
-                                      );
-                                    })
-                                : "No Requests"
-                              : "No Requests"}
+                            {(conversations?.length == 0 ||
+                              conversations.filter((c) => c.status == 0)
+                                ?.length == 0) &&
+                              "No Requests"}
                           </ul>
                         </div>
                       </TabPanel>
@@ -268,156 +261,9 @@ const Messages = (props) => {
                 </div>
                 <div className="col-md-8 col-lg-9 p-0">
                   <div className="message-content-side">
-                    {/* <div className="no-message-card">
-                                            <figure>
-                                                <Image
-                                                    src={NoImage}
-                                                    alt="NoImage"
-                                                    width={205}
-                                                    height={140}
-                                                />
-                                            </figure>
-                                            <h3>Sorry, no messages yet</h3>
-                                            <SubHeading title="Find a girl you like and lock in your first date!" />
-                                            <div className="d-flex align-items-center my-4 header_btn_wrap">
-                                                <Link href="/user/user-list"><a className="create-date">View Gallery</a></Link>
-                                            </div>
-                                        </div> */}
                     {currentChat && currentChat?.status === 0 ? (
-                      <UserCardList currentChat={currentChat} />
-                    ) : // <div className="message-chat-wrap">
-                    //   <div className="top-head">
-                    //     <div className="user-thumb">
-                    //       <figure>
-                    //         <Image
-                    //           src={
-                    //             currentChat?.user?.images?.length > 0 &&
-                    //             currentChat?.user?.images
-                    //               ? currentChat?.user?.images[0]
-                    //               : (user.images && user.images[0]) || NoImage
-                    //           }
-                    //           alt="user image"
-                    //           width={40}
-                    //           height={40}
-                    //         />
-                    //       </figure>
-                    //       <span className="user-details">
-                    //         <h3>{currentChat?.user?.user_name ?? ""}</h3>
-                    //       </span>
-                    //     </div>
-                    //     <div className="user-details">
-                    //       <div className="tag_wrap">
-                    //         <ul>
-                    //           <li>
-                    //             <CustomIcon.Sporty color={"#fff"} size={20} />
-                    //             <span>Get sporty</span>
-                    //           </li>
-                    //           <li>
-                    //             <CustomIcon.OutdoorAdventure
-                    //               color={"white"}
-                    //               size={20}
-                    //             />
-                    //             <span>Adventure</span>
-                    //           </li>
-                    //         </ul>
-                    //       </div>
-                    //       <h4 className="price_per_hour">
-                    //         $80 / <span>2hr</span>
-                    //       </h4>
-                    //       <div className="action_btn_list">
-                    //         <span onClick={toggleClass}>
-                    //           <BiDotsHorizontalRounded
-                    //             size={35}
-                    //             color={"rgba(255, 255, 255, 0.7)"}
-                    //           />
-                    //         </span>
-                    //         <div
-                    //           className="dropdown-list"
-                    //           id="action_dropdown"
-                    //         >
-                    //           <ul>
-                    //             <li>
-                    //               <Link href="/">
-                    //                 <a>
-                    //                   Setting <FiChevronRight size={22} />{" "}
-                    //                 </a>
-                    //               </Link>
-                    //             </li>
-                    //             <li>
-                    //               <Link href="/">
-                    //                 <a>
-                    //                   Privacy <FiChevronRight size={22} />
-                    //                 </a>
-                    //               </Link>
-                    //             </li>
-                    //             <li>
-                    //               <Link href="/">
-                    //                 <a>
-                    //                   Terms <FiChevronRight size={22} />
-                    //                 </a>
-                    //               </Link>
-                    //             </li>
-                    //           </ul>
-                    //         </div>
-                    //       </div>
-                    //     </div>
-                    //   </div>
-                    //   <div className="chat_message_wrap">
-                    //     <div className="message_list_wrap">
-                    //       <ul>
-                    //         {currentChat?.message?.sender_id == user?._id ? (
-                    //           <li className="send">
-                    //             <div className="message_content">
-                    //               <span className="message_time">
-                    //                 {format(currentChat?.message?.sent_time)}
-                    //               </span>
-                    //               {currentChat?.message?.message}
-                    //             </div>
-                    //           </li>
-                    //         ) : (
-                    //           <li className="receive">
-                    //             <div className="message_content">
-                    //               <span className="message_time">
-                    //                 {format(currentChat?.message?.sent_time)}
-                    //               </span>
-                    //               {currentChat?.message?.message}
-                    //             </div>
-                    //           </li>
-                    //         )}
-
-                    //         <li className="message-confirmation">
-                    //           <span>Please accept the message</span>
-                    //           <div className="">
-                    //             <button
-                    //               type="button"
-                    //               onClick={() => console.log("Cancel")}
-                    //             >
-                    //               Cancel
-                    //             </button>
-                    //             <button
-                    //               type="button"
-                    //               onClick={() =>
-                    //                 postApprovedConversation(currentChat)
-                    //               }
-                    //             >
-                    //               Accept
-                    //             </button>
-                    //           </div>
-                    //         </li>
-                    //       </ul>
-                    //     </div>
-                    //     {/* <div className="input_write_sec">
-                    //       <input
-                    //         type="text"
-                    //         placeholder="Type your message here…"
-                    //       />
-                    //       <button type="button" className="send_btn">
-                    //         <IoIosSend size={25} color={"#F24462"} />
-                    //       </button>
-                    //     </div> */}
-                    //   </div>
-                    // </div>
-                    currentChat && currentChat?.status === 1 ? (
+                      <>{/* <UserCardList currentChat={currentChat} /> */}</>
+                    ) : currentChat && currentChat?.status === 1 ? (
                       <div className="message-chat-wrap">
                         <div className="top-head">
                           <div className="user-thumb">
@@ -442,20 +288,16 @@ const Messages = (props) => {
                             <div className="tag_wrap">
                               <ul>
                                 <li>
-                                  <CustomIcon.Sporty color={"#fff"} size={20} />
-                                  <span>Get sporty</span>
+                                  <span>{category?.icon}</span>
                                 </li>
                                 <li>
-                                  <CustomIcon.OutdoorAdventure
-                                    color={"white"}
-                                    size={20}
-                                  />
-                                  <span>Adventure</span>
+                                  <span>{category?.label}</span>
                                 </li>
                               </ul>
                             </div>
                             <h4 className="price_per_hour">
-                              $80 / <span>2hr</span>
+                              ${currentChat?.date_id?.price} /{" "}
+                              <span>{currentChat?.date_id?.date_length}</span>
                             </h4>
                             <div className="action_btn_list">
                               <span onClick={toggleClass}>
@@ -497,16 +339,19 @@ const Messages = (props) => {
                         </div>
                         <div className="chat_message_wrap">
                           <div className="message_list_wrap">
-                            <ul>
+                            <ul className="chat_message_scroll">
                               {messages.length > 0 &&
-                                messages.map((message) => {
-                                  console.log(
-                                    "message.sender_id",
-                                    message.sender_id
-                                  );
-                                  console.log("user?._id", user?._id);
+                                messages.map((message, index) => {
                                   return (
-                                    <li className="send">
+                                    <li
+                                      className={
+                                        message.sender_id === user._id
+                                          ? "send"
+                                          : "receive"
+                                      }
+                                      key={index}
+                                      ref={scrollRef}
+                                    >
                                       <div className="message_content">
                                         <span className="message_time">
                                           {format(message?.sent_time)}
@@ -515,29 +360,6 @@ const Messages = (props) => {
                                       </div>
                                     </li>
                                   );
-                                  // if (message.sender_id == user?._id) {
-                                  //   return (
-                                  //     <li className="send">
-                                  //       <div className="message_content">
-                                  //         <span className="message_time">
-                                  //           {format(message?.sent_time)}
-                                  //         </span>
-                                  //         {message?.message}
-                                  //       </div>
-                                  //     </li>
-                                  //   );
-                                  // } else {
-                                  //   return (
-                                  //     <li className="receive">
-                                  //       <div className="message_content">
-                                  //         <span className="message_time">
-                                  //           {format(message?.sent_time)}
-                                  //         </span>
-                                  //         {message.message}
-                                  //       </div>
-                                  //     </li>
-                                  //   );
-                                  // }
                                 })}
                             </ul>
                           </div>
@@ -546,6 +368,10 @@ const Messages = (props) => {
                               type="text"
                               placeholder="Type your message here…"
                               onChange={(e) => setNewMessage(e.target.value)}
+                              value={newMessage}
+                              onKeyPress={(event) => {
+                                event.key === "Enter" && sendMessage(event);
+                              }}
                             />
                             <button
                               type="button"

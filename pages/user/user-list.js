@@ -134,6 +134,7 @@ function UserList() {
             ? receiverData?.user_data[0]?._id
             : "",
         message: values.message ?? "",
+        dateId: receiverData?._id ?? "",
       };
       const res = await apiRequest({
         data: data,
@@ -228,7 +229,7 @@ function UserList() {
   }, [scrollPosition]);
 
   // console
-  console.log("receiverData", receiverData);
+  // console.log("receiverData", receiverData);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn fixed={width < 767} isBlack={locationPopup} />
