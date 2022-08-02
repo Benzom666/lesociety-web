@@ -3866,6 +3866,7 @@ body .verification_card_header {
 #message-icon,
 .icon-move {
     transition: left 1s ease-out, top 1s ease-out;
+   cursor: pointer;
 }
 
 .icon-move {
@@ -4185,6 +4186,11 @@ body .verification_card_header {
 
 .chat_message_scroll {
     height: calc(100vh - 350px);
-    // overflow-y: scroll;
-    // overflow-x: hidden;
+  
+}
+
+.user-list-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

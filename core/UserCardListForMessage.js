@@ -255,75 +255,84 @@ const UserCardListForMessage = ({
           </div>
         )}
       </div> */}
-      {!isDesktopView && (
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          className="intrested_model"
-        >
-          <div className="model_content">
-            <IoIosClose
-              size={25}
-              className="close_btn"
-              onClick={closeModal}
-              color={"#A8A8A8"}
-            />
-            {conversations.length > 0
-              ? conversations.map((conversation, index) => {
-                  const profilePic =
-                    conversation.user?.images.length > 0
-                      ? conversation.user?.images[0]
-                      : "";
-                  return (
-                    <Slider {...settings} key={index}>
-                      <div>
-                        <H5>{conversation?.user?.user_name} is</H5>
-                        <CustomIcon.IntrestedText color={"white"} size={140} />
-                        <figure>
-                          <Image
-                            src={profilePic}
-                            alt="user image"
-                            width={500}
-                            height={600}
-                          />
-                          <span className="image_tagline">
-                            {conversation?.message?.message}
-                          </span>
-                        </figure>
-                        <div className="d-flex align-items-center my-4 header_btn_wrap">
-                          <a
-                            className="create-date"
-                            onClick={() => {
-                              postApprovedConversation(
-                                conversation?.message?.room_id
-                              );
-                              closeModal();
-                              setCurrentChat(conversation);
-                            }}
-                          >
-                            REPLY BACK
-                          </a>
-                        </div>
-                        <div className="my-4 bottom_content">
-                          <Link href="/user/user-profile">
-                            <a className="view_profile">
-                              <HiLockOpen /> View Profile
-                            </a>
-                          </Link>
-                          <p>
-                            {conversation?.user?.user_name} has granted you the
-                            access to his profile
-                          </p>
-                        </div>
-                      </div>
-                    </Slider>
-                  );
-                })
-              : "No Request yet"}
-          </div>
-        </Modal>
-      )}
+      {!isDesktopView &&
+        conversations?.length > 0 &&
+        conversations?.filter((c) => c.status == 0)?.length > 0 && (
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+            className="intrested_model"
+          >
+            <div className="model_content">
+              <IoIosClose
+                size={25}
+                className="close_btn"
+                onClick={closeModal}
+                color={"#A8A8A8"}
+              />
+              {conversations.length > 0
+                ? conversations.filter((c) => c.status == 0)?.length > 0
+                  ? conversations
+                      .filter((c) => c.status == 0)
+                      .map((conversation, index) => {
+                        const profilePic =
+                          conversation.user?.images.length > 0
+                            ? conversation.user?.images[0]
+                            : "";
+                        return (
+                          <Slider {...settings} key={index}>
+                            <div>
+                              <H5>{conversation?.user?.user_name} is</H5>
+                              <CustomIcon.IntrestedText
+                                color={"white"}
+                                size={140}
+                              />
+                              <figure>
+                                <Image
+                                  src={profilePic}
+                                  alt="user image"
+                                  width={500}
+                                  height={600}
+                                />
+                                <span className="image_tagline">
+                                  {conversation?.message?.message}
+                                </span>
+                              </figure>
+                              <div className="d-flex align-items-center my-4 header_btn_wrap">
+                                <a
+                                  className="create-date"
+                                  onClick={() => {
+                                    postApprovedConversation(
+                                      conversation?.message?.room_id
+                                    );
+                                    closeModal();
+                                    setCurrentChat(conversation);
+                                  }}
+                                >
+                                  REPLY BACK
+                                </a>
+                              </div>
+                              <div className="my-4 bottom_content">
+                                <Link href="/user/user-profile">
+                                  <a className="view_profile">
+                                    <HiLockOpen /> View Profile
+                                  </a>
+                                </Link>
+                                <p>
+                                  {conversation?.user?.user_name} has granted
+                                  you the access to his profile
+                                </p>
+                              </div>
+                            </div>
+                          </Slider>
+                        );
+                      })
+                  : "No Request yet"
+                : "No Request yet"}
+            </div>
+          </Modal>
+        )}
     </>
   );
 };
