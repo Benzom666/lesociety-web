@@ -119,13 +119,28 @@ const Messages = (props) => {
         },
       ]);
     });
-  }, [socket]);
-
-  useEffect(() => {
     socket.on(`request-${user._id}`, (message) => {
       console.log("request is comes", message);
     });
-  }, [socket]);
+    // socket.on(`requestAccept-${user._id}`, (conversation) => {
+    //   setConversations((prev) => [...prev, conversation]);
+    // });
+    socket.on(`requestBlock-${currentChat?.user?.id}`, (message) => {
+      console.log("Blocked Chat", message);
+    });
+  }, []);
+
+  // useEffect(() => {
+  //   socket.on(`request-${user._id}`, (message) => {
+  //     console.log("request is comes", message);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   socket.on(`requestBlock-${user._id}`, (message) => {
+  //     console.log("Blocked Chat", message);
+  //   });
+  // }, []);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -143,6 +158,24 @@ const Messages = (props) => {
         params: data,
       });
       setMessages(res.data?.data?.chat);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  const blockChat = async (currentChat) => {
+    try {
+      const data = {
+        chatRoomId: currentChat?.message?.room_id,
+        recieverId: currentChat?.user?.id,
+      };
+
+      const res = await apiRequest({
+        data: data,
+        method: "POST",
+        url: `chat/block`,
+      });
+      console.log("res", res);
     } catch (err) {
       console.log("err", err);
     }
@@ -173,8 +206,8 @@ const Messages = (props) => {
 
   // consoles
 
-  // console.log("messages", messages);
-  // console.log("user", user);
+  console.log("socket", socket);
+  console.log("currentChat", currentChat);
 
   return (
     <div className="inner-page">
@@ -209,10 +242,13 @@ const Messages = (props) => {
                         <div className="user-list-wrap">
                           <ul>
                             {conversations?.length > 0
-                              ? conversations.filter((c) => c.status == 1)
-                                  ?.length > 0
+                              ? conversations.filter(
+                                  (c) => c.status == 1 || c.status == 2
+                                )?.length > 0
                                 ? conversations
-                                    .filter((c) => c.status == 1)
+                                    .filter(
+                                      (c) => c.status == 1 || c.status == 2
+                                    )
                                     ?.map((c) => {
                                       return (
                                         <li
@@ -268,7 +304,9 @@ const Messages = (props) => {
                     <div className="message-content-side">
                       {currentChat && currentChat?.status === 0 ? (
                         <>{/* <UserCardList currentChat={currentChat} /> */}</>
-                      ) : currentChat && currentChat?.status === 1 ? (
+                      ) : currentChat &&
+                        (currentChat?.status === 1 ||
+                          currentChat?.status === 2) ? (
                         <div className="message-chat-wrap">
                           <div className="top-head">
                             <div className="user-thumb">
@@ -318,11 +356,19 @@ const Messages = (props) => {
                                     id="action_dropdown"
                                   >
                                     <ul>
-                                      <li>
-                                        <Link href="/">
+                                      {currentChat?.status === 2 ? (
+                                        <li
+                                        // onClick={() => blockChat(currentChat)}
+                                        >
+                                          <a>Unblock</a>
+                                        </li>
+                                      ) : (
+                                        <li
+                                          onClick={() => blockChat(currentChat)}
+                                        >
                                           <a>Block</a>
-                                        </Link>
-                                      </li>
+                                        </li>
+                                      )}
                                     </ul>
                                   </div>
                                 )}
@@ -355,24 +401,32 @@ const Messages = (props) => {
                                   })}
                               </ul>
                             </div>
-                            <div className="input_write_sec">
-                              <input
-                                type="text"
-                                placeholder="Type your message here…"
-                                onChange={(e) => setNewMessage(e.target.value)}
-                                value={newMessage}
-                                onKeyPress={(event) => {
-                                  event.key === "Enter" && sendMessage(event);
-                                }}
-                              />
-                              <button
-                                type="button"
-                                className="send_btn"
-                                onClick={sendMessage}
-                              >
-                                <IoIosSend size={25} color={"#F24462"} />
-                              </button>
-                            </div>
+                            {currentChat?.status === 2 ? (
+                              <div className="text-center">
+                                you have been blocked
+                              </div>
+                            ) : (
+                              <div className="input_write_sec">
+                                <input
+                                  type="text"
+                                  placeholder="Type your message here…"
+                                  onChange={(e) =>
+                                    setNewMessage(e.target.value)
+                                  }
+                                  value={newMessage}
+                                  onKeyPress={(event) => {
+                                    event.key === "Enter" && sendMessage(event);
+                                  }}
+                                />
+                                <button
+                                  type="button"
+                                  className="send_btn"
+                                  onClick={sendMessage}
+                                >
+                                  <IoIosSend size={25} color={"#F24462"} />
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
                       ) : (
