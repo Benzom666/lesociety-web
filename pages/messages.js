@@ -146,6 +146,7 @@ const Messages = (props) => {
       recieverId: currentChat?.user?.id ?? "",
       message: newMessage,
     };
+    console.log("message send", data);
 
     socket.emit("sendMessage", data);
     setMessages((prev) => [
