@@ -22,6 +22,7 @@ const UserCardListForMessage = ({
   isDesktopView,
   getConversations,
   setCurrentChat,
+  tabIndexChange,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
@@ -37,7 +38,8 @@ const UserCardListForMessage = ({
     setIsOpen(false);
   }
 
-  const postApprovedConversation = async (room_id) => {
+  const postApprovedConversation = async (room_id, conversation) => {
+    setCurrentChat(conversation);
     try {
       const data = {
         chatRoomId: room_id,
@@ -48,8 +50,14 @@ const UserCardListForMessage = ({
         method: "POST",
         url: `chat/accept`,
       });
-      getConversations();
       console.log("res.data", res.data);
+      getConversations();
+      closeModal();
+      setCurrentChat((prev) => ({
+        ...prev,
+        status: res?.data?.data?.chatRoom?.status,
+      }));
+      tabIndexChange(0);
     } catch (err) {
       console.log("err", err);
     }
@@ -83,181 +91,22 @@ const UserCardListForMessage = ({
       <span onClick={openModal}>
         <span>
           {conversations?.length > 0
-            ? conversations.filter((c) => c.status == 0)?.length > 0 &&
-              conversations.filter((c) => c.status == 0)?.length
+            ? conversations.filter(
+                (c) => c.status == 0 && c.message?.sender_id !== user?._id
+              )?.length > 0 &&
+              conversations.filter(
+                (c) => c.status == 0 && c.message?.sender_id !== user?._id
+              )?.length
             : ""}
         </span>{" "}
         Requests
       </span>
-      {/* <div className="date_card_wrap">
-        <figure
-          className="user_img_date"
-          onClick={
-            isDesktopView ? !dateDetailsIsOpen && toggle : () => growDiv(cardId)
-          }
-        >
-          {!dateDetailsIsOpen ? (
-            <>
-              <Image
-                src={date?.user_data[0]?.images[0] ?? ""}
-                alt="user image"
-                width={500}
-                height={500}
-              />
-              <div className="user-details">
-                <div className="user-top-sec">
-                  <h5>
-                    <span>
-                      {" "}
-                      {date?.user_name},{" "}
-                      <span className="user_age">
-                        {date?.user_data[0]?.age || "-"}
-                      </span>
-                    </span>
-                    <span className="price_per_hour">
-                      ${date?.price} / <small>{date?.date_length}</small>
-                    </span>
-                  </h5>
-                </div>
-                <div className="user_location">
-                  <span className="d-flex align-items-start">
-                    <span className="address-wrap">
-                      <svg
-                        width="12"
-                        height="17"
-                        viewBox="0 0 12 17"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M0.214355 5.46429C0.214355 6.36877 0.440493 7.26558 0.870389 8.06101L5.37983 16.2167C5.43986 16.3255 5.55425 16.3928 5.67864 16.3928C5.80303 16.3928 5.91743 16.3255 5.97746 16.2167L10.4886 8.05832C10.9168 7.26558 11.1429 6.36874 11.1429 5.46425C11.1429 2.45134 8.69159 0 5.67864 0C2.66569 0 0.214355 2.45134 0.214355 5.46429ZM2.94651 5.46429C2.94651 3.95781 4.17217 2.73216 5.67864 2.73216C7.18512 2.73216 8.41077 3.95781 8.41077 5.46429C8.41077 6.97076 7.18512 8.19641 5.67864 8.19641C4.17217 8.19641 2.94651 6.97076 2.94651 5.46429Z"
-                          fill="#F24462"
-                        />
-                      </svg>
-                      <span className="address px-1">
-                        {date?.location}, {date?.province}
-                      </span>
-                    </span>
-                    <div className="tag_wrap">
-                      <ul>
-                        <li>
-                          <span>{category?.icon}</span>
-                          <span>{category?.label}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </>
-          ) : msgModal ? (
-            <div>
-              <div id="message-popup" className={`message-popup`}>
-                <span onClick={toggle} className="close-button">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12.9924 12.9926L1.00244 1.00006"
-                      stroke="white"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M12.9887 1.00534L1.00873 12.9853"
-                      stroke="white"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-                <p className="msg">
-                  “If you’re not amazed by the stars then we can’t hang”
-                </p>
-                <div>
-                  <input className="" placeholder="Type your message here…" />
-                  <svg
-                    onClick={toggleMsgModal}
-                    className="icon-move-1"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M13.6048 0.407386C13.2546 0.0480202 12.7364 -0.0858618 12.2532 0.0550622L0.9856 3.33166C0.47579 3.4733 0.114443 3.87988 0.0171013 4.39639C-0.0823407 4.92205 0.265006 5.58935 0.718788 5.86838L4.24193 8.03376C4.60328 8.25573 5.06967 8.20008 5.36869 7.89845L9.40303 3.83901C9.6061 3.62762 9.94224 3.62762 10.1454 3.83901C10.3484 4.04336 10.3484 4.37455 10.1454 4.58594L6.104 8.64612C5.80426 8.94698 5.74826 9.41556 5.96883 9.77914L8.12154 13.3377C8.37361 13.7604 8.80782 14 9.28396 14C9.34003 14 9.40303 14 9.4591 13.9929C10.0053 13.9225 10.4395 13.5491 10.6005 13.0206L13.9409 1.76735C14.088 1.2882 13.9549 0.766759 13.6048 0.407386Z"
-                      fill="#686868"
-                    />
-                  </svg>
-                </div>
-                <p className="tip">Tip: ask her which date she prefers</p>
-              </div>
-            </div>
-          ) : (
-            <div className="date_details_desktop">
-              <div onClick={toggle} className="less-txt">
-                Show less
-              </div>
-              <div>
-                <h4>Date Details</h4>
-                <p>{date?.date_details}</p>
-              </div>
-              <div className="button-wrapper">
-                {user?.gender === "male" && (
-                  <button onClick={openPopup} className="next">
-                    Message
-                  </button>
-                )}
-                <button
-                  type="button"
-                  className="edit"
-                  onClick={() =>
-                    router.push(`/user/user-profile/${date?.user_name}`)
-                  }
-                >
-                  <a>View profile</a>
-                </button>
-              </div>
-            </div>
-          )}
-        </figure>
-        {!isDesktopView && (
-          <div style={dateId !== cardId ? { height: 0 } : {}} id={cardId}>
-            <div ref={growRef} className="date_details">
-              <h4>Date Details</h4>
-              <p>{date?.date_details}</p>
-              <div className="button-wrapper mt-3">
-                {user?.gender === "male" && (
-                  <button onClick={openPopup} className="next">
-                    Message
-                  </button>
-                )}
-                <button
-                  type="button"
-                  className="edit"
-                  onClick={() =>
-                    router.push(`/user/user-profile/${date?.user_name}`)
-                  }
-                >
-                  <a>View profile</a>
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div> */}
+
       {!isDesktopView &&
         conversations?.length > 0 &&
-        conversations?.filter((c) => c.status == 0)?.length > 0 && (
+        conversations?.filter(
+          (c) => c.status == 0 && c.message?.sender_id !== user?._id
+        )?.length > 0 && (
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
@@ -271,18 +120,18 @@ const UserCardListForMessage = ({
                 onClick={closeModal}
                 color={"#A8A8A8"}
               />
-              {conversations.length > 0
-                ? conversations.filter((c) => c.status == 0)?.length > 0
-                  ? conversations
-                      .filter((c) => c.status == 0)
-                      .map((conversation, index) => {
-                        const profilePic =
-                          conversation.user?.images.length > 0
-                            ? conversation.user?.images[0]
-                            : "";
-                        return (
-                          <Slider {...settings} key={index}>
-                            <div>
+              <Slider {...settings}>
+                {conversations.length > 0
+                  ? conversations.filter((c) => c.status == 0)?.length > 0
+                    ? conversations
+                        .filter((c) => c.status == 0)
+                        .map((conversation, index) => {
+                          const profilePic =
+                            conversation.user?.images.length > 0
+                              ? conversation.user?.images[0]
+                              : "";
+                          return (
+                            <div key={index}>
                               <H5>{conversation?.user?.user_name} is</H5>
                               <CustomIcon.IntrestedText
                                 color={"white"}
@@ -304,32 +153,38 @@ const UserCardListForMessage = ({
                                   className="create-date"
                                   onClick={() => {
                                     postApprovedConversation(
-                                      conversation?.message?.room_id
+                                      conversation?.message?.room_id,
+                                      conversation
                                     );
-                                    closeModal();
-                                    setCurrentChat(conversation);
                                   }}
                                 >
                                   REPLY BACK
                                 </a>
                               </div>
                               <div className="my-4 bottom_content">
-                                <Link href="/user/user-profile">
-                                  <a className="view_profile">
-                                    <HiLockOpen /> View Profile
-                                  </a>
-                                </Link>
+                                {/* <Link href="/user/user-profile"> */}
+                                <a
+                                  className="view_profile"
+                                  onClick={() =>
+                                    router.push(
+                                      `/user/user-profile/${conversation?.user?.user_name}`
+                                    )
+                                  }
+                                >
+                                  <HiLockOpen /> View Profile
+                                </a>
+                                {/* </Link> */}
                                 <p>
                                   {conversation?.user?.user_name} has granted
                                   you the access to his profile
                                 </p>
                               </div>
                             </div>
-                          </Slider>
-                        );
-                      })
-                  : "No Request yet"
-                : "No Request yet"}
+                          );
+                        })
+                    : "No Request yet"
+                  : "No Request yet"}
+              </Slider>
             </div>
           </Modal>
         )}

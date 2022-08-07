@@ -48,6 +48,7 @@ const Messages = (props) => {
 
   const [isActive, setActive] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [chatHistory, setChatHistory] = useState([]);
@@ -67,6 +68,58 @@ const Messages = (props) => {
     socket.connect();
     getConversations();
   }, [user]);
+
+  useEffect(() => {
+    socket.on(`requestAccept-${user._id}`, (message) => {
+      console.log("requestAccept message", message);
+      // setConversations((prev) => [...prev, message]);
+      getConversations();
+    });
+  }, [user]);
+
+  useEffect(() => {
+    socket.on(`request-${user._id}`, (message) => {
+      console.log("reqested message", message);
+      // setConversations((prev) => [...prev, message]);
+      getConversations();
+    });
+  }, [user]);
+
+  useEffect(() => {
+    socket.on(`recieve-${user._id}`, (message) => {
+      // console.log(message);
+      setMessages((prev) => [
+        ...prev,
+        {
+          message: message.message,
+          sender_id: message.sender_id,
+          sent_time: Date.now(),
+        },
+      ]);
+    });
+  }, [user]);
+
+  useEffect(() => {
+    socket.on(`requestBlock-${user._id}`, (message) => {
+      console.log("Blocked Chat", message);
+      setCurrentChat((prev) => ({
+        ...prev,
+        status: message?.status,
+      }));
+    });
+  }, [user]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
+    if (currentChat) {
+      getChatHistory(currentChat);
+    }
+  }, [currentChat]);
+
+  // Fuctions
 
   const getConversations = async () => {
     try {
@@ -95,7 +148,6 @@ const Messages = (props) => {
     };
 
     socket.emit("sendMessage", data);
-    // getChatHistory(currentChat);
     setMessages((prev) => [
       ...prev,
       {
@@ -104,52 +156,18 @@ const Messages = (props) => {
         sent_time: Date.now(),
       },
     ]);
+    getChatHistory(currentChat);
     setNewMessage("");
   };
 
-  useEffect(() => {
-    socket.on(`recieve-${user._id}`, (message) => {
-      // console.log(message);
-      setMessages((prev) => [
-        ...prev,
-        {
-          message: message.message,
-          sender_id: message.sender_id,
-          sent_time: Date.now(),
-        },
-      ]);
-    });
-    socket.on(`request-${user._id}`, (message) => {
-      console.log("request is comes", message);
-    });
-    // socket.on(`requestAccept-${user._id}`, (conversation) => {
-    //   setConversations((prev) => [...prev, conversation]);
-    // });
-    socket.on(`requestBlock-${currentChat?.user?.id}`, (message) => {
-      console.log("Blocked Chat", message);
-    });
-  }, []);
-
-  // useEffect(() => {
-  //   socket.on(`request-${user._id}`, (message) => {
-  //     console.log("request is comes", message);
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   socket.on(`requestBlock-${user._id}`, (message) => {
-  //     console.log("Blocked Chat", message);
-  //   });
-  // }, []);
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  const tabIndexChange = (index) => {
+    setSelectedTabIndex(index);
+  };
 
   const getChatHistory = async (currentChat) => {
     try {
       const data = {
-        chatRoomId: currentChat?.message?.room_id,
+        chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
       };
 
       const res = await apiRequest({
@@ -176,6 +194,7 @@ const Messages = (props) => {
         url: `chat/block`,
       });
       console.log("res", res);
+      setCurrentChat(res?.data?.data?.chatRoom);
     } catch (err) {
       console.log("err", err);
     }
@@ -196,6 +215,7 @@ const Messages = (props) => {
       // document.body.classList.remove("open-sidebar");
     }
   };
+
   useEffect(() => {
     document.addEventListener("click", sidbarCloseOutsideClick);
   }, []);
@@ -206,9 +226,9 @@ const Messages = (props) => {
 
   // consoles
 
-  console.log("socket", socket);
-  console.log("currentChat", currentChat);
-
+  // console.log("socket", socket);
+  // console.log("currentChat", currentChat);
+  // console.log("conversation", conversations);
   return (
     <div className="inner-page">
       <HeaderLoggedIn />
@@ -226,18 +246,28 @@ const Messages = (props) => {
                       placeholder=" Search"
                       icon={<IoMdSearch size={20} />}
                     />
-                    <Tabs>
-                      <TabList>
-                        <Tab>Conversations</Tab>
-                        <Tab>
-                          <UserCardListForMessage
-                            conversations={conversations}
-                            getConversations={getConversations}
-                            user={user}
-                            setCurrentChat={setCurrentChat}
-                          />
-                        </Tab>
-                      </TabList>
+                    <Tabs
+                      selectedIndex={selectedTabIndex}
+                      onSelect={tabIndexChange}
+                    >
+                      {user.gender === "female" ? (
+                        <TabList>
+                          <Tab>Conversations</Tab>
+                          <Tab>
+                            <UserCardListForMessage
+                              conversations={conversations}
+                              getConversations={getConversations}
+                              user={user}
+                              setCurrentChat={setCurrentChat}
+                              tabIndexChange={tabIndexChange}
+                            />
+                          </Tab>
+                        </TabList>
+                      ) : (
+                        <TabList>
+                          <Tab>Conversations</Tab>
+                        </TabList>
+                      )}
                       <TabPanel>
                         <div className="user-list-wrap">
                           <ul>
@@ -253,7 +283,6 @@ const Messages = (props) => {
                                       return (
                                         <li
                                           onClick={() => {
-                                            getChatHistory(c);
                                             setCurrentChat(c);
                                             if (mobile) {
                                               toggleChat();
@@ -290,8 +319,11 @@ const Messages = (props) => {
                         <div className="user-list-wrap">
                           <ul>
                             {(conversations?.length == 0 ||
-                              conversations.filter((c) => c.status == 0)
-                                ?.length == 0) &&
+                              conversations.filter(
+                                (c) =>
+                                  c.status == 0 &&
+                                  c.message?.sender_id !== user?._id
+                              )?.length == 0) &&
                               "No Requests"}
                           </ul>
                         </div>
@@ -333,8 +365,6 @@ const Messages = (props) => {
                                 <ul>
                                   <li>
                                     <span>{category?.icon}</span>
-                                  </li>
-                                  <li>
                                     <span>{category?.label}</span>
                                   </li>
                                 </ul>
