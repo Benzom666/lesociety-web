@@ -54,6 +54,7 @@ const Messages = (props) => {
   const [chatHistory, setChatHistory] = useState([]);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [arrivalMessage, setArrivalMessage] = useState("");
   const scrollRef = useRef();
   const { width } = useWindowSize();
   const [chatModal, setChatModal] = useState(false);
@@ -72,7 +73,6 @@ const Messages = (props) => {
   useEffect(() => {
     socket.on(`requestAccept-${user._id}`, (message) => {
       console.log("requestAccept message", message);
-      // setConversations((prev) => [...prev, message]);
       getConversations();
     });
   }, [user]);
@@ -88,16 +88,22 @@ const Messages = (props) => {
   useEffect(() => {
     socket.on(`recieve-${user._id}`, (message) => {
       // console.log(message);
-      setMessages((prev) => [
-        ...prev,
-        {
-          message: message.message,
-          sender_id: message.sender_id,
-          sent_time: Date.now(),
-        },
-      ]);
+
+      return setArrivalMessage({
+        message: message.message,
+        sender_id: message.sender_id,
+        sent_time: Date.now(),
+        room_id: message?.room_id,
+        receiver_id: message?.receiver_id,
+      });
     });
   }, [user]);
+
+  useEffect(() => {
+    if (arrivalMessage && currentChat?._id === arrivalMessage?.room_id) {
+      setMessages((prev) => [...prev, arrivalMessage]);
+    }
+  }, [arrivalMessage, currentChat]);
 
   useEffect(() => {
     socket.on(`requestBlock-${user._id}`, (message) => {
@@ -146,7 +152,6 @@ const Messages = (props) => {
       recieverId: currentChat?.user?.id ?? "",
       message: newMessage,
     };
-    console.log("message send", data);
 
     socket.emit("sendMessage", data);
     setMessages((prev) => [
@@ -157,7 +162,7 @@ const Messages = (props) => {
         sent_time: Date.now(),
       },
     ]);
-    getChatHistory(currentChat);
+    // getChatHistory(currentChat);
     setNewMessage("");
   };
 
@@ -195,18 +200,14 @@ const Messages = (props) => {
         url: `chat/block`,
       });
       console.log("res", res);
-      setCurrentChat(res?.data?.data?.chatRoom);
+      setCurrentChat((prev) => ({
+        ...prev,
+        status: res?.data?.data?.chatRoom?.status,
+      }));
     } catch (err) {
       console.log("err", err);
     }
   };
-
-  const category = dateCategory.find(
-    (item) =>
-      item?.label === currentChat?.date_id?.standard_class_date ||
-      item?.label === currentChat?.date_id?.middle_class_dates ||
-      item?.label === currentChat?.date_id?.executive_class_dates
-  );
 
   const sidbarCloseOutsideClick = (event) => {
     const target = document.querySelector("#action_dropdown");
@@ -224,11 +225,18 @@ const Messages = (props) => {
     setActive(!isActive);
     // document.body.classList.toggle("open-sidebar");
   };
-
+  const category = dateCategory.find(
+    (item) =>
+      item?.label === currentChat?.date_id?.standard_class_date ||
+      item?.label === currentChat?.date_id?.middle_class_dates ||
+      item?.label === currentChat?.date_id?.executive_class_dates
+  );
   // consoles
 
   // console.log("socket", socket);
-  // console.log("currentChat", currentChat);
+  console.log("currentChat", currentChat);
+  // console.log("arrivalMessage", arrivalMessage);
+  // console.log("category", category);
   // console.log("conversation", conversations);
   return (
     <div className="inner-page">
