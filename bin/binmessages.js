@@ -26,7 +26,7 @@ import { format } from "timeago.js";
 import qs from "qs";
 import { getCookie } from "utils/cookie";
 import axios from "axios";
-import UserCardListForMessage from "./../core/UserCardListForMessage";
+import UserCardListForMessage from "../core/UserCardListForMessage";
 
 const socket = io.connect("ws://staging-api.secrettime.com/");
 

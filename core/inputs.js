@@ -126,7 +126,9 @@ export function inputField({
           (type == "text" || type == "password" || type == "number") && (
             <label>{label}</label>
           )}
-        {(ignoreTouch || touched) &&
+        {(ignoreTouch ||
+          touched ||
+          Number(validationLength) - Number(input.value.length) < 0) &&
           ((error && <span className="error">{error}</span>) ||
             (warning && <span>{warning}</span>))}
         <span className="pos-relative ">
@@ -215,14 +217,20 @@ export function textarea({
     <div className={`secret-input type-${type}`}>
       <React.Fragment>
         <label>{label}</label>
-        {touched &&
+        {(touched ||
+          Number(validationLength) - Number(input.value.length) < 0) &&
           ((error && <span className="error">{error}</span>) ||
             (warning && <span>{warning}</span>))}
         <textarea
           {...input}
           autoComplete="off"
           className={`form-control`}
-          style={touched && error ? { border: "3px solid #F24462" } : {}}
+          style={
+            (touched && error) ||
+            Number(validationLength) - Number(input.value.length) < 0
+              ? { border: "3px solid #F24462" }
+              : {}
+          }
           placeholder={placeholder}
         />
         <span className="position-absolute end-0 f-11">

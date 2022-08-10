@@ -23,6 +23,7 @@ const UserCardListForMessage = ({
   getConversations,
   setCurrentChat,
   tabIndexChange,
+  socket,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
@@ -57,7 +58,12 @@ const UserCardListForMessage = ({
         ...prev,
         status: res?.data?.data?.chatRoom?.status,
       }));
+
       tabIndexChange(0);
+      socket.on(`requestAccept-${conversation.sender_id}`, (message) => {
+        console.log("requestAccept message", message);
+        getConversations();
+      });
     } catch (err) {
       console.log("err", err);
     }

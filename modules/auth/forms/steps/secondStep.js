@@ -96,6 +96,13 @@ const SecondStep = (props) => {
 
   const reduxValues = useSelector((state) => state.form.signupStep2.values);
 
+  const imageValidation =
+    reduxValues?.imageUpload?.length > 0 &&
+    reduxValues?.imageUpload2?.length > 0 &&
+    reduxValues?.imageUpload3?.length > 0 &&
+    reduxValues?.imageUpload4?.length > 0;
+
+  console.log("imageValidation", imageValidation);
   return (
     <form
       className="upload-pics"
@@ -496,7 +503,11 @@ const SecondStep = (props) => {
           {/* <a onClick={previousPage} className="prev">
                      <FiChevronLeft />
                    </a> */}
-          <button type="submit" className="next" disabled={invalid}>
+          <button
+            type="submit"
+            className="next"
+            disabled={invalid || !imageValidation}
+          >
             {loading ? (
               <span className="spin-loader-button"></span>
             ) : (

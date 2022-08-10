@@ -31,6 +31,7 @@ import qs from "qs";
 import { getCookie } from "utils/cookie";
 import axios from "axios";
 import UserCardListForMessage from "./../core/UserCardListForMessage";
+import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
 
 const socket = io.connect("http://staging-api.secrettime.com/");
@@ -59,9 +60,11 @@ const Messages = (props) => {
   const { width } = useWindowSize();
   const [chatModal, setChatModal] = useState(false);
   const mobile = width < 768;
+  const router = useRouter();
 
-  const toggleChat = () => {
+  const toggleChat = (currentChat) => {
     setChatModal(true);
+    router.push(`messages/${currentChat?._id}`);
   };
 
   useEffect(() => {
@@ -237,7 +240,7 @@ const Messages = (props) => {
   console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
   // console.log("category", category);
-  // console.log("conversation", conversations);
+  console.log("conversation", conversations);
   return (
     <div className="inner-page">
       <HeaderLoggedIn />
@@ -269,6 +272,7 @@ const Messages = (props) => {
                               user={user}
                               setCurrentChat={setCurrentChat}
                               tabIndexChange={tabIndexChange}
+                              socket={socket}
                             />
                           </Tab>
                         </TabList>
@@ -294,11 +298,11 @@ const Messages = (props) => {
                                           onClick={() => {
                                             setCurrentChat(c);
                                             if (mobile) {
-                                              toggleChat();
+                                              toggleChat(c);
                                             }
                                           }}
                                         >
-                                          <figure>
+                                          <figure className="user_img_header">
                                             <Image
                                               src={
                                                 c.user?.images?.length > 0 &&
@@ -309,8 +313,8 @@ const Messages = (props) => {
                                                     NoImage
                                               }
                                               alt="user image"
-                                              width={40}
-                                              height={40}
+                                              width={32}
+                                              height={32}
                                             />
                                           </figure>
                                           <span className="user-details">
@@ -341,7 +345,7 @@ const Messages = (props) => {
                   </div>
                 </div>
                 <div className="col-md-8 col-lg-9 p-0">
-                  {(chatModal || !mobile) && (
+                  {!mobile && (
                     <div className="message-content-side">
                       {currentChat && currentChat?.status === 0 ? (
                         <>{/* <UserCardList currentChat={currentChat} /> */}</>
@@ -351,7 +355,7 @@ const Messages = (props) => {
                         <div className="message-chat-wrap">
                           <div className="top-head">
                             <div className="user-thumb">
-                              <figure>
+                              <figure className="user_img_header">
                                 <Image
                                   src={
                                     currentChat?.user?.images?.length > 0 &&
@@ -361,8 +365,8 @@ const Messages = (props) => {
                                         NoImage
                                   }
                                   alt="user image"
-                                  width={40}
-                                  height={40}
+                                  width={32}
+                                  height={32}
                                 />
                               </figure>
                               <span className="user-details">
@@ -396,11 +400,12 @@ const Messages = (props) => {
                                   >
                                     <ul>
                                       {currentChat?.status === 2 ? (
-                                        <li
-                                        // onClick={() => blockChat(currentChat)}
-                                        >
-                                          <a>Unblock</a>
-                                        </li>
+                                        currentChat?.blocked_by?._id ==
+                                          user?._id && (
+                                          <li>
+                                            <a>Unblock</a>
+                                          </li>
+                                        )
                                       ) : (
                                         <li
                                           onClick={() => blockChat(currentChat)}
@@ -441,9 +446,15 @@ const Messages = (props) => {
                               </ul>
                             </div>
                             {currentChat?.status === 2 ? (
-                              <div className="text-center">
-                                you have been blocked
-                              </div>
+                              currentChat?.blocked_by?._id == user?._id ? (
+                                <div className="text-center">
+                                  you have blocked this chat
+                                </div>
+                              ) : (
+                                <div className="text-center">
+                                  You have been blocked
+                                </div>
+                              )
                             ) : (
                               <div className="input_write_sec">
                                 <input
