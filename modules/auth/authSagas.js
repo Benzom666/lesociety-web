@@ -40,7 +40,16 @@ export function* login(action) {
           Router.push({
             pathname: "/user/verified",
           });
-        } else if (response.success.data.data.status === 3) {
+        }
+        //  else if (
+        //   response.success?.data?.data?.status === 2 &&
+        //   response.success?.data?.data?.is_new === false
+        // ) {
+        //   Router.push({
+        //     pathname: "/user/user-list",
+        //   });
+        // }
+        else if (response.success.data.data.status === 3) {
           Router.push({
             pathname: "/auth/block",
           });

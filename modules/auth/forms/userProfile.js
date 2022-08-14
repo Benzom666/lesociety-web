@@ -193,10 +193,12 @@ function UserProfile({ preview, editHandle }) {
                                 width={240}
                                 height={300}
                               />
-                              <span className="verified_check_tag">
-                                <HiBadgeCheck color={"white"} size={20} />
-                                Verified
-                              </span>
+                              {user?.documents_verified && (
+                                <span className="verified_check_tag">
+                                  <HiBadgeCheck color={"white"} size={20} />
+                                  Verified
+                                </span>
+                              )}
                             </div>
                           </label>
                           {router?.query?.userName && (
@@ -284,10 +286,12 @@ function UserProfile({ preview, editHandle }) {
                                     width="350"
                                     height="350"
                                   />
-                                  <span className="verified_check_tag">
-                                    <HiBadgeCheck color={"white"} size={20} />
-                                    Verified
-                                  </span>
+                                  {user?.documents_verified && (
+                                    <span className="verified_check_tag">
+                                      <HiBadgeCheck color={"white"} size={20} />
+                                      Verified
+                                    </span>
+                                  )}
                                 </div>
                               </>
                             </label>
