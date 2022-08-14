@@ -102,7 +102,7 @@ const SecondStep = (props) => {
     reduxValues?.imageUpload3?.length > 0 &&
     reduxValues?.imageUpload4?.length > 0;
 
-  console.log("imageValidation", imageValidation);
+  // console.log("imageValidation", imageValidation);
   return (
     <form
       className="upload-pics"

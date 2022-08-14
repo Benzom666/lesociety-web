@@ -58,6 +58,8 @@ const CompleteProfile = (props) => {
     verifyEmail();
   }, [router?.query?.token]);
 
+  // console.log("router", router);
+
   return (
     <div className="upload-pics profile-completion">
       <span className="completion-sign">
@@ -108,7 +110,7 @@ const CompleteProfile = (props) => {
         </svg>
       </span>
       <h2>
-        {router?.query?.token
+        {router?.query?.token || user?.email_verified
           ? user?.email_verified
             ? "Email Verified"
             : "Email Verification"
