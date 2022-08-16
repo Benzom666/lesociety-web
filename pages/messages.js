@@ -62,11 +62,6 @@ const Messages = (props) => {
   const mobile = width < 768;
   const router = useRouter();
 
-  const toggleChat = (currentChat) => {
-    setChatModal(true);
-    router.push(`messages/${currentChat?._id}`);
-  };
-
   useEffect(() => {
     socket.auth = { user: user };
     socket.connect();
@@ -129,6 +124,11 @@ const Messages = (props) => {
   }, [currentChat]);
 
   // Fuctions
+
+  const toggleChat = (currentChat) => {
+    setChatModal(true);
+    router.push(`messages/${currentChat?._id}`);
+  };
 
   const getConversations = async () => {
     try {
@@ -237,10 +237,10 @@ const Messages = (props) => {
   // consoles
 
   // console.log("socket", socket);
-  console.log("currentChat", currentChat);
+  // console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
   // console.log("category", category);
-  console.log("conversation", conversations);
+  // console.log("conversation", conversations);
   return (
     <div className="inner-page">
       <HeaderLoggedIn />
