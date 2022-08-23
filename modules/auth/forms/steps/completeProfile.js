@@ -123,7 +123,15 @@ const CompleteProfile = (props) => {
           !tokenValid ? (
             "Token is expired. Please verify your email address, by clicking on the resend mail button."
           ) : (
-            "Please verify your email address, by clicking on the link in the email that was delivered to your inbox."
+            <>
+              <p>
+                Please verify your email address, by clicking on the link in the
+                email that was delivered to your inbox.
+              </p>
+              <p className="mt-4">
+                please check your junk mail in case email not recieved on inbox.
+              </p>
+            </>
           )
         ) : (
           <>

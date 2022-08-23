@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Header from "core/header";
 import Footer from "core/footer";
+import withAuth from "@/core/withAuth";
 
 const Verfied = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -114,4 +115,4 @@ const Verfied = (props) => {
   );
 };
 
-export default Verfied;
+export default withAuth(Verfied);

@@ -80,6 +80,7 @@ const DatePreview = (props) => {
           <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
           <IoIosClose className="" size={32} onClick={toggle} />
         </div>
+        {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>}
       </div>
       <div
         className={`${
@@ -88,7 +89,8 @@ const DatePreview = (props) => {
       >
         <div className="inner_container">
           <div className="d-flex justify-content-center">
-            <h6>Date Preview</h6>
+            {width > 767 && <h6>Date Preview</h6>}
+
             {width > 767 && (
               <IoIosClose
                 className="desk-close-icon-new"

@@ -7,6 +7,7 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { format } from "timeago.js";
 import { IoIosSend, IoMdSearch } from "react-icons/io";
 import Image from "next/image";
+import withAuth from "@/core/withAuth";
 
 const socket = io.connect("http://staging-api.secrettime.com/");
 
@@ -292,4 +293,4 @@ function ChatMessages(props) {
   );
 }
 
-export default ChatMessages;
+export default withAuth(ChatMessages);

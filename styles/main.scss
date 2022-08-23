@@ -1073,7 +1073,7 @@ $GradientColor-second: rgba(#191919, .8);
                 bottom: 0;
                 left: 50%;
                 transform: translateX(-50%);
-                background: rgba(0, 0, 0, 0.6);
+                background: black;
                 width: 100%;
                 z-index: 9999;
 
@@ -1497,8 +1497,17 @@ $GradientColor-second: rgba(#191919, .8);
     padding: 0;
     margin-top: 20%;
 
+    div {
+        p {
+            background-color: black;
+            margin: 0;
+            padding-bottom: 10px;
+        }
+    }
+
     .button-wrapper {
         padding: 40px;
+        background-color: black;
 
         .next-button {
             background-color: #F24462;
@@ -1841,7 +1850,12 @@ $GradientColor-second: rgba(#191919, .8);
 
 .create-date-wrap {
     .step-wraps {
-        margin: 15px 0 50px;
+        // margin: 15px  50px;
+        width: 70%;
+         margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+        margin-bottom: 50px;
 
         ul {
             list-style-type: none;
@@ -2847,7 +2861,7 @@ body {
                     letter-spacing: 0.0583333px;
                     margin-bottom: 1rem;
                     word-break: break-word;
-                    margin-left: 30px;
+                    // margin-left: 30px;
                     margin-right: 30px;
                 }
 
@@ -4117,7 +4131,7 @@ body .verification_card_header {
     font-family: 'Helvetica';
     font-style: normal;
     font-weight: 300;
-    margin-left: 30px;
+    // margin-left: 30px;
     span {
         font-weight: bold;
     }

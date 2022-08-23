@@ -1,6 +1,6 @@
 import React from "react";
 
-function chat({ currentChat, category }) {
+function Chat({ currentChat, category }) {
   return (
     <div className="message-content-side">
       {currentChat && currentChat?.status === 1 && (
@@ -119,4 +119,4 @@ function chat({ currentChat, category }) {
   );
 }
 
-export default chat;
+export default withAuth(Chat);

@@ -142,6 +142,13 @@ const ThirdStep = (props) => {
 
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
+  const toFeet = (n) => {
+    var realFeet = (n * 0.3937) / 12;
+    var feet = Math.floor(realFeet);
+    var inches = Math.round((realFeet - feet) * 12);
+    return feet + "'" + inches;
+  };
+
   useEffect(() => {
     if (user?.height) {
       const data = {
@@ -226,11 +233,7 @@ const ThirdStep = (props) => {
         <Slider
           value={tallValue}
           tooltip={true}
-          handleLabel={
-            tallValueUnit
-              ? convertToFeet(tallValue).replace(".", "'")
-              : tallValue
-          }
+          handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
           min={100}
           max={250}
           onChange={(val) => setTallValue(val)}

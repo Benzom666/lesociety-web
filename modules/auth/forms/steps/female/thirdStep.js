@@ -138,6 +138,13 @@ const ThirdStep = (props) => {
 
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(3);
 
+  const toFeet = (n) => {
+    var realFeet = (n * 0.3937) / 12;
+    var feet = Math.floor(realFeet);
+    var inches = Math.round((realFeet - feet) * 12);
+    return feet + "'" + inches;
+  };
+
   const {
     handleSubmit,
     invalid,
@@ -199,11 +206,7 @@ const ThirdStep = (props) => {
           value={tallValue}
           tooltip={true}
           min={0}
-          handleLabel={
-            tallValueUnit
-              ? convertToFeet(tallValue).replace(".", "'")
-              : tallValue
-          }
+          handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
           max={250}
           onChange={(val) => setTallValue(val)}
         />

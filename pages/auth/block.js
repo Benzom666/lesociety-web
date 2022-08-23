@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Header from "core/header";
 import Footer from "core/footer";
+import withAuth from "@/core/withAuth";
 
 const Block = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -35,4 +36,4 @@ const Block = (props) => {
   );
 };
 
-export default Block;
+export default withAuth(Block);

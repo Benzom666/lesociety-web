@@ -107,7 +107,10 @@ const CreateStepFour = (props) => {
             />
           </div>
         )}
-        <div className="step-wraps" style={{ marginLeft: "10px" }}>
+        <div
+          className="step-wraps"
+          // style={{ marginLeft: "10px" }}
+        >
           <ul>
             <li className="complete active">
               <span></span>

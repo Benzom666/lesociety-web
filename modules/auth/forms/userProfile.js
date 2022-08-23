@@ -40,6 +40,13 @@ function UserProfile({ preview, editHandle }) {
 
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
+  const toFeet = (n) => {
+    var realFeet = (n * 0.3937) / 12;
+    var feet = Math.floor(realFeet);
+    var inches = Math.round((realFeet - feet) * 12);
+    return feet + "'" + inches;
+  };
+
   function openModal() {
     setIsOpen(true);
   }
@@ -499,9 +506,7 @@ function UserProfile({ preview, editHandle }) {
                           <div className="about_me_card_inner">
                             <div className="inner-box-me">
                               <H5>
-                                {convertToFeet(
-                                  userDetail?.height || user?.height
-                                ).replace(".", "'")}
+                                {toFeet(userDetail?.height || user?.height)}
                               </H5>
                               <p>Height</p>
                             </div>
@@ -529,7 +534,7 @@ function UserProfile({ preview, editHandle }) {
                         </div>
                         <div className="more_content pt-3">
                           <div className="text-left-more">
-                            <h6 className="mb-3 text-left-more mt-3 more-about">
+                            <h6 className=" text-left-more mt-3 more-about">
                               More about{" "}
                               <span>
                                 {userDetail?.user_name || user.user_name}
