@@ -60,10 +60,6 @@ const UserCardListForMessage = ({
       }));
 
       tabIndexChange(0);
-      socket.on(`requestAccept-${conversation.sender_id}`, (message) => {
-        console.log("requestAccept message", message);
-        getConversations();
-      });
     } catch (err) {
       console.log("err", err);
     }

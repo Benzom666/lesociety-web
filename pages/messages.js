@@ -78,7 +78,6 @@ const Messages = (props) => {
   useEffect(() => {
     socket.on(`request-${user._id}`, (message) => {
       console.log("reqested message", message);
-      // setConversations((prev) => [...prev, message]);
       getConversations();
     });
   }, [user]);
