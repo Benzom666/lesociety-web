@@ -84,7 +84,7 @@ export const redirect = (route) => {
 
 export const dateCategory = [
   {
-    label: "Morning Beverage",
+    label: "Morning Date",
     id: "MorningBeverage",
     iconName: "CustomIcon.Sun",
     icon: <CustomIcon.Sun color={"white"} size={20} />,

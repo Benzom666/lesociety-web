@@ -240,7 +240,7 @@ function UserList() {
   }, [scrollPosition]);
 
   // console
-  // console.log("receiverData", receiverData);
+  // console.log("dates", dates);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn fixed={width < 767} isBlack={locationPopup} />
