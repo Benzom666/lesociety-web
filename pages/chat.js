@@ -1,4 +1,5 @@
 import React from "react";
+import withAuth from "../core/withAuth";
 
 function Chat({ currentChat, category }) {
   return (
