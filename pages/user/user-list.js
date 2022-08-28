@@ -19,6 +19,9 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import CustomInput from "Views/CustomInput";
 import { IoIosSend } from "react-icons/io";
+import { useRef } from "react";
+import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
+import SkeletonDate from "@/modules/skeleton/SkeletonDates";
 
 function UserList() {
   const { width } = useWindowSize();
@@ -38,6 +41,11 @@ function UserList() {
   const [modalIsOpen, setIsOpen] = React.useState(user.gender === "female");
   const [receiverData, setReceiverData] = React.useState("");
   const [messageError, setMessageError] = React.useState("");
+  const scrollRef = useRef();
+
+  const lastClickedDate = () => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   function openModal() {
     setIsOpen(true);
@@ -277,7 +285,13 @@ function UserList() {
                   style={{ overflowX: "hidden" }}
                 >
                   <div className="row">
-                    {dates.length > 0
+                    {loading
+                      ? [1, 2, 3, 4, 5, 6].map((n) => (
+                          <div className={`col-xl-6 col-lg-12`}>
+                            <SkeletonDate key={n} theme="dark" />
+                          </div>
+                        ))
+                      : dates.length > 0
                       ? dates.map((item, index) => (
                           <div
                             className={`col-xl-6 col-lg-12 ${
@@ -289,6 +303,11 @@ function UserList() {
                             }`}
                             id={`scrolldiv`}
                             key={index}
+                            onClick={() => {
+                              // if (index === dates?.length - 1) {
+                              lastClickedDate();
+                              // }
+                            }}
                           >
                             {width > 767 ? (
                               <UserCardList
@@ -302,6 +321,8 @@ function UserList() {
                                 dateId={dateId}
                                 isDesktopView={true}
                                 key={index}
+                                ref={scrollRef}
+                                loading={loading}
                               />
                             ) : (
                               <UserCardList
@@ -315,6 +336,8 @@ function UserList() {
                                 growDiv={growDiv}
                                 dateId={dateId}
                                 key={index}
+                                ref={scrollRef}
+                                loading={loading}
                               />
                             )}
                           </div>

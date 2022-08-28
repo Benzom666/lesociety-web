@@ -85,8 +85,10 @@ const Messages = (props) => {
 
   useEffect(() => {
     socket.on(`recieve-${user._id}`, (message) => {
-      // console.log(message);
-
+      console.log(message);
+      if (message.message == "") {
+        return getConversations();
+      }
       return setArrivalMessage({
         message: message.message,
         sender_id: message.sender_id,
@@ -422,27 +424,33 @@ const Messages = (props) => {
                           <div className="chat_message_wrap">
                             <div className="message_list_wrap">
                               <ul className="chat_message_scroll">
-                                {messages.length > 0 &&
-                                  messages.map((message, index) => {
-                                    return (
-                                      <li
-                                        className={
-                                          message.sender_id === user._id
-                                            ? "send"
-                                            : "receive"
-                                        }
-                                        key={index}
-                                        ref={scrollRef}
-                                      >
-                                        <div className="message_content">
-                                          <span className="message_time">
-                                            {format(message?.sent_time)}
-                                          </span>
-                                          {message?.message}
-                                        </div>
-                                      </li>
-                                    );
-                                  })}
+                                {messages.filter(
+                                  (message) => message?.message !== ""
+                                ).length > 0 &&
+                                  messages
+                                    .filter(
+                                      (message) => message?.message !== ""
+                                    )
+                                    .map((message, index) => {
+                                      return (
+                                        <li
+                                          className={
+                                            message.sender_id === user._id
+                                              ? "send"
+                                              : "receive"
+                                          }
+                                          key={index}
+                                          ref={scrollRef}
+                                        >
+                                          <div className="message_content">
+                                            <span className="message_time">
+                                              {format(message?.sent_time)}
+                                            </span>
+                                            {message?.message}
+                                          </div>
+                                        </li>
+                                      );
+                                    })}
                               </ul>
                             </div>
                             {currentChat?.status === 2 ? (

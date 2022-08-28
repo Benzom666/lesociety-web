@@ -67,6 +67,14 @@ const UserCardListForMessage = ({
     } catch (err) {
       console.log("err", err);
     }
+
+    const data = {
+      chatRoomId: room_id ?? "",
+      recieverId: conversation?.user?.id ?? "",
+      message: "",
+    };
+
+    socket.emit("sendMessage", data);
   };
 
   const settings = {
@@ -92,6 +100,7 @@ const UserCardListForMessage = ({
       height: "100%",
     },
   };
+
   return (
     <>
       <span onClick={openModal}>

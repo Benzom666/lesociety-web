@@ -24,6 +24,8 @@ const UserCardList = ({
   openPopup,
   closePopup,
   isDesktopView,
+  ref,
+  loading,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
@@ -85,7 +87,7 @@ const UserCardList = ({
   };
   return (
     <>
-      <div className="date_card_wrap">
+      <div className="date_card_wrap" ref={ref}>
         <figure
           className="user_img_date"
           onClick={
