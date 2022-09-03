@@ -6,6 +6,7 @@ import { useState } from "react";
 import Header from "core/header";
 import Footer from "core/footer";
 import withAuth from "@/core/withAuth";
+import { apiRequest } from "utils/Utilities";
 
 const Verfied = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -13,6 +14,30 @@ const Verfied = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  useEffect(() => {
+    if (user?.verified_screen_shown === false && user?.status === 2) {
+      redirectUserToList();
+    }
+  }, [user]);
+
+  const redirectUserToList = async () => {
+    try {
+      const data = {
+        verified_screen_shown: true,
+        email: user?.email,
+        status: user?.status,
+      };
+
+      const res = await apiRequest({
+        data: data,
+        method: "POST",
+        url: `user/update-status`,
+      });
+      console.log("res", res);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
   return (
     <div className="inner-page">
       <Header />

@@ -128,7 +128,7 @@ export function inputField({
           )}
         {(ignoreTouch ||
           touched ||
-          Number(validationLength) - Number(input.value.length) < 0) &&
+          Number(validationLength) - Number(input?.value?.length) < 0) &&
           ((error && <span className="error">{error}</span>) ||
             (warning && <span>{warning}</span>))}
         <span className="pos-relative ">
@@ -150,7 +150,7 @@ export function inputField({
         </span>
         <span className="position-absolute end-0 f-11">
           {label == "Your tagline"
-            ? Number(validationLength) - Number(input.value.length)
+            ? Number(validationLength) - Number(input?.value?.length)
             : ""}
         </span>
         {label && type != "text" && type != "password" && type != "number" && (
@@ -218,7 +218,7 @@ export function textarea({
       <React.Fragment>
         <label>{label}</label>
         {(touched ||
-          Number(validationLength) - Number(input.value.length) < 0) &&
+          Number(validationLength) - Number(input?.value?.length) < 0) &&
           ((error && <span className="error">{error}</span>) ||
             (warning && <span>{warning}</span>))}
         <textarea
@@ -227,7 +227,7 @@ export function textarea({
           className={`form-control`}
           style={
             (touched && error) ||
-            Number(validationLength) - Number(input.value.length) < 0
+            Number(validationLength) - Number(input?.value?.length) < 0
               ? { border: "3px solid #F24462" }
               : {}
           }
@@ -235,7 +235,7 @@ export function textarea({
         />
         <span className="position-absolute end-0 f-11">
           {label == "What do you offer?" || "Describe_Date_Details"
-            ? Number(validationLength) - Number(input.value.length)
+            ? Number(validationLength) - Number(input?.value?.length)
             : ""}
         </span>
       </React.Fragment>

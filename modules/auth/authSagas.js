@@ -36,20 +36,21 @@ export function* login(action) {
           pathname: "/auth/profile",
         });
       } else {
-        if (response.success?.data?.data?.status === 2) {
+        if (
+          response.success?.data?.data?.status === 2 &&
+          response.success?.data?.data?.verified_screen_shown === false
+        ) {
           Router.push({
             pathname: "/user/verified",
           });
-        }
-        //  else if (
-        //   response.success?.data?.data?.status === 2 &&
-        //   response.success?.data?.data?.is_new === false
-        // ) {
-        //   Router.push({
-        //     pathname: "/user/user-list",
-        //   });
-        // }
-        else if (response.success.data.data.status === 3) {
+        } else if (
+          response.success?.data?.data?.status === 2 &&
+          response.success?.data?.data?.verified_screen_shown === true
+        ) {
+          Router.push({
+            pathname: "/user/user-list",
+          });
+        } else if (response.success.data.data.status === 3) {
           Router.push({
             pathname: "/auth/block",
           });

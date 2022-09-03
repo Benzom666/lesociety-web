@@ -7,16 +7,24 @@ import SubHeading from "./SubHeading";
 import H5 from "./H5";
 import { HiBadgeCheck } from "react-icons/hi";
 import { FiChevronRight } from "react-icons/fi";
+
 import { useSelector, useDispatch } from "react-redux";
 import { deAuthenticateAction } from "../modules/auth/authActions";
 import { useRouter } from "next/router";
 import _ from "lodash";
+import { BiTime } from "react-icons/bi";
 
 export default function SideBar() {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
   const router = useRouter();
+  const [documentUpoaded, setDocumentUpoaded] = useState(false);
 
+  useEffect(() => {
+    if (user?.selfie && user?.document) {
+      setDocumentUpoaded(true);
+    }
+  }, []);
   return (
     <>
       <div className="sidebar_wrap">
@@ -46,10 +54,38 @@ export default function SideBar() {
         </div>
         <div className="verification_card_header text-center mb-3">
           <div className="mb-5">
-            <HiBadgeCheck color={"white"} size={50} />
+            {/* <HiBadgeCheck color={"white"} size={50} /> */}
           </div>
           <div className="d-flex align-items-center mb-0 header_btn_wrap">
-            <button type="button">PENDING VERIFICATION</button>
+            <button
+              type="button d-flex align-items-center"
+              onClick={() => router.push("/verified-profile")}
+            >
+              {user?.verified
+                ? "VERIFIED"
+                : !documentUpoaded
+                ? "VERIFY PROFILE"
+                : "PENDING"}
+              {user?.verified ? (
+                <HiBadgeCheck
+                  color={"white"}
+                  size={25}
+                  style={{ paddingLeft: "5px" }}
+                />
+              ) : !documentUpoaded ? (
+                <HiBadgeCheck
+                  color={"white"}
+                  size={25}
+                  style={{ paddingLeft: "5px" }}
+                />
+              ) : (
+                <BiTime
+                  color={"white"}
+                  size={25}
+                  style={{ paddingLeft: "5px" }}
+                />
+              )}
+            </button>
           </div>
         </div>
         {user.gender === "female" && (

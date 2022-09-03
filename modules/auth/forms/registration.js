@@ -65,17 +65,21 @@ const RegisterForm = (props) => {
           pathname: "/auth/profile",
         });
       } else {
-        if (userLogin?.status === 2) {
+        if (
+          userLogin?.status === 2 &&
+          userLogin?.verified_screen_shown === false
+        ) {
           router.push({
             pathname: "/user/verified",
           });
-        }
-        // else if (userLogin?.status === 2 && userLogin?.is_new === false) {
-        //   router.push({
-        //     pathname: "/user/user-list",
-        //   });
-        // }
-        else if (userLogin?.status === 3) {
+        } else if (
+          userLogin?.status === 2 &&
+          userLogin?.verified_screen_shown === true
+        ) {
+          router.push({
+            pathname: "/user/user-list",
+          });
+        } else if (userLogin?.status === 3) {
           router.push({
             pathname: "/auth/block",
           });

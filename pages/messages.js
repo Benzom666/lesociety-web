@@ -57,8 +57,8 @@ const Messages = (props) => {
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState("");
   const scrollRef = useRef();
-  const { width } = useWindowSize();
   const [chatModal, setChatModal] = useState(false);
+  const { width } = useWindowSize();
   const mobile = width < 768;
   const router = useRouter();
 
@@ -84,7 +84,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     socket.on(`recieve-${user._id}`, (message) => {
-      console.log(message);
+      console.log("reciever message", message);
       if (message.message == "") {
         return getConversations();
       }
