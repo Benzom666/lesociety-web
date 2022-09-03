@@ -24,7 +24,7 @@ export default function SideBar() {
     if (user?.selfie && user?.document) {
       setDocumentUpoaded(true);
     }
-  }, []);
+  }, [user]);
   return (
     <>
       <div className="sidebar_wrap">
@@ -58,14 +58,17 @@ export default function SideBar() {
           </div>
           <div className="d-flex align-items-center mb-0 header_btn_wrap">
             <button
-              type="button d-flex align-items-center"
+              type="button"
+              className="d-flex align-items-center justify-content-center"
               onClick={() => router.push("/verified-profile")}
             >
-              {user?.verified
-                ? "VERIFIED"
-                : !documentUpoaded
-                ? "VERIFY PROFILE"
-                : "PENDING"}
+              <span>
+                {user?.verified
+                  ? "VERIFIED"
+                  : !documentUpoaded
+                  ? "VERIFY PROFILE"
+                  : "PENDING"}
+              </span>
               {user?.verified ? (
                 <HiBadgeCheck
                   color={"white"}

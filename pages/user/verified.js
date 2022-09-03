@@ -7,6 +7,7 @@ import Header from "core/header";
 import Footer from "core/footer";
 import withAuth from "@/core/withAuth";
 import { apiRequest } from "utils/Utilities";
+import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
 
 const Verfied = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -20,20 +21,35 @@ const Verfied = (props) => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (user?.verified_screen_shown === true && user?.status === 2) {
+      router.push({
+        pathname: "/user/user-list",
+      });
+    }
+  }, []);
+
   const redirectUserToList = async () => {
     try {
       const data = {
-        verified_screen_shown: true,
+        // verified_screen_shown: true,
         email: user?.email,
-        status: user?.status,
+        status: true,
       };
 
       const res = await apiRequest({
         data: data,
-        method: "POST",
-        url: `user/update-status`,
+        method: "PUT",
+        url: `user/update-verifiedscreen-status`,
       });
       console.log("res", res);
+      if (res?.data)
+        dispatch({
+          type: AUTHENTICATE_UPDATE,
+          payload: {
+            verified_screen_shown: res?.data?.data?.user?.verified_screen_shown,
+          },
+        });
     } catch (err) {
       console.log("err", err);
     }

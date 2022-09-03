@@ -24,7 +24,7 @@ function ChatMessages(props) {
   useEffect(() => {
     socket.auth = { user: user };
     socket.connect();
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     if (router?.query?.chatRoomId) {
@@ -34,19 +34,38 @@ function ChatMessages(props) {
     return () => {};
   }, [router?.query]);
 
-  useEffect(() => {
-    socket.on(`recieve-${user._id}`, (message) => {
-      // console.log(message);
+  // useEffect(() => {
+  //   socket.on(`recieve-${user._id}`, (message) => {
+  //     // console.log(message);
 
-      return setArrivalMessage({
-        message: message.message,
-        sender_id: message.sender_id,
-        sent_time: Date.now(),
-        room_id: message?.room_id,
-        receiver_id: message?.receiver_id,
+  //     return setArrivalMessage({
+  //       message: message.message,
+  //       sender_id: message.sender_id,
+  //       sent_time: Date.now(),
+  //       room_id: message?.room_id,
+  //       receiver_id: message?.receiver_id,
+  //     });
+  //   });
+  // }, [user]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("socket receiver", socket.connected);
+      socket.on(`recieve-${user._id}`, (message) => {
+        console.log("reciever message", message);
+        if (message.message == "") {
+          return getConversations();
+        }
+        return setArrivalMessage({
+          message: message.message,
+          sender_id: message.sender_id,
+          sent_time: Date.now(),
+          room_id: message?.room_id,
+          receiver_id: message?.receiver_id,
+        });
       });
-    });
-  }, [user]);
+    }, 1500);
+  }, []);
 
   useEffect(() => {
     if (arrivalMessage && currentChat?._id === arrivalMessage?.room_id) {
@@ -62,7 +81,7 @@ function ChatMessages(props) {
         status: message?.status,
       }));
     });
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });

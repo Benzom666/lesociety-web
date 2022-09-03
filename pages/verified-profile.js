@@ -11,7 +11,7 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { FiChevronRight } from "react-icons/fi";
 import withAuth from "../core/withAuth";
 import io from "socket.io-client";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   apiRequest,
   apiRequestChatHistory,
@@ -30,6 +30,7 @@ import { FaSpinner } from "react-icons/fa";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import VerifiedUploadIcon from "@/modules/verifiedProfile/VerifiedUploadIcon";
+import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
 
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
@@ -44,6 +45,7 @@ const VerifiedProfilePage = (props) => {
   const [error, setError] = useState("");
   const [selfie, setSelfie] = useState("");
   const [documentId, setDocumentId] = useState("");
+  const dispatch = useDispatch();
 
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
@@ -81,6 +83,14 @@ const VerifiedProfilePage = (props) => {
           console.log("res", res);
           setLoading(false);
           setDocumentUpoaded(true);
+          if (res?.data)
+            dispatch({
+              type: AUTHENTICATE_UPDATE,
+              payload: {
+                document: res?.data?.data?.user?.document,
+                selfie: res?.data?.data?.user?.selfie,
+              },
+            });
         } catch (err) {
           setError(err.response?.data?.message ?? "");
           setLoading(false);
@@ -92,14 +102,6 @@ const VerifiedProfilePage = (props) => {
     }
 
     return;
-  };
-
-  const imageChange = (e, setState) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = function (e) {
-      setState(e.target.result);
-    };
   };
 
   // console.log("selfie", selfie);

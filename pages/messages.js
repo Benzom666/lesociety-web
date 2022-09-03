@@ -91,7 +91,7 @@ const Messages = (props) => {
         console.log("reqested message", message);
         getConversations();
       });
-    }, 200);
+    }, 2000);
   }, [user]);
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const Messages = (props) => {
           receiver_id: message?.receiver_id,
         });
       });
-    }, 800);
+    }, 1500);
   }, [user]);
 
   useEffect(() => {
