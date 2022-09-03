@@ -34,7 +34,11 @@ import UserCardListForMessage from "./../core/UserCardListForMessage";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
 
-const socket = io.connect("http://staging-api.secrettime.com/");
+// const socket = io.connect("http://staging-api.secrettime.com/");
+
+const socket = io("http://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 
 const Messages = (props) => {
   const {
@@ -65,37 +69,48 @@ const Messages = (props) => {
   useEffect(() => {
     socket.auth = { user: user };
     socket.connect();
+  }, []);
+
+  useEffect(() => {
     getConversations();
   }, [user]);
 
   useEffect(() => {
-    socket.on(`requestAccept-${user._id}`, (message) => {
-      console.log("requestAccept message", message);
-      getConversations();
-    });
-  }, [user]);
-
-  useEffect(() => {
-    socket.on(`request-${user._id}`, (message) => {
-      console.log("reqested message", message);
-      getConversations();
-    });
-  }, [user]);
-
-  useEffect(() => {
-    socket.on(`recieve-${user._id}`, (message) => {
-      console.log("reciever message", message);
-      if (message.message == "") {
-        return getConversations();
-      }
-      return setArrivalMessage({
-        message: message.message,
-        sender_id: message.sender_id,
-        sent_time: Date.now(),
-        room_id: message?.room_id,
-        receiver_id: message?.receiver_id,
+    setTimeout(() => {
+      socket.on(`requestAccept-${user._id}`, (message) => {
+        console.log("requestAccept message", message);
+        getConversations();
       });
-    });
+    }, 500);
+  }, [user]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("socket request", socket.connected);
+      socket.on(`request-${user._id}`, (message) => {
+        console.log("reqested message", message);
+        getConversations();
+      });
+    }, 200);
+  }, [user]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("socket receiver", socket.connected);
+      socket.on(`recieve-${user._id}`, (message) => {
+        console.log("reciever message", message);
+        if (message.message == "") {
+          return getConversations();
+        }
+        return setArrivalMessage({
+          message: message.message,
+          sender_id: message.sender_id,
+          sent_time: Date.now(),
+          room_id: message?.room_id,
+          receiver_id: message?.receiver_id,
+        });
+      });
+    }, 800);
   }, [user]);
 
   useEffect(() => {
@@ -105,13 +120,15 @@ const Messages = (props) => {
   }, [arrivalMessage, currentChat]);
 
   useEffect(() => {
-    socket.on(`requestBlock-${user._id}`, (message) => {
-      console.log("Blocked Chat", message);
-      setCurrentChat((prev) => ({
-        ...prev,
-        status: message?.status,
-      }));
-    });
+    setTimeout(() => {
+      socket.on(`requestBlock-${user._id}`, (message) => {
+        console.log("Blocked Chat", message);
+        setCurrentChat((prev) => ({
+          ...prev,
+          status: message?.status,
+        }));
+      });
+    }, 1000);
   }, [user]);
 
   useEffect(() => {
@@ -157,6 +174,7 @@ const Messages = (props) => {
       message: newMessage,
     };
 
+    console.log("socket.connected", socket.connected);
     socket.emit("sendMessage", data);
     setMessages((prev) => [
       ...prev,
@@ -236,6 +254,7 @@ const Messages = (props) => {
       item?.label === currentChat?.date_id?.executive_class_dates
   );
   // consoles
+  // console.log("socket after ", socket.connected);
 
   // console.log("socket", socket);
   // console.log("currentChat", currentChat);
