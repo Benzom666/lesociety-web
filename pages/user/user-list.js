@@ -24,9 +24,9 @@ import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
 import SkeletonDate from "@/modules/skeleton/SkeletonDates";
 import io from "socket.io-client";
 
-// export const socket = io("https://staging-api.secrettime.com/", {
-//   autoConnect: true,
-// });
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 
 function UserList() {
   const { width } = useWindowSize();
@@ -48,22 +48,22 @@ function UserList() {
   const [messageError, setMessageError] = React.useState("");
   const scrollRef = useRef();
 
-  // useEffect(() => {
-  //   socket.auth = { user: user };
-  //   socket.connect();
-  //   socket.on("connect", () => {
-  //     console.log("connected");
-  //   });
-  //   socket.on("disconnect", (reason) => {
-  //     console.log("socket disconnected reason", reason);
-  //   });
-  // }, []);
+  useEffect(() => {
+    socket.auth = { user: user };
+    socket.connect();
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+  }, []);
 
-  // socket.on("connect_error", () => {
-  //   console.log("connect_error");
-  //   socket.auth = { user: user };
-  //   socket.connect();
-  // });
+  socket.on("connect_error", () => {
+    console.log("connect_error");
+    socket.auth = { user: user };
+    socket.connect();
+  });
 
   // useEffect(() => {
   //   // setTimeout(() => {

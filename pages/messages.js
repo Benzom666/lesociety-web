@@ -33,13 +33,13 @@ import axios from "axios";
 import UserCardListForMessage from "./../core/UserCardListForMessage";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
-// import { socket } from "./user/user-list";
+import { socket } from "./user/user-list";
 
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
-const socket = io("https://staging-api.secrettime.com/", {
-  autoConnect: true,
-});
+// const socket = io("https://staging-api.secrettime.com/", {
+//   autoConnect: true,
+// });
 
 const Messages = (props) => {
   const {
@@ -70,6 +70,7 @@ const Messages = (props) => {
   useEffect(() => {
     socket.auth = { user: user };
     socket.connect();
+    console.log("socket", socket.auth);
     socket.on("connect", () => {
       console.log("connected", socket.connected);
     });
@@ -97,42 +98,42 @@ const Messages = (props) => {
   }, [user]);
 
   useEffect(() => {
-    // setTimeout(() => {
-    socket.on(`requestAccept-${user._id}`, (message) => {
-      console.log("requestAccept message", message);
-      getConversations();
-    });
-    // }, 500);
-  }, []);
-
-  useEffect(() => {
-    // setTimeout(() => {
-    console.log("socket request message", socket.connected);
-    socket.on(`request-${user._id}`, (message) => {
-      console.log("reqested message", message);
-      getConversations();
-    });
-    // }, 2000);
-  }, []);
-
-  useEffect(() => {
-    // setTimeout(() => {
-    console.log("socket receiver message", socket.connected);
-    socket.on(`recieve-${user._id}`, (message) => {
-      console.log("reciever message", message);
-      if (message.message == "") {
-        return getConversations();
-      }
-      return setArrivalMessage({
-        message: message.message,
-        sender_id: message.sender_id,
-        sent_time: Date.now(),
-        room_id: message?.room_id,
-        receiver_id: message?.receiver_id,
+    if (socket.connected) {
+      socket.on(`requestAccept-${user._id}`, (message) => {
+        console.log("requestAccept message", message);
+        getConversations();
       });
-    });
-    // }, 1500);
-  }, []);
+    }
+  }, [socket.connected]);
+
+  useEffect(() => {
+    if (socket.connected) {
+      console.log("socket request message will", socket.connected);
+      socket.on(`request-${user._id}`, (message) => {
+        console.log("reqested message", message);
+        getConversations();
+      });
+    }
+  }, [socket.connected]);
+
+  useEffect(() => {
+    if (socket.connected) {
+      console.log("socket receiver message will", socket.connected);
+      socket.on(`recieve-${user._id}`, (message) => {
+        console.log("reciever message", message);
+        if (message.message == "") {
+          return getConversations();
+        }
+        return setArrivalMessage({
+          message: message.message,
+          sender_id: message.sender_id,
+          sent_time: Date.now(),
+          room_id: message?.room_id,
+          receiver_id: message?.receiver_id,
+        });
+      });
+    }
+  }, [socket.connected]);
 
   useEffect(() => {
     if (arrivalMessage && currentChat?._id === arrivalMessage?.room_id) {
@@ -141,16 +142,16 @@ const Messages = (props) => {
   }, [arrivalMessage, currentChat]);
 
   useEffect(() => {
-    // setTimeout(() => {
-    socket.on(`requestBlock-${user._id}`, (message) => {
-      console.log("Blocked Chat", message);
-      setCurrentChat((prev) => ({
-        ...prev,
-        status: message?.status,
-      }));
-    });
-    // }, 1000);
-  }, []);
+    if (socket.connected) {
+      socket.on(`requestBlock-${user._id}`, (message) => {
+        console.log("Blocked Chat", message);
+        setCurrentChat((prev) => ({
+          ...prev,
+          status: message?.status,
+        }));
+      });
+    }
+  }, [socket.connected]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
