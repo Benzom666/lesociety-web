@@ -8,8 +8,9 @@ import { format } from "timeago.js";
 import { IoIosSend, IoMdSearch } from "react-icons/io";
 import Image from "next/image";
 import withAuth from "@/core/withAuth";
+import { socket } from "../user/user-list";
 
-const socket = io.connect("http://staging-api.secrettime.com/");
+// const socket = io.connect("https://staging-api.secrettime.com/");
 
 function ChatMessages(props) {
   const [currentChat, setCurrentChat] = React.useState(null);
