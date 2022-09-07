@@ -24,7 +24,23 @@ function ChatMessages(props) {
   useEffect(() => {
     socket.auth = { user: user };
     socket.connect();
-  }, []);
+    console.log("socket", socket.auth);
+    socket.on("connect", () => {
+      console.log("connected mobile", socket.connected);
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+    console.log("I am called");
+  }, [!socket.connected]);
+
+  useEffect(() => {
+    socket.on("connect_error", () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    });
+  }, [!socket.connected]);
 
   useEffect(() => {
     if (router?.query?.chatRoomId) {
@@ -34,23 +50,28 @@ function ChatMessages(props) {
     return () => {};
   }, [router?.query]);
 
-  // useEffect(() => {
-  //   socket.on(`recieve-${user._id}`, (message) => {
-  //     // console.log(message);
-
-  //     return setArrivalMessage({
-  //       message: message.message,
-  //       sender_id: message.sender_id,
-  //       sent_time: Date.now(),
-  //       room_id: message?.room_id,
-  //       receiver_id: message?.receiver_id,
-  //     });
-  //   });
-  // }, [user]);
+  useEffect(() => {
+    // if (socket.connected) {
+    socket.on(`requestAccept-${user._id}`, (message) => {
+      console.log("requestAccept message", message);
+      getConversations();
+    });
+    // }
+  }, [socket.connected]);
 
   useEffect(() => {
-    setTimeout(() => {
-      console.log("socket receiver", socket.connected);
+    // if (socket.connected) {
+    console.log("socket request message mobile", socket.connected);
+    socket.on(`request-${user._id}`, (message) => {
+      console.log("reqested message", message);
+      getConversations();
+    });
+    // }
+  }, [socket.connected]);
+
+  useEffect(() => {
+    if (socket.connected) {
+      console.log("socket receiver message mobile", socket.connected);
       socket.on(`recieve-${user._id}`, (message) => {
         console.log("reciever message", message);
         if (message.message == "") {
@@ -64,8 +85,8 @@ function ChatMessages(props) {
           receiver_id: message?.receiver_id,
         });
       });
-    }, 1500);
-  }, []);
+    }
+  }, [socket.connected]);
 
   useEffect(() => {
     if (arrivalMessage && currentChat?._id === arrivalMessage?.room_id) {
@@ -74,15 +95,16 @@ function ChatMessages(props) {
   }, [arrivalMessage, currentChat]);
 
   useEffect(() => {
-    socket.on(`requestBlock-${user._id}`, (message) => {
-      console.log("Blocked Chat", message);
-      setCurrentChat((prev) => ({
-        ...prev,
-        status: message?.status,
-      }));
-    });
-  }, []);
-
+    if (socket.connected) {
+      socket.on(`requestBlock-${user._id}`, (message) => {
+        console.log("Blocked Chat", message);
+        setCurrentChat((prev) => ({
+          ...prev,
+          status: message?.status,
+        }));
+      });
+    }
+  }, [socket.connected]);
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -181,7 +203,8 @@ function ChatMessages(props) {
     setNewMessage("");
   };
 
-  console.log("currentChat", currentChat);
+  // console.log("currentChat", currentChat);
+  console.log("socket connected message mobile", socket.connected);
 
   return (
     <div className="container message h-100">
