@@ -77,7 +77,8 @@ const Messages = (props) => {
     socket.on("disconnect", (reason) => {
       console.log("socket disconnected reason", reason);
     });
-  }, []);
+    console.log("I am called");
+  }, [!socket.connected]);
 
   useEffect(() => {
     socket.on("connect_error", () => {
@@ -85,7 +86,7 @@ const Messages = (props) => {
       socket.auth = { user: user };
       socket.connect();
     });
-  }, []);
+  }, [!socket.connected]);
 
   // useEffect(() => {
   // setTimeout(() => {

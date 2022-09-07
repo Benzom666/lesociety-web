@@ -57,13 +57,17 @@ function UserList() {
     socket.on("disconnect", (reason) => {
       console.log("socket disconnected reason", reason);
     });
-  }, []);
+  }, [!socket.connected]);
 
-  socket.on("connect_error", () => {
-    console.log("connect_error");
-    socket.auth = { user: user };
-    socket.connect();
-  });
+  socket.on(
+    "connect_error",
+    () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    },
+    [!socket.connected]
+  );
 
   // useEffect(() => {
   //   // setTimeout(() => {
