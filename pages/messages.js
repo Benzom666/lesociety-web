@@ -98,22 +98,22 @@ const Messages = (props) => {
   }, [user]);
 
   useEffect(() => {
-    if (socket.connected) {
-      socket.on(`requestAccept-${user._id}`, (message) => {
-        console.log("requestAccept message", message);
-        getConversations();
-      });
-    }
+    // if (socket.connected) {
+    socket.on(`requestAccept-${user._id}`, (message) => {
+      console.log("requestAccept message", message);
+      getConversations();
+    });
+    // }
   }, [socket.connected]);
 
   useEffect(() => {
-    if (socket.connected) {
-      console.log("socket request message will", socket.connected);
-      socket.on(`request-${user._id}`, (message) => {
-        console.log("reqested message", message);
-        getConversations();
-      });
-    }
+    // if (socket.connected) {
+    console.log("socket request message will", socket.connected);
+    socket.on(`request-${user._id}`, (message) => {
+      console.log("reqested message", message);
+      getConversations();
+    });
+    // }
   }, [socket.connected]);
 
   useEffect(() => {
