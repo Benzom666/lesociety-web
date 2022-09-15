@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import createStore from "engine";
-import "styles/style.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "react-rangeslider/lib/index.css";
 import { ToastContainer } from "react-toastify";
@@ -13,6 +12,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Router from "next/router";
 import Loader from "@/modules/Loader/Loader";
+
+// style files
+import "styles/style.scss";
 
 class MyApp extends App {
   constructor(props) {

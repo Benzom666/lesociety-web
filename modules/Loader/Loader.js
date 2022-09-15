@@ -7,8 +7,9 @@ function Loader() {
       className="d-flex justify-content-center align-items-center"
       style={{ height: "100vh" }}
     >
-      {/* <Image src={require("../../assets/svg/Blocks-1s-200px.svg")} /> */}
-      Loading...
+      {/* <Image src={require("../../assets/logo.mp4")} /> */}
+      <Image src={require("../../assets/logo.gif")} alt="loading..." />
+      {/* Loading... */}
     </div>
   );
 }

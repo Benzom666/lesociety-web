@@ -104,7 +104,7 @@ const UserCardList = ({
               />
               <div className="user-details">
                 <div className="user-top-sec">
-                  <h5>
+                  <h5 className="">
                     <span>
                       {" "}
                       {date?.user_name},{" "}

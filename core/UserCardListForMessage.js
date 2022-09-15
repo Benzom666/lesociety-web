@@ -94,6 +94,7 @@ const UserCardListForMessage = ({
       width: "310px",
       background: "transparent",
       height: "100%",
+      overFlow: "hidden",
     },
   };
 

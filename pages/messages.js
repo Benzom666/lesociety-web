@@ -34,6 +34,7 @@ import UserCardListForMessage from "./../core/UserCardListForMessage";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
 import { socket } from "./user/user-list";
+import NoConversationShowView from "@/modules/messages/NoConversationShowView";
 
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
@@ -78,7 +79,7 @@ const Messages = (props) => {
       console.log("socket disconnected reason", reason);
     });
     console.log("I am called");
-  }, [!socket.connected]);
+  }, []);
 
   useEffect(() => {
     socket.on("connect_error", () => {
@@ -100,6 +101,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     // if (socket.connected) {
+    console.log("socket request Accept Event", socket.connected);
     socket.on(`requestAccept-${user._id}`, (message) => {
       console.log("requestAccept message", message);
       getConversations();
@@ -126,11 +128,13 @@ const Messages = (props) => {
           return getConversations();
         }
         return setArrivalMessage({
+          ...message,
           message: message.message,
           sender_id: message.sender_id,
           sent_time: Date.now(),
           room_id: message?.room_id,
           receiver_id: message?.receiver_id,
+          _id: message?._id,
         });
       });
     }
@@ -141,6 +145,23 @@ const Messages = (props) => {
       setMessages((prev) => [...prev, arrivalMessage]);
     }
   }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    if (arrivalMessage && conversations.length > 0) {
+      console.log("coversation updated");
+      const updatedConversations = conversations.map((conversation) => {
+        if (conversation._id === arrivalMessage.room_id) {
+          return {
+            ...conversation,
+            message: arrivalMessage,
+          };
+        } else {
+          return conversation;
+        }
+      });
+      setConversations(updatedConversations);
+    }
+  }, [arrivalMessage]);
 
   useEffect(() => {
     if (socket.connected) {
@@ -164,7 +185,87 @@ const Messages = (props) => {
     }
   }, [currentChat]);
 
+  useEffect(() => {
+    if (currentChat && messages.length > 0 && socket.connected) {
+      const messageData = messages[messages.length - 1];
+      if (
+        messageData?.sender_id !== user._id &&
+        !messageData?.read_date_time &&
+        messageData?.room_id === currentChat?._id
+      ) {
+        // console.log("messageData", messageData);
+        const data = {
+          chatId: messageData?._id,
+          recieverId: messageData?.receiver_id,
+          senderId: messageData?.sender_id,
+        };
+        console.log("data", data);
+
+        socket.emit(`readMessage`, data);
+        setConversations((prev) => {
+          return prev.map((conversation) => {
+            if (conversation._id === messageData?.room_id) {
+              return {
+                ...conversation,
+                message: {
+                  ...conversation.message,
+                  read_date_time: Date.now(),
+                },
+              };
+            } else {
+              return conversation;
+            }
+          });
+        });
+      }
+    }
+  }, [messages, currentChat, socket.connected]);
+
+  useEffect(() => {
+    if (socket.connected) {
+      console.log("socket read message called", socket.connected);
+      socket.on(`readed-${user._id}`, (message) => {
+        console.log("message read", message);
+        setConversations((prev) => {
+          return prev.map((conversation) => {
+            if (conversation?.message?._id === message?.id) {
+              return {
+                ...conversation,
+                message: {
+                  ...conversation.message,
+                  read_date_time: Date.now(),
+                },
+              };
+            } else {
+              return conversation;
+            }
+          });
+        });
+      });
+    }
+  }, [socket.connected]);
+
   // Fuctions
+
+  //  show message time
+  const showTime = (time) => {
+    const date = new Date(time);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? "pm" : "am";
+    const hours12 = hours % 12 || 12;
+    const minutesStr = minutes < 10 ? "0" + minutes : minutes;
+    return hours12 + ":" + minutesStr + " " + ampm;
+  };
+
+  // if message is more 20 character then show only 20 character and add ...
+  const showText = (text) => {
+    if (text.length > 20) {
+      return text.substring(0, 20) + "...";
+    } else {
+      return text;
+    }
+  };
 
   const toggleChat = (currentChat) => {
     setChatModal(true);
@@ -207,12 +308,33 @@ const Messages = (props) => {
         sent_time: Date.now(),
       },
     ]);
+    setConversations((prev) => {
+      return prev.map((conversation) => {
+        if (conversation._id === currentChat?._id) {
+          return {
+            ...conversation,
+            message: {
+              sent_time: Date.now(),
+              message: newMessage,
+              sender_id: user?._id,
+              receiver_id: currentChat?.user?.id,
+              room_id: currentChat?.message?.room_id,
+            },
+          };
+        } else {
+          return conversation;
+        }
+      });
+    });
     // getChatHistory(currentChat);
     setNewMessage("");
   };
 
   const tabIndexChange = (index) => {
     setSelectedTabIndex(index);
+    if (index === 1) {
+      setCurrentChat();
+    }
   };
 
   const getChatHistory = async (currentChat) => {
@@ -287,7 +409,9 @@ const Messages = (props) => {
   // console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
   // console.log("category", category);
-  // console.log("conversation", conversations);
+  console.log("conversation", conversations);
+  // console.log("messages", messages);
+  console.log("arrivalMessage", arrivalMessage);
   return (
     <div className="inner-page">
       <HeaderLoggedIn />
@@ -331,24 +455,29 @@ const Messages = (props) => {
                       <TabPanel>
                         <div className="user-list-wrap">
                           <ul>
-                            {conversations?.length > 0
-                              ? conversations.filter(
-                                  (c) => c.status == 1 || c.status == 2
-                                )?.length > 0
-                                ? conversations
-                                    .filter(
-                                      (c) => c.status == 1 || c.status == 2
-                                    )
-                                    ?.map((c) => {
-                                      return (
-                                        <li
-                                          onClick={() => {
-                                            setCurrentChat(c);
-                                            if (mobile) {
-                                              toggleChat(c);
-                                            }
-                                          }}
-                                        >
+                            {conversations?.length > 0 ? (
+                              conversations.filter(
+                                (c) => c.status == 1 || c.status == 2
+                              )?.length > 0 ? (
+                                conversations
+                                  .filter((c) => c.status == 1 || c.status == 2)
+                                  .sort((a, b) => {
+                                    return (
+                                      new Date(b?.message?.sent_time) -
+                                      new Date(a?.message?.sent_time)
+                                    );
+                                  })
+                                  ?.map((c) => {
+                                    return (
+                                      <li
+                                        onClick={() => {
+                                          setCurrentChat(c);
+                                          if (mobile) {
+                                            toggleChat(c);
+                                          }
+                                        }}
+                                      >
+                                        <div className="d-flex w-100">
                                           <figure className="user_img_header">
                                             <Image
                                               src={
@@ -364,14 +493,53 @@ const Messages = (props) => {
                                               height={32}
                                             />
                                           </figure>
-                                          <span className="user-details">
-                                            <h3>{c?.user?.user_name ?? ""}</h3>
-                                          </span>
-                                        </li>
-                                      );
-                                    })
-                                : "No Conversations"
-                              : "No Conversations"}
+                                          <div className="w-100">
+                                            <div className="user-details">
+                                              <h3>
+                                                {c?.user?.user_name ?? ""}
+                                              </h3>
+                                              <span>
+                                                {showTime(
+                                                  c?.message?.sent_time
+                                                )}
+                                              </span>
+                                            </div>
+                                            {c?.message?.read_date_time ||
+                                            c?.message?.sender_id ===
+                                              user?._id ? (
+                                              <div className="read">
+                                                {showText(c?.message?.message)}
+                                              </div>
+                                            ) : (
+                                              <div className="unread">
+                                                {showText(c?.message?.message)}
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                        {!c?.message?.read_date_time &&
+                                        c?.message?.sender_id !== user?._id ? (
+                                          <span className="unread_indicator"></span>
+                                        ) : (
+                                          <span className="read_indicator"></span>
+                                        )}
+                                      </li>
+                                    );
+                                  })
+                              ) : mobile ? (
+                                <div className="message-content-side">
+                                  <NoConversationShowView />
+                                </div>
+                              ) : (
+                                "No Conversation"
+                              )
+                            ) : mobile ? (
+                              <div className="message-content-side">
+                                <NoConversationShowView />
+                              </div>
+                            ) : (
+                              "No Conversation"
+                            )}
                           </ul>
                         </div>
                       </TabPanel>
@@ -384,7 +552,13 @@ const Messages = (props) => {
                                   c.status == 0 &&
                                   c.message?.sender_id !== user?._id
                               )?.length == 0) &&
-                              "No Requests"}
+                              (mobile ? (
+                                <div className="message-content-side">
+                                  <NoConversationShowView request />
+                                </div>
+                              ) : (
+                                "No Requests"
+                              ))}
                           </ul>
                         </div>
                       </TabPanel>
@@ -487,11 +661,19 @@ const Messages = (props) => {
                                           key={index}
                                           ref={scrollRef}
                                         >
-                                          <div className="message_content">
+                                          <div
+                                            className={`message_content ${
+                                              message.sender_id === user._id
+                                                ? "message_content_send"
+                                                : "message_content_receive"
+                                            }`}
+                                          >
                                             <span className="message_time">
                                               {format(message?.sent_time)}
                                             </span>
-                                            {message?.message}
+                                            <span className="message_text">
+                                              {message?.message}
+                                            </span>
                                           </div>
                                         </li>
                                       );
@@ -501,7 +683,8 @@ const Messages = (props) => {
                             {currentChat?.status === 2 ? (
                               currentChat?.blocked_by?._id == user?._id ? (
                                 <div className="text-center">
-                                  you have blocked this chat
+                                  {/* you have blocked this chat */}
+                                  User has been blocked
                                 </div>
                               ) : (
                                 <div className="text-center">
@@ -525,17 +708,23 @@ const Messages = (props) => {
                                   type="button"
                                   className="send_btn"
                                   onClick={sendMessage}
+                                  disabled={newMessage === ""}
                                 >
-                                  <IoIosSend size={25} color={"#F24462"} />
+                                  <IoIosSend
+                                    size={25}
+                                    color={
+                                      newMessage === "" ? "#686868" : "#F24462"
+                                    }
+                                  />
                                 </button>
                               </div>
                             )}
                           </div>
                         </div>
                       ) : (
-                        <span className="no-conversation-text">
-                          Open a conversation to start a chat.
-                        </span>
+                        <NoConversationShowView
+                          selectedTabIndex={selectedTabIndex}
+                        />
                       )}
                     </div>
                   )}

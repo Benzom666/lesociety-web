@@ -177,6 +177,9 @@ function ChatMessages(props) {
       setCurrentChat((prev) => ({
         ...prev,
         status: res?.data?.data?.chatRoom?.status,
+        blocked_by: {
+          _id: user?._id,
+        },
       }));
     } catch (err) {
       console.log("err", err);
@@ -277,27 +280,30 @@ function ChatMessages(props) {
               <div className="chat_message_wrap">
                 <div className="message_list_wrap">
                   <ul className="chat_message_scroll">
-                    {messages.length > 0 &&
-                      messages.map((message, index) => {
-                        return (
-                          <li
-                            className={
-                              message.sender_id === user._id
-                                ? "send"
-                                : "receive"
-                            }
-                            key={index}
-                            ref={scrollRef}
-                          >
-                            <div className="message_content">
-                              <span className="message_time">
-                                {format(message?.sent_time)}
-                              </span>
-                              {message?.message}
-                            </div>
-                          </li>
-                        );
-                      })}
+                    {messages.filter((message) => message?.message !== "")
+                      .length > 0 &&
+                      messages
+                        .filter((message) => message?.message !== "")
+                        .map((message, index) => {
+                          return (
+                            <li
+                              className={
+                                message.sender_id === user._id
+                                  ? "send"
+                                  : "receive"
+                              }
+                              key={index}
+                              ref={scrollRef}
+                            >
+                              <div className="message_content">
+                                <span className="message_time">
+                                  {format(message?.sent_time)}
+                                </span>
+                                {message?.message}
+                              </div>
+                            </li>
+                          );
+                        })}
                   </ul>
                 </div>
                 {currentChat?.status === 2 ? (
