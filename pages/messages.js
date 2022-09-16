@@ -64,6 +64,7 @@ const Messages = (props) => {
   const [arrivalMessage, setArrivalMessage] = useState("");
   const scrollRef = useRef();
   const [chatModal, setChatModal] = useState(false);
+  const [search, setSearch] = useState("");
   const { width } = useWindowSize();
   const mobile = width < 768;
   const router = useRouter();
@@ -459,12 +460,20 @@ const Messages = (props) => {
   // console.log("messages", messages);
   console.log("arrivalMessage", arrivalMessage);
   return (
-    <div className="inner-page">
+    <div
+      className="inner-page"
+      onClick={() => {
+        if (isActive) {
+          setActive(false);
+        }
+      }}
+    >
       <HeaderLoggedIn />
       <div className="inner-part-page">
         <div className="">
           <form onSubmit={handleSubmit}>
-            <div className="container message">
+            <div className="pl-4 pr-4 message">
+              {/* <div className="container message"> */}
               <div className="row">
                 <div className="col-md-4 col-lg-3 p-0">
                   <div className="message_sidebar_wrap">
@@ -474,6 +483,9 @@ const Messages = (props) => {
                       component={Inputs.inputFieldWithIcon}
                       placeholder=" Search"
                       icon={<IoMdSearch size={20} />}
+                      onChange={(e) => {
+                        setSearch(e.target.value);
+                      }}
                     />
                     <Tabs
                       selectedIndex={selectedTabIndex}
@@ -503,10 +515,22 @@ const Messages = (props) => {
                           <ul>
                             {conversations?.length > 0 ? (
                               conversations.filter(
-                                (c) => c.status == 1 || c.status == 2
+                                (c) =>
+                                  (c.status == 1 || c.status == 2) &&
+                                  c?.user?.user_name
+                                    ?.toLowerCase()
+                                    .trim()
+                                    .includes(search.toLowerCase().trim())
                               )?.length > 0 ? (
                                 conversations
-                                  .filter((c) => c.status == 1 || c.status == 2)
+                                  .filter(
+                                    (c) =>
+                                      (c.status == 1 || c.status == 2) &&
+                                      c?.user?.user_name
+                                        ?.toLowerCase()
+                                        .trim()
+                                        .includes(search.toLowerCase().trim())
+                                  )
                                   .sort((a, b) => {
                                     return (
                                       new Date(b?.message?.sent_time) -

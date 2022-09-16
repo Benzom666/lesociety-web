@@ -9,12 +9,14 @@ import { IoIosSend, IoMdSearch } from "react-icons/io";
 import Image from "next/image";
 import withAuth from "@/core/withAuth";
 import { socket } from "../user/user-list";
-
+import NoImage from "assets/img/no-image.png";
+import { IoIosArrowBack } from "react-icons/io";
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
-function ChatMessages(props) {
+function ChatMessages({ ...props }) {
   const [currentChat, setCurrentChat] = React.useState(null);
   const user = useSelector((state) => state.authReducer.user);
+  const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState("");
@@ -33,7 +35,7 @@ function ChatMessages(props) {
       console.log("socket disconnected reason", reason);
     });
     console.log("I am called");
-  }, [!socket.connected]);
+  }, []);
 
   useEffect(() => {
     socket.on("connect_error", () => {
@@ -53,6 +55,7 @@ function ChatMessages(props) {
 
   useEffect(() => {
     // if (socket.connected) {
+    console.log("socket request Accept Event", socket.connected);
     socket.on(`requestAccept-${user._id}`, (message) => {
       console.log("requestAccept message", message);
       getConversations();
@@ -79,11 +82,13 @@ function ChatMessages(props) {
           return getConversations();
         }
         return setArrivalMessage({
+          ...message,
           message: message.message,
           sender_id: message.sender_id,
           sent_time: Date.now(),
           room_id: message?.room_id,
           receiver_id: message?.receiver_id,
+          _id: message?._id,
         });
       });
     }
@@ -94,6 +99,26 @@ function ChatMessages(props) {
       setMessages((prev) => [...prev, arrivalMessage]);
     }
   }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    if (arrivalMessage && conversations.length > 0) {
+      console.log("coversation updated");
+      const updatedConversations = conversations.map((conversation) => {
+        if (
+          conversation._id === arrivalMessage.room_id &&
+          arrivalMessage?.message
+        ) {
+          return {
+            ...conversation,
+            message: arrivalMessage,
+          };
+        } else {
+          return conversation;
+        }
+      });
+      setConversations(updatedConversations);
+    }
+  }, [arrivalMessage]);
 
   useEffect(() => {
     if (socket.connected) {
@@ -109,6 +134,66 @@ function ChatMessages(props) {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    if (currentChat && messages.length > 0 && socket.connected) {
+      const messageData = messages[messages.length - 1];
+      if (
+        messageData?.sender_id !== user._id &&
+        !messageData?.read_date_time &&
+        messageData?.room_id === currentChat?._id
+      ) {
+        // console.log("messageData", messageData);
+        const data = {
+          chatId: messageData?._id,
+          recieverId: messageData?.receiver_id,
+          senderId: messageData?.sender_id,
+        };
+        console.log("data", data);
+
+        socket.emit(`readMessage`, data);
+        setConversations((prev) => {
+          return prev.map((conversation) => {
+            if (conversation._id === messageData?.room_id) {
+              return {
+                ...conversation,
+                message: {
+                  ...conversation.message,
+                  read_date_time: Date.now(),
+                },
+              };
+            } else {
+              return conversation;
+            }
+          });
+        });
+      }
+    }
+  }, [messages, currentChat, socket.connected]);
+
+  useEffect(() => {
+    if (socket.connected) {
+      console.log("socket read message called", socket.connected);
+      socket.on(`readed-${user._id}`, (message) => {
+        console.log("message read", message);
+        setConversations((prev) => {
+          return prev.map((conversation) => {
+            if (conversation?.message?._id === message?.id) {
+              return {
+                ...conversation,
+                message: {
+                  ...conversation.message,
+                  read_date_time: Date.now(),
+                },
+              };
+            } else {
+              return conversation;
+            }
+          });
+        });
+      });
+    }
+  }, [socket.connected]);
 
   const toggleClass = () => {
     setActive(!isActive);
@@ -207,136 +292,182 @@ function ChatMessages(props) {
     setNewMessage("");
   };
 
+  // go to previous page
+  const goBack = () => {
+    router.back();
+  };
+
   // console.log("currentChat", currentChat);
   console.log("socket connected message mobile", socket.connected);
 
   return (
-    <div className="container message h-100">
-      <div className="message-content-side">
-        {currentChat &&
-          (currentChat?.status === 1 || currentChat?.status === 2) && (
-            <div className="message-chat-wrap">
-              <div className="top-head message-header-dates">
-                <div className="user-thumb user-thumb-data">
-                  <figure className="user_img_header">
-                    <Image
-                      src={
-                        currentChat?.user?.images?.length > 0 &&
-                        currentChat?.user?.images
-                          ? currentChat?.user?.images[0]
-                          : (user.images && user.images[0]) || NoImage
-                      }
-                      alt="user image"
-                      width={32}
-                      height={32}
-                    />
-                  </figure>
-                  <span className="user-details">
-                    <h3>{currentChat?.user?.user_name ?? ""}</h3>
-                  </span>
-                  <div className="user-details">
-                    <div className="action_btn_list">
-                      <span onClick={toggleClass}>
-                        <BiDotsHorizontalRounded
-                          size={35}
+    <div
+      className="inner-page"
+      onClick={() => {
+        if (isActive) {
+          setActive(false);
+        }
+      }}
+    >
+      <div className="inner-part-page">
+        <div className="">
+          <div className="container message h-100">
+            <div className="message-content-side">
+              {currentChat &&
+                (currentChat?.status === 1 || currentChat?.status === 2) && (
+                  <div className="message-chat-wrap">
+                    <div className="top-head message-header-dates">
+                      <div className="user-thumb user-thumb-data">
+                        <IoIosArrowBack
+                          size={20}
                           color={"rgba(255, 255, 255, 0.7)"}
+                          className="user-thumb-data-icon"
+                          onClick={goBack}
                         />
-                      </span>
-                      {isActive && (
-                        <div className="dropdown-list" id="action_dropdown">
-                          <ul>
-                            {currentChat?.status === 2 ? (
-                              currentChat?.blocked_by?._id == user?._id && (
-                                <li>
-                                  <a>Unblock</a>
-                                </li>
-                              )
-                            ) : (
-                              <li onClick={() => blockChat(currentChat)}>
-                                <a>Block</a>
-                              </li>
+                        <span className="d-flex">
+                          <figure className="user_img_header">
+                            <Image
+                              src={
+                                currentChat?.user?.images?.length > 0 &&
+                                currentChat?.user?.images
+                                  ? currentChat?.user?.images[0]
+                                  : (user.images && user.images[0]) || NoImage
+                              }
+                              alt="user image"
+                              width={32}
+                              height={32}
+                            />
+                          </figure>
+                          <span className="user-details">
+                            <h3>{currentChat?.user?.user_name ?? ""}</h3>
+                          </span>
+                        </span>
+                        <div className="user-details">
+                          <div className="action_btn_list">
+                            <span onClick={toggleClass}>
+                              <BiDotsHorizontalRounded
+                                size={35}
+                                color={"rgba(255, 255, 255, 0.7)"}
+                              />
+                            </span>
+                            {isActive && (
+                              <div
+                                className="dropdown-list"
+                                id="action_dropdown"
+                              >
+                                <ul>
+                                  {currentChat?.status === 2 ? (
+                                    currentChat?.blocked_by?._id ==
+                                      user?._id && (
+                                      <li>
+                                        <a>Unblock</a>
+                                      </li>
+                                    )
+                                  ) : (
+                                    <li onClick={() => blockChat(currentChat)}>
+                                      <a>Block</a>
+                                    </li>
+                                  )}
+                                  <li>
+                                    <a>Delete Conversation</a>
+                                  </li>
+                                </ul>
+                              </div>
                             )}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="message-header-dates-data">
+                        <div className="tag_wrap">
+                          <ul>
+                            <li>
+                              <span>{category?.icon}</span>
+                              <span>{category?.label}</span>
+                            </li>
                           </ul>
+                        </div>
+                        <h4 className="price_per_hour">
+                          ${currentChat?.date_id?.price} /{" "}
+                          <span>{currentChat?.date_id?.date_length}</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="chat_message_wrap">
+                      <div className="message_list_wrap">
+                        <ul className="chat_message_scroll">
+                          {messages.filter((message) => message?.message !== "")
+                            .length > 0 &&
+                            messages
+                              .filter((message) => message?.message !== "")
+                              .map((message, index) => {
+                                return (
+                                  <li
+                                    className={
+                                      message.sender_id === user._id
+                                        ? "send"
+                                        : "receive"
+                                    }
+                                    key={index}
+                                    ref={scrollRef}
+                                  >
+                                    <div
+                                      className={`message_content ${
+                                        message.sender_id === user._id
+                                          ? "message_content_send"
+                                          : "message_content_receive"
+                                      }`}
+                                    >
+                                      <span className="message_time">
+                                        {format(message?.sent_time)}
+                                      </span>
+                                      <span className="message_text">
+                                        {message?.message}
+                                      </span>
+                                    </div>
+                                  </li>
+                                );
+                              })}
+                        </ul>
+                      </div>
+                      {currentChat?.status === 2 ? (
+                        currentChat?.blocked_by?._id == user?._id ? (
+                          <div className="text-center">
+                            you have blocked this chat
+                          </div>
+                        ) : (
+                          <div className="text-center">
+                            You have been blocked
+                          </div>
+                        )
+                      ) : (
+                        <div className="input_write_sec">
+                          <input
+                            type="text"
+                            placeholder="Type your message here…"
+                            onChange={(e) => setNewMessage(e.target.value)}
+                            value={newMessage}
+                            onKeyPress={(event) => {
+                              event.key === "Enter" && sendMessage(event);
+                            }}
+                          />
+                          <button
+                            type="button"
+                            className="send_btn"
+                            onClick={sendMessage}
+                          >
+                            <IoIosSend
+                              size={25}
+                              color={newMessage === "" ? "#686868" : "#F24462"}
+                            />
+                          </button>
                         </div>
                       )}
                     </div>
                   </div>
-                </div>
-                <div className="message-header-dates-data">
-                  <div className="tag_wrap">
-                    <ul>
-                      <li>
-                        <span>{category?.icon}</span>
-                        <span>{category?.label}</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <h4 className="price_per_hour">
-                    ${currentChat?.date_id?.price} /{" "}
-                    <span>{currentChat?.date_id?.date_length}</span>
-                  </h4>
-                </div>
-              </div>
-              <div className="chat_message_wrap">
-                <div className="message_list_wrap">
-                  <ul className="chat_message_scroll">
-                    {messages.filter((message) => message?.message !== "")
-                      .length > 0 &&
-                      messages
-                        .filter((message) => message?.message !== "")
-                        .map((message, index) => {
-                          return (
-                            <li
-                              className={
-                                message.sender_id === user._id
-                                  ? "send"
-                                  : "receive"
-                              }
-                              key={index}
-                              ref={scrollRef}
-                            >
-                              <div className="message_content">
-                                <span className="message_time">
-                                  {format(message?.sent_time)}
-                                </span>
-                                {message?.message}
-                              </div>
-                            </li>
-                          );
-                        })}
-                  </ul>
-                </div>
-                {currentChat?.status === 2 ? (
-                  currentChat?.blocked_by?._id == user?._id ? (
-                    <div className="text-center">
-                      you have blocked this chat
-                    </div>
-                  ) : (
-                    <div className="text-center">You have been blocked</div>
-                  )
-                ) : (
-                  <div className="input_write_sec">
-                    <input
-                      type="text"
-                      placeholder="Type your message here…"
-                      onChange={(e) => setNewMessage(e.target.value)}
-                      value={newMessage}
-                      onKeyPress={(event) => {
-                        event.key === "Enter" && sendMessage(event);
-                      }}
-                    />
-                    <button
-                      type="button"
-                      className="send_btn"
-                      onClick={sendMessage}
-                    >
-                      <IoIosSend size={25} color={"#F24462"} />
-                    </button>
-                  </div>
                 )}
-              </div>
             </div>
-          )}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -73,6 +73,14 @@ const UserCardListForMessage = ({
     socket.emit("sendMessage", data);
   };
 
+  const showText = (text) => {
+    if (text.length > 40) {
+      return text.substring(0, 40) + "...";
+    } else {
+      return text;
+    }
+  };
+
   const settings = {
     dots: false,
     arrows: false,
@@ -100,16 +108,25 @@ const UserCardListForMessage = ({
 
   return (
     <>
-      <span onClick={openModal}>
+      <span
+        onClick={openModal}
+        className={`${
+          conversations.filter(
+            (c) => c.status == 0 && c.message?.sender_id !== user?._id
+          )?.length === 0 && "request__header"
+        }`}
+      >
         <span>
-          {conversations?.length > 0
-            ? conversations.filter(
-                (c) => c.status == 0 && c.message?.sender_id !== user?._id
-              )?.length > 0 &&
-              conversations.filter(
-                (c) => c.status == 0 && c.message?.sender_id !== user?._id
-              )?.length
-            : ""}
+          {
+            // conversations?.length > 0
+            //   ? conversations.filter(
+            //       (c) => c.status == 0 && c.message?.sender_id !== user?._id
+            //     )?.length > 0 &&
+            conversations.filter(
+              (c) => c.status == 0 && c.message?.sender_id !== user?._id
+            )?.length
+            // : ""
+          }
         </span>{" "}
         Requests
       </span>
@@ -157,7 +174,7 @@ const UserCardListForMessage = ({
                                   height={600}
                                 />
                                 <span className="image_tagline">
-                                  {conversation?.message?.message}
+                                  {showText(conversation?.message?.message)}
                                 </span>
                               </figure>
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
