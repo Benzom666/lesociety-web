@@ -76,7 +76,9 @@ const SimpleForm = (props) => {
             pathname: "/auth/block",
           });
         } else {
-          router.push("/auth/profile");
+          router.push({
+            pathname: "/auth/profile",
+          });
         }
       }
     }

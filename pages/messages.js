@@ -119,23 +119,66 @@ const Messages = (props) => {
     // }
   }, [socket.connected]);
 
+  const getChatHistoryConversation = async (chatRoomId) => {
+    console.log("chatRoomId", chatRoomId);
+    try {
+      const data = {
+        chatRoomId: chatRoomId,
+      };
+
+      const res = await apiRequest({
+        method: "GET",
+        url: `chat/chatroom-history`,
+        params: data,
+      });
+
+      console.log("res", res);
+
+      if (res?.data?.data?.chat?.length > 1) {
+        const chat = res?.data?.data?.chat[0];
+        console.log("first", chat);
+        setConversations((prev) => {
+          return prev.map((conversation) => {
+            if (conversation._id === chat?.room_id) {
+              console.log(
+                "conversation._id === chat?.room_id",
+                conversation._id === chat?.room_id
+              );
+              return {
+                ...conversation,
+                message: { ...chat },
+              };
+            } else {
+              return conversation;
+            }
+          });
+        });
+      }
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
   useEffect(() => {
     if (socket.connected) {
       console.log("socket receiver message will", socket.connected);
       socket.on(`recieve-${user._id}`, (message) => {
         console.log("reciever message", message);
         if (message.message == "") {
-          return getConversations();
+          getChatHistoryConversation(message?.room_id);
+          getConversations();
+          return;
+        } else {
+          return setArrivalMessage({
+            ...message,
+            message: message.message,
+            sender_id: message.sender_id,
+            sent_time: Date.now(),
+            room_id: message?.room_id,
+            receiver_id: message?.receiver_id,
+            _id: message?._id,
+          });
         }
-        return setArrivalMessage({
-          ...message,
-          message: message.message,
-          sender_id: message.sender_id,
-          sent_time: Date.now(),
-          room_id: message?.room_id,
-          receiver_id: message?.receiver_id,
-          _id: message?._id,
-        });
       });
     }
   }, [socket.connected]);
@@ -150,7 +193,10 @@ const Messages = (props) => {
     if (arrivalMessage && conversations.length > 0) {
       console.log("coversation updated");
       const updatedConversations = conversations.map((conversation) => {
-        if (conversation._id === arrivalMessage.room_id) {
+        if (
+          conversation._id === arrivalMessage.room_id &&
+          arrivalMessage?.message
+        ) {
           return {
             ...conversation,
             message: arrivalMessage,
@@ -634,6 +680,9 @@ const Messages = (props) => {
                                           <a>Block</a>
                                         </li>
                                       )}
+                                      <li>
+                                        <a>Delete Conversation</a>
+                                      </li>
                                     </ul>
                                   </div>
                                 )}

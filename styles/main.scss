@@ -1262,7 +1262,8 @@ $GradientColor-second: rgba(#191919, 0.8);
     .icon {
       cursor: pointer;
       position: absolute;
-      top: 43px;
+      // top: 43px;
+      top: 35px;
       right: 12px;
     }
 
@@ -4198,6 +4199,7 @@ body .verification_card_header {
   font-style: normal;
   font-weight: 300;
   // margin-left: 30px;
+  margin-top: 50px;
   span {
     font-weight: bold;
   }

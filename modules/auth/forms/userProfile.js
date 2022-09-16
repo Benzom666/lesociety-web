@@ -534,7 +534,7 @@ function UserProfile({ preview, editHandle }) {
                         </div>
                         <div className="more_content pt-3">
                           <div className="text-left-more">
-                            <h6 className=" text-left-more mt-3 more-about">
+                            <h6 className=" text-left-more more-about">
                               More about{" "}
                               <span>
                                 {userDetail?.user_name || user.user_name}

@@ -23,14 +23,11 @@ export function* login(action) {
       });
       //  showToast(response.success.data.message, 'success')
       action.loader(false);
-      if (response.success.data.data.step_completed === 3) {
-        Router.push({
-          pathname: "/auth/profile",
-        });
-      }
+
       if (
         response.success.data.data.step_completed === 1 ||
-        response.success.data.data.step_completed === 2
+        response.success.data.data.step_completed === 2 ||
+        response.success.data.data.step_completed === 3
       ) {
         Router.push({
           pathname: "/auth/profile",
@@ -55,7 +52,9 @@ export function* login(action) {
             pathname: "/auth/block",
           });
         } else {
-          Router.push("/auth/profile");
+          Router.push({
+            pathname: "/auth/profile",
+          });
         }
       }
       yield put(reset("LoginForm"));

@@ -32,7 +32,6 @@ const Verfied = (props) => {
   const redirectUserToList = async () => {
     try {
       const data = {
-        // verified_screen_shown: true,
         email: user?.email,
         status: true,
       };
