@@ -271,6 +271,31 @@ function ChatMessages({ ...props }) {
     }
   };
 
+  const deleteChat = async (currentChat) => {
+    try {
+      const data = {
+        chatRoomId: currentChat?.message?.room_id,
+        recieverId: currentChat?.user?.id,
+      };
+
+      const res = await apiRequest({
+        data: data,
+        method: "POST",
+        url: `chat/chat-clear`,
+      });
+      console.log("res", res);
+      setCurrentChat((prev) => ({
+        ...prev,
+        status: res?.data?.data?.chatRoom?.status,
+        blocked_by: {
+          _id: user?._id,
+        },
+      }));
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -311,20 +336,22 @@ function ChatMessages({ ...props }) {
     >
       <div className="inner-part-page">
         <div className="">
-          <div className="container message h-100">
+          <div className="message h-100">
             <div className="message-content-side">
               {currentChat &&
                 (currentChat?.status === 1 || currentChat?.status === 2) && (
                   <div className="message-chat-wrap">
                     <div className="top-head message-header-dates">
                       <div className="user-thumb user-thumb-data">
-                        <IoIosArrowBack
-                          size={20}
-                          color={"rgba(255, 255, 255, 0.7)"}
-                          className="user-thumb-data-icon"
-                          onClick={goBack}
-                        />
-                        <span className="d-flex">
+                        <span>
+                          <IoIosArrowBack
+                            size={20}
+                            color={"rgba(255, 255, 255, 0.7)"}
+                            className="user-thumb-data-icon"
+                            onClick={goBack}
+                          />
+                        </span>
+                        <div className="d-flex">
                           <figure className="user_img_header">
                             <Image
                               src={
@@ -341,8 +368,8 @@ function ChatMessages({ ...props }) {
                           <span className="user-details">
                             <h3>{currentChat?.user?.user_name ?? ""}</h3>
                           </span>
-                        </span>
-                        <div className="user-details">
+                        </div>
+                        <div className="">
                           <div className="action_btn_list">
                             <span onClick={toggleClass}>
                               <BiDotsHorizontalRounded
@@ -440,26 +467,30 @@ function ChatMessages({ ...props }) {
                           </div>
                         )
                       ) : (
-                        <div className="input_write_sec">
-                          <input
-                            type="text"
-                            placeholder="Type your message here…"
-                            onChange={(e) => setNewMessage(e.target.value)}
-                            value={newMessage}
-                            onKeyPress={(event) => {
-                              event.key === "Enter" && sendMessage(event);
-                            }}
-                          />
-                          <button
-                            type="button"
-                            className="send_btn"
-                            onClick={sendMessage}
-                          >
-                            <IoIosSend
-                              size={25}
-                              color={newMessage === "" ? "#686868" : "#F24462"}
+                        <div className="input_write_sec_message">
+                          <div className="input_write_sec_message_mobile">
+                            <input
+                              type="text"
+                              placeholder="Type your message here…"
+                              onChange={(e) => setNewMessage(e.target.value)}
+                              value={newMessage}
+                              onKeyPress={(event) => {
+                                event.key === "Enter" && sendMessage(event);
+                              }}
                             />
-                          </button>
+                            <button
+                              type="button"
+                              className="send_btn"
+                              onClick={sendMessage}
+                            >
+                              <IoIosSend
+                                size={25}
+                                color={
+                                  newMessage === "" ? "#686868" : "#F24462"
+                                }
+                              />
+                            </button>
+                          </div>
                         </div>
                       )}
                     </div>

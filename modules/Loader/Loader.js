@@ -3,12 +3,14 @@ import Image from "next/image";
 
 function Loader() {
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{ height: "100vh" }}
-    >
-      {/* <Image src={require("../../assets/logo.mp4")} /> */}
-      <Image src={require("../../assets/logo.gif")} alt="loading..." />
+    <div className="page-loading-logo">
+      <Image
+        src={require("../../assets/logo.gif")}
+        alt="loading..."
+        className=""
+        width={200}
+        height={400}
+      />
       {/* Loading... */}
     </div>
   );

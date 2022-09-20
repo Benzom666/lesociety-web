@@ -7,12 +7,35 @@ import useWindowSize from "utils/useWindowSize";
 import { useSelector } from "react-redux";
 import _ from "lodash";
 import { useRouter } from "next/router";
+import { apiRequest } from "utils/Utilities";
 
 export default function HeaderLoggedIn({ fixed, isBlack }) {
   const [isActive, setActive] = useState(false);
   const width = useWindowSize();
   const router = useRouter();
   const user = useSelector((state) => state.authReducer.user);
+  const [conversations, setConversations] = useState([]);
+
+  useEffect(() => {
+    getConversations();
+  }, [user]);
+
+  const getConversations = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `chat/chatroom-list`,
+      });
+      // console.log("res", res.data?.data?.chatRooms);
+      const conversations =
+        res.data?.data?.chatRooms.length > 0
+          ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
+          : [];
+      setConversations(conversations);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
 
   const sidbarCloseOutsideClick = (event) => {
     const target = document.querySelector("#sidebar-header");

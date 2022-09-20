@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 import { useRouter } from "next/router";
-import { getCookie } from '../utils/cookie'
-
+import { getCookie } from "../utils/cookie";
 
 const withAuth = (WrappedComponent) => {
   return (props) => {
@@ -9,7 +8,7 @@ const withAuth = (WrappedComponent) => {
     if (typeof window !== "undefined") {
       const Router = useRouter();
 
-      const accessToken = getCookie('auth');
+      const accessToken = getCookie("auth");
 
       // If there is no access token we redirect to "/" page.
       if (!accessToken) {

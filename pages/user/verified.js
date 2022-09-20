@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Header from "core/header";
 import Footer from "core/footer";
-import withAuth from "@/core/withAuth";
+import withAuth from "../../core/withAuth";
 import { apiRequest } from "utils/Utilities";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
 
@@ -21,13 +21,13 @@ const Verfied = (props) => {
     }
   }, [user]);
 
-  useEffect(() => {
-    if (user?.verified_screen_shown === true && user?.status === 2) {
-      router.push({
-        pathname: "/user/user-list",
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user?.verified_screen_shown === true && user?.status === 2) {
+  //     router.push({
+  //       pathname: "/user/user-list",
+  //     });
+  //   }
+  // }, []);
 
   const redirectUserToList = async () => {
     try {

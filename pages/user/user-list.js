@@ -39,7 +39,7 @@ function UserList() {
   const [locationPopup, setLocationPoup] = React.useState(false);
   const [selectedLocation, setLocation] = React.useState({});
   const [page, setPage] = React.useState(1);
-  const [loading, setLoader] = React.useState(false);
+  const [loading, setLoader] = React.useState(true);
   const [pagination, setPagination] = React.useState("");
   const user = useSelector((state) => state.authReducer.user);
   const country = user?.country && countriesCode[user.country];

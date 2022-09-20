@@ -20,7 +20,7 @@ import {
 } from "utils/Utilities";
 import { format } from "timeago.js";
 import qs from "qs";
-import { getCookie } from "utils/cookie";
+
 import axios from "axios";
 import UserCardListForMessage from "./../core/UserCardListForMessage";
 import { useRouter } from "next/router";

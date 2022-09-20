@@ -15,26 +15,20 @@ import UserImg4 from "assets/img/user-4.png";
 import NoImage from "assets/img/no-image.png";
 import SubHeading from "@/core/SubHeading";
 import Link from "next/link";
-import { CustomIcon } from "core/icon";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { FiChevronRight } from "react-icons/fi";
 import withAuth from "../core/withAuth";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
-import {
-  apiRequest,
-  apiRequestChatHistory,
-  dateCategory,
-} from "utils/Utilities";
+import { apiRequest, dateCategory } from "utils/Utilities";
 import { format } from "timeago.js";
-import qs from "qs";
-import { getCookie } from "utils/cookie";
-import axios from "axios";
+
 import UserCardListForMessage from "./../core/UserCardListForMessage";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
 import { socket } from "./user/user-list";
 import NoConversationShowView from "@/modules/messages/NoConversationShowView";
+import MessageMobileHeader from "./../core/MessageMobileHeader";
 
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
@@ -292,6 +286,38 @@ const Messages = (props) => {
     }
   }, [socket.connected]);
 
+  useEffect(() => {
+    if (socket.connected) {
+      console.log("chat Room Cleared called", socket.connected);
+      socket.on(`chatRoomCleared-${user._id}`, (message) => {
+        console.log("chatRoomCleared", message);
+        if (message?.deleted) {
+          setMessages([]);
+          setConversations((prev) => {
+            return prev.filter((conversation) => {
+              return conversation._id !== message?.room_id;
+            });
+          });
+        }
+        // setConversations((prev) => {
+        //   return prev.map((conversation) => {
+        //     if (conversation?._id === currentChat?.id) {
+        //       return {
+        //         ...conversation,
+        //         message: {
+        //           ...conversation.message,
+        //           read_date_time: Date.now(),
+        //         },
+        //       };
+        //     } else {
+        //       return conversation;
+        //     }
+        //   });
+        // });
+      });
+    }
+  }, [socket.connected]);
+
   // Fuctions
 
   //  show message time
@@ -307,7 +333,7 @@ const Messages = (props) => {
 
   // if message is more 20 character then show only 20 character and add ...
   const showText = (text) => {
-    if (text.length > 20) {
+    if (text?.length > 20) {
       return text.substring(0, 20) + "...";
     } else {
       return text;
@@ -340,12 +366,12 @@ const Messages = (props) => {
     e.preventDefault();
 
     const data = {
-      chatRoomId: currentChat?.message?.room_id ?? "",
+      chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
       recieverId: currentChat?.user?.id ?? "",
       message: newMessage,
     };
 
-    console.log("socket.connected", socket.connected);
+    console.log("socket.connected data", socket.connected, data);
     socket.emit("sendMessage", data);
     setMessages((prev) => [
       ...prev,
@@ -365,7 +391,7 @@ const Messages = (props) => {
               message: newMessage,
               sender_id: user?._id,
               receiver_id: currentChat?.user?.id,
-              room_id: currentChat?.message?.room_id,
+              room_id: currentChat?.message?.room_id ?? conversation?._id,
             },
           };
         } else {
@@ -414,6 +440,26 @@ const Messages = (props) => {
         url: `chat/block`,
       });
       console.log("res", res);
+      getChatHistory(currentChat);
+      getConversations();
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  const deleteChat = async (currentChat) => {
+    try {
+      const data = {
+        chatRoomId: currentChat?.message?.room_id,
+        recieverId: currentChat?.user?.id,
+      };
+
+      const res = await apiRequest({
+        data: data,
+        method: "DELETE",
+        url: `chat/chat-clear`,
+      });
+      console.log("res", res);
       setCurrentChat((prev) => ({
         ...prev,
         status: res?.data?.data?.chatRoom?.status,
@@ -421,7 +467,6 @@ const Messages = (props) => {
           _id: user?._id,
         },
       }));
-      getConversations();
     } catch (err) {
       console.log("err", err);
     }
@@ -449,16 +494,29 @@ const Messages = (props) => {
       item?.label === currentChat?.date_id?.middle_class_dates ||
       item?.label === currentChat?.date_id?.executive_class_dates
   );
-  // consoles
-  console.log("socket connected message", socket.connected);
 
+  const conversationLength = conversations?.filter(
+    (c) =>
+      (c.status == 1 || c.status == 2) &&
+      c?.user?.user_name
+        ?.toLowerCase()
+        .trim()
+        .includes(search.toLowerCase().trim())
+  )?.length;
+
+  const requestedConversationLength = conversations?.filter(
+    (c) => c.status == 0
+  )?.length;
+  // consoles
+  // console.log("socket connected message", socket.connected);
+  console.log("conversationLength", conversationLength);
   // console.log("socket", socket);
   // console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
   // console.log("category", category);
   console.log("conversation", conversations);
   // console.log("messages", messages);
-  console.log("arrivalMessage", arrivalMessage);
+  // console.log("arrivalMessage", arrivalMessage);
   return (
     <div
       className="inner-page"
@@ -468,12 +526,13 @@ const Messages = (props) => {
         }
       }}
     >
-      <HeaderLoggedIn />
+      {mobile ? <MessageMobileHeader /> : <HeaderLoggedIn />}
+
       <div className="inner-part-page">
         <div className="">
           <form onSubmit={handleSubmit}>
-            <div className="pl-4 pr-4 message">
-              {/* <div className="container message"> */}
+            {/* <div className="pl-4 pr-4 message"> */}
+            <div className="container message">
               <div className="row">
                 <div className="col-md-4 col-lg-3 p-0">
                   <div className="message_sidebar_wrap">
@@ -501,6 +560,7 @@ const Messages = (props) => {
                               user={user}
                               setCurrentChat={setCurrentChat}
                               tabIndexChange={tabIndexChange}
+                              selectedTabIndex={selectedTabIndex}
                               socket={socket}
                             />
                           </Tab>
@@ -569,9 +629,10 @@ const Messages = (props) => {
                                                 {c?.user?.user_name ?? ""}
                                               </h3>
                                               <span>
-                                                {showTime(
-                                                  c?.message?.sent_time
-                                                )}
+                                                {c?.message &&
+                                                  showTime(
+                                                    c?.message?.sent_time
+                                                  )}
                                               </span>
                                             </div>
                                             {c?.message?.read_date_time ||
@@ -587,7 +648,8 @@ const Messages = (props) => {
                                             )}
                                           </div>
                                         </div>
-                                        {!c?.message?.read_date_time &&
+                                        {c?.message &&
+                                        !c?.message?.read_date_time &&
                                         c?.message?.sender_id !== user?._id ? (
                                           <span className="unread_indicator"></span>
                                         ) : (
@@ -598,14 +660,18 @@ const Messages = (props) => {
                                   })
                               ) : mobile ? (
                                 <div className="message-content-side">
-                                  <NoConversationShowView />
+                                  {conversationLength == 0 && (
+                                    <NoConversationShowView />
+                                  )}
                                 </div>
                               ) : (
                                 "No Conversation"
                               )
                             ) : mobile ? (
                               <div className="message-content-side">
-                                <NoConversationShowView />
+                                {conversationLength == 0 && (
+                                  <NoConversationShowView />
+                                )}
                               </div>
                             ) : (
                               "No Conversation"
@@ -624,7 +690,9 @@ const Messages = (props) => {
                               )?.length == 0) &&
                               (mobile ? (
                                 <div className="message-content-side">
-                                  <NoConversationShowView request />
+                                  {requestedConversationLength == 0 && (
+                                    <NoConversationShowView request />
+                                  )}
                                 </div>
                               ) : (
                                 "No Requests"
@@ -704,7 +772,9 @@ const Messages = (props) => {
                                           <a>Block</a>
                                         </li>
                                       )}
-                                      <li>
+                                      <li
+                                        onClick={() => deleteChat(currentChat)}
+                                      >
                                         <a>Delete Conversation</a>
                                       </li>
                                     </ul>
@@ -795,9 +865,13 @@ const Messages = (props) => {
                           </div>
                         </div>
                       ) : (
-                        <NoConversationShowView
-                          selectedTabIndex={selectedTabIndex}
-                        />
+                        ((selectedTabIndex == 0 && conversationLength == 0) ||
+                          (selectedTabIndex == 1 &&
+                            requestedConversationLength == 0)) && (
+                          <NoConversationShowView
+                            selectedTabIndex={selectedTabIndex}
+                          />
+                        )
                       )}
                     </div>
                   )}

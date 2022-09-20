@@ -4300,12 +4300,12 @@ body .verification_card_header {
 
   .user-thumb-data {
     display: flex;
-    justify-content: space-between !important;
-    width: 100%;
+    justify-content: space-between;
+    min-width: 100%;
     margin-bottom: 10px;
 
     .user-thumb-data-icon {
-      margin-right: 20px;
+      // margin-right: 20px;
       cursor: pointer;
     }
 
@@ -4319,9 +4319,14 @@ body .verification_card_header {
 
 .message-header-dates-data {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
+  padding-right: 10px;
+
+  .price_per_hour {
+    margin-left: 15px;
+  }
 }
 
 /* basic styles */
@@ -4412,13 +4417,13 @@ body .verification_card_header {
 }
 .skeleton-wrapper.dark,
 .date-skeleton-wrapper.dark {
-  background: #444;
+  background: #151515;
 }
 .skeleton-wrapper.dark .skeleton {
-  background: #777;
+  background: rgb(37, 37, 37);
 }
 .date-skeleton-wrapper.dark .skeleton {
-  background: #777;
+  background: rgb(37, 37, 37);
 }
 
 /* animation effects */
@@ -4558,10 +4563,15 @@ path {
 .no-message-card-mobile {
   margin-top: 30px;
   min-width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 56vh;
+  // take available full height
 
   .header_btn_wrap {
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     width: 100%;
     padding-left: 30px;
     padding-right: 30px;
@@ -4675,4 +4685,84 @@ path {
 
 .pr-4 {
   padding-right: 20px;
+}
+
+.input_write_sec_message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .input_write_sec_message_mobile {
+    padding: 15px 15px;
+    background: black;
+    position: relative;
+
+    width: calc(100% - 50px);
+    padding: 5px 12px;
+    height: 40px;
+    line-height: 26px;
+    font-size: 14px;
+    background: #1e2023;
+    border-radius: 25px;
+    border: 1px solid #1e2023;
+
+    input {
+      color: white;
+      outline: none;
+      box-shadow: none;
+      width: calc(100% - 50px);
+      background: #1e2023;
+
+      border: none;
+      outline: none;
+    }
+
+    .send_btn {
+      position: absolute;
+      right: 15px;
+      top: calc(50% - 15px);
+      background: transparent;
+      outline: none;
+      border: none;
+
+      &:active,
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.message-mobile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  .message-mobile-header-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+
+    .message-mobile-header-icon {
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .user-details {
+      text-align: center;
+      width: 90%;
+    }
+  }
+}
+
+.page-loading-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }

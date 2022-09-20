@@ -23,6 +23,7 @@ const UserCardListForMessage = ({
   getConversations,
   setCurrentChat,
   tabIndexChange,
+  selectedTabIndex,
   socket,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -74,7 +75,7 @@ const UserCardListForMessage = ({
   };
 
   const showText = (text) => {
-    if (text.length > 40) {
+    if (text?.length > 40) {
       return text.substring(0, 40) + "...";
     } else {
       return text;
@@ -113,7 +114,9 @@ const UserCardListForMessage = ({
         className={`${
           conversations.filter(
             (c) => c.status == 0 && c.message?.sender_id !== user?._id
-          )?.length === 0 && "request__header"
+          )?.length === 0 &&
+          selectedTabIndex !== 1 &&
+          "request__header"
         }`}
       >
         <span>
