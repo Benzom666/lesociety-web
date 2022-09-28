@@ -155,27 +155,27 @@ const Messages = (props) => {
   };
 
   useEffect(() => {
-    if (socket.connected) {
-      console.log("socket receiver message will", socket.connected);
-      socket.on(`recieve-${user._id}`, (message) => {
-        console.log("reciever message", message);
-        if (message.message == "") {
-          getChatHistoryConversation(message?.room_id);
-          getConversations();
-          return;
-        } else {
-          return setArrivalMessage({
-            ...message,
-            message: message.message,
-            sender_id: message.sender_id,
-            sent_time: Date.now(),
-            room_id: message?.room_id,
-            receiver_id: message?.receiver_id,
-            _id: message?._id,
-          });
-        }
-      });
-    }
+    // if (socket.connected) {
+    console.log("socket receiver message will", socket.connected);
+    socket.on(`recieve-${user._id}`, (message) => {
+      console.log("reciever message", message);
+      if (message.message == "") {
+        getChatHistoryConversation(message?.room_id);
+        getConversations();
+        return;
+      } else {
+        return setArrivalMessage({
+          ...message,
+          message: message.message,
+          sender_id: message.sender_id,
+          sent_time: Date.now(),
+          room_id: message?.room_id,
+          receiver_id: message?.receiver_id,
+          _id: message?._id,
+        });
+      }
+    });
+    // }
   }, [socket.connected]);
 
   useEffect(() => {
@@ -287,35 +287,16 @@ const Messages = (props) => {
   }, [socket.connected]);
 
   useEffect(() => {
-    if (socket.connected) {
-      console.log("chat Room Cleared called", socket.connected);
-      socket.on(`chatRoomCleared-${user._id}`, (message) => {
-        console.log("chatRoomCleared", message);
-        if (message?.deleted) {
-          setMessages([]);
-          setConversations((prev) => {
-            return prev.filter((conversation) => {
-              return conversation._id !== message?.room_id;
-            });
-          });
-        }
-        // setConversations((prev) => {
-        //   return prev.map((conversation) => {
-        //     if (conversation?._id === currentChat?.id) {
-        //       return {
-        //         ...conversation,
-        //         message: {
-        //           ...conversation.message,
-        //           read_date_time: Date.now(),
-        //         },
-        //       };
-        //     } else {
-        //       return conversation;
-        //     }
-        //   });
-        // });
-      });
-    }
+    // if (socket.connected) {
+    console.log("chat Room Cleared called", socket.connected);
+    socket.on(`chatRoomCleared-${user._id}`, (message) => {
+      console.log("chatRoomCleared", message);
+      if (message?.deleted) {
+        setMessages([]);
+        getConversations();
+      }
+    });
+    // }
   }, [socket.connected]);
 
   // Fuctions
@@ -460,13 +441,8 @@ const Messages = (props) => {
         url: `chat/chat-clear`,
       });
       console.log("res", res);
-      setCurrentChat((prev) => ({
-        ...prev,
-        status: res?.data?.data?.chatRoom?.status,
-        blocked_by: {
-          _id: user?._id,
-        },
-      }));
+      setMessages([]);
+      getConversations();
     } catch (err) {
       console.log("err", err);
     }
@@ -495,21 +471,34 @@ const Messages = (props) => {
       item?.label === currentChat?.date_id?.executive_class_dates
   );
 
-  const conversationLength = conversations?.filter(
-    (c) =>
-      (c.status == 1 || c.status == 2) &&
-      c?.user?.user_name
-        ?.toLowerCase()
-        .trim()
-        .includes(search.toLowerCase().trim())
-  )?.length;
+  const conversationLength = conversations
+    ?.filter(
+      (c) =>
+        (c.status == 1 || c.status == 2) &&
+        c?.user?.user_name
+          ?.toLowerCase()
+          .trim()
+          .includes(search.toLowerCase().trim())
+    )
+    .filter((c) =>
+      search?.length > 0 ? !c.message || c.message : c.message
+    )?.length;
 
   const requestedConversationLength = conversations?.filter(
     (c) => c.status == 0
   )?.length;
+
+  const unReadedConversationLength = conversations?.filter(
+    (c) =>
+      c?.message &&
+      !c.message?.read_date_time &&
+      c?.message?.sender_id !== user?._id
+  )?.length;
+
   // consoles
   // console.log("socket connected message", socket.connected);
-  console.log("conversationLength", conversationLength);
+  // console.log("conversationLength", conversationLength);
+  console.log("unReadedConversationLength", unReadedConversationLength);
   // console.log("socket", socket);
   // console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
@@ -526,7 +515,13 @@ const Messages = (props) => {
         }
       }}
     >
-      {mobile ? <MessageMobileHeader /> : <HeaderLoggedIn />}
+      {mobile ? (
+        <MessageMobileHeader />
+      ) : (
+        <HeaderLoggedIn
+          unReadedConversationLength={unReadedConversationLength}
+        />
+      )}
 
       <div className="inner-part-page">
         <div className="">
@@ -574,14 +569,20 @@ const Messages = (props) => {
                         <div className="user-list-wrap">
                           <ul>
                             {conversations?.length > 0 ? (
-                              conversations.filter(
-                                (c) =>
-                                  (c.status == 1 || c.status == 2) &&
-                                  c?.user?.user_name
-                                    ?.toLowerCase()
-                                    .trim()
-                                    .includes(search.toLowerCase().trim())
-                              )?.length > 0 ? (
+                              conversations
+                                .filter(
+                                  (c) =>
+                                    (c.status == 1 || c.status == 2) &&
+                                    c?.user?.user_name
+                                      ?.toLowerCase()
+                                      .trim()
+                                      .includes(search.toLowerCase().trim())
+                                )
+                                .filter((c) =>
+                                  search?.length > 0
+                                    ? !c.message || c.message
+                                    : c.message
+                                )?.length > 0 ? (
                                 conversations
                                   .filter(
                                     (c) =>
@@ -590,6 +591,11 @@ const Messages = (props) => {
                                         ?.toLowerCase()
                                         .trim()
                                         .includes(search.toLowerCase().trim())
+                                  )
+                                  .filter((c) =>
+                                    search?.length > 0
+                                      ? !c.message || c.message
+                                      : c.message
                                   )
                                   .sort((a, b) => {
                                     return (

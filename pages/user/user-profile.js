@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
 import withAuth from "../../core/withAuth";
-import UserProfile from '@/modules/auth/forms/userProfile';
- 
-function userProfile ({dispatch} ) {
-    return (
-    <UserProfile />
-  )
+import UserProfile from "@/modules/auth/forms/userProfile";
+import { useState } from "react";
+import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
+
+function userProfile({ dispatch }) {
+  const [pageLoading, setPageLoading] = useState(false);
+
+  if (pageLoading) {
+    return <SkeletonUserProfile />;
+  } else {
+    return <UserProfile />;
+  }
 }
 
-export default withAuth(userProfile)
+export default withAuth(userProfile);

@@ -3774,6 +3774,7 @@ body .verification_card_header {
             box-shadow: 0px 0px 10px rgba($color: $black-color, $alpha: 0.17);
             right: 0;
             border-radius: 6px;
+            z-index: 1;
             // display: none;
 
             &::before {
@@ -3801,6 +3802,7 @@ body .verification_card_header {
                   display: flex;
                   align-content: center;
                   justify-content: space-between;
+                  cursor: pointer;
 
                   &:hover {
                     color: #f24462 !important;
@@ -4329,9 +4331,9 @@ body .verification_card_header {
   }
 }
 
-/* basic styles */
+/*start skelton styles */
 .skeleton {
-  background: #ddd;
+  background: rgb(37, 37, 37);
   overflow: hidden;
   margin: 10px 0;
   border-radius: 4px;
@@ -4339,6 +4341,7 @@ body .verification_card_header {
 .skeleton.text {
   width: 100%;
   height: 12px;
+  background: rgb(37, 37, 37);
 }
 .skeleton.title {
   width: 50%;
@@ -4353,6 +4356,124 @@ body .verification_card_header {
 .skeleton.thumbnail {
   width: 100px;
   height: 100px;
+}
+
+.skeleton.h2 {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.skeleton.h4 {
+  width: 40%;
+  height: 35px;
+}
+
+.skeleton.h6 {
+  width: 150px;
+  height: 30px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  background: rgb(37, 37, 37);
+}
+.skeleton.edit-button {
+  width: 30%;
+  height: 50px;
+  margin-right: 10px;
+  background: rgb(37, 37, 37);
+  overflow: hidden;
+}
+.skeleton.post-button {
+  width: 70%;
+  height: 50px;
+  background: rgb(37, 37, 37);
+  overflow: hidden;
+}
+
+.skeleton.auth-register-p-text {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 60px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.skeleton.label {
+  width: 20%;
+  height: 20px;
+  margin-bottom: 7px;
+}
+.skeleton.icon {
+  width: 30px;
+  height: 25px;
+  background: rgb(37, 37, 37);
+}
+
+.skeleton.auth-header {
+  width: 100px;
+  height: 25px;
+}
+.skeleton.auth-line {
+  width: 100px;
+  height: 10px;
+}
+
+.skeleton.input {
+  width: 100%;
+  height: 50px;
+}
+
+.skeleton.input-age {
+  width: 30%;
+  height: 50px;
+}
+
+.skeleton.input-radio {
+  width: 130px;
+  height: 30px;
+  // margin-right: 10px;
+}
+
+.skeleton.user-name {
+  width: 100px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.skeleton.image-300h-240w {
+  height: 300px;
+  width: 240px;
+  border-radius: 15px;
+  background: #151515;
+}
+
+.skeleton.image-160h-150w {
+  height: 105px;
+  width: 100px;
+  border-radius: 15px;
+  background: #151515;
+}
+
+.skeleton.verified-icon {
+  width: 70px;
+  border-radius: 5px;
+  background: rgb(37, 37, 37);
+}
+
+.skeleton.edit-profile-h4 {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background: #151515;
+}
+.skeleton.edit-profile-tagline {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  background: #151515;
 }
 
 .skeleton-date {
@@ -4392,6 +4513,15 @@ body .verification_card_header {
       margin-bottom: 15px;
     }
   }
+
+  .date-preview-skeleton {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+  }
 }
 
 .skeleton-wrapper {
@@ -4422,6 +4552,7 @@ body .verification_card_header {
 .skeleton-wrapper.dark .skeleton {
   background: rgb(37, 37, 37);
 }
+
 .date-skeleton-wrapper.dark .skeleton {
   background: rgb(37, 37, 37);
 }
@@ -4459,6 +4590,8 @@ body .verification_card_header {
     transform: translateX(150%);
   }
 }
+
+/* end skelton styles */
 
 svg {
   pointer-events: none;

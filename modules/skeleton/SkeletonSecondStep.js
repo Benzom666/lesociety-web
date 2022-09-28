@@ -2,7 +2,7 @@ import React from "react";
 import Shimmer from "./Shimmer";
 import SkeletonElement from "./SkeletonElement";
 
-const SkeletonDate = ({ theme }) => {
+const SkeletonSecondStep = ({ theme }) => {
   const themeClass = theme || "light";
 
   return (
@@ -24,4 +24,4 @@ const SkeletonDate = ({ theme }) => {
   );
 };
 
-export default SkeletonDate;
+export default SkeletonSecondStep;

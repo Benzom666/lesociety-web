@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderLoggedIn from "core/loggedInHeader";
 import NoImage from "assets/img/no-image.png";
 import Image from "next/image";
@@ -21,14 +21,14 @@ import CustomInput from "Views/CustomInput";
 import { IoIosSend } from "react-icons/io";
 import { useRef } from "react";
 import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
-import SkeletonDate from "@/modules/skeleton/SkeletonDates";
+import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import io from "socket.io-client";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
 });
 
-function UserList() {
+function UserList(props) {
   const { width } = useWindowSize();
   const [dateId, setDateId] = React.useState("");
   const [dates, setDates] = React.useState([]);
@@ -47,6 +47,7 @@ function UserList() {
   const [receiverData, setReceiverData] = React.useState("");
   const [messageError, setMessageError] = React.useState("");
   const scrollRef = useRef();
+  const [conversations, setConversations] = useState([]);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -69,15 +70,47 @@ function UserList() {
     [!socket.connected]
   );
 
-  // useEffect(() => {
-  //   // setTimeout(() => {
-  //   console.log("socket request message", socket.connected);
-  //   socket.on(`request-${user._id}`, (message) => {
-  //     console.log("reqested message", message);
-  //     getConversations();
-  //   });
-  //   // }, 2000);
-  // });
+  useEffect(() => {
+    getConversations();
+  }, []);
+
+  useEffect(() => {
+    socket.on(`request-${user._id}`, (message) => {
+      console.log("reqested message header", message);
+      getConversations();
+    });
+  }, [socket.connected]);
+
+  useEffect(() => {
+    socket.on(`recieve-${user._id}`, (message) => {
+      console.log("recieve message header", message);
+      getConversations();
+    });
+  }, [socket.connected]);
+
+  const unReadedConversationLength = conversations?.filter(
+    (c) =>
+      c?.message &&
+      !c.message?.read_date_time &&
+      c?.message?.sender_id !== user?._id
+  )?.length;
+
+  const getConversations = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `chat/chatroom-list`,
+      });
+      // console.log("res", res.data?.data?.chatRooms);
+      const conversations =
+        res.data?.data?.chatRooms.length > 0
+          ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
+          : [];
+      setConversations(conversations);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
 
   const lastClickedDate = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -98,6 +131,7 @@ function UserList() {
         url: "date",
         params: params,
       });
+      console.log("res dates of user", res);
       if (res?.data?.data?.pagination?.current_page !== 1) {
         res?.data?.data?.dates.sort(function (a, b) {
           return new Date(b.created_at) - new Date(a.created_at);
@@ -122,7 +156,7 @@ function UserList() {
       const params = {
         location: selectedLocation?.city,
         current_page: page,
-        per_page: 10,
+        per_page: 2,
         province: selectedLocation?.province,
       };
       fetchDate(params);
@@ -251,7 +285,7 @@ function UserList() {
       location: selectedLocation?.city,
       province: selectedLocation?.province,
       current_page: page + 1,
-      per_page: 10,
+      per_page: 2,
     };
     setPage(page + 1);
     fetchDate(params);
@@ -276,10 +310,14 @@ function UserList() {
   }, [scrollPosition]);
 
   // console
-  // console.log("socket connected usser", socket.connected);
+  // console.log("unReadedConversationLength", unReadedConversationLength);
   return (
     <div className="inner-page" id="infiniteScroll">
-      <HeaderLoggedIn fixed={width < 767} isBlack={locationPopup} />
+      <HeaderLoggedIn
+        fixed={width < 767}
+        isBlack={locationPopup}
+        unReadedConversationLength={unReadedConversationLength}
+      />
       <div className="inner-part-page">
         <div className="pt-5 pb-4">
           <div className="container user_list_wrap">

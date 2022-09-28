@@ -3829,6 +3829,7 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.17);
   right: 0;
   border-radius: 6px;
+  z-index: 1;
 }
 .message .message-content-side .message-chat-wrap .top-head .action_btn_list .dropdown-list::before {
   content: "";
@@ -3852,6 +3853,7 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
   display: flex;
   align-content: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 .message .message-content-side .message-chat-wrap .top-head .action_btn_list .dropdown-list ul li a:hover {
   color: #f24462 !important;
@@ -4416,15 +4418,15 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
 
 .skeleton-wrapper.dark,
 .date-skeleton-wrapper.dark {
-  background: #444;
+  background: #151515;
 }
 
 .skeleton-wrapper.dark .skeleton {
-  background: #777;
+  background: rgb(37, 37, 37);
 }
 
 .date-skeleton-wrapper.dark .skeleton {
-  background: #777;
+  background: rgb(37, 37, 37);
 }
 
 /* animation effects */
@@ -4578,10 +4580,14 @@ path {
 .no-message-card-mobile {
   margin-top: 30px;
   min-width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 56vh;
 }
 .no-message-card-mobile .header_btn_wrap {
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   width: 100%;
   padding-left: 30px;
   padding-right: 30px;
@@ -4733,6 +4739,36 @@ path {
 .input_write_sec_message .input_write_sec_message_mobile .send_btn:active, .input_write_sec_message .input_write_sec_message_mobile .send_btn:focus {
   outline: none;
   box-shadow: none;
+}
+
+.message-mobile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.message-mobile-header .message-mobile-header-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+}
+.message-mobile-header .message-mobile-header-container .message-mobile-header-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.message-mobile-header .message-mobile-header-container .user-details {
+  text-align: center;
+  width: 90%;
+}
+
+.page-loading-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
 
 footer {

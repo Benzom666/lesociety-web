@@ -12,9 +12,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Router from "next/router";
 import Loader from "@/modules/Loader/Loader";
+import io from "socket.io-client";
 
 // style files
+
 import "styles/style.scss";
+
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 
 class MyApp extends App {
   constructor(props) {
@@ -52,7 +58,11 @@ class MyApp extends App {
           <title>Secret Time</title>
           <link rel="icon" href="/favicon.svg" />
         </Head>
-        {this.state.isLoading ? <Loader /> : <Component {...pageProps} />}
+        {this.state.isLoading ? (
+          <Loader />
+        ) : (
+          <Component {...pageProps} isLoading={this.state.isLoading} />
+        )}
 
         <ToastContainer />
       </Provider>
