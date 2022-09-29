@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import SkeletonSecondStep from "./../../../skeleton/SkeletonSecondStep";
 
 const SecondStep = (props) => {
-  const [loading, setLoader] = useState(true);
+  const [loading, setLoader] = useState(false);
   const [isImageValid, setImageError] = useState(false);
   const [dimensionValid, setDimensionValid] = useState({ height: 0, width: 0 });
   const [isImageTouched, setImageTouched] = useState(false);
