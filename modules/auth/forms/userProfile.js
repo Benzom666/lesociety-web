@@ -175,9 +175,8 @@ function UserProfile({ preview, editHandle }) {
       {!preview && <HeaderLoggedIn />}
       <div className="inner-part-page">
         <div
-          className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${
-            preview ? "space-top" : ""
-          }`}
+          className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${preview ? "space-top" : ""
+            }`}
         >
           <div className="container user_profile_page">
             <div className="row">
@@ -355,51 +354,51 @@ function UserProfile({ preview, editHandle }) {
                                 {/* <div className='d-flex available-dates-box'> */}
                                 {userDates.length > 0
                                   ? userDates.map((date) => {
-                                      const category = dateCategory.find(
-                                        (item) =>
-                                          item?.label ===
-                                            date?.standard_class_date ||
-                                          item?.label ===
-                                            date?.middle_class_dates ||
-                                          item?.label ===
-                                            date?.executive_class_dates
-                                      );
-                                      return (
-                                        <div
-                                          className="availabe_card_inner mr-3"
-                                          onClick={() => {
-                                            if (!router?.query?.userName) {
-                                              setSelectedDate(date);
-                                              dateModalIsOpen();
-                                            }
-                                          }}
-                                        >
-                                          <ul className="date_list">
-                                            <li>
-                                              <span className="icon_wrap">
-                                                {category?.icon}
-                                              </span>
-                                              <p>{category?.label}</p>
-                                            </li>
-                                            <span className="top-card_tag">
-                                              <span className="top-badge"></span>
-                                              <div className="price-card-name">
-                                                <span>${date?.price}</span>
-                                                <span className="hour">
-                                                  <span>
-                                                    {date?.date_length.replace(
-                                                      "H",
-                                                      ""
-                                                    )}
-                                                    H
-                                                  </span>
-                                                </span>
-                                              </div>
+                                    const category = dateCategory.find(
+                                      (item) =>
+                                        item?.label ===
+                                        date?.standard_class_date ||
+                                        item?.label ===
+                                        date?.middle_class_dates ||
+                                        item?.label ===
+                                        date?.executive_class_dates
+                                    );
+                                    return (
+                                      <div
+                                        className="availabe_card_inner mr-3"
+                                        onClick={() => {
+                                          if (!router?.query?.userName) {
+                                            setSelectedDate(date);
+                                            dateModalIsOpen();
+                                          }
+                                        }}
+                                      >
+                                        <ul className="date_list">
+                                          <li>
+                                            <span className="icon_wrap">
+                                              {category?.icon}
                                             </span>
-                                          </ul>
-                                        </div>
-                                      );
-                                    })
+                                            <p>{category?.label}</p>
+                                          </li>
+                                          <span className="top-card_tag">
+                                            <span className="top-badge"></span>
+                                            <div className="price-card-name">
+                                              <span>${date?.price}</span>
+                                              <span className="hour">
+                                                <span>
+                                                  {date?.date_length.replace(
+                                                    "H",
+                                                    ""
+                                                  )}
+                                                  H
+                                                </span>
+                                              </span>
+                                            </div>
+                                          </span>
+                                        </ul>
+                                      </div>
+                                    );
+                                  })
                                   : null}
                                 {/* </div> */}
 

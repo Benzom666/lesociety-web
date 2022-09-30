@@ -4200,6 +4200,7 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
   font-style: normal;
   font-weight: 300;
   margin-top: 50px;
+  margin-bottom:12px;
 }
 .more-about span {
   font-weight: bold;

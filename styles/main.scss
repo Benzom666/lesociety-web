@@ -404,7 +404,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
         span.has-check {
           position: absolute;
-          top: calc(50% - 12px);
+          top: calc(60% - 12px);
           right: 15px;
           color: #77ad45;
           // display: none;
@@ -2764,7 +2764,9 @@ body {
     overflow-x: hidden;
 
     h4 {
-      font-weight: 600;
+      font-size : 28px;
+      font-weight: 400;
+      margin-bottom: 19px;
     }
 
     h5 {
@@ -4207,6 +4209,7 @@ body .verification_card_header {
   font-weight: 300;
   // margin-left: 30px;
   margin-top: 50px;
+  margin-bottom: 12px;
   span {
     font-weight: bold;
   }
