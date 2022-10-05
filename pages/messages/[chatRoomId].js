@@ -351,7 +351,7 @@ function ChatMessages({ ...props }) {
                             onClick={goBack}
                           />
                         </span>
-                        <div className="d-flex">
+                        <div className="d-flex me-auto">
                           <figure className="user_img_header">
                             <Image
                               src={

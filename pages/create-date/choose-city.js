@@ -158,9 +158,10 @@ const ChooseCity = props => {
                                 </svg>
                             </div>
                             <div className="content-section">
-                                <p>Please select the location where you would like to be showcased.</p>
+                                <p>Single post allows you to choose only one location. Hence, more posts will give you more exposure</p>
+                                {/* <p>Please select the location where you would like to be showcased.</p>
                                 <p>Each post is showcased in one location <br /> of your choice. </p>
-                                <p>Hence if you wish to have presence in multiple location, you will need several posts.</p>
+                                <p>Hence if you wish to have presence in multiple location, you will need several posts.</p> */}
                             </div>
                             <div>
                                 <Field
