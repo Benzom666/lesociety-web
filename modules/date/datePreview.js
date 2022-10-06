@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { reduxForm, reset } from "redux-form";
 import { useSelector, useDispatch } from "react-redux";
 import validate from "modules/auth/forms/validate/validate";
@@ -31,7 +31,15 @@ const DatePreview = (props) => {
   );
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [pageLoading, setPageLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (user?.images?.length > 0 && user?.images[0]) {
+        setPageLoading(false);
+      }
+    }, 1000);
+  }, []);
 
   const toggle = () => setConfirmPopup(!confirmPopup);
 

@@ -56,7 +56,11 @@ const RegisterForm = (props) => {
             <div className="auth-section auth-section-register">
               <div>
                 {page == 0 && !router?.query?.token && (
-                  <SecondStep previousPage={previousPage} onSubmit={nextPage} />
+                  <SecondStep
+                    previousPage={previousPage}
+                    onSubmit={nextPage}
+                    fromRegistration={true}
+                  />
                 )}
 
                 {page == 1 && !router?.query?.token && (

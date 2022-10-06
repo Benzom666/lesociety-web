@@ -8,10 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { signupStep2 } from "../../authActions";
 import { imageUploader } from "../../../../utils/Utilities";
 import { useRouter } from "next/router";
-import SkeletonSecondStep from "./../../../skeleton/SkeletonSecondStep";
+import FemaleSkeletonSecondStep from "../../../skeleton/Auth/FemaleSkeletonSecondStep";
 
 const SecondStep = (props) => {
   const [loading, setLoader] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
   const [isImageValid, setImageError] = useState(false);
   const [dimensionValid, setDimensionValid] = useState({ height: 0, width: 0 });
   const [isImageTouched, setImageTouched] = useState(false);
@@ -93,6 +94,17 @@ const SecondStep = (props) => {
     };
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (
+        (router?.query?.edit && user?.images && user?.images[0]) ||
+        props.fromRegistration
+      ) {
+        setPageLoading(false);
+      }
+    }, 800);
+  }, []);
+
   const { handleSubmit, invalid, previousPage } = props;
 
   const reduxValues = useSelector((state) => state.form.signupStep2.values);
@@ -105,8 +117,8 @@ const SecondStep = (props) => {
 
   // console.log("imageValidation", imageValidation);
 
-  if (loading) {
-    return <SkeletonSecondStep />;
+  if (pageLoading) {
+    return <FemaleSkeletonSecondStep />;
   } else {
     return (
       <form

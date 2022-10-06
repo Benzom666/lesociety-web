@@ -4327,9 +4327,9 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
   margin-left: 15px;
 }
 
-/* basic styles */
+/*start skelton styles */
 .skeleton {
-  background: #ddd;
+  background: rgb(37, 37, 37);
   overflow: hidden;
   margin: 10px 0;
   border-radius: 4px;
@@ -4338,6 +4338,7 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
 .skeleton.text {
   width: 100%;
   height: 12px;
+  background: rgb(37, 37, 37);
 }
 
 .skeleton.title {
@@ -4355,6 +4356,256 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
 .skeleton.thumbnail {
   width: 100px;
   height: 100px;
+}
+
+.skeleton.h2 {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.skeleton.h4 {
+  width: 40%;
+  height: 35px;
+}
+
+.skeleton.h6 {
+  width: 150px;
+  height: 30px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  background: rgb(37, 37, 37);
+}
+
+.skeleton.edit-button {
+  width: 30%;
+  height: 50px;
+  margin-right: 10px;
+  background: rgb(37, 37, 37);
+  overflow: hidden;
+}
+
+.skeleton.post-button {
+  width: 70%;
+  height: 50px;
+  background: rgb(37, 37, 37);
+  overflow: hidden;
+}
+
+.skeleton.auth-register-p-text {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 60px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.skeleton.request-title {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 25px;
+  background-color: #151515;
+}
+
+.skeleton.request-interested {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 40px;
+  background-color: #151515;
+}
+
+.skeleton.second-step-p {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 30px;
+  background-color: #151515;
+}
+
+.skeleton.second-step-text-label {
+  width: 100%;
+  height: 70px;
+  border-radius: 15px;
+  background-color: #151515;
+  margin-bottom: 20px;
+}
+
+.skeleton.label {
+  width: 20%;
+  height: 20px;
+  margin-bottom: 7px;
+}
+
+.skeleton.second-step-label {
+  width: 20%;
+  height: 20px;
+  margin-bottom: 7px;
+}
+
+.skeleton.icon {
+  width: 30px;
+  height: 25px;
+  background: rgb(37, 37, 37);
+}
+
+.skeleton.auth-header {
+  width: 100px;
+  height: 25px;
+}
+
+.skeleton.auth-line {
+  width: 100px;
+  height: 10px;
+}
+
+.skeleton.input {
+  width: 100%;
+  height: 50px;
+}
+
+.skeleton.second-step-input {
+  width: 100%;
+  height: 50px;
+  background-color: #151515;
+}
+
+.skeleton.input-age {
+  width: 30%;
+  height: 50px;
+}
+
+.skeleton.input-view-profile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 30px;
+}
+
+.skeleton.verified-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  height: 50px;
+  background-color: #151515 !important;
+}
+
+.skeleton.close-icon-view-profile {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.skeleton.input-radio {
+  width: 130px;
+  height: 30px;
+}
+
+.skeleton.user-name {
+  width: 100px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.skeleton.image-300h-240w {
+  height: 300px;
+  width: 240px;
+  border-radius: 15px;
+  background: #151515;
+}
+
+.skeleton.image-350h-350w {
+  height: 350px;
+  width: 100%;
+  border-radius: 10px;
+  background: #151515;
+}
+
+.skeleton.image-500h-600w {
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.skeleton.image-160h-150w {
+  height: 105px;
+  width: 100px;
+  border-radius: 15px;
+  background: #151515;
+}
+
+.skeleton.verified-icon {
+  width: 70px;
+  border-radius: 5px;
+  background: rgb(37, 37, 37);
+}
+
+.skeleton.edit-profile-h4 {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background: #151515;
+}
+
+.skeleton.edit-profile-tagline {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  background: #151515;
+}
+
+.skeleton.available-label {
+  width: 20%;
+  height: 20px;
+  margin-bottom: 7px;
+  background: #151515;
+}
+
+.skeleton.create-date-button {
+  width: 100%;
+  height: 50px;
+  background: #151515;
+}
+
+.skeleton.inner-box-me {
+  padding: 15px;
+  border: 1px solid #293036;
+  background-color: #151515;
+  border-radius: 8px;
+  min-height: 120px;
+}
+
+.skeleton.view-profile-p {
+  background-color: #151515;
+  width: 100%;
+  height: 15px;
+}
+
+.skeleton.input-image-upload-425h {
+  width: 100%;
+  height: 425px;
+  background: #151515;
+  border-radius: 15px;
+}
+
+.skeleton.input-image-upload-120h-120w {
+  width: 120px;
+  height: 120px;
+  background: #151515;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .skeleton-date {
@@ -4376,7 +4627,7 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
 .date-skeleton-wrapper .date-skeleton {
   position: absolute;
   bottom: 20px;
-  left: 15px;
+  left: 30px;
   width: 100%;
   display: grid;
   justify-content: space-between;
@@ -4392,6 +4643,14 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
   width: 60%;
   height: 20px;
   margin-bottom: 15px;
+}
+.date-skeleton-wrapper .date-preview-skeleton {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
 }
 
 .skeleton-wrapper {
@@ -4477,6 +4736,7 @@ body .verification_card_header .availabe_card_inner .bottom_price_tag h2 sup {
     transform: translateX(150%);
   }
 }
+/* end skelton styles */
 svg {
   pointer-events: none;
 }

@@ -4386,6 +4386,21 @@ body .verification_card_header {
   background: rgb(37, 37, 37);
   overflow: hidden;
 }
+
+.skeleton.profile-edit-button {
+  width: 50%;
+  height: 50px;
+  margin-right: 10px;
+  background: #151515;
+  overflow: hidden;
+}
+
+.skeleton.profile-finish-button {
+  width: 50%;
+  height: 50px;
+  background: #151515;
+  overflow: hidden;
+}
 .skeleton.post-button {
   width: 70%;
   height: 50px;
@@ -4401,10 +4416,51 @@ body .verification_card_header {
   margin-left: auto;
 }
 
+.skeleton.request-title {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 25px;
+  background-color: #151515;
+}
+
+.skeleton.request-interested {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 40px;
+  background-color: #151515;
+}
+.skeleton.second-step-p {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 30px;
+  background-color: #151515;
+}
+
+.skeleton.second-step-text-label {
+  width: 100%;
+  height: 70px;
+  border-radius: 15px;
+  background-color: #151515;
+  margin-bottom: 20px;
+}
+
 .skeleton.label {
   width: 20%;
   height: 20px;
   margin-bottom: 7px;
+}
+
+.skeleton.second-step-label {
+  width: 20%;
+  height: 20px;
+  margin-bottom: 7px;
+  background-color: #151515;
 }
 .skeleton.icon {
   width: 30px;
@@ -4425,10 +4481,53 @@ body .verification_card_header {
   width: 100%;
   height: 50px;
 }
+.skeleton.second-step-input {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  background-color: #151515;
+}
+.skeleton.second-step-input-textarea {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 30px;
+  background-color: #151515;
+}
+
+.skeleton.second-step-input-button {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 30px;
+  background-color: #151515;
+}
 
 .skeleton.input-age {
   width: 30%;
   height: 50px;
+}
+.skeleton.input-view-profile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 30px;
+}
+
+.skeleton.verified-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  height: 50px;
+  background-color: #151515 !important;
+}
+
+.skeleton.close-icon-view-profile {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  width: 30px;
+  height: 30px;
 }
 
 .skeleton.input-radio {
@@ -4448,6 +4547,19 @@ body .verification_card_header {
   width: 240px;
   border-radius: 15px;
   background: #151515;
+}
+.skeleton.image-350h-350w {
+  height: 350px;
+  width: 100%;
+  border-radius: 10px;
+  background: #151515;
+}
+
+.skeleton.image-500h-600w {
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  // background: #151515;
 }
 
 .skeleton.image-160h-150w {
@@ -4476,6 +4588,49 @@ body .verification_card_header {
   background: #151515;
 }
 
+.skeleton.available-label {
+  width: 20%;
+  height: 20px;
+  margin-bottom: 7px;
+  background: #151515;
+}
+.skeleton.create-date-button {
+  width: 100%;
+  height: 50px;
+  background: #151515;
+}
+
+.skeleton.inner-box-me {
+  padding: 15px;
+  border: 1px solid #293036;
+  background-color: #151515;
+  border-radius: 8px;
+  min-height: 120px;
+}
+
+.skeleton.view-profile-p {
+  background-color: #151515;
+  width: 100%;
+  height: 15px;
+}
+
+.skeleton.input-image-upload-425h {
+  width: 100%;
+  height: 425px;
+  background: #151515;
+  border-radius: 15px;
+}
+
+.skeleton.input-image-upload-120h-120w {
+  width: 120px;
+  height: 120px;
+  background: #151515;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
 .skeleton-date {
   width: 100%;
   border-radius: 4px;
@@ -4495,7 +4650,7 @@ body .verification_card_header {
   .date-skeleton {
     position: absolute;
     bottom: 20px;
-    left: 15px;
+    left: 30px;
     width: 100%;
     display: grid;
     justify-content: space-between;

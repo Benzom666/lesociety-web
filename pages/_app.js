@@ -14,8 +14,6 @@ import Router from "next/router";
 import Loader from "@/modules/Loader/Loader";
 import io from "socket.io-client";
 
-// style files
-
 import "styles/style.scss";
 
 export const socket = io("https://staging-api.secrettime.com/", {
@@ -52,6 +50,7 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
+
     return (
       <Provider store={store}>
         <Head>

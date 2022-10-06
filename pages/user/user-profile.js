@@ -5,13 +5,7 @@ import { useState } from "react";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
 
 function userProfile({ dispatch }) {
-  const [pageLoading, setPageLoading] = useState(false);
-
-  if (pageLoading) {
-    return <SkeletonUserProfile />;
-  } else {
-    return <UserProfile />;
-  }
+  return <UserProfile />;
 }
 
 export default withAuth(userProfile);

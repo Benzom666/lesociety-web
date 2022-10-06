@@ -8,7 +8,7 @@ const SkeletonDate = ({ theme }) => {
   return (
     <div className={`date-skeleton-wrapper ${themeClass}`}>
       <div className="date-skeleton">
-        <span>
+        <span className="">
           <SkeletonElement type="title" />
           <SkeletonElement type="text" />
         </span>

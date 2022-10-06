@@ -41,6 +41,10 @@ export const signUp = signUpDetails => {
 export const logout = () => {
    return async dispatch => {
        dispatch(deAuthenticateAction())
+    //  clear out all the data from the local storage
+    
+
+
    }
 };
 
