@@ -4776,3 +4776,10 @@ path {
     margin-left: 0;
   }
 }
+
+
+@media only screen and (max-width: 325px) {
+  .date_card_wrap .date_details_desktop .button-wrapper .edit{
+     width :54%;
+  }
+}
