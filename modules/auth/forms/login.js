@@ -84,8 +84,6 @@ const SimpleForm = (props) => {
     }
   }, [userLogin, router?.isReady]);
 
-  console.log("router", router);
-
   const {
     handleSubmit,
     invalid,

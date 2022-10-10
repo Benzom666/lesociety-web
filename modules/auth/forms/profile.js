@@ -10,7 +10,7 @@ const RegisterForm = (props) => {
   const router = useRouter();
   const [page, setPage] = useState(0);
   const user = useSelector((state) => state.authReducer.user);
-
+  const authState = useSelector((state) => state.authReducer);
   const nextPage = () => {
     setPage(page + 1);
     window.scrollTo(0, 0);

@@ -14,7 +14,7 @@ const UserCardDetail = ({
     <div className="date_card_wrap">
       <figure className="user_img_date">
         <Image
-          src={user?.images?.length > 0 && user?.images[0]}
+          src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
           alt="user image"
           width={500}
           height={500}
@@ -48,7 +48,7 @@ const UserCardDetail = ({
                     fill="#F24462"
                   />
                 </svg>
-                <span className="address px-1">
+                <span className="address px-2">
                   {cityState?.enter_city?.name},{" "}
                   {cityState?.enter_city?.province[0]?.short_code?.split("-")[1]
                     ? cityState?.enter_city?.province[0]?.short_code?.split(
@@ -74,6 +74,12 @@ const UserCardDetail = ({
         <p>{dateDescription?.date_description}</p>
       </div>
     </div>
+    //   </figure>
+    //   <div className="date_details">
+    //     <h4>Date Details</h4>
+    //     <p>{dateDescription?.date_description}</p>
+    //   </div>
+    // </div>
   );
 };
 

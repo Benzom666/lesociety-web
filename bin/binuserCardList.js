@@ -133,7 +133,7 @@ const UserCardList = ({
                           fill="#F24462"
                         />
                       </svg>
-                      <span className="address px-1">
+                      <span className="address px-2">
                         {date?.location}, {date?.province}
                       </span>
                     </span>
