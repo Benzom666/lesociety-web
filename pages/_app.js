@@ -31,11 +31,13 @@ class MyApp extends App {
   componentDidMount() {
     Router.events.on("routeChangeStart", (url) => {
       this.setState({ isLoading: true });
-      // console.log("I am Loading...");
+      console.log("I am Loading...");
     });
     Router.events.on("routeChangeComplete", (url) => {
-      this.setState({ isLoading: false });
-      // console.log("I am Loaded...");
+      setTimeout(() => {
+        this.setState({ isLoading: false });
+      }, 20);
+      console.log("I am Loaded...");
     });
   }
 
@@ -51,6 +53,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, store } = this.props;
 
+    // console.log("loading", this.state.isLoading);
     return (
       <Provider store={store}>
         <Head>

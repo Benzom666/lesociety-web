@@ -498,12 +498,12 @@ const Messages = (props) => {
   // consoles
   // console.log("socket connected message", socket.connected);
   // console.log("conversationLength", conversationLength);
-  console.log("unReadedConversationLength", unReadedConversationLength);
+  // console.log("unReadedConversationLength", unReadedConversationLength);
   // console.log("socket", socket);
   // console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
   // console.log("category", category);
-  console.log("conversation", conversations);
+  // console.log("conversation", conversations);
   // console.log("messages", messages);
   // console.log("arrivalMessage", arrivalMessage);
   return (
