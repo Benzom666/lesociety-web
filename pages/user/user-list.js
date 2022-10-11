@@ -285,7 +285,7 @@ function UserList(props) {
       location: selectedLocation?.city,
       province: selectedLocation?.province,
       current_page: page + 1,
-      per_page: 2,
+      per_page: 10,
     };
     setPage(page + 1);
     fetchDate(params);

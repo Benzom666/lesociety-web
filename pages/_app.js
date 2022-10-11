@@ -36,7 +36,7 @@ class MyApp extends App {
     Router.events.on("routeChangeComplete", (url) => {
       setTimeout(() => {
         this.setState({ isLoading: false });
-      }, 20);
+      }, 200);
       console.log("I am Loaded...");
     });
   }
