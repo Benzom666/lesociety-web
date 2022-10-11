@@ -184,6 +184,8 @@ function UserProfile({ preview, editHandle }) {
     }, 800);
   }, [userDetail?.images, user?.images]);
 
+  console.log("pageloading", pageLoading);
+
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
   } else {
