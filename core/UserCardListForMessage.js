@@ -27,6 +27,8 @@ const UserCardListForMessage = ({
   tabIndexChange,
   selectedTabIndex,
   socket,
+  toggleChat,
+  mobile,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
@@ -210,13 +212,16 @@ const UserCardListForMessage = ({
                                 <a
                                   className="create-date"
                                   onClick={() => {
+                                    if (mobile) {
+                                      toggleChat(conversation);
+                                    }
                                     postApprovedConversation(
                                       conversation?.message?.room_id,
                                       conversation
                                     );
                                   }}
                                 >
-                                 START CONVERSATION
+                                  START CONVERSATION
                                 </a>
                               </div>
                               <div className="my-4 bottom_content">

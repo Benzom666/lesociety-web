@@ -557,6 +557,8 @@ const Messages = (props) => {
                               tabIndexChange={tabIndexChange}
                               selectedTabIndex={selectedTabIndex}
                               socket={socket}
+                              toggleChat={toggleChat}
+                              mobile={mobile}
                             />
                           </Tab>
                         </TabList>
@@ -850,7 +852,9 @@ const Messages = (props) => {
                                   }
                                   value={newMessage}
                                   onKeyPress={(event) => {
-                                    event.key === "Enter" && sendMessage(event);
+                                    event.key === "Enter" &&
+                                      newMessage !== "" &&
+                                      sendMessage(event);
                                   }}
                                 />
                                 <button

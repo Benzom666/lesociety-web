@@ -31,13 +31,13 @@ class MyApp extends App {
   componentDidMount() {
     Router.events.on("routeChangeStart", (url) => {
       this.setState({ isLoading: true });
-      console.log("I am Loading...");
+      // console.log("I am Loading...");
     });
     Router.events.on("routeChangeComplete", (url) => {
       setTimeout(() => {
         this.setState({ isLoading: false });
       }, 200);
-      console.log("I am Loaded...");
+      // console.log("I am Loaded...");
     });
   }
 

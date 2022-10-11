@@ -483,7 +483,9 @@ function ChatMessages({ ...props }) {
                               onChange={(e) => setNewMessage(e.target.value)}
                               value={newMessage}
                               onKeyPress={(event) => {
-                                event.key === "Enter" && sendMessage(event);
+                                event.key === "Enter" &&
+                                  newMessage !== "" &&
+                                  sendMessage(event);
                               }}
                             />
                             <button
