@@ -72,7 +72,7 @@ const DatePreview = (props) => {
 
   return (
     <>
-      <div className="inner_container">
+    {!confirmPopup ? <>  <div className="inner_container">
         <div className=" d-md-none justify-content-between align-items-center login-text mb-0">
           <a onClick={previousPage}>
             {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
@@ -139,6 +139,7 @@ const DatePreview = (props) => {
           )}
         </div>
       </form>
+      </> : null}
       <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
     </>
   );

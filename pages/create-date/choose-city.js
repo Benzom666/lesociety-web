@@ -142,7 +142,7 @@ const ChooseCity = props => {
                                     <IoIosClose className="desk-close-first mouse-point" size={32} onClick={toggle} />
                                 </div>
                             )}
-                            <div className="top-head mt-5 mb-3 text-center">
+                           { !confirmPopup ?<> <div className="top-head mt-5 mb-3 text-center">
                                 <p></p>
                                 <h2>Spark a New Adventure</h2>
                                 <h6 className="text-white pt-1 Territory_title">Select Your Territory</h6>
@@ -156,7 +156,7 @@ const ChooseCity = props => {
                                         </linearGradient>
                                     </defs>
                                 </svg>
-                            </div>
+                            </div> 
                             <div className="content-section">
                                 <p>Single post allows you to choose only one location. Hence, more posts will give you more exposure</p>
                                 {/* <p>Please select the location where you would like to be showcased.</p>
@@ -204,7 +204,7 @@ const ChooseCity = props => {
                                         )
                                     }}
                                 />
-                            </div>
+                            </div></> : null } 
                             <div className="bottom-mobile register-bottom">
                                 <div className="secret-input type-submit next-prev">
                                     {!confirmPopup && <Link href={router?.query.edit ? "/create-date/date-event?edit=true" : "/create-date/date-event"} >

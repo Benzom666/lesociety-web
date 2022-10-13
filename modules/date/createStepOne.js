@@ -64,7 +64,7 @@ const CreateStepOne = (props) => {
           </ul>
         </div>
       </div>
-      <div className="date-suggetion-text">
+    {!confirmPopup ? <>  <div className="date-suggetion-text">
         <div
           className="inner_container"
           style={{ paddingRight: "35px", paddingLeft: "35px" }}
@@ -235,6 +235,7 @@ const CreateStepOne = (props) => {
           </div>
         </form>
       </div>
+      </> : null}
       <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
     </>
   );

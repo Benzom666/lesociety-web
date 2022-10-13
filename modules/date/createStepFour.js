@@ -127,7 +127,7 @@ const CreateStepFour = (props) => {
           </ul>
         </div>
       </div>
-      <div className="date-suggetion-text">
+    {!confirmPopup ? <>  <div className="date-suggetion-text">
         <div
           className="inner_container"
           style={{ paddingRight: "35px", paddingLeft: "35px" }}
@@ -138,7 +138,7 @@ const CreateStepFour = (props) => {
             should select you as their date
           </p>
         </div>
-      </div>
+      </div> 
       <form
         onSubmit={handleSubmit}
         className="date-class-section choose-gender"
@@ -219,6 +219,7 @@ const CreateStepFour = (props) => {
           </div>
         </div>
       </form>
+      </> : null}
       <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
     </>
   );
