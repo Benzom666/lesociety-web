@@ -23,6 +23,7 @@ import { useRef } from "react";
 import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
 import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import io from "socket.io-client";
+import { removeCookie } from "utils/cookie";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,

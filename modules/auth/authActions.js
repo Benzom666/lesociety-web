@@ -11,6 +11,8 @@ import {
 
 import { reset } from "redux-form";
 
+// import { removeCookie } from "../utils/cookie";
+
 export const authenticateAction = (user) => {
   return {
     type: AUTHENTICATE,
@@ -46,7 +48,9 @@ export const signUp = (signUpDetails) => {
 export const logout = () => {
   return async (dispatch) => {
     dispatch(deAuthenticateAction());
+
     //  clear out all the data from the local storage
+
     dispatch(reset("signupStep2"));
     dispatch(reset("Messages"));
     dispatch(reset("DatePreview"));
@@ -60,6 +64,7 @@ export const logout = () => {
     dispatch(reset("CreateStepThree"));
     dispatch(reset("CreateStepTwo"));
     dispatch(reset("CreateStepThree"));
+    // removeCookie("auth");
   };
 };
 

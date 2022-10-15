@@ -15,6 +15,7 @@ import Loader from "@/modules/Loader/Loader";
 import io from "socket.io-client";
 
 import "styles/style.scss";
+import { removeCookie } from "utils/cookie";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -53,7 +54,6 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, store } = this.props;
 
-    // console.log("loading", this.state.isLoading);
     return (
       <Provider store={store}>
         <Head>
