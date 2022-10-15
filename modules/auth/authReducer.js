@@ -5,12 +5,19 @@ import {
   AUTHENTICATE_UPDATE,
 } from "./actionConstants";
 import { getCookie, setCookie, removeCookie } from "../../utils/cookie";
+import { loadFromLocalStorage, saveToLocalStorage } from "utils/sessionStorage";
 
 let initialState;
 if (typeof localStorage !== "undefined") {
-  const authCookie = getCookie("auth");
+  // const authCookie = getCookie("auth");
+
+  // const authCookie = getSessionStorage("auth");
+  const authCookie = loadFromLocalStorage();
+
+  console.log("authCookie", authCookie);
   if (authCookie) {
-    initialState = JSON.parse(decodeURIComponent(authCookie));
+    initialState = authCookie;
+    // initialState = JSON.parse(decodeURIComponent(authCookie));
   } else {
     initialState = {
       isLoggedIn: false,
@@ -38,7 +45,9 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: action.payload,
       };
-      setCookie("auth", JSON.stringify(authObj));
+      // setCookie("auth", JSON.stringify(authObj));
+      // setSessionStorage("auth", JSON.stringify(authObj));
+      saveToLocalStorage(authObj);
       return authObj;
 
     case AUTHENTICATE_UPDATE:
@@ -46,7 +55,9 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: { ...state.user, ...action.payload },
       };
-      setCookie("auth", JSON.stringify(updateAuth));
+      // setCookie("auth", JSON.stringify(updateAuth));
+      // setSessionStorage("auth", JSON.stringify(updateAuth));
+      saveToLocalStorage(updateAuth);
       return {
         ...state,
         ...updateAuth,

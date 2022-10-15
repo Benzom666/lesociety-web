@@ -19,6 +19,7 @@ import {
   fetchLiveLocation,
   fetchRealLocation,
 } from "../validateRealTime";
+import SkeletonFirstStep from "@/modules/skeleton/Auth/SkeletonFirstStep";
 
 const emailValidate = (value) =>
   !value
@@ -78,6 +79,7 @@ const FirstStep = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loadingSubmit, setLoaderSubmit] = useState(false);
   const [loading, setLoader] = useState(false);
+  const [pageLoading, setPageLoading] = useState(false);
   const [isValid, setValid] = useState(false);
   const [loadingUsername, setLoaderUsername] = useState(false);
   const [isValidUsername, setValidUsername] = useState(false);
@@ -200,182 +202,203 @@ const FirstStep = (props) => {
   const { handleSubmit, previousPage, invalid, pristine, reset, submitting } =
     props;
 
-  return (
-    <form onSubmit={handleSubmit(submitHandler)}>
-      <div className="d-block d-md-none login-text">
-        <a href="registration">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="feather feather-chevron-left"
-          >
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </a>
-        <span>
-          LADIES
-          <img src="/images/line.png" alt="line" />
-        </span>
-      </div>
-      <h2>Let’s sign you up.</h2>
-      <p className="auth-register-p-text">Unlock The Vault.</p>
-
-      <Field
-        name="email"
-        type="text"
-        component={Inputs.inputField}
-        label="Email"
-        placeholder="E.g. Janedoe@gmail.com"
-        onChange={handleChangeEmail}
-        loading={loading}
-        isValid={isValid}
-        validate={mailTest && !isValid ? emailValidate : notRealValidate}
-        ignoreTouch={mailTest && !isValid}
-      />
-      <Field
-        name="user_name"
-        type="text"
-        component={Inputs.inputField}
-        label="Username"
-        placeholder="Visible by all members"
-        onChange={handleChangeUser}
-        loading={loadingUsername}
-        isValid={isValidUsername}
-        validate={
-          userTest && !isValidUsername ? userValidate : notRealUserValidate
-        }
-        ignoreTouch={userTest && !isValidUsername}
-      />
-      <div className="password-fields">
-        <Field
-          name="password"
-          component={Inputs.inputField}
-          type={showPassword ? "text" : "password"}
-          label="Password"
-          placeholder="Minimum 6 character"
-          validate={passwordValidate}
-        />
-        <span
-          className="icon"
-          aria-label="toggle password visibility"
-          onClick={handleClickShowPassword}
-          onMouseDown={handleMouseDownPassword}
-        >
-          <svg
-            width="25"
-            height="24"
-            viewBox="0 0 25 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="12.5"
-              cy="12"
-              r="2.6"
-              stroke="#4D4C56"
-              strokeWidth="0.8"
-            />
-            <path
-              d="M18.5 12C18.5 10.4087 17.8679 8.88258 16.7426 7.75736C15.6174 6.63214 14.0913 6 12.5 6C10.9087 6 9.38258 6.63214 8.25736 7.75736C7.13214 8.88258 6.5 10.4087 6.5 12L6.54917 12C6.54917 10.4217 7.17613 8.90813 8.29213 7.79213C9.40813 6.67613 10.9217 6.04917 12.5 6.04917C14.0783 6.04917 15.5919 6.67613 16.7079 7.79213C17.8239 8.90813 18.4508 10.4217 18.4508 12H18.5Z"
-              stroke="#4D4C56"
-              strokeWidth="0.8"
+  if (pageLoading) {
+    return <SkeletonFirstStep theme="dark" />;
+  } else {
+    return (
+      <form onSubmit={handleSubmit(submitHandler)}>
+        <div className="d-block d-md-none login-text">
+          <a href="registration">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-            />
-            <rect
-              x="0.9"
-              y="0.4"
-              width="23.2"
-              height="23.2"
-              rx="6.6"
-              stroke="#4D4C56"
-              strokeWidth="0.8"
-            />
-          </svg>
-        </span>
-      </div>
-      <div>
-        <Field
-          name="location"
-          type="text"
-          component={Inputs.renderDropdown}
-          label="Location"
-          placeholder="Enter your city"
-          valueField="value"
-          id="location1"
-          withIcon={true}
-          options={locationOptions}
-          iconClick={handleIcon}
-          loading={loadingLive}
-          openMenuOnClick={false}
-          inputValue={inputValue}
-          onInputChange={handleChange}
-          menuIsOpen={inputValue && locationOptions.length}
-          onChange={(value) => {
-            setInputValue("");
-            change("location", value);
-          }}
-          validate={locationValidate}
-          components={{
-            Option: ({ children, ...rest }) => (
-              <components.Option {...rest}>
-                <>
-                  {" "}
-                  <h6>{children.split(",")[0]}</h6>{" "}
-                  <span>
-                    {rest.data?.province?.text}, {rest.data?.country?.text}
-                  </span>
-                </>
-              </components.Option>
-            ),
-          }}
-        />
-        <div className="age-field">
-          <Field
-            name="age"
-            type="number"
-            component={Inputs.inputField}
-            label="Age"
-            validate={ageValidate}
-          />
+              className="feather feather-chevron-left"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </a>
+          <span>
+            LADIES
+            <img src="/images/line.png" alt="line" />
+          </span>
         </div>
-        <div className="auth-radio">
-          <Field
-            label="Body Type"
-            name="body_type"
-            options={bodyType}
-            value={bodyType}
-            component={Inputs.radioField}
-            validate={bodyValidate}
-          />
-        </div>
-        <div className="auth-radio">
-          <Field
-            label="Ethnicity"
-            name="ethnicity"
-            options={Ethnicity}
-            value={Ethnicity}
-            component={Inputs.radioField}
-            validate={ethnicityValidate}
-          />
-        </div>
+        <h2>Let’s sign you up.</h2>
+        <p className="auth-register-p-text">Unlock The Vault.</p>
 
-        {width < 767 && (
-          <>
-            <div className="d-flex checkbox-label">
-              <p className="next-text">
-                By clicking “Next” I certify that I’m at least 18 years old and
-                agree to the Secret Time <Link href="/">PrivacyPolicy</Link> and{" "}
-                <Link href="/">Terms</Link>
-              </p>
-            </div>
+        <Field
+          name="email"
+          type="text"
+          component={Inputs.inputField}
+          label="Email"
+          placeholder="E.g. Janedoe@gmail.com"
+          onChange={handleChangeEmail}
+          loading={loading}
+          isValid={isValid}
+          validate={mailTest && !isValid ? emailValidate : notRealValidate}
+          ignoreTouch={mailTest && !isValid}
+        />
+        <Field
+          name="user_name"
+          type="text"
+          component={Inputs.inputField}
+          label="Username"
+          placeholder="Visible by all members"
+          onChange={handleChangeUser}
+          loading={loadingUsername}
+          isValid={isValidUsername}
+          validate={
+            userTest && !isValidUsername ? userValidate : notRealUserValidate
+          }
+          ignoreTouch={userTest && !isValidUsername}
+        />
+        <div className="password-fields">
+          <Field
+            name="password"
+            component={Inputs.inputField}
+            type={showPassword ? "text" : "password"}
+            label="Password"
+            placeholder="Minimum 6 character"
+            validate={passwordValidate}
+          />
+          <span
+            className="icon"
+            aria-label="toggle password visibility"
+            onClick={handleClickShowPassword}
+            onMouseDown={handleMouseDownPassword}
+          >
+            <svg
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12.5"
+                cy="12"
+                r="2.6"
+                stroke="#4D4C56"
+                strokeWidth="0.8"
+              />
+              <path
+                d="M18.5 12C18.5 10.4087 17.8679 8.88258 16.7426 7.75736C15.6174 6.63214 14.0913 6 12.5 6C10.9087 6 9.38258 6.63214 8.25736 7.75736C7.13214 8.88258 6.5 10.4087 6.5 12L6.54917 12C6.54917 10.4217 7.17613 8.90813 8.29213 7.79213C9.40813 6.67613 10.9217 6.04917 12.5 6.04917C14.0783 6.04917 15.5919 6.67613 16.7079 7.79213C17.8239 8.90813 18.4508 10.4217 18.4508 12H18.5Z"
+                stroke="#4D4C56"
+                strokeWidth="0.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <rect
+                x="0.9"
+                y="0.4"
+                width="23.2"
+                height="23.2"
+                rx="6.6"
+                stroke="#4D4C56"
+                strokeWidth="0.8"
+              />
+            </svg>
+          </span>
+        </div>
+        <div>
+          <Field
+            name="location"
+            type="text"
+            component={Inputs.renderDropdown}
+            label="Location"
+            placeholder="Enter your city"
+            valueField="value"
+            id="location1"
+            withIcon={true}
+            options={locationOptions}
+            iconClick={handleIcon}
+            loading={loadingLive}
+            openMenuOnClick={false}
+            inputValue={inputValue}
+            onInputChange={handleChange}
+            menuIsOpen={inputValue && locationOptions.length}
+            onChange={(value) => {
+              setInputValue("");
+              change("location", value);
+            }}
+            validate={locationValidate}
+            components={{
+              Option: ({ children, ...rest }) => (
+                <components.Option {...rest}>
+                  <>
+                    {" "}
+                    <h6>{children.split(",")[0]}</h6>{" "}
+                    <span>
+                      {rest.data?.province?.text}, {rest.data?.country?.text}
+                    </span>
+                  </>
+                </components.Option>
+              ),
+            }}
+          />
+          <div className="age-field">
+            <Field
+              name="age"
+              type="number"
+              component={Inputs.inputField}
+              label="Age"
+              validate={ageValidate}
+            />
+          </div>
+          <div className="auth-radio">
+            <Field
+              label="Body Type"
+              name="body_type"
+              options={bodyType}
+              value={bodyType}
+              component={Inputs.radioField}
+              validate={bodyValidate}
+            />
+          </div>
+          <div className="auth-radio">
+            <Field
+              label="Ethnicity"
+              name="ethnicity"
+              options={Ethnicity}
+              value={Ethnicity}
+              component={Inputs.radioField}
+              validate={ethnicityValidate}
+            />
+          </div>
+
+          {width < 767 && (
+            <>
+              <div className="d-flex checkbox-label">
+                <p className="next-text">
+                  By clicking “Next” I certify that I’m at least 18 years old
+                  and agree to the Secret Time{" "}
+                  <Link href="/">PrivacyPolicy</Link> and{" "}
+                  <Link href="/">Terms</Link>
+                </p>
+              </div>
+              <div className="bottom-mobile register-bottom">
+                <div className="secret-input type-submit">
+                  <button type="submit" className="next" disabled={invalid}>
+                    {loadingSubmit ? (
+                      <span className="spin-loader-button"></span>
+                    ) : (
+                      <>
+                        Next
+                        <FiArrowRight />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
+          {width > 767 && (
             <div className="bottom-mobile register-bottom">
               <div className="secret-input type-submit">
                 <button type="submit" className="next" disabled={invalid}>
@@ -389,33 +412,17 @@ const FirstStep = (props) => {
                   )}
                 </button>
               </div>
+              <p className="next-text">
+                By clicking “Next” I certify that I’m at least 18 years old and
+                agree to the Secret Time <Link href="/">PrivacyPolicy</Link> and{" "}
+                <Link href="/">Terms</Link>
+              </p>
             </div>
-          </>
-        )}
-        {width > 767 && (
-          <div className="bottom-mobile register-bottom">
-            <div className="secret-input type-submit">
-              <button type="submit" className="next" disabled={invalid}>
-                {loadingSubmit ? (
-                  <span className="spin-loader-button"></span>
-                ) : (
-                  <>
-                    Next
-                    <FiArrowRight />
-                  </>
-                )}
-              </button>
-            </div>
-            <p className="next-text">
-              By clicking “Next” I certify that I’m at least 18 years old and
-              agree to the Secret Time <Link href="/">PrivacyPolicy</Link> and{" "}
-              <Link href="/">Terms</Link>
-            </p>
-          </div>
-        )}
-      </div>
-    </form>
-  );
+          )}
+        </div>
+      </form>
+    );
+  }
 };
 
 export default reduxForm({

@@ -11,6 +11,7 @@ import withAuth from "@/core/withAuth";
 import { socket } from "../user/user-list";
 import NoImage from "assets/img/no-image.png";
 import { IoIosArrowBack } from "react-icons/io";
+
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
 function ChatMessages({ ...props }) {
@@ -195,6 +196,19 @@ function ChatMessages({ ...props }) {
     }
   }, [socket.connected]);
 
+  useEffect(() => {
+    // if (socket.connected) {
+    console.log("chat Room Cleared called", socket.connected);
+    socket.on(`chatRoomCleared-${user._id}`, (message) => {
+      console.log("chatRoomCleared", message);
+      if (message?.deleted) {
+        setMessages([]);
+        getConversations();
+      }
+    });
+    // }
+  }, [socket.connected]);
+
   const toggleClass = () => {
     setActive(!isActive);
     // document.body.classList.toggle("open-sidebar");
@@ -280,22 +294,16 @@ function ChatMessages({ ...props }) {
 
       const res = await apiRequest({
         data: data,
-        method: "POST",
+        method: "DELETE",
         url: `chat/chat-clear`,
       });
       console.log("res", res);
-      setCurrentChat((prev) => ({
-        ...prev,
-        status: res?.data?.data?.chatRoom?.status,
-        blocked_by: {
-          _id: user?._id,
-        },
-      }));
+      setMessages([]);
+      getConversations();
     } catch (err) {
       console.log("err", err);
     }
   };
-
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -395,7 +403,7 @@ function ChatMessages({ ...props }) {
                                       <a>Block</a>
                                     </li>
                                   )}
-                                  <li>
+                                  <li onClick={() => deleteChat(currentChat)}>
                                     <a>Delete Conversation</a>
                                   </li>
                                 </ul>
@@ -475,7 +483,9 @@ function ChatMessages({ ...props }) {
                               onChange={(e) => setNewMessage(e.target.value)}
                               value={newMessage}
                               onKeyPress={(event) => {
-                                event.key === "Enter" && sendMessage(event);
+                                event.key === "Enter" &&
+                                  newMessage !== "" &&
+                                  sendMessage(event);
                               }}
                             />
                             <button

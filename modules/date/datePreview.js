@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { reduxForm, reset } from "redux-form";
 import { useSelector, useDispatch } from "react-redux";
 import validate from "modules/auth/forms/validate/validate";
@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import UserCardDetail from "@/core/UserCardDetail";
 import ConfirmDate from "./../../modules/date/confirmDate";
 import { apiRequest } from "utils/Utilities";
+import SkeletonDatesPreview from "../skeleton/Dates/SkeletonDatesPreview";
 
 const DatePreview = (props) => {
   const { handleSubmit, previousPage, invalid, pristine, submitting, onClose } =
@@ -30,6 +31,15 @@ const DatePreview = (props) => {
   );
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (user?.images?.length > 0 && user?.images[0]) {
+        setPageLoading(false);
+      }
+    }, 1000);
+  }, []);
 
   const toggle = () => setConfirmPopup(!confirmPopup);
 
@@ -87,22 +97,74 @@ const DatePreview = (props) => {
           } `}
       >
         <div className="inner_container">
-          <div className="d-flex justify-content-center">
-            {width > 767 && <h6>Date Preview</h6>}
+          <div className=" d-md-none justify-content-between align-items-center login-text mb-0">
+            <a onClick={previousPage}>
+              {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
+            </a>
+            <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
+            <IoIosClose className="" size={32} onClick={toggle} />
+          </div>
+          {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>}
+        </div>
+        <div
+          className={`${
+            width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"
+          } `}
+        >
+          <div className="inner_container">
+            <div className="d-flex justify-content-center">
+              {width > 767 && <h6>Date Preview</h6>}
 
-            {width > 767 && (
-              <IoIosClose
-                className="desk-close-icon-new"
-                size={32}
-                onClick={toggle}
-              />
+              {width > 767 && (
+                <IoIosClose
+                  className="desk-close-icon-new"
+                  size={32}
+                  onClick={toggle}
+                />
+              )}
+            </div>
+            <p>
+              Please check all the details of your date before posting. You will
+              have a chance to edit it in the future
+            </p>
+          </div>
+        </div>
+        <form
+          onSubmit={handleSubmit}
+          className="date-class-section choose-gender date-preview-card"
+        >
+          <div className="inner_container inner_container_Date_Preview_width">
+            <UserCardDetail
+              user={user}
+              cityState={cityState}
+              dateSuggestion={dateSuggestion}
+              timeState={timeState}
+              priceState={priceState}
+              dateDescription={dateDescription}
+            />
+            {!confirmPopup && (
+              <div className="bottom-mobile register-bottom">
+                <div className="secret-input type-submit next-prev">
+                  <button type="button" className="edit next">
+                    <Link href="/create-date/choose-city?edit=true">
+                      <a>Edit</a>
+                    </Link>
+                  </button>
+                  <button type="button" className="next" onClick={postDate}>
+                    {loader ? (
+                      <span className="spin-loader-button"></span>
+                    ) : (
+                      <>
+                        <a className="forgot-passwrd">Post Date</a>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
             )}
           </div>
-          <p>
-            Please check all the details of your date before posting. You will
-            have a chance to edit it in the future
-          </p>
-        </div>
+        </form>
+        <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
       </div>
       <form
         onSubmit={handleSubmit}

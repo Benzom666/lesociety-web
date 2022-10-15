@@ -16,6 +16,8 @@ import Slider from "react-slick";
 import { HiLockOpen } from "react-icons/hi";
 import { useRouter } from "next/router";
 import { apiRequest } from "./../utils/Utilities";
+import SkeletonUserCardListForMessage from "@/modules/skeleton/SkeletonUserCardListForMessage";
+import SkeletonElement from "@/modules/skeleton/SkeletonElement";
 
 const UserCardListForMessage = ({
   conversations,
@@ -25,10 +27,13 @@ const UserCardListForMessage = ({
   tabIndexChange,
   selectedTabIndex,
   socket,
+  toggleChat,
+  mobile,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
   const [msgModal, setMsgModal] = React.useState(false);
+  const [pageLoading, setPageLoading] = React.useState(true);
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
@@ -146,12 +151,17 @@ const UserCardListForMessage = ({
             className="intrested_model"
           >
             <div className="model_content">
-              <IoIosClose
-                size={25}
-                className="close_btn"
-                onClick={closeModal}
-                color={"#A8A8A8"}
-              />
+              {pageLoading ? (
+                <SkeletonElement type="close-icon-view-profile" />
+              ) : (
+                <IoIosClose
+                  size={25}
+                  className="close_btn"
+                  onClick={closeModal}
+                  color={"#A8A8A8"}
+                />
+              )}
+
               <Slider {...settings}>
                 {conversations.length > 0
                   ? conversations.filter((c) => c.status == 0)?.length > 0
@@ -162,7 +172,25 @@ const UserCardListForMessage = ({
                             conversation.user?.images.length > 0
                               ? conversation.user?.images[0]
                               : "";
-                          return (
+
+                          setTimeout(() => {
+                            if (profilePic) {
+                              setPageLoading(false);
+                            }
+                          }, 1800);
+
+                          return pageLoading ? (
+                            <SkeletonUserCardListForMessage
+                              conversation={conversation}
+                              getConversations={getConversations}
+                              user={user}
+                              setCurrentChat={setCurrentChat}
+                              tabIndexChange={tabIndexChange}
+                              selectedTabIndex={selectedTabIndex}
+                              socket={socket}
+                              profilePic={profilePic}
+                            />
+                          ) : (
                             <div key={index}>
                               <H5>{conversation?.user?.user_name} is</H5>
                               <CustomIcon.IntrestedText
@@ -184,13 +212,16 @@ const UserCardListForMessage = ({
                                 <a
                                   className="create-date"
                                   onClick={() => {
+                                    if (mobile) {
+                                      toggleChat(conversation);
+                                    }
                                     postApprovedConversation(
                                       conversation?.message?.room_id,
                                       conversation
                                     );
                                   }}
                                 >
-                                 START CONVERSATION
+                                  START CONVERSATION
                                 </a>
                               </div>
                               <div className="my-4 bottom_content">

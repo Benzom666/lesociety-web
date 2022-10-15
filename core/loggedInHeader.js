@@ -8,34 +8,65 @@ import { useSelector } from "react-redux";
 import _ from "lodash";
 import { useRouter } from "next/router";
 import { apiRequest } from "utils/Utilities";
+import io from "socket.io-client";
 
-export default function HeaderLoggedIn({ fixed, isBlack }) {
+// const socket = io("https://staging-api.secrettime.com/", {
+//   autoConnect: true,
+// });
+
+export default function HeaderLoggedIn({
+  fixed,
+  isBlack,
+  unReadedConversationLength,
+}) {
   const [isActive, setActive] = useState(false);
   const width = useWindowSize();
   const router = useRouter();
   const user = useSelector((state) => state.authReducer.user);
   const [conversations, setConversations] = useState([]);
 
-  useEffect(() => {
-    getConversations();
-  }, [user]);
+  // useEffect(() => {
+  //   getConversations();
+  // }, [user]);
 
-  const getConversations = async () => {
-    try {
-      const res = await apiRequest({
-        method: "GET",
-        url: `chat/chatroom-list`,
-      });
-      // console.log("res", res.data?.data?.chatRooms);
-      const conversations =
-        res.data?.data?.chatRooms.length > 0
-          ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
-          : [];
-      setConversations(conversations);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+  // useEffect(() => {
+  //   socket.on(`request-${user._id}`, (message) => {
+  //     console.log("reqested message header", message);
+  //     getConversations();
+  //   });
+  // }, [socket.connected]);
+
+  // useEffect(() => {
+  //   if (socket.connected) {
+  //     socket.on(`recieve-${user._id}`, (message) => {
+  //       console.log("recieve message header", message);
+  //       getConversations();
+  //     });
+  //   }
+  // }, [socket.connected]);
+
+  // const getConversations = async () => {
+  //   try {
+  //     const res = await apiRequest({
+  //       method: "GET",
+  //       url: `chat/chatroom-list`,
+  //     });
+  //     // console.log("res", res.data?.data?.chatRooms);
+  //     const conversations =
+  //       res.data?.data?.chatRooms.length > 0
+  //         ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
+  //         : [];
+  //     setConversations(conversations);
+  //   } catch (err) {
+  //     console.log("err", err);
+  //   }
+  // };
+
+  const unReadMessagesLength = unReadedConversationLength
+    ? unReadedConversationLength
+    : 0;
+
+  // console.log("unReadMessagesLength", unReadMessagesLength);
 
   const sidbarCloseOutsideClick = (event) => {
     const target = document.querySelector("#sidebar-header");
@@ -95,13 +126,16 @@ export default function HeaderLoggedIn({ fixed, isBlack }) {
                     type="button"
                   >
                     <CustomIcon.Envelope color={"#fff"} size={20} />
+
                     {width?.width > 767 && (
                       <>
                         <Link href="/messages">
                           <a className="forgot-passwrd">Messages</a>
                         </Link>
-                        {/* <span className="top-bages">3</span> */}
                       </>
+                    )}
+                    {unReadMessagesLength > 0 && (
+                      <span className="top-bages">{unReadMessagesLength}</span>
                     )}
                   </button>
                 </li>

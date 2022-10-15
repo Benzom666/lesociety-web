@@ -59,7 +59,7 @@ const RegisterForm = (props) => {
   };
 
   useEffect(() => {
-    if (authState?.isLoggedIn && router?.isReady) {
+    if (authState?.isLoggedIn) {
       if (userLogin?.step_completed === 1 || userLogin?.step_completed === 2) {
         router.push({
           pathname: "/auth/profile",
@@ -88,7 +88,7 @@ const RegisterForm = (props) => {
         }
       }
     }
-  }, [userLogin, router?.isReady]);
+  }, [userLogin]);
 
   return (
     <div>

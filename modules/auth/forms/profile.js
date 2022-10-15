@@ -10,7 +10,7 @@ const RegisterForm = (props) => {
   const router = useRouter();
   const [page, setPage] = useState(0);
   const user = useSelector((state) => state.authReducer.user);
-
+  const authState = useSelector((state) => state.authReducer);
   const nextPage = () => {
     setPage(page + 1);
     window.scrollTo(0, 0);
@@ -56,7 +56,11 @@ const RegisterForm = (props) => {
             <div className="auth-section auth-section-register">
               <div>
                 {page == 0 && !router?.query?.token && (
-                  <SecondStep previousPage={previousPage} onSubmit={nextPage} />
+                  <SecondStep
+                    previousPage={previousPage}
+                    onSubmit={nextPage}
+                    fromRegistration={true}
+                  />
                 )}
 
                 {page == 1 && !router?.query?.token && (

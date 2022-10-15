@@ -106,7 +106,9 @@ function Chat({ currentChat, category }) {
                 onChange={(e) => setNewMessage(e.target.value)}
                 value={newMessage}
                 onKeyPress={(event) => {
-                  event.key === "Enter" && sendMessage(event);
+                  event.key === "Enter" &&
+                    newMessage !== "" &&
+                    sendMessage(event);
                 }}
               />
               <button type="button" className="send_btn" onClick={sendMessage}>

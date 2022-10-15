@@ -3,12 +3,29 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { CustomIcon } from "core/icon";
 import { getCookie } from "./cookie";
+import { loadFromLocalStorage } from "./sessionStorage";
+
+// export const apiRequest = async (args = {}) => {
+//   let token = "";
+//   const authCookie = getCookie("auth");
+//   // const authCookie = getSessionStorage("auth");
+//   if (authCookie) {
+//     token = JSON.parse(decodeURIComponent(authCookie))?.user?.token;
+//   }
+//   args.url = `${"https://staging-api.secrettime.com/api/v1"}/${args.url}`;
+//   return axios({
+//     ...args,
+//     headers: {
+//       Authorization: `Bearer ${token || ""}`,
+//     },
+//   });
+// };
 
 export const apiRequest = async (args = {}) => {
   let token = "";
-  const authCookie = getCookie("auth");
+  const authCookie = loadFromLocalStorage();
   if (authCookie) {
-    token = JSON.parse(decodeURIComponent(authCookie))?.user?.token;
+    token = authCookie.user?.token;
   }
   args.url = `${"https://staging-api.secrettime.com/api/v1"}/${args.url}`;
   return axios({
@@ -18,9 +35,12 @@ export const apiRequest = async (args = {}) => {
     },
   });
 };
+
 export const apiRequestChatHistory = async (url, data) => {
   let token = "";
   const authCookie = getCookie("auth");
+  // const authCookie = getSessionStorage("auth");
+
   if (authCookie) {
     token = JSON.parse(decodeURIComponent(authCookie))?.user?.token;
   }
