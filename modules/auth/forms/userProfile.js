@@ -184,6 +184,14 @@ function UserProfile({ preview, editHandle }) {
     }, 800);
   }, [userDetail?.images, user?.images]);
 
+  useEffect(() => {
+    if (router?.query?.edit && user?.step_completed === 4) {
+      router.push({
+        pathname: "/user/user-list",
+      });
+    }
+  }, [user, router?.query?.edit]);
+
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
   } else {

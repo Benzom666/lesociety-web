@@ -127,36 +127,39 @@ const CreateStepFour = (props) => {
           </ul>
         </div>
       </div>
-    {!confirmPopup ? <>  <div className="date-suggetion-text">
-        <div
-          className="inner_container"
-          style={{ paddingRight: "35px", paddingLeft: "35px" }}
-        >
-          <h6>Describe Date Details</h6>
-          <p>
-            Write about your date suggestions in more detail and why someone
-            should select you as their date
-          </p>
-        </div>
-      </div> 
-      <form
-        onSubmit={handleSubmit}
-        className="date-class-section choose-gender"
-        style={{ paddingRight: "10px", paddingLeft: "10px" }}
-      >
-        <div className="inner_container">
-          <div className="mb-5 date-description">
-            <Field
-              name="date_description"
-              type="text"
-              validationLength={500}
-              component={Inputs.textarea}
-              label="Describe_Date_Details"
-              placeholder="Write details here (expectations, itinerary, rules, etc.)"
-            />
+      {!confirmPopup ? (
+        <>
+          {" "}
+          <div className="date-suggetion-text">
+            <div
+              className="inner_container"
+              style={{ paddingRight: "35px", paddingLeft: "35px" }}
+            >
+              <h6>Describe Date Details</h6>
+              <p>
+                Write about your date suggestions in more detail and why someone
+                should select you as their date
+              </p>
+            </div>
           </div>
-        </div>
-        {/* {width > 767 && (
+          <form
+            onSubmit={handleSubmit}
+            className="date-class-section choose-gender"
+            style={{ paddingRight: "10px", paddingLeft: "10px" }}
+          >
+            <div className="inner_container">
+              <div className="mb-5 date-description">
+                <Field
+                  name="date_description"
+                  type="text"
+                  validationLength={500}
+                  component={Inputs.textarea}
+                  label="Describe_Date_Details"
+                  placeholder="Write details here (expectations, itinerary, rules, etc.)"
+                />
+              </div>
+            </div>
+            {/* {width > 767 && (
                     <div className="date-suggetion-text mb-5">
                         <div className="inner_container">
                             <h6>Want To Offer <br /> A Free Date To Mr. Right?</h6>
@@ -164,10 +167,10 @@ const CreateStepFour = (props) => {
                         </div>
                     </div>
                  )}    */}
-        <div className="inner_container">
-          {width > 767 && (
-            <>
-              {/* <div className="mb-4">
+            <div className="inner_container">
+              {width > 767 && (
+                <>
+                  {/* <div className="mb-4">
                                 <div className="secret-input type-text select-wrap-icon">
                                     <select className="form-control">
                                         <option>Minimum yearly income</option>
@@ -177,7 +180,7 @@ const CreateStepFour = (props) => {
                                     </select>
                                 </div>    
                             </div> */}
-              {/* <div className="mb-5">
+                  {/* <div className="mb-5">
                                 <Field
                                     name="education"
                                     options={education_plan}
@@ -185,41 +188,43 @@ const CreateStepFour = (props) => {
                                     component={Inputs.checkboxField}
                                 />
                             </div> */}
-              <div className="mb-2 text-center">
-                <CustomIcon.Diamond color={"#fff"} size={120} />
-              </div>
-            </>
-          )}
-          <div className="mb-8 bottom-content text-center">
-            <p>
-              Thank you for being one of our early adopters! To show you our
-              appreciation, we will keep your posts active until you delete it.
-              This allows you to earn multiple times for each post. Goodluck!
-            </p>
-          </div>
-          <div className="bottom-mobile register-bottom">
-            <div className="secret-input type-submit next-prev">
-              {!confirmPopup && (
-                <button
-                  type="submit"
-                  className="next"
-                  onClick={postDate}
-                  disabled={!state?.values?.date_description || invalid}
-                >
-                  {loader ? (
-                    <span className="spin-loader-button"></span>
-                  ) : (
-                    <>
-                      Next <FiArrowRight />
-                    </>
-                  )}
-                </button>
+                  <div className="mb-2 text-center">
+                    <CustomIcon.Diamond color={"#fff"} size={120} />
+                  </div>
+                </>
               )}
+              <div className="mb-8 bottom-content text-center">
+                <p>
+                  Thank you for being one of our early adopters! To show you our
+                  appreciation, we will keep your posts active until you delete
+                  it. This allows you to earn multiple times for each post.
+                  Goodluck!
+                </p>
+              </div>
+              <div className="bottom-mobile register-bottom">
+                <div className="secret-input type-submit next-prev">
+                  {!confirmPopup && (
+                    <button
+                      type="submit"
+                      className="next"
+                      onClick={postDate}
+                      disabled={!state?.values?.date_description || invalid}
+                    >
+                      {loader ? (
+                        <span className="spin-loader-button"></span>
+                      ) : (
+                        <>
+                          Next <FiArrowRight />
+                        </>
+                      )}
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </form>
-      </> : null}
+          </form>
+        </>
+      ) : null}
       <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
     </>
   );

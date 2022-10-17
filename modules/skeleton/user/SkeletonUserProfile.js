@@ -319,9 +319,4 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
   );
 }
 
-export default reduxForm({
-  form: "SkeletonUserProfile", // <------ same form name
-  destroyOnUnmount: false, // <------ preserve form data
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  validate,
-})(SkeletonUserProfile);
+export default SkeletonUserProfile;

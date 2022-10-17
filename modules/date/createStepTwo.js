@@ -112,7 +112,7 @@ const CreateStepTwo = (props) => {
         )}
         <div
           className="step-wraps"
-        //  style={{ marginLeft: "9px" }}
+          //  style={{ marginLeft: "9px" }}
         >
           <ul>
             <li className="complete active">
@@ -130,59 +130,63 @@ const CreateStepTwo = (props) => {
           </ul>
         </div>
       </div>
-      {!confirmPopup ? <>  <div className="date-suggetion-text">
-        <div
-          className="inner_container"
-          style={{ paddingRight: "20px", paddingLeft: "20px" }}
-        >
-          <h6 className="price-text">What’s Your Price?</h6>
-          <p>
-            Determine how expensive you are and please consider he’s paying for
-            the <br /> outing as well
-          </p>
-        </div>
-      </div>
-        <div className="date-class-section choose-gender">
-          <form
-            onSubmit={handleSubmit}
-            className="inner_container"
-            style={{
-              paddingRight: "30px",
-              paddingLeft: "30px",
-              paddingTop: "0px",
-            }}
-          >
-            <div className="mb-5">
-              <div className="auth-radio inner-radio">
-                <Field
-                  // label="Level of education"
-                  name="education"
-                  options={education}
-                  value={education}
-                  component={PriceSelection}
-                  onlyLabel={true}
-                />
-              </div>
-            </div>
+      {!confirmPopup ? (
+        <>
+          {" "}
+          <div className="date-suggetion-text">
             <div
-              className="bottom-mobile register-bottom"
-              style={{ paddingTop: "0px" }}
+              className="inner_container"
+              style={{ paddingRight: "20px", paddingLeft: "20px" }}
             >
-              <div className="secret-input type-submit next-prev">
-                {!confirmPopup && (
-                  <button
-                    type="submit"
-                    className="next"
-                    disabled={!state.values?.education || invalid}
-                  >
-                    Next <FiArrowRight />
-                  </button>
-                )}
-              </div>
+              <h6 className="price-text">What’s Your Price?</h6>
+              <p>
+                Determine how expensive you are and please consider he’s paying
+                for the <br /> outing as well
+              </p>
             </div>
-          </form>
-        </div>
-      </> : null}
+          </div>
+          <div className="date-class-section choose-gender">
+            <form
+              onSubmit={handleSubmit}
+              className="inner_container"
+              style={{
+                paddingRight: "30px",
+                paddingLeft: "30px",
+                paddingTop: "0px",
+              }}
+            >
+              <div className="mb-5">
+                <div className="auth-radio inner-radio">
+                  <Field
+                    // label="Level of education"
+                    name="education"
+                    options={education}
+                    value={education}
+                    component={PriceSelection}
+                    onlyLabel={true}
+                  />
+                </div>
+              </div>
+              <div
+                className="bottom-mobile register-bottom"
+                style={{ paddingTop: "0px" }}
+              >
+                <div className="secret-input type-submit next-prev">
+                  {!confirmPopup && (
+                    <button
+                      type="submit"
+                      className="next"
+                      disabled={!state.values?.education || invalid}
+                    >
+                      Next <FiArrowRight />
+                    </button>
+                  )}
+                </div>
+              </div>
+            </form>
+          </div>
+        </>
+      ) : null}
       <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
     </>
   );

@@ -3,9 +3,16 @@ import {
   AUTHENTICATE,
   DEAUTHENTICATE,
   AUTHENTICATE_UPDATE,
+  DELETE_FORM_DATA,
 } from "./actionConstants";
 import { getCookie, setCookie, removeCookie } from "../../utils/cookie";
-import { loadFromLocalStorage, saveToLocalStorage } from "utils/sessionStorage";
+import {
+  loadFromLocalStorage,
+  removeSessionStorage,
+  saveToLocalStorage,
+} from "utils/sessionStorage";
+
+import { reducer as formReducer } from "redux-form";
 
 let initialState;
 if (typeof localStorage !== "undefined") {
@@ -34,7 +41,10 @@ if (typeof localStorage !== "undefined") {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case DEAUTHENTICATE:
-      removeCookie("auth");
+      // removeCookie("auth");
+      removeSessionStorage("auth");
+      removeSessionStorage("form");
+
       return {
         isLoggedIn: false,
         user: {},
@@ -71,6 +81,21 @@ const authReducer = (state = initialState, action) => {
     default:
       return { ...state };
   }
+};
+
+export const reducersForm = {
+  // ... your other reducers here ...
+  form: formReducer.plugin({
+    account: (state, action) => {
+      // <------ 'account' is name of form given to reduxForm()
+      switch (action.type) {
+        case DELETE_FORM_DATA:
+          return undefined; // <--- blow away form data
+        default:
+          return state;
+      }
+    },
+  }),
 };
 
 export default authReducer;

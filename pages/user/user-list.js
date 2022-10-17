@@ -157,7 +157,7 @@ function UserList(props) {
       const params = {
         location: selectedLocation?.city,
         current_page: page,
-        per_page: 2,
+        per_page: 10,
         province: selectedLocation?.province,
       };
       fetchDate(params);

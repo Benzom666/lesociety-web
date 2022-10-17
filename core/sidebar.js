@@ -9,17 +9,20 @@ import { HiBadgeCheck } from "react-icons/hi";
 import { FiChevronRight } from "react-icons/fi";
 
 import { useSelector, useDispatch } from "react-redux";
-import { deAuthenticateAction } from "../modules/auth/authActions";
+import { deAuthenticateAction, logout } from "../modules/auth/authActions";
 import { useRouter } from "next/router";
 import _ from "lodash";
 import { BiTime } from "react-icons/bi";
+import { reset } from "redux-form";
 
 export default function SideBar() {
   const user = useSelector((state) => state.authReducer.user);
+  const formValue = useSelector((state) => state.form);
   const dispatch = useDispatch();
   const router = useRouter();
   const [documentUpoaded, setDocumentUpoaded] = useState(false);
 
+  console.log("formValue", formValue);
   useEffect(() => {
     if (user?.selfie && user?.document) {
       setDocumentUpoaded(true);
@@ -141,8 +144,27 @@ export default function SideBar() {
               className="log-btn"
               type="button"
               onClick={() => {
+                dispatch(reset("signupStep2"));
+                dispatch(reset("signupStep3"));
+                dispatch(reset("DatePreview"));
+                dispatch(reset("RegisterFormMale"));
+                dispatch(reset("RegisterForm"));
+                dispatch(reset("forgotpassword"));
+                dispatch(reset("LoginForm"));
+                dispatch(reset("SecondStep"));
+                dispatch(reset("ThirdStep"));
+                dispatch(reset("CreateStepFour"));
+                dispatch(reset("CreateStepOne"));
+                dispatch(reset("CreateStepThree"));
+                dispatch(reset("CreateStepTwo"));
+                dispatch(reset("SkeletonUserProfile"));
+                dispatch(reset("Messages"));
+                dispatch(reset("VerifiedProfilePage"));
+                dispatch(reset("ChooseCity"));
                 dispatch(deAuthenticateAction());
-                router.push("/auth/login");
+                // router.push("/auth/login");
+                window.location.reload();
+                // refresh page
               }}
             >
               Log Out

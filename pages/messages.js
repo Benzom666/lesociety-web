@@ -722,7 +722,12 @@ const Messages = (props) => {
                         <div className="message-chat-wrap">
                           <div className="top-head">
                             <div className="user-thumb">
-                              <figure className="user_img_header">
+                              <figure
+                                className="user_img_header"
+                                onClick={() =>
+                                  router.push(`/user/user-profile`)
+                                }
+                              >
                                 <Image
                                   src={
                                     currentChat?.user?.images?.length > 0 &&
@@ -734,9 +739,18 @@ const Messages = (props) => {
                                   alt="user image"
                                   width={32}
                                   height={32}
+                                  onClick={() =>
+                                    router.push(`/user/user-profile`)
+                                  }
                                 />
                               </figure>
-                              <span className="user-details">
+
+                              <span
+                                className="user-details"
+                                onClick={() =>
+                                  router.push(`/user/user-profile`)
+                                }
+                              >
                                 <h3>{currentChat?.user?.user_name ?? ""}</h3>
                               </span>
                             </div>
