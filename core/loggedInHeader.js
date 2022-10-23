@@ -135,7 +135,9 @@ export default function HeaderLoggedIn({
                       </>
                     )}
                     {unReadMessagesLength > 0 && (
-                      <span className="top-bages">{unReadMessagesLength}</span>
+                      <span className="top-bages">
+                        {/* {unReadMessagesLength} */}
+                      </span>
                     )}
                   </button>
                 </li>

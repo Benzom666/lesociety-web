@@ -8,7 +8,7 @@ import { FiChevronLeft } from "react-icons/fi";
 import { IoSync } from "react-icons/io5";
 import useWindowSize from "../../../../utils/useWindowSize";
 import Slider from "react-rangeslider";
-import { signupStep3 } from "../../authActions";
+import { deAuthenticateAction, signupStep3 } from "../../authActions";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import { useRouter } from "next/router";
@@ -184,7 +184,31 @@ const ThirdStep = (props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="almost-done-page">
       <div className="d-block d-md-none login-text mb-0">
-        <a onClick={previousPage}>
+        <a
+          onClick={() => {
+            previousPage();
+            dispatch(reset("signupStep2"));
+            dispatch(reset("DatePreview"));
+            dispatch(reset("RegisterFormMale"));
+            dispatch(reset("signupStep3"));
+            dispatch(reset("RegisterForm"));
+            dispatch(reset("forgotpassword"));
+            dispatch(reset("LoginForm"));
+            dispatch(reset("SecondStep"));
+            dispatch(reset("ThirdStep"));
+            dispatch(reset("CreateStepFour"));
+            dispatch(reset("CreateStepOne"));
+            dispatch(reset("CreateStepThree"));
+            dispatch(reset("CreateStepTwo"));
+            dispatch(reset("SkeletonUserProfile"));
+            dispatch(reset("Messages"));
+            dispatch(reset("VerifiedProfilePage"));
+            dispatch(reset("ChooseCity"));
+            dispatch(deAuthenticateAction());
+            router.push("/auth/login");
+            // window.location.reload();
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

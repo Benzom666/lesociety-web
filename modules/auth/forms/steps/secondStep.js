@@ -5,10 +5,11 @@ import { Inputs } from "core";
 import { FiArrowRight } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { signupStep2 } from "../../authActions";
+import { deAuthenticateAction, signupStep2 } from "../../authActions";
 import { imageUploader } from "../../../../utils/Utilities";
 import { useRouter } from "next/router";
 import FemaleSkeletonSecondStep from "../../../skeleton/Auth/FemaleSkeletonSecondStep";
+import { reset } from "redux-form";
 
 const SecondStep = (props) => {
   const [loading, setLoader] = useState(false);
@@ -129,7 +130,31 @@ const SecondStep = (props) => {
         }}
       >
         <div className="d-block d-md-none login-text mb-0">
-          <a onClick={previousPage}>
+          <a
+            onClick={() => {
+              previousPage();
+              dispatch(reset("signupStep2"));
+              dispatch(reset("DatePreview"));
+              dispatch(reset("RegisterFormMale"));
+              dispatch(reset("signupStep3"));
+              dispatch(reset("RegisterForm"));
+              dispatch(reset("forgotpassword"));
+              dispatch(reset("LoginForm"));
+              dispatch(reset("SecondStep"));
+              dispatch(reset("ThirdStep"));
+              dispatch(reset("CreateStepFour"));
+              dispatch(reset("CreateStepOne"));
+              dispatch(reset("CreateStepThree"));
+              dispatch(reset("CreateStepTwo"));
+              dispatch(reset("SkeletonUserProfile"));
+              dispatch(reset("Messages"));
+              dispatch(reset("VerifiedProfilePage"));
+              dispatch(reset("ChooseCity"));
+              dispatch(deAuthenticateAction());
+              router.push("/auth/login");
+              // window.location.reload();
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

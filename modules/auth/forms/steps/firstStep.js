@@ -15,7 +15,8 @@ import {
 } from "./validateRealTime";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  bodyType,
+  femaleBodyType,
+  maleBodyType,
   Ethnicity,
   countriesCode,
 } from "../../../../utils/Utilities";
@@ -74,7 +75,7 @@ const ageValidate = (values) =>
 const locationValidate = (values) =>
   !values?.value ? "Location is Required" : "";
 
-const FirstStep = (props) => {
+const FirstStep = ({ gender, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoader] = useState(false);
   const [loadingSubmit, setLoaderSubmit] = useState(false);
@@ -355,8 +356,8 @@ const FirstStep = (props) => {
           <Field
             label="Body Type"
             name="body_type"
-            options={bodyType}
-            value={bodyType}
+            options={gender === "male" ? maleBodyType : femaleBodyType}
+            value={gender === "male" ? maleBodyType : femaleBodyType}
             component={Inputs.radioField}
             validate={bodyValidate}
           />

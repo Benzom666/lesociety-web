@@ -3548,8 +3548,8 @@ body .verification_card_header {
       &__tab-panel {
         .user-list-wrap {
           padding: 20px 0;
-          min-height: calc(100vh - 255px);
-          max-height: calc(100vh - 255px);
+          // min-height: calc(100vh - 255px);
+          // max-height: calc(100vh - 255px);
           overflow-y: auto;
 
           ul {
@@ -5061,6 +5061,42 @@ path {
   align-items: center;
   height: 100vh;
   width: 100%;
+}
+
+.document-verfied {
+  h2 {
+    font-size: 32px;
+  }
+}
+
+.request_header_btn_wrap {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  width: 100%;
+  z-index: 1000;
+
+  &.register-bottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .secret-input {
+      margin-bottom: 20px;
+    }
+  }
+
+  .dont-have {
+    p {
+      font-family: "Helvetica-Light";
+      margin-bottom: 20px;
+    }
+  }
+
+  .secret-input.type-submit {
+    margin-bottom: 0;
+  }
 }
 
 @media only screen and (max-width: 400px) {

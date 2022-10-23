@@ -11,6 +11,8 @@ import {
   bodyType,
   Ethnicity,
   countriesCode,
+  femaleBodyType,
+  maleBodyType,
 } from "../../../../../utils/Utilities";
 import {
   existEmail,
@@ -75,7 +77,7 @@ const ageValidate = (values) =>
 const locationValidate = (values) =>
   !values?.value ? "Location is Required" : "";
 
-const FirstStep = (props) => {
+const FirstStep = ({ gender, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loadingSubmit, setLoaderSubmit] = useState(false);
   const [loading, setLoader] = useState(false);
@@ -355,8 +357,8 @@ const FirstStep = (props) => {
             <Field
               label="Body Type"
               name="body_type"
-              options={bodyType}
-              value={bodyType}
+              options={gender === "female" ? femaleBodyType : maleBodyType}
+              value={gender === "female" ? femaleBodyType : maleBodyType}
               component={Inputs.radioField}
               validate={bodyValidate}
             />
