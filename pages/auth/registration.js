@@ -7,7 +7,7 @@ function RegistrationPage ({dispatch} ) {
   const { width } = useWindowSize();
 	return (
     <div className="inner-page">
-      <Header />
+      <Header isSingUp={true} />
         <div className="inner-part-page auth-section">
           <div className="container">
             <div className="auth-section auth-section-register">

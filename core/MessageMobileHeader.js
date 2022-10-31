@@ -25,7 +25,7 @@ function MessageMobileHeader() {
         </span>
       </div>
 
-      <div className="d-flex justify-content-center mt-2 me-4">
+      <div className="d-flex justify-content-center mt-2 me-5">
         <div className="p-3"></div>
         <div>
           <svg

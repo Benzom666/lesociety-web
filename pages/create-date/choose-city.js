@@ -138,7 +138,7 @@ const ChooseCity = props => {
                             </div>
                             {width > 767 && (
                                 <div className='d-flex justify-content-center'>
-                                    <h3 className="text-center">Create a New Date</h3>
+                                    <h3 className="text-center text-uppercase">Create a New Date</h3>
                                     <IoIosClose className="desk-close-first mouse-point" size={32} onClick={toggle} />
                                 </div>
                             )}
