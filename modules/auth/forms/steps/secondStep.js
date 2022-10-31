@@ -132,7 +132,7 @@ const SecondStep = (props) => {
         <div className="d-block d-md-none login-text mb-0">
           <a
             onClick={() => {
-              previousPage();
+              // previousPage();
               dispatch(reset("signupStep2"));
               dispatch(reset("DatePreview"));
               dispatch(reset("RegisterFormMale"));

@@ -83,19 +83,4 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const reducersForm = {
-  // ... your other reducers here ...
-  form: formReducer.plugin({
-    account: (state, action) => {
-      // <------ 'account' is name of form given to reduxForm()
-      switch (action.type) {
-        case DELETE_FORM_DATA:
-          return undefined; // <--- blow away form data
-        default:
-          return state;
-      }
-    },
-  }),
-};
-
 export default authReducer;
