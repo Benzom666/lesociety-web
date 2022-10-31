@@ -186,6 +186,7 @@ const CompleteProfile = (props) => {
       {!user?.email_verified ? (
         <span
           className="resend-mail-text profile mt-5"
+          tabIndex="0"
           onClick={handleResendMail}
         >
           Resend an email

@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/Ai";
 
 function UserProfile({ preview, editHandle }) {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -28,9 +29,12 @@ function UserProfile({ preview, editHandle }) {
   const [dateModalOpen, dateSetIsOpen] = React.useState(false);
   const [userDetail, setUserDetail] = React.useState("");
   const [userDates, setUserDates] = React.useState([]);
+  const [pagination, setPagination] = React.useState({});
   const [selectedDate, setSelectedDate] = React.useState("");
   const user = useSelector((state) => state.authReducer.user);
   const [pageLoading, setPageLoading] = useState(true);
+  const [dateloading, setDateloading] = useState(true);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const router = useRouter();
   const selectedDateCategory = dateCategory.find(
@@ -49,12 +53,6 @@ function UserProfile({ preview, editHandle }) {
     return feet + "'" + inches;
   };
 
-  function openModal() {
-    setIsOpen(true);
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
   function dateModalIsOpen() {
     dateSetIsOpen(true);
   }
@@ -63,17 +61,23 @@ function UserProfile({ preview, editHandle }) {
     setSelectedDate("");
   }
 
-  const fetchDates = async (userName) => {
+  const fetchDates = async (params) => {
+    setLoading(true);
     try {
       const res = await apiRequest({
         url: "date",
-        params: {
-          user_name: userName,
-        },
+        params: params,
       });
+      console.log("res", res);
       setUserDates(res?.data?.data?.dates);
+      setPagination(res?.data?.data?.pagination);
+      setDateloading(false);
+      setLoading(false);
     } catch (err) {
+      console.log("err", err);
       setUserDates([]);
+      setDateloading(false);
+      setLoading(false);
     }
   };
 
@@ -84,7 +88,7 @@ function UserProfile({ preview, editHandle }) {
       });
       if (res?.data?.data?.user) {
         setUserDetail(res?.data?.data?.user);
-        setPageLoading(false);
+        // setPageLoading(false);
       }
     } catch (e) {
       console.log(e);
@@ -94,7 +98,12 @@ function UserProfile({ preview, editHandle }) {
   useEffect(() => {
     if (router?.query?.userName) {
       fetchUserDetails(router?.query?.userName);
-      fetchDates(router?.query?.userName);
+      const params = {
+        current_page: page,
+        per_page: 1000,
+        user_name: router?.query?.userName,
+      };
+      fetchDates(params);
     }
     return () => {
       setUserDetail("");
@@ -108,7 +117,12 @@ function UserProfile({ preview, editHandle }) {
       user?.user_name &&
       !router?.query?.userName
     ) {
-      fetchDates(user?.user_name);
+      const params = {
+        current_page: page,
+        per_page: 1000,
+        user_name: user?.user_name,
+      };
+      fetchDates(params);
     }
     return () => {
       setUserDetail("");
@@ -161,11 +175,19 @@ function UserProfile({ preview, editHandle }) {
   const deleteDate = async () => {
     try {
       const res = await apiRequest({
+        data: {
+          ids: selectedDate?._id,
+        },
         method: "DELETE",
-        url: "date",
+        url: "date/delete-by-ids",
       });
       if (res?.data?.data) {
-        fetchDates(user?.user_name);
+        const params = {
+          current_page: page,
+          per_page: 1000,
+          user_name: user?.user_name,
+        };
+        fetchDates(params);
         dateCloseModal();
       }
     } catch (e) {
@@ -176,13 +198,24 @@ function UserProfile({ preview, editHandle }) {
   useEffect(() => {
     setTimeout(() => {
       if (
-        (userDetail?.images && userDetail?.images[0]) ||
-        (user.images && user.images[0])
+        ((userDetail?.images &&
+          userDetail?.images[0] &&
+          userDetail?.images[1] &&
+          userDetail?.images[2] &&
+          userDetail?.images[3]) ||
+          (user.images &&
+            user.images[0] &&
+            user.images[1] &&
+            user.images[2] &&
+            user.images[3])) &&
+        (!dateloading ||
+          user?.gender === "male" ||
+          userDetail?.gender === "male")
       ) {
         setPageLoading(false);
       }
-    }, 800);
-  }, [userDetail?.images, user?.images]);
+    }, 1000);
+  }, [userDetail?.images, user?.images, dateloading]);
 
   useEffect(() => {
     if (router?.query?.edit && user?.step_completed === 4) {
@@ -191,6 +224,29 @@ function UserProfile({ preview, editHandle }) {
       });
     }
   }, [user, router?.query?.edit]);
+
+  const nextPage = () => {
+    const params = {
+      current_page: page + 1,
+      per_page: 2,
+      user_name: user?.user_name,
+    };
+    setPage(page + 1);
+    fetchDates(params);
+  };
+
+  const prevPage = () => {
+    const params = {
+      current_page: page - 1,
+      per_page: 2,
+      user_name: user?.user_name,
+    };
+    setPage(page - 1);
+    fetchDates(params);
+  };
+
+  console.log("userDate", userDates);
+  // console.log("paget", page);
 
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
@@ -222,8 +278,8 @@ function UserProfile({ preview, editHandle }) {
                                       : user.images && user.images[0]
                                   }
                                   alt="user image"
-                                  width={240}
-                                  height={300}
+                                  width={270}
+                                  height={270}
                                 />
                                 {user?.documents_verified && (
                                   <span className="verified_check_tag">
@@ -233,11 +289,15 @@ function UserProfile({ preview, editHandle }) {
                                 )}
                               </div>
                             </label>
-                            {router?.query?.userName && (
-                              <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap">
+                            {(router?.query?.userName === user.user_name ||
+                              router?.pathname === "/user/user-profile") && (
+                              <div className="d-flex align-items-center mb-0 mt-4">
                                 <button
                                   type="button"
-                                  className="edit-photo-btn"
+                                  className="view-profile-edit-photo-btn"
+                                  onClick={() => {
+                                    router.push("/auth/profile?edit=true");
+                                  }}
                                 >
                                   Edit Photos
                                 </button>
@@ -379,93 +439,134 @@ function UserProfile({ preview, editHandle }) {
                               “{userDetail?.tagline || user?.tagline}”
                             </h4>
 
-                            {!preview && user?.gender === "female" && (
-                              <>
-                                <SubHeading title="Available dates" />
-                                <div className="verification_card_header text-center mb-5 mt-4">
-                                  {/* <div className='d-flex available-dates-box'> */}
-                                  {userDates.length > 0
-                                    ? userDates.map((date) => {
-                                        const category = dateCategory.find(
-                                          (item) =>
-                                            item?.label ===
-                                              date?.standard_class_date ||
-                                            item?.label ===
-                                              date?.middle_class_dates ||
-                                            item?.label ===
-                                              date?.executive_class_dates
-                                        );
-                                        return (
-                                          <div
-                                            className="availabe_card_inner mr-3"
-                                            onClick={() => {
-                                              if (!router?.query?.userName) {
-                                                setSelectedDate(date);
-                                                dateModalIsOpen();
-                                              }
-                                            }}
-                                          >
-                                            <ul className="date_list">
-                                              <li>
-                                                <span className="icon_wrap">
-                                                  {category?.icon}
-                                                </span>
-                                                <p>{category?.label}</p>
-                                              </li>
-                                              <span className="top-card_tag">
-                                                <span className="top-badge"></span>
-                                                <div className="price-card-name">
-                                                  <span>${date?.price}</span>
-                                                  <span className="hour">
-                                                    <span>
-                                                      {date?.date_length.replace(
-                                                        "H",
-                                                        ""
-                                                      )}
-                                                      H
-                                                    </span>
+                            {!preview &&
+                              // user?.gender === "female" &&
+                              (router?.query?.userName ||
+                                (router?.pathname === "/user/user-profile" &&
+                                  user?.gender === "female")) && (
+                                <>
+                                  <SubHeading title="Available dates" />
+                                  <div className="verification_card_header text-center mb-5 mt-4">
+                                    <div className="available-dates-box">
+                                      {/* {userDates.length > 0 && page > 1 && (
+                                      <div
+                                        className="pagination-wrapper"
+                                        onClick={prevPage}
+                                      >
+                                        <AiOutlineLeft className="pagination-icon" />
+                                      </div>
+                                    )} */}
+                                      {loading ? (
+                                        <div className="w-100 d-flex justify-content-center align-items-center">
+                                          <span className="date-spin-loader-button"></span>
+                                        </div>
+                                      ) : userDates.length > 0 ? (
+                                        userDates.map((date) => {
+                                          const category = dateCategory.find(
+                                            (item) =>
+                                              item?.label ===
+                                                date?.standard_class_date ||
+                                              item?.label ===
+                                                date?.middle_class_dates ||
+                                              item?.label ===
+                                                date?.executive_class_dates
+                                          );
+                                          return (
+                                            <div
+                                              className="availabe_card_inner"
+                                              onClick={() => {
+                                                if (
+                                                  !router?.query?.userName ||
+                                                  router?.query?.userName ===
+                                                    user.user_name
+                                                ) {
+                                                  setSelectedDate(date);
+                                                  dateModalIsOpen();
+                                                }
+                                              }}
+                                            >
+                                              <ul className="date_list">
+                                                <li>
+                                                  <span className="icon_wrap">
+                                                    {category?.icon}
                                                   </span>
-                                                </div>
-                                              </span>
-                                            </ul>
-                                          </div>
-                                        );
-                                      })
-                                    : null}
-                                  {/* </div> */}
-
-                                  <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap">
-                                    <button
-                                      type="button"
-                                      onClick={() =>
-                                        router.push("/create-date/choose-city")
-                                      }
-                                      className="create-date"
-                                    >
-                                      Create New Date
-                                    </button>
-                                  </div>
-                                  <Modal
-                                    isOpen={dateModalOpen}
-                                    onRequestClose={dateCloseModal}
-                                    // style={customStyles}
-                                    className="date-selected-modal"
-                                  >
-                                    <div className="model_content verification_card_header mb-3">
-                                      <SubHeading title="Available dates" />
-                                      <div className="availabe_card_inner">
-                                        <ul className="date_list">
-                                          {selectedDate ? (
-                                            <>
-                                              <li>
-                                                <span className="icon_wrap">
-                                                  {selectedDateCategory?.icon}
+                                                  <p>{category?.label}</p>
+                                                </li>
+                                                <span className="top-card_tag">
+                                                  <span className="top-badge"></span>
+                                                  <div className="price-card-name">
+                                                    <span>${date?.price}</span>
+                                                    <span className="hour">
+                                                      <span>
+                                                        {date?.date_length.replace(
+                                                          "H",
+                                                          ""
+                                                        )}
+                                                        H
+                                                      </span>
+                                                    </span>
+                                                  </div>
                                                 </span>
-                                                <p>
-                                                  {selectedDateCategory?.label}
-                                                </p>
-                                              </li>
-                                              <span className="top-card_tag">
+                                              </ul>
+                                            </div>
+                                          );
+                                        })
+                                      ) : null}
+                                      {/* {userDates.length > 0 &&
+                                      pagination?.total_pages > page && (
+                                        <div
+                                          className="pagination-wrapper p-0"
+                                          onClick={nextPage}
+                                        >
+                                          <AiOutlineRight
+                                            className="pagination-icon"
+                                            onClick={nextPage}
+                                          />
+                                        </div>
+                                      )} */}
+                                    </div>
+                                    {(router?.query?.userName ===
+                                      user.user_name ||
+                                      router?.pathname ===
+                                        "/user/user-profile") && (
+                                      <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap w-100 justify-content-center">
+                                        <button
+                                          type="button"
+                                          onClick={() =>
+                                            router.push(
+                                              "/create-date/choose-city"
+                                            )
+                                          }
+                                          className="create-date w-50"
+                                        >
+                                          Create New Date
+                                        </button>
+                                      </div>
+                                    )}
+
+                                    <Modal
+                                      isOpen={dateModalOpen}
+                                      onRequestClose={dateCloseModal}
+                                      // style={customStyles}
+                                      className="date-selected-modal"
+                                    >
+                                      <div className="model_content verification_card_header mb-3">
+                                        <SubHeading title="Available dates" />
+                                        <div className="availabe_card_inner">
+                                          <ul className="date_list">
+                                            {selectedDate ? (
+                                              <>
+                                                <li>
+                                                  <span className="icon_wrap">
+                                                    {selectedDateCategory?.icon}
+                                                  </span>
+                                                  <p>
+                                                    {
+                                                      selectedDateCategory?.label
+                                                    }
+                                                  </p>
+                                                </li>
+                                                {/* <span className="top-card_tag">
                                                 <span className="top-badge"></span>{" "}
                                                 ${selectedDate?.price}
                                               </span>
@@ -477,43 +578,60 @@ function UserProfile({ preview, editHandle }) {
                                                     ""
                                                   )}
                                                 </h2>
-                                              </span>
-                                            </>
-                                          ) : null}
-                                        </ul>
+                                              </span> */}
+                                                <span className="top-card_tag">
+                                                  <span className="top-badge"></span>
+                                                  <div className="price-card-name">
+                                                    <span>
+                                                      ${selectedDate?.price}
+                                                    </span>
+                                                    <span className="hour">
+                                                      <span>
+                                                        {selectedDate?.date_length.replace(
+                                                          "H",
+                                                          ""
+                                                        )}
+                                                        H
+                                                      </span>
+                                                    </span>
+                                                  </div>
+                                                </span>
+                                              </>
+                                            ) : null}
+                                          </ul>
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div className="model_content verification_card_header">
-                                      <div className="availabe_card_inner px-4">
-                                        <ul className="date_action_model">
-                                          <li onClick={dateCloseModal}>
-                                            <BiChevronLeft
-                                              size={25}
-                                              color={"white"}
-                                            />
-                                            <span>Go back</span>
-                                          </li>
-                                          <li onClick={editDate}>
-                                            <BiEditAlt
-                                              size={20}
-                                              color={"white"}
-                                            />
-                                            <span>Edit</span>
-                                          </li>
-                                          <li onClick={deleteDate}>
-                                            <BiTrashAlt
-                                              size={20}
-                                              color={"white"}
-                                            />
-                                            <span>Delete</span>
-                                          </li>
-                                        </ul>
+                                      <div className="model_content verification_card_header">
+                                        <div className="availabe_card_inner px-4">
+                                          <ul className="date_action_model">
+                                            <li onClick={dateCloseModal}>
+                                              <BiChevronLeft
+                                                size={25}
+                                                color={"white"}
+                                              />
+                                              <span>Go back</span>
+                                            </li>
+                                            <li onClick={editDate}>
+                                              <BiEditAlt
+                                                size={20}
+                                                color={"white"}
+                                              />
+                                              <span>Edit</span>
+                                            </li>
+                                            <li onClick={deleteDate}>
+                                              <BiTrashAlt
+                                                size={20}
+                                                color={"white"}
+                                              />
+                                              <span>Delete</span>
+                                            </li>
+                                          </ul>
+                                        </div>
                                       </div>
-                                    </div>
-                                  </Modal>
-                                </div>
-                              </>
-                            )}
+                                    </Modal>
+                                  </div>
+                                </>
+                              )}
                           </>
                           <SubHeading title="About me" />
                           <div className="image_wrap_slider about_me_card">

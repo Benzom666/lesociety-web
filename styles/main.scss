@@ -929,6 +929,17 @@ $GradientColor-second: rgba(#191919, 0.8);
           margin: 5px;
           cursor: pointer;
           display: block;
+
+          // a {
+          //   color: red;
+          // }
+        }
+
+        .resend-mail-text:active {
+          color: red !important;
+        }
+        .resend-mail-text:focus {
+          color: red !important;
         }
 
         .completion-sign {
@@ -2720,7 +2731,7 @@ body {
 
     .verified_check_tag {
       position: absolute;
-      bottom: 70px;
+      bottom: 40px;
       right: 0;
       padding: 5px 10px;
       background: linear-gradient(
@@ -2968,8 +2979,10 @@ body {
 
 body .verification_card_header {
   .available-dates-box {
-    overflow: auto;
+    // overflow: auto;
     white-space: nowrap;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .sub-heading {
@@ -2986,16 +2999,17 @@ body .verification_card_header {
 
   .availabe_card_inner {
     background: #1c1c1c;
-    padding: 15px;
+    padding: 10px;
     border-radius: 8px;
     position: relative;
     display: flex;
     align-items: flex-end;
-    min-height: 90px;
+    min-height: 80px;
     margin-bottom: 12px;
-    margin-right: 12px;
+    margin-right: 10px;
     flex: 1;
     // min-width: 48%;
+    // max-width: 50%;
 
     .date_list {
       margin: 0;
@@ -3009,8 +3023,8 @@ body .verification_card_header {
         margin-bottom: 10px;
 
         span.icon_wrap {
-          width: 50px;
-          height: 50px;
+          width: 35px;
+          height: 35px;
           border-radius: 12px;
           background: #252b2f;
           display: flex;
@@ -3020,10 +3034,10 @@ body .verification_card_header {
 
         p {
           margin-bottom: 0;
-          font-size: 1rem;
+          font-size: 14px;
           color: rgba($color: $white-color, $alpha: 0.9);
-          line-height: 1.4rem;
-          padding-left: 15px;
+          line-height: 1rem;
+          padding-left: 8px;
         }
 
         &:last-child {
@@ -3066,13 +3080,13 @@ body .verification_card_header {
       position: absolute;
       top: 0;
       right: 20px;
-      width: 60px;
-      height: 55px;
+      width: 50px;
+      height: 45px;
       display: flex;
       align-items: center;
       background: #464646;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: 0.06rem;
       margin-top: -5px;
@@ -3648,7 +3662,8 @@ body .verification_card_header {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    min-height: calc(100vh - 175px);
 
     .no-message-card {
       margin: auto;
@@ -4093,6 +4108,20 @@ body .verification_card_header {
 }
 
 .spin-loader-button {
+  border: 4px solid white;
+  border-radius: 50%;
+  border-top: 4px solid #f24462;
+  width: 25px;
+  // display: none;
+  height: 25px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 1s linear infinite;
+  right: 10px;
+  top: 14px;
+}
+
+.date-spin-loader-button {
   border: 4px solid white;
   border-radius: 50%;
   border-top: 4px solid #f24462;
@@ -4552,6 +4581,12 @@ body .verification_card_header {
 .skeleton.image-300h-240w {
   height: 300px;
   width: 240px;
+  border-radius: 15px;
+  background: #151515;
+}
+.skeleton.image-270h-270w {
+  height: 270px;
+  width: 270px;
   border-radius: 15px;
   background: #151515;
 }
@@ -5170,6 +5205,29 @@ path {
   .header_btn_wrap .log-btn {
     height: 40px !important;
   }
+}
+
+.view-profile-edit-photo-btn {
+  background-color: #151515;
+  border: 1px solid #151515;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  width: 100%;
+  padding: 15px;
+}
+
+.pagination-icon {
+  font-size: 25px !important;
+  cursor: pointer;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-right: 10px;
 }
 
 @media screen and (max-width: 1080px) and (min-width: 480px) {
