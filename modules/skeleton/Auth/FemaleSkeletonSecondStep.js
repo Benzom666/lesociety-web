@@ -54,11 +54,4 @@ const FemaleSkeletonSecondStep = (props) => {
   );
 };
 
-export default reduxForm({
-  form: "signupStep2", // <------ same form name
-  destroyOnUnmount: false, // <------ preserve form data
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
-  validate,
-})(FemaleSkeletonSecondStep);
+export default FemaleSkeletonSecondStep;

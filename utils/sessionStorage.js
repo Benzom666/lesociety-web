@@ -18,6 +18,14 @@ export function loadFromLocalStorage() {
   }
 }
 
+export const removeSessionStorage = (key) => {
+  try {
+    sessionStorage.removeItem(key);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const setSessionStorage = (key, value) => {
   if (process.browser) {
     sessionStorage.setItem(key, value);

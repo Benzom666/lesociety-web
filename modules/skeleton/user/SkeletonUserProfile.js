@@ -26,6 +26,8 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
         url: "date",
         params: {
           user_name: userName,
+          per_page: 1,
+          current_page: 1,
         },
       });
       setUserDates(res?.data?.data?.dates);
@@ -58,19 +60,19 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
     };
   }, [router?.query]);
 
-  useEffect(() => {
-    if (
-      user?.gender === "female" &&
-      user?.user_name &&
-      !router?.query?.userName
-    ) {
-      fetchDates(user?.user_name);
-    }
-    return () => {
-      setUserDetail("");
-      setUserDates([]);
-    };
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     user?.gender === "female" &&
+  //     user?.user_name &&
+  //     !router?.query?.userName
+  //   ) {
+  //     fetchDates(user?.user_name);
+  //   }
+  //   return () => {
+  //     setUserDetail("");
+  //     setUserDates([]);
+  //   };
+  // }, []);
 
   return (
     <div className={`inner-page `}>
@@ -94,7 +96,7 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
                             <div className="pos-relative">
                               {/* <Shimmer /> */}
 
-                              <SkeletonElement type="image-300h-240w" />
+                              <SkeletonElement type="image-270h-270w" />
                               {user?.documents_verified && (
                                 <span className="verified_check_tag">
                                   <SkeletonElement type="verified-icon" />
@@ -102,6 +104,19 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
                               )}
                             </div>
                           </label>
+                          {(router?.query?.userName === user.user_name ||
+                            router?.pathname === "/user/user-profile") && (
+                            <div className="d-flex align-items-center mb-0 mt-3">
+                              {/* <button
+                                type="button"
+                                className="view-profile-edit-photo-btn"
+                                // onClick={() => {
+                                //   router.push("/auth/profile?edit=true");
+                                // }}
+                              ></button> */}
+                              <SkeletonElement type="create-date-button" />
+                            </div>
+                          )}
                         </div>
                       </figure>
                     )}
@@ -319,9 +334,4 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
   );
 }
 
-export default reduxForm({
-  form: "SkeletonUserProfile", // <------ same form name
-  destroyOnUnmount: false, // <------ preserve form data
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  validate,
-})(SkeletonUserProfile);
+export default SkeletonUserProfile;

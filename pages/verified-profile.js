@@ -118,31 +118,10 @@ const VerifiedProfilePage = (props) => {
               selfie: "",
               document: "",
             }}
-            validationSchema={Yup.object({
-              // selfie: Yup.mixed()
-              //   .required("Required")
-              //   .test(
-              //     "fileSize",
-              //     "File too large",
-              //     (value) => value && value.size <= 2000000
-              //   )
-              //   .test(
-              //     "fileFormat",
-              //     "Unsupported Format",
-              //     (value) =>
-              //       value &&
-              //       [
-              //         "image/jpg",
-              //         "image/jpeg",
-              //         "image/gif",
-              //         "image/png",
-              //       ].includes(value.type)
-              //   ),
-            })}
+            validationSchema={Yup.object({})}
             onSubmit={handleSubmit}
           >
             {(formProps) => {
-              // console.log("formProps.values", formProps.values);
               return (
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
@@ -186,7 +165,7 @@ const VerifiedProfilePage = (props) => {
                       <p className="mb-0">
                         Complete your verification to be more trusted
                       </p>
-                      <p className="m-0 ">
+                      <p className="m-0">
                         {" "}
                         by other members. It takes just a minute!
                       </p>
@@ -282,7 +261,7 @@ const VerifiedProfilePage = (props) => {
 
 export default reduxForm({
   form: "VerifiedProfilePage", // <------ same form name
-  destroyOnUnmount: true, // <------ preserve form data
+  destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate,
 })(withAuth(VerifiedProfilePage));

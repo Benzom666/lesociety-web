@@ -52,18 +52,23 @@ export const logout = () => {
     //  clear out all the data from the local storage
 
     dispatch(reset("signupStep2"));
-    dispatch(reset("Messages"));
     dispatch(reset("DatePreview"));
     dispatch(reset("RegisterFormMale"));
     dispatch(reset("signupStep3"));
     dispatch(reset("RegisterForm"));
     dispatch(reset("forgotpassword"));
     dispatch(reset("LoginForm"));
+    dispatch(reset("SecondStep"));
+    dispatch(reset("ThirdStep"));
     dispatch(reset("CreateStepFour"));
     dispatch(reset("CreateStepOne"));
     dispatch(reset("CreateStepThree"));
     dispatch(reset("CreateStepTwo"));
-    dispatch(reset("CreateStepThree"));
+    dispatch(reset("SkeletonUserProfile"));
+    dispatch(reset("Messages"));
+    dispatch(reset("VerifiedProfilePage"));
+    dispatch(reset("ChooseCity"));
+
     // removeCookie("auth");
   };
 };

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { apiRequest, showToast } from "../../../../utils/Utilities";
-import { AUTHENTICATE } from "../../actionConstants";
+import { AUTHENTICATE, AUTHENTICATE_UPDATE } from "../../actionConstants";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import { useState } from "react";
 const CompleteProfile = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   const [tokenValid, setTokenValid] = useState(true);
+  const [updatedUser, setUpdatedUser] = useState({});
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -59,6 +60,43 @@ const CompleteProfile = (props) => {
   }, [router?.query?.token]);
 
   // console.log("router", router);
+
+  const getUpdatedUserDetails = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `user/user-by-name?user_name=${user?.user_name}`,
+      });
+      console.log("res", res.data?.data?.user);
+      setUpdatedUser(res.data?.data?.user);
+      dispatch({
+        type: AUTHENTICATE_UPDATE,
+        payload: { ...res.data?.data?.user },
+      });
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  useEffect(() => {
+    getUpdatedUserDetails();
+  }, []);
+
+  useEffect(() => {
+    if (user?.status === 2 && user?.verified_screen_shown === false) {
+      router.push({
+        pathname: "/user/verified",
+      });
+    } else if (user?.status === 2 && user?.verified_screen_shown === true) {
+      router.push({
+        pathname: "/user/user-list",
+      });
+    } else if (user?.status === 3) {
+      router.push({
+        pathname: "/auth/block",
+      });
+    }
+  }, [user?.status]);
 
   return (
     <div className="upload-pics profile-completion">
@@ -148,6 +186,7 @@ const CompleteProfile = (props) => {
       {!user?.email_verified ? (
         <span
           className="resend-mail-text profile mt-5"
+          tabIndex="0"
           onClick={handleResendMail}
         >
           Resend an email

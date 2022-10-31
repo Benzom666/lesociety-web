@@ -5,11 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import useWindowSize from "utils/useWindowSize";
+import { Inputs } from "core";
 
 function NoConversationShowView({ request, selectedTabIndex }) {
   const user = useSelector((state) => state.authReducer.user);
   const { width } = useWindowSize();
   const mobile = width < 768;
+
+  const loading = false;
 
   const requestMessage =
     request || selectedTabIndex === 1 ? "requests" : "messages";
@@ -43,31 +46,46 @@ function NoConversationShowView({ request, selectedTabIndex }) {
     </div>
   ) : (
     <div className="no-message-card-mobile">
-      <div className="image">
-        <Image src={NoImage} alt="NoImage" width={205} height={140} />
+      <div>
+        <div className="image">
+          <Image src={NoImage} alt="NoImage" width={205} height={140} />
 
-        <div className="sorry">
-          <h3>Sorry, no {requestMessage} yet</h3>
-          {user?.gender === "male" ? (
-            <p>Find a girl you like and lock in your first date!</p>
-          ) : (
-            <p>Stay ahead of the crowd by creating more date</p>
-          )}
+          <div className="sorry">
+            <h3>Sorry, no {requestMessage} yet</h3>
+            {user?.gender === "male" ? (
+              <p>Find a girl you like and lock in your first date!</p>
+            ) : (
+              <p>Stay ahead of the crowd by creating more date</p>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div className="header_btn_wrap">
-        <Link
-          href={
-            user?.gender === "male"
-              ? "/user/user-list"
-              : "/create-date/choose-city"
-          }
+        <div
+          className="header_btn_wrap"
+          style={{
+            position: "fixed",
+            bottom: "0",
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "black",
+            width: "100%",
+            zIndex: "1000",
+            padding: "0",
+            margin: "0",
+          }}
         >
-          <a className="create-date">
-            {user?.gender === "male" ? "View Gallery" : "Create Date"}
-          </a>
-        </Link>
+          <Link
+            href={
+              user?.gender === "male"
+                ? "/user/user-list"
+                : "/create-date/choose-city"
+            }
+          >
+            <a className="create-date">
+              {user?.gender === "male" ? "View Gallery" : "Create Date"}
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );

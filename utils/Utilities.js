@@ -443,6 +443,59 @@ export const bodyType = [
     name: "Full Figured",
   },
 ];
+export const femaleBodyType = [
+  {
+    id: "Petite",
+    name: "Petite",
+  },
+  {
+    id: "Fit",
+    name: "Fit",
+  },
+  {
+    id: "Slender",
+    name: "Slender",
+  },
+  {
+    id: "Athletic",
+    name: "Athletic",
+  },
+  {
+    id: "Voluptuous",
+    name: "Voluptuous",
+  },
+  {
+    id: "Plus",
+    name: "Plus",
+  },
+];
+
+export const maleBodyType = [
+  {
+    id: "Thin",
+    name: "Thin",
+  },
+  {
+    id: "Average",
+    name: "Average",
+  },
+  {
+    id: "Ripped",
+    name: "Ripped",
+  },
+  {
+    id: "Heavyset",
+    name: "Heavyset",
+  },
+  {
+    id: "Jacked",
+    name: "Jacked",
+  },
+  {
+    id: "Towering",
+    name: "Towering",
+  },
+];
 
 export const Ethnicity = [
   {
