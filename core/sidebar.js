@@ -62,7 +62,7 @@ export default function SideBar() {
           <div className="d-flex align-items-center mb-0 header_btn_wrap">
             <button
               type="button"
-              style={{marginTop:"-42px"}}
+              style={{ marginTop: "-42px" }}
               className="d-flex align-items-center justify-content-center"
               onClick={() => router.push("/verified-profile")}
             >
@@ -117,10 +117,10 @@ export default function SideBar() {
         <div className="user-card-sidebar">
           <div className="sidebar_nav_links">
             <ul>
-            <li>
+              <li>
                 <Link href="/">
                   <a>
-                   Notification <FiChevronRight size={22} />{" "}
+                    Notification <FiChevronRight size={22} />{" "}
                   </a>
                 </Link>
               </li>
@@ -172,8 +172,8 @@ export default function SideBar() {
                 dispatch(reset("VerifiedProfilePage"));
                 dispatch(reset("ChooseCity"));
                 dispatch(deAuthenticateAction());
-                // router.push("/auth/login");
                 window.location.reload();
+                // router.push("/auth/login");
                 // refresh page
               }}
             >

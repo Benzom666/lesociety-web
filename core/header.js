@@ -26,7 +26,7 @@ export default function Header() {
               <ul className="d-flex justify-content-end mb-0">
                 {!_.isEmpty(user) ? (
                   <li>
-                    <Link href="/auth/login">
+                    <Link href="#">
                       <a
                         onClick={() => {
                           dispatch(reset("signupStep2"));
@@ -47,7 +47,8 @@ export default function Header() {
                           dispatch(reset("VerifiedProfilePage"));
                           dispatch(reset("ChooseCity"));
                           dispatch(deAuthenticateAction());
-                          window.location.reload();
+                          // window.location.reload();
+                          router.push("/auth/login");
                         }}
                       >
                         Sign Out
