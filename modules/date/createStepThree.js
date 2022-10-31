@@ -78,8 +78,8 @@ const CreateStepThree = (props) => {
           <IoIosClose className="mouse-point" size={32} onClick={toggle} />
         </div>
         {width > 767 && (
-          <div className="d-flex justify-content-center">
-            <h3 className="text-center">Create a New Date</h3>
+          <div className="d-flex justify-content-center" style={{marginLeft:"28px"}}>
+            <h3 className="text-center text-uppercase">Create a New Date</h3>
             <IoIosClose
               className="desk-close-icon mouse-point"
               size={32}

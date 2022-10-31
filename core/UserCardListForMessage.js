@@ -40,6 +40,7 @@ const UserCardListForMessage = ({
 
   function openModal() {
     setIsOpen(true);
+    //backgroundColor:"black"
   }
   function closeModal() {
     setIsOpen(false);
@@ -114,7 +115,7 @@ const UserCardListForMessage = ({
 
   return (
     <>
-      <span
+       <span
         onClick={openModal}
         className={`${
           conversations.filter(
@@ -192,7 +193,7 @@ const UserCardListForMessage = ({
                             />
                           ) : (
                             <div key={index}>
-                              <H5>{conversation?.user?.user_name} is</H5>
+                              <H5 style1={true}>{conversation?.user?.user_name} is</H5>
                               <CustomIcon.IntrestedText
                                 color={"white"}
                                 size={140}
@@ -201,8 +202,8 @@ const UserCardListForMessage = ({
                                 <Image
                                   src={profilePic}
                                   alt="user image"
-                                  width={500}
-                                  height={600}
+                                  width={280}
+                                  height={420}
                                 />
                                 <span className="image_tagline">
                                   {showText(conversation?.message?.message)}

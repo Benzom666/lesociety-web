@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import _ from "lodash";
 import { reset } from "redux-form";
 
-export default function Header() {
+export default function Header(props) {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -57,9 +57,9 @@ export default function Header() {
                   </li>
                 ) : (
                   <>
-                    <li>
+                  {!props.isSingUp ? <li>
                       <Link href="/auth/registration">Sign Up</Link>
-                    </li>
+                    </li> :null}
                     <li>
                       <Link href="/auth/login">Sign In</Link>
                     </li>

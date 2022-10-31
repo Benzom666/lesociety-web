@@ -125,8 +125,8 @@ const VerifiedProfilePage = (props) => {
               return (
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
-                    {/* <p></p> */}
-                    <h2 className="">Verification</h2>
+                    <p></p>
+                    <h2 className="mb-0" style={{fontSize:"20px"}}>VERIFICATION</h2>
                     <svg
                       width="86"
                       height="2"
@@ -160,7 +160,7 @@ const VerifiedProfilePage = (props) => {
                     </svg>
                     <HiBadgeCheck color={"white"} size={50} className="m-4" />
 
-                    <h2 className="mb-3">Get Verified</h2>
+                    <h3 style={{fontSize:"35px",marginBottom:"14px"}}>Get Verified</h3>
                     <div className="verfied-profile-text">
                       <p className="mb-0">
                         Complete your verification to be more trusted

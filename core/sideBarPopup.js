@@ -26,8 +26,8 @@ function sideBarPopup({ isOpen, toggle }) {
     }, [user]);
     return (
         <div className={`modal fade ${isOpen ? "show d-block" : "d-none"}`} id="sidebarPop" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style={{margin:"22px"}}>
-            <div className="modal-dialog modal-custom-dailog">
+        style={{margin:"15px"}}>
+            <div className="modal-dialog modal-custom-dailog" style={{marginTop:"40px"}}>
                 <div className="modal-content" style={{backgroundColor: "black",width:"340px",borderRadius:"10px" }}>
 
                     <div className="modal-header p-0" style={{ borderBottom: "none" }}>

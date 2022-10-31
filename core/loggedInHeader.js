@@ -154,7 +154,7 @@ export default function HeaderLoggedIn({
                 </li>
                 <li>
                   <div className="user-profile-details">
-                  {!modalIsOpen ?    <figure className="user_img_header" onClick={toggleClass} data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">
+                      <figure className={`user_img_header ${modalIsOpen ? "invisible" :""} ` } onClick={toggleClass} data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">
                        <img
                         src={!_.isEmpty(user) ? user.images[0] : UserImg}
                         alt="user image"
@@ -162,7 +162,7 @@ export default function HeaderLoggedIn({
                         height={32}
                       /> 
                     </figure>
-                    : null}
+    
                   </div>
                 </li>
               </ul>
