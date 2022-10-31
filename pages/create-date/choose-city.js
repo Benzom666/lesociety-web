@@ -238,8 +238,8 @@ const ChooseCity = (props) => {
                       }}
                     />
                   </div>
-                </>
-              ) : null}
+                </>: null}
+              ) 
               <div className="bottom-mobile register-bottom">
                 <div className="secret-input type-submit next-prev">
                   {!confirmPopup && (

@@ -929,17 +929,6 @@ $GradientColor-second: rgba(#191919, 0.8);
           margin: 5px;
           cursor: pointer;
           display: block;
-
-          // a {
-          //   color: red;
-          // }
-        }
-
-        .resend-mail-text:active {
-          color: red !important;
-        }
-        .resend-mail-text:focus {
-          color: red !important;
         }
 
         .completion-sign {
@@ -2732,7 +2721,7 @@ body {
 
     .verified_check_tag {
       position: absolute;
-      bottom: 40px;
+      bottom: 70px;
       right: 0;
       padding: 5px 10px;
       background: linear-gradient(
@@ -2778,7 +2767,7 @@ body {
     overflow-x: hidden;
 
     h4 {
-      font-size: 28px;
+      font-size : 28px;
       font-weight: 400;
       margin-bottom: 19px;
     }
@@ -2980,10 +2969,8 @@ body {
 
 body .verification_card_header {
   .available-dates-box {
-    // overflow: auto;
+    overflow: auto;
     white-space: nowrap;
-    display: flex;
-    flex-wrap: wrap;
   }
 
   .sub-heading {
@@ -3000,17 +2987,16 @@ body .verification_card_header {
 
   .availabe_card_inner {
     background: #1c1c1c;
-    padding: 10px;
+    padding: 15px;
     border-radius: 8px;
     position: relative;
     display: flex;
     align-items: flex-end;
-    min-height: 80px;
+    min-height: 90px;
     margin-bottom: 12px;
-    margin-right: 10px;
+    margin-right: 12px;
     flex: 1;
     // min-width: 48%;
-    // max-width: 50%;
 
     .date_list {
       margin: 0;
@@ -3024,8 +3010,8 @@ body .verification_card_header {
         margin-bottom: 10px;
 
         span.icon_wrap {
-          width: 35px;
-          height: 35px;
+          width: 50px;
+          height: 50px;
           border-radius: 12px;
           background: #252b2f;
           display: flex;
@@ -3035,10 +3021,10 @@ body .verification_card_header {
 
         p {
           margin-bottom: 0;
-          font-size: 14px;
+          font-size: 1rem;
           color: rgba($color: $white-color, $alpha: 0.9);
-          line-height: 1rem;
-          padding-left: 8px;
+          line-height: 1.4rem;
+          padding-left: 15px;
         }
 
         &:last-child {
@@ -3081,13 +3067,13 @@ body .verification_card_header {
       position: absolute;
       top: 0;
       right: 20px;
-      width: 50px;
-      height: 45px;
+      width: 60px;
+      height: 55px;
       display: flex;
       align-items: center;
       background: #464646;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 600;
       letter-spacing: 0.06rem;
       margin-top: -5px;
@@ -3566,8 +3552,8 @@ body .verification_card_header {
       &__tab-panel {
         .user-list-wrap {
           padding: 20px 0;
-          // min-height: calc(100vh - 255px);
-          // max-height: calc(100vh - 255px);
+          min-height: calc(100vh - 255px);
+          max-height: calc(100vh - 255px);
           overflow-y: auto;
 
           ul {
@@ -3666,8 +3652,7 @@ body .verification_card_header {
     align-items: center;
     justify-content: center;
     width: 100%;
-    // height: 100%;
-    min-height: calc(100vh - 175px);
+    height: 100%;
 
     .no-message-card {
       margin: auto;
@@ -3857,7 +3842,7 @@ body .verification_card_header {
         flex: 1;
 
         .message_list_wrap {
-          min-height: calc(100vh - 1225px);
+          min-height: calc(100vh - 225px);
           max-height: calc(100vh - 225px);
           overflow-y: auto;
           padding: 20px 15px;
@@ -4112,20 +4097,6 @@ body .verification_card_header {
 }
 
 .spin-loader-button {
-  border: 4px solid white;
-  border-radius: 50%;
-  border-top: 4px solid #f24462;
-  width: 25px;
-  // display: none;
-  height: 25px;
-  -webkit-animation: spin 2s linear infinite;
-  /* Safari */
-  animation: spin 1s linear infinite;
-  right: 10px;
-  top: 14px;
-}
-
-.date-spin-loader-button {
   border: 4px solid white;
   border-radius: 50%;
   border-top: 4px solid #f24462;
@@ -4585,12 +4556,6 @@ body .verification_card_header {
 .skeleton.image-300h-240w {
   height: 300px;
   width: 240px;
-  border-radius: 15px;
-  background: #151515;
-}
-.skeleton.image-270h-270w {
-  height: 270px;
-  width: 270px;
   border-radius: 15px;
   background: #151515;
 }
@@ -5105,56 +5070,19 @@ path {
 @media only screen and (max-width:400px) {
   .create-date-wrap .step-wraps{
     margin-left: 12px;
-.document-verfied {
-  h2 {
-    font-size: 32px;
   }
 }
 
-.request_header_btn_wrap {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: black;
-  width: 100%;
-  z-index: 1000;
-
-  &.register-bottom {
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    .secret-input {
-      margin-bottom: 20px;
-    }
-  }
-
-  .dont-have {
-    p {
-      font-family: "Helvetica-Light";
-      margin-bottom: 20px;
-    }
-  }
-
-  .secret-input.type-submit {
-    margin-bottom: 0;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .create-date-wrap .step-wraps {
-    margin-left: 0;
-  }
-}
 
 @media only screen and (max-width: 325px) {
-  .date_card_wrap .date_details_desktop .button-wrapper .edit {
-    width: 54%;
+  .date_card_wrap .date_details_desktop .button-wrapper .edit{
+     width :54%;
   }
 }
 
-@media only screen and (max-width: 425px) {
-  .message .message_sidebar_wrap .secret-input .pos-relative {
+
+@media only screen and (max-width: 425px){
+  .message .message_sidebar_wrap .secret-input .pos-relative{
     position: relative;
     margin-top: -40px;
   }
@@ -5164,20 +5092,22 @@ path {
   margin-top: -36px !important;
   //margin-right: -54px !important;
   font-size: 25px;
-  color: #fff;
+  color:#fff;
   border-radius: 50%;
 }
+
 
 .modal-body {
   font-size: 13px !important;
   padding: 30px 20px;
-  .sidebar_wrap {
-    height: calc(100vh - 130px);
+  .sidebar_wrap{
+  height:calc(100vh - 130px);
     margin-top: -26px;
   }
-  .user-card-sidebar {
+  .user-card-sidebar{
     //margin-left: 10px;
     margin-top: -8px;
+    
   }
   .verification_card_header {
     padding: 30px 30px;
@@ -5185,73 +5115,53 @@ path {
   span.userdetails{
     margin-top: -4px;
   }
-  h5 {
+  h5{
     font-size: 15px;
   }
-  .sub-heading {
+  .sub-heading{
     font-size: 12px;
   }
-  .header_btn_wrap a {
+  .header_btn_wrap a{
     line-height: 34px;
   }
-  .profile-btn {
+  .profile-btn{
     height: 32px;
   }
-  .createdate-btn {
+  .createdate-btn{
     height: 32px;
     line-height: 20px;
   }
-  .user-card-sidebar {
+  .user-card-sidebar{
     padding: 10px 30px;
     padding-top: 22px;
   }
-  .sidebar_wrap .user-card-sidebar .sidebar_nav_links ul {
+  .sidebar_wrap .user-card-sidebar .sidebar_nav_links ul{
     margin: -20px;
   }
   .sidebar_wrap .bottom-footer-sidebar{
     padding: 20px 30px;
     background: none;
   }
-  .header_btn_wrap .log-btn {
+  .header_btn_wrap .log-btn{
     height: 40px !important;
   }
+  
 }
 
-.view-profile-edit-photo-btn {
-  background-color: #151515;
-  border: 1px solid #151515;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #fff;
-  width: 100%;
-  padding: 15px;
+@media  screen and (max-width: 1080px) and (min-width :480px){
+ .modal-custom-dailog{
+      margin-top: 26px;
+      margin-right: -105px !important;
+    }
+  
 }
 
-.pagination-icon {
-  font-size: 25px !important;
-  cursor: pointer;
-}
-
-.pagination-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  padding-right: 10px;
-}
-
-@media screen and (max-width: 1080px) and (min-width: 480px) {
-  .modal-custom-dailog {
-    margin-top: 26px;
-    margin-right: -105px !important;
-  }
-}
-
-@media screen and (min-width: 1080px) {
-  .modal-custom-dailog {
-    margin-top: 40px;
-    margin-right: -50px !important;
-  }
+@media  screen and  (min-width :1080px){
+   .modal-custom-dailog{
+      margin-top: 40px;
+      margin-right: -50px !important;
+    }
+  
 }
 
 @media  screen and (max-width:425px) {
