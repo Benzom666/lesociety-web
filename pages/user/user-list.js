@@ -311,7 +311,7 @@ function UserList(props) {
   }, [scrollPosition]);
 
   // console
-  // console.log("unReadedConversationLength", unReadedConversationLength);
+  console.log("receiverData", receiverData);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -510,7 +510,9 @@ function UserList(props) {
 
                     <IoIosSend
                       size={25}
-                      color={"#686868"}
+                      color={
+                        formProps.values.message === "" ? "#686868" : "#F24462"
+                      }
                       type="submit"
                       onClick={() => {
                         handleSubmit(formProps.values);
