@@ -146,6 +146,26 @@ const ChooseCity = (props) => {
       fetchDraftedDate();
     }
   }, []);
+  
+  const handleIcon = () => {
+    setLoadingLive(true);
+    navigator.geolocation.getCurrentPosition(async (position) => {
+        if (position.coords.latitude !== undefined && position.coords.longitude !== undefined) {
+            const location = await fetchLiveLocation(position.coords.latitude, position.coords.longitude)
+            const data = {
+                enter_country: { label: location[0].country[0].text, value: location[0].country[0].short_code },
+                enter_city: {
+                    name: location[0].name,
+                    country: location[0].country[0],
+                    label: location[0].name + ", " + location[0].province[0]?.short_code?.split("-")[1]?.toUpperCase(),
+                    province: location[0]?.province
+                }
+            }
+            props.initialize(data);
+            setLoadingLive(false)
+        }
+    }, (err) => setLoadingLive(false), { enableHighAccuracy: true });
+}
 
     const { handleSubmit, invalid, previousPage, pristine, reset, submitting, touched } = props
     return (
@@ -238,8 +258,7 @@ const ChooseCity = (props) => {
                       }}
                     />
                   </div>
-                </>: null}
-              ) 
+                </>: null} 
               <div className="bottom-mobile register-bottom">
                 <div className="secret-input type-submit next-prev">
                   {!confirmPopup && (

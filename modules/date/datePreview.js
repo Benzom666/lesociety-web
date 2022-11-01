@@ -212,16 +212,19 @@ const DatePreview = (props) => {
   // );
 
   return (
-    <div>
+    <>
+    {!confirmPopup ? (
+      <>
+     
       <div className="inner_container">
-        <div className=" d-md-none justify-content-between align-items-center login-text mb-0">
+        <div className=" d-md-none justify-content-around align-items-center login-text mb-0 d-flex">
           <a onClick={previousPage}>
             {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
           </a>
           <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
           <IoIosClose className="" size={32} onClick={toggle} />
         </div>
-        {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>}
+        {/* {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>} */}
       </div>
       <div
         className={`${
@@ -240,6 +243,7 @@ const DatePreview = (props) => {
               />
             )}
           </div>
+          {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>}
           <p>
             Please check all the details of your date before posting. You will
             have a chance to edit it in the future
@@ -280,9 +284,11 @@ const DatePreview = (props) => {
             </div>
           )}
         </div>
-      </form>
+      </form> 
+      </> 
+      ):null}
       <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
-    </div>
+    </>
   );
 };
 export default reduxForm({

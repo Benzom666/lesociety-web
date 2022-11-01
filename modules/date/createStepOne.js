@@ -34,7 +34,7 @@ const CreateStepOne = (props) => {
           <a onClick={previousPage}>
             {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
           </a>
-          <h6 className="m-0 text-white-50">Create a New Date</h6>
+          <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
           <IoIosClose className="mouse-point" size={32} onClick={toggle} />
         </div>
         {width > 767 && (

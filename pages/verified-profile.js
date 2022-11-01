@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import HeaderLoggedIn from "core/loggedInHeader";
+import { IoIosArrowBack } from "react-icons/io"
 import { Inputs } from "core";
 import { reduxForm } from "redux-form";
 import validate from "modules/auth/forms/validate/validate";
@@ -46,6 +47,7 @@ const VerifiedProfilePage = (props) => {
   const [selfie, setSelfie] = useState("");
   const [documentId, setDocumentId] = useState("");
   const dispatch = useDispatch();
+//  const [isUpload,setIsUpload] =useState(false);
 
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
@@ -109,7 +111,7 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
-      <HeaderLoggedIn />
+    { width > 425 ?  <HeaderLoggedIn /> :<IoIosArrowBack size={25} className="verify-profile-header-icon"/>}
       <div className="inner-part-page">
         <div className="d-flex justify-content-center">
           <Formik
@@ -172,7 +174,8 @@ const VerifiedProfilePage = (props) => {
                     </div>
 
                     <div
-                      className="verified-upload"
+                      className=
+                      {` ${selfieRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload'}`}
                       onClick={() => {
                         selfieRef?.current?.click();
                       }}
@@ -202,7 +205,7 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                     <div
-                      className="verified-upload-2"
+                      className={` ${documentRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload-2'}`}
                       onClick={() => {
                         documentRef?.current?.click();
                       }}
@@ -249,6 +252,7 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
+                  <p style={{textAlign:"center",textDecorationLine:"underline"}}>Maybe Later</p>
                 </Form>
               );
             }}

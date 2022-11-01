@@ -74,7 +74,7 @@ const CreateStepThree = (props) => {
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </a>
-          <h6 className="m-0 text-white-50">Create a New Date</h6>
+          <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
           <IoIosClose className="mouse-point" size={32} onClick={toggle} />
         </div>
         {width > 767 && (

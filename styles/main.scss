@@ -3,7 +3,6 @@ $GradientColor-second: rgba(#191919, 0.8);
 
 .inner-part-page {
   min-height: calc(100vh - 175px);
-
   &.border-top {
     border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
   }
@@ -4813,7 +4812,7 @@ path {
   border-radius: 12px;
   padding: 10px;
   background: #151515;
-  border: 2px dashed #dddddd;
+  border: 1px dashed #dddddd;
   border-radius: 15px;
   margin-top: 20px;
   cursor: pointer;
@@ -4831,7 +4830,7 @@ path {
   border-radius: 12px;
   padding: 10px;
   background: #151515;
-  border: 2px dashed #dddddd;
+  border: 1px dashed #dddddd;
   border-radius: 15px;
   margin-top: 10px;
   cursor: pointer;
@@ -4844,6 +4843,25 @@ path {
     margin-top: 2px;
   }
 }
+.verifieed-upload-active{
+width: 100%;
+border-radius: 12px;
+padding: 10px;
+background: #151515;
+border: 1px solid #dddddd;
+border-radius: 15px;
+margin-top: 20px;
+cursor: pointer;
+p {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+  color: #4f4e54;
+  margin-top: 2px;
+}
+}
+
 
 .verify-button {
   width: 100%;
@@ -5137,7 +5155,12 @@ path {
 
 @media only screen and (max-width: 400px) {
   .create-date-wrap .step-wraps {
-    margin-left: 0;
+    margin-left: 8px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .inner-part-page .auth-section .login-text  {
+    margin-left: 24px;
   }
 }
 
@@ -5246,4 +5269,9 @@ path {
     margin-top: 40px;
     margin-right: -50px !important;
   }
+}
+
+.verify-profile-header-icon{
+  cursor: pointer;
+  margin-left: 35px;
 }
