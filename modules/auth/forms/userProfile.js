@@ -289,7 +289,7 @@ function UserProfile({ preview, editHandle }) {
                                 )}
                               </div>
                             </label>
-                            {(router?.query?.userName === user.user_name ||
+                            {/* {(router?.query?.userName === user.user_name ||
                               router?.pathname === "/user/user-profile") && (
                               <div className="d-flex align-items-center mb-0 mt-4">
                                 <button
@@ -302,7 +302,7 @@ function UserProfile({ preview, editHandle }) {
                                   Edit Photos
                                 </button>
                               </div>
-                            )}
+                            )} */}
                           </div>
                         </figure>
                       )}
