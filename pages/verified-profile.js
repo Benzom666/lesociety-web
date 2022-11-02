@@ -32,6 +32,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import VerifiedUploadIcon from "@/modules/verifiedProfile/VerifiedUploadIcon";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
+import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
 
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
@@ -47,7 +48,6 @@ const VerifiedProfilePage = (props) => {
   const [selfie, setSelfie] = useState("");
   const [documentId, setDocumentId] = useState("");
   const dispatch = useDispatch();
-//  const [isUpload,setIsUpload] =useState(false);
 
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
@@ -111,7 +111,7 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
-    { width > 425 ?  <HeaderLoggedIn /> :<IoIosArrowBack size={25} className="verify-profile-header-icon"/>}
+    { width > 425 ?  <HeaderLoggedIn /> :<VerifiedProfileMobileHeader/>}
       <div className="inner-part-page">
         <div className="d-flex justify-content-center">
           <Formik
@@ -128,7 +128,7 @@ const VerifiedProfilePage = (props) => {
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
                     <p></p>
-                    <h2 className="mb-0" style={{fontSize:"20px"}}>VERIFICATION</h2>
+                   {width > 425 ? <> <h2 className="mb-0" style={{fontSize:"20px"}}>VERIFICATION</h2> 
                     <svg
                       width="86"
                       height="2"
@@ -159,7 +159,8 @@ const VerifiedProfilePage = (props) => {
                           />
                         </linearGradient>
                       </defs>
-                    </svg>
+                    </svg> 
+                    </>:null}
                     <HiBadgeCheck color={"white"} size={50} className="m-4" />
 
                     <h3 style={{fontSize:"35px",marginBottom:"14px"}}>Get Verified</h3>
@@ -252,7 +253,7 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
-                  <p style={{textAlign:"center",textDecorationLine:"underline"}}>Maybe Later</p>
+              { width >425  ?  <p style={{textAlign:"center",textDecorationLine:"underline"}}>Maybe Later</p> : null}
                 </Form>
               );
             }}
