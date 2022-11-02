@@ -11,7 +11,7 @@ import { apiRequest } from "utils/Utilities";
 import io from "socket.io-client";
 import SideBarPopup from "./sideBarPopup";
 import Image from "next/image";
-import close1 from '../assets/close1.png'
+import close1 from "../assets/close1.png";
 // const socket = io("https://staging-api.secrettime.com/", {
 //   autoConnect: true,
 // });
@@ -27,7 +27,6 @@ export default function HeaderLoggedIn({
   const user = useSelector((state) => state.authReducer.user);
   const [conversations, setConversations] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
-
 
   function toggleModal() {
     setIsOpen(!modalIsOpen);
@@ -97,7 +96,7 @@ export default function HeaderLoggedIn({
 
   const toggleClass = () => {
     if (width?.width > 425) {
-      toggleModal()
+      toggleModal();
     } else {
       setActive(!isActive);
       document.body.classList.toggle("open-sidebar");
@@ -114,7 +113,9 @@ export default function HeaderLoggedIn({
           <div className="col-md-4 col-2">
             <div className="logo">
               <>
-                <h3 className="d-md-none mb-0 st-logo">ST</h3>
+                <Link href="/auth/login">
+                  <h3 className="d-md-none mb-0 st-logo">ST</h3>
+                </Link>
                 <Link href="/auth/login">
                   <img
                     src="/images/logo.svg"
@@ -154,27 +155,40 @@ export default function HeaderLoggedIn({
                 </li>
                 <li>
                   <div className="user-profile-details">
-                      <figure className={`user_img_header ${modalIsOpen ? "invisible" :""} ` } onClick={toggleClass} data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">
-                       <img
+                    <figure
+                      className={`user_img_header ${
+                        modalIsOpen ? "invisible" : ""
+                      } `}
+                      onClick={toggleClass}
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      role="button"
+                    >
+                      <img
                         src={!_.isEmpty(user) ? user.images[0] : UserImg}
                         alt="user image"
                         width={32}
                         height={32}
-                      /> 
+                      />
                     </figure>
-    
                   </div>
                 </li>
               </ul>
-              {width?.width > 425 ? <SideBarPopup isOpen={modalIsOpen} toggle={toggleModal}></SideBarPopup>
-                : <div
+              {width?.width > 425 ? (
+                <SideBarPopup
+                  isOpen={modalIsOpen}
+                  toggle={toggleModal}
+                ></SideBarPopup>
+              ) : (
+                <div
                   id="sidebar-header"
                   className={
                     isActive ? "sidebar-nav open_nav_menu" : "sidebar-nav"
                   }
                 >
                   <SideBar />
-                </div>}
+                </div>
+              )}
             </nav>
           </div>
         </div>

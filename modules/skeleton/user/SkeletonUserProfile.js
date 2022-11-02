@@ -104,19 +104,13 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
                               )}
                             </div>
                           </label>
-                          {(router?.query?.userName === user.user_name ||
+                          {/* {(router?.query?.userName === user.user_name ||
                             router?.pathname === "/user/user-profile") && (
                             <div className="d-flex align-items-center mb-0 mt-3">
-                              {/* <button
-                                type="button"
-                                className="view-profile-edit-photo-btn"
-                                // onClick={() => {
-                                //   router.push("/auth/profile?edit=true");
-                                // }}
-                              ></button> */}
+                             
                               <SkeletonElement type="create-date-button" />
                             </div>
-                          )}
+                          )} */}
                         </div>
                       </figure>
                     )}

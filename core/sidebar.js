@@ -64,7 +64,9 @@ export default function SideBar() {
               type="button"
               style={{ marginTop: "-42px" }}
               className="d-flex align-items-center justify-content-center"
-              onClick={() => router.push("/verified-profile")}
+              onClick={() =>
+                !documentUpoaded && router.push("/verified-profile")
+              }
             >
               <span>
                 {user?.verified

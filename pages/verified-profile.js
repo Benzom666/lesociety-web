@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import HeaderLoggedIn from "core/loggedInHeader";
-import { IoIosArrowBack } from "react-icons/io"
+import { IoIosArrowBack } from "react-icons/io";
 import { Inputs } from "core";
 import { reduxForm } from "redux-form";
 import validate from "modules/auth/forms/validate/validate";
@@ -32,6 +32,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import VerifiedUploadIcon from "@/modules/verifiedProfile/VerifiedUploadIcon";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
+import { toast } from "react-toastify";
 
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
@@ -47,7 +48,8 @@ const VerifiedProfilePage = (props) => {
   const [selfie, setSelfie] = useState("");
   const [documentId, setDocumentId] = useState("");
   const dispatch = useDispatch();
-//  const [isUpload,setIsUpload] =useState(false);
+  const router = useRouter();
+  //  const [isUpload,setIsUpload] =useState(false);
 
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
@@ -85,7 +87,7 @@ const VerifiedProfilePage = (props) => {
           console.log("res", res);
           setLoading(false);
           setDocumentUpoaded(true);
-          if (res?.data)
+          if (res?.data) {
             dispatch({
               type: AUTHENTICATE_UPDATE,
               payload: {
@@ -93,6 +95,14 @@ const VerifiedProfilePage = (props) => {
                 selfie: res?.data?.data?.user?.selfie,
               },
             });
+            // show success message
+            toast.success(
+              "Your document are succesfully sumbimitted please wait for admin to verify it"
+            );
+            setTimeout(() => {
+              router.push("/user/user-list");
+            }, 5000);
+          }
         } catch (err) {
           setError(err.response?.data?.message ?? "");
           setLoading(false);
@@ -111,7 +121,11 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
-    { width > 425 ?  <HeaderLoggedIn /> :<IoIosArrowBack size={25} className="verify-profile-header-icon"/>}
+      {width > 425 ? (
+        <HeaderLoggedIn />
+      ) : (
+        <IoIosArrowBack size={25} className="verify-profile-header-icon" />
+      )}
       <div className="inner-part-page">
         <div className="d-flex justify-content-center">
           <Formik
@@ -128,7 +142,9 @@ const VerifiedProfilePage = (props) => {
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
                     <p></p>
-                    <h2 className="mb-0" style={{fontSize:"20px"}}>VERIFICATION</h2>
+                    <h2 className="mb-0" style={{ fontSize: "20px" }}>
+                      VERIFICATION
+                    </h2>
                     <svg
                       width="86"
                       height="2"
@@ -162,7 +178,9 @@ const VerifiedProfilePage = (props) => {
                     </svg>
                     <HiBadgeCheck color={"white"} size={50} className="m-4" />
 
-                    <h3 style={{fontSize:"35px",marginBottom:"14px"}}>Get Verified</h3>
+                    <h3 style={{ fontSize: "35px", marginBottom: "14px" }}>
+                      Get Verified
+                    </h3>
                     <div className="verfied-profile-text">
                       <p className="mb-0">
                         Complete your verification to be more trusted
@@ -174,8 +192,11 @@ const VerifiedProfilePage = (props) => {
                     </div>
 
                     <div
-                      className=
-                      {` ${selfieRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload'}`}
+                      className={` ${
+                        selfieRef?.current?.value
+                          ? "verifieed-upload-active"
+                          : "verified-upload"
+                      }`}
                       onClick={() => {
                         selfieRef?.current?.click();
                       }}
@@ -193,9 +214,11 @@ const VerifiedProfilePage = (props) => {
                       />
 
                       <div className="verified-upload-btn">
-                        <VerifiedUploadIcon documentUpoaded={documentUpoaded} />
+                        <VerifiedUploadIcon
+                          documentUpoaded={selfieRef?.current?.value}
+                        />
 
-                        {documentUpoaded ? (
+                        {selfieRef?.current?.value ? (
                           <p className="mb-0 document-uploaded">
                             File is successfully uploaded
                           </p>
@@ -205,7 +228,11 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                     <div
-                      className={` ${documentRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload-2'}`}
+                      className={` ${
+                        documentRef?.current?.value
+                          ? "verifieed-upload-active"
+                          : "verified-upload-2"
+                      }`}
                       onClick={() => {
                         documentRef?.current?.click();
                       }}
@@ -222,9 +249,11 @@ const VerifiedProfilePage = (props) => {
                         // onChange={(e) => imageChange(e, setDocumentId)}
                       />
                       <div className="verified-upload-btn">
-                        <VerifiedUploadIcon documentUpoaded={documentUpoaded} />
+                        <VerifiedUploadIcon
+                          documentUpoaded={documentRef?.current?.value}
+                        />
                         <p className="mb-0">
-                          {documentUpoaded ? (
+                          {documentRef?.current?.value ? (
                             <p className="mb-0 document-uploaded">
                               File is successfully uploaded
                             </p>
@@ -252,7 +281,16 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
-                  <p style={{textAlign:"center",textDecorationLine:"underline"}}>Maybe Later</p>
+                  <p
+                    style={{
+                      textAlign: "center",
+                      textDecorationLine: "underline",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => router.back()}
+                  >
+                    Maybe Later
+                  </p>
                 </Form>
               );
             }}

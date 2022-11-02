@@ -3922,7 +3922,7 @@ body .verification_card_header {
               .message_time {
                 position: absolute;
                 bottom: 100%;
-                right: 0;
+                left: 0;
                 font-size: 11px;
                 color: rgba($color: $white-color, $alpha: 0.4);
               }
@@ -4843,25 +4843,24 @@ path {
     margin-top: 2px;
   }
 }
-.verifieed-upload-active{
-width: 100%;
-border-radius: 12px;
-padding: 10px;
-background: #151515;
-border: 1px solid #dddddd;
-border-radius: 15px;
-margin-top: 20px;
-cursor: pointer;
-p {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
-  text-align: center;
-  color: #4f4e54;
-  margin-top: 2px;
+.verifieed-upload-active {
+  width: 100%;
+  border-radius: 12px;
+  padding: 10px;
+  background: #151515;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  p {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    color: #4f4e54;
+    margin-top: 2px;
+  }
 }
-}
-
 
 .verify-button {
   width: 100%;
@@ -5159,7 +5158,7 @@ p {
   }
 }
 @media only screen and (max-width: 420px) {
-  .inner-part-page .auth-section .login-text  {
+  .inner-part-page .auth-section .login-text {
     margin-left: 24px;
   }
 }
@@ -5271,7 +5270,7 @@ p {
   }
 }
 
-.verify-profile-header-icon{
+.verify-profile-header-icon {
   cursor: pointer;
   margin-left: 35px;
 }

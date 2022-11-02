@@ -94,7 +94,9 @@ function sideBarPopup({ isOpen, toggle }) {
                   <button
                     type="button"
                     className="d-flex align-items-center justify-content-center profile-btn"
-                    onClick={() => router.push("/verified-profile")}
+                    onClick={() =>
+                      !documentUpoaded && router.push("/verified-profile")
+                    }
                   >
                     <span>
                       {user?.verified

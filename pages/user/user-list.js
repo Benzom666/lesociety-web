@@ -311,7 +311,7 @@ function UserList(props) {
   }, [scrollPosition]);
 
   // console
-  console.log("receiverData", receiverData);
+  console.log("dates", dates);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -484,7 +484,10 @@ function UserList(props) {
           </svg>
         </span>
         <p className="msg">
-          “If you’re not amazed by the stars then we can’t hang”
+          "
+          {receiverData?.user_data?.length > 0 &&
+            receiverData?.user_data[0]?.tagline}
+          "
         </p>
         <div>
           <Formik

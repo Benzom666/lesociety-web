@@ -210,7 +210,7 @@ const UserCardList = ({
                 <p>{date?.date_details}</p>
               </div>
               <div className="button-wrapper">
-                {user?.gender === "male" && (
+                {user?.gender === "male" && !date?.alreadyMessage && (
                   <button onClick={openPopup} className="next">
                     Message
                   </button>
