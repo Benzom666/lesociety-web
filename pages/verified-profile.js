@@ -32,7 +32,11 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import VerifiedUploadIcon from "@/modules/verifiedProfile/VerifiedUploadIcon";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
+<<<<<<< HEAD
 import { toast } from "react-toastify";
+=======
+import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
+>>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
 
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
@@ -48,8 +52,11 @@ const VerifiedProfilePage = (props) => {
   const [selfie, setSelfie] = useState("");
   const [documentId, setDocumentId] = useState("");
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const router = useRouter();
   //  const [isUpload,setIsUpload] =useState(false);
+=======
+>>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
 
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
@@ -121,11 +128,15 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
+<<<<<<< HEAD
       {width > 425 ? (
         <HeaderLoggedIn />
       ) : (
         <IoIosArrowBack size={25} className="verify-profile-header-icon" />
       )}
+=======
+    { width > 425 ?  <HeaderLoggedIn /> :<VerifiedProfileMobileHeader/>}
+>>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
       <div className="inner-part-page">
         <div className="d-flex justify-content-center">
           <Formik
@@ -142,9 +153,13 @@ const VerifiedProfilePage = (props) => {
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
                     <p></p>
+<<<<<<< HEAD
                     <h2 className="mb-0" style={{ fontSize: "20px" }}>
                       VERIFICATION
                     </h2>
+=======
+                   {width > 425 ? <> <h2 className="mb-0" style={{fontSize:"20px"}}>VERIFICATION</h2> 
+>>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
                     <svg
                       width="86"
                       height="2"
@@ -175,7 +190,8 @@ const VerifiedProfilePage = (props) => {
                           />
                         </linearGradient>
                       </defs>
-                    </svg>
+                    </svg> 
+                    </>:null}
                     <HiBadgeCheck color={"white"} size={50} className="m-4" />
 
                     <h3 style={{ fontSize: "35px", marginBottom: "14px" }}>
@@ -281,6 +297,7 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
+<<<<<<< HEAD
                   <p
                     style={{
                       textAlign: "center",
@@ -291,6 +308,9 @@ const VerifiedProfilePage = (props) => {
                   >
                     Maybe Later
                   </p>
+=======
+              { width >425  ?  <p style={{textAlign:"center",textDecorationLine:"underline"}}>Maybe Later</p> : null}
+>>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
                 </Form>
               );
             }}
