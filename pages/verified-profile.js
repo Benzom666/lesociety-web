@@ -32,11 +32,8 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import VerifiedUploadIcon from "@/modules/verifiedProfile/VerifiedUploadIcon";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
-<<<<<<< HEAD
 import { toast } from "react-toastify";
-=======
 import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
->>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
 
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
@@ -52,11 +49,8 @@ const VerifiedProfilePage = (props) => {
   const [selfie, setSelfie] = useState("");
   const [documentId, setDocumentId] = useState("");
   const dispatch = useDispatch();
-<<<<<<< HEAD
   const router = useRouter();
   //  const [isUpload,setIsUpload] =useState(false);
-=======
->>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
 
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
@@ -128,15 +122,7 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
-<<<<<<< HEAD
-      {width > 425 ? (
-        <HeaderLoggedIn />
-      ) : (
-        <IoIosArrowBack size={25} className="verify-profile-header-icon" />
-      )}
-=======
-    { width > 425 ?  <HeaderLoggedIn /> :<VerifiedProfileMobileHeader/>}
->>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
+      {width > 425 ? <HeaderLoggedIn /> : <VerifiedProfileMobileHeader />}
       <div className="inner-part-page">
         <div className="d-flex justify-content-center">
           <Formik
@@ -153,45 +139,45 @@ const VerifiedProfilePage = (props) => {
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
                     <p></p>
-<<<<<<< HEAD
-                    <h2 className="mb-0" style={{ fontSize: "20px" }}>
-                      VERIFICATION
-                    </h2>
-=======
-                   {width > 425 ? <> <h2 className="mb-0" style={{fontSize:"20px"}}>VERIFICATION</h2> 
->>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
-                    <svg
-                      width="86"
-                      height="2"
-                      viewBox="0 0 86 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="verified-under-line-size"
-                    >
-                      <path
-                        d="M0 1H86"
-                        stroke="url(#paint0_linear_1502:2374)"
-                      />
-                      <defs>
-                        <linearGradient
-                          id="paint0_linear_1502:2374"
-                          x1="96.6181"
-                          y1="-1.73994"
-                          x2="7.45495"
-                          y2="-1.73994"
-                          gradientUnits="userSpaceOnUse"
+                    {width > 425 ? (
+                      <>
+                        {" "}
+                        <h2 className="mb-0" style={{ fontSize: "20px" }}>
+                          VERIFICATION
+                        </h2>
+                        <svg
+                          width="86"
+                          height="2"
+                          viewBox="0 0 86 2"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="verified-under-line-size"
                         >
-                          <stop stop-color="#FA789B" stopOpacity="0.01" />
-                          <stop offset="0.489981" stopColor="#F02D4E" />
-                          <stop
-                            offset="1"
-                            stopColor="#F24362"
-                            stopOpacity="0.01"
+                          <path
+                            d="M0 1H86"
+                            stroke="url(#paint0_linear_1502:2374)"
                           />
-                        </linearGradient>
-                      </defs>
-                    </svg> 
-                    </>:null}
+                          <defs>
+                            <linearGradient
+                              id="paint0_linear_1502:2374"
+                              x1="96.6181"
+                              y1="-1.73994"
+                              x2="7.45495"
+                              y2="-1.73994"
+                              gradientUnits="userSpaceOnUse"
+                            >
+                              <stop stop-color="#FA789B" stopOpacity="0.01" />
+                              <stop offset="0.489981" stopColor="#F02D4E" />
+                              <stop
+                                offset="1"
+                                stopColor="#F24362"
+                                stopOpacity="0.01"
+                              />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                      </>
+                    ) : null}
                     <HiBadgeCheck color={"white"} size={50} className="m-4" />
 
                     <h3 style={{ fontSize: "35px", marginBottom: "14px" }}>
@@ -297,20 +283,16 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
-<<<<<<< HEAD
-                  <p
-                    style={{
-                      textAlign: "center",
-                      textDecorationLine: "underline",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => router.back()}
-                  >
-                    Maybe Later
-                  </p>
-=======
-              { width >425  ?  <p style={{textAlign:"center",textDecorationLine:"underline"}}>Maybe Later</p> : null}
->>>>>>> f7a05e07a7b50c40cfd1cca6af99304311edf1f3
+                  {width > 425 ? (
+                    <p
+                      style={{
+                        textAlign: "center",
+                        textDecorationLine: "underline",
+                      }}
+                    >
+                      Maybe Later
+                    </p>
+                  ) : null}
                 </Form>
               );
             }}
