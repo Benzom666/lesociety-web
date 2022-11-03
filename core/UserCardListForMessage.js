@@ -41,9 +41,11 @@ const UserCardListForMessage = ({
   function openModal() {
     setIsOpen(true);
     //backgroundColor:"black"
+    setPageLoading(true);
   }
   function closeModal() {
     setIsOpen(false);
+    setPageLoading(false);
   }
 
   const postApprovedConversation = async (room_id, conversation) => {
@@ -115,7 +117,7 @@ const UserCardListForMessage = ({
 
   return (
     <>
-       <span
+      <span
         onClick={openModal}
         className={`${
           conversations.filter(
@@ -178,7 +180,7 @@ const UserCardListForMessage = ({
                             if (profilePic) {
                               setPageLoading(false);
                             }
-                          }, 1800);
+                          }, 5000);
 
                           return pageLoading ? (
                             <SkeletonUserCardListForMessage
@@ -193,7 +195,9 @@ const UserCardListForMessage = ({
                             />
                           ) : (
                             <div key={index}>
-                              <H5 style1={true}>{conversation?.user?.user_name} is</H5>
+                              <H5 style1={true}>
+                                {conversation?.user?.user_name} is
+                              </H5>
                               <CustomIcon.IntrestedText
                                 color={"white"}
                                 size={140}

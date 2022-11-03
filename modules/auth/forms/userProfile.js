@@ -214,7 +214,7 @@ function UserProfile({ preview, editHandle }) {
       ) {
         setPageLoading(false);
       }
-    }, 1000);
+    }, 4000);
   }, [userDetail?.images, user?.images, dateloading]);
 
   useEffect(() => {

@@ -103,7 +103,7 @@ const SecondStep = (props) => {
       ) {
         setPageLoading(false);
       }
-    }, 800);
+    }, 4000);
   }, []);
 
   const { handleSubmit, invalid, previousPage } = props;
