@@ -508,7 +508,7 @@ const Messages = (props) => {
   // console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
   // console.log("category", category);
-  console.log("conversation", conversations);
+  // console.log("conversation", conversations);
   // console.log("messages", messages);
   // console.log("arrivalMessage", arrivalMessage);
   return (
@@ -886,20 +886,24 @@ const Messages = (props) => {
                                   value={newMessage}
                                   onKeyPress={(event) => {
                                     event.key === "Enter" &&
-                                      newMessage !== "" &&
+                                      newMessage.trim() !== "" &&
                                       sendMessage(event);
                                   }}
                                 />
                                 <button
                                   type="button"
                                   className="send_btn"
-                                  onClick={sendMessage}
-                                  disabled={newMessage === ""}
+                                  onClick={
+                                    newMessage.trim() !== "" && sendMessage
+                                  }
+                                  disabled={newMessage.trim() === ""}
                                 >
                                   <IoIosSend
                                     size={25}
                                     color={
-                                      newMessage === "" ? "#686868" : "#F24462"
+                                      newMessage.trim() === ""
+                                        ? "#686868"
+                                        : "#F24462"
                                     }
                                   />
                                 </button>

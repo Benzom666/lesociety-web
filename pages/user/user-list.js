@@ -497,7 +497,11 @@ function UserList(props) {
             validationSchema={Yup.object({
               message: Yup.string().required("Please enter your message"),
             })}
-            onSubmit={handleSubmit}
+            onSubmit={(values) => {
+              if (values.message?.trim() !== "") {
+                handleSubmit(values);
+              }
+            }}
           >
             {(formProps) => {
               return (
@@ -514,11 +518,15 @@ function UserList(props) {
                     <IoIosSend
                       size={25}
                       color={
-                        formProps.values.message === "" ? "#686868" : "#F24462"
+                        formProps.values?.message?.trim() === ""
+                          ? "#686868"
+                          : "#F24462"
                       }
                       type="submit"
                       onClick={() => {
-                        handleSubmit(formProps.values);
+                        if (formProps.values?.message?.trim() !== "") {
+                          handleSubmit(formProps.values);
+                        }
 
                         formProps.resetForm();
                       }}

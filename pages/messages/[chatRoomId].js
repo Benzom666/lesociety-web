@@ -491,19 +491,22 @@ function ChatMessages({ ...props }) {
                               value={newMessage}
                               onKeyPress={(event) => {
                                 event.key === "Enter" &&
-                                  newMessage !== "" &&
+                                  newMessage.trim() !== "" &&
                                   sendMessage(event);
                               }}
                             />
                             <button
                               type="button"
                               className="send_btn"
-                              onClick={sendMessage}
+                              onClick={newMessage.trim() !== "" && sendMessage}
+                              disabled={newMessage.trim() === ""}
                             >
                               <IoIosSend
                                 size={25}
                                 color={
-                                  newMessage === "" ? "#686868" : "#F24462"
+                                  newMessage.trim() === ""
+                                    ? "#686868"
+                                    : "#F24462"
                                 }
                               />
                             </button>
