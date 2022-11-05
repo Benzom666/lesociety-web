@@ -177,7 +177,7 @@ const ChooseCity = (props) => {
           <div className="auth-section choose-city">
             <form onSubmit={handleSubmit} >
               <div className="city-top" style={{width:"340px" ,margin:"0px auto"}}>
-              <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-5">
+              <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
                 <a onClick={previousPage} style={{ width: '21px' }}>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24"
