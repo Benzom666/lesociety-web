@@ -30,11 +30,11 @@ const education_plan = [
     name: "He deserves the change",
     price: "3H",
   },
-  {
-    id: "5",
-    name: "This is necessary for my date",
-    price: "4H",
-  },
+  // {
+  //   id: "5",
+  //   name: "This is necessary for my date",
+  //   price: "4H",
+  // },
 ];
 
 const CreateStepThree = (props) => {
@@ -57,7 +57,7 @@ const CreateStepThree = (props) => {
   return (
     <>
       <div className="inner_container">
-        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-5">
           <a onClick={previousPage}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const CreateStepThree = (props) => {
             </svg>
           </a>
           <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
-          <IoIosClose className="mouse-point" size={32} onClick={toggle} />
+          <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
         </div>
         {width > 767 && (
           <div className="d-flex justify-content-center" style={{marginLeft:"28px"}}>
@@ -104,6 +104,12 @@ const CreateStepThree = (props) => {
             <li>
               <span></span>
             </li>
+            <li>
+              <span></span>
+            </li>
+            <li>
+              <span></span>
+            </li>
           </ul>
         </div>
       </div>
@@ -115,10 +121,10 @@ const CreateStepThree = (props) => {
               className="inner_container"
               style={{ paddingRight: "20px", paddingLeft: "20px" }}
             >
-              <h6>Approximate Length</h6>
+              <h6>Set date duration.</h6>
               <p>
-                How long will your date last? The length should reflect your
-                price
+              What is the approximate length of time you’re willing to spend on this particular date experience.
+
               </p>
             </div>
           </div>

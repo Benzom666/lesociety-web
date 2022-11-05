@@ -10,6 +10,7 @@ import { IoIosClose } from "react-icons/io";
 import useWindowSize from "utils/useWindowSize";
 import { useSelector } from "react-redux";
 import ConfirmDate from "./../../modules/date/confirmDate";
+import DatePrice from "@/core/icon/DatePrice";
 
 const CreateStepOne = (props) => {
   const {
@@ -30,12 +31,19 @@ const CreateStepOne = (props) => {
   return (
     <>
       <div className="inner_container">
-        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-5">
           <a onClick={previousPage}>
-            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
+            <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" height="24"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" 
+             className="feather feather-chevron-left">
+            <polyline points="15 18 9 12 15 6"></polyline></svg>
           </a>
           <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
-          <IoIosClose className="mouse-point" size={32} onClick={toggle} />
+          <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
+
         </div>
         {width > 767 && (
           <div className="d-flex justify-content-center" style={{marginLeft:"28px"}}>
@@ -52,7 +60,13 @@ const CreateStepOne = (props) => {
             <li className="active">
               <span></span>
             </li>
-            <li className="">
+            <li className="active">
+              <span></span>
+            </li>
+            <li>
+              <span></span>
+            </li>
+            <li>
               <span></span>
             </li>
             <li>
@@ -72,11 +86,10 @@ const CreateStepOne = (props) => {
               className="inner_container"
               style={{ paddingRight: "35px", paddingLeft: "35px" }}
             >
-              <h6>Date Suggestions</h6>
+              <h6>Suggest a date.</h6>
               <p>
-                Create a simple date or try your luck with something more
-                upscale. Please select 2 options and keep in mind these are only
-                suggestions{" "}
+              Select the experience you would like to go on with your date. Keep in mind the gentlemen pays for the experience and your price.
+                      {" "}
               </p>
             </div>
           </div>
@@ -92,65 +105,77 @@ const CreateStepOne = (props) => {
               <div className="inner_container">
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
-                    <H5>Standard Class Dates</H5>
-                    <span className="price-tag">$</span>
+                    {/* <H5>Standard Class Dates</H5> */}
+                    <H5>When your availability is more important than a date suggestion.</H5>
+                    {/* <span className="price-tag">$</span> */}
                   </div>
-                  <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
+                  {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
                     Higher response rate
-                  </div>
+                  </div> */}
                   <Field
                     name="search_type"
                     textColor={"#4F4E54"}
                     checkedColor={"white"}
                     options={[
                       {
-                        label: "Morning Date",
+                        label: "Brunch Date",
                         id: "MorningBeverage",
                         iconName: "CustomIcon.Sun",
-                        icon: <CustomIcon.Sun color={"#4F4E54"} size={30} />,
+                        icon: <CustomIcon.Sun color={"#AFABAB"} size={30} />,
                         category: "standard_class_date",
                       },
                       {
                         label: "Evening Date",
                         id: "EveningDate",
-                        icon: <CustomIcon.Moon color={"#4F4E54"} size={30} />,
+                        icon: <CustomIcon.Moon color={"#AFABAB"} size={30} />,
                         iconName: "CustomIcon.Moon",
                         category: "standard_class_date",
                       },
-                      {
-                        label: "Outdoor Adventure",
-                        id: "OutdoorAdventure",
-                        icon: (
-                          <CustomIcon.OutdoorAdventure
-                            color={"#4F4E54"}
-                            size={30}
-                          />
-                        ),
-                        iconName: "CustomIcon.OutdoorAdventure",
-                        category: "standard_class_date",
-                      },
+                      // {
+                      //   label: "Outdoor Adventure",
+                      //   id: "OutdoorAdventure",
+                      //   icon: (
+                      //     <CustomIcon.OutdoorAdventure
+                      //       color={"#4F4E54"}
+                      //       size={30}
+                      //     />
+                      //   ),
+                      //   iconName: "CustomIcon.OutdoorAdventure",
+                      //   category: "standard_class_date",
+                      // },
                     ]}
                     component={ClassSelection}
+          
                   />
                 </div>
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
-                    <H5>Middle Class Dates</H5>
-                    <span className="price-tag">$$</span>
+                    {/* <H5>Middle Class Dates</H5> */}
+                    <H5>When a date suggestion is more important than your availability.</H5>
+                    {/* <span className="price-tag">$$</span> */}
                   </div>
-                  <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
+                  {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
                     Average response rate
-                  </div>
+                  </div> */}
                   <Field
                     name="search_type"
-                    textColor={"#4F4E54"}
+                    textColor={"#AFABAB"}
                     checkedColor={"white"}
                     options={[
+                      {
+                        label: "Get Sporty",
+                        id: "GetSporty",
+                        icon: (
+                          <CustomIcon.Sporty color={"#AFABAB"} size={35} />
+                        ),
+                        iconName: "CustomIcon.GetSporty",
+                        category: "middle_class_dates",
+                      },
                       {
                         label: "Take A Class",
                         id: "TakeClass",
                         icon: (
-                          <CustomIcon.TakeClass color={"#4F4E54"} size={30} />
+                          <CustomIcon.TakeClass color={"#AFABAB"} size={30} />
                         ),
                         iconName: "CustomIcon.TakeClass",
                         category: "middle_class_dates",
@@ -160,7 +185,7 @@ const CreateStepOne = (props) => {
                         id: "Entertainmentsports",
                         icon: (
                           <CustomIcon.EntertainmentSports
-                            color={"#4F4E54"}
+                            color={"#AFABAB"}
                             size={30}
                           />
                         ),
@@ -171,16 +196,28 @@ const CreateStepOne = (props) => {
                         label: "Wine & Dine ",
                         id: "WineDine",
                         icon: (
-                          <CustomIcon.WineDine color={"#4F4E54"} size={30} />
+                          <CustomIcon.WineDine color={"#AFABAB"} size={30} />
                         ),
                         iconName: "CustomIcon.WineDine",
                         category: "middle_class_dates",
+                      },
+                      {
+                        label: "Bottles & Dance",
+                        id: "BottlesDance",
+                        icon: (
+                          <CustomIcon.BottlesDance
+                            color={"#AFABAB"}
+                            size={30}
+                          />
+                        ),
+                        iconName: "CustomIcon.BottlesDance",
+                        category: "executive_class_dates",
                       },
                     ]}
                     component={ClassSelection}
                   />
                 </div>
-                <div className="mb-5">
+                {/* <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     <H5>Executive Class Dates</H5>
                     <span className="price-tag">$$$</span>
@@ -232,7 +269,7 @@ const CreateStepOne = (props) => {
                     ]}
                     component={ClassSelection}
                   />
-                </div>
+                </div> */}
                 <div
                   className="bottom-mobile register-bottom"
                   style={{ paddingTop: "0px" }}

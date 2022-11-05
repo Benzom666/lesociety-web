@@ -77,7 +77,7 @@ const CreateStepFour = (props) => {
   return (
     <>
       <div className="inner_container">
-        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-5">
           <a onClick={previousPage}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const CreateStepFour = (props) => {
             </svg>
           </a>
           <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
-          <IoIosClose className="mouse-point" size={32} onClick={toggle} />
+          <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
         </div>
         {width > 767 && (
           <div className="d-flex justify-content-center" style={{marginLeft:"28px"}}>
@@ -124,6 +124,12 @@ const CreateStepFour = (props) => {
             <li className="complete active">
               <span></span>
             </li>
+            <li>
+              <span></span>
+            </li>
+            <li>
+              <span></span>
+            </li>
           </ul>
         </div>
       </div>
@@ -135,10 +141,10 @@ const CreateStepFour = (props) => {
               className="inner_container"
               style={{ paddingRight: "35px", paddingLeft: "35px" }}
             >
-              <h6>Describe Date Details</h6>
+              <h6>Describe your date.</h6>
               <p>
-                Write about your date suggestions in more detail and why someone
-                should select you as their date
+              Write more about your date suggestion, and why someone should choose you as their date.
+
               </p>
             </div>
           </div>
@@ -154,7 +160,7 @@ const CreateStepFour = (props) => {
                   type="text"
                   validationLength={500}
                   component={Inputs.textarea}
-                  label="Describe_Date_Details"
+                  //label="Describe_Date_Details"
                   placeholder="Write details here (expectations, itinerary, rules, etc.)"
                 />
               </div>
@@ -168,7 +174,7 @@ const CreateStepFour = (props) => {
                     </div>
                  )}    */}
             <div className="inner_container">
-              {width > 767 && (
+              
                 <>
                   {/* <div className="mb-4">
                                 <div className="secret-input type-text select-wrap-icon">
@@ -192,13 +198,11 @@ const CreateStepFour = (props) => {
                     <CustomIcon.Diamond color={"#fff"} size={120} />
                   </div>
                 </>
-              )}
-              <div className="mb-8 bottom-content text-center">
+            
+              <div className="mb-8 bottom-content text-center" style={{marginBottom:"28px"}}>
                 <p>
-                  Thank you for being one of our early adopters! To show you our
-                  appreciation, we will keep your posts active until you delete
-                  it. This allows you to earn multiple times for each post.
-                  Goodluck!
+                Thank you for being one of our early adopters! To show you our appreciation, we will keep your posts active until you delete it. This allows you to earn multiple times for each post. Goodluck!
+
                 </p>
               </div>
               <div className="bottom-mobile register-bottom">

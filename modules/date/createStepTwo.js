@@ -38,25 +38,43 @@ const education = [
     id: "5",
     name: "I’m drop dead gergeous. Period",
     suptag: "$",
-    price: "175",
+    price: "200",
   },
   {
     id: "6",
     name: "Crème de la crème",
     suptag: "$",
-    price: "200",
+    price: "250",
   },
   {
     id: "7",
     name: "Crème de la crème",
     suptag: "$",
-    price: "250",
+    price: "300",
   },
   {
     id: "8",
     name: "Crème de la crème",
     suptag: "$",
-    price: "300",
+    price: "350",
+  },
+  {
+    id: "9",
+    name: "Crème de la crème",
+    suptag: "$",
+    price: "400",
+  },
+  {
+    id: "10",
+    name: "Crème de la crème",
+    suptag: "$",
+    price: "450",
+  },
+  {
+    id: "11",
+    name: "Crème de la crème",
+    suptag: "$",
+    price: "500",
   },
 ];
 
@@ -80,7 +98,7 @@ const CreateStepTwo = (props) => {
   return (
     <>
       <div className="inner_container">
-        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-5">
           <a onClick={previousPage}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +116,7 @@ const CreateStepTwo = (props) => {
             </svg>
           </a>
           <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
-          <IoIosClose className="mouse-point" size={32} onClick={toggle} />
+          <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
         </div>
         {width > 767 && (
           <div className="d-flex justify-content-center"style={{marginLeft:"28px"}}>
@@ -127,6 +145,12 @@ const CreateStepTwo = (props) => {
             <li>
               <span></span>
             </li>
+            <li>
+              <span></span>
+            </li>
+            <li>
+              <span></span>
+            </li>
           </ul>
         </div>
       </div>
@@ -139,10 +163,11 @@ const CreateStepTwo = (props) => {
               style={{ paddingRight: "20px", paddingLeft: "20px" }}
             >
               <h6 className="price-text">What’s Your Price?</h6>
-              <p>
+              {/* <p>
                 Determine how expensive you are and please consider he’s paying
                 for the <br /> outing as well
-              </p>
+              </p> */}
+              <p>How much is your time is worth?</p>
             </div>
           </div>
           <div className="date-class-section choose-gender">
