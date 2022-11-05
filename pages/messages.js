@@ -160,8 +160,13 @@ const Messages = (props) => {
     socket.on(`recieve-${user._id}`, (message) => {
       console.log("reciever message", message);
       if (message.message == "") {
-        getChatHistoryConversation(message?.room_id);
-        getConversations();
+        // getChatHistoryConversation(message?.room_id);
+        // getConversations();
+        setConversations((prev) => {
+          const index = prev.findIndex((item) => item._id === message?.room_id);
+          prev[index].status = 1;
+          return [...prev];
+        });
         return;
       } else {
         return setArrivalMessage({
@@ -503,7 +508,7 @@ const Messages = (props) => {
   // console.log("currentChat", currentChat);
   // console.log("arrivalMessage", arrivalMessage);
   // console.log("category", category);
-  // console.log("conversation", conversations);
+  console.log("conversation", conversations);
   // console.log("messages", messages);
   // console.log("arrivalMessage", arrivalMessage);
   return (
@@ -551,6 +556,7 @@ const Messages = (props) => {
                           <Tab>
                             <UserCardListForMessage
                               conversations={conversations}
+                              setConversations={setConversations}
                               getConversations={getConversations}
                               user={user}
                               setCurrentChat={setCurrentChat}
@@ -721,11 +727,20 @@ const Messages = (props) => {
                           currentChat?.status === 2) ? (
                         <div className="message-chat-wrap">
                           <div className="top-head">
-                            <div className="user-thumb">
+                            <div
+                              className="user-thumb"
+                              onClick={() =>
+                                router.push(
+                                  `/user/user-profile/${currentChat?.user?.user_name}`
+                                )
+                              }
+                            >
                               <figure
                                 className="user_img_header"
                                 onClick={() =>
-                                  router.push(`/user/user-profile`)
+                                  router.push(
+                                    `/user/user-profile/${currentChat?.user?.user_name}`
+                                  )
                                 }
                               >
                                 <Image
@@ -740,7 +755,9 @@ const Messages = (props) => {
                                   width={32}
                                   height={32}
                                   onClick={() =>
-                                    router.push(`/user/user-profile`)
+                                    router.push(
+                                      `/user/user-profile/${currentChat?.user?.user_name}`
+                                    )
                                   }
                                 />
                               </figure>
@@ -748,7 +765,9 @@ const Messages = (props) => {
                               <span
                                 className="user-details"
                                 onClick={() =>
-                                  router.push(`/user/user-profile`)
+                                  router.push(
+                                    `/user/user-profile/${currentChat?.user?.user_name}`
+                                  )
                                 }
                               >
                                 <h3>{currentChat?.user?.user_name ?? ""}</h3>

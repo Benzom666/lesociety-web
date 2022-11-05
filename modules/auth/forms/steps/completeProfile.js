@@ -149,10 +149,11 @@ const CompleteProfile = (props) => {
       </span>
       <h2>
         {router?.query?.token || user?.email_verified
-          ? user?.email_verified
-            ? "Email Verified"
-            : "Email Verification"
-          : router?.query?.edit
+          ? //  user?.email_verified
+            //   ?
+            "Email Verified"
+          : // : "Email Verification"
+          router?.query?.edit
           ? "Profile Updated"
           : "Profile Completed"}
       </h2>

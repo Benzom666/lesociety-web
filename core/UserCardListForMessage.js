@@ -21,6 +21,7 @@ import SkeletonElement from "@/modules/skeleton/SkeletonElement";
 
 const UserCardListForMessage = ({
   conversations,
+  setConversations,
   isDesktopView,
   getConversations,
   setCurrentChat,
@@ -61,7 +62,12 @@ const UserCardListForMessage = ({
         url: `chat/accept`,
       });
       console.log("res.data", res.data);
-      getConversations();
+      // getConversations();
+      setConversations((prev) => {
+        const index = prev.findIndex((item) => item._id === room_id);
+        prev[index].status = 1;
+        return [...prev];
+      });
       closeModal();
       setCurrentChat((prev) => ({
         ...prev,

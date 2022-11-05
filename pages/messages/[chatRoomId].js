@@ -359,7 +359,14 @@ function ChatMessages({ ...props }) {
                             onClick={goBack}
                           />
                         </span>
-                        <div className="d-flex me-auto">
+                        <div
+                          className="d-flex me-auto"
+                          onClick={() =>
+                            router.push(
+                              `/user/user-profile/${currentChat?.user?.user_name}`
+                            )
+                          }
+                        >
                           <figure className="user_img_header">
                             <Image
                               src={
