@@ -217,37 +217,107 @@ const DatePreview = (props) => {
       <>
      
       <div className="inner_container">
-        <div className=" d-md-none justify-content-around align-items-center login-text mb-0 d-flex">
+        <div className=" d-md-none justify-content-around align-items-center login-text mb-0 mt-5 d-flex">
           <a onClick={previousPage}>
-            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> */}
+            <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" height="24" 
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" 
+            strokeLinecap="round" strokeLinejoin="round" 
+            className="feather feather-chevron-left">
+            <polyline points="15 18 9 12 15 6"></polyline></svg>
           </a>
           <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
-          <IoIosClose className="" size={32} onClick={toggle} />
+          <IoIosClose className="" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
         </div>
         {/* {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>} */}
+          { width <430 ? <div className="step-wraps"
+                //  style={{ marginLeft: '16px' }}
+              >
+                <ul>
+                  <li className="active">
+                    <span></span>
+                  </li>
+                  <li className="active">
+                    <span></span>
+                  </li>
+                  <li className="active">
+                    <span></span>
+                  </li>
+                  <li className="active">
+                    <span></span>
+                  </li>
+                  <li className="active">
+                    <span></span>
+                  </li>
+                  <li className="active">
+                    <span></span>
+                  </li>
+                </ul>
+              </div> :null }
       </div>
       <div
         className={`${
           width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"
         } `}
       >
-        <div className="inner_container">
-          <div className="d-flex justify-content-center">
-            {width > 767 && <h6>Date Preview</h6>}
-
-            {width > 767 && (
+        <div className="inner_container create-date-wrap" style={{maxWidth:"1400px",margin:"0px" ,padding:"0px"}}>
+          <div className="d-flex justify-content-center flex-column">
+          { width > 767 && <>
+            <div className="d-flex justify-content-center">
+              <h6 className="m-0 text-white" style={{fontWeight:"400px",fontSize:"16px"}}>CREATE A NEW DATE</h6>
+              <IoIosClose className="desk-close-first mouse-point" size={32} onClick={toggle} />
+              </div>
+              <div
+                className="step-wraps"
+                style={{ marginLeft: '360px' }}
+              >
+                <ul>
+                  <li className="active">
+                    <span></span>
+                  </li>
+                  <li className="">
+                    <span></span>
+                  </li>
+                  <li className="">
+                    <span></span>
+                  </li>
+                  <li>
+                    <span></span>
+                  </li>
+                  <li>
+                    <span></span>
+                  </li>
+                  <li>
+                    <span></span>
+                  </li>
+                </ul>
+              </div>
+              {/* <h6>Date Preview</h6> */}
+            </> }
+            {width > 767 && <>
+            <div className="city-suggestion-text">
+             <h6>Date Preview</h6>
+            <p>
+            Please check all the details of your date before posting. You will
+            have a chance to edit it in the future
+          </p>
+          </div>
+          </>
+            }
+            {/* {width > 767 && (
               <IoIosClose
                 className="desk-close-icon-new"
                 size={32}
                 onClick={toggle}
               />
-            )}
+            )} */}
           </div>
-          {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>}
-          <p>
+          {width < 768 && <><h6 className="m-3 text-center">Date preview.</h6>
+          <p className="text-suggestion-city">
             Please check all the details of your date before posting. You will
             have a chance to edit it in the future
-          </p>
+          </p> </> }
         </div>
       </div>
       <form

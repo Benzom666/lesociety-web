@@ -2549,7 +2549,7 @@ header .st-logo {
   margin-bottom: 7px;
 }
 .inner-part-page .auth-section.choose-city form {
-  padding-top: 0;
+   padding-top: 0; 
 }
 .inner-part-page .auth-section.choose-city h2 {
   font-size: 26px;

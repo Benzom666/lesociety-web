@@ -8,9 +8,9 @@ $GradientColor-second: rgba(#191919, 0.8);
   }
 
   .auth-section {
-    width: 340px;
+    //width: 340px;
     padding: 60px 0 50px;
-    margin: 0px auto;
+    //margin: 0px auto;
     position: relative;
 
     a.forgot-passwrd {
@@ -64,6 +64,16 @@ $GradientColor-second: rgba(#191919, 0.8);
       font-weight: 400;
       font-size: 18px;
       letter-spacing: 0.5px;
+      &.text-suggestion-city {
+        font-family: "Helvetica";
+        font-size: 17px;
+        line-height: 18px;
+        color: #afabab;
+        text-align: center;
+        font-weight: 300;
+        letter-spacing: 0.8px;
+        margin-bottom: 0px !important;
+      }
 
       &.auth-register-p-text {
         padding-bottom: 60px;
@@ -1952,7 +1962,7 @@ $GradientColor-second: rgba(#191919, 0.8);
   .date-suggetion-text {
     h6 {
       margin-bottom: 15px;
-      font-weight: 700;
+      //font-weight: 700;
     }
 
     padding: 20px 0;
@@ -1978,12 +1988,16 @@ $GradientColor-second: rgba(#191919, 0.8);
       font-size: 22px;
       font-family: "Helvetica";
       font-style: normal;
+      margin-bottom: 5px;
+      //padding-right: 54px;
     }
 
     padding: 0px 0;
     text-align: center;
 
     p {
+      width:400px;
+      margin: auto;
       font-family: "Helvetica";
       font-size: 16px;
       line-height: 18px;
@@ -5157,7 +5171,7 @@ p {
 
 @media only screen and (max-width: 400px) {
   .create-date-wrap .step-wraps {
-    margin-left: 8px;
+    margin-left: 15px;
   }
 }
 @media only screen and (max-width: 420px) {
@@ -5277,3 +5291,4 @@ p {
   cursor: pointer;
   margin-left: 35px;
 }
+
