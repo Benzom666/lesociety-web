@@ -94,25 +94,31 @@ const Messages = (props) => {
     getConversations();
   }, [user]);
 
-  useEffect(() => {
-    // if (socket.connected) {
-    console.log("socket request Accept Event", socket.connected);
-    socket.on(`requestAccept-${user._id}`, (message) => {
-      console.log("requestAccept message", message);
-      getConversations();
-    });
-    // }
-  }, [socket.connected]);
+  useEffect(
+    () => {
+      console.log("socket request Accept Event", socket.connected);
+      socket.on(`requestAccept-${user._id}`, (message) => {
+        console.log("requestAccept message", message);
+        getConversations();
+      });
+    },
+    [
+      // socket.connected
+    ]
+  );
 
-  useEffect(() => {
-    // if (socket.connected) {
-    console.log("socket request message will", socket.connected);
-    socket.on(`request-${user._id}`, (message) => {
-      console.log("reqested message", message);
-      getConversations();
-    });
-    // }
-  }, [socket.connected]);
+  useEffect(
+    () => {
+      console.log("socket request message will", socket.connected);
+      socket.on(`request-${user._id}`, (message) => {
+        console.log("reqested message", message);
+        getConversations();
+      });
+    },
+    [
+      // socket.connected
+    ]
+  );
 
   const getChatHistoryConversation = async (chatRoomId) => {
     console.log("chatRoomId", chatRoomId);
@@ -154,34 +160,37 @@ const Messages = (props) => {
     }
   };
 
-  useEffect(() => {
-    // if (socket.connected) {
-    console.log("socket receiver message will", socket.connected);
-    socket.on(`recieve-${user._id}`, (message) => {
-      console.log("reciever message", message);
-      if (message.message == "") {
-        // getChatHistoryConversation(message?.room_id);
-        // getConversations();
-        setConversations((prev) => {
-          const index = prev.findIndex((item) => item._id === message?.room_id);
-          prev[index].status = 1;
-          return [...prev];
-        });
-        return;
-      } else {
-        return setArrivalMessage({
-          ...message,
-          message: message.message,
-          sender_id: message.sender_id,
-          sent_time: Date.now(),
-          room_id: message?.room_id,
-          receiver_id: message?.receiver_id,
-          _id: message?._id,
-        });
-      }
-    });
-    // }
-  }, [socket.connected]);
+  useEffect(
+    () => {
+      console.log("socket receiver message will", socket.connected);
+      socket.on(`recieve-${user._id}`, (message) => {
+        console.log("reciever message", message);
+        if (message.message == "") {
+          // getChatHistoryConversation(message?.room_id);
+          // getConversations();
+          // setConversations((prev) => {
+          //   const index = prev.findIndex((item) => item._id === message?.room_id);
+          //   prev[index].status = 1;
+          //   return [...prev];
+          // });
+          return;
+        } else {
+          return setArrivalMessage({
+            ...message,
+            message: message.message,
+            sender_id: message.sender_id,
+            sent_time: Date.now(),
+            room_id: message?.room_id,
+            receiver_id: message?.receiver_id,
+            _id: message?._id,
+          });
+        }
+      });
+    },
+    [
+      // socket.connected
+    ]
+  );
 
   useEffect(() => {
     if (arrivalMessage && currentChat?._id === arrivalMessage?.room_id) {
@@ -291,18 +300,23 @@ const Messages = (props) => {
     }
   }, [socket.connected]);
 
-  useEffect(() => {
-    // if (socket.connected) {
-    console.log("chat Room Cleared called", socket.connected);
-    socket.on(`chatRoomCleared-${user._id}`, (message) => {
-      console.log("chatRoomCleared", message);
-      if (message?.deleted) {
-        setMessages([]);
-        getConversations();
-      }
-    });
-    // }
-  }, [socket.connected]);
+  useEffect(
+    () => {
+      // if (socket.connected) {
+      console.log("chat Room Cleared called", socket.connected);
+      socket.on(`chatRoomCleared-${user._id}`, (message) => {
+        console.log("chatRoomCleared", message);
+        if (message?.deleted) {
+          setMessages([]);
+          getConversations();
+        }
+      });
+      // }
+    },
+    [
+      // socket.connected
+    ]
+  );
 
   // Fuctions
 
@@ -357,8 +371,12 @@ const Messages = (props) => {
       message: newMessage,
     };
 
-    console.log("socket.connected data", socket.connected, data);
-    socket.emit("sendMessage", data);
+    // console.log("socket.connected data", socket.connected, data);
+    if (socket.connected) {
+      setTimeout(() => {
+        socket.emit("sendMessage", data);
+      }, 500);
+    }
     setMessages((prev) => [
       ...prev,
       {
@@ -439,6 +457,7 @@ const Messages = (props) => {
         chatRoomId: currentChat?.message?.room_id,
         recieverId: currentChat?.user?.id,
       };
+      console.log("deletechat data", data);
 
       const res = await apiRequest({
         data: data,

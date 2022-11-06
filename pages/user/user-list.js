@@ -311,7 +311,7 @@ function UserList(props) {
   }, [scrollPosition]);
 
   // console
-  console.log("dates", dates);
+  // console.log("dates", dates);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn

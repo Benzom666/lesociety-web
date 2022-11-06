@@ -943,13 +943,33 @@ $GradientColor-second: rgba(#191919, 0.8);
           //   color: red;
           // }
         }
+        .resend-mail-text-active {
+          font-family: Helvetica;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 16px;
+          letter-spacing: 0.002em;
+          text-decoration-line: underline;
+          color: #f24462 !important;
+          text-align: center;
+          margin: 5px;
+          cursor: pointer;
+          display: block;
+        }
 
-        .resend-mail-text:active {
-          color: red !important;
+        // .resend-mail-text:active {
+        //   color: red !important;
+        // }
+        // .resend-mail-text:focus {
+        //   color: red !important;
+        // }
+
+        .resend-mail-text:hover {
+          color: #f24462 !important;
         }
-        .resend-mail-text:focus {
-          color: red !important;
-        }
+        // .resend-mail-text::selection {
+        //   color: #f24462 !important;
+        // }
 
         .completion-sign {
           display: flex;

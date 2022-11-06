@@ -9,10 +9,12 @@ const CompleteProfile = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   const [tokenValid, setTokenValid] = useState(true);
   const [updatedUser, setUpdatedUser] = useState({});
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const handleResendMail = async () => {
+    setLoading(true);
     if (user?.email) {
       try {
         const res = await apiRequest({
@@ -22,8 +24,10 @@ const CompleteProfile = (props) => {
           method: "POST",
           url: `user/verify-email`,
         });
+        setLoading(false);
         // showToast(res.data.message, 'success')
       } catch (err) {
+        setLoading(false);
         console.log("error", err);
       }
     }
@@ -160,7 +164,7 @@ const CompleteProfile = (props) => {
       <p className="pt-4">
         {!user?.email_verified ? (
           !tokenValid ? (
-            "Token is expired. Please verify your email address, by clicking on the resend mail button."
+            "You have already verified your email. Please provide us with 24hrs to conduct the review process. Le Society ensures optimal experience by only allowing serious members to join."
           ) : (
             <>
               <p>
@@ -186,7 +190,11 @@ const CompleteProfile = (props) => {
       </p>
       {!user?.email_verified ? (
         <span
-          className="resend-mail-text profile mt-5"
+          className={
+            loading
+              ? "resend-mail-text-active profile mt-5"
+              : "resend-mail-text profile mt-5"
+          }
           tabIndex="0"
           onClick={handleResendMail}
         >

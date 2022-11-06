@@ -51,10 +51,12 @@ const UserCardListForMessage = ({
 
   const postApprovedConversation = async (room_id, conversation) => {
     setCurrentChat(conversation);
+    console.log("conversation", conversation);
     try {
       const data = {
         chatRoomId: room_id,
-        senderId: user?._id,
+        senderId: conversation?.user?.id,
+        // senderId: user?._id,
       };
       const res = await apiRequest({
         data,
@@ -79,13 +81,13 @@ const UserCardListForMessage = ({
       console.log("err", err);
     }
 
-    const data = {
-      chatRoomId: room_id ?? "",
-      recieverId: conversation?.user?.id ?? "",
-      message: "",
-    };
+    // const data = {
+    //   chatRoomId: room_id ?? "",
+    //   recieverId: conversation?.user?.id ?? "",
+    //   message: "",
+    // };
 
-    socket.emit("sendMessage", data);
+    // socket.emit("sendMessage", data);
   };
 
   const showText = (text) => {
