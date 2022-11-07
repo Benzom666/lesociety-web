@@ -4,6 +4,7 @@ import { AUTHENTICATE, AUTHENTICATE_UPDATE } from "../../actionConstants";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Loader from "@/modules/Loader/Loader";
 
 const CompleteProfile = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -35,6 +36,7 @@ const CompleteProfile = (props) => {
 
   useEffect(() => {
     const verifyEmail = async () => {
+      setLoading(true);
       if (router?.query?.token && router?.query?.email) {
         try {
           const res = await apiRequest({
@@ -45,6 +47,7 @@ const CompleteProfile = (props) => {
             method: "POST",
             url: `user/email-verification`,
           });
+          setLoading(false);
           // debugger
           // dispatch({
           //     type: AUTHENTICATE_UPDATE,
@@ -56,6 +59,7 @@ const CompleteProfile = (props) => {
           });
           // showToast(res.data.message, 'success')
         } catch (err) {
+          setLoading(false);
           setTokenValid(false);
         }
       }
@@ -66,6 +70,7 @@ const CompleteProfile = (props) => {
   // console.log("router", router);
 
   const getUpdatedUserDetails = async () => {
+    setLoading(true);
     try {
       const res = await apiRequest({
         method: "GET",
@@ -77,7 +82,9 @@ const CompleteProfile = (props) => {
         type: AUTHENTICATE_UPDATE,
         payload: { ...res.data?.data?.user },
       });
+      setLoading(false);
     } catch (err) {
+      setLoading(false);
       console.log("err", err);
     }
   };
@@ -101,6 +108,10 @@ const CompleteProfile = (props) => {
       });
     }
   }, [user?.status]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="upload-pics profile-completion">
@@ -152,7 +163,7 @@ const CompleteProfile = (props) => {
         </svg>
       </span>
       <h2>
-        {router?.query?.token || user?.email_verified
+        {!loading && (router?.query?.token || user?.email_verified)
           ? //  user?.email_verified
             //   ?
             "Email Verified"
@@ -162,10 +173,11 @@ const CompleteProfile = (props) => {
           : "Profile Completed"}
       </h2>
       <p className="pt-4">
-        {!user?.email_verified &&
+        {!loading &&
+          !user?.email_verified &&
           !tokenValid &&
           "You have already verified your email. Please provide us with 24hrs to conduct the review process. Le Society ensures optimal experience by only allowing serious members to join."}
-        {user?.email_verified && (
+        {!loading && user?.email_verified && (
           <>
             <p className="mb-4">
               Please wait up to 24 hours for your profile to be verified.
@@ -176,7 +188,7 @@ const CompleteProfile = (props) => {
             </p>
           </>
         )}
-        {!user?.email_verified && (
+        {!loading && !user?.email_verified && (
           <>
             <p>
               Please verify your email address, by clicking on the link in the
