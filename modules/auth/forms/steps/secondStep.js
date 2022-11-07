@@ -132,27 +132,30 @@ const SecondStep = (props) => {
         <div className="d-block d-md-none login-text mb-0">
           <a
             onClick={() => {
-              // previousPage();
-              dispatch(reset("signupStep2"));
-              dispatch(reset("DatePreview"));
-              dispatch(reset("RegisterFormMale"));
-              dispatch(reset("signupStep3"));
-              dispatch(reset("RegisterForm"));
-              dispatch(reset("forgotpassword"));
-              dispatch(reset("LoginForm"));
-              dispatch(reset("SecondStep"));
-              dispatch(reset("ThirdStep"));
-              dispatch(reset("CreateStepFour"));
-              dispatch(reset("CreateStepOne"));
-              dispatch(reset("CreateStepThree"));
-              dispatch(reset("CreateStepTwo"));
-              dispatch(reset("SkeletonUserProfile"));
-              dispatch(reset("Messages"));
-              dispatch(reset("VerifiedProfilePage"));
-              dispatch(reset("ChooseCity"));
-              dispatch(deAuthenticateAction());
-              router.push("/auth/login");
-              // window.location.reload();
+              if (router?.query?.edit) {
+                return router.back();
+              } else {
+                dispatch(reset("signupStep2"));
+                dispatch(reset("DatePreview"));
+                dispatch(reset("RegisterFormMale"));
+                dispatch(reset("signupStep3"));
+                dispatch(reset("RegisterForm"));
+                dispatch(reset("forgotpassword"));
+                dispatch(reset("LoginForm"));
+                dispatch(reset("SecondStep"));
+                dispatch(reset("ThirdStep"));
+                dispatch(reset("CreateStepFour"));
+                dispatch(reset("CreateStepOne"));
+                dispatch(reset("CreateStepThree"));
+                dispatch(reset("CreateStepTwo"));
+                dispatch(reset("SkeletonUserProfile"));
+                dispatch(reset("Messages"));
+                dispatch(reset("VerifiedProfilePage"));
+                dispatch(reset("ChooseCity"));
+                dispatch(deAuthenticateAction());
+                router.push("/auth/login");
+                // window.location.reload();
+              }
             }}
           >
             <svg
@@ -197,50 +200,61 @@ const SecondStep = (props) => {
             </g>
           </svg> */}
 
-          <svg
-            width="55"
-            height="49"
-            viewBox="0 0 55 49"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="success_svg"
-          >
-            <path
-              d="M13 20C13 20 16.2474 22.9845 18 25C19.7526 27.0155 23 31.5 23 31.5C23 31.5 30.2048 20.8885 36 15.5C41.7952 10.1115 51.5 5 51.5 5"
-              stroke="white"
-              stroke-width="5.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="circle"
-            />
-            <rect width="49" height="49" rx="16" fill="currentColor" />
-            <mask
-              id="mask0_2_1437"
-              style={{ maskType: "alpha" }}
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="49"
+          {!router?.query?.edit && (
+            <svg
+              width="55"
               height="49"
+              viewBox="0 0 55 49"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="success_svg"
             >
-              <rect width="49" height="49" rx="16" fill="currentColor" />
-            </mask>
-            <g mask="url(#mask0_2_1437)">
               <path
-                d="M14 20C14 20 17.2474 22.9845 19 25C20.7526 27.0155 24 31.5 24 31.5C24 31.5 31.2048 20.8885 37 15.5C42.7952 10.1115 52.5 5 52.5 5"
+                d="M13 20C13 20 16.2474 22.9845 18 25C19.7526 27.0155 23 31.5 23 31.5C23 31.5 30.2048 20.8885 36 15.5C41.7952 10.1115 51.5 5 51.5 5"
                 stroke="white"
                 stroke-width="5.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 class="circle"
               />
-            </g>
-          </svg>
+              <rect width="49" height="49" rx="16" fill="currentColor" />
+              <mask
+                id="mask0_2_1437"
+                style={{ maskType: "alpha" }}
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="49"
+                height="49"
+              >
+                <rect width="49" height="49" rx="16" fill="currentColor" />
+              </mask>
+              <g mask="url(#mask0_2_1437)">
+                <path
+                  d="M14 20C14 20 17.2474 22.9845 19 25C20.7526 27.0155 24 31.5 24 31.5C24 31.5 31.2048 20.8885 37 15.5C42.7952 10.1115 52.5 5 52.5 5"
+                  stroke="white"
+                  stroke-width="5.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="circle"
+                />
+              </g>
+            </svg>
+          )}
         </span>
-        <p className="auth-register-p-text">Registration Completed</p>
-        <h2 style={{ textTransform: "capitalize" }}>
-          Welcome, {user?.user_name || ""}
-        </h2>
+        {!router?.query?.edit && (
+          <>
+            <p className="auth-register-p-text">Registration Completed</p>
+            <h2 style={{ textTransform: "capitalize" }}>
+              Welcome, {user?.user_name || ""}
+            </h2>
+          </>
+        )}
+        {router?.query?.edit && (
+          <h2 style={{ textTransform: "capitalize" }}>
+            Edit Profile, {user?.user_name || ""}
+          </h2>
+        )}
         <div className="text-center">
           <svg
             width="86"

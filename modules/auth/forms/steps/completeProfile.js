@@ -162,7 +162,33 @@ const CompleteProfile = (props) => {
           : "Profile Completed"}
       </h2>
       <p className="pt-4">
-        {!user?.email_verified ? (
+        {!user?.email_verified &&
+          !tokenValid &&
+          "You have already verified your email. Please provide us with 24hrs to conduct the review process. Le Society ensures optimal experience by only allowing serious members to join."}
+        {user?.email_verified && (
+          <>
+            <p className="mb-4">
+              Please wait up to 24 hours for your profile to be verified.
+            </p>
+            <p>
+              Le Society provide optimal experience by only allowing serious
+              members to join.
+            </p>
+          </>
+        )}
+        {!user?.email_verified && (
+          <>
+            <p>
+              Please verify your email address, by clicking on the link in the
+              email that was delivered to your inbox.
+            </p>
+            <p className="mt-4">
+              please check your junk mail in case email not recieved on inbox.
+            </p>
+          </>
+        )}
+
+        {/* {!user?.email_verified ? (
           !tokenValid ? (
             "You have already verified your email. Please provide us with 24hrs to conduct the review process. Le Society ensures optimal experience by only allowing serious members to join."
           ) : (
@@ -186,7 +212,7 @@ const CompleteProfile = (props) => {
               members to join.
             </p>
           </>
-        )}
+        )} */}
       </p>
       {!user?.email_verified ? (
         <span

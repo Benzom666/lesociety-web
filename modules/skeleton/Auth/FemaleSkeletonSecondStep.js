@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { reduxForm } from "redux-form";
 import validate from "../../auth/forms/validate/validate";
@@ -5,6 +6,8 @@ import validate from "../../auth/forms/validate/validate";
 import SkeletonElement from "./../SkeletonElement";
 
 const FemaleSkeletonSecondStep = (props) => {
+  const router = useRouter();
+
   return (
     <form className="upload-pics">
       <div className="d-block d-md-none login-text mb-0">
@@ -12,10 +15,12 @@ const FemaleSkeletonSecondStep = (props) => {
           <SkeletonElement type="icon" />
         </a>
       </div>
-      <span className="completion-sign">
-        <SkeletonElement type="verified-icon" />
-      </span>
-      <SkeletonElement type="second-step-p" />
+      {!router?.query?.edit && (
+        <span className="completion-sign">
+          <SkeletonElement type="verified-icon" />
+        </span>
+      )}
+      {!router?.query?.edit && <SkeletonElement type="second-step-p" />}
 
       <SkeletonElement type="second-step-p" />
 
