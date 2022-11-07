@@ -173,8 +173,8 @@ const ChooseCity = (props) => {
     <div className="inner-page">
       {/* {width > 767 && <HeaderLoggedIn />} */}
       <div className="inner-part-page">
-        <div className="container create-date-wrap" style={{maxWidth:"1400px",margin:"0px" ,padding:"0px"}}>
-          <div className="auth-section choose-city">
+        <div className="container create-date-wrap">
+          <div className="auth-section choose-city new-city">
             <form onSubmit={handleSubmit} >
               <div className="city-top" style={{width:"340px" ,margin:"0px auto"}}>
               <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
