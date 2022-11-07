@@ -25,10 +25,14 @@ const CompleteProfile = (props) => {
           method: "POST",
           url: `user/verify-email`,
         });
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
         // showToast(res.data.message, 'success')
       } catch (err) {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
         console.log("error", err);
       }
     }
@@ -47,7 +51,9 @@ const CompleteProfile = (props) => {
             method: "POST",
             url: `user/email-verification`,
           });
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
           // debugger
           // dispatch({
           //     type: AUTHENTICATE_UPDATE,
@@ -59,7 +65,9 @@ const CompleteProfile = (props) => {
           });
           // showToast(res.data.message, 'success')
         } catch (err) {
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
           setTokenValid(false);
         }
       }
@@ -82,9 +90,13 @@ const CompleteProfile = (props) => {
         type: AUTHENTICATE_UPDATE,
         payload: { ...res.data?.data?.user },
       });
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
     } catch (err) {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
       console.log("err", err);
     }
   };
