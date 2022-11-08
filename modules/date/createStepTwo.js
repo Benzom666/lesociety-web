@@ -119,7 +119,7 @@ const CreateStepTwo = (props) => {
           <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
         </div>
         {width > 767 && (
-          <div className="d-flex justify-content-center"style={{marginLeft:"28px"}}>
+          <div className="d-flex justify-content-center"style={{marginLeft:"40px"}}>
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <IoIosClose
               className="desk-close-icon mouse-point"
@@ -139,7 +139,7 @@ const CreateStepTwo = (props) => {
             <li className="active">
               <span></span>
             </li>
-            <li>
+            <li className="active">
               <span></span>
             </li>
             <li>

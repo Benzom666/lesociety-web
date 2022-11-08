@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
-import DatePrice from './icon/DatePrice';
 const ClassSelection = (props) => {
     const [options, setOptions] = useState(props.options)
     const onChange = (value) => {
@@ -16,7 +15,10 @@ const ClassSelection = (props) => {
         <ClassSelectionStyle className="class_select_wrap" style={{color: props.textColor}} checkColor={{checked: props.checkedColor}}>
             {options && options.map((option, index) => {
                 return <div className="radio_groups">
-                        <DatePrice/>
+
+                        {<div className='rate-tag'>
+                           <span className="price-tag">{option.rate}</span>
+                      </div>}
                         <input 
                             type="radio"
                             id={option.id}

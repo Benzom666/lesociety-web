@@ -98,7 +98,7 @@ const CreateStepFour = (props) => {
           <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
         </div>
         {width > 767 && (
-          <div className="d-flex justify-content-center" style={{marginLeft:"28px"}}>
+          <div className="d-flex justify-content-center" style={{marginLeft:"40px"}}>
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <IoIosClose
               className="desk-close-icon mouse-point"
@@ -124,7 +124,7 @@ const CreateStepFour = (props) => {
             <li className="complete active">
               <span></span>
             </li>
-            <li>
+            <li className="active">
               <span></span>
             </li>
             <li>
@@ -200,7 +200,7 @@ const CreateStepFour = (props) => {
                 </>
             
               <div className="mb-8 bottom-content text-center" style={{marginBottom:"28px"}}>
-                <p>
+                <p style={{fontSize:"16px"}}>
                 Thank you for being one of our early adopters! To show you our appreciation, we will keep your posts active until you delete it. This allows you to earn multiple times for each post. Goodluck!
 
                 </p>

@@ -3,7 +3,7 @@ import React from 'react'
 function DatePrice() {
   return (
     <div>
-        <span className="price-tag">$$</span>
+        <span className="price-tag">$-$$</span>
     </div>
   )
 }

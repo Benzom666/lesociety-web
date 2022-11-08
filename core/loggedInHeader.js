@@ -96,14 +96,13 @@ export default function HeaderLoggedIn({
   }, []);
 
   const toggleClass = () => {
-    if (width?.width > 425) {
+    if (width?.width > 480) {
       toggleModal()
     } else {
       setActive(!isActive);
       document.body.classList.toggle("open-sidebar");
     }
   };
-
   return (
     <header
       style={fixed ? { position: "fixed", width: "100%", zIndex: "99" } : {}}
@@ -166,7 +165,7 @@ export default function HeaderLoggedIn({
                   </div>
                 </li>
               </ul>
-              {width?.width > 425 ? <SideBarPopup isOpen={modalIsOpen} toggle={toggleModal}></SideBarPopup>
+              {width?.width > 480 ? <SideBarPopup isOpen={modalIsOpen} toggle={toggleModal}></SideBarPopup>
                 : <div
                   id="sidebar-header"
                   className={
