@@ -1,7 +1,7 @@
 import React from "react";
 import withAuth from "../core/withAuth";
-import MessageSend from '../assets/message_send'
-import MessageSend2 from '../assets/message_send2'
+import MessageSend from "../assets/message_send.png";
+import MessageSend2 from "../assets/message_send2.png";
 function Chat({ currentChat, category }) {
   return (
     <div className="message-content-side">
@@ -114,7 +114,11 @@ function Chat({ currentChat, category }) {
               />
               <button type="button" className="send_btn" onClick={sendMessage}>
                 {/* <IoIosSend size={25} color={"#F24462"} /> */}
-                <Image  src={newMessage==="" ? MessageSend :MessageSend2} alt="send-btn" size={25}/>
+                <Image
+                  src={newMessage === "" ? MessageSend : MessageSend2}
+                  alt="send-btn"
+                  size={25}
+                />
               </button>
             </div>
           </div>
