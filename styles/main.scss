@@ -4794,7 +4794,6 @@ body .verification_card_header {
 /* animation effects */
 .shimmer-wrapper {
   position: absolute;
-  /* parent must be relative position & overflow hidden */
   top: 0;
   left: 0;
   width: 100%;
@@ -4804,13 +4803,44 @@ body .verification_card_header {
 .shimmer {
   width: 50%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.2);
+
+  // background: rgba(255, 255, 255, 0.2);
   transform: skewX(-20deg);
-  box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.2);
+  // box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.2);
 }
 .dark .shimmer {
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.05);
+}
+
+.skeleton-loader:empty {
+  // background: linear-gradient(
+  //     to right,
+  //     rgba(255, 255, 255, 0),
+  //     rgba(68, 68, 68, 0.5) 50%,
+  //     rgba(255, 255, 255, 0) 100%
+  //   ),
+  //   #151515;
+  // background-repeat: repeat-y;
+  // background-size: 50px 500px;
+  // background-position: 0 0;
+  // animation: shine 1.5s infinite;
+  animation: skeleton 0.5s linear infinite alternate;
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: hsl(0, 0%, 15%);
+  }
+  100% {
+    background-color: hsl(0, 0%, 9%);
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 100% 0;
+  }
 }
 
 @keyframes loading {

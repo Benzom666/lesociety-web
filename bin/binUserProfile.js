@@ -245,47 +245,7 @@ function UserProfile({ preview, editHandle }) {
     fetchDates(params);
   };
 
-  const userImageProfile =
-    userDetail?.images?.length > 0
-      ? userDetail?.images[0]
-      : user?.un_verified_images?.length > 0 && router.query?.edit
-      ? user?.un_verified_images[0]
-      : user.images && user.images[0];
-
-  const userImage1 =
-    userDetail?.images?.length > 0
-      ? userDetail?.images[1]
-      : user?.un_verified_images?.length > 0 && router.query?.edit
-      ? user?.un_verified_images[1]
-      : user.images && user.images[1];
-
-  const userImage2 =
-    userDetail?.images?.length > 0
-      ? userDetail?.images[2]
-      : user?.un_verified_images?.length > 0 && router.query?.edit
-      ? user?.un_verified_images[2]
-      : user.images && user.images[2];
-
-  const userImage3 =
-    userDetail?.images?.length > 0
-      ? userDetail?.images[3]
-      : user?.un_verified_images?.length > 0 && router.query?.edit
-      ? user?.un_verified_images[3]
-      : user.images && user.images[3];
-
-  const userTagline =
-    userDetail?.tagline ||
-    (router.query?.edit && user?.un_verified_tagline
-      ? user?.un_verified_tagline
-      : user?.tagline);
-
-  const userDescription =
-    userDetail?.description ||
-    (router.query?.edit && user?.un_verified_description
-      ? user?.un_verified_description
-      : user?.description);
-
-  console.log("userImageProfile", userImage3);
+  console.log("userDate", userDates);
   // console.log("paget", page);
 
   if (pageLoading) {
@@ -313,10 +273,9 @@ function UserProfile({ preview, editHandle }) {
                               <div className="pos-relative">
                                 <Image
                                   src={
-                                    // userDetail?.images
-                                    //   ? userDetail?.images[0]
-                                    //   : user.images && user.images[0]
-                                    userImageProfile
+                                    userDetail?.images
+                                      ? userDetail?.images[0]
+                                      : user.images && user.images[0]
                                   }
                                   alt="user image"
                                   width={270}
@@ -414,10 +373,9 @@ function UserProfile({ preview, editHandle }) {
                                   <div className="pos-relative">
                                     <img
                                       src={
-                                        // userDetail?.images
-                                        //   ? userDetail?.images[0]
-                                        //   : user.images && user.images[0]
-                                        userImage1
+                                        userDetail?.images
+                                          ? userDetail?.images[0]
+                                          : user.images && user.images[0]
                                       }
                                       alt="user image"
                                       width="350"
@@ -442,10 +400,9 @@ function UserProfile({ preview, editHandle }) {
                             <figure>
                               <Image
                                 src={
-                                  // userDetail?.images
-                                  //   ? userDetail?.images[1]
-                                  //   : user.images && user.images[1]
-                                  userImage1
+                                  userDetail?.images
+                                    ? userDetail?.images[1]
+                                    : user.images && user.images[1]
                                 }
                                 alt="user image"
                                 width={160}
@@ -455,10 +412,9 @@ function UserProfile({ preview, editHandle }) {
                             <figure>
                               <Image
                                 src={
-                                  // userDetail?.images
-                                  //   ? userDetail?.images[2]
-                                  //   : user.images && user.images[2]
-                                  userImage2
+                                  userDetail?.images
+                                    ? userDetail?.images[2]
+                                    : user.images && user.images[2]
                                 }
                                 alt="user image"
                                 width={160}
@@ -468,10 +424,9 @@ function UserProfile({ preview, editHandle }) {
                             <figure>
                               <Image
                                 src={
-                                  // userDetail?.images
-                                  //   ? userDetail?.images[3]
-                                  //   : user.images && user.images[3]
-                                  userImage3
+                                  userDetail?.images
+                                    ? userDetail?.images[3]
+                                    : user.images && user.images[3]
                                 }
                                 alt="user image"
                                 width={160}
@@ -481,8 +436,7 @@ function UserProfile({ preview, editHandle }) {
                           </div>
                           <>
                             <h4 className="mb-5 mt-4 text-center tagline-font  word-break: break-word">
-                              “{userTagline}”
-                              {/* {userDetail?.tagline || user?.tagline} */}
+                              “{userDetail?.tagline || user?.tagline}”
                             </h4>
 
                             {!preview &&
@@ -776,10 +730,7 @@ function UserProfile({ preview, editHandle }) {
                                   </linearGradient>
                                 </defs>
                               </svg>
-                              <p className="">
-                                {userDescription}
-                                {/* {user.description} */}
-                              </p>
+                              <p className="">{user.description}</p>
                               {preview && (
                                 <div className="button-wrapper profile-btn">
                                   <button

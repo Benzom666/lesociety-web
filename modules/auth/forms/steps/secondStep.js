@@ -36,27 +36,120 @@ const SecondStep = (props) => {
     }
   }, [user]);
 
+  // const onSubmit = async (values) => {
+  //   console.log("values", values);
+  //   try {
+  //     setLoader(true);
+  //     const imageUploaded = await imageUploader([
+  //       values.imageUpload?.length > 0 ? values?.imageUpload : user?.images[0],
+  //       values.imageUpload2?.length > 0 ? values.imageUpload2 : user?.images[1],
+  //       values.imageUpload3?.length > 0 ? values.imageUpload3 : user?.images[2],
+  //       values.imageUpload4?.length > 0 ? values.imageUpload4 : user?.images[3],
+  //     ]);
+  //     if (imageUploaded) {
+  //       // values.un_verified_images = imageUploaded.map((image) => image?.url);
+  //       values.images = imageUploaded.map((image) => image?.url);
+  //       values.email = user.email;
+  //       // if(!router?.query?.edit) {
+  //       values.step_completed = 2;
+  //       // }
+  //       const formData = new FormData();
+  //       Object.keys(values).forEach((key) => {
+  //         formData.append(key, values[key]);
+  //       });
+
+  //       dispatch(
+  //         signupStep2({ ...values, isUpdate: router?.query?.edit }, setLoader)
+  //       );
+  //     }
+  //   } catch (err) {
+  //     setLoader(false);
+  //   }
+  // };
+
   const onSubmit = async (values) => {
+    console.log("values", values);
     try {
       setLoader(true);
-      const imageUploaded = await imageUploader([
-        values.imageUpload?.length > 0 ? values?.imageUpload : user?.images[0],
-        values.imageUpload2?.length > 0 ? values.imageUpload2 : user?.images[1],
-        values.imageUpload3?.length > 0 ? values.imageUpload3 : user?.images[2],
-        values.imageUpload4?.length > 0 ? values.imageUpload4 : user?.images[3],
+      // const imageUploaded = await imageUploader([
+      //   values.imageUpload?.length > 0 ? values?.imageUpload : user?.images[0],
+      //   values.imageUpload2?.length > 0 ? values.imageUpload2 : user?.images[1],
+      //   values.imageUpload3?.length > 0 ? values.imageUpload3 : user?.images[2],
+      //   values.imageUpload4?.length > 0 ? values.imageUpload4 : user?.images[3],
+      // ]);
+
+      const verifiedImageUploaded = await imageUploader([
+        user?.images[0],
+        user?.images[1],
+        user?.images[2],
+        user?.images[3],
       ]);
-      if (imageUploaded) {
-        values.images = imageUploaded.map((image) => image?.url);
-        values.email = user.email;
-        // if(!router?.query?.edit) {
-        values.step_completed = 2;
-        // }
+
+      const unverifiedImageUploaded = await imageUploader([
+        values.imageUpload?.length > 0 ? values?.imageUpload : "",
+        values.imageUpload2?.length > 0 ? values.imageUpload2 : "",
+        values.imageUpload3?.length > 0 ? values.imageUpload3 : "",
+        values.imageUpload4?.length > 0 ? values.imageUpload4 : "",
+      ]);
+
+      if (verifiedImageUploaded || unverifiedImageUploaded) {
+        values.un_verified_images = unverifiedImageUploaded.map(
+          (image) => image?.url
+        );
+        values.images = verifiedImageUploaded.map((image) => image?.url);
+        // values.email = user.email;
+        // values.step_completed = 2;
+
+        // write compare function to compare the images ?
+
+        let data;
+
+        // if edit is true and values are not changed
+
+        if (router.query.edit) {
+          data = {
+            tagline: user?.tagline,
+            description: user?.description,
+            images: user?.images,
+            un_verified_images:
+              (values.imageUpload?.length > 0 &&
+                values?.imageUpload !== user?.images[0]) ||
+              (values.imageUpload2?.length > 0 &&
+                values.imageUpload2 !== user?.images[1]) ||
+              (values.imageUpload3?.length > 0 &&
+                values.imageUpload3 !== user?.images[2]) ||
+              (values.imageUpload4?.length > 0 &&
+                values.imageUpload4 !== user?.images[3])
+                ? values.un_verified_images
+                : [],
+            un_verified_tagline:
+              values.tagline !== user?.tagline ? values.tagline : "",
+            un_verified_description:
+              values.description !== user?.description
+                ? values.description
+                : "",
+            email: user.email,
+            step_completed: 2,
+          };
+        } else {
+          data = {
+            description: values?.description,
+            tagline: values?.tagline,
+            images: values.images,
+            step_completed: 2,
+            email: user?.email,
+          };
+        }
+
         const formData = new FormData();
-        Object.keys(values).forEach((key) => {
-          formData.append(key, values[key]);
+        Object.keys(data).forEach((key) => {
+          formData.append(key, data[key]);
         });
+
+        console.log("data", data);
+
         dispatch(
-          signupStep2({ ...values, isUpdate: router?.query?.edit }, setLoader)
+          signupStep2({ ...data, isUpdate: router?.query?.edit }, setLoader)
         );
       }
     } catch (err) {

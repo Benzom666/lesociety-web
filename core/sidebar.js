@@ -22,7 +22,7 @@ export default function SideBar() {
   const router = useRouter();
   const [documentUpoaded, setDocumentUpoaded] = useState(false);
 
-  console.log("formValue", formValue);
+  // console.log("formValue", formValue);
   useEffect(() => {
     if (user?.selfie && user?.document) {
       setDocumentUpoaded(true);

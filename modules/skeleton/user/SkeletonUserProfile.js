@@ -75,15 +75,15 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
   // }, []);
 
   return (
-    <div className={`inner-page `}>
+    <div className={`inner-page`}>
       {!preview && <HeaderLoggedIn />}
-      <div className="inner-part-page">
+      <div className="inner-part-page ">
         <div
           className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${
             preview ? "space-top" : ""
           }`}
         >
-          <div className="container user_profile_page skeleton-wrapper">
+          <div className="container user_profile_page">
             <div className="row">
               <div className="col-md-2"></div>
               <div className="col-md-8">
@@ -107,7 +107,7 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
                           {/* {(router?.query?.userName === user.user_name ||
                             router?.pathname === "/user/user-profile") && (
                             <div className="d-flex align-items-center mb-0 mt-3">
-                             
+
                               <SkeletonElement type="create-date-button" />
                             </div>
                           )} */}
@@ -326,6 +326,25 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
       </div>
     </div>
   );
+
+  // return (
+  //   <div class="prod--wrapper">
+  //     <div class="prod--col prod--img">
+  //       <img id="productImage" class="prod--img-graphic skeleton-loader" />
+  //     </div>
+  //     <div class="prod--col prod--details">
+  //       <div class="prod--row prod--name">
+  //         <span id="productName" class="prod--name-text skeleton-loader"></span>
+  //       </div>
+  //       <div class="prod--row prod--description">
+  //         <span
+  //           id="productId"
+  //           class="prod--description-text skeleton-loader"
+  //         ></span>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default SkeletonUserProfile;
