@@ -376,7 +376,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       .age-field {
         .form-control {
           width: 100px;
-          // -webkit-appearance: none;
+          -webkit-appearance: none;
 
           @media only screen and (max-width: 767px) {
             width: 60px;
@@ -538,7 +538,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         input:-webkit-autofill:focus {
           background-color: #000 !important;
           color: #555 !important;
-          // -webkit-box-shadow: 0 0 0 1000px #151515 inset !important;
+          -webkit-box-shadow: 0 0 0 1000px #151515 inset !important;
           -webkit-text-fill-color: #d0d0d0 !important;
           border: 1px solid rgba(255, 255, 255, 0.4);
         }
@@ -3053,7 +3053,7 @@ body .verification_card_header {
     margin-bottom: 12px;
     margin-right: 10px;
     flex: 1;
-    // min-width: 48%;
+    min-width: 250px;
     // max-width: 50%;
 
     .date_list {
