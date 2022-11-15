@@ -11,7 +11,8 @@ import withAuth from "@/core/withAuth";
 import { socket } from "../user/user-list";
 import NoImage from "assets/img/no-image.png";
 import { IoIosArrowBack } from "react-icons/io";
-
+import MessageSend from 'assets/message_send.png'
+import MessageSend2 from 'assets/message_send2.png'
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
 function ChatMessages({ ...props }) {
@@ -493,12 +494,13 @@ function ChatMessages({ ...props }) {
                               className="send_btn"
                               onClick={sendMessage}
                             >
-                              <IoIosSend
+                              {/* <IoIosSend
                                 size={25}
                                 color={
                                   newMessage === "" ? "#686868" : "#F24462"
                                 }
-                              />
+                              /> */}
+                              <Image  src={newMessage ==="" ? MessageSend :MessageSend2} alt="send-btn"/>
                             </button>
                           </div>
                         </div>

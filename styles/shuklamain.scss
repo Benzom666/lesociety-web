@@ -61,3 +61,24 @@
   }
 }
  
+.mobile-verified-btn{
+    width: 100%;  
+    background-color: #F24462;
+    color: #fff;
+    border: none;
+    line-height: 46px;
+    cursor: pointer;
+    outline: none;
+    min-height: 50px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: "Helvetica-Light";
+    margin-top: 20px;
+}
+
+.verified-upload-mobile{
+  width: 80%;
+  height: 91px;
+  margin: 20px auto 0 auto;
+}

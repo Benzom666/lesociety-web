@@ -2572,7 +2572,6 @@ div[id="scrolldiv"] {
 
   .user-card-sidebar {
     padding: 30px 30px;
-
     figure {
       margin-right: 15px;
 
@@ -2916,7 +2915,7 @@ body {
           margin-bottom: 1rem;
           word-break: break-word;
           // margin-left: 30px;
-          margin-right: 30px;
+          //margin-right: 30px;
         }
 
         .member-since {
@@ -3975,6 +3974,7 @@ body .verification_card_header {
           }
 
           .send_btn {
+            width:36px;
             position: absolute;
             right: 15px;
             top: calc(50% - 15px);
@@ -5123,6 +5123,7 @@ path {
     }
 
     .send_btn {
+      width: 36px;
       position: absolute;
       right: 15px;
       top: calc(50% - 15px);
@@ -5237,7 +5238,7 @@ path {
 
 .btn-custom {
   margin-top: -28px !important;
-  margin-left:284px !important;
+  margin-left:254px !important;
   //margin-right: -54px !important;
   font-size: 25px;
   color: #fff;
@@ -5246,7 +5247,7 @@ path {
 
 .modal-body {
   font-size: 13px !important;
-  padding: 30px 20px;
+  padding: 30px 0px;
 
   .sidebar_wrap {
     height: calc(100vh - 130px);
@@ -5259,7 +5260,8 @@ path {
   }
 
   .verification_card_header {
-    padding: 30px 30px;
+    padding: 20px 30px;
+    margin-top:2px;
   }
 
   span.userdetails {
@@ -5276,6 +5278,7 @@ path {
 
   .header_btn_wrap a {
     line-height: 34px;
+    font-weight: 300;
   }
 
   .profile-btn {
@@ -5288,8 +5291,9 @@ path {
   }
 
   .user-card-sidebar {
-    padding: 10px 30px;
-    padding-top: 22px;
+    //padding: 10px 5px;
+    padding-top: 28px;
+   // margin-top: 40px;
   }
 
   .sidebar_wrap .user-card-sidebar .sidebar_nav_links ul {
@@ -5365,4 +5369,8 @@ path {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
+}
+.modal-open{
+   opacity: 0.71;
+   z-index: -1;
 }

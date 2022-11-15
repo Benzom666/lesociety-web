@@ -33,6 +33,7 @@ function sideBarPopup({ isOpen, toggle }) {
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
       style={{ margin: "15px" }}
+      data-bs-backdrop="static" data-bs-keyboard="false"
     >
       <div
         className="modal-dialog modal-custom-dailog"
@@ -42,7 +43,7 @@ function sideBarPopup({ isOpen, toggle }) {
           className="modal-content"
           style={{
             backgroundColor: "black",
-            width: "340px",
+            width: "290px",
             borderRadius: "10px",
           }}
         >
@@ -57,15 +58,15 @@ function sideBarPopup({ isOpen, toggle }) {
               <Image
                 src={close1}
                 alt="user image"
-                width={32}
-                height={32}
+                width={52}
+                height={52}
                 // className="date-preview-img"
               />
             </button>
           </div>
           <div className="modal-body">
             <div className="sidebar_wrap">
-              <div className="user-card-sidebar">
+              <div className="user-card-sidebar" style={{padding:"15px 0px"}}>
                 <div className="d-flex align-items-center mb-2">
                   <figure className="mb-0 p-0">
                     <img

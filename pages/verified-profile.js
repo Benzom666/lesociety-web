@@ -21,6 +21,7 @@ import {
 } from "utils/Utilities";
 import { format } from "timeago.js";
 import qs from "qs";
+import classNames from 'classnames'
 
 import axios from "axios";
 import UserCardListForMessage from "./../core/UserCardListForMessage";
@@ -36,7 +37,6 @@ import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
 
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
-
   const [isActive, setActive] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
   const { width } = useWindowSize();
@@ -48,10 +48,9 @@ const VerifiedProfilePage = (props) => {
   const [selfie, setSelfie] = useState("");
   const [documentId, setDocumentId] = useState("");
   const dispatch = useDispatch();
-
+  console.log(width)
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
-
   useEffect(() => {
     if (user?.selfie && user?.document) {
       setDocumentUpoaded(true);
@@ -111,9 +110,11 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
-    { width > 425 ?  <HeaderLoggedIn /> :<VerifiedProfileMobileHeader/>}
+      {width > 425 ? <HeaderLoggedIn /> : <VerifiedProfileMobileHeader />}
       <div className="inner-part-page">
-        <div className="d-flex justify-content-center">
+        <div
+          //className="d-flex justify-content-center"
+          className={width > 480 && 'd-flex justify-content-center'}>
           <Formik
             initialValues={{
               email: user?.email,
@@ -128,42 +129,42 @@ const VerifiedProfilePage = (props) => {
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
                     <p></p>
-                   {width > 425 ? <> <h2 className="mb-0" style={{fontSize:"20px"}}>VERIFICATION</h2> 
-                    <svg
-                      width="86"
-                      height="2"
-                      viewBox="0 0 86 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="verified-under-line-size"
-                    >
-                      <path
-                        d="M0 1H86"
-                        stroke="url(#paint0_linear_1502:2374)"
-                      />
-                      <defs>
-                        <linearGradient
-                          id="paint0_linear_1502:2374"
-                          x1="96.6181"
-                          y1="-1.73994"
-                          x2="7.45495"
-                          y2="-1.73994"
-                          gradientUnits="userSpaceOnUse"
-                        >
-                          <stop stop-color="#FA789B" stopOpacity="0.01" />
-                          <stop offset="0.489981" stopColor="#F02D4E" />
-                          <stop
-                            offset="1"
-                            stopColor="#F24362"
-                            stopOpacity="0.01"
-                          />
-                        </linearGradient>
-                      </defs>
-                    </svg> 
-                    </>:null}
+                    {width > 425 ? <> <h2 className="mb-0" style={{ fontSize: "20px" }}>VERIFICATION</h2>
+                      <svg
+                        width="86"
+                        height="2"
+                        viewBox="0 0 86 2"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="verified-under-line-size"
+                      >
+                        <path
+                          d="M0 1H86"
+                          stroke="url(#paint0_linear_1502:2374)"
+                        />
+                        <defs>
+                          <linearGradient
+                            id="paint0_linear_1502:2374"
+                            x1="96.6181"
+                            y1="-1.73994"
+                            x2="7.45495"
+                            y2="-1.73994"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stop-color="#FA789B" stopOpacity="0.01" />
+                            <stop offset="0.489981" stopColor="#F02D4E" />
+                            <stop
+                              offset="1"
+                              stopColor="#F24362"
+                              stopOpacity="0.01"
+                            />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </> : null}
                     <HiBadgeCheck color={"white"} size={50} className="m-4" />
 
-                    <h3 style={{fontSize:"35px",marginBottom:"14px"}}>Get Verified</h3>
+                    <h3 style={{ fontSize: "35px", marginBottom: "14px" }}>Get Verified</h3>
                     <div className="verfied-profile-text">
                       <p className="mb-0">
                         Complete your verification to be more trusted
@@ -176,7 +177,9 @@ const VerifiedProfilePage = (props) => {
 
                     <div
                       className=
-                      {` ${selfieRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload'}`}
+                      {classNames(` ${selfieRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload'}`,
+                      width<480 ? 'verified-upload-mobile': "")}
+                      //{width > 480 && 'd-flex justify-content-center'
                       onClick={() => {
                         selfieRef?.current?.click();
                       }}
@@ -190,7 +193,7 @@ const VerifiedProfilePage = (props) => {
                         onChange={(e) => {
                           formProps.setFieldValue("selfie", e.target.files);
                         }}
-                        // onChange={(e) => imageChange(e, setSelfie)}
+                      // onChange={(e) => imageChange(e, setSelfie)}
                       />
 
                       <div className="verified-upload-btn">
@@ -206,7 +209,8 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                     <div
-                      className={` ${documentRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload-2'}`}
+                      className={ classNames(` ${documentRef?.current?.value ? 'verifieed-upload-active' : 'verified-upload-2'}`,
+                      width<480 ? 'verified-upload-mobile': "")}
                       onClick={() => {
                         documentRef?.current?.click();
                       }}
@@ -220,7 +224,7 @@ const VerifiedProfilePage = (props) => {
                         onChange={(e) => {
                           formProps.setFieldValue("document", e.target.files);
                         }}
-                        // onChange={(e) => imageChange(e, setDocumentId)}
+                      // onChange={(e) => imageChange(e, setDocumentId)}
                       />
                       <div className="verified-upload-btn">
                         <VerifiedUploadIcon documentUpoaded={documentUpoaded} />
@@ -242,7 +246,7 @@ const VerifiedProfilePage = (props) => {
                         <button
                           disabled={invalid}
                           type="submit"
-                          className="verification-type-submit"
+                          className={(width > 480) ? "verification-type-submit" : "mobile-verified-btn"}
                         >
                           {loading ? (
                             <span className="spin-loader-button"></span>
@@ -253,7 +257,7 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
-              { width >425  ?  <p style={{textAlign:"center",textDecorationLine:"underline"}}>Maybe Later</p> : null}
+                  {width > 425 ? <p style={{ textAlign: "center", textDecorationLine: "underline" }}>Maybe Later</p> : null}
                 </Form>
               );
             }}

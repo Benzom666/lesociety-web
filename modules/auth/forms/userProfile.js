@@ -436,7 +436,7 @@ function UserProfile({ preview, editHandle }) {
                           </div>
                           <>
                             <h4 className="mb-5 mt-4 text-center tagline-font  word-break: break-word">
-                              “{userDetail?.tagline || user?.tagline}”
+                            “ {userDetail?.tagline || user?.tagline} ” 
                             </h4>
 
                             {!preview &&

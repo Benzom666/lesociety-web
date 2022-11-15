@@ -31,6 +31,11 @@ export default function HeaderLoggedIn({
 
   function toggleModal() {
     setIsOpen(!modalIsOpen);
+    if(!modalIsOpen){
+      document.body.classList.add("modal-open");
+    } else{
+      document.body.classList.remove("modal-open");
+    }
   }
   // useEffect(() => {
   //   getConversations();
