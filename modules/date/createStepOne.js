@@ -31,7 +31,7 @@ const CreateStepOne = (props) => {
   return (
     <>
       <div className="inner_container">
-        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-5">
+        <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-0">
           <a onClick={previousPage}>
             <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -46,7 +46,7 @@ const CreateStepOne = (props) => {
 
         </div>
         {width > 767 && (
-          <div className="d-flex justify-content-center" style={{marginLeft:"28px"}}>
+          <div className="d-flex justify-content-center" style={{marginLeft:"40px"}}>
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <IoIosClose
               className="desk-close-icon mouse-point"
@@ -93,7 +93,7 @@ const CreateStepOne = (props) => {
               </p>
             </div>
           </div>
-          <div className="date-class-section choose-gender">
+          <div className="date-class-section choose-gender step-1">
             <form
               onSubmit={handleSubmit}
               style={{
@@ -112,9 +112,10 @@ const CreateStepOne = (props) => {
                   {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
                     Higher response rate
                   </div> */}
+                  
                   <Field
                     name="search_type"
-                    textColor={"#4F4E54"}
+                    textColor={"#AFABAB"}
                     checkedColor={"white"}
                     options={[
                       {
@@ -123,6 +124,7 @@ const CreateStepOne = (props) => {
                         iconName: "CustomIcon.Sun",
                         icon: <CustomIcon.Sun color={"#AFABAB"} size={30} />,
                         category: "standard_class_date",
+                        rate :"$-$$"
                       },
                       {
                         label: "Evening Date",
@@ -130,6 +132,7 @@ const CreateStepOne = (props) => {
                         icon: <CustomIcon.Moon color={"#AFABAB"} size={30} />,
                         iconName: "CustomIcon.Moon",
                         category: "standard_class_date",
+                        rate:"$-$$",
                       },
                       // {
                       //   label: "Outdoor Adventure",
@@ -170,6 +173,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.GetSporty",
                         category: "middle_class_dates",
+                        rate:"$-$$"
                       },
                       {
                         label: "Take A Class",
@@ -179,6 +183,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.TakeClass",
                         category: "middle_class_dates",
+                        rate:"$-$$"
                       },
                       {
                         label: "Entertainment & sports ",
@@ -191,6 +196,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.EntertainmentSports",
                         category: "middle_class_dates",
+                        rate:"$$-$$$$"
                       },
                       {
                         label: "Wine & Dine ",
@@ -200,6 +206,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.WineDine",
                         category: "middle_class_dates",
+                        rate:"$$$-$$$$"
                       },
                       {
                         label: "Bottles & Dance",
@@ -212,6 +219,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.BottlesDance",
                         category: "executive_class_dates",
+                        rate:"$$$-$$$$"
                       },
                     ]}
                     component={ClassSelection}

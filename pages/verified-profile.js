@@ -21,6 +21,7 @@ import {
 } from "utils/Utilities";
 import { format } from "timeago.js";
 import qs from "qs";
+import classNames from "classnames";
 
 import axios from "axios";
 import UserCardListForMessage from "./../core/UserCardListForMessage";
@@ -37,7 +38,6 @@ import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
 
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
-
   const [isActive, setActive] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
   const { width } = useWindowSize();
@@ -52,9 +52,9 @@ const VerifiedProfilePage = (props) => {
   const router = useRouter();
   //  const [isUpload,setIsUpload] =useState(false);
 
+  console.log(width);
   const selfieRef = useRef(null);
   const documentRef = useRef(null);
-
   useEffect(() => {
     if (user?.selfie && user?.document) {
       setDocumentUpoaded(true);
@@ -124,7 +124,10 @@ const VerifiedProfilePage = (props) => {
     <div className="inner-page">
       {width > 425 ? <HeaderLoggedIn /> : <VerifiedProfileMobileHeader />}
       <div className="inner-part-page">
-        <div className="d-flex justify-content-center">
+        <div
+          //className="d-flex justify-content-center"
+          className={width > 480 && "d-flex justify-content-center"}
+        >
           <Formik
             initialValues={{
               email: user?.email,
@@ -194,11 +197,15 @@ const VerifiedProfilePage = (props) => {
                     </div>
 
                     <div
-                      className={` ${
-                        selfieRef?.current?.value
-                          ? "verifieed-upload-active"
-                          : "verified-upload"
-                      }`}
+                      className={classNames(
+                        ` ${
+                          selfieRef?.current?.value
+                            ? "verifieed-upload-active"
+                            : "verified-upload"
+                        }`,
+                        width < 480 ? "verified-upload-mobile" : ""
+                      )}
+                      //{width > 480 && 'd-flex justify-content-center'
                       onClick={() => {
                         selfieRef?.current?.click();
                       }}
@@ -230,11 +237,14 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                     <div
-                      className={` ${
-                        documentRef?.current?.value
-                          ? "verifieed-upload-active"
-                          : "verified-upload-2"
-                      }`}
+                      className={classNames(
+                        ` ${
+                          documentRef?.current?.value
+                            ? "verifieed-upload-active"
+                            : "verified-upload-2"
+                        }`,
+                        width < 480 ? "verified-upload-mobile" : ""
+                      )}
                       onClick={() => {
                         documentRef?.current?.click();
                       }}
@@ -272,7 +282,11 @@ const VerifiedProfilePage = (props) => {
                         <button
                           disabled={invalid}
                           type="submit"
-                          className="verification-type-submit"
+                          className={
+                            width > 480
+                              ? "verification-type-submit"
+                              : "mobile-verified-btn"
+                          }
                         >
                           {loading ? (
                             <span className="spin-loader-button"></span>

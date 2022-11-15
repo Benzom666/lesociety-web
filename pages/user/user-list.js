@@ -24,6 +24,8 @@ import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
 import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
+import MessageSend from 'assets/message_send.png'
+import MessageSend2 from 'assets/message_send2.png'
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -514,7 +516,6 @@ function UserList(props) {
                       id="message"
                       component={CustomInput}
                     />
-
                     <IoIosSend
                       size={25}
                       color={
@@ -531,6 +532,14 @@ function UserList(props) {
                         formProps.resetForm();
                       }}
                     />
+                    {/* <Image src={formProps.values.message==="" ? MessageSend :MessageSend2} alt="send-btn"
+                    type="submit"
+                    onClick={() => {
+                      handleSubmit(formProps.values);
+                      formProps.resetForm()
+                     }}
+                     width="25" height="25"
+                    /> */}
                     {/* create svg with onclick */}
 
                     {/* <svg
