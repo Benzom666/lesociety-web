@@ -50,7 +50,7 @@ const ChooseCity = (props) => {
         params: {
           user_name: user?.user_name,
           current_page: 1,
-          per_page: 1000,
+          per_page: 10000,
         },
       });
       if (res.data.data?.dates) {
