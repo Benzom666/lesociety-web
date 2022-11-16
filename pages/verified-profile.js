@@ -222,10 +222,8 @@ const VerifiedProfilePage = (props) => {
                         // onChange={(e) => imageChange(e, setSelfie)}
                       />
 
-                      <div className="verified-upload-btn">
-                        <VerifiedUploadIcon
-                          documentUpoaded={selfieRef?.current?.value}
-                        />
+                      <div className={width>425 ?"verified-upload-btn": "verified-upload-btn-1"}>
+                        <VerifiedUploadIcon documentUpoaded={documentUpoaded} />
 
                         {selfieRef?.current?.value ? (
                           <p className="mb-0 document-uploaded">
@@ -260,10 +258,8 @@ const VerifiedProfilePage = (props) => {
                         }}
                         // onChange={(e) => imageChange(e, setDocumentId)}
                       />
-                      <div className="verified-upload-btn">
-                        <VerifiedUploadIcon
-                          documentUpoaded={documentRef?.current?.value}
-                        />
+                      <div className={width>425 ?"verified-upload-btn": "verified-upload-btn-1"}>
+                        <VerifiedUploadIcon documentUpoaded={documentUpoaded} />
                         <p className="mb-0">
                           {documentRef?.current?.value ? (
                             <p className="mb-0 document-uploaded">

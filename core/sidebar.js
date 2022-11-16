@@ -68,7 +68,7 @@ export default function SideBar() {
                 !documentUpoaded && router.push("/verified-profile")
               }
             >
-              <span>
+              <span className="pt-1">
                 {user?.verified
                   ? "VERIFIED"
                   : !documentUpoaded

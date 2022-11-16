@@ -57,10 +57,10 @@ const CreateStepOne = (props) => {
         )}
         <div className="step-wraps">
           <ul>
-            <li className="active">
+            <li className="complete active">
               <span></span>
             </li>
-            <li className="active">
+            <li className="complete active">
               <span></span>
             </li>
             <li>

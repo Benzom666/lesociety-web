@@ -43,7 +43,8 @@ function UserProfile({ preview, editHandle }) {
       item?.label === selectedDate?.middle_class_dates ||
       item?.label === selectedDate?.executive_class_dates
   );
-
+console.log(userDates);
+console.log(loading);
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
   const toFeet = (n) => {
@@ -575,7 +576,8 @@ function UserProfile({ preview, editHandle }) {
                                       user.user_name ||
                                       router?.pathname ===
                                         "/user/user-profile") && (
-                                      <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap w-100 justify-content-center">
+                                 !userDates.length  ?
+                                    <div className="d-flex flex-column justify-content-center align-items-center header_btn_wrap w-100 date-block-section">
                                         <button
                                           type="button"
                                           onClick={() =>
@@ -587,8 +589,22 @@ function UserProfile({ preview, editHandle }) {
                                         >
                                           Create New Date
                                         </button>
-                                      </div>
-                                    )}
+                                        <p className="date-text-1">Your dates are stored here</p>
+                                        </div>
+                                  : <div className="d-flex align-items-center mb-0 mt-2 header_btn_wrap w-100 justify-content-center">
+                                        <button
+                                          type="button"
+                                          onClick={() =>
+                                            router.push(
+                                              "/create-date/choose-city"
+                                            )
+                                          }
+                                          className="create-date w-50"
+                                        >
+                                          Create New Date
+                                        </button>
+                                      </div> 
+                                   )}
 
                                     <Modal
                                       isOpen={dateModalOpen}

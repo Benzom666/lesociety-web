@@ -14,8 +14,10 @@ import _ from "lodash";
 import { BiTime } from "react-icons/bi";
 import close1 from "../assets/close1.png";
 import { reset } from "redux-form";
-
+import classNames from "classnames";
+import useWindowSize from "utils/useWindowSize"
 function sideBarPopup({ isOpen, toggle }) {
+  const width = useWindowSize();
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -28,7 +30,7 @@ function sideBarPopup({ isOpen, toggle }) {
   }, [user]);
   return (
     <div
-      className={`modal fade ${isOpen ? "show d-block" : "d-none"}`}
+      className={classNames(`modal fade ${isOpen ? "show d-block" : "d-none"}`, width>1399 && "modal-fade-1")}
       id="sidebarPop"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -109,7 +111,7 @@ function sideBarPopup({ isOpen, toggle }) {
                       router.push("/verified-profile")
                     }
                   >
-                    <span>
+                    <span className="pt-1">
                       {user?.verified
                         ? "VERIFIED"
                         : !documentUpoaded
@@ -199,6 +201,7 @@ function sideBarPopup({ isOpen, toggle }) {
                   <button
                     className="log-btn"
                     type="button"
+                    style={{lineHeight:"3"}}
                     onClick={() => {
                       dispatch(reset("signupStep2"));
                       dispatch(reset("signupStep3"));

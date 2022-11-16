@@ -1,30 +1,30 @@
 import React from 'react';
 import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from "next/router";
-
+import useWindowSize from "utils/useWindowSize";
 function VerifiedProfileMobileHeader() {
     const router = useRouter();
-
+    // const width = useWindowSize();
     const goBack = () => {
         router.back();
     };
     return (
         <div className="message-mobile-header">
-            <div className="message-mobile-header-container">
-                <span>
+            <div className="message-mobile-header-container" style={{marginLeft:"10px"}}>
+                <span style={{marginTop:"5px"}}>
                     <IoIosArrowBack
                         size={25}
-                        color={"rgba(255, 255, 255, 0.7)"}
+                        color={"FFFFFF"}
                         className="message-mobile-header-icon"
                         onClick={goBack}
                     />
                 </span>
-                <span className="user-details">
+                <span className="user-details" style={{fontSize:"20px",fontWeight:"400",lineHeight:"23px",marginTop:"10px"}}>
                     <h3>VERIFICATION</h3>
                 </span>
             </div>
 
-            <div className="d-flex justify-content-center mt-2 me-0">
+            <div className="d-flex justify-content-center mt-1 me-0">
                 {/* <div className="p-3"></div> */}
                 <div>
                     <svg
