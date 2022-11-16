@@ -167,6 +167,20 @@ export const dateCategory = [
     iconName: "CustomIcon.BottlesDance",
     category: "executive_class_date",
   },
+  {
+    label: "Get Sporty",
+    id: "GetSporty",
+    icon: <CustomIcon.Sporty color={"#AFABAB"} size={35} />,
+    iconName: "CustomIcon.GetSporty",
+    category: "middle_class_dates",
+  },
+  {
+    label: "Brunch Date",
+    id: "MorningBeverage",
+    iconName: "CustomIcon.Sun",
+    icon: <CustomIcon.Sun color={"#AFABAB"} size={30} />,
+    category: "standard_class_date",
+  },
 ];
 
 export const countriesCode = {
