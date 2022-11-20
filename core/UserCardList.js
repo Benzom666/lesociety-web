@@ -51,13 +51,13 @@ const UserCardList = ({
   );
 
   useEffect(() => {
-    if (dateDetailsIsOpen) {
+    if (dateDetailsIsOpen && user?.gender === "male") {
+      setLoading(true);
       checkMessage();
     }
   }, [dateDetailsIsOpen]);
 
   const checkMessage = async () => {
-    setLoading(true);
     try {
       const data = {
         recieverId: date?.user_data?.length > 0 ? date?.user_data[0]?._id : "",
