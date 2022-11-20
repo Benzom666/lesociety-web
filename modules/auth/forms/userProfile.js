@@ -542,7 +542,7 @@ console.log(loading);
                                                 <span className="top-card_tag">
                                                   <span className="top-badge"></span>
                                                   <div className="price-card-name">
-                                                    <span>${date?.price}</span>
+                                                    <span className="date-price-card">${date?.price}</span>
                                                     <span className="hour">
                                                       <span>
                                                         {date?.date_length.replace(

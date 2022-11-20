@@ -75,4 +75,10 @@
   width: 80%;
   height: 91px;
   margin: 20px auto 0 auto;
-}/*# sourceMappingURL=shuklamain.css.map */
+}
+@media screen and (max-width: 767px) {
+  .inner-part-page .auth-section {
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=shuklamain.css.map */

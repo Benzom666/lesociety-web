@@ -42,7 +42,7 @@ export default function SideBar() {
               />
             </figure>
             <span className="userdetails">
-              <H5>{user?.user_name || ""}</H5>
+              <H5 style={{fontSize:"18px",letterSpacing:"0.09px"}}>{user?.user_name || ""}</H5>
               <SubHeading title="Member since Jan 2021" />
             </span>
           </div>
@@ -116,7 +116,7 @@ export default function SideBar() {
             <SubHeading title="Stay ahead of the crowd" />
           </div>
         )}
-        <div className="user-card-sidebar">
+        <div className="user-card-sidebar sidebar-nav-link">
           <div className="sidebar_nav_links">
             <ul>
               <li>

@@ -1223,7 +1223,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           letter-spacing: unset;
           line-height: unset;
           text-align: unset;
-          color: #eeeeee;
+          color: #AFABAB;
           font-family: "Helvetica-Light";
           margin-bottom: 7px;
         }
@@ -2092,7 +2092,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
       @media only screen and (max-width: 767px) {
         // background: transparent;
-        width: calc(100% - 30px);
+        //width: calc(100% - 30px);
       }
 
       .secret-input {
@@ -2598,6 +2598,7 @@ div[id="scrolldiv"] {
   overflow-y: auto;
 
   .user-card-sidebar {
+    //margin-top: 30px;
     padding: 30px 30px;
     figure {
       margin-right: 15px;
@@ -2614,6 +2615,8 @@ div[id="scrolldiv"] {
 
     .userdetails {
       h5 {
+        font-size: 18px;
+        letter-spacing: 0.09px;
         margin-bottom: 0;
         word-break: break-all;
       }
@@ -2632,7 +2635,9 @@ div[id="scrolldiv"] {
             align-items: center;
             justify-content: space-between;
             padding: 10px 0;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 0.08px;
             border-bottom: 0.5px solid #3a3939;
           }
         }
@@ -2641,13 +2646,16 @@ div[id="scrolldiv"] {
   }
 
   .verification_card_header {
+    // margin-top: -12px;
     background: #0b0b0b;
     padding: 20px 30px;
+    padding-bottom: 28px;
     border-top: 1px solid #242424;
     border-bottom: 1px solid #242424;
   }
 
   .bottom-footer-sidebar {
+    margin-top: 20px;
     padding: 20px 30px;
     position: absolute;
     width: 100%;
@@ -2673,12 +2681,13 @@ body {
       padding: 0px 15px;
       border: 1px solid #26292e;
       margin-right: 15px;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
       background: #191c21;
-      height: 50px;
-      // line-height: 35px;
-      line-height: 50px;
+      height: 35px;
+      line-height: 35px;
+      font-weight: 300;
+      //line-height: 50px;
       letter-spacing: 0.052px;
       width: 100%;
       text-align: center;
@@ -2729,7 +2738,7 @@ body {
     }
 
     .log-btn {
-      height: 50px !important;
+      height: 40px !important;
     }
   }
 
@@ -3172,7 +3181,8 @@ body .verification_card_header {
         flex-direction: column;
 
         .hour {
-          font-size: 12px;
+          font-size: 13.5px;
+          letter-spacing: 0.07px;
           text-align: center;
           font-family: "HelveticaNeueCyr";
           font-style: normal;
@@ -3220,7 +3230,8 @@ body .verification_card_header {
       max-width: 100% !important;
       margin-bottom: 20px;
       text-align: left;
-      font-size: 0.875rem;
+      //font-size: 0.875rem;
+      font-size: 18.26px;
     }
   }
 

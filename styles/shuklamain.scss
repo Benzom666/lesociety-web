@@ -1,14 +1,14 @@
 .city-suggestion-text {
   width: 100%;
-  padding: 20px 0;
+  padding: 35px 0;
   text-align: center;
   border-top: 1px solid #222326;
   border-bottom: 1px solid #222326;
   background: #0b0b0b;
 }
 
-.preview-date-header {
-  max-width: 1350px !important;
+.preview-date-header{
+  max-width: 1800px !important;
   margin: 0 auto !important;
 }
 
@@ -96,7 +96,9 @@
 .date-block-section{
   height: 133px;
   width:100%;
-  background-color: #222326;
+  background: linear-gradient(0deg, #151515, #151515),
+  linear-gradient(223.12deg, #293036 -60.08%, #272D32 104.31%);
+  ;
   border-radius: 8px;
 }
 .date-text-1{
@@ -105,4 +107,20 @@
   letter-spacing: 0.07px;
   color:#4F4E54;
   margin-top: 5px;
+}
+
+.price-card-name {
+  display: flex;
+  flex-direction: column;
+  .date-price-card{
+    font-size: 15.21px;
+    font-weight: 700;
+    letter-spacing: 0.07px;
+  }
+}
+
+.sidebar_wrap{
+  .sidebar-nav-link{
+    margin-top: 30px;
+  }
 }
