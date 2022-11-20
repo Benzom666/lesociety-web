@@ -141,9 +141,9 @@ function* signupStep2(data) {
           tagline: data?.payload?.tagline,
           images: data?.payload?.images,
           step_completed: 2,
-          // un_verified_images: data?.payload?.un_verified_images,
-          // un_verified_tagline: data?.payload?.un_verified_tagline,
-          // un_verified_description: data?.payload?.un_verified_description,
+          un_verified_images: data?.payload?.un_verified_images,
+          un_verified_tagline: data?.payload?.un_verified_tagline,
+          un_verified_description: data?.payload?.un_verified_description,
         },
       });
       // showToast(response.success.data.message, 'success')

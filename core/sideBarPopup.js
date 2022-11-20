@@ -33,7 +33,8 @@ function sideBarPopup({ isOpen, toggle }) {
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
       style={{ margin: "15px" }}
-      data-bs-backdrop="static" data-bs-keyboard="false"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
     >
       <div
         className="modal-dialog modal-custom-dailog"
@@ -66,7 +67,10 @@ function sideBarPopup({ isOpen, toggle }) {
           </div>
           <div className="modal-body">
             <div className="sidebar_wrap">
-              <div className="user-card-sidebar" style={{padding:"15px 0px"}}>
+              <div
+                className="user-card-sidebar"
+                style={{ padding: "15px 0px" }}
+              >
                 <div className="d-flex align-items-center mb-2">
                   <figure className="mb-0 p-0">
                     <img
@@ -83,10 +87,14 @@ function sideBarPopup({ isOpen, toggle }) {
                 </div>
                 <div className="d-flex align-items-center mb-0 header_btn_wrap">
                   <Link href="/user/user-profile">
-                    <a style={{ height: "35px" }}>View Profile</a>
+                    <a style={{ height: "35px" }} onClick={toggle}>
+                      View Profile
+                    </a>
                   </Link>
                   <Link href="/auth/profile?edit=true">
-                    <a style={{ height: "35px" }}>Edit Profile</a>
+                    <a style={{ height: "35px" }} onClick={toggle}>
+                      Edit Profile
+                    </a>
                   </Link>
                 </div>
               </div>
@@ -96,7 +104,9 @@ function sideBarPopup({ isOpen, toggle }) {
                     type="button"
                     className="d-flex align-items-center justify-content-center profile-btn"
                     onClick={() =>
-                      !documentUpoaded && router.push("/verified-profile")
+                      !documentUpoaded &&
+                      toggle() &&
+                      router.push("/verified-profile")
                     }
                   >
                     <span>

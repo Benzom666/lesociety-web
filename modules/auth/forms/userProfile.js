@@ -220,7 +220,7 @@ function UserProfile({ preview, editHandle }) {
   useEffect(() => {
     if (router?.query?.edit && user?.step_completed === 4) {
       router.push({
-        pathname: "/user/user-list",
+        pathname: "/auth/update-profile",
       });
     }
   }, [user, router?.query?.edit]);
@@ -275,20 +275,17 @@ function UserProfile({ preview, editHandle }) {
 
   const userTagline =
     userDetail?.tagline ||
-    // (router.query?.edit && user?.un_verified_tagline
-    //   ? user?.un_verified_tagline
-    //   :
-    user?.tagline;
-  // )
+    (router.query?.edit && user?.un_verified_tagline
+      ? user?.un_verified_tagline
+      : user?.tagline);
+
   const userDescription =
     userDetail?.description ||
-    // (router.query?.edit && user?.un_verified_description
-    //   ? user?.un_verified_description
-    // :
-    user?.description;
-  // );
+    (router.query?.edit && user?.un_verified_description
+      ? user?.un_verified_description
+      : user?.description);
 
-  console.log("userImageProfile", userImage3);
+  console.log("userImageProfile", userImageProfile);
   // console.log("paget", page);
 
   if (pageLoading) {
@@ -316,10 +313,10 @@ function UserProfile({ preview, editHandle }) {
                               <div className="pos-relative">
                                 <Image
                                   src={
-                                    userDetail?.images
-                                      ? userDetail?.images[0]
-                                      : user.images && user.images[0]
-                                    // userImageProfile
+                                    // userDetail?.images
+                                    //   ? userDetail?.images[0]
+                                    //   : user.images && user.images[0]
+                                    userImageProfile
                                   }
                                   alt="user image"
                                   width={270}
@@ -420,7 +417,7 @@ function UserProfile({ preview, editHandle }) {
                                         // userDetail?.images
                                         //   ? userDetail?.images[0]
                                         //   : user.images && user.images[0]
-                                        userImage1
+                                        userImageProfile
                                       }
                                       alt="user image"
                                       width="350"
@@ -445,10 +442,10 @@ function UserProfile({ preview, editHandle }) {
                             <figure>
                               <Image
                                 src={
-                                  userDetail?.images
-                                    ? userDetail?.images[1]
-                                    : user.images && user.images[1]
-                                  // userImage1
+                                  // userDetail?.images
+                                  //   ? userDetail?.images[1]
+                                  //   : user.images && user.images[1]
+                                  userImage1
                                 }
                                 alt="user image"
                                 width={160}
@@ -458,10 +455,10 @@ function UserProfile({ preview, editHandle }) {
                             <figure>
                               <Image
                                 src={
-                                  userDetail?.images
-                                    ? userDetail?.images[2]
-                                    : user.images && user.images[2]
-                                  // userImage2
+                                  // userDetail?.images
+                                  //   ? userDetail?.images[2]
+                                  //   : user.images && user.images[2]
+                                  userImage2
                                 }
                                 alt="user image"
                                 width={160}
@@ -471,10 +468,10 @@ function UserProfile({ preview, editHandle }) {
                             <figure>
                               <Image
                                 src={
-                                  userDetail?.images
-                                    ? userDetail?.images[3]
-                                    : user.images && user.images[3]
-                                  // userImage3
+                                  // userDetail?.images
+                                  //   ? userDetail?.images[3]
+                                  //   : user.images && user.images[3]
+                                  userImage3
                                 }
                                 alt="user image"
                                 width={160}

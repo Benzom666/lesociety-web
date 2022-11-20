@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import UserImg from "assets/img/profile.png";
 import UserImg3 from "assets/img/user-3.png";
 import UserImg4 from "assets/img/user-4.png";
@@ -8,7 +8,7 @@ import { CustomIcon } from "core/icon";
 import Modal from "react-modal";
 import Link from "next/link";
 import H5 from "./H5";
-import { dateCategory } from "utils/Utilities";
+import { apiRequest, dateCategory } from "utils/Utilities";
 import { IoIosClose } from "react-icons/io";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,7 +29,9 @@ const UserCardList = ({
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
+  const [loader, setLoading] = useState(false);
   const [msgModal, setMsgModal] = React.useState(false);
+  const [alreadyMessaged, setAlreadyMessaged] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
@@ -47,6 +49,36 @@ const UserCardList = ({
       item?.label === date?.middle_class_dates ||
       item?.label === date?.executive_class_dates
   );
+
+  useEffect(() => {
+    if (dateDetailsIsOpen) {
+      checkMessage();
+    }
+  }, [dateDetailsIsOpen]);
+
+  const checkMessage = async () => {
+    setLoading(true);
+    try {
+      const data = {
+        recieverId: date?.user_data?.length > 0 ? date?.user_data[0]?._id : "",
+        dateId: date?._id ?? "",
+      };
+      const res = await apiRequest({
+        params: data,
+        method: "GET",
+        url: `chat/exist`,
+      });
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+      if (res?.data?.message) {
+        setAlreadyMessaged(true);
+      }
+    } catch (err) {
+      setLoading(false);
+      console.log("err", err);
+    }
+  };
 
   async function growDiv(id) {
     closePopup();
@@ -85,6 +117,17 @@ const UserCardList = ({
       height: "100%",
     },
   };
+
+  if (loader) {
+    return (
+      <div className="date_card_wrap">
+        <div className="date_details_desktop_loading">
+          <span className="spin-loader-button"></span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="date_card_wrap" ref={ref}>
@@ -210,7 +253,7 @@ const UserCardList = ({
                 <p>{date?.date_details}</p>
               </div>
               <div className="button-wrapper">
-                {user?.gender === "male" && !date?.alreadyMessage && (
+                {user?.gender === "male" && !alreadyMessaged && (
                   <button onClick={openPopup} className="next">
                     Message
                   </button>
@@ -234,7 +277,7 @@ const UserCardList = ({
               <h4>Date Details</h4>
               <p>{date?.date_details}</p>
               <div className="button-wrapper mt-3">
-                {user?.gender === "male" && (
+                {user?.gender === "male" && !alreadyMessaged && (
                   <button onClick={openPopup} className="next">
                     Message
                   </button>

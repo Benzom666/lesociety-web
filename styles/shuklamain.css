@@ -7,8 +7,72 @@
   background: #0b0b0b;
 }
 
-@media screen and (max-width: 767px) {
-  .inner-part-page .auth-section {
-    padding: 0;
+.preview-date-header {
+  max-width: 1350px !important;
+  margin: 0 auto !important;
+}
+
+@media screen and (min-width: 767px) {
+  .steps_wraps_previewdate {
+    margin-left: auto !important;
   }
+  .steps_wraps_previewdate ul {
+    margin: 0 auto !important;
+  }
+}
+@media screen and (min-width: 767px) {
+  .step-1 {
+    margin-left: 70px;
+  }
+}
+@media screen and (max-width: 430px) {
+  .step-1 {
+    margin-left: 10px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .choose-city-next-btn {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 400px) {
+  .choose-city-steps {
+    margin-left: -5px !important;
+  }
+}
+@media screen and (min-width: 401px) {
+  .choose-city-steps {
+    margin-left: 3px !important;
+  }
+}
+.rate-tag {
+  padding: 0 92px;
+}
+
+@media screen and (max-width: 500px) {
+  .rate-tag {
+    padding: 0 60px;
+  }
+}
+.mobile-verified-btn {
+  width: 100%;
+  background-color: #f24462;
+  color: #fff;
+  border: none;
+  line-height: 46px;
+  cursor: pointer;
+  outline: none;
+  min-height: 50px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: "Helvetica-Light";
+  margin-top: 20px;
+}
+
+.verified-upload-mobile {
+  width: 80%;
+  height: 91px;
+  margin: 20px auto 0 auto;
 }/*# sourceMappingURL=shuklamain.css.map */

@@ -5426,6 +5426,7 @@ path {
   width: 100% !important;
   margin: 0 !important;
 }
+
 @media screen and (max-width: 767px) {
   .new-city {
     padding-left: 40px !important;
@@ -5436,4 +5437,18 @@ path {
 .modal-open {
   opacity: 0.71;
   z-index: -1;
+}
+
+.date_details_desktop_loading {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 20px 20px;
+  height: 423px;
+  background: #151515;
+  border: 0.607143px solid #2930362e;
+  border-top: transparent;
+  backdrop-filter: blur(10.9286px);
 }
