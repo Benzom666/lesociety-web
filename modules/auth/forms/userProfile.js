@@ -482,8 +482,8 @@ console.log(loading);
                           </div>
                           <>
                             <h4 className="mb-5 mt-4 text-center tagline-font  word-break: break-word">
-                              “{userTagline}”
-                              {/* {userDetail?.tagline || user?.tagline} */}
+                              “{" "}{userTagline}{" "}”
+                              {/* { userDetail?.tagline || user?.tagline } */}
                             </h4>
 
                             {!preview &&
@@ -492,9 +492,9 @@ console.log(loading);
                                 (router?.pathname === "/user/user-profile" &&
                                   user?.gender === "female")) && (
                                 <>
-                                  <SubHeading title="Available dates" />
-                                  <div className="verification_card_header text-center mb-5 mt-4">
-                                    <div className="available-dates-box">
+                                  <SubHeading title="Available Experiencis" style1/>
+                                  <div className="verification_card_header text-center mb-5 mt-3">
+                                   <div className="available-dates-box"> 
                                       {/* {userDates.length > 0 && page > 1 && (
                                       <div
                                         className="pagination-wrapper"
@@ -534,10 +534,10 @@ console.log(loading);
                                             >
                                               <ul className="date_list">
                                                 <li>
-                                                  <span className="icon_wrap">
+                                                  <span className="icon_wrap" style={{height:"50px",width:"50px"}}>
                                                     {category?.icon}
                                                   </span>
-                                                  <p>{category?.label}</p>
+                                                  <p style={{fontSize:"14px",fontWeight:"300",borderRadius:"11px"}}>{category?.label}</p>
                                                 </li>
                                                 <span className="top-card_tag">
                                                   <span className="top-badge"></span>
@@ -585,7 +585,8 @@ console.log(loading);
                                               "/create-date/choose-city"
                                             )
                                           }
-                                          className="create-date w-50"
+                                          className={width >1024 ? "create-date w-50":"create-date w-75"}
+                                          style={{height:"50px",fontSize:"16px",fontWeight:"400",letterSpacing:"0.06px"}}
                                         >
                                           Create New Date
                                         </button>
@@ -599,7 +600,8 @@ console.log(loading);
                                               "/create-date/choose-city"
                                             )
                                           }
-                                          className="create-date w-50"
+                                          className={width >1024 ? "create-date w-50":"create-date w-75"}
+                                          style={{height:"50px",fontSize:"14px",fontWeight:"400"}}
                                         >
                                           Create New Date
                                         </button>
@@ -695,7 +697,7 @@ console.log(loading);
                                 </>
                               )}
                           </>
-                          <SubHeading title="About me" />
+                          <SubHeading title="About me"  style2/>
                           <div className="image_wrap_slider about_me_card">
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">

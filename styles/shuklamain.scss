@@ -61,6 +61,7 @@
 }
 
 .mobile-verified-btn {
+  //position: absolute;
   width: 100%;
   background-color: #f24462;
   color: #fff;
@@ -100,13 +101,25 @@
   linear-gradient(223.12deg, #293036 -60.08%, #272D32 104.31%);
   ;
   border-radius: 8px;
+  border: 1px solid #293036;
+}
+@media only screen and (max-width:480px) {
+  .create_date_mobile-btn{
+    width:60%;
+    font-size: 14px;
+    font-weight: 400;
+    background: #F24462;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
 }
 .date-text-1{
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.07px;
   color:#4F4E54;
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
 .price-card-name {
@@ -122,5 +135,21 @@
 .sidebar_wrap{
   .sidebar-nav-link{
     margin-top: 30px;
+  }
+}
+
+.verifed-btn-mobile{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width: 100%;
+}
+
+@media only screen and (min-width:1024px) {
+  body .verification_card_header{
+    .available-dates-box{
+      display: grid;
+     grid-template-columns: auto auto;
+    }
   }
 }

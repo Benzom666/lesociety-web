@@ -273,7 +273,7 @@ const VerifiedProfilePage = (props) => {
                         </p>
                       </div>
                     </div>
-                    <div>
+                    <div className={ width <480 ?"verifed-btn-mobile" : ""}>
                       <div className={`secret-input type-submit`}>
                         <button
                           disabled={invalid}
