@@ -494,7 +494,7 @@ console.log(loading);
                                 <>
                                   <SubHeading title="Available Experiencis" style1/>
                                   <div className="verification_card_header text-center mb-5 mt-3">
-                                   <div className="available-dates-box"> 
+                                   <div className={userDates.length===1 ? "available-dates-box1" :"available-dates-box"}> 
                                       {/* {userDates.length > 0 && page > 1 && (
                                       <div
                                         className="pagination-wrapper"
@@ -586,7 +586,12 @@ console.log(loading);
                                             )
                                           }
                                           className={width >1024 ? "create-date w-50":"create-date w-75"}
-                                          style={{height:"50px",fontSize:"16px",fontWeight:"400",letterSpacing:"0.06px"}}
+                                          style={{height:"50px",fontSize:"16px",fontWeight:"400",
+                                           letterSpacing:"0.06px",
+                                           paddingTop:"5px",
+                                           margin: "0px auto",
+                                           marginTop: "10px"
+                                        }}
                                         >
                                           Create New Date
                                         </button>
