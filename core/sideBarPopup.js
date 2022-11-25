@@ -107,7 +107,6 @@ function sideBarPopup({ isOpen, toggle }) {
                     className="d-flex align-items-center justify-content-center profile-btn"
                     onClick={() =>
                       !documentUpoaded &&
-                      toggle() &&
                       router.push("/verified-profile")
                     }
                   >
