@@ -1223,7 +1223,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           letter-spacing: unset;
           line-height: unset;
           text-align: unset;
-          color: #AFABAB;
+          color: #afabab;
           font-family: "Helvetica-Light";
           margin-bottom: 7px;
         }
@@ -3066,8 +3066,8 @@ body .verification_card_header {
     margin-bottom: 12px;
     margin-right: 10px;
     flex: 1;
-    //min-width: 250px;
-     //min-width: 45%;
+    min-width: 250px;
+    // max-width: 50%;
 
     .date_list {
       margin: 0;
@@ -3078,7 +3078,7 @@ body .verification_card_header {
       li {
         display: flex;
         align-items: center;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
 
         span.icon_wrap {
           width: 45px;
@@ -3138,8 +3138,8 @@ body .verification_card_header {
       position: absolute;
       top: 0;
       right: 20px;
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 45px;
       display: flex;
       align-items: center;
       background: #464646;
@@ -3185,14 +3185,11 @@ body .verification_card_header {
         flex-direction: column;
 
         .hour {
-          font-size: 13.5px;
-          letter-spacing: 0.07px;
+          font-size: 12px;
           text-align: center;
           font-family: "HelveticaNeueCyr";
           font-style: normal;
           font-weight: 300;
-          padding-top: 5px;
-          color: #afafaf;
         }
       }
     }
