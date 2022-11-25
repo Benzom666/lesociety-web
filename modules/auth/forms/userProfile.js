@@ -43,8 +43,8 @@ function UserProfile({ preview, editHandle }) {
       item?.label === selectedDate?.middle_class_dates ||
       item?.label === selectedDate?.executive_class_dates
   );
-console.log(userDates);
-console.log(loading);
+  console.log(userDates);
+  console.log(loading);
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
   const toFeet = (n) => {
@@ -482,7 +482,7 @@ console.log(loading);
                           </div>
                           <>
                             <h4 className="mb-5 mt-4 text-center tagline-font  word-break: break-word">
-                              “{" "}{userTagline}{" "}”
+                              “ {userTagline} ”
                               {/* { userDetail?.tagline || user?.tagline } */}
                             </h4>
 
@@ -492,9 +492,18 @@ console.log(loading);
                                 (router?.pathname === "/user/user-profile" &&
                                   user?.gender === "female")) && (
                                 <>
-                                  <SubHeading title="Available Experiencis" style1/>
-                                  <div className="verification_card_header text-center mb-5 mt-3">
-                                   <div className={userDates.length===1 ? "available-dates-box1" :"available-dates-box"}> 
+                                  <SubHeading
+                                    title="Available Experiencis"
+                                    style1
+                                  />
+                                  <div className="verification_card_header text-center mb-5 mt-4">
+                                    <div
+                                      className={
+                                        userDates.length === 1
+                                          ? "available-dates-box1"
+                                          : "available-dates-box"
+                                      }
+                                    >
                                       {/* {userDates.length > 0 && page > 1 && (
                                       <div
                                         className="pagination-wrapper"
@@ -534,15 +543,31 @@ console.log(loading);
                                             >
                                               <ul className="date_list">
                                                 <li>
-                                                  <span className="icon_wrap" style={{height:"50px",width:"50px"}}>
+                                                  <span
+                                                    className="icon_wrap"
+                                                    style={{
+                                                      height: "50px",
+                                                      width: "50px",
+                                                    }}
+                                                  >
                                                     {category?.icon}
                                                   </span>
-                                                  <p style={{fontSize:"14px",fontWeight:"300",borderRadius:"11px"}}>{category?.label}</p>
+                                                  <p
+                                                    style={{
+                                                      fontSize: "12px",
+                                                      fontWeight: "300",
+                                                      borderRadius: "11px",
+                                                    }}
+                                                  >
+                                                    {category?.label}
+                                                  </p>
                                                 </li>
                                                 <span className="top-card_tag">
                                                   <span className="top-badge"></span>
                                                   <div className="price-card-name">
-                                                    <span className="date-price-card">${date?.price}</span>
+                                                    <span className="date-price-card">
+                                                      ${date?.price}
+                                                    </span>
                                                     <span className="hour">
                                                       <span>
                                                         {date?.date_length.replace(
@@ -575,43 +600,61 @@ console.log(loading);
                                     {(router?.query?.userName ===
                                       user.user_name ||
                                       router?.pathname ===
-                                        "/user/user-profile") && (
-                                 !userDates.length  ?
-                                    <div className="d-flex flex-column justify-content-center align-items-center header_btn_wrap w-100 date-block-section">
-                                        <button
-                                          type="button"
-                                          onClick={() =>
-                                            router.push(
-                                              "/create-date/choose-city"
-                                            )
-                                          }
-                                          className={width >1024 ? "create-date w-50":"create-date w-75"}
-                                          style={{height:"50px",fontSize:"16px",fontWeight:"400",
-                                           letterSpacing:"0.06px",
-                                           paddingTop:"5px",
-                                           margin: "0px auto",
-                                           marginTop: "10px"
-                                        }}
-                                        >
-                                          Create New Date
-                                        </button>
-                                        <p className="date-text-1">Your dates are stored here</p>
+                                        "/user/user-profile") &&
+                                      (!userDates.length ? (
+                                        <div className="d-flex flex-column justify-content-center align-items-center header_btn_wrap w-100 date-block-section">
+                                          <button
+                                            type="button"
+                                            onClick={() =>
+                                              router.push(
+                                                "/create-date/choose-city"
+                                              )
+                                            }
+                                            className={
+                                              width > 1024
+                                                ? "create-date w-50"
+                                                : "create-date w-75"
+                                            }
+                                            style={{
+                                              height: "50px",
+                                              fontSize: "16px",
+                                              fontWeight: "400",
+                                              letterSpacing: "0.06px",
+                                              paddingTop: "5px",
+                                              margin: "0px auto",
+                                              marginTop: "10px",
+                                            }}
+                                          >
+                                            Create New Date
+                                          </button>
+                                          <p className="date-text-1">
+                                            Your dates are stored here
+                                          </p>
                                         </div>
-                                  : <div className="d-flex align-items-center mb-0 mt-2 header_btn_wrap w-100 justify-content-center">
-                                        <button
-                                          type="button"
-                                          onClick={() =>
-                                            router.push(
-                                              "/create-date/choose-city"
-                                            )
-                                          }
-                                          className={width >1024 ? "create-date w-50":"create-date w-75"}
-                                          style={{height:"50px",fontSize:"14px",fontWeight:"400"}}
-                                        >
-                                          Create New Date
-                                        </button>
-                                      </div> 
-                                   )}
+                                      ) : (
+                                        <div className="d-flex align-items-center mb-0 mt-2 header_btn_wrap w-100 justify-content-center">
+                                          <button
+                                            type="button"
+                                            onClick={() =>
+                                              router.push(
+                                                "/create-date/choose-city"
+                                              )
+                                            }
+                                            className={
+                                              width > 1024
+                                                ? "create-date w-50"
+                                                : "create-date w-75"
+                                            }
+                                            style={{
+                                              height: "50px",
+                                              fontSize: "14px",
+                                              fontWeight: "400",
+                                            }}
+                                          >
+                                            Create New Date
+                                          </button>
+                                        </div>
+                                      ))}
 
                                     <Modal
                                       isOpen={dateModalOpen}
@@ -702,7 +745,7 @@ console.log(loading);
                                 </>
                               )}
                           </>
-                          <SubHeading title="About me"  style2/>
+                          <SubHeading title="About me" style2 />
                           <div className="image_wrap_slider about_me_card">
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
