@@ -50,7 +50,7 @@ function sideBarPopup({ isOpen, toggle }) {
             borderRadius: "10px",
           }}
         >
-          <div className="modal-header p-0" style={{ borderBottom: "none" }}>
+          <div className="modal-header p-0" style={{ borderBottom: "none" ,postion :"relative"}}>
             <button
               type="button"
               className="btn-close btn-custom"

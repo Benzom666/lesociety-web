@@ -10,7 +10,7 @@ import { imageUploader } from "../../../../utils/Utilities";
 import { useRouter } from "next/router";
 import FemaleSkeletonSecondStep from "../../../skeleton/Auth/FemaleSkeletonSecondStep";
 import { reset } from "redux-form";
-
+import useWindowSize from "utils/useWindowSize";
 const SecondStep = (props) => {
   const [loading, setLoader] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
@@ -19,7 +19,7 @@ const SecondStep = (props) => {
   const [isImageTouched, setImageTouched] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
-
+  const width = useWindowSize();
   const user = useSelector((state) => state.authReducer.user);
 
   useEffect(() => {
@@ -463,9 +463,9 @@ const SecondStep = (props) => {
               )}
             </label>
           </div>
-          <div className="small-images big-image">
-            <div>
-              <label>
+          <div className="small-images big-image row">
+            <div className="col-4">
+              <label style={{margin:"0"}}>
                 <Field
                   name="imageUpload2"
                   component={Inputs.uploadFileField}
@@ -524,8 +524,8 @@ const SecondStep = (props) => {
                 )}
               </label>
             </div>
-            <div>
-              <label>
+            <div className="col-4">
+              <label style={{margin:"0"}}>
                 <Field
                   name="imageUpload3"
                   component={Inputs.uploadFileField}
@@ -584,8 +584,8 @@ const SecondStep = (props) => {
                 )}
               </label>
             </div>
-            <div>
-              <label>
+            <div className="col-4">
+              <label style={{margin:"0"}}>
                 <Field
                   name="imageUpload4"
                   component={Inputs.uploadFileField}
@@ -644,8 +644,9 @@ const SecondStep = (props) => {
                 )}
               </label>
             </div>
-          </div>
-          {isImageTouched &&
+             <div className="col-4 w-100 mb-4">
+              <lable style={{margin:"0"}}>
+            {isImageTouched &&
             (dimensionValid?.height ? (
               <span className="error">
                 Image should be greater than {dimensionValid?.height}*
@@ -661,6 +662,25 @@ const SecondStep = (props) => {
             ) : (
               ""
             ))}
+            </lable>
+            </div> 
+          </div>
+          {/* {isImageTouched &&
+            (dimensionValid?.height ? (
+              <span className="error">
+                Image should be greater than {dimensionValid?.height}*
+                {dimensionValid?.width}
+              </span>
+            ) : !reduxValues?.imageUpload?.length > 0 ||
+              !reduxValues?.imageUpload2?.length > 0 ||
+              !reduxValues?.imageUpload3?.length > 0 ||
+              !reduxValues?.imageUpload4?.length > 0 ? (
+              <span className="error">* Upload at least 4 photos</span>
+            ) : isImageValid ? (
+              "Please Select Image Only"
+            ) : (
+              ""
+            ))} */}
           <Field
             name="tagline"
             component={Inputs.inputField}
