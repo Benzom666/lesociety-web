@@ -24,8 +24,8 @@ import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
 import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
-import MessageSend from 'assets/message_send.png'
-import MessageSend2 from 'assets/message_send2.png'
+import MessageSend from "assets/message_send.png";
+import MessageSend2 from "assets/message_send2.png";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -51,6 +51,7 @@ function UserList(props) {
   const [messageError, setMessageError] = React.useState("");
   const scrollRef = useRef();
   const [conversations, setConversations] = useState([]);
+  const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -224,6 +225,7 @@ function UserList(props) {
         method: "POST",
         url: `chat/request`,
       });
+      setAlreadyMessagedFromUser(true);
       console.log("res", res);
       values.message = "";
     } catch (err) {
@@ -231,6 +233,8 @@ function UserList(props) {
     }
     return;
   };
+
+  console.log("alreadyMessagedFromUser", alreadyMessagedFromUser);
 
   function growDiv(id) {
     // setDateId(id)
@@ -402,6 +406,10 @@ function UserList(props) {
                                 key={index}
                                 ref={scrollRef}
                                 loading={loading}
+                                receiverData={receiverData}
+                                alreadyMessagedFromUser={
+                                  alreadyMessagedFromUser
+                                }
                               />
                             ) : (
                               <UserCardList
@@ -417,6 +425,10 @@ function UserList(props) {
                                 key={index}
                                 ref={scrollRef}
                                 loading={loading}
+                                receiverData={receiverData}
+                                alreadyMessagedFromUser={
+                                  alreadyMessagedFromUser
+                                }
                               />
                             )}
                           </div>

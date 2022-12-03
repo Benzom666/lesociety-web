@@ -110,7 +110,7 @@ export default function HeaderLoggedIn({
   return (
     <header
       style={fixed ? { position: "fixed", width: "100%", zIndex: "99" } : {}}
-      className={`py-3 py-md-4 loggedin_user ${isBlack && "is-black-head"}`}
+      className={`py-3 py-md-3 loggedin_user ${isBlack && "is-black-head"}`}
     >
       <div className="container">
         <div className="row align-items-center">
