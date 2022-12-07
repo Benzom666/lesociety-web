@@ -222,8 +222,16 @@ const VerifiedProfilePage = (props) => {
                         // onChange={(e) => imageChange(e, setSelfie)}
                       />
 
-                      <div className={width>425 ?"verified-upload-btn": "verified-upload-btn-1"}>
-                        <VerifiedUploadIcon documentUpoaded={documentUpoaded} />
+                      <div
+                        className={
+                          width > 425
+                            ? "verified-upload-btn"
+                            : "verified-upload-btn-1"
+                        }
+                      >
+                        <VerifiedUploadIcon
+                          documentUpoaded={selfieRef?.current?.value}
+                        />
 
                         {selfieRef?.current?.value ? (
                           <p className="mb-0 document-uploaded">
@@ -258,8 +266,16 @@ const VerifiedProfilePage = (props) => {
                         }}
                         // onChange={(e) => imageChange(e, setDocumentId)}
                       />
-                      <div className={width>425 ?"verified-upload-btn": "verified-upload-btn-1"}>
-                        <VerifiedUploadIcon documentUpoaded={documentUpoaded} />
+                      <div
+                        className={
+                          width > 425
+                            ? "verified-upload-btn"
+                            : "verified-upload-btn-1"
+                        }
+                      >
+                        <VerifiedUploadIcon
+                          documentUpoaded={documentRef?.current?.value}
+                        />
                         <p className="mb-0">
                           {documentRef?.current?.value ? (
                             <p className="mb-0 document-uploaded">
@@ -273,7 +289,7 @@ const VerifiedProfilePage = (props) => {
                         </p>
                       </div>
                     </div>
-                    <div className={ width <480 ?"verifed-btn-mobile" : ""}>
+                    <div className={width < 480 ? "verifed-btn-mobile" : ""}>
                       <div className={`secret-input type-submit`}>
                         <button
                           disabled={invalid}

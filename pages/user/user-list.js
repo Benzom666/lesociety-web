@@ -24,8 +24,8 @@ import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
 import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
-import MessageSend from 'assets/message_send.png'
-import MessageSend2 from 'assets/message_send2.png'
+import MessageSend from "assets/message_send.png";
+import MessageSend2 from "assets/message_send2.png";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -49,8 +49,9 @@ function UserList(props) {
   const [modalIsOpen, setIsOpen] = React.useState(user.gender === "female");
   const [receiverData, setReceiverData] = React.useState("");
   const [messageError, setMessageError] = React.useState("");
-  const scrollRef = useRef();
+  const scrollRef = useRef(null);
   const [conversations, setConversations] = useState([]);
+  const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -224,6 +225,7 @@ function UserList(props) {
         method: "POST",
         url: `chat/request`,
       });
+      setAlreadyMessagedFromUser(true);
       console.log("res", res);
       values.message = "";
     } catch (err) {
@@ -312,8 +314,31 @@ function UserList(props) {
     };
   }, [scrollPosition]);
 
+  // if back router is create-date/date-event then redirect to home page
+  // useEffect(() => {
+  //   const history = props.history?.length > 0 ? props.history : [];
+  //   if (
+  //     (history?.length > 0 &&
+  //       history[history.length - 1] === "/create-date/choose-city") ||
+  //     (history?.length > 0 &&
+  //       history[history.length - 1] === "/create-date/date-event") ||
+  //     (history?.length > 0 &&
+  //       history[history.length - 1] ===
+  //         "/create-date/date-event?drafted=true") ||
+  //     (history?.length > 0 &&
+  //       history[history.length - 1] === "/create-date/date-event?edit=true") ||
+  //     (history?.length > 0 &&
+  //       history[history.length - 1] === "/create-date/choose-city?edit=true")
+  //   ) {
+  //     router.replace("/user/user-list");
+  //   }
+  // }, [props.history, router]);
+
+  // // console previous router
+  // console.log("router", props.history);
+
   // console
-  // console.log("dates", dates);
+  // console.log("router?.query?.backRouter", router);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -405,6 +430,10 @@ function UserList(props) {
                                 key={index}
                                 ref={scrollRef}
                                 loading={loading}
+                                receiverData={receiverData}
+                                alreadyMessagedFromUser={
+                                  alreadyMessagedFromUser
+                                }
                               />
                             ) : (
                               <UserCardList
@@ -420,6 +449,10 @@ function UserList(props) {
                                 key={index}
                                 ref={scrollRef}
                                 loading={loading}
+                                receiverData={receiverData}
+                                alreadyMessagedFromUser={
+                                  alreadyMessagedFromUser
+                                }
                               />
                             )}
                           </div>

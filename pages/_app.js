@@ -26,10 +26,15 @@ class MyApp extends App {
     super(props);
     this.state = {
       isLoading: false,
+      history: [],
     };
   }
 
   componentDidMount() {
+    const { asPath } = this.props.router;
+
+    // lets add initial route to `history`
+    this.setState((prevState) => ({ history: [...prevState.history, asPath] }));
     Router.events.on("routeChangeStart", (url) => {
       this.setState({ isLoading: true });
       // console.log("I am Loading...");
@@ -37,9 +42,23 @@ class MyApp extends App {
     Router.events.on("routeChangeComplete", (url) => {
       setTimeout(() => {
         this.setState({ isLoading: false });
-      }, 3000);
+      }, 2000);
       // console.log("I am Loaded...");
     });
+  }
+
+  componentDidUpdate() {
+    const { history } = this.state;
+    const { asPath } = this.props.router;
+
+    // if current route (`asPath`) does not equal
+    // the latest item in the history,
+    // it is changed so lets save it
+    if (history[history.length - 1] !== asPath) {
+      this.setState((prevState) => ({
+        history: [...prevState.history, asPath],
+      }));
+    }
   }
 
   static async getInitialProps({ Component, ctx }) {
@@ -54,16 +73,26 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, store } = this.props;
 
+    // prevent site from rotating in mobile put restriction
+
     return (
       <Provider store={store}>
         <Head>
           <title>Secret Time</title>
           <link rel="icon" href="/favicon.svg" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+          />
         </Head>
         {this.state.isLoading ? (
           <Loader />
         ) : (
-          <Component {...pageProps} isLoading={this.state.isLoading} />
+          <Component
+            {...pageProps}
+            history={this.state.history}
+            isLoading={this.state.isLoading}
+          />
         )}
 
         <ToastContainer />

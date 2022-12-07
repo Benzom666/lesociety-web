@@ -5474,3 +5474,17 @@ path {
   border-top: transparent;
   backdrop-filter: blur(10.9286px);
 }
+
+.date_details_desktop_loading-2 {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 20px 20px;
+  height: 423px;
+  background: #000000;
+  border: 0.607143px solid #000000;
+  border-top: transparent;
+  // backdrop-filter: blur(10.9286px);
+}
