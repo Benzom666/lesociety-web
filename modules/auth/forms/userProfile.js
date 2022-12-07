@@ -196,27 +196,29 @@ function UserProfile({ preview, editHandle }) {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (
-        ((userDetail?.images &&
-          userDetail?.images[0] &&
-          userDetail?.images[1] &&
-          userDetail?.images[2] &&
-          userDetail?.images[3]) ||
-          (user.images &&
-            user.images[0] &&
-            user.images[1] &&
-            user.images[2] &&
-            user.images[3])) &&
-        (!dateloading ||
-          user?.gender === "male" ||
-          userDetail?.gender === "male")
-      ) {
-        setPageLoading(false);
-      }
-    }, 4000);
-  }, [userDetail?.images, user?.images, dateloading]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (
+  //       ((userDetail?.images &&
+  //         userDetail?.images[0] &&
+  //         userDetail?.images[1] &&
+  //         userDetail?.images[2] &&
+  //         userDetail?.images[3]) ||
+  //         (user.images &&
+  //           user.images[0] &&
+  //           user.images[1] &&
+  //           user.images[2] &&
+  //           user.images[3])) &&
+  //       (!dateloading ||
+  //         user?.gender === "male" ||
+  //         userDetail?.gender === "male")
+  //     ) {
+  //       setPageLoading(false);
+  //     }
+  //   }, 2000);
+  // }, [userDetail?.images, user?.images, dateloading]);
+
+  // setLoading false after the images are loaded
 
   useEffect(() => {
     if (router?.query?.edit && user?.step_completed === 4) {
@@ -286,8 +288,27 @@ function UserProfile({ preview, editHandle }) {
       ? user?.un_verified_description
       : user?.description);
 
-  console.log("userImageProfile", userImageProfile);
+  useEffect(() => {
+    if (
+      userImageProfile &&
+      userImage1 &&
+      userImage2 &&
+      userImage3 &&
+      (!dateloading || user?.gender === "male" || userDetail?.gender === "male")
+    ) {
+      setTimeout(() => {
+        setPageLoading(false);
+      }, 4000);
+    }
+  }, [userImageProfile, userImage1, userImage2, userImage3, dateloading]);
+
+  // console.log("userImageProfile", userImageProfile);
   // console.log("paget", page);
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
+
+  // until images loaded show loader
 
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
@@ -319,6 +340,9 @@ function UserProfile({ preview, editHandle }) {
                                     //   : user.images && user.images[0]
                                     userImageProfile
                                   }
+                                  // implement loader
+                                  loader={myLoader}
+                                  priority={true}
                                   alt="user image"
                                   width={270}
                                   height={270}
@@ -448,6 +472,8 @@ function UserProfile({ preview, editHandle }) {
                                   //   : user.images && user.images[1]
                                   userImage1
                                 }
+                                loader={myLoader}
+                                priority={true}
                                 alt="user image"
                                 width={160}
                                 height={150}
@@ -461,6 +487,8 @@ function UserProfile({ preview, editHandle }) {
                                   //   : user.images && user.images[2]
                                   userImage2
                                 }
+                                loader={myLoader}
+                                priority={true}
                                 alt="user image"
                                 width={160}
                                 height={150}
@@ -474,6 +502,8 @@ function UserProfile({ preview, editHandle }) {
                                   //   : user.images && user.images[3]
                                   userImage3
                                 }
+                                loader={myLoader}
+                                priority={true}
                                 alt="user image"
                                 width={160}
                                 height={150}

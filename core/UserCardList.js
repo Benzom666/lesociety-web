@@ -31,7 +31,7 @@ const UserCardList = ({
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
-  const [loader, setLoading] = useState(false);
+  const [loader, setLoading] = useState(true);
   const [msgModal, setMsgModal] = React.useState(false);
   const [alreadyMessaged, setAlreadyMessaged] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
@@ -130,14 +130,10 @@ const UserCardList = ({
     }
   }, [messagedFromUserDone]);
 
-  // console.log("messagedFromUserDone", alreadyMessagedFromUser);
-  if (loader) {
+  if (loader && dateDetailsIsOpen) {
     return (
       <div className="date_card_wrap">
-        {/*
-         */}
         <div className="date_details_desktop_loading">
-          {/* <span className="spin-loader-button"></span> */}
           <Image
             src={require("../assets/squareLogoNoBack.gif")}
             alt="loading..."

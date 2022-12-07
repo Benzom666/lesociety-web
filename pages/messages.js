@@ -63,6 +63,8 @@ const Messages = (props) => {
   const { width } = useWindowSize();
   const mobile = width < 768;
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [chatLoading, setChatLoading] = useState(false);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -237,6 +239,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     if (currentChat) {
+      setChatLoading(true);
       getChatHistory(currentChat);
     }
   }, [currentChat]);
@@ -358,7 +361,9 @@ const Messages = (props) => {
           ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
           : [];
       setConversations(conversations);
+      setLoading(false);
     } catch (err) {
+      setLoading(false);
       console.log("err", err);
     }
   };
@@ -427,7 +432,9 @@ const Messages = (props) => {
         params: data,
       });
       setMessages(res.data?.data?.chat);
+      setChatLoading(false);
     } catch (err) {
+      setChatLoading(false);
       console.log("err", err);
     }
   };
@@ -596,7 +603,21 @@ const Messages = (props) => {
                       <TabPanel>
                         <div className="user-list-wrap">
                           <ul>
-                            {conversations?.length > 0 ? (
+                            {loading ? (
+                              mobile ? (
+                                <div className="date_details_desktop_loading-2">
+                                  <Image
+                                    src={require("../assets/squareLogoNoBack.gif")}
+                                    alt="loading..."
+                                    className=""
+                                    width={100}
+                                    height={100}
+                                  />
+                                </div>
+                              ) : (
+                                ""
+                              )
+                            ) : conversations?.length > 0 ? (
                               conversations
                                 .filter(
                                   (c) =>
@@ -716,21 +737,23 @@ const Messages = (props) => {
                       <TabPanel>
                         <div className="user-list-wrap">
                           <ul>
-                            {(conversations?.length == 0 ||
-                              conversations.filter(
-                                (c) =>
-                                  c.status == 0 &&
-                                  c.message?.sender_id !== user?._id
-                              )?.length == 0) &&
-                              (mobile ? (
-                                <div className="message-content-side">
-                                  {requestedConversationLength == 0 && (
-                                    <NoConversationShowView request />
-                                  )}
-                                </div>
-                              ) : (
-                                "No Requests"
-                              ))}
+                            {loading
+                              ? ""
+                              : (conversations?.length == 0 ||
+                                  conversations.filter(
+                                    (c) =>
+                                      c.status == 0 &&
+                                      c.message?.sender_id !== user?._id
+                                  )?.length == 0) &&
+                                (mobile ? (
+                                  <div className="message-content-side">
+                                    {requestedConversationLength == 0 && (
+                                      <NoConversationShowView request />
+                                    )}
+                                  </div>
+                                ) : (
+                                  "No Requests"
+                                ))}
                           </ul>
                         </div>
                       </TabPanel>
@@ -847,9 +870,20 @@ const Messages = (props) => {
                           <div className="chat_message_wrap">
                             <div className="message_list_wrap">
                               <ul className="chat_message_scroll">
-                                {messages.filter(
-                                  (message) => message?.message !== ""
-                                ).length > 0 &&
+                                {chatLoading ? (
+                                  <div className="date_details_desktop_loading-2">
+                                    <Image
+                                      src={require("../assets/squareLogoNoBack.gif")}
+                                      alt="loading..."
+                                      className=""
+                                      width={100}
+                                      height={100}
+                                    />
+                                  </div>
+                                ) : (
+                                  messages.filter(
+                                    (message) => message?.message !== ""
+                                  ).length > 0 &&
                                   messages
                                     .filter(
                                       (message) => message?.message !== ""
@@ -881,10 +915,13 @@ const Messages = (props) => {
                                           </div>
                                         </li>
                                       );
-                                    })}
+                                    })
+                                )}
                               </ul>
                             </div>
-                            {currentChat?.status === 2 ? (
+                            {chatLoading ? (
+                              ""
+                            ) : currentChat?.status === 2 ? (
                               currentChat?.blocked_by?._id == user?._id ? (
                                 <div className="text-center">
                                   {/* you have blocked this chat */}
@@ -939,6 +976,14 @@ const Messages = (props) => {
                             )}
                           </div>
                         </div>
+                      ) : loading ? (
+                        <Image
+                          src={require("../assets/squareLogoNoBack.gif")}
+                          alt="loading..."
+                          className=""
+                          width={100}
+                          height={100}
+                        />
                       ) : (
                         ((selectedTabIndex == 0 && conversationLength == 0) ||
                           (selectedTabIndex == 1 &&
