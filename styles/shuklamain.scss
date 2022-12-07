@@ -49,7 +49,11 @@
     margin-left: 3px !important;
   }
 }
-
+@media only screen and (max-width: 425px) and (min-width:400px){
+  .create-date-wrap .step-wraps {
+    margin-left: 0px;
+  }
+}
 .rate-tag {
   padding: 0 92px;
 }
@@ -154,6 +158,42 @@
     .available-dates-box1{
       display: grid;
       grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media only screen and (max-width:425px){
+  body .verification_card_header{
+    .availabe_card_inner{
+    background: #1c1c1c;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 65px;
+    margin-bottom: 12px;
+    margin-right: 10px;
+    flex: 1;
+    min-width: 290px;
+    }
+  }
+}
+
+@media only screen and(min-width:991px) and (max-width:1199px){
+  body .verification_card_header{
+    .availabe_card_inner{
+    background: #1c1c1c;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 65px;
+    margin-bottom: 12px;
+    margin-right: 10px;
+    flex: 1;
+    min-width: 168px;
     }
   }
 }

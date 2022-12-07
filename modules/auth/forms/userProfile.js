@@ -523,7 +523,7 @@ function UserProfile({ preview, editHandle }) {
                                   user?.gender === "female")) && (
                                 <>
                                   <SubHeading
-                                    title="Available Experiencis"
+                                    title="Available Experiences"
                                     style1
                                   />
                                   <div className="verification_card_header text-center mb-5 mt-4">
@@ -576,15 +576,15 @@ function UserProfile({ preview, editHandle }) {
                                                   <span
                                                     className="icon_wrap"
                                                     style={{
-                                                      height: "50px",
-                                                      width: "50px",
+                                                      height: "40px",
+                                                      width: "40px",
                                                     }}
                                                   >
                                                     {category?.icon}
                                                   </span>
                                                   <p
                                                     style={{
-                                                      fontSize: "12px",
+                                                      fontSize: "14px",
                                                       fontWeight: "300",
                                                       borderRadius: "11px",
                                                     }}

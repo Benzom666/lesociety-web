@@ -1148,7 +1148,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       .login-text {
         position: relative;
         margin-bottom: 40px;
-        margin-left: 18px;
+       // margin-left: 18px;
 
         a {
           color: rgba(255, 255, 255, 0.5);
@@ -2914,10 +2914,10 @@ body {
             }
 
             .education-font {
-              font-size: 20px;
+              font-size: 18px;
 
               @media only screen and (max-width: 360px) {
-                font-size: 18px;
+                font-size: 16px;
               }
             }
           }
@@ -3036,12 +3036,14 @@ body {
 
 body .verification_card_header {
   .available-dates-box {
-    // overflow: auto;
+     overflow-x: auto;
     white-space: nowrap;
     display: flex;
-    flex-wrap: wrap;
+    //flex-wrap: wrap;
   }
-
+  .available-dates-box::-webkit-scrollbar{
+    display: none;
+  }
   .sub-heading {
     text-align: center;
     margin-top: 6px;
@@ -3062,11 +3064,12 @@ body .verification_card_header {
     position: relative;
     display: flex;
     align-items: flex-end;
-    min-height: 80px;
+    min-height: 65px;
     margin-bottom: 12px;
     margin-right: 10px;
     flex: 1;
-    min-width: 250px;
+     //min-width: 250px;
+     min-width: 218px;
     // max-width: 50%;
 
     .date_list {
@@ -3078,7 +3081,7 @@ body .verification_card_header {
       li {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 2px;
 
         span.icon_wrap {
           width: 45px;
@@ -3137,7 +3140,8 @@ body .verification_card_header {
     span.top-card_tag {
       position: absolute;
       top: 0;
-      right: 20px;
+      // right: 20px;
+      right: 8px;
       width: 50px;
       height: 45px;
       display: flex;
@@ -3185,11 +3189,12 @@ body .verification_card_header {
         flex-direction: column;
 
         .hour {
-          font-size: 12px;
+          font-size: 13.5px;
           text-align: center;
           font-family: "HelveticaNeueCyr";
           font-style: normal;
           font-weight: 300;
+          padding-top: 4px;
         }
       }
     }
@@ -5291,13 +5296,13 @@ path {
 
 @media only screen and (max-width: 400px) {
   .create-date-wrap .step-wraps {
-    margin-left: 0px;
+    margin-left: -10px;
   }
 }
 
 @media only screen and (max-width: 420px) {
   .inner-part-page .auth-section .login-text {
-    margin-left: 24px;
+    //margin-left: 24px;
   }
 }
 
@@ -5316,11 +5321,13 @@ path {
 
 .btn-custom {
   margin-top: -28px !important;
-  margin-left: 254px !important;
+  right:-40px !important;
+  //margin-left: 254px !important;
   //margin-right: -54px !important;
   font-size: 25px;
   color: #fff;
   border-radius: 50%;
+  position: absolute;
 }
 
 .modal-body {

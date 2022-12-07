@@ -169,7 +169,7 @@ const CreateStepOne = (props) => {
                         label: "Get Sporty",
                         id: "GetSporty",
                         icon: (
-                          <CustomIcon.Sporty color={"#AFABAB"} size={35} />
+                        <CustomIcon.Sporty color={"#AFABAB"} size={30} />
                         ),
                         iconName: "CustomIcon.GetSporty",
                         category: "middle_class_dates",
