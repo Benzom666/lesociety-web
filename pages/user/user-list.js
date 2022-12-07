@@ -329,8 +329,10 @@ function UserList(props) {
               <div className="col-md-8">
                 <div className="row">
                   <div className="col-md-12">
-                    <div
-                      className="d-flex align-items-center justify-content-center justify-content-md-between pb-3 top-space"
+                  <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3 top-space">
+                  <span className="hidden-sm">Nearby</span>
+                 { width<430 ? <div
+                      className="d-flex align-items-center justify-content-end"
                       style={
                         (scrollType === "up" || "down") &&
                         scrollPosition > 5 &&
@@ -341,7 +343,7 @@ function UserList(props) {
                           : { position: "relative" }
                       }
                     >
-                      <span className="hidden-sm">Nearby</span>
+                      {/* <span className="hidden-sm">Nearby</span> */}
                       <div
                         onClick={() => setLocationPoup(true)}
                         className="selct-wrap-sort"
@@ -353,7 +355,8 @@ function UserList(props) {
                           </span>
                         </label>
                       </div>
-                    </div>
+                 </div> :null }  
+                  </div>
                   </div>
                 </div>
                 <InfiniteScroll
@@ -440,7 +443,33 @@ function UserList(props) {
                   </div>
                 </InfiniteScroll>
               </div>
-              <div className="col-md-2"></div>
+              
+              <div className="col-md-2">
+              <div className="d-flex align-items-center justify-content-end" style={{marginTop:"26px"}}
+                      // style={
+                      //   (scrollType === "up" || "down") &&
+                      //   scrollPosition > 5 &&
+                      //   !locationPopup
+                      //     ? width > 767
+                      //       ? { position: "fixed", width: "59%", zIndex: "99" }
+                      //       : { position: "fixed", left: "34%", zIndex: "99" }
+                      //     : { position: "relative" }
+                      // }
+                    >
+                      {/* <span className="hidden-sm">Nearby</span> */}
+                      <div
+                        onClick={() => setLocationPoup(true)}
+                        className="selct-wrap-sort position-fixed"
+                      >
+                        <label>
+                          <span className="city-txt city-txt-gallary">
+                            {selectedLocation?.city},{" "}
+                            {selectedLocation?.province?.toUpperCase()}
+                          </span>
+                        </label>
+                      </div>
+              </div>
+              </div>
             </div>
           </div>
         </div>
@@ -516,7 +545,7 @@ function UserList(props) {
                       id="message"
                       component={CustomInput}
                     />
-                    <IoIosSend
+                   {/* <IoIosSend
                       size={25}
                       color={
                         formProps.values?.message?.trim() === ""
@@ -531,15 +560,16 @@ function UserList(props) {
 
                         formProps.resetForm();
                       }}
-                    />
-                    {/* <Image src={formProps.values.message==="" ? MessageSend :MessageSend2} alt="send-btn"
+                    />  */}
+                    <button type="button" style={{background:"transparent",border:"none",paddingBottom:"10px"}}>
+                    <Image src={formProps.values.message==="" ? MessageSend :MessageSend2} alt="send-btn"
                     type="submit"
                     onClick={() => {
                       handleSubmit(formProps.values);
                       formProps.resetForm()
                      }}
-                     width="25" height="25"
-                    /> */}
+                    />
+                    </button>
                     {/* create svg with onclick */}
 
                     {/* <svg
