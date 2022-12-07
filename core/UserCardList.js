@@ -263,13 +263,13 @@ const UserCardList = ({
                 </div>
               </div>
             ) : (
-              <div className="date_details_desktop">
+              <div className="date_details_desktop" onClick={toggle}>
                 <div onClick={toggle} className="less-txt">
                   Show less
                 </div>
                 <div>
-                  <h4>Date Details</h4>
-                  <p>{date?.date_details}</p>
+                  <h4 style={{fontWeight:"700",letterSpacing:"0.066px"}}>Date Details</h4>
+                  <p style={{fontWeight:"300",letterSpacing:"0.06px"}}>{date?.date_details}</p>
                 </div>
                 <div className="button-wrapper">
                   {user?.gender === "male" && !alreadyMessaged && (
