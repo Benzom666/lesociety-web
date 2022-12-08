@@ -5456,10 +5456,12 @@ path {
     padding-right: 0px !important;
   }
 }
-// .modal-open {
-//   opacity: 0.71;
-//   //z-index: -1;
-// }
+.modal-open {
+  //opacity: 0.51;
+  //z-index: -1;
+  background: rgba(25, 27, 31, 0.72);
+  // backdrop-filter: blur(1px);
+}
 
 .date_details_desktop_loading {
   display: flex !important;
