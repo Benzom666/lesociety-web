@@ -2271,9 +2271,9 @@ div[id="scrolldiv"] {
             }
 
             span {
-              font-size: 15px;
+              font-size: 13px;
               font-weight: 300;
-              letter-spacing: 0.61px;
+              letter-spacing: 0.50px;
 
               svg {
                 margin-right: 10px;
@@ -2835,7 +2835,7 @@ body {
     }
 
     h5 {
-      word-break: break-all;
+      //word-break: break-all;
       text-transform: capitalize;
     }
 
@@ -2911,10 +2911,11 @@ body {
 
             .administrat-font {
               font-size: 20px;
+              //word-break: break-all;
             }
 
             .education-font {
-              font-size: 18px;
+              font-size: 20px;
 
               @media only screen and (max-width: 360px) {
                 font-size: 16px;
@@ -3036,14 +3037,14 @@ body {
 
 body .verification_card_header {
   .available-dates-box {
-     overflow-x: auto;
+    // overflow-x: auto;
     white-space: nowrap;
     display: flex;
     //flex-wrap: wrap;
   }
-  .available-dates-box::-webkit-scrollbar{
-    display: none;
-  }
+  // .available-dates-box::-webkit-scrollbar{
+  //   display: none;
+  // }
   .sub-heading {
     text-align: center;
     margin-top: 6px;
@@ -5457,7 +5458,7 @@ path {
 }
 // .modal-open {
 //   opacity: 0.71;
-//   z-index: -1;
+//   //z-index: -1;
 // }
 
 .date_details_desktop_loading {
