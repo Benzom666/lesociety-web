@@ -37,7 +37,7 @@ function sideBarPopup({ isOpen, toggle }) {
       id="sidebarPop"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
-      style={{ margin: "15px" }}
+      style={{ padding: "15px" }}
       data-bs-backdrop="static"
       data-bs-keyboard="false"
     >
@@ -77,7 +77,7 @@ function sideBarPopup({ isOpen, toggle }) {
             <div className="sidebar_wrap">
               <div
                 className="user-card-sidebar"
-                style={{ padding: "15px 0px" }}
+                style={{ padding: "15px 20px" }}
               >
                 <div className="d-flex align-items-center mb-2">
                   <figure className="mb-0 p-0">
