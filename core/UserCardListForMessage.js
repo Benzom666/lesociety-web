@@ -122,6 +122,9 @@ const UserCardListForMessage = ({
       height: "100%",
       overFlow: "hidden",
     },
+    overlay : {
+      backdropFilter : "blur(5px)"
+    }
   };
 
   return (

@@ -5321,14 +5321,15 @@ path {
 }
 
 .btn-custom {
-  margin-top: -28px !important;
-  right:-40px !important;
+  margin-top: -36px !important;
+  right:-60px !important;
   //margin-left: 254px !important;
   //margin-right: -54px !important;
   font-size: 25px;
   color: #fff;
   border-radius: 50%;
   position: absolute;
+  background: rgba(25, 27, 31, 1);
 }
 
 .modal-body {
@@ -5456,10 +5457,12 @@ path {
     padding-right: 0px !important;
   }
 }
-// .modal-open {
-//   opacity: 0.71;
-//   //z-index: -1;
-// }
+.modal-open {
+  //opacity: 0.51;
+  //z-index: -1;
+  background: rgba(25, 27, 31, 0.72);
+  // backdrop-filter: blur(1px);
+}
 
 .date_details_desktop_loading {
   display: flex !important;
