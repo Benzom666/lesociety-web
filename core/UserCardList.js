@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { HiLockOpen } from "react-icons/hi";
 import { useRouter } from "next/router";
+import userImageMain from "../assets/img/user2.jpg";
 
 const UserCardList = ({
   date,
@@ -72,7 +73,7 @@ const UserCardList = ({
       });
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 1500);
       if (res?.data?.message) {
         setAlreadyMessaged(true);
       }
@@ -130,6 +131,10 @@ const UserCardList = ({
     }
   }, [messagedFromUserDone]);
 
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
+
   if (loader && dateDetailsIsOpen) {
     return (
       <div className="date_card_wrap">
@@ -163,6 +168,9 @@ const UserCardList = ({
                   alt="user image"
                   width={500}
                   height={500}
+                  loader={myLoader}
+                  priority={true}
+                  blurDataURL="/assets/img/user2.jpg"
                 />
                 <div className="user-details">
                   <div className="user-top-sec">
@@ -268,8 +276,12 @@ const UserCardList = ({
                   Show less
                 </div>
                 <div>
-                  <h4 style={{fontWeight:"700",letterSpacing:"0.066px"}}>Date Details</h4>
-                  <p style={{fontWeight:"300",letterSpacing:"0.06px"}}>{date?.date_details}</p>
+                  <h4 style={{ fontWeight: "700", letterSpacing: "0.066px" }}>
+                    Date Details
+                  </h4>
+                  <p style={{ fontWeight: "300", letterSpacing: "0.06px" }}>
+                    {date?.date_details}
+                  </p>
                 </div>
                 <div className="button-wrapper">
                   {user?.gender === "male" && !alreadyMessaged && (

@@ -1,5 +1,17 @@
 $GradientColor-first: rgba(#2e313a, 0.8);
 $GradientColor-second: rgba(#191919, 0.8);
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  html,
+  body {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
 
 .inner-part-page {
   min-height: calc(100vh - 175px);
@@ -1148,7 +1160,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       .login-text {
         position: relative;
         margin-bottom: 40px;
-       // margin-left: 18px;
+        // margin-left: 18px;
 
         a {
           color: rgba(255, 255, 255, 0.5);
@@ -2273,7 +2285,7 @@ div[id="scrolldiv"] {
             span {
               font-size: 13px;
               font-weight: 300;
-              letter-spacing: 0.50px;
+              letter-spacing: 0.5px;
 
               svg {
                 margin-right: 10px;
@@ -3069,8 +3081,8 @@ body .verification_card_header {
     margin-bottom: 12px;
     margin-right: 10px;
     flex: 1;
-     //min-width: 250px;
-     min-width: 218px;
+    //min-width: 250px;
+    min-width: 218px;
     // max-width: 50%;
 
     .date_list {
@@ -5322,7 +5334,7 @@ path {
 
 .btn-custom {
   margin-top: -36px !important;
-  right:-60px !important;
+  right: -60px !important;
   //margin-left: 254px !important;
   //margin-right: -54px !important;
   font-size: 25px;

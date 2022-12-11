@@ -340,7 +340,6 @@ function UserProfile({ preview, editHandle }) {
                                     //   : user.images && user.images[0]
                                     userImageProfile
                                   }
-                                  // implement loader
                                   loader={myLoader}
                                   priority={true}
                                   alt="user image"

@@ -72,9 +72,18 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
-
+    const { asPath } = this.props.router;
     // prevent site from rotating in mobile put restriction
 
+    const lsLoader =
+      this.state.isLoading &&
+      asPath !== "/user/user-profile" &&
+      asPath !== "/auth/profile?edit=true" &&
+      asPath !== "/auth/profile" &&
+      asPath !== "/user/user-list" &&
+      !asPath.includes("/user/user-profile/");
+
+    // console.log("lsLoader", asPath, lsLoader);
     return (
       <Provider store={store}>
         <Head>
@@ -84,8 +93,9 @@ class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
           />
+          <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
         </Head>
-        {this.state.isLoading ? (
+        {lsLoader ? (
           <Loader />
         ) : (
           <Component
