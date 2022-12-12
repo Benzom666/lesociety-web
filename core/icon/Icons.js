@@ -68,7 +68,7 @@ export function WineDine({ color, size }) {
 export function ChampaignCaviar({ color, size }) {
     return <span>
         <React.Fragment>
-            <svg width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width={size} height={size} viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.1455 13.7026C10.1455 15.8323 8.2439 18.4185 5.3535 18.4945C3.22373 18.4945 0.561523 16.3648 0.561523 14.235C0.561523 13.7026 2.15886 1 2.15886 1H2.69128H8.47209C8.54816 1 10.1455 13.1701 10.1455 13.7026Z" stroke="#4F4E54" stroke-width="1.03022" stroke-miterlimit="10" stroke-linecap="round" />
                 <path d="M5.42993 27.6985V18.647" stroke="#4F4E54" stroke-width="1.03022" stroke-miterlimit="10" />
                 <path d="M0.865967 27.9263H9.91748" stroke="#4F4E54" stroke-width="1.03022" stroke-miterlimit="10" />

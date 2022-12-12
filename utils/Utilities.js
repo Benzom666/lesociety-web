@@ -170,7 +170,7 @@ export const dateCategory = [
   {
     label: "Get Sporty",
     id: "GetSporty",
-    icon: <CustomIcon.Sporty color={"#AFABAB"} size={35} />,
+    icon: <CustomIcon.Sporty color={"#AFABAB"} size={20} />,
     iconName: "CustomIcon.GetSporty",
     category: "middle_class_dates",
   },
@@ -178,7 +178,7 @@ export const dateCategory = [
     label: "Brunch Date",
     id: "MorningBeverage",
     iconName: "CustomIcon.Sun",
-    icon: <CustomIcon.Sun color={"#AFABAB"} size={30} />,
+    icon: <CustomIcon.Sun color={"#AFABAB"} size={20} />,
     category: "standard_class_date",
   },
 ];
