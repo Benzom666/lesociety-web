@@ -60,14 +60,15 @@
 }
 
 .rate-tag {
-  padding: 0 92px;
+  padding: 0 8px;
+  text-align: end;
 }
 
-@media screen and (max-width: 500px) {
-  .rate-tag {
-    padding: 0 60px;
-  }
-}
+// @media screen and (max-width: 500px) {
+//   .rate-tag {
+//     padding: 0 60px;
+//   }
+// }
 
 .mobile-verified-btn {
   //position: absolute;
@@ -96,6 +97,11 @@
   margin-top: 14px;
 }
 
+@media only screen and (min-width: 767px){
+.verified-upload{
+  width:380px;
+}
+}
 // @media only screen and (min-width: 1400px){
 //   .modal-fade-1{
 //     margin:15px;
