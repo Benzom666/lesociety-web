@@ -229,19 +229,6 @@
 //   background: rgba(25, 27, 31, 0.9);
 //   backdrop-filter: blur(6px);
 // }
-
-// body>*:not(#modal-open-id) {
-//   //background: rgba(25, 27, 31, 0.9);
-//   backdrop-filter: blur(6px);
-// }
-
-// .message_popup_userListPage{
-//    background: #1e2023;
-//     border-radius: 25px;
-//     width: 320px;
-//     height: 50px;
-//     border: none;
-//     padding: 17px;
-//     color: white;
-//     margin-bottom: 20px;
-// }
+.resend-mail-text:hover{
+  color: #f24462 !important;
+}

@@ -786,10 +786,13 @@ function UserProfile({ preview, editHandle }) {
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-                                <h5 className="education-font">
+                              {user.max_education.length >15 ? <h5 className="education-font-1" style={{wordBreak:"unset"}}>
                                   {userDetail?.max_education ||
                                     user.max_education}
-                                </h5>
+                                </h5> : <h5 className="education-font" style={{wordBreak:"unset"}}>
+                                  {userDetail?.max_education ||
+                                    user.max_education}
+                                </h5> }
                                 <p>Education Completed </p>
                               </div>
                             </div>
@@ -819,9 +822,11 @@ function UserProfile({ preview, editHandle }) {
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-                                <h5 className="administrat-font">
+              {  user.occupation.length > 15 ? <h5 className="administrat-font-1" style={{wordBreak:"unset"}}>
                                   {userDetail?.occupation || user.occupation}
-                                </h5>
+                                </h5>: <h5 className="administrat-font" style={{wordBreak:"unset"}}>
+                                  {userDetail?.occupation || user.occupation}
+                                </h5> }
                                 <p>Occupation </p>
                               </div>
                             </div>

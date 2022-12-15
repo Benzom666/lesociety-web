@@ -1441,7 +1441,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         position: absolute;
         left: calc(100% - -2px);
         top: calc(50% - 5px);
-        height: 10px;
+        height: 8px;
         width: 2px;
         background: $white-color;
         content: "";
@@ -1453,7 +1453,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         position: absolute;
         left: calc(100% - 4px);
         top: calc(50% - 5px);
-        height: 10px;
+        height: 8px;
         width: 2px;
         background: $white-color;
         content: "";
@@ -2847,7 +2847,7 @@ body {
     }
 
     h5 {
-      //word-break: break-all;
+      word-break: break-all;
       text-transform: capitalize;
     }
 
@@ -2925,13 +2925,20 @@ body {
               font-size: 20px;
               //word-break: break-all;
             }
+            .administrat-font-1 {
+              font-size: 12px;
+              //word-break: break-all;
+            }
 
             .education-font {
               font-size: 20px;
 
               @media only screen and (max-width: 360px) {
-                font-size: 16px;
+                font-size: 20px;
               }
+            }
+            .education-font-1{
+              font-size: 12px;
             }
           }
         }
