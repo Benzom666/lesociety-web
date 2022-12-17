@@ -19,12 +19,9 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
-// import { AiOutlineRight, AiOutlineLeft } from "react-icons/Ai";
 
 function UserProfile({ preview, editHandle }) {
-  const [selectedImage, setSelectedImage] = useState(null);
   const { width } = useWindowSize();
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [dateModalOpen, dateSetIsOpen] = React.useState(false);
   const [userDetail, setUserDetail] = React.useState("");
@@ -89,7 +86,6 @@ function UserProfile({ preview, editHandle }) {
       });
       if (res?.data?.data?.user) {
         setUserDetail(res?.data?.data?.user);
-        // setPageLoading(false);
       }
     } catch (e) {
       console.log(e);
@@ -196,30 +192,6 @@ function UserProfile({ preview, editHandle }) {
     }
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (
-  //       ((userDetail?.images &&
-  //         userDetail?.images[0] &&
-  //         userDetail?.images[1] &&
-  //         userDetail?.images[2] &&
-  //         userDetail?.images[3]) ||
-  //         (user.images &&
-  //           user.images[0] &&
-  //           user.images[1] &&
-  //           user.images[2] &&
-  //           user.images[3])) &&
-  //       (!dateloading ||
-  //         user?.gender === "male" ||
-  //         userDetail?.gender === "male")
-  //     ) {
-  //       setPageLoading(false);
-  //     }
-  //   }, 2000);
-  // }, [userDetail?.images, user?.images, dateloading]);
-
-  // setLoading false after the images are loaded
-
   useEffect(() => {
     if (router?.query?.edit && user?.step_completed === 4) {
       router.push({
@@ -298,20 +270,20 @@ function UserProfile({ preview, editHandle }) {
     ) {
       setTimeout(() => {
         setPageLoading(false);
-      }, 4000);
+      }, 1000);
     }
   }, [userImageProfile, userImage1, userImage2, userImage3, dateloading]);
 
-  // console.log("userImageProfile", userImageProfile);
-  // console.log("paget", page);
   const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
+    return `${src}?w=${width}&q=${quality || 50}`;
   };
 
-  // until images loaded show loader
-
   if (pageLoading) {
-    return <SkeletonUserProfile preview={preview} />;
+    return (
+      <>
+        <SkeletonUserProfile preview={preview} />
+      </>
+    );
   } else {
     return (
       <div className="inner-page">
@@ -334,18 +306,16 @@ function UserProfile({ preview, editHandle }) {
                             <label>
                               <div className="pos-relative">
                                 <Image
-                                  src={
-                                    // userDetail?.images
-                                    //   ? userDetail?.images[0]
-                                    //   : user.images && user.images[0]
-                                    userImageProfile
-                                  }
+                                  src={userImageProfile}
                                   loader={myLoader}
                                   priority={true}
                                   alt="user image"
                                   width={270}
                                   height={270}
+                                  placeholder="blur"
+                                  blurDataURL={userImageProfile}
                                 />
+
                                 {user?.documents_verified && (
                                   <span className="verified_check_tag">
                                     <HiBadgeCheck color={"white"} size={20} />
@@ -354,20 +324,6 @@ function UserProfile({ preview, editHandle }) {
                                 )}
                               </div>
                             </label>
-                            {/* {(router?.query?.userName === user.user_name ||
-                              router?.pathname === "/user/user-profile") && (
-                              <div className="d-flex align-items-center mb-0 mt-4">
-                                <button
-                                  type="button"
-                                  className="view-profile-edit-photo-btn"
-                                  onClick={() => {
-                                    router.push("/auth/profile?edit=true");
-                                  }}
-                                >
-                                  Edit Photos
-                                </button>
-                              </div>
-                            )} */}
                           </div>
                         </figure>
                       )}
@@ -378,9 +334,7 @@ function UserProfile({ preview, editHandle }) {
                           {userDetail?.user_name || user.user_name},{" "}
                           <span>{userDetail?.age || user.age}</span>
                         </h4>
-                        {/* {width > 991 && (
-                                                  <p>{userDetail?.tagline || user?.tagline}</p>
-                                              )} */}
+
                         {width < 991 && (
                           <div className="text-center">
                             <svg
@@ -436,7 +390,7 @@ function UserProfile({ preview, editHandle }) {
                               <label>
                                 <>
                                   <div className="pos-relative">
-                                    <img
+                                    {/* <img
                                       src={
                                         // userDetail?.images
                                         //   ? userDetail?.images[0]
@@ -446,6 +400,16 @@ function UserProfile({ preview, editHandle }) {
                                       alt="user image"
                                       width="350"
                                       height="350"
+                                    /> */}
+                                    <Image
+                                      src={userImageProfile}
+                                      loader={myLoader}
+                                      priority={true}
+                                      alt="user image"
+                                      width={350}
+                                      height={350}
+                                      placeholder="blur"
+                                      blurDataURL={userImageProfile}
                                     />
                                     {user?.documents_verified && (
                                       <span className="verified_check_tag">
@@ -476,6 +440,8 @@ function UserProfile({ preview, editHandle }) {
                                 alt="user image"
                                 width={160}
                                 height={150}
+                                placeholder="blur"
+                                blurDataURL={userImage1}
                               />
                             </figure>
                             <figure>
@@ -491,6 +457,8 @@ function UserProfile({ preview, editHandle }) {
                                 alt="user image"
                                 width={160}
                                 height={150}
+                                placeholder="blur"
+                                blurDataURL={userImage2}
                               />
                             </figure>
                             <figure>
@@ -506,6 +474,8 @@ function UserProfile({ preview, editHandle }) {
                                 alt="user image"
                                 width={160}
                                 height={150}
+                                placeholder="blur"
+                                blurDataURL={userImage3}
                               />
                             </figure>
                           </div>

@@ -135,7 +135,7 @@ const UserCardList = ({
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
-  if (loader && dateDetailsIsOpen) {
+  if (loader && dateDetailsIsOpen && user.gender === "male") {
     return (
       <div className="date_card_wrap">
         <div className="date_details_desktop_loading">

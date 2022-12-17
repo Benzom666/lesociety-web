@@ -89,11 +89,11 @@ class MyApp extends App {
         <Head>
           <title>Secret Time</title>
           <link rel="icon" href="/favicon.svg" />
-          <meta
+          {/* <meta
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
-          />
-          <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
+          /> */}
+          {/* <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" /> */}
         </Head>
         {lsLoader ? (
           <Loader />
