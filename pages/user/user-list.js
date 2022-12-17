@@ -340,7 +340,7 @@ function UserList(props) {
   // console.log("router", props.history);
 
   // console
-  // console.log("router?.query?.backRouter", router);
+  console.log("loading", loading);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -442,6 +442,7 @@ function UserList(props) {
                                 key={index}
                                 ref={scrollRef}
                                 loading={loading}
+                                setLoader={setLoader}
                                 receiverData={receiverData}
                                 alreadyMessagedFromUser={
                                   alreadyMessagedFromUser
@@ -455,6 +456,7 @@ function UserList(props) {
                                 openPopup={() => {
                                   openPopup(item);
                                 }}
+                                setLoader={setLoader}
                                 closePopup={closePopup}
                                 growDiv={growDiv}
                                 dateId={dateId}

@@ -3,7 +3,11 @@ import { useCallback } from "react";
 import { useState } from "react";
 
 export default ({ src, placeholderImg, alt, setLoading, ...props }) => {
-  const [imgSrc, setSrc] = useState(placeholderImg || src);
+  const placeHolderImage =
+    placeholderImg ||
+    "https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000";
+
+  const [imgSrc, setSrc] = useState(placeHolderImage || src);
   const onLoad = useCallback(() => {
     setSrc(src);
   }, [src]);
@@ -18,10 +22,12 @@ export default ({ src, placeholderImg, alt, setLoading, ...props }) => {
   }, [src, onLoad]);
 
   useEffect(() => {
-    if (imgSrc !== src) {
+    if (imgSrc === src) {
       setLoading && setLoading(false);
     }
   }, [imgSrc, src]);
+  console.log("imgSrc", imgSrc);
+  console.log("src", src);
   return (
     <img
       {...props}
