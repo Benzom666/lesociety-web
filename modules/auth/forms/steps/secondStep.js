@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Field, reduxForm, change } from "redux-form";
+import { Field, reduxForm, change, initialize } from "redux-form";
 import validate from "../validate/validate";
 import { Inputs } from "core";
 import { FiArrowRight } from "react-icons/fi";
@@ -233,7 +233,12 @@ const SecondStep = (props) => {
   // useEffect(() => {
   //   setTimeout(() => {
   //     if (
-  //       (router?.query?.edit && user?.images && user?.images[0]) ||
+  //       (router?.query?.edit &&
+  //         user?.images &&
+  //         user?.images[0]?.length > 0 &&
+  //         user?.images[1]?.length > 0 &&
+  //         user?.images[2]?.length > 0 &&
+  //         user?.images[3]?.length > 0) ||
   //       props.fromRegistration
   //     ) {
   //       setPageLoading(false);
@@ -241,27 +246,24 @@ const SecondStep = (props) => {
   //   }, 2000);
   // }, []);
 
-  useEffect(
-    () => {
-      //   if (
-      //     (!uploadImage1Loading &&
-      //       !uploadImage2Loading &&
-      //       !uploadImage3Loading &&
-      //       !uploadImage4Loading) ||
-      //     props.fromRegistration
-      //   ) {
+  useEffect(() => {
+    if (
+      (!uploadImage1Loading &&
+        !uploadImage2Loading &&
+        !uploadImage3Loading &&
+        !uploadImage4Loading) ||
+      props.fromRegistration
+    ) {
       setTimeout(() => {
         setPageLoading(false);
       }, 2000);
-      // }
-    },
-    [
-      // uploadImage1Loading,
-      // uploadImage2Loading,
-      // uploadImage3Loading,
-      // uploadImage4Loading,
-    ]
-  );
+    }
+  }, [
+    uploadImage1Loading,
+    uploadImage2Loading,
+    uploadImage3Loading,
+    uploadImage4Loading,
+  ]);
 
   const { handleSubmit, invalid, previousPage } = props;
 
@@ -296,23 +298,23 @@ const SecondStep = (props) => {
               if (router?.query?.edit) {
                 return router.back();
               } else {
-                dispatch(reset("signupStep2"));
-                dispatch(reset("DatePreview"));
-                dispatch(reset("RegisterFormMale"));
-                dispatch(reset("signupStep3"));
-                dispatch(reset("RegisterForm"));
-                dispatch(reset("forgotpassword"));
-                dispatch(reset("LoginForm"));
-                dispatch(reset("SecondStep"));
-                dispatch(reset("ThirdStep"));
-                dispatch(reset("CreateStepFour"));
-                dispatch(reset("CreateStepOne"));
-                dispatch(reset("CreateStepThree"));
-                dispatch(reset("CreateStepTwo"));
-                dispatch(reset("SkeletonUserProfile"));
-                dispatch(reset("Messages"));
-                dispatch(reset("VerifiedProfilePage"));
-                dispatch(reset("ChooseCity"));
+                dispatch(initialize("signupStep2", ""));
+                dispatch(initialize("DatePreview", ""));
+                dispatch(initialize("RegisterFormMale", ""));
+                dispatch(initialize("signupStep3", ""));
+                dispatch(initialize("RegisterForm", ""));
+                dispatch(initialize("forgotpassword", ""));
+                dispatch(initialize("LoginForm", ""));
+                dispatch(initialize("SecondStep", ""));
+                dispatch(initialize("ThirdStep", ""));
+                dispatch(initialize("CreateStepFour", ""));
+                dispatch(initialize("CreateStepOne", ""));
+                dispatch(initialize("CreateStepThree", ""));
+                dispatch(initialize("CreateStepTwo", ""));
+                dispatch(initialize("SkeletonUserProfile", ""));
+                dispatch(initialize("Messages", ""));
+                dispatch(initialize("VerifiedProfilePage", ""));
+                dispatch(initialize("ChooseCity", ""));
                 dispatch(deAuthenticateAction());
                 router.push("/auth/login");
                 // window.location.reload();
@@ -483,7 +485,7 @@ const SecondStep = (props) => {
                   alt="not fount"
                   style={{ objectFit: "cover" }}
                   width={"250px"}
-                  // setLoading={setUploadImage1Loading}
+                  setLoading={setUploadImage1Loading}
                   src={
                     typeof reduxValues?.imageUpload === "string"
                       ? reduxValues?.imageUpload
@@ -491,7 +493,7 @@ const SecondStep = (props) => {
                       ? URL.createObjectURL(reduxValues?.imageUpload[0])
                       : user.images[0]
                   }
-                  // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                  placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                 />
               ) : (
                 <>
@@ -566,7 +568,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload2[0])
                         : user?.images[1]
                     }
-                    // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                    placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                   />
                 ) : (
                   <>
@@ -640,7 +642,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload3[0])
                         : user?.images[2]
                     }
-                    // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                    placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                   />
                 ) : (
                   <>
@@ -714,7 +716,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload4[0])
                         : user?.images[3]
                     }
-                    // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                    placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                   />
                 ) : (
                   <>

@@ -2937,7 +2937,7 @@ body {
                 font-size: 20px;
               }
             }
-            .education-font-1{
+            .education-font-1 {
               font-size: 12px;
             }
           }
@@ -5525,4 +5525,12 @@ path {
   filter: blur(25px);
   transform: scale(1.1);
   transition: visibility 0ms ease 400ms;
+}
+
+.mt-50px {
+  margin-top: 50px;
+}
+
+.mb-50px {
+  margin-bottom: 50px;
 }

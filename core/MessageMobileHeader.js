@@ -12,12 +12,11 @@ function MessageMobileHeader() {
   return (
     <div className="message-mobile-header">
       <div className="message-mobile-header-container">
-        <span>
+        <span onClick={goBack}>
           <IoIosArrowBack
             size={25}
             color={"rgba(255, 255, 255, 0.7)"}
             className="message-mobile-header-icon"
-            onClick={goBack}
           />
         </span>
         <span className="user-details">

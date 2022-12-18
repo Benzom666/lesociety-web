@@ -235,7 +235,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, chatLoading]);
 
   useEffect(() => {
     if (currentChat) {

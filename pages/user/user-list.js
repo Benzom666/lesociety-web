@@ -340,7 +340,6 @@ function UserList(props) {
   // console.log("router", props.history);
 
   // console
-  console.log("loading", loading);
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn

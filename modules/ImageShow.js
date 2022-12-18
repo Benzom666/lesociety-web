@@ -4,8 +4,8 @@ import { useState } from "react";
 
 export default ({ src, placeholderImg, alt, setLoading, ...props }) => {
   const placeHolderImage =
-    placeholderImg ||
-    "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Untitled%20design.png";
+    placeholderImg || "https://i.ibb.co/y8RhMrL/Untitled-design.png";
+  // "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Untitled%20design.png";
 
   const [imgSrc, setSrc] = useState(placeHolderImage || src);
   const onLoad = useCallback(() => {
