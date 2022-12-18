@@ -228,7 +228,7 @@ const ChooseCity = (props) => {
                   <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
                     <a
                       onClick={previousPage}
-                      style={{ width: "21px", marginLeft: "-20px" }}
+                      //style={{ width: "24px" }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
