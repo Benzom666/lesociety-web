@@ -136,7 +136,11 @@ function UserProfile({ preview, editHandle }) {
 
   const onSubmit = () => {
     dispatch(
-      signupStep4({ email: user?.email, step_completed: 4 }, setLoading)
+      signupStep4(
+        { email: user?.email, step_completed: 4 },
+        setLoading,
+        handleUpdateRoutePage
+      )
     );
   };
 
@@ -199,13 +203,24 @@ function UserProfile({ preview, editHandle }) {
     }
   };
 
-  useEffect(() => {
-    if (router?.query?.edit && user?.step_completed === 4) {
-      router.push({
+  const handleUpdateRoutePage = () => {
+    console.log("handleUpdateRoutePage called");
+    if (router?.query?.edit)
+      return router.push({
         pathname: "/auth/update-profile",
       });
+    else {
+      return null;
     }
-  }, [user, router?.query?.edit]);
+  };
+
+  // useEffect(() => {
+  //   if (router?.query?.edit && user?.step_completed === 4) {
+  //     router.push({
+  //       pathname: "/auth/update-profile",
+  //     });
+  //   }
+  // }, [user, router?.query?.edit]);
 
   const nextPage = () => {
     const params = {

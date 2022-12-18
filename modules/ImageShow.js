@@ -5,7 +5,7 @@ import { useState } from "react";
 export default ({ src, placeholderImg, alt, setLoading, ...props }) => {
   const placeHolderImage =
     placeholderImg ||
-    "https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000";
+    "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Untitled%20design.png";
 
   const [imgSrc, setSrc] = useState(placeHolderImage || src);
   const onLoad = useCallback(() => {
@@ -26,13 +26,11 @@ export default ({ src, placeholderImg, alt, setLoading, ...props }) => {
       setLoading && setLoading(false);
     }
   }, [imgSrc, src]);
-  console.log("imgSrc", imgSrc);
-  console.log("src", src);
   return (
     <img
       {...props}
       alt={alt}
-      className={imgSrc !== src && "thumb"}
+      // className={imgSrc !== src && "thumb"}
       src={imgSrc}
     />
   );

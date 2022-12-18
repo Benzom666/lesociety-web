@@ -6,7 +6,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { deAuthenticateAction, signupStep2 } from "../../authActions";
-import { imageUploader } from "../../../../utils/Utilities";
+import { imageUploader, imageUploaderNew } from "../../../../utils/Utilities";
 import { useRouter } from "next/router";
 import FemaleSkeletonSecondStep from "../../../skeleton/Auth/FemaleSkeletonSecondStep";
 import { reset } from "redux-form";
@@ -24,6 +24,7 @@ const SecondStep = (props) => {
   const [uploadImage2Loading, setUploadImage2Loading] = useState(true);
   const [uploadImage3Loading, setUploadImage3Loading] = useState(true);
   const [uploadImage4Loading, setUploadImage4Loading] = useState(true);
+  const [firstTimeImageLoad, setFirstTimeImageLoad] = useState(true);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -106,26 +107,36 @@ const SecondStep = (props) => {
     console.log("values", values);
     try {
       setLoader(true);
-      const imageUploaded = await imageUploader([
-        values.imageUpload?.length > 0 ? values?.imageUpload : "",
-        values.imageUpload2?.length > 0 ? values.imageUpload2 : "",
-        values.imageUpload3?.length > 0 ? values.imageUpload3 : "",
-        values.imageUpload4?.length > 0 ? values.imageUpload4 : "",
+
+      const uploadImageArray = [
+        {
+          url: values.imageUpload?.length > 0 ? values?.imageUpload : "",
+        },
+        {
+          url: values.imageUpload2?.length > 0 ? values.imageUpload2 : "",
+        },
+        {
+          url: values.imageUpload3?.length > 0 ? values.imageUpload3 : "",
+        },
+        {
+          url: values.imageUpload4?.length > 0 ? values.imageUpload4 : "",
+        },
+      ];
+
+      const imageUploaded = await imageUploaderNew(uploadImageArray);
+
+      const verifiedImageUploaded = await imageUploaderNew([
+        { url: user?.images[0] ?? "" },
+        { url: user?.images[1] ?? "" },
+        { url: user?.images[2] ?? "" },
+        { url: user?.images[3] ?? "" },
       ]);
 
-      const verifiedImageUploaded = await imageUploader([
-        user?.images[0] ?? "",
-        user?.images[1] ?? "",
-        user?.images[2] ?? "",
-        user?.images[3] ?? "",
-      ]);
+      const unverifiedImageUploaded = await imageUploaderNew(uploadImageArray);
 
-      const unverifiedImageUploaded = await imageUploader([
-        values.imageUpload?.length > 0 ? values?.imageUpload : "",
-        values.imageUpload2?.length > 0 ? values.imageUpload2 : "",
-        values.imageUpload3?.length > 0 ? values.imageUpload3 : "",
-        values.imageUpload4?.length > 0 ? values.imageUpload4 : "",
-      ]);
+      // console.log("imageUploaded", imageUploaded);
+      // console.log("verifiedImageUploaded", verifiedImageUploaded);
+      // console.log("unverifiedImageUploaded", unverifiedImageUploaded);
 
       if (verifiedImageUploaded || unverifiedImageUploaded) {
         values.un_verified_images = unverifiedImageUploaded.map(
@@ -230,24 +241,27 @@ const SecondStep = (props) => {
   //   }, 2000);
   // }, []);
 
-  useEffect(() => {
-    if (
-      (!uploadImage1Loading &&
-        !uploadImage2Loading &&
-        !uploadImage3Loading &&
-        !uploadImage4Loading) ||
-      props.fromRegistration
-    ) {
+  useEffect(
+    () => {
+      //   if (
+      //     (!uploadImage1Loading &&
+      //       !uploadImage2Loading &&
+      //       !uploadImage3Loading &&
+      //       !uploadImage4Loading) ||
+      //     props.fromRegistration
+      //   ) {
       setTimeout(() => {
         setPageLoading(false);
-      }, 1000);
-    }
-  }, [
-    uploadImage1Loading,
-    uploadImage2Loading,
-    uploadImage3Loading,
-    uploadImage4Loading,
-  ]);
+      }, 2000);
+      // }
+    },
+    [
+      // uploadImage1Loading,
+      // uploadImage2Loading,
+      // uploadImage3Loading,
+      // uploadImage4Loading,
+    ]
+  );
 
   const { handleSubmit, invalid, previousPage } = props;
 
@@ -463,13 +477,13 @@ const SecondStep = (props) => {
                 //     ? URL.createObjectURL(reduxValues?.imageUpload[0])
                 //     : user.images[0]
                 // }
-
                 // />
+
                 <ImageShow
                   alt="not fount"
                   style={{ objectFit: "cover" }}
                   width={"250px"}
-                  setLoading={setUploadImage1Loading}
+                  // setLoading={setUploadImage1Loading}
                   src={
                     typeof reduxValues?.imageUpload === "string"
                       ? reduxValues?.imageUpload
@@ -477,7 +491,7 @@ const SecondStep = (props) => {
                       ? URL.createObjectURL(reduxValues?.imageUpload[0])
                       : user.images[0]
                   }
-                  placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                  // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
                 />
               ) : (
                 <>
@@ -552,7 +566,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload2[0])
                         : user?.images[1]
                     }
-                    placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                    // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
                   />
                 ) : (
                   <>
@@ -626,7 +640,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload3[0])
                         : user?.images[2]
                     }
-                    placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                    // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
                   />
                 ) : (
                   <>
@@ -700,7 +714,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload4[0])
                         : user?.images[3]
                     }
-                    placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                    // placeholderImg="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
                   />
                 ) : (
                   <>
