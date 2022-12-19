@@ -60,11 +60,11 @@ export const imageUploader = async (files) => {
     const formData = new FormData();
     const image_url = [];
     let res = [];
-    files.forEach((file) =>
-      file[0]?.name
+    files.forEach((file) => {
+      return file[0]?.name
         ? formData.append(`files`, file[0])
-        : image_url.push({ url: file })
-    );
+        : image_url.push({ url: file });
+    });
     if (formData.getAll("files").length > 0) {
       res = await apiRequest({
         url: "files",
@@ -80,6 +80,50 @@ export const imageUploader = async (files) => {
     }
     if (res?.data) {
       return image_url.concat(res.data.data.files);
+    } else {
+      return image_url;
+    }
+  } else {
+    return false;
+  }
+};
+
+export const imageUploaderNew = async (files) => {
+  if (files.length > 0) {
+    const formData = new FormData();
+    const image_url = files;
+    let res = [];
+    files.forEach((file, index) => {
+      if (file?.url[0]?.name) {
+        return formData.append(`files`, file?.url[0]);
+      }
+    });
+    if (formData.getAll("files").length > 0) {
+      res = await apiRequest({
+        url: "files",
+        method: "POST",
+        data: formData,
+      })
+        .then((success) => {
+          return success;
+        })
+        .catch((error) => {
+          return false;
+        });
+    }
+    console.log("res", res);
+    if (res?.data) {
+      res.data.data?.files?.forEach((file, index) => {
+        // find index of file in image_url array
+        const indexId = image_url.findIndex(
+          (item) => item?.url[0]?.name === file?.fileName
+        );
+        //  then replace the file in image_url array
+        if (indexId > -1) {
+          image_url[indexId] = { url: file?.url };
+        }
+      });
+      return image_url;
     } else {
       return image_url;
     }

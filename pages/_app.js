@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "react-rangeslider/lib/index.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { loadFromLocalStorage } from "utils/sessionStorage";
 
 import Router from "next/router";
 import Loader from "@/modules/Loader/Loader";
@@ -74,14 +75,16 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props;
     const { asPath } = this.props.router;
     // prevent site from rotating in mobile put restriction
+    const accessToken = loadFromLocalStorage();
 
     const lsLoader =
-      this.state.isLoading &&
-      asPath !== "/user/user-profile" &&
-      asPath !== "/auth/profile?edit=true" &&
-      asPath !== "/auth/profile" &&
-      asPath !== "/user/user-list" &&
-      !asPath.includes("/user/user-profile/");
+      (this.state.isLoading &&
+        asPath !== "/user/user-profile" &&
+        asPath !== "/auth/profile?edit=true" &&
+        asPath !== "/auth/profile" &&
+        asPath !== "/user/user-list" &&
+        !asPath.includes("/user/user-profile/")) ||
+      (this.state.isLoading && !accessToken);
 
     // console.log("lsLoader", asPath, lsLoader);
     return (

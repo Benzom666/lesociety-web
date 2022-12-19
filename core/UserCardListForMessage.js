@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { apiRequest } from "./../utils/Utilities";
 import SkeletonUserCardListForMessage from "@/modules/skeleton/SkeletonUserCardListForMessage";
 import SkeletonElement from "@/modules/skeleton/SkeletonElement";
+import ImageShow from "@/modules/ImageShow";
 
 const UserCardListForMessage = ({
   conversations,
@@ -122,21 +123,22 @@ const UserCardListForMessage = ({
       height: "100%",
       overFlow: "hidden",
     },
-    overlay : {
-      backdropFilter : "blur(5px)"
-    }
+    overlay: {
+      backdropFilter: "blur(5px)",
+    },
   };
 
   return (
     <>
       <span
         onClick={openModal}
-        className={`${conversations.filter(
-          (c) => c.status == 0 && c.message?.sender_id !== user?._id
-        )?.length === 0 &&
+        className={`${
+          conversations.filter(
+            (c) => c.status == 0 && c.message?.sender_id !== user?._id
+          )?.length === 0 &&
           selectedTabIndex !== 1 &&
           "request__header"
-          }`}
+        }`}
       >
         <span>
           {
@@ -162,9 +164,13 @@ const UserCardListForMessage = ({
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
-            className={modalIsOpen ? "intrested_model modal-open-blur" : "intrested_model"}
-          // className="intrested_model"
-          // id={modalIsOpen ? "modal-open-id" : ""}
+            className={
+              modalIsOpen
+                ? "intrested_model modal-open-blur"
+                : "intrested_model"
+            }
+            // className="intrested_model"
+            // id={modalIsOpen ? "modal-open-id" : ""}
           >
             <div className="model_content">
               {pageLoading ? (
@@ -182,87 +188,94 @@ const UserCardListForMessage = ({
                 {conversations.length > 0
                   ? conversations.filter((c) => c.status == 0)?.length > 0
                     ? conversations
-                      .filter((c) => c.status == 0)
-                      .map((conversation, index) => {
-                        const profilePic =
-                          conversation.user?.images.length > 0
-                            ? conversation.user?.images[0]
-                            : "";
+                        .filter((c) => c.status == 0)
+                        .map((conversation, index) => {
+                          const profilePic =
+                            conversation.user?.images.length > 0
+                              ? conversation.user?.images[0]
+                              : "";
 
-                        setTimeout(() => {
-                          if (profilePic) {
-                            setPageLoading(false);
-                          }
-                        }, 5000);
+                          setTimeout(() => {
+                            if (profilePic) {
+                              setPageLoading(false);
+                            }
+                          }, 5000);
 
-                        return pageLoading ? (
-                          <SkeletonUserCardListForMessage
-                            conversation={conversation}
-                            getConversations={getConversations}
-                            user={user}
-                            setCurrentChat={setCurrentChat}
-                            tabIndexChange={tabIndexChange}
-                            selectedTabIndex={selectedTabIndex}
-                            socket={socket}
-                            profilePic={profilePic}
-                          />
-                        ) : (
-                          <div key={index}>
-                            <H5 style1={true}>
-                              {conversation?.user?.user_name} is
-                            </H5>
-                            <CustomIcon.IntrestedText
-                              color={"white"}
-                              size={140}
+                          return pageLoading ? (
+                            <SkeletonUserCardListForMessage
+                              conversation={conversation}
+                              getConversations={getConversations}
+                              user={user}
+                              setCurrentChat={setCurrentChat}
+                              tabIndexChange={tabIndexChange}
+                              selectedTabIndex={selectedTabIndex}
+                              socket={socket}
+                              profilePic={profilePic}
                             />
-                            <figure>
-                              <Image
+                          ) : (
+                            <div key={index}>
+                              <H5 style1={true}>
+                                {conversation?.user?.user_name} is
+                              </H5>
+                              <CustomIcon.IntrestedText
+                                color={"white"}
+                                size={140}
+                              />
+                              <figure>
+                                {/* <Image
                                 src={profilePic}
                                 alt="user image"
                                 width={280}
                                 height={420}
-                              />
-                              <span className="image_tagline">
-                                {showText(conversation?.message?.message)}
-                              </span>
-                            </figure>
-                            <div className="d-flex align-items-center my-4 header_btn_wrap">
-                              <a
-                                className="create-date"
-                                onClick={() => {
-                                  if (mobile) {
-                                    toggleChat(conversation);
+                              /> */}
+                                <ImageShow
+                                  width={280}
+                                  height={420}
+                                  src={profilePic}
+                                  alt="user image"
+                                  placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
+                                />
+                                <span className="image_tagline">
+                                  {showText(conversation?.message?.message)}
+                                </span>
+                              </figure>
+                              <div className="d-flex align-items-center my-4 header_btn_wrap">
+                                <a
+                                  className="create-date"
+                                  onClick={() => {
+                                    if (mobile) {
+                                      toggleChat(conversation);
+                                    }
+                                    postApprovedConversation(
+                                      conversation?.message?.room_id,
+                                      conversation
+                                    );
+                                  }}
+                                >
+                                  START CONVERSATION
+                                </a>
+                              </div>
+                              <div className="my-4 bottom_content">
+                                {/* <Link href="/user/user-profile"> */}
+                                <a
+                                  className="view_profile"
+                                  onClick={() =>
+                                    router.push(
+                                      `/user/user-profile/${conversation?.user?.user_name}`
+                                    )
                                   }
-                                  postApprovedConversation(
-                                    conversation?.message?.room_id,
-                                    conversation
-                                  );
-                                }}
-                              >
-                                START CONVERSATION
-                              </a>
+                                >
+                                  <HiLockOpen /> View Profile
+                                </a>
+                                {/* </Link> */}
+                                <p>
+                                  {conversation?.user?.user_name} has granted
+                                  you the access to his profile
+                                </p>
+                              </div>
                             </div>
-                            <div className="my-4 bottom_content">
-                              {/* <Link href="/user/user-profile"> */}
-                              <a
-                                className="view_profile"
-                                onClick={() =>
-                                  router.push(
-                                    `/user/user-profile/${conversation?.user?.user_name}`
-                                  )
-                                }
-                              >
-                                <HiLockOpen /> View Profile
-                              </a>
-                              {/* </Link> */}
-                              <p>
-                                {conversation?.user?.user_name} has granted
-                                you the access to his profile
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      })
+                          );
+                        })
                     : "No Request yet"
                   : "No Request yet"}
               </Slider>

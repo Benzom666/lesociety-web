@@ -218,6 +218,7 @@ function* signupStep4(data) {
     });
 
     if (response.success) {
+      // data?.handleUpdateRoutePage && data.handleUpdateRoutePage();
       yield put({
         type: AUTHENTICATE_UPDATE,
         payload: { step_completed: 4 },

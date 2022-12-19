@@ -31,8 +31,8 @@ const SkeletonDatesPreview = ({ theme, ...props }) => {
           width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"
         } `}
       >
-        <div className="inner_container">
-          <div className="d-flex w-60">
+        <div className="inner_container ">
+          <div className="d-flex w-60 ">
             {width > 767 && (
               <>
                 <SkeletonElement type="h6" />
@@ -45,9 +45,18 @@ const SkeletonDatesPreview = ({ theme, ...props }) => {
               </div>
             )}
           </div>
+          <SkeletonElement type="text" />
+          {width > 767 && (
+            <>
+              <div className="mt-50px mb-4">
+                <SkeletonElement type="h6" />
+                <SkeletonElement type="text" />
+                <SkeletonElement type="text" />
+              </div>
+            </>
+          )}
 
-          <SkeletonElement type="text" />
-          <SkeletonElement type="text" />
+          {/* <SkeletonElement type="text" /> */}
         </div>
       </div>
       <form className="date-class-section choose-gender date-preview-card">

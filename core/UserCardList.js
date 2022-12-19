@@ -16,6 +16,7 @@ import Slider from "react-slick";
 import { HiLockOpen } from "react-icons/hi";
 import { useRouter } from "next/router";
 import userImageMain from "../assets/img/user2.jpg";
+import ImageShow from "@/modules/ImageShow";
 
 const UserCardList = ({
   date,
@@ -27,6 +28,7 @@ const UserCardList = ({
   isDesktopView,
   ref,
   loading,
+  setLoader,
   alreadyMessagedFromUser,
   receiverData,
 }) => {
@@ -135,7 +137,11 @@ const UserCardList = ({
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
-  if (loader && dateDetailsIsOpen) {
+  // const onLoad = useCallback(() => {
+  //   setSrc(src);
+  // }, [src]);
+
+  if (loader && dateDetailsIsOpen && user.gender === "male") {
     return (
       <div className="date_card_wrap">
         <div className="date_details_desktop_loading">
@@ -169,9 +175,18 @@ const UserCardList = ({
                   width={500}
                   height={500}
                   loader={myLoader}
+                  // onLoadingComplete={onLoad}
                   priority={true}
-                  blurDataURL="/assets/img/user2.jpg"
+                  blurDataURL="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
                 />
+                {/* <ImageShow
+                  alt="not fount"
+                  width={500}
+                  height={500}
+                  // setLoading={setLoader}
+                  src={date?.user_data[0]?.images[0] ?? ""}
+                  placeholderImg={date?.user_data[0]?.images[0]}
+                /> */}
                 <div className="user-details">
                   <div className="user-top-sec">
                     <h5 className="">
