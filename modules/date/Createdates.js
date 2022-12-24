@@ -8,6 +8,7 @@ import DatePreview from "modules/date/datePreview";
 import ConfirmDate from "./confirmDate";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
+import { useEffect } from "react";
 
 const CreateDate = (props) => {
   const [page, setPage] = useState(0);
@@ -22,6 +23,12 @@ const CreateDate = (props) => {
   }
 
   const toggle = () => setConfirmPopup(!confirmPopup);
+
+  useEffect(() => {
+    if (router.query.edit) {
+      setPage(3);
+    }
+  }, [router]);
 
   const nextPage = () => {
     setPage(page + 1);
