@@ -199,7 +199,7 @@ function UserProfile({ preview, editHandle }) {
         date_description: selectedDate?.date_details,
       })
     );
-    router.push("/create-date/date-event?edit=true");
+    router.push("/create-date/date-event?new_edit=true");
   };
 
   const deleteDate = async () => {

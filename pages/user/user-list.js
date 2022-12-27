@@ -316,28 +316,76 @@ function UserList(props) {
     };
   }, [scrollPosition]);
 
-  // if back router is create-date/date-event then redirect to home page
+  //  how to get previous router I visited
   // useEffect(() => {
-  //   const history = props.history?.length > 0 ? props.history : [];
-  //   if (
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/choose-city") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/date-event") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] ===
-  //         "/create-date/date-event?drafted=true") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/date-event?edit=true") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/choose-city?edit=true")
-  //   ) {
-  //     router.replace("/user/user-list");
-  //   }
-  // }, [props.history, router]);
+  //   const history =
+  //     props.history?.length > 0
+  //       ? props.history?.filter((item) => {
+  //           return !item.includes("/auth");
+  //         })
+  //       : [];
 
-  // // console previous router
-  // console.log("router", props.history);
+  //   console.log("history", history);
+  //   if (history?.length > 0) {
+  //     const previousRouter = history[history.length - 2];
+  //     console.log("previousRouter", previousRouter);
+
+  //     // if previousRouter is date/event then redirect to home page
+  //     if (
+  //       previousRouter === "/create-date/date-event" ||
+  //       previousRouter === "/create-date/date-event?drafted=true" ||
+  //       previousRouter === "/create-date/date-event?edit=true"
+  //     ) {
+  //       router.replace("/user/user-list");
+  //     }
+
+  //     // check if browser's back button is clicked
+
+  //     // if (previousRouter === "/message") {
+  //     //   window.history.pushState(null, "", window.location.href);
+  //     //   window.onpopstate = function () {
+  //     //     window.history.go(1);
+  //     //   };
+  //     // }
+  //   }
+  // }, [props.history]);
+
+  useEffect(() => {
+    router.beforePopState(({ as }) => {
+      console.log("as", as);
+      if (
+        as === "/create-date/date-event" ||
+        as === "/create-date/date-event?drafted=true" ||
+        as === "/create-date/date-event?edit=true" ||
+        as === "/create-date/date-event?new_edit=true"
+      ) {
+        // Will run when leaving the current page; on back/forward actions
+        // Add your logic here, like toggling the modal state
+        console.log("as after", as);
+        console.log(
+          "as path",
+          as === "/create-date/date-event" ||
+            as === "/create-date/date-event?drafted=true" ||
+            as === "/create-date/date-event?edit=true" ||
+            as === "/create-date/date-event?new_edit=true"
+        );
+
+        return router.replace("/auth/login");
+      }
+      // return true;
+    });
+
+    // return () => {
+    //   router.beforePopState(() => true);
+    // };
+  }, [router]);
+
+  // useEffect(() => {
+  //   window.history.pushState(null, "", window.location.href);
+  //   window.onpopstate = function () {
+  //     window.history.go(1);
+  //   };
+  // }, []);
 
   // console
   return (

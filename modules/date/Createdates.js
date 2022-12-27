@@ -25,7 +25,7 @@ const CreateDate = (props) => {
   const toggle = () => setConfirmPopup(!confirmPopup);
 
   useEffect(() => {
-    if (router.query.edit) {
+    if (router.query.new_edit) {
       setPage(3);
     }
   }, [router]);
