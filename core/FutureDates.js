@@ -1,14 +1,15 @@
 import React from 'react'
 
 function FutureDates(props) {
+  const {title,contentaboutDating} =props
   return (
-    <div>
-         <nav class="navbar navbar-dark bg-black w-50 d-flex justify-content-center m-auto" style={{padding:"55px 65px"}}>
+    <div className='d-flex justify-content-center align-items-center mt-5'>
+         <nav class="navbar navbar-dark bg-black w-50 d-flex justify-content-center">
             <div className='heading-title'>
-            <h5 >{props.title}</h5>
+            <h5 dangerouslySetInnerHTML={{__html:title}}></h5>
             </div>
             <div className='futureDatingContent'>
-            <p>{props.contentaboutDating}</p>
+            <p>{contentaboutDating}</p>
             </div>
         </nav>
     </div>

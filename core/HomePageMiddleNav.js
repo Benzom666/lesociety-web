@@ -2,7 +2,8 @@ import React,{useState} from 'react'
 import useWindowSize from "utils/useWindowSize";
 import { IoIosClose } from "react-icons/io";
 
-function HomePageMiddleNav() {
+function HomePageMiddleNav(props) {
+  //console.log(props)
     const [openNav, setOpenNav] = useState(false);
   const { width } = useWindowSize();
   const openNavBar = () => {
@@ -14,7 +15,7 @@ function HomePageMiddleNav() {
   }
   return (
     <>
-        <nav class="navbar fixed-bottom bg-dark mt-4 navbarfixedmain">
+        <nav class="navbar fixed-bottom bg-dark mt-4 navbarfixedmain" style={props.style}>
         <div class="container-fluid d-flex justify-content-end containernavbarfooter">
           <div className="navbarfooter-text">
            {width  > 500 && <div className="navfooter-text-1">
