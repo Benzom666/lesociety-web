@@ -1587,7 +1587,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
     .close-button {
       background-color: unset;
-      border: 1px solid;
+      // border: 1px solid;
     }
 
     button {
@@ -4107,8 +4107,10 @@ body .verification_card_header {
 
   position: fixed;
   width: auto;
-  left: 20%;
-  right: 20%;
+  // left: 20%;
+  // right: 20%;
+  left: 0%;
+  right: 0%;
   bottom: 0;
   backdrop-filter: blur(27px);
   -webkit-backdrop-filter: blur(27px);
@@ -4292,7 +4294,7 @@ body .verification_card_header {
 
   .close-button {
     background-color: unset;
-    border: 1px solid;
+    // border: 1px solid;
   }
 
   .edit {
@@ -5579,4 +5581,8 @@ path {
     top: 15px;
     right: 35px;
   }
+}
+
+.no-radius {
+  border-radius: 0px !important;
 }

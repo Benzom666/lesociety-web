@@ -17,6 +17,7 @@ import { HiLockOpen } from "react-icons/hi";
 import { useRouter } from "next/router";
 import userImageMain from "../assets/img/user2.jpg";
 import ImageShow from "@/modules/ImageShow";
+import MessageModal from "./MessageModal";
 
 const UserCardList = ({
   date,
@@ -37,9 +38,16 @@ const UserCardList = ({
   const [loader, setLoading] = useState(true);
   const [msgModal, setMsgModal] = React.useState(false);
   const [alreadyMessaged, setAlreadyMessaged] = useState(false);
+
+  const [messageModal, setMessageModal] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
+
+  const handleMessageModal = () => {
+    setMessageModal(!messageModal);
+    // setDateDetailsIsOpen(false);
+  };
 
   function openModal() {
     setIsOpen(true);
@@ -286,7 +294,10 @@ const UserCardList = ({
                 </div>
               </div>
             ) : (
-              <div className="date_details_desktop" onClick={toggle}>
+              <div
+                className="date_details_desktop"
+                // onClick={toggle}
+              >
                 <div onClick={toggle} className="less-txt">
                   Show less
                 </div>
@@ -300,9 +311,21 @@ const UserCardList = ({
                 </div>
                 <div className="button-wrapper">
                   {user?.gender === "male" && !alreadyMessaged && (
-                    <button onClick={openPopup} className="next">
-                      Message
-                    </button>
+                    // <button
+                    //   onClick={handleMessageModal}
+                    //   // onClick={openPopup}
+                    //   className="next"
+                    // >
+                    //   Message
+                    // </button>
+                    <MessageModal
+                      date={date}
+                      user={user}
+                      alreadyMessaged={alreadyMessaged}
+                      receiverData={receiverData}
+                      closePopup={closePopup}
+                      toggle={toggle}
+                    />
                   )}
                   <button
                     type="button"

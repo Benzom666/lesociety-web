@@ -310,11 +310,13 @@ function UserProfile({ preview, editHandle }) {
       userImage1 &&
       userImage2 &&
       userImage3 &&
-      (!dateloading || user?.gender === "male" || userDetail?.gender === "male")
+      (!dateloading ||
+        (user?.gender === "male" && router?.query?.userName && userDetail) ||
+        (user?.gender === "male" && !router?.query?.userName))
     ) {
       setTimeout(() => {
         setPageLoading(false);
-      }, 1000);
+      }, 2000);
     }
   }, [userImageProfile, userImage1, userImage2, userImage3, dateloading]);
 

@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 import DatePopup from "core/createDatePopup";
 import router from "next/router";
 import useWindowSize from "utils/useWindowSize";
-import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import CustomInput from "Views/CustomInput";
@@ -198,16 +197,7 @@ function UserList(props) {
     icon.style.top = dimension?.top - 310 + "px";
 
     setReceiverData(item);
-    // if click on message icon
-    // if (icon) {
-    //   icon.addEventListener("click", () => {
-    //   });
-    // }
-    // how to get value of input
   };
-
-  // create async function to fetch data
-  // const postMessageData = async (receiverData) => {};
 
   const handleSubmit = async (values) => {
     moveIcon();
@@ -316,78 +306,36 @@ function UserList(props) {
     };
   }, [scrollPosition]);
 
-  //  how to get previous router I visited
   // useEffect(() => {
-  //   const history =
-  //     props.history?.length > 0
-  //       ? props.history?.filter((item) => {
-  //           return !item.includes("/auth");
-  //         })
-  //       : [];
-
-  //   console.log("history", history);
-  //   if (history?.length > 0) {
-  //     const previousRouter = history[history.length - 2];
-  //     console.log("previousRouter", previousRouter);
-
-  //     // if previousRouter is date/event then redirect to home page
+  //   router.beforePopState(({ as }) => {
+  //     console.log("as", as);
   //     if (
-  //       previousRouter === "/create-date/date-event" ||
-  //       previousRouter === "/create-date/date-event?drafted=true" ||
-  //       previousRouter === "/create-date/date-event?edit=true"
+  //       as === "/create-date/date-event" ||
+  //       as === "/create-date/date-event?drafted=true" ||
+  //       as === "/create-date/date-event?edit=true" ||
+  //       as === "/create-date/date-event?new_edit=true"
   //     ) {
-  //       router.replace("/user/user-list");
+  //       // Will run when leaving the current page; on back/forward actions
+  //       // Add your logic here, like toggling the modal state
+  //       console.log("as after", as);
+  //       console.log(
+  //         "as path",
+  //         as === "/create-date/date-event" ||
+  //           as === "/create-date/date-event?drafted=true" ||
+  //           as === "/create-date/date-event?edit=true" ||
+  //           as === "/create-date/date-event?new_edit=true"
+  //       );
+
+  //       return router.replace("/auth/login");
   //     }
+  //     // return true;
+  //   });
 
-  //     // check if browser's back button is clicked
+  //   // return () => {
+  //   //   router.beforePopState(() => true);
+  //   // };
+  // }, [router]);
 
-  //     // if (previousRouter === "/message") {
-  //     //   window.history.pushState(null, "", window.location.href);
-  //     //   window.onpopstate = function () {
-  //     //     window.history.go(1);
-  //     //   };
-  //     // }
-  //   }
-  // }, [props.history]);
-
-  useEffect(() => {
-    router.beforePopState(({ as }) => {
-      console.log("as", as);
-      if (
-        as === "/create-date/date-event" ||
-        as === "/create-date/date-event?drafted=true" ||
-        as === "/create-date/date-event?edit=true" ||
-        as === "/create-date/date-event?new_edit=true"
-      ) {
-        // Will run when leaving the current page; on back/forward actions
-        // Add your logic here, like toggling the modal state
-        console.log("as after", as);
-        console.log(
-          "as path",
-          as === "/create-date/date-event" ||
-            as === "/create-date/date-event?drafted=true" ||
-            as === "/create-date/date-event?edit=true" ||
-            as === "/create-date/date-event?new_edit=true"
-        );
-
-        return router.replace("/auth/login");
-      }
-      // return true;
-    });
-
-    // return () => {
-    //   router.beforePopState(() => true);
-    // };
-  }, [router]);
-
-  // useEffect(() => {
-  //   window.history.pushState(null, "", window.location.href);
-  //   window.onpopstate = function () {
-  //     window.history.go(1);
-  //   };
-  // }, []);
-
-  // console
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
