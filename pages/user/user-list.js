@@ -596,6 +596,7 @@ function UserList(props) {
                         background: "transparent",
                         border: "none",
                         paddingBottom: "10px",
+                        paddingTop: "8px",
                       }}
                     >
                       <Image

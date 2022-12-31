@@ -35,6 +35,8 @@ const UserCardList = ({
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
+  const [dateMobileDetailsIsOpen, setMobileDateDetailsIsOpen] =
+    React.useState(false);
   const [loader, setLoading] = useState(true);
   const [msgModal, setMsgModal] = React.useState(false);
   const [alreadyMessaged, setAlreadyMessaged] = useState(false);
@@ -65,11 +67,15 @@ const UserCardList = ({
   );
 
   useEffect(() => {
-    if (dateDetailsIsOpen && user?.gender === "male") {
+    if (
+      (dateDetailsIsOpen || dateMobileDetailsIsOpen) &&
+      user?.gender === "male"
+    ) {
       setLoading(true);
+      setMobileLoading(true);
       checkMessage();
     }
-  }, [dateDetailsIsOpen]);
+  }, [dateDetailsIsOpen, dateMobileDetailsIsOpen]);
 
   const checkMessage = async () => {
     try {
@@ -97,9 +103,8 @@ const UserCardList = ({
   };
 
   async function growDiv(id) {
-    setMobileLoading(true);
     closePopup();
-    checkMessage();
+
     let growDiv = document.getElementById(id);
     if (growDiv?.clientHeight) {
       growDiv.style.height = 0;
@@ -176,7 +181,10 @@ const UserCardList = ({
             onClick={
               isDesktopView
                 ? !dateDetailsIsOpen && toggle
-                : () => growDiv(cardId)
+                : () => {
+                    growDiv(cardId);
+                    setMobileDateDetailsIsOpen(!dateMobileDetailsIsOpen);
+                  }
             }
           >
             {!dateDetailsIsOpen ? (
