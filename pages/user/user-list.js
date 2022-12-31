@@ -442,6 +442,9 @@ function UserList(props) {
                                 alreadyMessagedFromUser={
                                   alreadyMessagedFromUser
                                 }
+                                setAlreadyMessagedFromUser={
+                                  setAlreadyMessagedFromUser
+                                }
                               />
                             ) : (
                               <UserCardList
@@ -461,6 +464,9 @@ function UserList(props) {
                                 receiverData={receiverData}
                                 alreadyMessagedFromUser={
                                   alreadyMessagedFromUser
+                                }
+                                setAlreadyMessagedFromUser={
+                                  setAlreadyMessagedFromUser
                                 }
                               />
                             )}
@@ -534,53 +540,59 @@ function UserList(props) {
         />
       </svg>
       <div id="message-popup" className={`message-popup ${classPopup}`}>
-        <span onClick={closePopup} className="close-button">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.9924 12.9926L1.00244 1.00006"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M12.9887 1.00534L1.00873 12.9853"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <p className="msg">
-          "
-          {receiverData?.user_data?.length > 0 &&
-            receiverData?.user_data[0]?.tagline}
-          "
-        </p>
-        <div>
-          <Formik
-            initialValues={{
-              message: "",
-            }}
-            validationSchema={Yup.object({
-              message: Yup.string().required("Please enter your message"),
-            })}
-            onSubmit={(values) => {
-              if (values.message?.trim() !== "") {
-                handleSubmit(values);
-              }
-            }}
-          >
-            {(formProps) => {
-              return (
-                <Form>
+        <Formik
+          initialValues={{
+            message: "",
+          }}
+          validationSchema={Yup.object({
+            message: Yup.string().required("Please enter your message"),
+          })}
+          onSubmit={(values) => {
+            if (values.message?.trim() !== "") {
+              handleSubmit(values);
+            }
+          }}
+        >
+          {(formProps) => {
+            return (
+              <Form>
+                <span
+                  onClick={() => {
+                    closePopup();
+                    formProps.setFieldValue("message", "");
+                  }}
+                  className="close-button"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.9924 12.9926L1.00244 1.00006"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12.9887 1.00534L1.00873 12.9853"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <p className="msg">
+                  "
+                  {receiverData?.user_data?.length > 0 &&
+                    receiverData?.user_data[0]?.tagline}
+                  "
+                </p>
+                <div>
                   <div className="">
                     <Field
                       className={`${textClass}`}
@@ -614,11 +626,11 @@ function UserList(props) {
                       />
                     </button>
                   </div>
-                </Form>
-              );
-            }}
-          </Formik>
-        </div>
+                </div>
+              </Form>
+            );
+          }}
+        </Formik>
         <p className="tip">Tip: ask her which date she prefers</p>
       </div>
       {/* <DatePopup

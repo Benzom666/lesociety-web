@@ -32,6 +32,7 @@ const UserCardList = ({
   setLoader,
   alreadyMessagedFromUser,
   receiverData,
+  setAlreadyMessagedFromUser,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
@@ -113,6 +114,12 @@ const UserCardList = ({
     }
   }
 
+  // destroy above growDiv
+  const destroyGrowDiv = (id) => {
+    let growDiv = document.getElementById(id);
+    growDiv.style.height = 0;
+  };
+
   const toggle = () => setDateDetailsIsOpen(!dateDetailsIsOpen);
   const toggleMsgModal = () => setMsgModal(!msgModal);
 
@@ -146,7 +153,9 @@ const UserCardList = ({
   useEffect(() => {
     if (messagedFromUserDone) {
       setDateDetailsIsOpen(false);
+      setMobileDateDetailsIsOpen(false);
       setMsgModal(false);
+      destroyGrowDiv(cardId);
     }
   }, [messagedFromUserDone]);
 
@@ -184,6 +193,7 @@ const UserCardList = ({
                 : () => {
                     growDiv(cardId);
                     setMobileDateDetailsIsOpen(!dateMobileDetailsIsOpen);
+                    setAlreadyMessagedFromUser(false);
                   }
             }
           >
@@ -372,11 +382,13 @@ const UserCardList = ({
                     <h4>Date Details</h4>
                     <p>{date?.date_details}</p>
                     <div className="button-wrapper mt-3">
-                      {user?.gender === "male" && !alreadyMessaged && (
-                        <button onClick={openPopup} className="next">
-                          Message
-                        </button>
-                      )}
+                      {user?.gender === "male" &&
+                        !messagedFromUserDone &&
+                        !alreadyMessaged && (
+                          <button onClick={openPopup} className="next">
+                            Message
+                          </button>
+                        )}
                       <button
                         type="button"
                         className="edit"
