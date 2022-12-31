@@ -38,11 +38,12 @@ const UserCardList = ({
   const [loader, setLoading] = useState(true);
   const [msgModal, setMsgModal] = React.useState(false);
   const [alreadyMessaged, setAlreadyMessaged] = useState(false);
-
   const [messageModal, setMessageModal] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
+
+  const [mobileLoader, setMobileLoading] = useState(false);
 
   const handleMessageModal = () => {
     setMessageModal(!messageModal);
@@ -83,19 +84,22 @@ const UserCardList = ({
       });
       setTimeout(() => {
         setLoading(false);
+        setMobileLoading(false);
       }, 1500);
       if (res?.data?.message) {
         setAlreadyMessaged(true);
       }
     } catch (err) {
+      setMobileLoading(false);
       setLoading(false);
       console.log("err", err);
     }
   };
 
   async function growDiv(id) {
+    setMobileLoading(true);
     closePopup();
-
+    checkMessage();
     let growDiv = document.getElementById(id);
     if (growDiv?.clientHeight) {
       growDiv.style.height = 0;
@@ -343,24 +347,40 @@ const UserCardList = ({
           {!isDesktopView && (
             <div style={dateId !== cardId ? { height: 0 } : {}} id={cardId}>
               <div ref={growRef} className="date_details">
-                <h4>Date Details</h4>
-                <p>{date?.date_details}</p>
-                <div className="button-wrapper mt-3">
-                  {user?.gender === "male" && !alreadyMessaged && (
-                    <button onClick={openPopup} className="next">
-                      Message
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    className="edit"
-                    onClick={() =>
-                      router.push(`/user/user-profile/${date?.user_name}`)
-                    }
-                  >
-                    <a>View profile</a>
-                  </button>
-                </div>
+                {mobileLoader ? (
+                  <div className="">
+                    <div className="d-flex justify-content-center">
+                      <Image
+                        src={require("../assets/squareLogoNoBack.gif")}
+                        alt="loading..."
+                        className=""
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <h4>Date Details</h4>
+                    <p>{date?.date_details}</p>
+                    <div className="button-wrapper mt-3">
+                      {user?.gender === "male" && !alreadyMessaged && (
+                        <button onClick={openPopup} className="next">
+                          Message
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        className="edit"
+                        onClick={() =>
+                          router.push(`/user/user-profile/${date?.user_name}`)
+                        }
+                      >
+                        <a>View profile</a>
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )}

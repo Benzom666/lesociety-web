@@ -4152,7 +4152,7 @@ body .verification_card_header {
     margin: auto;
     justify-content: center;
     display: flex;
-
+    align-items: flex-start;
     input.show {
       -webkit-animation: inputTextSlide 2s linear;
       /* Safari */
@@ -4324,6 +4324,7 @@ body .verification_card_header {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    margin-top: 3px;
     // margin-bottom: 30px;
   }
 }
