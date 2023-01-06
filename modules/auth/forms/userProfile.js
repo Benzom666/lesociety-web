@@ -19,7 +19,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
-import ImageShow from "@/modules/ImageShow";
+
+import close1 from "../../../assets/close1.png";
 
 function UserProfile({ preview, editHandle }) {
   const { width } = useWindowSize();
@@ -33,6 +34,8 @@ function UserProfile({ preview, editHandle }) {
   const [pageLoading, setPageLoading] = useState(true);
   const [dateloading, setDateloading] = useState(true);
   const [page, setPage] = useState(1);
+
+  const [viewFullPage, setViewFullPage] = useState(false);
 
   const [image1Loading, setImage1Loading] = useState(true);
   const [image2Loading, setImage2Loading] = useState(true);
@@ -150,9 +153,27 @@ function UserProfile({ preview, editHandle }) {
         countriesCode[key]?.toLowerCase() ===
         selectedDate.country_code?.toLowerCase()
     );
+    // dispatch(
+    //   initialize("ChooseCity", {
+    //     enter_country: { label: country, value: selectedDate.country_code },
+    //     enter_city: {
+    //       name: selectedDate?.location,
+    //       country: [
+    //         {
+    //           short_code: selectedDate.country_code,
+    //           text: country,
+    //         },
+    //       ],
+    //       label: selectedDate?.location,
+    //     },
+    //   })
+    // );
     dispatch(
       initialize("ChooseCity", {
-        enter_country: { label: country, value: selectedDate.country_code },
+        enter_country: {
+          label: country,
+          value: selectedDate.country_code,
+        },
         enter_city: {
           name: selectedDate?.location,
           country: [
@@ -161,7 +182,8 @@ function UserProfile({ preview, editHandle }) {
               text: country,
             },
           ],
-          label: selectedDate?.location,
+          label: selectedDate?.location + ", " + selectedDate?.province,
+          province: [{ short_code: selectedDate?.province?.toUpperCase() }],
         },
       })
     );
@@ -177,7 +199,7 @@ function UserProfile({ preview, editHandle }) {
         date_description: selectedDate?.date_details,
       })
     );
-    router.push("/create-date/choose-city?edit=true");
+    router.push("/create-date/date-event?new_edit=true");
   };
 
   const deleteDate = async () => {
@@ -288,11 +310,13 @@ function UserProfile({ preview, editHandle }) {
       userImage1 &&
       userImage2 &&
       userImage3 &&
-      (!dateloading || user?.gender === "male" || userDetail?.gender === "male")
+      (!dateloading ||
+        (user?.gender === "male" && router?.query?.userName && userDetail) ||
+        (user?.gender === "male" && !router?.query?.userName))
     ) {
       setTimeout(() => {
         setPageLoading(false);
-      }, 1000);
+      }, 2000);
     }
   }, [userImageProfile, userImage1, userImage2, userImage3, dateloading]);
 
@@ -323,6 +347,45 @@ function UserProfile({ preview, editHandle }) {
                           <div className="big-image">
                             <label>
                               <div className="pos-relative">
+                                {viewFullPage && (
+                                  <div
+                                    id="myNav"
+                                    className={viewFullPage ? "overlay" : ""}
+                                    onClick={() => setViewFullPage(false)}
+                                  >
+                                    <div
+                                      className={
+                                        viewFullPage
+                                          ? "closebtn"
+                                          : "image-display-none"
+                                      }
+                                      onClick={() => setViewFullPage(false)}
+                                    >
+                                      <Image
+                                        src={close1}
+                                        alt="user image"
+                                        width={30}
+                                        height={30}
+                                      />
+                                    </div>
+                                    <div
+                                      className={
+                                        viewFullPage
+                                          ? "overlay-content"
+                                          : "image-display-none"
+                                      }
+                                    >
+                                      <img
+                                        src={userImageProfile}
+                                        onClick={() =>
+                                          setViewFullPage(!viewFullPage)
+                                        }
+                                        alt="img"
+                                        className="fullpage"
+                                      />
+                                    </div>
+                                  </div>
+                                )}
                                 <Image
                                   src={userImageProfile}
                                   loader={myLoader}
@@ -332,14 +395,9 @@ function UserProfile({ preview, editHandle }) {
                                   height={270}
                                   placeholder="blur"
                                   blurDataURL={userImageProfile}
+                                  onClick={() => setViewFullPage(true)}
                                 />
 
-                                {/* <ImageShow
-                                  src={userImageProfile}
-                                  alt="user image"
-                                  width={270}
-                                  height={270}
-                                /> */}
                                 {user?.documents_verified && (
                                   <span className="verified_check_tag">
                                     <HiBadgeCheck color={"white"} size={20} />
@@ -789,13 +847,23 @@ function UserProfile({ preview, editHandle }) {
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-                              {user.max_education.length >15 ? <h5 className="education-font-1" style={{wordBreak:"unset"}}>
-                                  {userDetail?.max_education ||
-                                    user.max_education}
-                                </h5> : <h5 className="education-font" style={{wordBreak:"unset"}}>
-                                  {userDetail?.max_education ||
-                                    user.max_education}
-                                </h5> }
+                                {user.max_education.length > 15 ? (
+                                  <h5
+                                    className="education-font-1"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.max_education ||
+                                      user.max_education}
+                                  </h5>
+                                ) : (
+                                  <h5
+                                    className="education-font"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.max_education ||
+                                      user.max_education}
+                                  </h5>
+                                )}
                                 <p>Education Completed </p>
                               </div>
                             </div>
@@ -825,11 +893,21 @@ function UserProfile({ preview, editHandle }) {
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-              {  user.occupation.length > 15 ? <h5 className="administrat-font-1" style={{wordBreak:"unset"}}>
-                                  {userDetail?.occupation || user.occupation}
-                                </h5>: <h5 className="administrat-font" style={{wordBreak:"unset"}}>
-                                  {userDetail?.occupation || user.occupation}
-                                </h5> }
+                                {user.occupation.length > 15 ? (
+                                  <h5
+                                    className="administrat-font-1"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.occupation || user.occupation}
+                                  </h5>
+                                ) : (
+                                  <h5
+                                    className="administrat-font"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.occupation || user.occupation}
+                                  </h5>
+                                )}
                                 <p>Occupation </p>
                               </div>
                             </div>

@@ -17,6 +17,7 @@ import { HiLockOpen } from "react-icons/hi";
 import { useRouter } from "next/router";
 import userImageMain from "../assets/img/user2.jpg";
 import ImageShow from "@/modules/ImageShow";
+import MessageModal from "./MessageModal";
 
 const UserCardList = ({
   date,
@@ -31,15 +32,26 @@ const UserCardList = ({
   setLoader,
   alreadyMessagedFromUser,
   receiverData,
+  setAlreadyMessagedFromUser,
 }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [dateDetailsIsOpen, setDateDetailsIsOpen] = React.useState(false);
+  const [dateMobileDetailsIsOpen, setMobileDateDetailsIsOpen] =
+    React.useState(false);
   const [loader, setLoading] = useState(true);
   const [msgModal, setMsgModal] = React.useState(false);
   const [alreadyMessaged, setAlreadyMessaged] = useState(false);
+  const [messageModal, setMessageModal] = useState(false);
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
+
+  const [mobileLoader, setMobileLoading] = useState(false);
+
+  const handleMessageModal = () => {
+    setMessageModal(!messageModal);
+    // setDateDetailsIsOpen(false);
+  };
 
   function openModal() {
     setIsOpen(true);
@@ -56,11 +68,15 @@ const UserCardList = ({
   );
 
   useEffect(() => {
-    if (dateDetailsIsOpen && user?.gender === "male") {
+    if (
+      (dateDetailsIsOpen || dateMobileDetailsIsOpen) &&
+      user?.gender === "male"
+    ) {
       setLoading(true);
+      setMobileLoading(true);
       checkMessage();
     }
-  }, [dateDetailsIsOpen]);
+  }, [dateDetailsIsOpen, dateMobileDetailsIsOpen]);
 
   const checkMessage = async () => {
     try {
@@ -75,11 +91,13 @@ const UserCardList = ({
       });
       setTimeout(() => {
         setLoading(false);
+        setMobileLoading(false);
       }, 1500);
       if (res?.data?.message) {
         setAlreadyMessaged(true);
       }
     } catch (err) {
+      setMobileLoading(false);
       setLoading(false);
       console.log("err", err);
     }
@@ -95,6 +113,12 @@ const UserCardList = ({
       growDiv.style.height = growRef.current.clientHeight + "px";
     }
   }
+
+  // destroy above growDiv
+  const destroyGrowDiv = (id) => {
+    let growDiv = document.getElementById(id);
+    growDiv.style.height = 0;
+  };
 
   const toggle = () => setDateDetailsIsOpen(!dateDetailsIsOpen);
   const toggleMsgModal = () => setMsgModal(!msgModal);
@@ -129,7 +153,9 @@ const UserCardList = ({
   useEffect(() => {
     if (messagedFromUserDone) {
       setDateDetailsIsOpen(false);
+      setMobileDateDetailsIsOpen(false);
       setMsgModal(false);
+      destroyGrowDiv(cardId);
     }
   }, [messagedFromUserDone]);
 
@@ -164,7 +190,11 @@ const UserCardList = ({
             onClick={
               isDesktopView
                 ? !dateDetailsIsOpen && toggle
-                : () => growDiv(cardId)
+                : () => {
+                    growDiv(cardId);
+                    setMobileDateDetailsIsOpen(!dateMobileDetailsIsOpen);
+                    setAlreadyMessagedFromUser(false);
+                  }
             }
           >
             {!dateDetailsIsOpen ? (
@@ -286,7 +316,10 @@ const UserCardList = ({
                 </div>
               </div>
             ) : (
-              <div className="date_details_desktop" onClick={toggle}>
+              <div
+                className="date_details_desktop"
+                // onClick={toggle}
+              >
                 <div onClick={toggle} className="less-txt">
                   Show less
                 </div>
@@ -300,9 +333,21 @@ const UserCardList = ({
                 </div>
                 <div className="button-wrapper">
                   {user?.gender === "male" && !alreadyMessaged && (
-                    <button onClick={openPopup} className="next">
-                      Message
-                    </button>
+                    // <button
+                    //   onClick={handleMessageModal}
+                    //   // onClick={openPopup}
+                    //   className="next"
+                    // >
+                    //   Message
+                    // </button>
+                    <MessageModal
+                      date={date}
+                      user={user}
+                      alreadyMessaged={alreadyMessaged}
+                      receiverData={receiverData}
+                      closePopup={closePopup}
+                      toggle={toggle}
+                    />
                   )}
                   <button
                     type="button"
@@ -320,24 +365,42 @@ const UserCardList = ({
           {!isDesktopView && (
             <div style={dateId !== cardId ? { height: 0 } : {}} id={cardId}>
               <div ref={growRef} className="date_details">
-                <h4>Date Details</h4>
-                <p>{date?.date_details}</p>
-                <div className="button-wrapper mt-3">
-                  {user?.gender === "male" && !alreadyMessaged && (
-                    <button onClick={openPopup} className="next">
-                      Message
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    className="edit"
-                    onClick={() =>
-                      router.push(`/user/user-profile/${date?.user_name}`)
-                    }
-                  >
-                    <a>View profile</a>
-                  </button>
-                </div>
+                {mobileLoader ? (
+                  <div className="">
+                    <div className="d-flex justify-content-center">
+                      <Image
+                        src={require("../assets/squareLogoNoBack.gif")}
+                        alt="loading..."
+                        className=""
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <h4>Date Details</h4>
+                    <p>{date?.date_details}</p>
+                    <div className="button-wrapper mt-3">
+                      {user?.gender === "male" &&
+                        !messagedFromUserDone &&
+                        !alreadyMessaged && (
+                          <button onClick={openPopup} className="next">
+                            Message
+                          </button>
+                        )}
+                      <button
+                        type="button"
+                        className="edit"
+                        onClick={() =>
+                          router.push(`/user/user-profile/${date?.user_name}`)
+                        }
+                      >
+                        <a>View profile</a>
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )}

@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 import DatePopup from "core/createDatePopup";
 import router from "next/router";
 import useWindowSize from "utils/useWindowSize";
-import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import CustomInput from "Views/CustomInput";
@@ -198,16 +197,7 @@ function UserList(props) {
     icon.style.top = dimension?.top - 310 + "px";
 
     setReceiverData(item);
-    // if click on message icon
-    // if (icon) {
-    //   icon.addEventListener("click", () => {
-    //   });
-    // }
-    // how to get value of input
   };
-
-  // create async function to fetch data
-  // const postMessageData = async (receiverData) => {};
 
   const handleSubmit = async (values) => {
     moveIcon();
@@ -316,30 +306,36 @@ function UserList(props) {
     };
   }, [scrollPosition]);
 
-  // if back router is create-date/date-event then redirect to home page
   // useEffect(() => {
-  //   const history = props.history?.length > 0 ? props.history : [];
-  //   if (
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/choose-city") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/date-event") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] ===
-  //         "/create-date/date-event?drafted=true") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/date-event?edit=true") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/choose-city?edit=true")
-  //   ) {
-  //     router.replace("/user/user-list");
-  //   }
-  // }, [props.history, router]);
+  //   router.beforePopState(({ as }) => {
+  //     console.log("as", as);
+  //     if (
+  //       as === "/create-date/date-event" ||
+  //       as === "/create-date/date-event?drafted=true" ||
+  //       as === "/create-date/date-event?edit=true" ||
+  //       as === "/create-date/date-event?new_edit=true"
+  //     ) {
+  //       // Will run when leaving the current page; on back/forward actions
+  //       // Add your logic here, like toggling the modal state
+  //       console.log("as after", as);
+  //       console.log(
+  //         "as path",
+  //         as === "/create-date/date-event" ||
+  //           as === "/create-date/date-event?drafted=true" ||
+  //           as === "/create-date/date-event?edit=true" ||
+  //           as === "/create-date/date-event?new_edit=true"
+  //       );
 
-  // // console previous router
-  // console.log("router", props.history);
+  //       return router.replace("/auth/login");
+  //     }
+  //     // return true;
+  //   });
 
-  // console
+  //   // return () => {
+  //   //   router.beforePopState(() => true);
+  //   // };
+  // }, [router]);
+
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -446,6 +442,9 @@ function UserList(props) {
                                 alreadyMessagedFromUser={
                                   alreadyMessagedFromUser
                                 }
+                                setAlreadyMessagedFromUser={
+                                  setAlreadyMessagedFromUser
+                                }
                               />
                             ) : (
                               <UserCardList
@@ -465,6 +464,9 @@ function UserList(props) {
                                 receiverData={receiverData}
                                 alreadyMessagedFromUser={
                                   alreadyMessagedFromUser
+                                }
+                                setAlreadyMessagedFromUser={
+                                  setAlreadyMessagedFromUser
                                 }
                               />
                             )}
@@ -538,53 +540,59 @@ function UserList(props) {
         />
       </svg>
       <div id="message-popup" className={`message-popup ${classPopup}`}>
-        <span onClick={closePopup} className="close-button">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.9924 12.9926L1.00244 1.00006"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M12.9887 1.00534L1.00873 12.9853"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <p className="msg">
-          "
-          {receiverData?.user_data?.length > 0 &&
-            receiverData?.user_data[0]?.tagline}
-          "
-        </p>
-        <div>
-          <Formik
-            initialValues={{
-              message: "",
-            }}
-            validationSchema={Yup.object({
-              message: Yup.string().required("Please enter your message"),
-            })}
-            onSubmit={(values) => {
-              if (values.message?.trim() !== "") {
-                handleSubmit(values);
-              }
-            }}
-          >
-            {(formProps) => {
-              return (
-                <Form>
+        <Formik
+          initialValues={{
+            message: "",
+          }}
+          validationSchema={Yup.object({
+            message: Yup.string().required("Please enter your message"),
+          })}
+          onSubmit={(values) => {
+            if (values.message?.trim() !== "") {
+              handleSubmit(values);
+            }
+          }}
+        >
+          {(formProps) => {
+            return (
+              <Form>
+                <span
+                  onClick={() => {
+                    closePopup();
+                    formProps.setFieldValue("message", "");
+                  }}
+                  className="close-button"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.9924 12.9926L1.00244 1.00006"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12.9887 1.00534L1.00873 12.9853"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <p className="msg">
+                  "
+                  {receiverData?.user_data?.length > 0 &&
+                    receiverData?.user_data[0]?.tagline}
+                  "
+                </p>
+                <div>
                   <div className="">
                     <Field
                       className={`${textClass}`}
@@ -593,28 +601,14 @@ function UserList(props) {
                       id="message"
                       component={CustomInput}
                     />
-                    {/* <IoIosSend
-                      size={25}
-                      color={
-                        formProps.values?.message?.trim() === ""
-                          ? "#686868"
-                          : "#F24462"
-                      }
-                      type="submit"
-                      onClick={() => {
-                        if (formProps.values?.message?.trim() !== "") {
-                          handleSubmit(formProps.values);
-                        }
 
-                        formProps.resetForm();
-                      }}
-                    />  */}
                     <button
                       type="button"
                       style={{
                         background: "transparent",
                         border: "none",
                         paddingBottom: "10px",
+                        paddingTop: "8px",
                       }}
                     >
                       <Image
@@ -631,30 +625,12 @@ function UserList(props) {
                         }}
                       />
                     </button>
-                    {/* create svg with onclick */}
-
-                    {/* <svg
-                      type="submit"
-                      onClick={() => handleSubmit()}
-                      className="icon-move-1"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      pointerEvents="none"
-                    >
-                      <path
-                        d="M13.6048 0.407386C13.2546 0.0480202 12.7364 -0.0858618 12.2532 0.0550622L0.9856 3.33166C0.47579 3.4733 0.114443 3.87988 0.0171013 4.39639C-0.0823407 4.92205 0.265006 5.58935 0.718788 5.86838L4.24193 8.03376C4.60328 8.25573 5.06967 8.20008 5.36869 7.89845L9.40303 3.83901C9.6061 3.62762 9.94224 3.62762 10.1454 3.83901C10.3484 4.04336 10.3484 4.37455 10.1454 4.58594L6.104 8.64612C5.80426 8.94698 5.74826 9.41556 5.96883 9.77914L8.12154 13.3377C8.37361 13.7604 8.80782 14 9.28396 14C9.34003 14 9.40303 14 9.4591 13.9929C10.0053 13.9225 10.4395 13.5491 10.6005 13.0206L13.9409 1.76735C14.088 1.2882 13.9549 0.766759 13.6048 0.407386Z"
-                        fill="#686868"
-                      />
-                    </svg> */}
                   </div>
-                </Form>
-              );
-            }}
-          </Formik>
-        </div>
+                </div>
+              </Form>
+            );
+          }}
+        </Formik>
         <p className="tip">Tip: ask her which date she prefers</p>
       </div>
       {/* <DatePopup

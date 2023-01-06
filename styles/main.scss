@@ -1587,7 +1587,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
     .close-button {
       background-color: unset;
-      border: 1px solid;
+      // border: 1px solid;
     }
 
     button {
@@ -4107,8 +4107,10 @@ body .verification_card_header {
 
   position: fixed;
   width: auto;
-  left: 20%;
-  right: 20%;
+  // left: 20%;
+  // right: 20%;
+  left: 0%;
+  right: 0%;
   bottom: 0;
   backdrop-filter: blur(27px);
   -webkit-backdrop-filter: blur(27px);
@@ -4150,7 +4152,7 @@ body .verification_card_header {
     margin: auto;
     justify-content: center;
     display: flex;
-
+    align-items: flex-start;
     input.show {
       -webkit-animation: inputTextSlide 2s linear;
       /* Safari */
@@ -4292,7 +4294,7 @@ body .verification_card_header {
 
   .close-button {
     background-color: unset;
-    border: 1px solid;
+    // border: 1px solid;
   }
 
   .edit {
@@ -4322,6 +4324,7 @@ body .verification_card_header {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    margin-top: 3px;
     // margin-bottom: 30px;
   }
 }
@@ -5533,4 +5536,54 @@ path {
 
 .mb-50px {
   margin-bottom: 50px;
+}
+
+.image-display-none {
+  display: none !important;
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 40% !important;
+  height: 100vh;
+  text-align: center;
+  margin: 30px;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.no-radius {
+  border-radius: 0px !important;
 }

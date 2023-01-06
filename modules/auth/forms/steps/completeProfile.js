@@ -10,7 +10,7 @@ const CompleteProfile = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   const [tokenValid, setTokenValid] = useState(true);
   const [updatedUser, setUpdatedUser] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -39,8 +39,8 @@ const CompleteProfile = (props) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     const verifyEmail = async () => {
-      setLoading(true);
       if (router?.query?.token && router?.query?.email) {
         try {
           const res = await apiRequest({
