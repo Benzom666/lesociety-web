@@ -19,7 +19,7 @@ function HomePageMiddleNav(props) {
         <div class="container-fluid d-flex justify-content-end containernavbarfooter">
           <div className="navbarfooter-text">
            {width  > 500 && <div className="navfooter-text-1">
-              <span style={{ fontSize: "18px" }}>Start a new adventure.
+              <span style={props.styleText}>Start a new adventure.
                 <span style={{ color: " #f24462", paddingRight: "10px", fontSize: "16px" }}>Already a Member? Login</span>
               </span>
             </div> }

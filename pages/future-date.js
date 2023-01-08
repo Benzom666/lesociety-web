@@ -34,7 +34,7 @@ const futureDatesMiddleContent ={
   futureDatesMiddleContent2 :{
     heading :"Share your <span class='test'>live</span> location.",
     mainHeadingContent : "To thoroughly enjoy a date, both parties should feel relaxed and safe. To ensure you can fully settle into your date, turn any of your friends into a Le Society security agent. This gives your friends and family access to your exact location along with other important information such as the battery life of your device, push notifications when your phone turns off, and additional information on the gentlemen being met.",
-    imgText:"Real time, sharable data.",
+    imgText:"REAL TIME,<br/> sharable data.",
     imgUrl :MaskGroup22,
   },
 }

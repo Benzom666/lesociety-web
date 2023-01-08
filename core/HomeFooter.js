@@ -9,7 +9,7 @@ import MaskGroup6 from '../assets/img/Mask Group 6.png'
 export default function Footer(props) {
     console.log(props)
   return (
-    <footer className='d-flex home-footer-main'>
+    <footer className='d-flex home-footer-main'style={props.styleBackground}>
         <div className="container" style={{marginRight:"10px"}}>
           <div className="d-flex justify-content-between align-items-center w-100 home-footer">
             <div className='ls-logo-footer'>

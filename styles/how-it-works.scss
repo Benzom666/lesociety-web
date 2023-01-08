@@ -1,0 +1,279 @@
+.how-it-works {
+    //font-family: "Montserrat";
+    .container-1 {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        margin-bottom: 4rem;
+    }
+
+    .myCard {
+        display: flex;
+        justify-content: space-around;
+        //flex-direction: column;
+        align-items: center;
+        background-color: #f2f5f7;
+        padding: 20px 8px;
+        border-radius: 14px;
+        box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+   .parentdiv-2{
+    display: flex;
+    margin-top: 3rem;
+    .myCard-1{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        margin-left: 2rem;
+    }
+   }
+    .sub-heading {
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #1a415c;
+    }
+
+    .main-heading {
+        font-size: 40px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 1.4px;
+        color: #1a415c;
+        text-transform: uppercase;
+    }
+
+    .myCard {
+        .subCard-heading {
+            font-size: 24px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: 1.84px;
+            text-align: center;
+            color: #1a415c;
+            text-transform: uppercase;
+        }
+
+        span {
+            font-size: 16px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #1a415c;
+             padding: 0px 45px;
+        }
+
+        .subCard-sub-heading {
+            font-size: 18px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3a5e77;
+            //padding: 5px 10px;
+        }
+    }
+
+    .container-2 {
+        margin-left: 30%;
+        margin-right: 30%;
+
+        .container-2-title {
+            padding: 5px 56px;
+            margin: 10px 20px;
+
+            .heading {
+                font-size: 40px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: 1.4px;
+                text-align: center;
+                color: #1a415c;
+                text-transform: uppercase;
+            }
+
+            .sub-heading {
+                font-size: 18px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #3a5e77;
+                // margin: 10px 0px 25px 0px;
+                // padding: 0px 2px 10px 2px;
+            }
+        }
+        .myCard-3{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #f2f5f7;
+            border-radius: 14px;
+            box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
+        }
+        .howitWork-heading {
+            font-size: 20px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: 1.2px;
+            text-align: center;
+            color: #1a415c;
+            text-transform: uppercase;
+        }
+
+        .howitWork-content {
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #3a5e77;
+            padding: 2px 14px;
+        }
+
+        .The-future-of-Le-Society {
+            font-size: 20px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: 3.2px;
+            text-align: center;
+            color: #1a415c;
+            text-transform: uppercase;
+            padding: 20px 22px;
+            margin-bottom: 8px;
+        }
+
+        .Rectangle-1 {
+            text-align: center;
+            border-radius: 15px;
+            background-color: #f24462;
+            color: #fff;
+            border: #f24462;
+            margin-left: 25%;
+            margin-right: 25%;
+        }
+
+        .In-App-Payment-GPS-Tracking-and-more {
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #2c2c2c;
+            margin-top: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .how-it-works {
+        .container-1 {
+            margin-left: 0;
+            margin-right: 0;
+            .myCard {
+               flex-direction: column;
+                .myCard-1 {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                   
+                }
+                .textContent{
+                    .sub-heading {
+                        font-size: 16px;
+                        margin-top: 10px;
+                        text-align: center;
+                    }
+
+                    .main-heading {
+                        font-family: Montserrat;
+                        font-size: 20px;
+                        margin: 5px 0 5px 0;
+                    }
+                }
+                .subCard-heading{
+                    font-size: 20px;
+                }
+            }
+            .parentdiv-2{
+                flex-direction: column;
+                .myCard-1{
+                    margin-left: 0;
+                    margin-top: 1rem;
+                }
+            }
+        }
+        .container-2{
+            margin-left: 10%;
+            margin-right: 10%;
+            .container-2-title{
+                margin: 5px 0;
+                padding: 10px 0px;
+                .heading{
+                    font-size: 20px;
+                    padding: 5px 40px;
+                }
+                .sub-heading{
+                    font-size: 16px;
+                    padding: 5px 8px;
+                }
+            }
+            .howitWork-heading{
+                letter-spacing: 3.2px;
+            }
+            .howitWork-content{
+                padding: 5px 43px;
+            }
+            
+            .The-future-of-Le-Society{
+                padding: 12px 50px;
+            }
+            .Rectangle-1{
+                margin: 0% 30%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:1024px) and (min-width :767px){
+    .how-it-works{
+        .container-2{
+            margin: 0 22%;
+        }
+    }
+}
+
+@media only screen and (max-width:768px) and (min-width :427px){
+    .how-it-works{
+        .container-2{
+            margin: 0 15%;
+        }
+    }
+}
