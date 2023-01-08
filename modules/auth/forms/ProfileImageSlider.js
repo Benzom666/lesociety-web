@@ -1,7 +1,6 @@
 import React from "react";
 import close1 from "../../../assets/close1.png";
 import Image from "next/image";
-import { AiOutlineRight, AiOutlineLeft } from "react-icons/Ai";
 
 function ProfileImageSlider({
   viewFullPage,

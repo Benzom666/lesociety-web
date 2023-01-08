@@ -19,7 +19,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
-// import { AiOutlineRight, AiOutlineLeft } from "react-icons/Ai";
 
 function UserProfile({ preview, editHandle }) {
   const [selectedImage, setSelectedImage] = useState(null);
