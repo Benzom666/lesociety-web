@@ -39,6 +39,10 @@ const CreateStepFour = (props) => {
 
   const postDate = async () => {
     setLoader(true);
+    if (router?.query?.new_edit) {
+      setLoader(false);
+      return;
+    }
     const data = {
       location: cityState?.enter_city?.name,
       country_code: cityState?.enter_country?.value,
@@ -94,11 +98,21 @@ const CreateStepFour = (props) => {
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </a>
-          <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
-          <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
+          <h6 className="m-0 text-white-50 text-uppercase">
+            Create a New Date
+          </h6>
+          <IoIosClose
+            className="mouse-point"
+            size={32}
+            style={{ color: " rgba(255, 255, 255, 0.5)" }}
+            onClick={toggle}
+          />
         </div>
         {width > 767 && (
-          <div className="d-flex justify-content-center" style={{marginLeft:"40px"}}>
+          <div
+            className="d-flex justify-content-center"
+            style={{ marginLeft: "40px" }}
+          >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <IoIosClose
               className="desk-close-icon mouse-point"
@@ -143,8 +157,8 @@ const CreateStepFour = (props) => {
             >
               <h6>Describe your date.</h6>
               <p>
-              Write more about your date suggestion, and why someone should choose you as their date.
-
+                Write more about your date suggestion, and why someone should
+                choose you as their date.
               </p>
             </div>
           </div>
@@ -174,9 +188,8 @@ const CreateStepFour = (props) => {
                     </div>
                  )}    */}
             <div className="inner_container">
-              
-                <>
-                  {/* <div className="mb-4">
+              <>
+                {/* <div className="mb-4">
                                 <div className="secret-input type-text select-wrap-icon">
                                     <select className="form-control">
                                         <option>Minimum yearly income</option>
@@ -186,7 +199,7 @@ const CreateStepFour = (props) => {
                                     </select>
                                 </div>    
                             </div> */}
-                  {/* <div className="mb-5">
+                {/* <div className="mb-5">
                                 <Field
                                     name="education"
                                     options={education_plan}
@@ -194,15 +207,20 @@ const CreateStepFour = (props) => {
                                     component={Inputs.checkboxField}
                                 />
                             </div> */}
-                  <div className="mb-2 text-center">
-                    <CustomIcon.Diamond color={"#fff"} size={120} />
-                  </div>
-                </>
-            
-              <div className="mb-8 bottom-content text-center" style={{marginBottom:"28px"}}>
-                <p style={{fontSize:"16px"}}>
-                Thank you for being one of our early adopters! To show you our appreciation, we will keep your posts active until you delete it. This allows you to earn multiple times for each post. Goodluck!
+                <div className="mb-2 text-center">
+                  <CustomIcon.Diamond color={"#fff"} size={120} />
+                </div>
+              </>
 
+              <div
+                className="mb-8 bottom-content text-center"
+                style={{ marginBottom: "28px" }}
+              >
+                <p style={{ fontSize: "16px" }}>
+                  Thank you for being one of our early adopters! To show you our
+                  appreciation, we will keep your posts active until you delete
+                  it. This allows you to earn multiple times for each post.
+                  Goodluck!
                 </p>
               </div>
               <div className="bottom-mobile register-bottom">

@@ -188,7 +188,10 @@ function UserProfile({ preview, editHandle }) {
       })
     );
     dispatch(
-      initialize("CreateStepOne", { search_type: selectedDateCategory })
+      initialize("CreateStepOne", {
+        search_type: selectedDateCategory,
+        dateId: selectedDate?._id,
+      })
     );
     dispatch(initialize("CreateStepTwo", { education: selectedDate?.price }));
     dispatch(
@@ -323,6 +326,8 @@ function UserProfile({ preview, editHandle }) {
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 50}`;
   };
+
+  console.log("selectedDate", selectedDate);
 
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;

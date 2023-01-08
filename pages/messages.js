@@ -452,8 +452,22 @@ const Messages = (props) => {
         url: `chat/block`,
       });
       console.log("res", res);
-      getChatHistory(currentChat);
+      if (res?.data?.message === "Accepted!!") {
+        setCurrentChat(
+          (prev) =>
+            prev && {
+              ...prev,
+              status: 2,
+              blocked_by: {
+                ...prev.blocked_by,
+                _id: user._id,
+              },
+            }
+        );
+      }
       getConversations();
+
+      getChatHistory(currentChat);
     } catch (err) {
       console.log("err", err);
     }

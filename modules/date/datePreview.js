@@ -28,6 +28,9 @@ const DatePreview = (props) => {
   const dateDescription = useSelector(
     (state) => state?.form?.CreateStepFour?.values
   );
+  const selectedDateData = useSelector(
+    (state) => state?.form?.CreateStepOne?.values
+  );
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [loader, setLoader] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
@@ -57,6 +60,45 @@ const DatePreview = (props) => {
       const res = await apiRequest({
         method: "POST",
         url: `/date/update-draft-status`,
+        data: data,
+      });
+      setLoader(false);
+      router.push(
+        {
+          pathname: "/user/user-list",
+          query: {
+            city: cityState?.enter_city?.name,
+            country: cityState.enter_country?.value,
+            province: cityState?.enter_city?.province[0]?.short_code?.split(
+              "-"
+            )[1]
+              ? cityState?.enter_city?.province[0]?.short_code?.split("-")[1]
+              : cityState?.enter_city?.province[0]?.short_code,
+          },
+        },
+        "/user/user-list"
+      );
+      dispatch(reset("ChooseCity"));
+      dispatch(reset("CreateStepOne"));
+      dispatch(reset("CreateStepTwo"));
+      dispatch(reset("CreateStepThree"));
+      dispatch(reset("CreateStepFour"));
+    } catch (e) {
+      setLoader(false);
+    }
+  };
+
+  const updateDate = async () => {
+    setLoader(true);
+    const data = {
+      user_name: user?.user_name,
+      date_id: selectedDateData?.dateId,
+      date_details: dateDescription?.date_description,
+    };
+    try {
+      const res = await apiRequest({
+        method: "POST",
+        url: `/date/update`,
         data: data,
       });
       setLoader(false);
@@ -381,12 +423,20 @@ const DatePreview = (props) => {
                         <a>Edit</a>
                       </Link>
                     </button>
-                    <button type="button" className="next" onClick={postDate}>
+                    <button
+                      type="button"
+                      className="next"
+                      onClick={router?.query?.new_edit ? updateDate : postDate}
+                    >
                       {loader ? (
                         <span className="spin-loader-button"></span>
                       ) : (
                         <>
-                          <a className="forgot-passwrd">Post Date</a>
+                          <a className="forgot-passwrd">
+                            {router?.query?.new_edit
+                              ? "Update Date"
+                              : "Post Date"}
+                          </a>
                         </>
                       )}
                     </button>
