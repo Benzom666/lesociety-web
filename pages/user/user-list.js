@@ -136,14 +136,16 @@ function UserList(props) {
       });
       console.log("res dates of user", res);
       if (res?.data?.data?.pagination?.current_page !== 1) {
-        res?.data?.data?.dates.sort(function (a, b) {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
+        res?.data?.data?.dates;
+        // .sort(function (a, b) {
+        //   return new Date(b.created_at) - new Date(a.created_at);
+        // });
         setDates([...dates, ...res?.data?.data?.dates]);
       } else {
-        res?.data?.data?.dates.sort(function (a, b) {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
+        res?.data?.data?.dates;
+        // .sort(function (a, b) {
+        //   return new Date(b.created_at) - new Date(a.created_at);
+        // });
         setDates(res?.data?.data?.dates);
       }
       setPagination(res?.data?.data?.pagination);

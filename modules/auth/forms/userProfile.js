@@ -21,6 +21,8 @@ import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
 
 import close1 from "../../../assets/close1.png";
+import ProfileImageSlider from "./ProfileImageSlider";
+import ImageSlider from "./ImageSlider";
 
 function UserProfile({ preview, editHandle }) {
   const { width } = useWindowSize();
@@ -36,6 +38,7 @@ function UserProfile({ preview, editHandle }) {
   const [page, setPage] = useState(1);
 
   const [viewFullPage, setViewFullPage] = useState(false);
+  const [slideShowIndex, setSlideShowIndex] = useState(0);
 
   const [image1Loading, setImage1Loading] = useState(true);
   const [image2Loading, setImage2Loading] = useState(true);
@@ -307,6 +310,35 @@ function UserProfile({ preview, editHandle }) {
       ? user?.un_verified_description
       : user?.description);
 
+  const slides =
+    slideShowIndex === 0
+      ? [
+          { url: userImageProfile },
+          { url: userImage1 },
+          { url: userImage2 },
+          { url: userImage3 },
+        ]
+      : slideShowIndex === 1
+      ? [
+          { url: userImage1 },
+          { url: userImage2 },
+          { url: userImage3 },
+          { url: userImageProfile },
+        ]
+      : slideShowIndex === 2
+      ? [
+          { url: userImage2 },
+          { url: userImage3 },
+          { url: userImageProfile },
+          { url: userImage1 },
+        ]
+      : [
+          { url: userImage3 },
+          { url: userImageProfile },
+          { url: userImage1 },
+          { url: userImage2 },
+        ];
+
   useEffect(() => {
     if (
       userImageProfile &&
@@ -327,7 +359,14 @@ function UserProfile({ preview, editHandle }) {
     return `${src}?w=${width}&q=${quality || 50}`;
   };
 
-  console.log("selectedDate", selectedDate);
+  const containerStyles = {
+    position: "relative",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, 0%)",
+    maxWidth: "40%",
+    height: "100vh",
+  };
 
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
@@ -354,9 +393,7 @@ function UserProfile({ preview, editHandle }) {
                               <div className="pos-relative">
                                 {viewFullPage && (
                                   <div
-                                    id="myNav"
                                     className={viewFullPage ? "overlay" : ""}
-                                    onClick={() => setViewFullPage(false)}
                                   >
                                     <div
                                       className={
@@ -374,19 +411,16 @@ function UserProfile({ preview, editHandle }) {
                                       />
                                     </div>
                                     <div
+                                      // style={viewFullPage && containerStyles}
                                       className={
                                         viewFullPage
                                           ? "overlay-content"
                                           : "image-display-none"
                                       }
                                     >
-                                      <img
-                                        src={userImageProfile}
-                                        onClick={() =>
-                                          setViewFullPage(!viewFullPage)
-                                        }
-                                        alt="img"
-                                        className="fullpage"
+                                      <ImageSlider
+                                        slides={slides}
+                                        viewFullPage={viewFullPage}
                                       />
                                     </div>
                                   </div>
@@ -400,7 +434,10 @@ function UserProfile({ preview, editHandle }) {
                                   height={270}
                                   placeholder="blur"
                                   blurDataURL={userImageProfile}
-                                  onClick={() => setViewFullPage(true)}
+                                  onClick={() => {
+                                    setViewFullPage(true);
+                                    setSlideShowIndex(0);
+                                  }}
                                 />
 
                                 {user?.documents_verified && (
@@ -488,6 +525,42 @@ function UserProfile({ preview, editHandle }) {
                                       width="350"
                                       height="350"
                                     /> */}
+                                    {viewFullPage && (
+                                      <div
+                                        className={
+                                          viewFullPage ? "overlay" : ""
+                                        }
+                                      >
+                                        <div
+                                          className={
+                                            viewFullPage
+                                              ? "closebtn"
+                                              : "image-display-none"
+                                          }
+                                          onClick={() => setViewFullPage(false)}
+                                        >
+                                          <Image
+                                            src={close1}
+                                            alt="user image"
+                                            width={30}
+                                            height={30}
+                                          />
+                                        </div>
+                                        <div
+                                          // style={viewFullPage && containerStyles}
+                                          className={
+                                            viewFullPage
+                                              ? "overlay-content"
+                                              : "image-display-none"
+                                          }
+                                        >
+                                          <ImageSlider
+                                            slides={slides}
+                                            viewFullPage={viewFullPage}
+                                          />
+                                        </div>
+                                      </div>
+                                    )}
                                     <Image
                                       src={userImageProfile}
                                       loader={myLoader}
@@ -497,6 +570,10 @@ function UserProfile({ preview, editHandle }) {
                                       height={350}
                                       placeholder="blur"
                                       blurDataURL={userImageProfile}
+                                      onClick={() => {
+                                        setViewFullPage(true);
+                                        setSlideShowIndex(0);
+                                      }}
                                     />
                                     {/* <ImageShow
                                       alt="user image"
@@ -521,6 +598,34 @@ function UserProfile({ preview, editHandle }) {
                           {width > 991 && <SubHeading title="Photos" />}
                           <div className="image_wrap_slider pt-3 pb-4">
                             <figure>
+                              {viewFullPage && (
+                                <div className={viewFullPage ? "overlay" : ""}>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "closebtn"
+                                        : "image-display-none"
+                                    }
+                                    onClick={() => setViewFullPage(false)}
+                                  >
+                                    <Image
+                                      src={close1}
+                                      alt="user image"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "overlay-content"
+                                        : "image-display-none"
+                                    }
+                                  >
+                                    <ImageSlider slides={slides} />
+                                  </div>
+                                </div>
+                              )}
                               <Image
                                 src={userImage1}
                                 loader={myLoader}
@@ -530,6 +635,11 @@ function UserProfile({ preview, editHandle }) {
                                 height={150}
                                 placeholder="blur"
                                 blurDataURL={userImage1}
+                                onClick={() => {
+                                  setViewFullPage(true);
+                                  setSlideShowIndex(1);
+                                }}
+                                className="cursor-pointer"
                               />
                               {/* <ImageShow
                                 alt="user image"
@@ -539,6 +649,34 @@ function UserProfile({ preview, editHandle }) {
                               /> */}
                             </figure>
                             <figure>
+                              {viewFullPage && (
+                                <div className={viewFullPage ? "overlay" : ""}>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "closebtn"
+                                        : "image-display-none"
+                                    }
+                                    onClick={() => setViewFullPage(false)}
+                                  >
+                                    <Image
+                                      src={close1}
+                                      alt="user image"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "overlay-content"
+                                        : "image-display-none"
+                                    }
+                                  >
+                                    <ImageSlider slides={slides} />
+                                  </div>
+                                </div>
+                              )}
                               <Image
                                 src={userImage2}
                                 loader={myLoader}
@@ -548,6 +686,11 @@ function UserProfile({ preview, editHandle }) {
                                 height={150}
                                 placeholder="blur"
                                 blurDataURL={userImage2}
+                                onClick={() => {
+                                  setViewFullPage(true);
+                                  setSlideShowIndex(2);
+                                }}
+                                className="cursor-pointer"
                               />
                               {/* <ImageShow
                                 alt="user image"
@@ -557,6 +700,34 @@ function UserProfile({ preview, editHandle }) {
                               /> */}
                             </figure>
                             <figure>
+                              {viewFullPage && (
+                                <div className={viewFullPage ? "overlay" : ""}>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "closebtn"
+                                        : "image-display-none"
+                                    }
+                                    onClick={() => setViewFullPage(false)}
+                                  >
+                                    <Image
+                                      src={close1}
+                                      alt="user image"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "overlay-content"
+                                        : "image-display-none"
+                                    }
+                                  >
+                                    <ImageSlider slides={slides} />
+                                  </div>
+                                </div>
+                              )}
                               <Image
                                 src={userImage3}
                                 loader={myLoader}
@@ -566,6 +737,11 @@ function UserProfile({ preview, editHandle }) {
                                 height={150}
                                 placeholder="blur"
                                 blurDataURL={userImage3}
+                                onClick={() => {
+                                  setViewFullPage(true);
+                                  setSlideShowIndex(3);
+                                }}
+                                className="cursor-pointer"
                               />
                               {/* <ImageShow
                                 alt="user image"
