@@ -589,7 +589,10 @@ function UserProfile({ preview, editHandle }) {
                                   <div className="verification_card_header text-center mb-5 mt-4">
                                     <div
                                       className={
-                                        userDates.length === 1
+                                        userDates.length > 0 &&
+                                        userDates.filter(
+                                          (item) => item?.date_status === true
+                                        )?.length === 1
                                           ? "available-dates-box1"
                                           : "available-dates-box"
                                       }
@@ -606,73 +609,80 @@ function UserProfile({ preview, editHandle }) {
                                         <div className="w-100 d-flex justify-content-center align-items-center">
                                           <span className="date-spin-loader-button"></span>
                                         </div>
-                                      ) : userDates.length > 0 ? (
-                                        userDates.map((date) => {
-                                          const category = dateCategory.find(
-                                            (item) =>
-                                              item?.label ===
-                                                date?.standard_class_date ||
-                                              item?.label ===
-                                                date?.middle_class_dates ||
-                                              item?.label ===
-                                                date?.executive_class_dates
-                                          );
-                                          return (
-                                            <div
-                                              className="availabe_card_inner"
-                                              onClick={() => {
-                                                if (
-                                                  !router?.query?.userName ||
-                                                  router?.query?.userName ===
-                                                    user.user_name
-                                                ) {
-                                                  setSelectedDate(date);
-                                                  dateModalIsOpen();
-                                                }
-                                              }}
-                                            >
-                                              <ul className="date_list">
-                                                <li>
-                                                  <span
-                                                    className="icon_wrap"
-                                                    style={{
-                                                      height: "40px",
-                                                      width: "40px",
-                                                    }}
-                                                  >
-                                                    {category?.icon}
-                                                  </span>
-                                                  <p
-                                                    style={{
-                                                      fontSize: "14px",
-                                                      fontWeight: "300",
-                                                      borderRadius: "11px",
-                                                    }}
-                                                  >
-                                                    {category?.label}
-                                                  </p>
-                                                </li>
-                                                <span className="top-card_tag">
-                                                  <span className="top-badge"></span>
-                                                  <div className="price-card-name">
-                                                    <span className="date-price-card">
-                                                      ${date?.price}
+                                      ) : userDates.length > 0 &&
+                                        userDates.filter(
+                                          (item) => item?.date_status === true
+                                        )?.length > 0 ? (
+                                        userDates
+                                          .filter(
+                                            (item) => item?.date_status === true
+                                          )
+                                          .map((date) => {
+                                            const category = dateCategory.find(
+                                              (item) =>
+                                                item?.label ===
+                                                  date?.standard_class_date ||
+                                                item?.label ===
+                                                  date?.middle_class_dates ||
+                                                item?.label ===
+                                                  date?.executive_class_dates
+                                            );
+                                            return (
+                                              <div
+                                                className="availabe_card_inner"
+                                                onClick={() => {
+                                                  if (
+                                                    !router?.query?.userName ||
+                                                    router?.query?.userName ===
+                                                      user.user_name
+                                                  ) {
+                                                    setSelectedDate(date);
+                                                    dateModalIsOpen();
+                                                  }
+                                                }}
+                                              >
+                                                <ul className="date_list">
+                                                  <li>
+                                                    <span
+                                                      className="icon_wrap"
+                                                      style={{
+                                                        height: "40px",
+                                                        width: "40px",
+                                                      }}
+                                                    >
+                                                      {category?.icon}
                                                     </span>
-                                                    <span className="hour">
-                                                      <span>
-                                                        {date?.date_length.replace(
-                                                          "H",
-                                                          ""
-                                                        )}
-                                                        H
+                                                    <p
+                                                      style={{
+                                                        fontSize: "14px",
+                                                        fontWeight: "300",
+                                                        borderRadius: "11px",
+                                                      }}
+                                                    >
+                                                      {category?.label}
+                                                    </p>
+                                                  </li>
+                                                  <span className="top-card_tag">
+                                                    <span className="top-badge"></span>
+                                                    <div className="price-card-name">
+                                                      <span className="date-price-card">
+                                                        ${date?.price}
                                                       </span>
-                                                    </span>
-                                                  </div>
-                                                </span>
-                                              </ul>
-                                            </div>
-                                          );
-                                        })
+                                                      <span className="hour">
+                                                        <span>
+                                                          {date?.date_length.replace(
+                                                            "H",
+                                                            ""
+                                                          )}
+                                                          H
+                                                        </span>
+                                                      </span>
+                                                    </div>
+                                                  </span>
+                                                </ul>
+                                              </div>
+                                            );
+                                          })
                                       ) : null}
                                       {/* {userDates.length > 0 &&
                                       pagination?.total_pages > page && (

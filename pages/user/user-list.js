@@ -405,73 +405,77 @@ function UserList(props) {
                             <SkeletonDate key={n} theme="dark" />
                           </div>
                         ))
-                      : dates.length > 0
-                      ? dates.map((item, index) => (
-                          <div
-                            className={`col-xl-6 col-lg-12 ${
-                              (width > 767 && (index === 2 || index === 3)) ||
-                              index === 0 ||
-                              index === 1
-                                ? "scrollActive"
-                                : ""
-                            }`}
-                            id={`scrolldiv`}
-                            key={index}
-                            onClick={() => {
-                              // if (index === dates?.length - 1) {
-                              lastClickedDate();
-                              // }
-                            }}
-                          >
-                            {width > 767 ? (
-                              <UserCardList
-                                setDateId={setDateId}
-                                date={item}
-                                cardId={`grow-${index}`}
-                                openPopup={() => {
-                                  openPopup(item);
-                                }}
-                                closePopup={closePopup}
-                                dateId={dateId}
-                                isDesktopView={true}
-                                key={index}
-                                ref={scrollRef}
-                                loading={loading}
-                                setLoader={setLoader}
-                                receiverData={receiverData}
-                                alreadyMessagedFromUser={
-                                  alreadyMessagedFromUser
-                                }
-                                setAlreadyMessagedFromUser={
-                                  setAlreadyMessagedFromUser
-                                }
-                              />
-                            ) : (
-                              <UserCardList
-                                setDateId={setDateId}
-                                date={item}
-                                cardId={`grow-${index}`}
-                                openPopup={() => {
-                                  openPopup(item);
-                                }}
-                                setLoader={setLoader}
-                                closePopup={closePopup}
-                                growDiv={growDiv}
-                                dateId={dateId}
-                                key={index}
-                                ref={scrollRef}
-                                loading={loading}
-                                receiverData={receiverData}
-                                alreadyMessagedFromUser={
-                                  alreadyMessagedFromUser
-                                }
-                                setAlreadyMessagedFromUser={
-                                  setAlreadyMessagedFromUser
-                                }
-                              />
-                            )}
-                          </div>
-                        ))
+                      : dates.length > 0 &&
+                        dates.filter((item) => item?.date_status === true)
+                          ?.length > 0
+                      ? dates
+                          .filter((item) => item?.date_status === true)
+                          .map((item, index) => (
+                            <div
+                              className={`col-xl-6 col-lg-12 ${
+                                (width > 767 && (index === 2 || index === 3)) ||
+                                index === 0 ||
+                                index === 1
+                                  ? "scrollActive"
+                                  : ""
+                              }`}
+                              id={`scrolldiv`}
+                              key={index}
+                              onClick={() => {
+                                // if (index === dates?.length - 1) {
+                                lastClickedDate();
+                                // }
+                              }}
+                            >
+                              {width > 767 ? (
+                                <UserCardList
+                                  setDateId={setDateId}
+                                  date={item}
+                                  cardId={`grow-${index}`}
+                                  openPopup={() => {
+                                    openPopup(item);
+                                  }}
+                                  closePopup={closePopup}
+                                  dateId={dateId}
+                                  isDesktopView={true}
+                                  key={index}
+                                  ref={scrollRef}
+                                  loading={loading}
+                                  setLoader={setLoader}
+                                  receiverData={receiverData}
+                                  alreadyMessagedFromUser={
+                                    alreadyMessagedFromUser
+                                  }
+                                  setAlreadyMessagedFromUser={
+                                    setAlreadyMessagedFromUser
+                                  }
+                                />
+                              ) : (
+                                <UserCardList
+                                  setDateId={setDateId}
+                                  date={item}
+                                  cardId={`grow-${index}`}
+                                  openPopup={() => {
+                                    openPopup(item);
+                                  }}
+                                  setLoader={setLoader}
+                                  closePopup={closePopup}
+                                  growDiv={growDiv}
+                                  dateId={dateId}
+                                  key={index}
+                                  ref={scrollRef}
+                                  loading={loading}
+                                  receiverData={receiverData}
+                                  alreadyMessagedFromUser={
+                                    alreadyMessagedFromUser
+                                  }
+                                  setAlreadyMessagedFromUser={
+                                    setAlreadyMessagedFromUser
+                                  }
+                                />
+                              )}
+                            </div>
+                          ))
                       : !loading && (
                           <div className="no-message-card-date">
                             <figure>

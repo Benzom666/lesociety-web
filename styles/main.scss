@@ -4006,6 +4006,7 @@ body .verification_card_header {
                   rgba(46, 49, 58, 0.7) 92.52%
                 );
                 border-radius: 15px 15px 5px 15px;
+                text-align: right;
               }
 
               .message_content_receive {
@@ -4017,6 +4018,13 @@ body .verification_card_header {
                 position: absolute;
                 bottom: 100%;
                 left: 0;
+                font-size: 11px;
+                color: rgba($color: $white-color, $alpha: 0.4);
+              }
+              .message_time_send {
+                position: absolute;
+                bottom: 100%;
+                right: 0;
                 font-size: 11px;
                 color: rgba($color: $white-color, $alpha: 0.4);
               }

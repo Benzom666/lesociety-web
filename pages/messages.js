@@ -906,7 +906,13 @@ const Messages = (props) => {
                                                 : "message_content_receive"
                                             }`}
                                           >
-                                            <span className="message_time">
+                                            <span
+                                              className={` ${
+                                                message.sender_id === user._id
+                                                  ? "message_time_send"
+                                                  : "message_time"
+                                              }`}
+                                            >
                                               {format(message?.sent_time)}
                                             </span>
                                             <span className="message_text">
