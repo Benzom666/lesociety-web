@@ -140,13 +140,17 @@ function UserList(props) {
         // .sort(function (a, b) {
         //   return new Date(b.created_at) - new Date(a.created_at);
         // });
+        // setTimeout(() => {
         setDates([...dates, ...res?.data?.data?.dates]);
+        // }, 500);
       } else {
         res?.data?.data?.dates;
         // .sort(function (a, b) {
         //   return new Date(b.created_at) - new Date(a.created_at);
         // });
-        setDates(res?.data?.data?.dates);
+        setTimeout(() => {
+          setDates(res?.data?.data?.dates);
+        }, 2000);
       }
       setPagination(res?.data?.data?.pagination);
       setTimeout(() => {
@@ -280,14 +284,16 @@ function UserList(props) {
   });
 
   const nextPage = () => {
-    const params = {
-      location: selectedLocation?.city,
-      province: selectedLocation?.province,
-      current_page: page + 1,
-      per_page: 10,
-    };
-    setPage(page + 1);
-    fetchDate(params);
+    setTimeout(() => {
+      const params = {
+        location: selectedLocation?.city,
+        province: selectedLocation?.province,
+        current_page: page + 1,
+        per_page: 10,
+      };
+      setPage(page + 1);
+      fetchDate(params);
+    }, 500);
   };
 
   const handleScroll = () => {
@@ -337,6 +343,9 @@ function UserList(props) {
   //   //   router.beforePopState(() => true);
   //   // };
   // }, [router]);
+
+  console.log("dates", dates);
+  console.log("page", page);
 
   return (
     <div className="inner-page" id="infiniteScroll">
@@ -401,7 +410,7 @@ function UserList(props) {
                   style={{ overflowX: "hidden" }}
                 >
                   <div className="row">
-                    {loading
+                    {loading && dates.length === 0
                       ? [1, 2, 3, 4, 5, 6].map((n) => (
                           <div className={`col-xl-6 col-lg-12`}>
                             <SkeletonDate key={n} theme="dark" />
@@ -494,6 +503,12 @@ function UserList(props) {
                             <SubHeading title="Find a date by changing the location!" />
                           </div>
                         )}
+                    {loading &&
+                      [1, 2, 3, 4, 5, 6].map((n) => (
+                        <div className={`col-xl-6 col-lg-12`}>
+                          <SkeletonDate key={n} theme="dark" />
+                        </div>
+                      ))}
                   </div>
                 </InfiniteScroll>
               </div>

@@ -9,6 +9,7 @@ import ConfirmDate from "./confirmDate";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
 import { useEffect } from "react";
+import { IoIosArrowBack } from "react-icons/io";
 
 const CreateDate = (props) => {
   const [page, setPage] = useState(0);
@@ -16,6 +17,8 @@ const CreateDate = (props) => {
   const [confirmPopup, setConfirmPopup] = useState(false);
   const cityState = useSelector((state) => state?.form?.ChooseCity?.values);
   const { width } = useWindowSize();
+
+  const mobile = width < 768;
 
   if (!cityState?.enter_city) {
     router.push("/create-date/choose-city");
@@ -39,8 +42,46 @@ const CreateDate = (props) => {
     window.scrollTo(0, 0);
   };
 
+  // useEffect(() => {
+  //   router.beforePopState(({ as }) => {
+  //     console.log("as", as);
+  //     if (as === "/create-date/choose-city") {
+  //       if (page > 0) {
+  //         router.push("/create-date/date-event");
+  //         previousPage();
+  //         return false;
+  //       }
+  //     }
+  //     return true;
+  //   });
+  // }, [router, page]);
+
   return (
     <div>
+      {!mobile &&
+        page !== 4 &&
+        !router.query?.new_edit &&
+        !router.query?.drafted && (
+          <div
+            onClick={() => {
+              if (page > 0) {
+                previousPage();
+              } else {
+                router.push("/create-date/choose-city");
+              }
+            }}
+            className="pl-4 cursor-pointer"
+          >
+            <span>
+              <IoIosArrowBack
+                size={25}
+                color={"rgba(255, 255, 255, 0.7)"}
+                className="message-mobile-header-icon"
+              />
+            </span>
+          </div>
+        )}
+
       {!router.query.drafted && page == 0 && (
         <CreateStepOne onSubmit={nextPage} onClose={toggle} />
       )}
