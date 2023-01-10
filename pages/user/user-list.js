@@ -344,8 +344,8 @@ function UserList(props) {
   //   // };
   // }, [router]);
 
-  console.log("dates", dates);
-  console.log("page", page);
+  // console.log("dates", dates);
+  // console.log("page", page);
 
   return (
     <div className="inner-page" id="infiniteScroll">
