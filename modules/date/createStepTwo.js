@@ -136,7 +136,7 @@ const CreateStepTwo = (props) => {
             <li className="complete active">
               <span></span>
             </li>
-            <li className="active">
+            <li className=" complete active">
               <span></span>
             </li>
             <li className="active">

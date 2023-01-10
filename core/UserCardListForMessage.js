@@ -105,7 +105,7 @@ const UserCardListForMessage = ({
     arrows: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 1.05,
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0",
@@ -118,9 +118,9 @@ const UserCardListForMessage = ({
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      width: "310px",
+      width: "312px",
       background: "transparent",
-      height: "100%",
+      height: "95%",
       overFlow: "hidden",
     },
     overlay: {
@@ -177,7 +177,7 @@ const UserCardListForMessage = ({
                 <SkeletonElement type="close-icon-view-profile" />
               ) : (
                 <IoIosClose
-                  size={25}
+                  size={40}
                   className="close_btn"
                   onClick={closeModal}
                   color={"#A8A8A8"}
@@ -219,7 +219,7 @@ const UserCardListForMessage = ({
                               </H5>
                               <CustomIcon.IntrestedText
                                 color={"white"}
-                                size={140}
+                                size={150}
                               />
                               <figure>
                                 {/* <Image
@@ -229,19 +229,21 @@ const UserCardListForMessage = ({
                                 height={420}
                               /> */}
                                 <ImageShow
-                                  width={280}
+                                  max-width={312}
+                                  width="95%"
                                   height={420}
                                   src={profilePic}
                                   alt="user image"
                                   placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                                 />
                                 <span className="image_tagline">
-                                  {showText(conversation?.message?.message)}
+                                  "{showText(conversation?.message?.message)}"
                                 </span>
                               </figure>
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
                                 <a
                                   className="create-date"
+                                  style={{width:"85%",marginLeft:"6%"}}
                                   onClick={() => {
                                     if (mobile) {
                                       toggleChat(conversation);
@@ -265,7 +267,7 @@ const UserCardListForMessage = ({
                                     )
                                   }
                                 >
-                                  <HiLockOpen /> View Profile
+                                  <HiLockOpen /> <span style={{textDecoration:"underline"}}>View Profile</span> 
                                 </a>
                                 {/* </Link> */}
                                 <p>

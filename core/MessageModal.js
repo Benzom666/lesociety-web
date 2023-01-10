@@ -137,7 +137,7 @@ function MessageModal({ user, date, toggle }) {
             {(formProps) => {
               return (
                 <Form>
-                  <div className="">
+                  <div className="position-relative">
                     <Field
                       className={`${textClass}`}
                       placeholder="Type your message here…"
@@ -149,9 +149,11 @@ function MessageModal({ user, date, toggle }) {
                     <button
                       type="button"
                       style={{
+                        position:"absolute",
+                        left:"40%",
                         background: "transparent",
                         border: "none",
-                        paddingBottom: "10px",
+                        paddingBottom: "5px",
                         width: "12%",
                         borderRadius: "0",
                       }}

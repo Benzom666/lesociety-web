@@ -60,7 +60,7 @@ const CreateStepOne = (props) => {
             <li className="complete active">
               <span></span>
             </li>
-            <li className="complete active">
+            <li className=" active">
               <span></span>
             </li>
             <li>
@@ -124,7 +124,7 @@ const CreateStepOne = (props) => {
                         iconName: "CustomIcon.Sun",
                         icon: <CustomIcon.Sun color={"#AFABAB"} size={30} />,
                         category: "standard_class_date",
-                        rate :"$-$$"
+                        rate :"$ - $$"
                       },
                       {
                         label: "Evening Date",
@@ -132,7 +132,7 @@ const CreateStepOne = (props) => {
                         icon: <CustomIcon.Moon color={"#AFABAB"} size={30} />,
                         iconName: "CustomIcon.Moon",
                         category: "standard_class_date",
-                        rate:"$-$$",
+                        rate:"$ - $$",
                       },
                       // {
                       //   label: "Outdoor Adventure",
@@ -173,7 +173,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.GetSporty",
                         category: "middle_class_dates",
-                        rate:"$-$$"
+                        rate:"$ - $$"
                       },
                       {
                         label: "Take A Class",
@@ -183,7 +183,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.TakeClass",
                         category: "middle_class_dates",
-                        rate:"$-$$"
+                        rate:"$ - $$"
                       },
                       {
                         label: "Entertainment & sports ",
@@ -196,7 +196,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.EntertainmentSports",
                         category: "middle_class_dates",
-                        rate:"$$-$$$$"
+                        rate:"$$ - $$$$"
                       },
                       {
                         label: "Wine & Dine ",
@@ -206,7 +206,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.WineDine",
                         category: "middle_class_dates",
-                        rate:"$$$-$$$$"
+                        rate:"$$$ - $$$$"
                       },
                       {
                         label: "Bottles & Dance",
@@ -219,7 +219,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.BottlesDance",
                         category: "executive_class_dates",
-                        rate:"$$$-$$$$"
+                        rate:"$$$ - $$$$"
                       },
                     ]}
                     component={ClassSelection}

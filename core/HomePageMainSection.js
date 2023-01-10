@@ -5,11 +5,17 @@ import useWindowSize from "utils/useWindowSize";
 
 
 function HomePageMainSection(props) {
-  const { title, maincardImage, children} = props;
+  console.log(props)
+  const { title, maincardImage, mainBackgroundImage, children} = props;
+  console.log(mainBackgroundImage)
   const { width } = useWindowSize();
   return (
     <>
-      <div class="row align-items-center home-main-section">
+      <div 
+        class="row align-items-center home-main-section" 
+        style={{backgroundImage: `url('${mainBackgroundImage}')`}}
+      >
+        {/* <img src={ForthBlob.src} className="mainCardbackground" alt="ghghh"/> */}
      {width >500 &&   <div class="col-md-4">
           <div className='main-title'>
             <h5>{title}</h5>

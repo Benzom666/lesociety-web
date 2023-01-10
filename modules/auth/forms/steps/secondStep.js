@@ -408,7 +408,7 @@ const SecondStep = (props) => {
         {!router?.query?.edit && (
           <>
             <p className="auth-register-p-text">Registration Completed</p>
-            <h2 style={{ textTransform: "capitalize" }}>
+            <h2 style={{ textTransform: "capitalize",marginTop:"1rem" }}>
               Welcome, {user?.user_name || ""}
             </h2>
           </>

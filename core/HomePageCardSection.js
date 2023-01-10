@@ -1,5 +1,6 @@
 import React from 'react'
-
+import FifthBlob from '../assets/svg/Fifth Blob.svg'
+import SixthBlob from '../assets/svg/Sixth Blob.svg'
 function HomePageCardSection() {
   return (
     <div class="row mt-4 mb-5 d-flex justify-content-center algin-items-center card_tag mt-5">
@@ -12,7 +13,7 @@ function HomePageCardSection() {
     </div>
   </div>
   <div class="col" style={{maxWidth:"325px",margin:"20px"}}>
-    <div class="card  card_1">
+    <div class="card  card_2">
       <div class="card-body">
         <h5 class="card-title" className="card-title">The future of Le Society</h5>
         <a href="/future-date" className="btn btn-danger" id="sneakPeakbtn">Sneak Peak</a>
