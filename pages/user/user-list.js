@@ -25,6 +25,8 @@ import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
 import MessageSend from "assets/message_send.png";
 import MessageSend2 from "assets/message_send2.png";
+import LocationModalPopUp from "@/core/locationModalPopUp";
+import classNames from "classnames";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -51,6 +53,8 @@ function UserList(props) {
   const scrollRef = useRef(null);
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
+
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -354,6 +358,14 @@ function UserList(props) {
         isBlack={locationPopup}
         unReadedConversationLength={unReadedConversationLength}
       />
+      <div
+        className={classNames(
+          `modal fade ${show ? "show d-block modal-open" : "d-none"}`,
+          width > 1399 && "modal-fade-1"
+        )}
+      >
+        <LocationModalPopUp onClose={() => setShow(false)} show={show} />
+      </div>
       <div className="inner-part-page">
         <div className="pt-5 pb-4">
           <div className="container user_list_wrap">
