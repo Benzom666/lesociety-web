@@ -6,13 +6,13 @@ function Modal(props) {
     return null
   }
   return (
-    <div className='modal'>
+    <div className='modal-1'>
       <div className='modal_content'>
         <div className='modal_header'>
           <h2 className='modal-title'>Do you want to use your current location to find local dates ?
           </h2>
         </div>
-        <div className='modal-body'>
+        <div className='modal-body-1'>
           <div className='modal-body-text'>
           <p>We will never share this information with outside parties, it is solely used to enhance your experience,
           </p>
