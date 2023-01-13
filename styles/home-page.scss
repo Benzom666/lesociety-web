@@ -1,3 +1,5 @@
+
+
 .ls-logo {
   width: 35px;
   margin: 30px 20px;
@@ -26,26 +28,64 @@
   }
 }
 
+
+@media only screen and (min-width:427px) and (max-width:900px)  {
+  .LeSociety-Icon-White {
+    display: contents;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    .ls-logo {
+      margin: 30px 20px 0px 20px;
+    }
+
+    .ls-text {
+      font-size: 20px;
+      padding: 0px;
+    }
+  }
+}
+
+
+
 .home-main-section {
-  // background-image: url('../assets/svg/Forth Blob.svg');
-  background-size: 17rem;
+  background-size: 287px;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 20px;
-  // margin-bottom: 3rem;
-  padding-bottom: 3rem;
+  margin-top: 45px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
+.home-main-sec-1{
+  padding: 77px 0 75px 0;
+}
+.home-main-sec-2{
+  padding: 28px 0px 0px 0px;
+}
 
-@media only screen and (max-width:426px) {
+.home-main-sec-3{
+  padding: 20px 0 80px 0px;
+}
+
+.home-main-sec-4{
+padding: 60px 0px 26px 0px;
+}
+@media only screen and (max-width:900px) {
   .home-main-section {
     flex-direction: column;
+    background-position: top;
+    background-size: 15.8rem;
   }
 
   .main-title {
     padding-bottom: 25px;
+    h5{
+      text-align: center;
+    }
+    
   }
 
   .main-content {
@@ -77,14 +117,10 @@
 .main-card-side-wraper {
 
   .main-card {
-    background: transparent linear-gradient(171deg, #B2D3FF 0%, #2222FF00 27%, #5C7BFF 50%, #346BFF0B 73%, #9BE0FF 100%) 0% 0% no-repeat padding-box;
-    //background-image: linear-gradient(171deg, #b2d3ff 8%, rgba(34, 34, 255, 0) 31%,
-    //#5c7bff 52%, rgba(52, 107, 255, 0.04) 72%, #9be0ff 95%);
     backdrop-filter: blur(3px);
     opacity: 1;
-    z-index: 1;
     width: 200px;
-    border: 2px solid #5c7bff;
+    border:1px solid #5c7bff;
     box-shadow: 0 0 3px white;
     border-radius: 10px;
     margin: auto;

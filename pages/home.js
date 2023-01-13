@@ -24,7 +24,6 @@ import { content } from '@/core/HomePageContent'
 import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 
 function Home({ items }) {
-  console.log(ForthBlob )
   return (
     <>
       <div className="inner-part-page auth-section">
@@ -34,17 +33,18 @@ function Home({ items }) {
               <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
             </div>
             <div className="ls-text mt-4 ">
-              <p style={{ letterSpacing: "2.2px" }}> L E   S O C I E T Y </p>
+              <p style={{ fontSize:"20px", letterSpacing: "2.2px",paddingBottom:"0.5rem" }}> L E   S O C I E T Y </p>
               <p style={{ fontSize: "13px" }}>Date outside Your League</p>
             </div>
           </div>
         </nav>
-        <HomePageMainSection title="GENTLE MAN" maincardImage={MaskGroup1} mainBackgroundImage={FirstBlob.src}>
+        <HomePageMainSection title="GENTLE MAN" maincardImage={MaskGroup1} 
+        mainBackgroundImage={FirstBlob.src} styles={"home-main-sec-1"}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
       <HomePageMiddleNav/>
       <HomePageMainSection title="LADIES" maincardImage={MaskGroup7}
-      mainBackgroundImage={SecondBlob.src}
+      mainBackgroundImage={SecondBlob.src} styles={"home-main-sec-2"}
       >
         <div className='main-content'>
           <p className="aboutCardContent">{content.aboutCardContent1}</p>
@@ -82,11 +82,11 @@ function Home({ items }) {
         </div>
       </HomePageMainSection>
       <HomePageMainSection title="THE GOAL" maincardImage={MaskGroup14}
-       mainBackgroundImage={ThirdBlob.src}>
+       mainBackgroundImage={ThirdBlob.src} styles={"home-main-sec-3"}>
         <p className="aboutCardContent">{content.aboutCardContent2}</p>
       </HomePageMainSection>
       <HomePageMainSection title="A Gentlemen’s Choice" maincardImage={MaskGroup11}
-      mainBackgroundImage={ForthBlob.src} >
+      mainBackgroundImage={ForthBlob.src} styles={"home-main-sec-4"} >
         <p className="aboutCardContent">{content.aboutCardContent3}</p>
       </HomePageMainSection>
       <HomePageCardSection />
