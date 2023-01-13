@@ -140,7 +140,7 @@ export function Diamond({ color, size }) {
 export function Sporty({ color, size }) {
     return <span>
         <React.Fragment>
-            <svg width={size} height={size} viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width={size} height={size} viewBox="0 0 22 16" fill={color} xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.91733 1.02265C8.78643 0.645688 4.98779 5.08227 4.98779 6.24216C4.98779 7.11207 14.2669 15.2313 15.1368 15.2313C16.5867 15.2313 20.6463 15.2313 20.9363 14.9413C21.4002 14.4774 22.0962 10.8817 20.9363 10.3018C19.7764 9.72183 17.7466 10.0118 16.8767 9.14188C16.0067 8.27196 15.1368 4.50232 14.2669 4.21235C13.397 3.92238 11.9471 4.50232 11.0772 3.6324C10.2073 2.76249 10.7872 1.31262 9.91733 1.02265Z" stroke={color} stroke-width="0.569252" stroke-miterlimit="10" />
                 <path d="M5.97314 4.9082C5.97314 4.9082 13.8894 12.8245 15.4262 13.2014C16.5861 13.4914 21.2257 13.2014 21.2257 13.2014" stroke={color} stroke-width="0.569252" stroke-miterlimit="10" />
                 <path d="M15.1363 5.66211L13.3965 6.53203" stroke={color} stroke-width="0.569252" stroke-miterlimit="10" stroke-linecap="round" />

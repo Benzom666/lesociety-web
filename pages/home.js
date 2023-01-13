@@ -13,6 +13,10 @@ import MaskGroup1 from '../assets/svg/Mask Group 1.svg';
 import MaskGroup7 from '../assets/svg/Mask Group 7.svg';
 import MaskGroup11 from '../assets/svg/Mask Group 11.svg';
 import MaskGroup14 from '../assets/svg/Mask Group 14.svg';
+import FirstBlob from '../assets/svg/First Blob.svg'
+import SecondBlob from '../assets/svg/Second Blob.svg'
+import ThirdBlob from '../assets/svg/Third Blob.svg'
+import ForthBlob from '../assets/svg/Forth Blob.svg'
 import HomePageMainSection from "@/core/HomePageMainSection";
 import HomePageCardSection from "@/core/HomePageCardSection";
 import HomeFooter from "@/core/HomeFooter"
@@ -29,16 +33,19 @@ function Home({ items }) {
               <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
             </div>
             <div className="ls-text mt-4 ">
-              <p style={{ letterSpacing: "2.2px" }}> L E   S O C I E T Y </p>
+              <p style={{ fontSize:"20px", letterSpacing: "2.2px",paddingBottom:"0.5rem" }}> L E   S O C I E T Y </p>
               <p style={{ fontSize: "13px" }}>Date outside Your League</p>
             </div>
           </div>
         </nav>
-        <HomePageMainSection title="GENTLE MAN" maincardImage={MaskGroup1}>
+        <HomePageMainSection title="GENTLE MAN" maincardImage={MaskGroup1} 
+        mainBackgroundImage={FirstBlob.src} styles={"home-main-sec-1"}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
       <HomePageMiddleNav/>
-      <HomePageMainSection title="LADIES" maincardImage={MaskGroup7}>
+      <HomePageMainSection title="LADIES" maincardImage={MaskGroup7}
+      mainBackgroundImage={SecondBlob.src} styles={"home-main-sec-2"}
+      >
         <div className='main-content'>
           <p className="aboutCardContent">{content.aboutCardContent1}</p>
           <p className="aboutCardContent">{content.aboutCardContent4}</p>
@@ -74,10 +81,12 @@ function Home({ items }) {
           </div>
         </div>
       </HomePageMainSection>
-      <HomePageMainSection title="THE GOAL" maincardImage={MaskGroup14}>
+      <HomePageMainSection title="THE GOAL" maincardImage={MaskGroup14}
+       mainBackgroundImage={ThirdBlob.src} styles={"home-main-sec-3"}>
         <p className="aboutCardContent">{content.aboutCardContent2}</p>
       </HomePageMainSection>
-      <HomePageMainSection title="A Gentlemen’s Choice" maincardImage={MaskGroup11}>
+      <HomePageMainSection title="A Gentlemen’s Choice" maincardImage={MaskGroup11}
+      mainBackgroundImage={ForthBlob.src} styles={"home-main-sec-4"} >
         <p className="aboutCardContent">{content.aboutCardContent3}</p>
       </HomePageMainSection>
       <HomePageCardSection />
