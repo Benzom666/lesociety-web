@@ -3,6 +3,7 @@ import MapImage from "../assets/img/map-image.png";
 import ManImage from "../assets/img/man-img.jpeg";
 import UserImg from "assets/img/profile.png";
 import { useSelector } from "react-redux";
+import ImageShow from "@/modules/ImageShow";
 
 function Modal(props) {
   const user = useSelector((state) => state.authReducer.user);
@@ -39,6 +40,20 @@ function Modal(props) {
                 top: "-4%",
                 left: "40%",
               }}
+            />
+            <ImageShow
+              alt="man-img"
+              height={100}
+              width={100}
+              style={{
+                borderRadius: "7px",
+                border: "2px solid white",
+                position: "absolute",
+                top: "-4%",
+                left: "40%",
+              }}
+              src={!_.isEmpty(user) ? user.images[0] : UserImg}
+              placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
             />
             <img
               style={{ borderRadius: "50%", textAlign: "center" }}

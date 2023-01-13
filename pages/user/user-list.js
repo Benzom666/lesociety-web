@@ -54,7 +54,13 @@ function UserList(props) {
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (user?.gender === "male") {
+      setShow(true);
+    }
+  }, [user]);
 
   useEffect(() => {
     socket.auth = { user: user };
