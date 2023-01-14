@@ -53,6 +53,7 @@ function UserList(props) {
   const scrollRef = useRef(null);
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
+  const [firstDateShouldLoad, setFirstDateShouldLoad] = useState(false);
 
   const [show, setShow] = useState(false);
 
@@ -145,6 +146,7 @@ function UserList(props) {
         params: params,
       });
       console.log("res dates of user", res);
+
       if (res?.data?.data?.pagination?.current_page !== 1) {
         res?.data?.data?.dates;
         // .sort(function (a, b) {
@@ -357,6 +359,8 @@ function UserList(props) {
   // console.log("dates", dates);
   // console.log("page", page);
 
+  // console.log("first", !loading && pagination?.total_pages !== page);
+
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -422,9 +426,14 @@ function UserList(props) {
                 </div>
                 <InfiniteScroll
                   scrollableTarget="infiniteScroll"
-                  dataLength={dates.length}
+                  // dataLength={dates.length}
+                  dataLength={pagination?.total_dates ?? 0}
                   next={nextPage}
-                  hasMore={pagination?.total_pages !== page}
+                  refreshFunction={nextPage}
+                  pullDownToRefresh={
+                    !loading && pagination?.total_pages !== page
+                  }
+                  hasMore={!loading && pagination?.total_pages !== page}
                   style={{ overflowX: "hidden" }}
                 >
                   <div className="row">
