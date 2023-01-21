@@ -5617,3 +5617,112 @@ path {
 .cursor-pointer {
   cursor: pointer;
 }
+
+// Notifications 
+// styling
+
+.notification-wrapper {
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 0 40px;
+  background-color: #262629;
+  // height: 100vh;
+  .main-header{
+    padding: 30px 0;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #3b3737;
+  
+    .header{
+      font-size: 30px;
+      font-weight: 500;
+    }
+  }
+  .notif-items{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #3b3737;
+    .notif-time{
+      display: flex;
+      justify-content: space-between;
+      .timing{
+        font-size: 16px;
+        color: darkgray;
+      }
+    }
+    .edit-btn{
+      border: none;
+      background: transparent;
+      color: rgb(194, 41, 125);
+      cursor: pointer;
+      border-style: solid;
+      border-width: 0 0 1px;
+    }
+    .title{
+      font-size: 25px;
+      color: darkgray;
+      padding-bottom: 20px
+    }
+    .actions{
+      font-size: 20px;
+      padding-bottom: 10px;
+      
+    }
+    .msg{
+      font-size: 16px;
+      padding-bottom: 6px;
+    }
+    
+  }
+  .notif-items:last-child{
+    border-bottom-width: 0;
+  }
+  .no-notif{
+    font-size: 20px;
+    padding: 40px 0;
+  }
+ 
+
+  }
+  .no-notifWrap{
+    height: 100vh;
+  }
+  @media screen and (max-width: 480px){
+    .notification-wrapper{
+      max-width: 100%;
+      background-color: transparent;
+    }
+  }
+  
+  
+  .notification-container {
+    position: relative;
+  
+    .notification-counter {
+      position: absolute;
+      top: -32px;
+      right: 30px;
+      background-color:#F24462;
+      color: #fff;
+      padding: 6px 7px;
+      border-radius: 12px;
+  }
+  }
+
+  .btn-container{
+    // width: 100%;
+    text-align: center
+  }
+
+  .edit-btn-verify{
+    border: none;
+    background: transparent;
+    color: rgba(219, 43, 140, 0.95);
+    cursor: pointer;
+    border-style: solid;
+    border-width: 0 0 1px;
+    display: inline-block;
+  }
