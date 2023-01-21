@@ -318,7 +318,7 @@ const UserCardList = ({
             ) : (
               <div
                 className="date_details_desktop"
-                 //onClick={toggle}
+                //onClick={toggle}
               >
                 <div onClick={toggle} className="less-txt">
                   Show less
@@ -327,7 +327,13 @@ const UserCardList = ({
                   <h4 style={{ fontWeight: "700", letterSpacing: "0.066px" }}>
                     Date Details
                   </h4>
-                  <p style={{ fontWeight: "300", letterSpacing: "0.06px",paddingTop:"1.1rem" }}>
+                  <p
+                    style={{
+                      fontWeight: "300",
+                      letterSpacing: "0.06px",
+                      paddingTop: "1.1rem",
+                    }}
+                  >
                     {date?.date_details}
                   </p>
                 </div>
@@ -365,7 +371,8 @@ const UserCardList = ({
           {!isDesktopView && (
             <div style={dateId !== cardId ? { height: 0 } : {}} id={cardId}>
               <div ref={growRef} className="date_details">
-                {mobileLoader ? (
+                {/* {
+                mobileLoader ? (
                   <div className="">
                     <div className="d-flex justify-content-center">
                       <Image
@@ -377,30 +384,36 @@ const UserCardList = ({
                       />
                     </div>
                   </div>
-                ) : (
-                  <>
-                    <h4>Date Details</h4>
-                    <p>{date?.date_details}</p>
-                    <div className="button-wrapper mt-3">
-                      {user?.gender === "male" &&
-                        !messagedFromUserDone &&
-                        !alreadyMessaged && (
-                          <button onClick={openPopup} className="next">
-                            Message
-                          </button>
-                        )}
-                      <button
-                        type="button"
-                        className="edit"
-                        onClick={() =>
-                          router.push(`/user/user-profile/${date?.user_name}`)
-                        }
-                      >
-                        <a>View profile</a>
-                      </button>
-                    </div>
-                  </>
-                )}
+                ) : ( */}
+                <>
+                  <h4>Date Details</h4>
+                  <p>{date?.date_details}</p>
+                  <div className="button-wrapper mt-3">
+                    {mobileLoader && (
+                      <div className="d-flex justify-content-center w-50 align-items-center">
+                        <span className="spin-loader-button"></span>
+                      </div>
+                    )}
+                    {!mobileLoader &&
+                      user?.gender === "male" &&
+                      !messagedFromUserDone &&
+                      !alreadyMessaged && (
+                        <button onClick={openPopup} className="next">
+                          Message
+                        </button>
+                      )}
+                    <button
+                      type="button"
+                      className="edit"
+                      onClick={() =>
+                        router.push(`/user/user-profile/${date?.user_name}`)
+                      }
+                    >
+                      <a>View profile</a>
+                    </button>
+                  </div>
+                </>
+                {/* )} */}
               </div>
             </div>
           )}

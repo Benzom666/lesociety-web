@@ -759,7 +759,8 @@ function UserProfile({ preview, editHandle }) {
 
                             {!preview &&
                               // user?.gender === "female" &&
-                              (router?.query?.userName ||
+                              ((router?.query?.userName &&
+                                userDetail?.gender === "female") ||
                                 (router?.pathname === "/user/user-profile" &&
                                   user?.gender === "female")) && (
                                 <>

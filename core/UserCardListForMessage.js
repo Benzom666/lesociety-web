@@ -49,6 +49,7 @@ const UserCardListForMessage = ({
     setIsOpen(false);
     //document.body.classList.remove("modal-open-blur");
     setPageLoading(false);
+    tabIndexChange(0);
   }
 
   const postApprovedConversation = async (room_id, conversation) => {
@@ -243,7 +244,7 @@ const UserCardListForMessage = ({
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
                                 <a
                                   className="create-date"
-                                  style={{width:"85%",marginLeft:"6%"}}
+                                  style={{ width: "85%", marginLeft: "6%" }}
                                   onClick={() => {
                                     if (mobile) {
                                       toggleChat(conversation);
@@ -267,7 +268,10 @@ const UserCardListForMessage = ({
                                     )
                                   }
                                 >
-                                  <HiLockOpen /> <span style={{textDecoration:"underline"}}>View Profile</span> 
+                                  <HiLockOpen />{" "}
+                                  <span style={{ textDecoration: "underline" }}>
+                                    View Profile
+                                  </span>
                                 </a>
                                 {/* </Link> */}
                                 <p>
