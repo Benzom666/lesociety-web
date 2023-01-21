@@ -1,5 +1,17 @@
 $GradientColor-first: rgba(#2e313a, 0.8);
 $GradientColor-second: rgba(#191919, 0.8);
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  html,
+  body {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
 
 .inner-part-page {
   min-height: calc(100vh - 175px);
@@ -27,7 +39,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
     .Territory_title {
       letter-spacing: 0.08px;
-      font-size: 22px;
+      font-size: 20px;
       font-family: "Helvetica";
       font-style: normal;
       font-weight: 700;
@@ -70,7 +82,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
       &.text-suggestion-city {
         font-family: "Helvetica";
-        font-size: 17px;
+        font-size: 16px;
         line-height: 18px;
         color: #afabab;
         text-align: center;
@@ -1148,7 +1160,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       .login-text {
         position: relative;
         margin-bottom: 40px;
-       // margin-left: 18px;
+        // margin-left: 18px;
 
         a {
           color: rgba(255, 255, 255, 0.5);
@@ -1429,7 +1441,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         position: absolute;
         left: calc(100% - -2px);
         top: calc(50% - 5px);
-        height: 10px;
+        height: 8px;
         width: 2px;
         background: $white-color;
         content: "";
@@ -1441,7 +1453,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         position: absolute;
         left: calc(100% - 4px);
         top: calc(50% - 5px);
-        height: 10px;
+        height: 8px;
         width: 2px;
         background: $white-color;
         content: "";
@@ -1575,7 +1587,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
     .close-button {
       background-color: unset;
-      border: 1px solid;
+      // border: 1px solid;
     }
 
     button {
@@ -1988,11 +2000,11 @@ $GradientColor-second: rgba(#191919, 0.8);
   .date-suggetion-text {
     h6 {
       margin-bottom: 15px;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
     }
 
-    padding: 20px 0;
+    padding: 35px 0;
     text-align: center;
     border-top: 1px solid #222326;
     border-bottom: 1px solid #222326;
@@ -2000,7 +2012,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
     p {
       font-family: "Helvetica";
-      font-size: 17px;
+      font-size: 16px;
       line-height: 18px;
       color: #afabab;
       text-align: center;
@@ -2012,7 +2024,7 @@ $GradientColor-second: rgba(#191919, 0.8);
   .date-Preview-text {
     h6 {
       font-weight: 700;
-      font-size: 22px;
+      font-size: 20px;
       font-family: "Helvetica";
       font-style: normal;
       margin-bottom: 5px;
@@ -2024,6 +2036,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
     p {
       width: 400px;
+      padding: 14px 0px;
       margin: auto;
       font-family: "Helvetica";
       font-size: 16px;
@@ -2039,7 +2052,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     padding-top: 40px !important;
 
     .price-tag {
-      font-size: 12px;
+      font-size: 16px;
       font-weight: 300;
       color: $primary-color;
     }
@@ -2273,7 +2286,7 @@ div[id="scrolldiv"] {
             span {
               font-size: 13px;
               font-weight: 300;
-              letter-spacing: 0.50px;
+              letter-spacing: 0.5px;
 
               svg {
                 margin-right: 10px;
@@ -2835,7 +2848,7 @@ body {
     }
 
     h5 {
-      //word-break: break-all;
+      word-break: break-all;
       text-transform: capitalize;
     }
 
@@ -2913,13 +2926,20 @@ body {
               font-size: 20px;
               //word-break: break-all;
             }
+            .administrat-font-1 {
+              font-size: 12px;
+              //word-break: break-all;
+            }
 
             .education-font {
               font-size: 20px;
 
               @media only screen and (max-width: 360px) {
-                font-size: 16px;
+                font-size: 20px;
               }
+            }
+            .education-font-1 {
+              font-size: 12px;
             }
           }
         }
@@ -3069,8 +3089,8 @@ body .verification_card_header {
     margin-bottom: 12px;
     margin-right: 10px;
     flex: 1;
-     //min-width: 250px;
-     min-width: 218px;
+    //min-width: 250px;
+    min-width: 218px;
     // max-width: 50%;
 
     .date_list {
@@ -3100,6 +3120,7 @@ body .verification_card_header {
           color: rgba($color: $white-color, $alpha: 0.9);
           line-height: 1rem;
           padding-left: 8px;
+          padding-top: 4px;
         }
 
         &:last-child {
@@ -3143,7 +3164,7 @@ body .verification_card_header {
       top: 0;
       // right: 20px;
       right: 8px;
-      width: 50px;
+      width: 53px;
       height: 45px;
       display: flex;
       align-items: center;
@@ -3192,7 +3213,7 @@ body .verification_card_header {
         .hour {
           font-size: 13.5px;
           text-align: center;
-          font-family: "HelveticaNeueCyr";
+          //font-family: "HelveticaNeueCyr";
           font-style: normal;
           font-weight: 300;
           padding-top: 4px;
@@ -3257,7 +3278,7 @@ body .verification_card_header {
 .intrested_model {
   .model_content {
     text-align: center;
-    padding: 40px 0;
+    padding: 20px 0;
     overflow-y: hidden;
     max-height: 100vh;
 
@@ -3289,10 +3310,10 @@ body .verification_card_header {
       .view_profile {
         margin: 0 0 10px;
         display: block;
-        font-size: 0.98rem;
+        font-size: 14px;
         font-weight: 300;
         line-height: 1.6rem;
-        // text-decoration: none;
+        text-decoration: none;
         color: rgba($color: $white-color, $alpha: 0.87);
       }
 
@@ -3304,7 +3325,7 @@ body .verification_card_header {
     }
 
     .slick-slider {
-      margin-top: 30px;
+      margin-top: 15px;
 
       .slick-list {
         margin: 0 !important;
@@ -3317,7 +3338,7 @@ body .verification_card_header {
           margin-top: 8px;
 
           img {
-            border-radius: 48px 48px 48px 0px;
+            border-radius: 48px 48px 48px 48px;
             object-fit: cover;
           }
 
@@ -3326,8 +3347,8 @@ body .verification_card_header {
             bottom: 30px;
             z-index: 999;
             left: calc(50% - 40%);
-            width: 80%;
-            padding: 13px;
+            width: 76%;
+            padding: 13px 10px;
             border-radius: 14px;
             background: radial-gradient(
               104.09% 104.09% at 4.13% 2.42%,
@@ -3987,6 +4008,7 @@ body .verification_card_header {
                   rgba(46, 49, 58, 0.7) 92.52%
                 );
                 border-radius: 15px 15px 5px 15px;
+                text-align: right;
               }
 
               .message_content_receive {
@@ -3998,6 +4020,13 @@ body .verification_card_header {
                 position: absolute;
                 bottom: 100%;
                 left: 0;
+                font-size: 11px;
+                color: rgba($color: $white-color, $alpha: 0.4);
+              }
+              .message_time_send {
+                position: absolute;
+                bottom: 100%;
+                right: 0;
                 font-size: 11px;
                 color: rgba($color: $white-color, $alpha: 0.4);
               }
@@ -4088,8 +4117,10 @@ body .verification_card_header {
 
   position: fixed;
   width: auto;
-  left: 20%;
-  right: 20%;
+  // left: 20%;
+  // right: 20%;
+  left: 0%;
+  right: 0%;
   bottom: 0;
   backdrop-filter: blur(27px);
   -webkit-backdrop-filter: blur(27px);
@@ -4131,7 +4162,7 @@ body .verification_card_header {
     margin: auto;
     justify-content: center;
     display: flex;
-
+    align-items: flex-start;
     input.show {
       -webkit-animation: inputTextSlide 2s linear;
       /* Safari */
@@ -4273,7 +4304,7 @@ body .verification_card_header {
 
   .close-button {
     background-color: unset;
-    border: 1px solid;
+    // border: 1px solid;
   }
 
   .edit {
@@ -4303,6 +4334,7 @@ body .verification_card_header {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    margin-top: 3px;
     // margin-bottom: 30px;
   }
 }
@@ -4335,7 +4367,7 @@ body .verification_card_header {
 }
 
 .verified-under-line-size {
-  margin-left: -28px;
+  margin-left: -14px;
   width: 100%;
 }
 
@@ -5321,14 +5353,15 @@ path {
 }
 
 .btn-custom {
-  margin-top: -28px !important;
-  right:-40px !important;
+  margin-top: -36px !important;
+  right: -60px !important;
   //margin-left: 254px !important;
   //margin-right: -54px !important;
   font-size: 25px;
   color: #fff;
   border-radius: 50%;
   position: absolute;
+  background: rgba(25, 27, 31, 1);
 }
 
 .modal-body {
@@ -5456,10 +5489,12 @@ path {
     padding-right: 0px !important;
   }
 }
-// .modal-open {
-//   opacity: 0.71;
-//   //z-index: -1;
-// }
+.modal-open {
+  //opacity: 0.51;
+  //z-index: -1;
+  background: rgba(25, 27, 31, 0.72);
+  // backdrop-filter: blur(1px);
+}
 
 .date_details_desktop_loading {
   display: flex !important;
@@ -5487,4 +5522,98 @@ path {
   border: 0.607143px solid #000000;
   border-top: transparent;
   // backdrop-filter: blur(10.9286px);
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.full {
+  transition: opacity 400ms ease 0ms;
+}
+.thumb {
+  filter: blur(25px);
+  transform: scale(1.1);
+  transition: visibility 0ms ease 400ms;
+}
+
+.mt-50px {
+  margin-top: 50px;
+}
+
+.mb-50px {
+  margin-bottom: 50px;
+}
+
+.image-display-none {
+  display: none !important;
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 40% !important;
+  height: 100vh;
+  text-align: center;
+  margin: 30px;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .overlay-content {
+    max-width: 100% !important;
+    height: 90vh;
+    margin: 0px;
+    left: 50%;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 10px;
+    right: 15px;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    cursor: pointer;
+  }
+}
+
+.no-radius {
+  border-radius: 0px !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

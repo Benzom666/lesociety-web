@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deAuthenticateAction, logout } from "../modules/auth/authActions";
 import { useRouter } from "next/router";
 import _ from "lodash";
-import { reset } from "redux-form";
+import { initialize, reset } from "redux-form";
 
 export default function Header(props) {
   const user = useSelector((state) => state.authReducer.user);
@@ -31,24 +31,23 @@ export default function Header(props) {
                         onClick={() => {
                           dispatch(deAuthenticateAction());
                           router.push("/auth/login");
-                          // dispatch(reset("signupStep2"));
-                          // dispatch(reset("DatePreview"));
-                          // dispatch(reset("RegisterFormMale"));
-                          // dispatch(reset("signupStep3"));
-                          // dispatch(reset("RegisterForm"));
-                          // dispatch(reset("forgotpassword"));
-                          // dispatch(reset("LoginForm"));
-                          // dispatch(reset("SecondStep"));
-                          // dispatch(reset("ThirdStep"));
-                          // dispatch(reset("CreateStepFour"));
-                          // dispatch(reset("CreateStepOne"));
-                          // dispatch(reset("CreateStepThree"));
-                          // dispatch(reset("CreateStepTwo"));
-                          // dispatch(reset("SkeletonUserProfile"));
-                          // dispatch(reset("Messages"));
-                          // dispatch(reset("VerifiedProfilePage"));
-                          // dispatch(reset("ChooseCity"));
-                          // window.location.reload();
+                          dispatch(initialize("signupStep2", ""));
+                          dispatch(initialize("DatePreview", ""));
+                          dispatch(initialize("RegisterFormMale", ""));
+                          dispatch(initialize("signupStep3", ""));
+                          dispatch(initialize("RegisterForm", ""));
+                          dispatch(initialize("forgotpassword", ""));
+                          dispatch(initialize("LoginForm", ""));
+                          dispatch(initialize("SecondStep", ""));
+                          dispatch(initialize("ThirdStep", ""));
+                          dispatch(initialize("CreateStepFour", ""));
+                          dispatch(initialize("CreateStepOne", ""));
+                          dispatch(initialize("CreateStepThree", ""));
+                          dispatch(initialize("CreateStepTwo", ""));
+                          dispatch(initialize("SkeletonUserProfile", ""));
+                          dispatch(initialize("Messages", ""));
+                          dispatch(initialize("VerifiedProfilePage", ""));
+                          dispatch(initialize("ChooseCity", ""));
                         }}
                       >
                         Sign Out

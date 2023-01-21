@@ -31,13 +31,13 @@ function sideBarPopup({ isOpen, toggle }) {
   return (
     <div
       className={classNames(
-        `modal fade ${isOpen ? "show d-block" : "d-none"}`,
+        `modal fade ${isOpen ? "show d-block modal-open" : "d-none"}`,
         width > 1399 && "modal-fade-1"
       )}
       id="sidebarPop"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
-      style={{ margin: "15px" }}
+      style={{ padding: "15px" }}
       data-bs-backdrop="static"
       data-bs-keyboard="false"
     >
@@ -77,7 +77,7 @@ function sideBarPopup({ isOpen, toggle }) {
             <div className="sidebar_wrap">
               <div
                 className="user-card-sidebar"
-                style={{ padding: "15px 0px" }}
+                style={{ padding: "15px 20px" }}
               >
                 <div className="d-flex align-items-center mb-2">
                   <figure className="mb-0 p-0">

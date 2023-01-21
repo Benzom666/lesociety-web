@@ -145,8 +145,8 @@ const VerifiedProfilePage = (props) => {
                     {width > 425 ? (
                       <>
                         {" "}
-                        <h2 className="mb-0" style={{ fontSize: "20px" }}>
-                          VERIFICATION
+                        <h2 className="mb-0" style={{ fontSize: "32px",letterSpacing:"0.083px" }}>
+                          Verification
                         </h2>
                         <svg
                           width="86"

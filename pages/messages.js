@@ -235,7 +235,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, chatLoading]);
 
   useEffect(() => {
     if (currentChat) {
@@ -452,8 +452,22 @@ const Messages = (props) => {
         url: `chat/block`,
       });
       console.log("res", res);
-      getChatHistory(currentChat);
+      if (res?.data?.message === "Accepted!!") {
+        setCurrentChat(
+          (prev) =>
+            prev && {
+              ...prev,
+              status: 2,
+              blocked_by: {
+                ...prev.blocked_by,
+                _id: user._id,
+              },
+            }
+        );
+      }
       getConversations();
+
+      getChatHistory(currentChat);
     } catch (err) {
       console.log("err", err);
     }
@@ -906,7 +920,13 @@ const Messages = (props) => {
                                                 : "message_content_receive"
                                             }`}
                                           >
-                                            <span className="message_time">
+                                            <span
+                                              className={` ${
+                                                message.sender_id === user._id
+                                                  ? "message_time_send"
+                                                  : "message_time"
+                                              }`}
+                                            >
                                               {format(message?.sent_time)}
                                             </span>
                                             <span className="message_text">

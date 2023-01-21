@@ -9,7 +9,7 @@ const H5 = (props) => {
   // }
   return (
 
-    <h5 style={props.style1 ? { fontSize: "22px" }:null}>
+    <h5 style={props.style1 ? { fontSize: "22px",fontWeight:"700" }:null}>
       {props.children}
     </h5>
 

@@ -95,6 +95,11 @@ export function signupStep3(data, setLoader) {
   return { type: SIGNUP3, payload: data, loader: setLoader };
 }
 
-export function signupStep4(data, setLoader) {
-  return { type: SIGNUP4, payload: data, loader: setLoader };
+export function signupStep4(data, setLoader, handleUpdateRoutePage) {
+  return {
+    type: SIGNUP4,
+    payload: data,
+    loader: setLoader,
+    handleUpdateRoutePage: handleUpdateRoutePage,
+  };
 }

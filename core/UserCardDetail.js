@@ -1,3 +1,4 @@
+import ImageShow from "@/modules/ImageShow";
 import UserImg from "assets/img/userimg.jpg";
 import Image from "next/image";
 
@@ -13,12 +14,20 @@ const UserCardDetail = ({
   return (
     <div className="date_card_wrap">
       <figure className="user_img_date">
-        <Image
+        {/* <Image
           src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
           alt="user image"
           width={500}
           height={500}
           className="date-preview-img"
+        /> */}
+        <ImageShow
+          src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
+          alt="user image"
+          width={500}
+          height={500}
+          className="date-preview-img"
+          placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
         />
         <div className="user-details">
           <div className="user-top-sec">

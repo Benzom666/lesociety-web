@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 import DatePopup from "core/createDatePopup";
 import router from "next/router";
 import useWindowSize from "utils/useWindowSize";
-import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import CustomInput from "Views/CustomInput";
@@ -26,6 +25,8 @@ import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
 import MessageSend from "assets/message_send.png";
 import MessageSend2 from "assets/message_send2.png";
+import LocationModalPopUp from "@/core/locationModalPopUp";
+import classNames from "classnames";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -52,6 +53,15 @@ function UserList(props) {
   const scrollRef = useRef(null);
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
+  const [firstDateShouldLoad, setFirstDateShouldLoad] = useState(false);
+
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (user?.gender === "male") {
+      setShow(true);
+    }
+  }, [user]);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -136,19 +146,28 @@ function UserList(props) {
         params: params,
       });
       console.log("res dates of user", res);
+
       if (res?.data?.data?.pagination?.current_page !== 1) {
-        res?.data?.data?.dates.sort(function (a, b) {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
+        res?.data?.data?.dates;
+        // .sort(function (a, b) {
+        //   return new Date(b.created_at) - new Date(a.created_at);
+        // });
+        // setTimeout(() => {
         setDates([...dates, ...res?.data?.data?.dates]);
+        // }, 500);
       } else {
-        res?.data?.data?.dates.sort(function (a, b) {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
-        setDates(res?.data?.data?.dates);
+        res?.data?.data?.dates;
+        // .sort(function (a, b) {
+        //   return new Date(b.created_at) - new Date(a.created_at);
+        // });
+        setTimeout(() => {
+          setDates(res?.data?.data?.dates);
+        }, 2000);
       }
       setPagination(res?.data?.data?.pagination);
-      setLoader(false);
+      setTimeout(() => {
+        setLoader(false);
+      }, 2000);
     } catch (err) {
       setDates([]);
       setLoader(false);
@@ -196,16 +215,7 @@ function UserList(props) {
     icon.style.top = dimension?.top - 310 + "px";
 
     setReceiverData(item);
-    // if click on message icon
-    // if (icon) {
-    //   icon.addEventListener("click", () => {
-    //   });
-    // }
-    // how to get value of input
   };
-
-  // create async function to fetch data
-  // const postMessageData = async (receiverData) => {};
 
   const handleSubmit = async (values) => {
     moveIcon();
@@ -286,14 +296,16 @@ function UserList(props) {
   });
 
   const nextPage = () => {
-    const params = {
-      location: selectedLocation?.city,
-      province: selectedLocation?.province,
-      current_page: page + 1,
-      per_page: 10,
-    };
-    setPage(page + 1);
-    fetchDate(params);
+    setTimeout(() => {
+      const params = {
+        location: selectedLocation?.city,
+        province: selectedLocation?.province,
+        current_page: page + 1,
+        per_page: 10,
+      };
+      setPage(page + 1);
+      fetchDate(params);
+    }, 500);
   };
 
   const handleScroll = () => {
@@ -314,31 +326,41 @@ function UserList(props) {
     };
   }, [scrollPosition]);
 
-  // if back router is create-date/date-event then redirect to home page
   // useEffect(() => {
-  //   const history = props.history?.length > 0 ? props.history : [];
-  //   if (
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/choose-city") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/date-event") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] ===
-  //         "/create-date/date-event?drafted=true") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/date-event?edit=true") ||
-  //     (history?.length > 0 &&
-  //       history[history.length - 1] === "/create-date/choose-city?edit=true")
-  //   ) {
-  //     router.replace("/user/user-list");
-  //   }
-  // }, [props.history, router]);
+  //   router.beforePopState(({ as }) => {
+  //     console.log("as", as);
+  //     if (
+  //       as === "/create-date/date-event" ||
+  //       as === "/create-date/date-event?drafted=true" ||
+  //       as === "/create-date/date-event?edit=true" ||
+  //       as === "/create-date/date-event?new_edit=true"
+  //     ) {
+  //       // Will run when leaving the current page; on back/forward actions
+  //       // Add your logic here, like toggling the modal state
+  //       console.log("as after", as);
+  //       console.log(
+  //         "as path",
+  //         as === "/create-date/date-event" ||
+  //           as === "/create-date/date-event?drafted=true" ||
+  //           as === "/create-date/date-event?edit=true" ||
+  //           as === "/create-date/date-event?new_edit=true"
+  //       );
 
-  // // console previous router
-  // console.log("router", props.history);
+  //       return router.replace("/auth/login");
+  //     }
+  //     // return true;
+  //   });
 
-  // console
-  // console.log("router?.query?.backRouter", router);
+  //   // return () => {
+  //   //   router.beforePopState(() => true);
+  //   // };
+  // }, [router]);
+
+  // console.log("dates", dates);
+  // console.log("page", page);
+
+  // console.log("first", !loading && pagination?.total_pages !== page);
+
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -346,6 +368,14 @@ function UserList(props) {
         isBlack={locationPopup}
         unReadedConversationLength={unReadedConversationLength}
       />
+      <div
+        className={classNames(
+          `modal fade ${show ? "show d-block modal-open" : "d-none"}`,
+          width > 1399 && "modal-fade-1"
+        )}
+      >
+        <LocationModalPopUp onClose={() => setShow(false)} show={show} />
+      </div>
       <div className="inner-part-page">
         <div className="pt-5 pb-4">
           <div className="container user_list_wrap">
@@ -354,109 +384,136 @@ function UserList(props) {
               <div className="col-md-8">
                 <div className="row">
                   <div className="col-md-12">
-                  <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3 top-space">
-                  <span className="hidden-sm">Nearby</span>
-                 { width<430 ? <div
-                      className="d-flex align-items-center justify-content-end"
-                      style={
-                        (scrollType === "up" || "down") &&
-                        scrollPosition > 5 &&
-                        !locationPopup
-                          ? width > 767
-                            ? { position: "fixed", width: "59%", zIndex: "99" }
-                            : { position: "fixed", left: "34%", zIndex: "99" }
-                          : { position: "relative" }
-                      }
-                    >
-                      {/* <span className="hidden-sm">Nearby</span> */}
-                      <div
-                        onClick={() => setLocationPoup(true)}
-                        className="selct-wrap-sort"
-                      >
-                        <label>
-                          <span className="city-txt city-txt-gallary">
-                            {selectedLocation?.city},{" "}
-                            {selectedLocation?.province?.toUpperCase()}
-                          </span>
-                        </label>
-                      </div>
-                 </div> :null }  
-                  </div>
+                    <div className="d-flex align-items-center justify-content-center justify-content-md-between pb-3 top-space">
+                      <span className="hidden-sm">Nearby</span>
+                      {width < 430 ? (
+                        <div
+                          className="d-flex align-items-center justify-content-end"
+                          style={
+                            (scrollType === "up" || "down") &&
+                            scrollPosition > 5 &&
+                            !locationPopup
+                              ? width > 767
+                                ? {
+                                    position: "fixed",
+                                    width: "59%",
+                                    zIndex: "99",
+                                  }
+                                : {
+                                    position: "fixed",
+                                    left: "34%",
+                                    zIndex: "99",
+                                  }
+                              : { position: "relative" }
+                          }
+                        >
+                          {/* <span className="hidden-sm">Nearby</span> */}
+                          <div
+                            onClick={() => setLocationPoup(true)}
+                            className="selct-wrap-sort"
+                          >
+                            <label>
+                              <span className="city-txt city-txt-gallary">
+                                {selectedLocation?.city},{" "}
+                                {selectedLocation?.province?.toUpperCase()}
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
                 <InfiniteScroll
                   scrollableTarget="infiniteScroll"
-                  dataLength={dates.length}
+                  // dataLength={dates.length}
+                  dataLength={pagination?.total_dates ?? 0}
                   next={nextPage}
-                  hasMore={pagination?.total_pages !== page}
+                  refreshFunction={nextPage}
+                  pullDownToRefresh={
+                    !loading && pagination?.total_pages !== page
+                  }
+                  hasMore={!loading && pagination?.total_pages !== page}
                   style={{ overflowX: "hidden" }}
                 >
                   <div className="row">
-                    {loading
+                    {loading && dates.length === 0
                       ? [1, 2, 3, 4, 5, 6].map((n) => (
                           <div className={`col-xl-6 col-lg-12`}>
                             <SkeletonDate key={n} theme="dark" />
                           </div>
                         ))
-                      : dates.length > 0
-                      ? dates.map((item, index) => (
-                          <div
-                            className={`col-xl-6 col-lg-12 ${
-                              (width > 767 && (index === 2 || index === 3)) ||
-                              index === 0 ||
-                              index === 1
-                                ? "scrollActive"
-                                : ""
-                            }`}
-                            id={`scrolldiv`}
-                            key={index}
-                            onClick={() => {
-                              // if (index === dates?.length - 1) {
-                              lastClickedDate();
-                              // }
-                            }}
-                          >
-                            {width > 767 ? (
-                              <UserCardList
-                                setDateId={setDateId}
-                                date={item}
-                                cardId={`grow-${index}`}
-                                openPopup={() => {
-                                  openPopup(item);
-                                }}
-                                closePopup={closePopup}
-                                dateId={dateId}
-                                isDesktopView={true}
-                                key={index}
-                                ref={scrollRef}
-                                loading={loading}
-                                receiverData={receiverData}
-                                alreadyMessagedFromUser={
-                                  alreadyMessagedFromUser
-                                }
-                              />
-                            ) : (
-                              <UserCardList
-                                setDateId={setDateId}
-                                date={item}
-                                cardId={`grow-${index}`}
-                                openPopup={() => {
-                                  openPopup(item);
-                                }}
-                                closePopup={closePopup}
-                                growDiv={growDiv}
-                                dateId={dateId}
-                                key={index}
-                                ref={scrollRef}
-                                loading={loading}
-                                receiverData={receiverData}
-                                alreadyMessagedFromUser={
-                                  alreadyMessagedFromUser
-                                }
-                              />
-                            )}
-                          </div>
-                        ))
+                      : dates.length > 0 &&
+                        dates.filter((item) => item?.date_status === true)
+                          ?.length > 0
+                      ? dates
+                          .filter((item) => item?.date_status === true)
+                          .map((item, index) => (
+                            <div
+                              className={`col-xl-6 col-lg-12 ${
+                                (width > 767 && (index === 2 || index === 3)) ||
+                                index === 0 ||
+                                index === 1
+                                  ? "scrollActive"
+                                  : ""
+                              }`}
+                              id={`scrolldiv`}
+                              key={index}
+                              onClick={() => {
+                                // if (index === dates?.length - 1) {
+                                lastClickedDate();
+                                // }
+                              }}
+                            >
+                              {width > 767 ? (
+                                <UserCardList
+                                  setDateId={setDateId}
+                                  date={item}
+                                  cardId={`grow-${index}`}
+                                  openPopup={() => {
+                                    openPopup(item);
+                                  }}
+                                  closePopup={closePopup}
+                                  dateId={dateId}
+                                  isDesktopView={true}
+                                  key={index}
+                                  ref={scrollRef}
+                                  loading={loading}
+                                  setLoader={setLoader}
+                                  receiverData={receiverData}
+                                  alreadyMessagedFromUser={
+                                    alreadyMessagedFromUser
+                                  }
+                                  setAlreadyMessagedFromUser={
+                                    setAlreadyMessagedFromUser
+                                  }
+                                />
+                              ) : (
+                                <UserCardList
+                                  setDateId={setDateId}
+                                  date={item}
+                                  cardId={`grow-${index}`}
+                                  openPopup={() => {
+                                    openPopup(item);
+                                  }}
+                                  setLoader={setLoader}
+                                  closePopup={closePopup}
+                                  growDiv={growDiv}
+                                  dateId={dateId}
+                                  key={index}
+                                  ref={scrollRef}
+                                  loading={loading}
+                                  receiverData={receiverData}
+                                  alreadyMessagedFromUser={
+                                    alreadyMessagedFromUser
+                                  }
+                                  setAlreadyMessagedFromUser={
+                                    setAlreadyMessagedFromUser
+                                  }
+                                />
+                              )}
+                            </div>
+                          ))
                       : !loading && (
                           <div className="no-message-card-date">
                             <figure>
@@ -473,35 +530,43 @@ function UserList(props) {
                             <SubHeading title="Find a date by changing the location!" />
                           </div>
                         )}
+                    {loading &&
+                      [1, 2, 3, 4, 5, 6].map((n) => (
+                        <div className={`col-xl-6 col-lg-12`}>
+                          <SkeletonDate key={n} theme="dark" />
+                        </div>
+                      ))}
                   </div>
                 </InfiniteScroll>
               </div>
-              
+
               <div className="col-md-2">
-              <div className="d-flex align-items-center justify-content-end" style={{marginTop:"26px"}}
-                      // style={
-                      //   (scrollType === "up" || "down") &&
-                      //   scrollPosition > 5 &&
-                      //   !locationPopup
-                      //     ? width > 767
-                      //       ? { position: "fixed", width: "59%", zIndex: "99" }
-                      //       : { position: "fixed", left: "34%", zIndex: "99" }
-                      //     : { position: "relative" }
-                      // }
-                    >
-                      {/* <span className="hidden-sm">Nearby</span> */}
-                      <div
-                        onClick={() => setLocationPoup(true)}
-                        className="selct-wrap-sort position-fixed"
-                      >
-                        <label>
-                          <span className="city-txt city-txt-gallary">
-                            {selectedLocation?.city},{" "}
-                            {selectedLocation?.province?.toUpperCase()}
-                          </span>
-                        </label>
-                      </div>
-              </div>
+                <div
+                  className="d-flex align-items-center justify-content-end"
+                  style={{ marginTop: "26px" }}
+                  // style={
+                  //   (scrollType === "up" || "down") &&
+                  //   scrollPosition > 5 &&
+                  //   !locationPopup
+                  //     ? width > 767
+                  //       ? { position: "fixed", width: "59%", zIndex: "99" }
+                  //       : { position: "fixed", left: "34%", zIndex: "99" }
+                  //     : { position: "relative" }
+                  // }
+                >
+                  {/* <span className="hidden-sm">Nearby</span> */}
+                  <div
+                    onClick={() => setLocationPoup(true)}
+                    className="selct-wrap-sort position-fixed"
+                  >
+                    <label>
+                      <span className="city-txt city-txt-gallary">
+                        {selectedLocation?.city},{" "}
+                        {selectedLocation?.province?.toUpperCase()}
+                      </span>
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -523,53 +588,59 @@ function UserList(props) {
         />
       </svg>
       <div id="message-popup" className={`message-popup ${classPopup}`}>
-        <span onClick={closePopup} className="close-button">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.9924 12.9926L1.00244 1.00006"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M12.9887 1.00534L1.00873 12.9853"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <p className="msg">
-          "
-          {receiverData?.user_data?.length > 0 &&
-            receiverData?.user_data[0]?.tagline}
-          "
-        </p>
-        <div>
-          <Formik
-            initialValues={{
-              message: "",
-            }}
-            validationSchema={Yup.object({
-              message: Yup.string().required("Please enter your message"),
-            })}
-            onSubmit={(values) => {
-              if (values.message?.trim() !== "") {
-                handleSubmit(values);
-              }
-            }}
-          >
-            {(formProps) => {
-              return (
-                <Form>
+        <Formik
+          initialValues={{
+            message: "",
+          }}
+          validationSchema={Yup.object({
+            message: Yup.string().required("Please enter your message"),
+          })}
+          onSubmit={(values) => {
+            if (values.message?.trim() !== "") {
+              handleSubmit(values);
+            }
+          }}
+        >
+          {(formProps) => {
+            return (
+              <Form>
+                <span
+                  onClick={() => {
+                    closePopup();
+                    formProps.setFieldValue("message", "");
+                  }}
+                  className="close-button"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.9924 12.9926L1.00244 1.00006"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12.9887 1.00534L1.00873 12.9853"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <p className="msg">
+                  "
+                  {receiverData?.user_data?.length > 0 &&
+                    receiverData?.user_data[0]?.tagline}
+                  "
+                </p>
+                <div>
                   <div className="">
                     <Field
                       className={`${textClass}`}
@@ -578,55 +649,36 @@ function UserList(props) {
                       id="message"
                       component={CustomInput}
                     />
-                   {/* <IoIosSend
-                      size={25}
-                      color={
-                        formProps.values?.message?.trim() === ""
-                          ? "#686868"
-                          : "#F24462"
-                      }
-                      type="submit"
-                      onClick={() => {
-                        if (formProps.values?.message?.trim() !== "") {
-                          handleSubmit(formProps.values);
-                        }
 
-                        formProps.resetForm();
+                    <button
+                      type="button"
+                      style={{
+                        background: "transparent",
+                        border: "none",
+                        paddingBottom: "10px",
+                        paddingTop: "8px",
                       }}
-                    />  */}
-                    <button type="button" style={{background:"transparent",border:"none",paddingBottom:"10px"}}>
-                    <Image src={formProps.values.message==="" ? MessageSend :MessageSend2} alt="send-btn"
-                    type="submit"
-                    onClick={() => {
-                      handleSubmit(formProps.values);
-                      formProps.resetForm()
-                     }}
-                    />
-                    </button>
-                    {/* create svg with onclick */}
-
-                    {/* <svg
-                      type="submit"
-                      onClick={() => handleSubmit()}
-                      className="icon-move-1"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      pointerEvents="none"
                     >
-                      <path
-                        d="M13.6048 0.407386C13.2546 0.0480202 12.7364 -0.0858618 12.2532 0.0550622L0.9856 3.33166C0.47579 3.4733 0.114443 3.87988 0.0171013 4.39639C-0.0823407 4.92205 0.265006 5.58935 0.718788 5.86838L4.24193 8.03376C4.60328 8.25573 5.06967 8.20008 5.36869 7.89845L9.40303 3.83901C9.6061 3.62762 9.94224 3.62762 10.1454 3.83901C10.3484 4.04336 10.3484 4.37455 10.1454 4.58594L6.104 8.64612C5.80426 8.94698 5.74826 9.41556 5.96883 9.77914L8.12154 13.3377C8.37361 13.7604 8.80782 14 9.28396 14C9.34003 14 9.40303 14 9.4591 13.9929C10.0053 13.9225 10.4395 13.5491 10.6005 13.0206L13.9409 1.76735C14.088 1.2882 13.9549 0.766759 13.6048 0.407386Z"
-                        fill="#686868"
+                      <Image
+                        src={
+                          formProps.values.message === ""
+                            ? MessageSend
+                            : MessageSend2
+                        }
+                        alt="send-btn"
+                        type="submit"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
                       />
-                    </svg> */}
+                    </button>
                   </div>
-                </Form>
-              );
-            }}
-          </Formik>
-        </div>
+                </div>
+              </Form>
+            );
+          }}
+        </Formik>
         <p className="tip">Tip: ask her which date she prefers</p>
       </div>
       {/* <DatePopup

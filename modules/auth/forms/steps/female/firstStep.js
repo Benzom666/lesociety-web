@@ -139,6 +139,7 @@ const FirstStep = ({ gender, ...props }) => {
   useEffect(() => {
     const fetch = async () => {
       const location = await fetchLocation();
+      console.log("location", location);
       if (location) {
         const locationOption = location
           ?.map((item) =>
@@ -146,6 +147,7 @@ const FirstStep = ({ gender, ...props }) => {
           )
           .filter((item) => item !== null)
           .join();
+        console.log("locationOption", locationOption);
         setCountry(locationOption);
       }
     };
@@ -203,6 +205,8 @@ const FirstStep = ({ gender, ...props }) => {
 
   const { handleSubmit, previousPage, invalid, pristine, reset, submitting } =
     props;
+
+  console.log("countries", countries);
 
   if (pageLoading) {
     return <SkeletonFirstStep theme="dark" />;

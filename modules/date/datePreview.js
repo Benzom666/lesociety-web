@@ -12,8 +12,7 @@ import { apiRequest } from "utils/Utilities";
 import SkeletonDatesPreview from "../skeleton/Dates/SkeletonDatesPreview";
 
 const DatePreview = (props) => {
-  const { handleSubmit, previousPage, invalid, pristine, submitting, onClose } =
-    props;
+  const { handleSubmit, invalid, pristine, submitting, onClose } = props;
   const { width } = useWindowSize();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -29,6 +28,9 @@ const DatePreview = (props) => {
   const dateDescription = useSelector(
     (state) => state?.form?.CreateStepFour?.values
   );
+  const selectedDateData = useSelector(
+    (state) => state?.form?.CreateStepOne?.values
+  );
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [loader, setLoader] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
@@ -43,6 +45,12 @@ const DatePreview = (props) => {
 
   const toggle = () => setConfirmPopup(!confirmPopup);
 
+  const previousPage = () => {
+    router.asPath.includes("drafted")
+      ? router.push("/user/user-list")
+      : router.back();
+  };
+
   const postDate = async () => {
     setLoader(true);
     const data = {
@@ -52,6 +60,45 @@ const DatePreview = (props) => {
       const res = await apiRequest({
         method: "POST",
         url: `/date/update-draft-status`,
+        data: data,
+      });
+      setLoader(false);
+      router.push(
+        {
+          pathname: "/user/user-list",
+          query: {
+            city: cityState?.enter_city?.name,
+            country: cityState.enter_country?.value,
+            province: cityState?.enter_city?.province[0]?.short_code?.split(
+              "-"
+            )[1]
+              ? cityState?.enter_city?.province[0]?.short_code?.split("-")[1]
+              : cityState?.enter_city?.province[0]?.short_code,
+          },
+        },
+        "/user/user-list"
+      );
+      dispatch(reset("ChooseCity"));
+      dispatch(reset("CreateStepOne"));
+      dispatch(reset("CreateStepTwo"));
+      dispatch(reset("CreateStepThree"));
+      dispatch(reset("CreateStepFour"));
+    } catch (e) {
+      setLoader(false);
+    }
+  };
+
+  const updateDate = async () => {
+    setLoader(true);
+    const data = {
+      user_name: user?.user_name,
+      date_id: selectedDateData?.dateId,
+      date_details: dateDescription?.date_description,
+    };
+    try {
+      const res = await apiRequest({
+        method: "POST",
+        url: `/date/update`,
         data: data,
       });
       setLoader(false);
@@ -222,88 +269,119 @@ const DatePreview = (props) => {
           <div className="inner_container">
             <div className=" d-md-none justify-content-between align-items-center login-text mb-0 d-flex">
               <a onClick={previousPage}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  className="feather feather-chevron-left">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-chevron-left"
+                >
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </a>
               <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
-              <IoIosClose className="mouse-point" size={32} style={{ color: " rgba(255, 255, 255, 0.5)" }} onClick={toggle} />
+              <IoIosClose
+                className="mouse-point"
+                size={32}
+                style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                onClick={toggle}
+              />
             </div>
             {/* {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>} */}
-            {width < 430 ? <div className="step-wraps"
-            //  style={{ marginLeft: '16px' }}
-            >
-              <ul>
-                <li className="complete active">
-                  <span></span>
-                </li>
-                <li className=" complete active">
-                  <span></span>
-                </li>
-                <li className="complete active">
-                  <span></span>
-                </li>
-                <li className=" complete active">
-                  <span></span>
-                </li>
-                <li className=" complete active">
-                  <span></span>
-                </li>
-                <li className="complete active">
-                  <span></span>
-                </li>
-              </ul>
-            </div> : null}
+            {width < 430 ? (
+              <div
+                className="step-wraps"
+                //  style={{ marginLeft: '16px' }}
+              >
+                <ul>
+                  <li className="complete active">
+                    <span></span>
+                  </li>
+                  <li className=" complete active">
+                    <span></span>
+                  </li>
+                  <li className="complete active">
+                    <span></span>
+                  </li>
+                  <li className=" complete active">
+                    <span></span>
+                  </li>
+                  <li className=" complete active">
+                    <span></span>
+                  </li>
+                  <li className="complete active">
+                    <span></span>
+                  </li>
+                </ul>
+              </div>
+            ) : null}
           </div>
           <div
-            className={`${width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"
-              } `}
+            className={`${
+              width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"
+            } `}
           >
             <div className="inner_container preview-date-header">
               <div className="d-flex justify-content-center flex-column">
-                {width > 767 && <>
-                  <div className="d-flex justify-content-center" style={{ marginLeft: "24px" }}>
-                    <h6 className="m-0 text-white" style={{ fontWeight: "400px", fontSize: "16px" }}>CREATE A NEW DATE</h6>
-                    <IoIosClose className="desk-close-first mouse-point" size={32} onClick={toggle} />
-                  </div>
-                  <div className="step-wraps steps_wraps_previewdate">
-                    <ul>
-                      <li className=" complete active">
-                        <span></span>
-                      </li>
-                      <li className="complete active">
-                        <span></span>
-                      </li>
-                      <li className=" complete active">
-                        <span></span>
-                      </li>
-                      <li className="complete active">
-                        <span></span>
-                      </li>
-                      <li className=" complete active">
-                        <span></span>
-                      </li>
-                      <li className="complete active">
-                        <span></span>
-                      </li>
-                    </ul>
-                  </div>
-                  {/* <h6>Date Preview</h6>} */}
-                </>
-                }
-                {width > 767 && <>
-                  <div className="city-suggestion-text">
-                    <h6 style={{ marginRight: "15px" }}>Date Preview</h6>
-                    <p style={{ maxWidth: "430px" }}>
-                      Please check all the details of your date before posting. You will
-                      have a chance to edit it in the future
-                    </p>
-                  </div>
-                </>
-                }
+                {width > 767 && (
+                  <>
+                    <div
+                      className="d-flex justify-content-center"
+                      style={{ marginLeft: "24px" }}
+                    >
+                      <h6
+                        className="m-0 text-white"
+                        style={{ fontWeight: "400px", fontSize: "16px" }}
+                      >
+                        CREATE A NEW DATE
+                      </h6>
+                      <IoIosClose
+                        className="desk-close-first mouse-point"
+                        size={32}
+                        onClick={toggle}
+                      />
+                    </div>
+                    <div className="step-wraps steps_wraps_previewdate">
+                      <ul>
+                        <li className=" complete active">
+                          <span></span>
+                        </li>
+                        <li className="complete active">
+                          <span></span>
+                        </li>
+                        <li className=" complete active">
+                          <span></span>
+                        </li>
+                        <li className="complete active">
+                          <span></span>
+                        </li>
+                        <li className=" complete active">
+                          <span></span>
+                        </li>
+                        <li className="complete active">
+                          <span></span>
+                        </li>
+                      </ul>
+                    </div>
+                    {/* <h6>Date Preview</h6>} */}
+                  </>
+                )}
+                {width > 767 && (
+                  <>
+                    <div className="city-suggestion-text">
+                      <h6 style={{ marginRight: "15px" }}>Date Preview</h6>
+                      <p style={{ maxWidth: "430px" }}>
+                        Please check all the details of your date before
+                        posting. You will have a chance to edit it in the future
+                      </p>
+                    </div>
+                  </>
+                )}
                 {/* {width > 767 && 
                 (
                   <IoIosClose
@@ -313,12 +391,15 @@ const DatePreview = (props) => {
                   />
                 )} */}
               </div>
-              {width < 768 && <>
-                <h6 className="m-3 text-center">Date Preview</h6>
-                <p className="text-suggestion-city">
-                  Please check all the details of your date before posting. You
-                  will have a chance to edit it in the future
-                </p></>}
+              {width < 768 && (
+                <>
+                  <h6 className="m-3 text-center">Date Preview</h6>
+                  <p className="text-suggestion-city">
+                    Please check all the details of your date before posting.
+                    You will have a chance to edit it in the future
+                  </p>
+                </>
+              )}
             </div>
           </div>
           <form
@@ -342,12 +423,20 @@ const DatePreview = (props) => {
                         <a>Edit</a>
                       </Link>
                     </button>
-                    <button type="button" className="next" onClick={postDate}>
+                    <button
+                      type="button"
+                      className="next"
+                      onClick={router?.query?.new_edit ? updateDate : postDate}
+                    >
                       {loader ? (
                         <span className="spin-loader-button"></span>
                       ) : (
                         <>
-                          <a className="forgot-passwrd">Post Date</a>
+                          <a className="forgot-passwrd">
+                            {router?.query?.new_edit
+                              ? "Update Date"
+                              : "Post Date"}
+                          </a>
                         </>
                       )}
                     </button>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Field, reduxForm, change, initialize } from "redux-form";
+import { Field, reduxForm, reset, change, initialize } from "redux-form";
 import validate from "modules/auth/forms/validate/validate";
 import { FiArrowRight } from "react-icons/fi";
 import Footer from "core/footer";
@@ -59,6 +59,11 @@ const ChooseCity = (props) => {
 
       if (res?.data?.data?.length === 0) {
         setDraftDateLoading(false);
+        // dispatch(initialize("ChooseCity", ""));
+        dispatch(initialize("CreateStepOne", ""));
+        dispatch(initialize("CreateStepTwo", ""));
+        dispatch(initialize("CreateStepThree", ""));
+        dispatch(initialize("CreateStepFour", ""));
       }
 
       if (res.data.data?.dates) {
@@ -67,6 +72,11 @@ const ChooseCity = (props) => {
         );
         if (!draftedDate) {
           setDraftDateLoading(false);
+          // dispatch(initialize("ChooseCity", ""));
+          dispatch(initialize("CreateStepOne", ""));
+          dispatch(initialize("CreateStepTwo", ""));
+          dispatch(initialize("CreateStepThree", ""));
+          dispatch(initialize("CreateStepFour", ""));
         }
         if (draftedDate) {
           const category = dateCategory.find(
@@ -123,6 +133,11 @@ const ChooseCity = (props) => {
     } catch (e) {
       console.log(e);
       setDraftDateLoading(false);
+      // dispatch(initialize("ChooseCity", ""));
+      dispatch(initialize("CreateStepOne", ""));
+      dispatch(initialize("CreateStepTwo", ""));
+      dispatch(initialize("CreateStepThree", ""));
+      dispatch(initialize("CreateStepFour", ""));
     }
   };
 
@@ -201,15 +216,11 @@ const ChooseCity = (props) => {
     );
   };
 
-  const {
-    handleSubmit,
-    invalid,
-    previousPage,
-    pristine,
-    reset,
-    submitting,
-    touched,
-  } = props;
+  const { handleSubmit, invalid, pristine, submitting, touched } = props;
+
+  const previousPage = () => {
+    router.back();
+  };
 
   if (draftDateLoading) {
     return <Loader />;
@@ -228,7 +239,7 @@ const ChooseCity = (props) => {
                   <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
                     <a
                       onClick={previousPage}
-                      style={{ width: "21px", marginLeft: "-20px" }}
+                      //style={{ width: "24px" }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

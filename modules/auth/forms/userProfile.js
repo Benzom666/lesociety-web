@@ -19,12 +19,13 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
-// import { AiOutlineRight, AiOutlineLeft } from "react-icons/Ai";
+
+import close1 from "../../../assets/close1.png";
+import ProfileImageSlider from "./ProfileImageSlider";
+import ImageSlider from "./ImageSlider";
 
 function UserProfile({ preview, editHandle }) {
-  const [selectedImage, setSelectedImage] = useState(null);
   const { width } = useWindowSize();
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [dateModalOpen, dateSetIsOpen] = React.useState(false);
   const [userDetail, setUserDetail] = React.useState("");
@@ -35,6 +36,15 @@ function UserProfile({ preview, editHandle }) {
   const [pageLoading, setPageLoading] = useState(true);
   const [dateloading, setDateloading] = useState(true);
   const [page, setPage] = useState(1);
+
+  const [viewFullPage, setViewFullPage] = useState(false);
+  const [slideShowIndex, setSlideShowIndex] = useState(0);
+
+  const [image1Loading, setImage1Loading] = useState(true);
+  const [image2Loading, setImage2Loading] = useState(true);
+  const [image3Loading, setImage3Loading] = useState(true);
+  const [image4Loading, setImage4Loading] = useState(true);
+
   const dispatch = useDispatch();
   const router = useRouter();
   const selectedDateCategory = dateCategory.find(
@@ -43,8 +53,8 @@ function UserProfile({ preview, editHandle }) {
       item?.label === selectedDate?.middle_class_dates ||
       item?.label === selectedDate?.executive_class_dates
   );
-  console.log(userDates);
-  console.log(loading);
+  // console.log(userDates);
+  // console.log(loading);
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
   const toFeet = (n) => {
@@ -69,7 +79,7 @@ function UserProfile({ preview, editHandle }) {
         url: "date",
         params: params,
       });
-      console.log("res", res);
+      // console.log("res", res);
       setUserDates(res?.data?.data?.dates);
       setPagination(res?.data?.data?.pagination);
       setDateloading(false);
@@ -89,7 +99,6 @@ function UserProfile({ preview, editHandle }) {
       });
       if (res?.data?.data?.user) {
         setUserDetail(res?.data?.data?.user);
-        // setPageLoading(false);
       }
     } catch (e) {
       console.log(e);
@@ -133,7 +142,11 @@ function UserProfile({ preview, editHandle }) {
 
   const onSubmit = () => {
     dispatch(
-      signupStep4({ email: user?.email, step_completed: 4 }, setLoading)
+      signupStep4(
+        { email: user?.email, step_completed: 4 },
+        setLoading,
+        handleUpdateRoutePage
+      )
     );
   };
 
@@ -143,9 +156,27 @@ function UserProfile({ preview, editHandle }) {
         countriesCode[key]?.toLowerCase() ===
         selectedDate.country_code?.toLowerCase()
     );
+    // dispatch(
+    //   initialize("ChooseCity", {
+    //     enter_country: { label: country, value: selectedDate.country_code },
+    //     enter_city: {
+    //       name: selectedDate?.location,
+    //       country: [
+    //         {
+    //           short_code: selectedDate.country_code,
+    //           text: country,
+    //         },
+    //       ],
+    //       label: selectedDate?.location,
+    //     },
+    //   })
+    // );
     dispatch(
       initialize("ChooseCity", {
-        enter_country: { label: country, value: selectedDate.country_code },
+        enter_country: {
+          label: country,
+          value: selectedDate.country_code,
+        },
         enter_city: {
           name: selectedDate?.location,
           country: [
@@ -154,12 +185,16 @@ function UserProfile({ preview, editHandle }) {
               text: country,
             },
           ],
-          label: selectedDate?.location,
+          label: selectedDate?.location + ", " + selectedDate?.province,
+          province: [{ short_code: selectedDate?.province?.toUpperCase() }],
         },
       })
     );
     dispatch(
-      initialize("CreateStepOne", { search_type: selectedDateCategory })
+      initialize("CreateStepOne", {
+        search_type: selectedDateCategory,
+        dateId: selectedDate?._id,
+      })
     );
     dispatch(initialize("CreateStepTwo", { education: selectedDate?.price }));
     dispatch(
@@ -170,7 +205,7 @@ function UserProfile({ preview, editHandle }) {
         date_description: selectedDate?.date_details,
       })
     );
-    router.push("/create-date/choose-city?edit=true");
+    router.push("/create-date/date-event?new_edit=true");
   };
 
   const deleteDate = async () => {
@@ -196,37 +231,24 @@ function UserProfile({ preview, editHandle }) {
     }
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (
-  //       ((userDetail?.images &&
-  //         userDetail?.images[0] &&
-  //         userDetail?.images[1] &&
-  //         userDetail?.images[2] &&
-  //         userDetail?.images[3]) ||
-  //         (user.images &&
-  //           user.images[0] &&
-  //           user.images[1] &&
-  //           user.images[2] &&
-  //           user.images[3])) &&
-  //       (!dateloading ||
-  //         user?.gender === "male" ||
-  //         userDetail?.gender === "male")
-  //     ) {
-  //       setPageLoading(false);
-  //     }
-  //   }, 2000);
-  // }, [userDetail?.images, user?.images, dateloading]);
-
-  // setLoading false after the images are loaded
-
-  useEffect(() => {
-    if (router?.query?.edit && user?.step_completed === 4) {
-      router.push({
+  const handleUpdateRoutePage = () => {
+    console.log("handleUpdateRoutePage called");
+    if (router?.query?.edit)
+      return router.push({
         pathname: "/auth/update-profile",
       });
+    else {
+      return null;
     }
-  }, [user, router?.query?.edit]);
+  };
+
+  // useEffect(() => {
+  //   if (router?.query?.edit && user?.step_completed === 4) {
+  //     router.push({
+  //       pathname: "/auth/update-profile",
+  //     });
+  //   }
+  // }, [user, router?.query?.edit]);
 
   const nextPage = () => {
     const params = {
@@ -288,27 +310,63 @@ function UserProfile({ preview, editHandle }) {
       ? user?.un_verified_description
       : user?.description);
 
+  const slides =
+    slideShowIndex === 0
+      ? [
+          { url: userImageProfile },
+          { url: userImage1 },
+          { url: userImage2 },
+          { url: userImage3 },
+        ]
+      : slideShowIndex === 1
+      ? [
+          { url: userImage1 },
+          { url: userImage2 },
+          { url: userImage3 },
+          { url: userImageProfile },
+        ]
+      : slideShowIndex === 2
+      ? [
+          { url: userImage2 },
+          { url: userImage3 },
+          { url: userImageProfile },
+          { url: userImage1 },
+        ]
+      : [
+          { url: userImage3 },
+          { url: userImageProfile },
+          { url: userImage1 },
+          { url: userImage2 },
+        ];
+
   useEffect(() => {
     if (
       userImageProfile &&
       userImage1 &&
       userImage2 &&
       userImage3 &&
-      (!dateloading || user?.gender === "male" || userDetail?.gender === "male")
+      (!dateloading ||
+        (user?.gender === "male" && router?.query?.userName && userDetail) ||
+        (user?.gender === "male" && !router?.query?.userName))
     ) {
       setTimeout(() => {
         setPageLoading(false);
-      }, 4000);
+      }, 2000);
     }
   }, [userImageProfile, userImage1, userImage2, userImage3, dateloading]);
 
-  // console.log("userImageProfile", userImageProfile);
-  // console.log("paget", page);
   const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
+    return `${src}?w=${width}&q=${quality || 50}`;
   };
 
-  // until images loaded show loader
+  const containerStyles = {
+    position: "relative",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, 0%)",
+    maxWidth: "40%",
+    height: "100vh",
+  };
 
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
@@ -333,20 +391,55 @@ function UserProfile({ preview, editHandle }) {
                           <div className="big-image">
                             <label>
                               <div className="pos-relative">
+                                {viewFullPage && (
+                                  <div
+                                    className={viewFullPage ? "overlay" : ""}
+                                  >
+                                    <div
+                                      className={
+                                        viewFullPage
+                                          ? "closebtn"
+                                          : "image-display-none"
+                                      }
+                                      onClick={() => setViewFullPage(false)}
+                                    >
+                                      <Image
+                                        src={close1}
+                                        alt="user image"
+                                        width={30}
+                                        height={30}
+                                      />
+                                    </div>
+                                    <div
+                                      // style={viewFullPage && containerStyles}
+                                      className={
+                                        viewFullPage
+                                          ? "overlay-content"
+                                          : "image-display-none"
+                                      }
+                                    >
+                                      <ImageSlider
+                                        slides={slides}
+                                        viewFullPage={viewFullPage}
+                                      />
+                                    </div>
+                                  </div>
+                                )}
                                 <Image
-                                  src={
-                                    // userDetail?.images
-                                    //   ? userDetail?.images[0]
-                                    //   : user.images && user.images[0]
-                                    userImageProfile
-                                  }
-                                  // implement loader
+                                  src={userImageProfile}
                                   loader={myLoader}
                                   priority={true}
                                   alt="user image"
                                   width={270}
                                   height={270}
+                                  placeholder="blur"
+                                  blurDataURL={userImageProfile}
+                                  onClick={() => {
+                                    setViewFullPage(true);
+                                    setSlideShowIndex(0);
+                                  }}
                                 />
+
                                 {user?.documents_verified && (
                                   <span className="verified_check_tag">
                                     <HiBadgeCheck color={"white"} size={20} />
@@ -355,20 +448,6 @@ function UserProfile({ preview, editHandle }) {
                                 )}
                               </div>
                             </label>
-                            {/* {(router?.query?.userName === user.user_name ||
-                              router?.pathname === "/user/user-profile") && (
-                              <div className="d-flex align-items-center mb-0 mt-4">
-                                <button
-                                  type="button"
-                                  className="view-profile-edit-photo-btn"
-                                  onClick={() => {
-                                    router.push("/auth/profile?edit=true");
-                                  }}
-                                >
-                                  Edit Photos
-                                </button>
-                              </div>
-                            )} */}
                           </div>
                         </figure>
                       )}
@@ -379,9 +458,7 @@ function UserProfile({ preview, editHandle }) {
                           {userDetail?.user_name || user.user_name},{" "}
                           <span>{userDetail?.age || user.age}</span>
                         </h4>
-                        {/* {width > 991 && (
-                                                  <p>{userDetail?.tagline || user?.tagline}</p>
-                                              )} */}
+
                         {width < 991 && (
                           <div className="text-center">
                             <svg
@@ -437,7 +514,7 @@ function UserProfile({ preview, editHandle }) {
                               <label>
                                 <>
                                   <div className="pos-relative">
-                                    <img
+                                    {/* <img
                                       src={
                                         // userDetail?.images
                                         //   ? userDetail?.images[0]
@@ -447,7 +524,63 @@ function UserProfile({ preview, editHandle }) {
                                       alt="user image"
                                       width="350"
                                       height="350"
+                                    /> */}
+                                    {viewFullPage && (
+                                      <div
+                                        className={
+                                          viewFullPage ? "overlay" : ""
+                                        }
+                                      >
+                                        <div
+                                          className={
+                                            viewFullPage
+                                              ? "closebtn"
+                                              : "image-display-none"
+                                          }
+                                          onClick={() => setViewFullPage(false)}
+                                        >
+                                          <Image
+                                            src={close1}
+                                            alt="user image"
+                                            width={30}
+                                            height={30}
+                                          />
+                                        </div>
+                                        <div
+                                          // style={viewFullPage && containerStyles}
+                                          className={
+                                            viewFullPage
+                                              ? "overlay-content"
+                                              : "image-display-none"
+                                          }
+                                        >
+                                          <ImageSlider
+                                            slides={slides}
+                                            viewFullPage={viewFullPage}
+                                          />
+                                        </div>
+                                      </div>
+                                    )}
+                                    <Image
+                                      src={userImageProfile}
+                                      loader={myLoader}
+                                      priority={true}
+                                      alt="user image"
+                                      width={350}
+                                      height={350}
+                                      placeholder="blur"
+                                      blurDataURL={userImageProfile}
+                                      onClick={() => {
+                                        setViewFullPage(true);
+                                        setSlideShowIndex(0);
+                                      }}
                                     />
+                                    {/* <ImageShow
+                                      alt="user image"
+                                      width={350}
+                                      height={350}
+                                      src={userImageProfile}
+                                    /> */}
                                     {user?.documents_verified && (
                                       <span className="verified_check_tag">
                                         <HiBadgeCheck
@@ -465,49 +598,157 @@ function UserProfile({ preview, editHandle }) {
                           {width > 991 && <SubHeading title="Photos" />}
                           <div className="image_wrap_slider pt-3 pb-4">
                             <figure>
+                              {viewFullPage && (
+                                <div className={viewFullPage ? "overlay" : ""}>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "closebtn"
+                                        : "image-display-none"
+                                    }
+                                    onClick={() => setViewFullPage(false)}
+                                  >
+                                    <Image
+                                      src={close1}
+                                      alt="user image"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "overlay-content"
+                                        : "image-display-none"
+                                    }
+                                  >
+                                    <ImageSlider slides={slides} />
+                                  </div>
+                                </div>
+                              )}
                               <Image
-                                src={
-                                  // userDetail?.images
-                                  //   ? userDetail?.images[1]
-                                  //   : user.images && user.images[1]
-                                  userImage1
-                                }
+                                src={userImage1}
                                 loader={myLoader}
                                 priority={true}
                                 alt="user image"
                                 width={160}
                                 height={150}
+                                placeholder="blur"
+                                blurDataURL={userImage1}
+                                onClick={() => {
+                                  setViewFullPage(true);
+                                  setSlideShowIndex(1);
+                                }}
+                                className="cursor-pointer"
                               />
+                              {/* <ImageShow
+                                alt="user image"
+                                width={160}
+                                height={150}
+                                src={userImage1}
+                              /> */}
                             </figure>
                             <figure>
+                              {viewFullPage && (
+                                <div className={viewFullPage ? "overlay" : ""}>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "closebtn"
+                                        : "image-display-none"
+                                    }
+                                    onClick={() => setViewFullPage(false)}
+                                  >
+                                    <Image
+                                      src={close1}
+                                      alt="user image"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "overlay-content"
+                                        : "image-display-none"
+                                    }
+                                  >
+                                    <ImageSlider slides={slides} />
+                                  </div>
+                                </div>
+                              )}
                               <Image
-                                src={
-                                  // userDetail?.images
-                                  //   ? userDetail?.images[2]
-                                  //   : user.images && user.images[2]
-                                  userImage2
-                                }
+                                src={userImage2}
                                 loader={myLoader}
                                 priority={true}
                                 alt="user image"
                                 width={160}
                                 height={150}
+                                placeholder="blur"
+                                blurDataURL={userImage2}
+                                onClick={() => {
+                                  setViewFullPage(true);
+                                  setSlideShowIndex(2);
+                                }}
+                                className="cursor-pointer"
                               />
+                              {/* <ImageShow
+                                alt="user image"
+                                width={160}
+                                height={150}
+                                src={userImage2}
+                              /> */}
                             </figure>
                             <figure>
+                              {viewFullPage && (
+                                <div className={viewFullPage ? "overlay" : ""}>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "closebtn"
+                                        : "image-display-none"
+                                    }
+                                    onClick={() => setViewFullPage(false)}
+                                  >
+                                    <Image
+                                      src={close1}
+                                      alt="user image"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      viewFullPage
+                                        ? "overlay-content"
+                                        : "image-display-none"
+                                    }
+                                  >
+                                    <ImageSlider slides={slides} />
+                                  </div>
+                                </div>
+                              )}
                               <Image
-                                src={
-                                  // userDetail?.images
-                                  //   ? userDetail?.images[3]
-                                  //   : user.images && user.images[3]
-                                  userImage3
-                                }
+                                src={userImage3}
                                 loader={myLoader}
                                 priority={true}
                                 alt="user image"
                                 width={160}
                                 height={150}
+                                placeholder="blur"
+                                blurDataURL={userImage3}
+                                onClick={() => {
+                                  setViewFullPage(true);
+                                  setSlideShowIndex(3);
+                                }}
+                                className="cursor-pointer"
                               />
+                              {/* <ImageShow
+                                alt="user image"
+                                width={160}
+                                height={150}
+                                src={userImage3}
+                              /> */}
                             </figure>
                           </div>
                           <>
@@ -518,7 +759,8 @@ function UserProfile({ preview, editHandle }) {
 
                             {!preview &&
                               // user?.gender === "female" &&
-                              (router?.query?.userName ||
+                              ((router?.query?.userName &&
+                                userDetail?.gender === "female") ||
                                 (router?.pathname === "/user/user-profile" &&
                                   user?.gender === "female")) && (
                                 <>
@@ -529,7 +771,10 @@ function UserProfile({ preview, editHandle }) {
                                   <div className="verification_card_header text-center mb-5 mt-4">
                                     <div
                                       className={
-                                        userDates.length === 1
+                                        userDates.length > 0 &&
+                                        userDates.filter(
+                                          (item) => item?.date_status === true
+                                        )?.length === 1
                                           ? "available-dates-box1"
                                           : "available-dates-box"
                                       }
@@ -546,73 +791,80 @@ function UserProfile({ preview, editHandle }) {
                                         <div className="w-100 d-flex justify-content-center align-items-center">
                                           <span className="date-spin-loader-button"></span>
                                         </div>
-                                      ) : userDates.length > 0 ? (
-                                        userDates.map((date) => {
-                                          const category = dateCategory.find(
-                                            (item) =>
-                                              item?.label ===
-                                                date?.standard_class_date ||
-                                              item?.label ===
-                                                date?.middle_class_dates ||
-                                              item?.label ===
-                                                date?.executive_class_dates
-                                          );
-                                          return (
-                                            <div
-                                              className="availabe_card_inner"
-                                              onClick={() => {
-                                                if (
-                                                  !router?.query?.userName ||
-                                                  router?.query?.userName ===
-                                                    user.user_name
-                                                ) {
-                                                  setSelectedDate(date);
-                                                  dateModalIsOpen();
-                                                }
-                                              }}
-                                            >
-                                              <ul className="date_list">
-                                                <li>
-                                                  <span
-                                                    className="icon_wrap"
-                                                    style={{
-                                                      height: "40px",
-                                                      width: "40px",
-                                                    }}
-                                                  >
-                                                    {category?.icon}
-                                                  </span>
-                                                  <p
-                                                    style={{
-                                                      fontSize: "14px",
-                                                      fontWeight: "300",
-                                                      borderRadius: "11px",
-                                                    }}
-                                                  >
-                                                    {category?.label}
-                                                  </p>
-                                                </li>
-                                                <span className="top-card_tag">
-                                                  <span className="top-badge"></span>
-                                                  <div className="price-card-name">
-                                                    <span className="date-price-card">
-                                                      ${date?.price}
+                                      ) : userDates.length > 0 &&
+                                        userDates.filter(
+                                          (item) => item?.date_status === true
+                                        )?.length > 0 ? (
+                                        userDates
+                                          .filter(
+                                            (item) => item?.date_status === true
+                                          )
+                                          .map((date) => {
+                                            const category = dateCategory.find(
+                                              (item) =>
+                                                item?.label ===
+                                                  date?.standard_class_date ||
+                                                item?.label ===
+                                                  date?.middle_class_dates ||
+                                                item?.label ===
+                                                  date?.executive_class_dates
+                                            );
+                                            return (
+                                              <div
+                                                className="availabe_card_inner"
+                                                onClick={() => {
+                                                  if (
+                                                    !router?.query?.userName ||
+                                                    router?.query?.userName ===
+                                                      user.user_name
+                                                  ) {
+                                                    setSelectedDate(date);
+                                                    dateModalIsOpen();
+                                                  }
+                                                }}
+                                              >
+                                                <ul className="date_list">
+                                                  <li>
+                                                    <span
+                                                      className="icon_wrap"
+                                                      style={{
+                                                        height: "40px",
+                                                        width: "40px",
+                                                      }}
+                                                    >
+                                                      {category?.icon}
                                                     </span>
-                                                    <span className="hour">
-                                                      <span>
-                                                        {date?.date_length.replace(
-                                                          "H",
-                                                          ""
-                                                        )}
-                                                        H
+                                                    <p
+                                                      style={{
+                                                        fontSize: "14px",
+                                                        fontWeight: "300",
+                                                        borderRadius: "11px",
+                                                      }}
+                                                    >
+                                                      {category?.label}
+                                                    </p>
+                                                  </li>
+                                                  <span className="top-card_tag">
+                                                    <span className="top-badge"></span>
+                                                    <div className="price-card-name">
+                                                      <span className="date-price-card">
+                                                        ${date?.price}
                                                       </span>
-                                                    </span>
-                                                  </div>
-                                                </span>
-                                              </ul>
-                                            </div>
-                                          );
-                                        })
+                                                      <span className="hour">
+                                                        <span>
+                                                          {date?.date_length.replace(
+                                                            "H",
+                                                            ""
+                                                          )}
+                                                          H
+                                                        </span>
+                                                      </span>
+                                                    </div>
+                                                  </span>
+                                                </ul>
+                                              </div>
+                                            );
+                                          })
                                       ) : null}
                                       {/* {userDates.length > 0 &&
                                       pagination?.total_pages > page && (
@@ -787,10 +1039,23 @@ function UserProfile({ preview, editHandle }) {
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-                                <h5 className="education-font">
-                                  {userDetail?.max_education ||
-                                    user.max_education}
-                                </h5>
+                                {user.max_education.length > 15 ? (
+                                  <h5
+                                    className="education-font-1"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.max_education ||
+                                      user.max_education}
+                                  </h5>
+                                ) : (
+                                  <h5
+                                    className="education-font"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.max_education ||
+                                      user.max_education}
+                                  </h5>
+                                )}
                                 <p>Education Completed </p>
                               </div>
                             </div>
@@ -820,9 +1085,21 @@ function UserProfile({ preview, editHandle }) {
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-                                <h5 className="administrat-font">
-                                  {userDetail?.occupation || user.occupation}
-                                </h5>
+                                {user.occupation.length > 15 ? (
+                                  <h5
+                                    className="administrat-font-1"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.occupation || user.occupation}
+                                  </h5>
+                                ) : (
+                                  <h5
+                                    className="administrat-font"
+                                    style={{ wordBreak: "unset" }}
+                                  >
+                                    {userDetail?.occupation || user.occupation}
+                                  </h5>
+                                )}
                                 <p>Occupation </p>
                               </div>
                             </div>

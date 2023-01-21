@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Field, reduxForm, change } from "redux-form";
+import { Field, reduxForm, change, initialize } from "redux-form";
 import validate from "../validate/validate";
 import { Inputs } from "core";
 import { FiArrowRight } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { deAuthenticateAction, signupStep2 } from "../../authActions";
-import { imageUploader } from "../../../../utils/Utilities";
+import { imageUploader, imageUploaderNew } from "../../../../utils/Utilities";
 import { useRouter } from "next/router";
 import FemaleSkeletonSecondStep from "../../../skeleton/Auth/FemaleSkeletonSecondStep";
 import { reset } from "redux-form";
 import useWindowSize from "utils/useWindowSize";
+import ImageShow from "@/modules/ImageShow";
+import BlurImage from "../../../../assets/pexels-mike-navolta-670005.jpg";
+
 const SecondStep = (props) => {
   const [loading, setLoader] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
   const [isImageValid, setImageError] = useState(false);
   const [dimensionValid, setDimensionValid] = useState({ height: 0, width: 0 });
   const [isImageTouched, setImageTouched] = useState(false);
+  const [uploadImage1Loading, setUploadImage1Loading] = useState(true);
+  const [uploadImage2Loading, setUploadImage2Loading] = useState(true);
+  const [uploadImage3Loading, setUploadImage3Loading] = useState(true);
+  const [uploadImage4Loading, setUploadImage4Loading] = useState(true);
+  const [firstTimeImageLoad, setFirstTimeImageLoad] = useState(true);
+
   const router = useRouter();
   const dispatch = useDispatch();
   const width = useWindowSize();
@@ -98,26 +107,36 @@ const SecondStep = (props) => {
     console.log("values", values);
     try {
       setLoader(true);
-      const imageUploaded = await imageUploader([
-        values.imageUpload?.length > 0 ? values?.imageUpload : "",
-        values.imageUpload2?.length > 0 ? values.imageUpload2 : "",
-        values.imageUpload3?.length > 0 ? values.imageUpload3 : "",
-        values.imageUpload4?.length > 0 ? values.imageUpload4 : "",
+
+      const uploadImageArray = [
+        {
+          url: values.imageUpload?.length > 0 ? values?.imageUpload : "",
+        },
+        {
+          url: values.imageUpload2?.length > 0 ? values.imageUpload2 : "",
+        },
+        {
+          url: values.imageUpload3?.length > 0 ? values.imageUpload3 : "",
+        },
+        {
+          url: values.imageUpload4?.length > 0 ? values.imageUpload4 : "",
+        },
+      ];
+
+      const imageUploaded = await imageUploaderNew(uploadImageArray);
+
+      const verifiedImageUploaded = await imageUploaderNew([
+        { url: user?.images[0] ?? "" },
+        { url: user?.images[1] ?? "" },
+        { url: user?.images[2] ?? "" },
+        { url: user?.images[3] ?? "" },
       ]);
 
-      const verifiedImageUploaded = await imageUploader([
-        user?.images[0] ?? "",
-        user?.images[1] ?? "",
-        user?.images[2] ?? "",
-        user?.images[3] ?? "",
-      ]);
+      const unverifiedImageUploaded = await imageUploaderNew(uploadImageArray);
 
-      const unverifiedImageUploaded = await imageUploader([
-        values.imageUpload?.length > 0 ? values?.imageUpload : "",
-        values.imageUpload2?.length > 0 ? values.imageUpload2 : "",
-        values.imageUpload3?.length > 0 ? values.imageUpload3 : "",
-        values.imageUpload4?.length > 0 ? values.imageUpload4 : "",
-      ]);
+      // console.log("imageUploaded", imageUploaded);
+      // console.log("verifiedImageUploaded", verifiedImageUploaded);
+      // console.log("unverifiedImageUploaded", unverifiedImageUploaded);
 
       if (verifiedImageUploaded || unverifiedImageUploaded) {
         values.un_verified_images = unverifiedImageUploaded.map(
@@ -211,16 +230,40 @@ const SecondStep = (props) => {
     };
   };
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (
+  //       (router?.query?.edit &&
+  //         user?.images &&
+  //         user?.images[0]?.length > 0 &&
+  //         user?.images[1]?.length > 0 &&
+  //         user?.images[2]?.length > 0 &&
+  //         user?.images[3]?.length > 0) ||
+  //       props.fromRegistration
+  //     ) {
+  //       setPageLoading(false);
+  //     }
+  //   }, 2000);
+  // }, []);
+
   useEffect(() => {
-    setTimeout(() => {
-      if (
-        (router?.query?.edit && user?.images && user?.images[0]) ||
-        props.fromRegistration
-      ) {
+    if (
+      (!uploadImage1Loading &&
+        !uploadImage2Loading &&
+        !uploadImage3Loading &&
+        !uploadImage4Loading) ||
+      props.fromRegistration
+    ) {
+      setTimeout(() => {
         setPageLoading(false);
-      }
-    }, 4000);
-  }, []);
+      }, 2000);
+    }
+  }, [
+    uploadImage1Loading,
+    uploadImage2Loading,
+    uploadImage3Loading,
+    uploadImage4Loading,
+  ]);
 
   const { handleSubmit, invalid, previousPage } = props;
 
@@ -255,23 +298,23 @@ const SecondStep = (props) => {
               if (router?.query?.edit) {
                 return router.back();
               } else {
-                dispatch(reset("signupStep2"));
-                dispatch(reset("DatePreview"));
-                dispatch(reset("RegisterFormMale"));
-                dispatch(reset("signupStep3"));
-                dispatch(reset("RegisterForm"));
-                dispatch(reset("forgotpassword"));
-                dispatch(reset("LoginForm"));
-                dispatch(reset("SecondStep"));
-                dispatch(reset("ThirdStep"));
-                dispatch(reset("CreateStepFour"));
-                dispatch(reset("CreateStepOne"));
-                dispatch(reset("CreateStepThree"));
-                dispatch(reset("CreateStepTwo"));
-                dispatch(reset("SkeletonUserProfile"));
-                dispatch(reset("Messages"));
-                dispatch(reset("VerifiedProfilePage"));
-                dispatch(reset("ChooseCity"));
+                dispatch(initialize("signupStep2", ""));
+                dispatch(initialize("DatePreview", ""));
+                dispatch(initialize("RegisterFormMale", ""));
+                dispatch(initialize("signupStep3", ""));
+                dispatch(initialize("RegisterForm", ""));
+                dispatch(initialize("forgotpassword", ""));
+                dispatch(initialize("LoginForm", ""));
+                dispatch(initialize("SecondStep", ""));
+                dispatch(initialize("ThirdStep", ""));
+                dispatch(initialize("CreateStepFour", ""));
+                dispatch(initialize("CreateStepOne", ""));
+                dispatch(initialize("CreateStepThree", ""));
+                dispatch(initialize("CreateStepTwo", ""));
+                dispatch(initialize("SkeletonUserProfile", ""));
+                dispatch(initialize("Messages", ""));
+                dispatch(initialize("VerifiedProfilePage", ""));
+                dispatch(initialize("ChooseCity", ""));
                 dispatch(deAuthenticateAction());
                 router.push("/auth/login");
                 // window.location.reload();
@@ -365,7 +408,7 @@ const SecondStep = (props) => {
         {!router?.query?.edit && (
           <>
             <p className="auth-register-p-text">Registration Completed</p>
-            <h2 style={{ textTransform: "capitalize" }}>
+            <h2 style={{ textTransform: "capitalize",marginTop:"1rem" }}>
               Welcome, {user?.user_name || ""}
             </h2>
           </>
@@ -425,10 +468,24 @@ const SecondStep = (props) => {
               />
               {reduxValues?.imageUpload?.length > 0 ||
               (user?.images && user?.images[0]) ? (
-                <img
+                // <img
+                //   alt="not fount"
+                //   style={{ objectFit: "cover" }}
+                //   width={"250px"}
+                // src={
+                //   typeof reduxValues?.imageUpload === "string"
+                //     ? reduxValues?.imageUpload
+                //     : reduxValues?.imageUpload?.length > 0
+                //     ? URL.createObjectURL(reduxValues?.imageUpload[0])
+                //     : user.images[0]
+                // }
+                // />
+
+                <ImageShow
                   alt="not fount"
                   style={{ objectFit: "cover" }}
                   width={"250px"}
+                  setLoading={setUploadImage1Loading}
                   src={
                     typeof reduxValues?.imageUpload === "string"
                       ? reduxValues?.imageUpload
@@ -436,6 +493,7 @@ const SecondStep = (props) => {
                       ? URL.createObjectURL(reduxValues?.imageUpload[0])
                       : user.images[0]
                   }
+                  placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                 />
               ) : (
                 <>
@@ -465,7 +523,7 @@ const SecondStep = (props) => {
           </div>
           <div className="small-images big-image row">
             <div className="col-4">
-              <label style={{margin:"0"}}>
+              <label style={{ margin: "0" }}>
                 <Field
                   name="imageUpload2"
                   component={Inputs.uploadFileField}
@@ -486,10 +544,23 @@ const SecondStep = (props) => {
                 />
                 {reduxValues?.imageUpload2?.length > 0 ||
                 (user?.images && user?.images[1]) ? (
-                  <img
+                  // <img
+                  //   alt="not fount"
+                  //   style={{ objectFit: "cover" }}
+                  //   width={"250px"}
+                  // src={
+                  //   typeof reduxValues?.imageUpload2 === "string"
+                  //     ? reduxValues?.imageUpload2
+                  //     : reduxValues?.imageUpload2?.length > 0
+                  //     ? URL.createObjectURL(reduxValues?.imageUpload2[0])
+                  //     : user?.images[1]
+                  // }
+                  // />
+                  <ImageShow
                     alt="not fount"
                     style={{ objectFit: "cover" }}
                     width={"250px"}
+                    setLoading={setUploadImage2Loading}
                     src={
                       typeof reduxValues?.imageUpload2 === "string"
                         ? reduxValues?.imageUpload2
@@ -497,6 +568,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload2[0])
                         : user?.images[1]
                     }
+                    placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                   />
                 ) : (
                   <>
@@ -525,7 +597,7 @@ const SecondStep = (props) => {
               </label>
             </div>
             <div className="col-4">
-              <label style={{margin:"0"}}>
+              <label style={{ margin: "0" }}>
                 <Field
                   name="imageUpload3"
                   component={Inputs.uploadFileField}
@@ -546,10 +618,23 @@ const SecondStep = (props) => {
                 />
                 {reduxValues?.imageUpload3?.length > 0 ||
                 (user?.images && user.images[2]) ? (
-                  <img
+                  // <img
+                  //   alt="not fount"
+                  //   style={{ objectFit: "cover" }}
+                  //   width={"250px"}
+                  // src={
+                  //   typeof reduxValues?.imageUpload3 === "string"
+                  //     ? reduxValues?.imageUpload3
+                  //     : reduxValues?.imageUpload3?.length > 0
+                  //     ? URL.createObjectURL(reduxValues?.imageUpload3[0])
+                  //     : user?.images[2]
+                  // }
+                  // />
+                  <ImageShow
                     alt="not fount"
                     style={{ objectFit: "cover" }}
                     width={"250px"}
+                    setLoading={setUploadImage3Loading}
                     src={
                       typeof reduxValues?.imageUpload3 === "string"
                         ? reduxValues?.imageUpload3
@@ -557,6 +642,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload3[0])
                         : user?.images[2]
                     }
+                    placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                   />
                 ) : (
                   <>
@@ -585,7 +671,7 @@ const SecondStep = (props) => {
               </label>
             </div>
             <div className="col-4">
-              <label style={{margin:"0"}}>
+              <label style={{ margin: "0" }}>
                 <Field
                   name="imageUpload4"
                   component={Inputs.uploadFileField}
@@ -606,10 +692,23 @@ const SecondStep = (props) => {
                 />
                 {reduxValues?.imageUpload4?.length > 0 ||
                 (user?.images && user.images[3]) ? (
-                  <img
+                  // <img
+                  //   alt="not fount"
+                  //   style={{ objectFit: "cover" }}
+                  //   width={"250px"}
+                  // src={
+                  //   typeof reduxValues?.imageUpload4 === "string"
+                  //     ? reduxValues?.imageUpload4
+                  //     : reduxValues?.imageUpload4?.length > 0
+                  //     ? URL.createObjectURL(reduxValues?.imageUpload4[0])
+                  //     : user?.images[3]
+                  // }
+                  // />
+                  <ImageShow
                     alt="not fount"
                     style={{ objectFit: "cover" }}
                     width={"250px"}
+                    setLoading={setUploadImage4Loading}
                     src={
                       typeof reduxValues?.imageUpload4 === "string"
                         ? reduxValues?.imageUpload4
@@ -617,6 +716,7 @@ const SecondStep = (props) => {
                         ? URL.createObjectURL(reduxValues?.imageUpload4[0])
                         : user?.images[3]
                     }
+                    placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                   />
                 ) : (
                   <>
@@ -644,26 +744,26 @@ const SecondStep = (props) => {
                 )}
               </label>
             </div>
-             <div className="col-4 w-100 mb-4">
-              <lable style={{margin:"0"}}>
-            {isImageTouched &&
-            (dimensionValid?.height ? (
-              <span className="error">
-                Image should be greater than {dimensionValid?.height}*
-                {dimensionValid?.width}
-              </span>
-            ) : !reduxValues?.imageUpload?.length > 0 ||
-              !reduxValues?.imageUpload2?.length > 0 ||
-              !reduxValues?.imageUpload3?.length > 0 ||
-              !reduxValues?.imageUpload4?.length > 0 ? (
-              <span className="error">* Upload at least 4 photos</span>
-            ) : isImageValid ? (
-              "Please Select Image Only"
-            ) : (
-              ""
-            ))}
-            </lable>
-            </div> 
+            <div className="col-4 w-100 mb-4">
+              <lable style={{ margin: "0" }}>
+                {isImageTouched &&
+                  (dimensionValid?.height ? (
+                    <span className="error">
+                      Image should be greater than {dimensionValid?.height}*
+                      {dimensionValid?.width}
+                    </span>
+                  ) : !reduxValues?.imageUpload?.length > 0 ||
+                    !reduxValues?.imageUpload2?.length > 0 ||
+                    !reduxValues?.imageUpload3?.length > 0 ||
+                    !reduxValues?.imageUpload4?.length > 0 ? (
+                    <span className="error">* Upload at least 4 photos</span>
+                  ) : isImageValid ? (
+                    "Please Select Image Only"
+                  ) : (
+                    ""
+                  ))}
+              </lable>
+            </div>
           </div>
           {/* {isImageTouched &&
             (dimensionValid?.height ? (

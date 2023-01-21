@@ -352,12 +352,11 @@ function ChatMessages({ ...props }) {
                   <div className="message-chat-wrap">
                     <div className="top-head message-header-dates">
                       <div className="user-thumb user-thumb-data">
-                        <span>
+                        <span onClick={goBack}>
                           <IoIosArrowBack
                             size={20}
                             color={"rgba(255, 255, 255, 0.7)"}
                             className="user-thumb-data-icon"
-                            onClick={goBack}
                           />
                         </span>
                         <div
