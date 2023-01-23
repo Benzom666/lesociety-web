@@ -761,12 +761,12 @@ function UserList(props) {
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
             /> */}
-      {/* <LocationPopup
+      <LocationPopup
         modalIsOpen={locationPopup}
         closeModal={() => setLocationPoup(false)}
         selectedLocation={selectedLocation}
         setLocation={setLocation}
-      /> */}
+      />
     </div>
   );
 }
