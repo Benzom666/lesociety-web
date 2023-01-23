@@ -616,7 +616,7 @@ function UserList(props) {
                 </InfiniteScroll>
               </div>
 
-              <div className="col-md-2">
+              {/* <div className="col-md-2">
                 <div
                   className="d-flex align-items-center justify-content-end"
                   style={{ marginTop: "26px" }}
@@ -630,7 +630,7 @@ function UserList(props) {
                   //     : { position: "relative" }
                   // }
                 >
-                  {/* <span className="hidden-sm">Nearby</span> */}
+                   <span className="hidden-sm">Nearby</span> 
                   <div
                     onClick={() => setLocationPoup(true)}
                     className="selct-wrap-sort position-fixed"
@@ -643,13 +643,13 @@ function UserList(props) {
                     </label>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
       <Footer />
-      <svg
+      {/* <svg
         onClick={moveIcon}
         className="icon-move"
         width="14"
@@ -756,17 +756,17 @@ function UserList(props) {
           }}
         </Formik>
         <p className="tip">Tip: ask her which date she prefers</p>
-      </div>
+      </div> */}
       {/* <DatePopup
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
             /> */}
-      <LocationPopup
+      {/* <LocationPopup
         modalIsOpen={locationPopup}
         closeModal={() => setLocationPoup(false)}
         selectedLocation={selectedLocation}
         setLocation={setLocation}
-      />
+      /> */}
     </div>
   );
 }
