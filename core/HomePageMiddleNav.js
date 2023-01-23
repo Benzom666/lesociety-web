@@ -19,25 +19,66 @@ function HomePageMiddleNav(props) {
         style={props.style}
       >
         <div class="container-fluid d-flex justify-content-end containernavbarfooter animate">
-          {/* <div className="navbarfooter-text">
-            {width > 500 && <div className="navfooter-text-1">
-              <span style={props.styleText}>Start a new adventure.
-                <span style={{ color: " #f24462", paddingRight: "10px", fontSize: "16px" }}>Already a Member? Login</span>
-              </span>
-            </div>}
-            {width < 500 && <div className="navfooter-text-1">
-              <span style={{ fontSize: "18px" }}>Start a new adventure.<br />
-                <span style={{ color: " #f24462", paddingRight: "10px", fontSize: "16px" }}>Already a Member? Login</span>
-              </span>
-            </div>}
-            {width < 500 && <div>
-              {!openNav ? <button id="signupbtn" type="button" onClick={openNavBar}>Sign Up</button> : null}
-            </div>}
-            {openNav && <div className="closefooterbtn">
-              {width < 500 && <IoIosClose className="mouse-point" size={50} style={{ color: "#fff", marginBottom: "5px", marginLeft: "30px" }}
-                onClick={closeNavBar} />}
-            </div>}
-          </div> */}
+          <div className="navbarfooter-text">
+            {width > 500 && (
+              <div className="navfooter-text-1">
+                <span style={props.styleText}>
+                  Start a new adventure.
+                  <span
+                    style={{
+                      color: " #f24462",
+                      paddingRight: "10px",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Already a Member? Login
+                  </span>
+                </span>
+              </div>
+            )}
+            {width < 500 && (
+              <div className="navfooter-text-1">
+                <span style={{ fontSize: "18px" }}>
+                  Start a new adventure.
+                  <br />
+                  <span
+                    style={{
+                      color: " #f24462",
+                      paddingRight: "10px",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Already a Member? Login
+                  </span>
+                </span>
+              </div>
+            )}
+            {width < 500 && (
+              <div>
+                {!openNav ? (
+                  <button id="signupbtn" type="button" onClick={openNavBar}>
+                    Sign Up
+                  </button>
+                ) : null}
+              </div>
+            )}
+            {openNav && (
+              <div className="closefooterbtn">
+                {width < 500 && (
+                  <IoIosClose
+                    className="mouse-point"
+                    size={50}
+                    style={{
+                      color: "#fff",
+                      marginBottom: "5px",
+                      marginLeft: "30px",
+                    }}
+                    onClick={closeNavBar}
+                  />
+                )}
+              </div>
+            )}
+          </div>
           <div className="navbarfooter-btn">
             {openNav ? (
               <div id="sidebarhome" className="sidebarhome">
