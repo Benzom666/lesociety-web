@@ -1,5 +1,5 @@
 import React from 'react'
-import MaskGroup from '../assets/img/Mask Group.png'
+import Group261 from '../assets/img/Group 261.png'
 export function HowitWorkCardComponent() {
   return (
     <>
@@ -11,7 +11,7 @@ export function HowitWorkCardComponent() {
               <h3 className='main-heading'>Date Cards</h3>
             </div>
             <div className='childImg '>
-              <img src={MaskGroup.src}  alt="img-main" style={{width:"100%"}}/>
+              <img src={Group261.src}  alt="img-main" style={{width:"100%"}}/>
             </div>
         </div>
       </div>

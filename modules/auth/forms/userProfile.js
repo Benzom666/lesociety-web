@@ -951,7 +951,7 @@ function UserProfile({ preview, editHandle }) {
                                     <Modal
                                       isOpen={dateModalOpen}
                                       onRequestClose={dateCloseModal}
-                                      // style={customStyles}
+                                      // style= {customStyles}
                                       className="date-selected-modal"
                                     >
                                       <div className="model_content verification_card_header mb-3">

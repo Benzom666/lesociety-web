@@ -24,7 +24,7 @@ function HomePageMainSection(props) {
         <div class="col main-card-side-wraper">
           <div className='main-card'>
             <div className='main-card-side-wraper-1'>
-              {<img src={maincardImage.src} alt="main-img" />}
+              {<img src={maincardImage.src}  alt="main-img" style={{height:"25rem"}}/>}
             </div>
           </div>
         </div>

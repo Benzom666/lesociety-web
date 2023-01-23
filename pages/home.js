@@ -26,19 +26,19 @@ import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 function Home({ items }) {
   return (
     <>
-      <div className="inner-part-page auth-section">
+      <div className="inner-part-page auth-section home_page_style">
         <nav class="navbar navbar-dark bg-black">
           <div className="LeSociety-Icon-White d-flex" style={{padding:" 0px 75px"}}>
             <div className="ls-logo">
               <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
             </div>
             <div className="ls-text mt-4 ">
-              <p style={{ fontSize:"20px", letterSpacing: "2.2px",paddingBottom:"0.5rem" }}> L E   S O C I E T Y </p>
+              <p style={{ fontSize:"20px", letterSpacing: "6.2px" }}>LE SOCIETY</p>
               <p style={{ fontSize: "13px" }}>Date outside Your League</p>
             </div>
           </div>
         </nav>
-        <HomePageMainSection title="GENTLE MAN" maincardImage={MaskGroup1} 
+        <HomePageMainSection title="GENTLEMEN" maincardImage={MaskGroup1} 
         mainBackgroundImage={FirstBlob.src} styles={"home-main-sec-1"}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>

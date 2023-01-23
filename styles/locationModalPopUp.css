@@ -1,19 +1,19 @@
 .modal-1{
     position:relative;
     left:0;
-    top:20px;
+    top:15%;
     right: 0;
     bottom:0;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px);
-    
+    backdrop-filter: blur(10px);
+
 }
 
 .modal_content{
     border-radius: 10px;
-    width: 290px;
+    width: 300px;
     background-color:black;
     color: #fff;
 }
@@ -22,12 +22,12 @@
     padding:0px 10px;
 }
 .modal_footer{
-    text-align: center;
     position: relative;
 }
 .modal-title{
     margin: 10px 0 0 0;
     font-size: 18px;
+    padding: 0 12px;
 }
 
 .modal-body-1{
@@ -37,32 +37,43 @@
 .modal-body-text{
     text-align: start;
     color: #8C8D92;
-    padding: 0px 10px;
+    padding: 15px 12px;
 }
 .Modal-body-image{
     position: relative;
     padding: 10% 0% 0% 0%;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 .modal-footer-text{
     color:#8C8D92;
     cursor: pointer;
-    font-size: 13px;
+    text-align: center;
+    font-size: 16px;
+    margin: 1.5rem 0;
 }
 
 .footer-btn{
     height: 50px;
     width: 100%;
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 14px;
     background-color: #F24462;
     border-radius: 8px;
     text-align: center;
-    position: inherit;
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
 }
 
 @media only screen and (max-width:500px){
+    .modal-1{
+        top:0;
+        bottom: 0;
+    }
     .modal_content{
-       width: 90%;
+       width: 95%;
+       margin-top: 10%;
+    }
+    .Modal-body-image{
+        margin: 4rem 0;
     }
 }
