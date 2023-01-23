@@ -97,11 +97,11 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
                               {/* <Shimmer /> */}
 
                               <SkeletonElement type="image-270h-270w" />
-                              {user?.documents_verified && (
+                              {/* {user?.documents_verified && (
                                 <span className="verified_check_tag">
                                   <SkeletonElement type="verified-icon" />
                                 </span>
-                              )}
+                              )} */}
                             </div>
                           </label>
                           {/* {(router?.query?.userName === user.user_name ||

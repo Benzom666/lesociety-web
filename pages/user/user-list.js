@@ -526,14 +526,14 @@ function UserList(props) {
                           .filter((item) => item?.date_status === true)
                           .map((item, index) => (
                             <div
-                              // className={`col-xl-6 col-lg-12 ${
-                              //   (width > 767 && (index === 2 || index === 3)) ||
-                              //   index === 0 ||
-                              //   index === 1
-                              //     ? "scrollActive"
-                              //     : ""
-                              // }`}
-                              // id={`scrolldiv`}
+                              className={`col-xl-6 col-lg-12 ${
+                                (width > 767 && (index === 2 || index === 3)) ||
+                                index === 0 ||
+                                index === 1
+                                  ? "scrollActive"
+                                  : ""
+                              }`}
+                              id={`scrolldiv`}
                               key={index}
                               onClick={() => {
                                 // if (index === dates?.length - 1) {
@@ -615,35 +615,36 @@ function UserList(props) {
                   </div>
                 </InfiniteScroll>
               </div>
-
-              {/* <div className="col-md-2">
-                <div
-                  className="d-flex align-items-center justify-content-end"
-                  style={{ marginTop: "26px" }}
-                  // style={
-                  //   (scrollType === "up" || "down") &&
-                  //   scrollPosition > 5 &&
-                  //   !locationPopup
-                  //     ? width > 767
-                  //       ? { position: "fixed", width: "59%", zIndex: "99" }
-                  //       : { position: "fixed", left: "34%", zIndex: "99" }
-                  //     : { position: "relative" }
-                  // }
-                >
-                   <span className="hidden-sm">Nearby</span> 
+              {width > 767 && (
+                <div className="col-md-2">
                   <div
-                    onClick={() => setLocationPoup(true)}
-                    className="selct-wrap-sort position-fixed"
+                    className="d-flex align-items-center justify-content-end"
+                    style={{ marginTop: "26px" }}
+                    // style={
+                    //   (scrollType === "up" || "down") &&
+                    //   scrollPosition > 5 &&
+                    //   !locationPopup
+                    //     ? width > 767
+                    //       ? { position: "fixed", width: "59%", zIndex: "99" }
+                    //       : { position: "fixed", left: "34%", zIndex: "99" }
+                    //     : { position: "relative" }
+                    // }
                   >
-                    <label>
-                      <span className="city-txt city-txt-gallary">
-                        {selectedLocation?.city},{" "}
-                        {selectedLocation?.province?.toUpperCase()}
-                      </span>
-                    </label>
+                    {/* <span className="hidden-sm">Nearby</span> */}
+                    <div
+                      onClick={() => setLocationPoup(true)}
+                      className="selct-wrap-sort position-fixed"
+                    >
+                      <label>
+                        <span className="city-txt city-txt-gallary">
+                          {selectedLocation?.city},{" "}
+                          {selectedLocation?.province?.toUpperCase()}
+                        </span>
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div> */}
+              )}
             </div>
           </div>
         </div>
