@@ -28,6 +28,16 @@ export default function HeaderLoggedIn({
   const [conversations, setConversations] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  // useEffect(() => {
+  //   if (modalIsOpen) {
+  //     // stop scrolling page
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     // allow scrolling page
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [modalIsOpen]);
+
   function toggleModal() {
     setIsOpen(!modalIsOpen);
     // if (!modalIsOpen) {

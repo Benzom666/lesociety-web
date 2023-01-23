@@ -392,6 +392,16 @@ function UserList(props) {
     // }
   }, [socket.connected]);
 
+  //  stop scroll when show is true and location popup is not oped
+
+  // useEffect(() => {
+  //   if (locationPopup || show) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [show, locationPopup]);
+
   // useEffect(() => {
   //   router.beforePopState(({ as }) => {
   //     console.log("as", as);
@@ -465,12 +475,12 @@ function UserList(props) {
                                 ? {
                                     position: "fixed",
                                     width: "59%",
-                                    zIndex: "99",
+                                    zIndex: "10",
                                   }
                                 : {
                                     position: "fixed",
                                     left: "34%",
-                                    zIndex: "99",
+                                    zIndex: "10",
                                   }
                               : { position: "relative" }
                           }
@@ -500,7 +510,7 @@ function UserList(props) {
                   }}
                   scrollThreshold={0.5}
                   hasMore={!loading && pagination?.total_pages !== page}
-                  style={{ overflowX: "hidden" }}
+                  style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
                 >
                   <div className="row">
                     {loading && dates.length === 0
