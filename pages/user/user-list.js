@@ -513,109 +513,105 @@ function UserList(props) {
                   style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
                 >
                   <div className="row">
-                    {
-                      // loading && dates.length === 0
-                      //   ? [1, 2, 3, 4, 5, 6].map((n) => (
-                      //       <div className={`col-xl-6 col-lg-12`}>
-                      //         <SkeletonDate key={n} theme="dark" />
-                      //       </div>
-                      //     ))
-                      //   :
-                      dates.length > 0 &&
-                      dates.filter((item) => item?.date_status === true)
-                        ?.length > 0
-                        ? dates
-                            .filter((item) => item?.date_status === true)
-                            .map((item, index) => (
-                              <div
-                                className={`col-xl-6 col-lg-12 ${
-                                  (width > 767 &&
-                                    (index === 2 || index === 3)) ||
-                                  index === 0 ||
-                                  index === 1
-                                    ? "scrollActive"
-                                    : ""
-                                }`}
-                                id={`scrolldiv`}
-                                key={index}
-                                onClick={() => {
-                                  // if (index === dates?.length - 1) {
-                                  lastClickedDate();
-                                  // }
-                                }}
-                              >
-                                {width > 767 ? (
-                                  <UserCardList
-                                    setDateId={setDateId}
-                                    date={item}
-                                    cardId={`grow-${index}`}
-                                    openPopup={() => {
-                                      openPopup(item);
-                                    }}
-                                    closePopup={closePopup}
-                                    dateId={dateId}
-                                    isDesktopView={true}
-                                    key={index}
-                                    ref={scrollRef}
-                                    loading={loading}
-                                    setLoader={setLoader}
-                                    receiverData={receiverData}
-                                    alreadyMessagedFromUser={
-                                      alreadyMessagedFromUser
-                                    }
-                                    setAlreadyMessagedFromUser={
-                                      setAlreadyMessagedFromUser
-                                    }
-                                  />
-                                ) : (
-                                  <UserCardList
-                                    setDateId={setDateId}
-                                    date={item}
-                                    cardId={`grow-${index}`}
-                                    openPopup={() => {
-                                      openPopup(item);
-                                    }}
-                                    setLoader={setLoader}
-                                    closePopup={closePopup}
-                                    growDiv={growDiv}
-                                    dateId={dateId}
-                                    key={index}
-                                    ref={scrollRef}
-                                    loading={loading}
-                                    receiverData={receiverData}
-                                    alreadyMessagedFromUser={
-                                      alreadyMessagedFromUser
-                                    }
-                                    setAlreadyMessagedFromUser={
-                                      setAlreadyMessagedFromUser
-                                    }
-                                  />
-                                )}
-                              </div>
-                            ))
-                        : !loading && (
-                            <div className="no-message-card-date">
-                              <figure>
-                                <Image
-                                  src={NoImage}
-                                  alt="NoImage"
-                                  width={205}
-                                  height={140}
+                    {loading && dates.length === 0
+                      ? [1, 2, 3, 4, 5, 6].map((n) => (
+                          <div className={`col-xl-6 col-lg-12`}>
+                            <SkeletonDate key={n} theme="dark" />
+                          </div>
+                        ))
+                      : dates.length > 0 &&
+                        dates.filter((item) => item?.date_status === true)
+                          ?.length > 0
+                      ? dates
+                          .filter((item) => item?.date_status === true)
+                          .map((item, index) => (
+                            <div
+                              className={`col-xl-6 col-lg-12 ${
+                                (width > 767 && (index === 2 || index === 3)) ||
+                                index === 0 ||
+                                index === 1
+                                  ? "scrollActive"
+                                  : ""
+                              }`}
+                              id={`scrolldiv`}
+                              key={index}
+                              onClick={() => {
+                                // if (index === dates?.length - 1) {
+                                lastClickedDate();
+                                // }
+                              }}
+                            >
+                              {width > 767 ? (
+                                <UserCardList
+                                  setDateId={setDateId}
+                                  date={item}
+                                  cardId={`grow-${index}`}
+                                  openPopup={() => {
+                                    openPopup(item);
+                                  }}
+                                  closePopup={closePopup}
+                                  dateId={dateId}
+                                  isDesktopView={true}
+                                  key={index}
+                                  ref={scrollRef}
+                                  loading={loading}
+                                  setLoader={setLoader}
+                                  receiverData={receiverData}
+                                  alreadyMessagedFromUser={
+                                    alreadyMessagedFromUser
+                                  }
+                                  setAlreadyMessagedFromUser={
+                                    setAlreadyMessagedFromUser
+                                  }
                                 />
-                              </figure>
-                              <h6>
-                                Sorry, no dates found for the selected location
-                              </h6>
-                              <SubHeading title="Find a date by changing the location!" />
+                              ) : (
+                                <UserCardList
+                                  setDateId={setDateId}
+                                  date={item}
+                                  cardId={`grow-${index}`}
+                                  openPopup={() => {
+                                    openPopup(item);
+                                  }}
+                                  setLoader={setLoader}
+                                  closePopup={closePopup}
+                                  growDiv={growDiv}
+                                  dateId={dateId}
+                                  key={index}
+                                  ref={scrollRef}
+                                  loading={loading}
+                                  receiverData={receiverData}
+                                  alreadyMessagedFromUser={
+                                    alreadyMessagedFromUser
+                                  }
+                                  setAlreadyMessagedFromUser={
+                                    setAlreadyMessagedFromUser
+                                  }
+                                />
+                              )}
                             </div>
-                          )
-                    }
-                    {/* {loading &&
+                          ))
+                      : !loading && (
+                          <div className="no-message-card-date">
+                            <figure>
+                              <Image
+                                src={NoImage}
+                                alt="NoImage"
+                                width={205}
+                                height={140}
+                              />
+                            </figure>
+                            <h6>
+                              Sorry, no dates found for the selected location
+                            </h6>
+                            <SubHeading title="Find a date by changing the location!" />
+                          </div>
+                        )}
+                    {loading &&
                       [1, 2, 3, 4, 5, 6].map((n) => (
                         <div className={`col-xl-6 col-lg-12`}>
                           <SkeletonDate key={n} theme="dark" />
                         </div>
-                      ))} */}
+                      ))}
                   </div>
                 </InfiniteScroll>
               </div>
