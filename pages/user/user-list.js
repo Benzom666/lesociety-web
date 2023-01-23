@@ -649,7 +649,7 @@ function UserList(props) {
         </div>
       </div>
       <Footer />
-      {/* <svg
+      <svg
         onClick={moveIcon}
         className="icon-move"
         width="14"
@@ -756,7 +756,7 @@ function UserList(props) {
           }}
         </Formik>
         <p className="tip">Tip: ask her which date she prefers</p>
-      </div> */}
+      </div>
       {/* <DatePopup
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
