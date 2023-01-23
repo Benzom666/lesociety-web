@@ -526,14 +526,14 @@ function UserList(props) {
                           .filter((item) => item?.date_status === true)
                           .map((item, index) => (
                             <div
-                              className={`col-xl-6 col-lg-12 ${
-                                (width > 767 && (index === 2 || index === 3)) ||
-                                index === 0 ||
-                                index === 1
-                                  ? "scrollActive"
-                                  : ""
-                              }`}
-                              id={`scrolldiv`}
+                              // className={`col-xl-6 col-lg-12 ${
+                              //   (width > 767 && (index === 2 || index === 3)) ||
+                              //   index === 0 ||
+                              //   index === 1
+                              //     ? "scrollActive"
+                              //     : ""
+                              // }`}
+                              // id={`scrolldiv`}
                               key={index}
                               onClick={() => {
                                 // if (index === dates?.length - 1) {
