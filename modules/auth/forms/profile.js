@@ -47,6 +47,14 @@ const RegisterForm = (props) => {
       setPage(0);
     }
   }, [router?.query]);
+  let notifObj
+  if(router?.query?.type){
+    notifObj = {
+      "fromNotifPage":true,
+      "notifType":router?.query?.type, 
+      "id": router?.query?.id
+    }
+  }
 
   return (
     <>
@@ -60,6 +68,7 @@ const RegisterForm = (props) => {
                     previousPage={previousPage}
                     onSubmit={nextPage}
                     fromRegistration={true}
+                    notifObj={notifObj}
                   />
                 )}
 

@@ -28,6 +28,8 @@ function sideBarPopup({ isOpen, toggle }) {
       setDocumentUpoaded(true);
     }
   }, [user]);
+  const unreadNotifCount =  localStorage.getItem('unreadNotifCount');
+  console.log("unreadNotifCount ",unreadNotifCount)
   return (
     <div
       className={classNames(
@@ -170,10 +172,18 @@ function sideBarPopup({ isOpen, toggle }) {
                 >
                   <ul>
                     <li>
-                      <Link href="/">
+                      <Link href="/user/notifications">
+                      <div style={{'cursor':'pointer'}}>
                         <a>
-                          Notification <FiChevronRight size={22} />{" "}
-                        </a>
+                        Notification <FiChevronRight size={22} />{" "}
+                      </a>
+                      {
+                        unreadNotifCount > 0 &&
+                        <div class="notification-container">
+                          <span class="notification-counter">{unreadNotifCount}</span>
+                        </div>
+                      }
+                      </div>
                       </Link>
                     </li>
                     <li>

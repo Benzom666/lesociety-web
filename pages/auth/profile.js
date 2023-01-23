@@ -8,10 +8,13 @@ import Link from "next/link";
 import useWindowSize from "../../utils/useWindowSize";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
+import router, { useRouter } from "next/router";
 
 function RegisterPage({ dispatch }) {
   const user = useSelector((state) => state.authReducer.user);
   const { width } = useWindowSize();
+  const router = useRouter()
+  console.log("qqq ",router.query)
   return (
     <div className="inner-page">
       <Header />

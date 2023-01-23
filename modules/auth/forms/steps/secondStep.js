@@ -30,6 +30,14 @@ const SecondStep = (props) => {
   const dispatch = useDispatch();
   const width = useWindowSize();
   const user = useSelector((state) => state.authReducer.user);
+  console.log("nnnnnn", props?.notifObj)
+  let fromNotifPage, notifType, notifId
+  if( props.notifObj){
+    fromNotifPage = props.notifObj.fromNotifPage
+    notifType=props.notifObj.notifType
+    notifId = props.notifObj.id
+  }
+  // const {fromNotifPage, notifType} = props?.notifObj
 
   useEffect(() => {
     if (user?.tagline) {
@@ -172,6 +180,7 @@ const SecondStep = (props) => {
                 : "",
             email: user.email,
             step_completed: 2,
+            notificationId: notifId || ""
           };
         } else {
           data = {
@@ -465,6 +474,11 @@ const SecondStep = (props) => {
                     validateImageDimension(event, 350, 350, "imageUpload");
                   }
                 }}
+                props={{
+                  disabled: fromNotifPage && (
+                    (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
+                  )
+                }}
               />
               {reduxValues?.imageUpload?.length > 0 ||
               (user?.images && user?.images[0]) ? (
@@ -541,6 +555,11 @@ const SecondStep = (props) => {
                       validateImageDimension(event, 200, 200, "imageUpload2");
                     }
                   }}
+                  props={{
+                    disabled: fromNotifPage && (
+                      (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
+                    )
+                  }}
                 />
                 {reduxValues?.imageUpload2?.length > 0 ||
                 (user?.images && user?.images[1]) ? (
@@ -614,6 +633,11 @@ const SecondStep = (props) => {
                     } else {
                       validateImageDimension(event, 200, 200, "imageUpload3");
                     }
+                  }}
+                  props={{
+                    disabled: fromNotifPage && (
+                      (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
+                    )
                   }}
                 />
                 {reduxValues?.imageUpload3?.length > 0 ||
@@ -689,6 +713,12 @@ const SecondStep = (props) => {
                       validateImageDimension(event, 200, 200, "imageUpload4");
                     }
                   }}
+                  props={{
+                    disabled: fromNotifPage && (
+                      (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
+                    )
+                  }}
+                  
                 />
                 {reduxValues?.imageUpload4?.length > 0 ||
                 (user?.images && user.images[3]) ? (
@@ -788,6 +818,12 @@ const SecondStep = (props) => {
             label="Your tagline"
             placeholder="Write a few words to tempt"
             validationLength={100}
+            props={{
+              disabled: fromNotifPage && (
+                (notifType==='description' || notifType==='photos' || notifType==='photosDescription')
+              )
+            }}
+            
           />
           <div className="offer-textarea">
             <Field
@@ -797,6 +833,10 @@ const SecondStep = (props) => {
               label="What do you offer?"
               placeholder="Describe yourself, and explain why someone should want to take you out as their date "
               validationLength={500}
+              disabled={(fromNotifPage && 
+                (notifType==='tagline' || notifType==='photos' || notifType==='photosTagline' )
+                ) 
+              ? true : false}
             />
           </div>
         </div>

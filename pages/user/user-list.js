@@ -59,6 +59,8 @@ function UserList(props) {
   useEffect(() => {
     setDateLength(dates?.length);
   }, [dates]);
+  const [firstDateShouldLoad, setFirstDateShouldLoad] = useState(false);
+  const [notifData, setNotifdata] = useState(null);
 
   const [show, setShow] = useState(false);
 
@@ -89,7 +91,35 @@ function UserList(props) {
     [!socket.connected]
   );
 
+  const fetchNotifications = async () => {
+    try {
+      const params = {
+        user_email: user.email,
+        sort: "sent_time",
+      };
+
+      const { data } = await apiRequest({
+        method: "GET",
+        url: `notification`,
+        params: params,
+      });
+      setNotifdata(data?.data?.notification);
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
+
   useEffect(() => {
+    console.log("notiffff ", notifData);
+    const unreadNotifCount = notifData?.filter(
+      (item) => item.status === 0
+    ).length;
+    console.log("count ", unreadNotifCount);
+    localStorage.setItem("unreadNotifCount", JSON.stringify(unreadNotifCount));
+  }, [notifData]);
+
+  useEffect(() => {
+    fetchNotifications();
     getConversations();
   }, []);
 
@@ -330,6 +360,37 @@ function UserList(props) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrollPosition]);
+
+  useEffect(() => {
+    socket.auth = { user: user };
+    socket.connect();
+    console.log("socket", socket.auth);
+    socket.on("connect", () => {
+      console.log("connected", socket.connected);
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+    console.log("Notif socket intiated called");
+  }, []);
+
+  useEffect(() => {
+    socket.on("connect_error", () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    });
+  }, [!socket.connected]);
+
+  useEffect(() => {
+    // if (socket.connected) {
+    console.log("Notif socket connected", socket.connected);
+    //`push-notification-${user.email}`
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+    });
+    // }
+  }, [socket.connected]);
 
   // useEffect(() => {
   //   router.beforePopState(({ as }) => {
