@@ -53,7 +53,7 @@
   }
 }
 
-@media only screen and (max-width: 425px) and (min-width:400px) {
+@media only screen and (max-width: 425px) and (min-width: 400px) {
   .create-date-wrap .step-wraps {
     margin-left: 0px;
   }
@@ -114,18 +114,17 @@
   height: 133px;
   width: 100%;
   background: linear-gradient(0deg, #151515, #151515),
-    linear-gradient(223.12deg, #293036 -60.08%, #272D32 104.31%);
-  ;
+    linear-gradient(223.12deg, #293036 -60.08%, #272d32 104.31%);
   border-radius: 8px;
   border: 1px solid #293036;
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width: 480px) {
   .create_date_mobile-btn {
     width: 60%;
     font-size: 14px;
     font-weight: 400;
-    background: #F24462;
+    background: #f24462;
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
@@ -136,7 +135,7 @@
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.07px;
-  color: #4F4E54;
+  color: #4f4e54;
   padding-top: 8px;
 }
 
@@ -164,7 +163,7 @@
   width: 100%;
 }
 
-@media only screen and (min-width:768px) {
+@media only screen and (min-width: 768px) {
   body .verification_card_header {
     .available-dates-box {
       display: grid;
@@ -178,7 +177,7 @@
   }
 }
 
-@media only screen and (max-width:425px) {
+@media only screen and (max-width: 425px) {
   body .verification_card_header {
     .available-dates-box {
       display: flex;
@@ -207,7 +206,7 @@
   }
 }
 
-@media (min-width:991px) and (max-width:1199px) {
+@media (min-width: 991px) and (max-width: 1199px) {
   body .verification_card_header {
     .availabe_card_inner {
       background: #1c1c1c;

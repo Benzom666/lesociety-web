@@ -145,7 +145,10 @@ const VerifiedProfilePage = (props) => {
                     {width > 425 ? (
                       <>
                         {" "}
-                        <h2 className="mb-0" style={{ fontSize: "32px",letterSpacing:"0.083px" }}>
+                        <h2
+                          className="mb-0"
+                          style={{ fontSize: "32px", letterSpacing: "0.083px" }}
+                        >
                           Verification
                         </h2>
                         <svg
@@ -292,11 +295,20 @@ const VerifiedProfilePage = (props) => {
                     <div className={width < 480 ? "verifed-btn-mobile" : ""}>
                       <div className={`secret-input type-submit`}>
                         <button
-                          disabled={invalid}
+                          disabled={
+                            !documentRef?.current?.value ||
+                            !selfieRef?.current?.value
+                          }
                           type="submit"
                           className={
                             width > 480
-                              ? "verification-type-submit"
+                              ? !documentRef?.current?.value ||
+                                !selfieRef?.current?.value
+                                ? "verification-type-submit gray_background"
+                                : "verification-type-submit"
+                              : !documentRef?.current?.value ||
+                                !selfieRef?.current?.value
+                              ? "mobile-verified-btn gray_background"
                               : "mobile-verified-btn"
                           }
                         >

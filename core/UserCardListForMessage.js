@@ -131,7 +131,7 @@ const UserCardListForMessage = ({
 
   return (
     <>
-      <span
+      <div
         onClick={openModal}
         className={`${
           conversations.filter(
@@ -154,7 +154,7 @@ const UserCardListForMessage = ({
           }
         </span>{" "}
         Requests
-      </span>
+      </div>
 
       {!isDesktopView &&
         conversations?.length > 0 &&

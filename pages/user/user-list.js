@@ -53,7 +53,12 @@ function UserList(props) {
   const scrollRef = useRef(null);
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
-  const [firstDateShouldLoad, setFirstDateShouldLoad] = useState(false);
+
+  const [dateLength, setDateLength] = useState(0);
+
+  useEffect(() => {
+    setDateLength(dates?.length);
+  }, [dates]);
 
   const [show, setShow] = useState(false);
 
@@ -361,6 +366,8 @@ function UserList(props) {
 
   // console.log("first", !loading && pagination?.total_pages !== page);
 
+  // when show is true disable scroll in iphone
+
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -425,14 +432,12 @@ function UserList(props) {
                   </div>
                 </div>
                 <InfiniteScroll
-                  scrollableTarget="infiniteScroll"
-                  // dataLength={dates.length}
-                  dataLength={pagination?.total_dates ?? 0}
-                  next={nextPage}
-                  refreshFunction={nextPage}
-                  pullDownToRefresh={
-                    !loading && pagination?.total_pages !== page
-                  }
+                  // scrollableTarget="infiniteScroll"
+                  dataLength={dateLength}
+                  next={() => {
+                    nextPage();
+                  }}
+                  scrollThreshold={0.5}
                   hasMore={!loading && pagination?.total_pages !== page}
                   style={{ overflowX: "hidden" }}
                 >

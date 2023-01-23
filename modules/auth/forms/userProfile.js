@@ -45,6 +45,16 @@ function UserProfile({ preview, editHandle }) {
   const [image3Loading, setImage3Loading] = useState(true);
   const [image4Loading, setImage4Loading] = useState(true);
 
+  useEffect(() => {
+    if (viewFullPage) {
+      // stop scrolling page
+      document.body.style.overflow = "hidden";
+    } else {
+      // allow scrolling page
+      document.body.style.overflow = "unset";
+    }
+  }, [viewFullPage]);
+
   const dispatch = useDispatch();
   const router = useRouter();
   const selectedDateCategory = dateCategory.find(

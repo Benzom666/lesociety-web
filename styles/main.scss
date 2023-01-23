@@ -5073,6 +5073,10 @@ path {
   margin-top: 20px;
 }
 
+.gray_background {
+  background-color: #2e2f34 !important;
+}
+
 .document-uploaded {
   color: #ffffff !important;
 }
@@ -5198,6 +5202,7 @@ path {
 
 .request__header {
   color: #4e4d52;
+  width: 100%;
 }
 
 .pl-4 {
@@ -5616,4 +5621,8 @@ path {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.message-create-date a {
+  border: none !important;
 }
