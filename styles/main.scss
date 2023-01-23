@@ -4098,13 +4098,12 @@ body .verification_card_header {
 .message-popup.show {
   height: 310px !important;
   top: unset !important;
-  // display: block;
 }
 
 .message-popup.hide {
-  height: -100 !important;
+  height: 0 !important;
   // display: none;
-  top: 100%;
+  top: 200%;
 }
 
 .message-popup {
