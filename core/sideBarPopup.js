@@ -37,20 +37,20 @@ function sideBarPopup({ isOpen, toggle }) {
       id="sidebarPop"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
-      style={{ padding: "15px" }}
+      //style={{ padding: "15px" }}
       data-bs-backdrop="static"
       data-bs-keyboard="false"
     >
       <div
         className="modal-dialog modal-custom-dailog"
-        style={{ marginTop: "40px" }}
+        style={{ marginTop: "55px" }}
       >
         <div
           className="modal-content"
           style={{
             backgroundColor: "black",
             width: "290px",
-            borderRadius: "10px",
+            //borderRadius: "10px",
           }}
         >
           <div
@@ -73,13 +73,13 @@ function sideBarPopup({ isOpen, toggle }) {
               />
             </button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body" style={{height:`cal(100vh-25%)`}}>
             <div className="sidebar_wrap">
               <div
                 className="user-card-sidebar"
-                style={{ padding: "15px 20px" }}
+                style={{ padding: " 20px 25px" }}
               >
-                <div className="d-flex align-items-center mb-2">
+                <div className="d-flex align-items-center mb-4">
                   <figure className="mb-0 p-0">
                     <img
                       src={!_.isEmpty(user) ? user.images[0] : UserImg}
@@ -166,7 +166,7 @@ function sideBarPopup({ isOpen, toggle }) {
               <div className="user-card-sidebar">
                 <div
                   className="sidebar_nav_links "
-                  style={{ paddingTop: "15px" }}
+                  style={{marginTop:"50px", padding: "15px 15px 0px 15px" }}
                 >
                   <ul>
                     <li>
@@ -200,7 +200,7 @@ function sideBarPopup({ isOpen, toggle }) {
                   </ul>
                 </div>
               </div>
-              <div className="bottom-footer-sidebar">
+              <div className="bottom-footer-sidebar" style={{position: "inherit"}}>
                 <div className="d-flex align-items-center mb-0 header_btn_wrap log-btn login-btn">
                   <button
                     className="log-btn"

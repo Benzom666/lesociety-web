@@ -226,7 +226,7 @@ const ChooseCity = (props) => {
     return <Loader />;
   } else {
     return (
-      <div className="inner-page">
+      <div className="inner-page ">
         {/* {width > 767 && <HeaderLoggedIn />} */}
         <div className="inner-part-page">
           <div className="container create-date-wrap new-date">

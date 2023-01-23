@@ -1,6 +1,7 @@
 import React from "react";
 import MapImage from "../assets/img/map-image.png";
 import ManImage from "../assets/img/man-img.jpeg";
+import { FiArrowRight } from "react-icons/fi";
 import UserImg from "assets/img/profile.png";
 import { useSelector } from "react-redux";
 import ImageShow from "@/modules/ImageShow";
@@ -27,7 +28,7 @@ function Modal(props) {
             </p>
           </div>
           <div className="Modal-body-image">
-            <img
+            {/* <img
               // src={ManImage.src}
               src={!_.isEmpty(user) ? user.images[0] : UserImg}
               alt="man-img"
@@ -38,19 +39,19 @@ function Modal(props) {
                 border: "2px solid white",
                 position: "absolute",
                 top: "-4%",
-                left: "40%",
+                left: "32%",
               }}
-            />
+            /> */}
             <ImageShow
               alt="man-img"
-              height={100}
-              width={100}
+              height={120}
+              width={120}
               style={{
                 borderRadius: "7px",
                 border: "2px solid white",
                 position: "absolute",
                 top: "-4%",
-                left: "40%",
+                left: "30%",
               }}
               src={!_.isEmpty(user) ? user.images[0] : UserImg}
               placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
@@ -58,8 +59,8 @@ function Modal(props) {
             <img
               style={{ borderRadius: "50%", textAlign: "center" }}
               src={MapImage.src}
-              height={250}
-              width={250}
+              height="100%"
+              width="100%"
               alt="map-img"
             />
           </div>
@@ -69,7 +70,7 @@ function Modal(props) {
             Skip this step
           </p>
           <button className="footer-btn" onClick={props.onClose}>
-            Search nearby
+            Search nearby <FiArrowRight size={20} />
           </button>
         </div>
       </div>

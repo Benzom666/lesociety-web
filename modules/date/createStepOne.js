@@ -186,7 +186,7 @@ const CreateStepOne = (props) => {
                         rate:"$ - $$"
                       },
                       {
-                        label: "Entertainment & sports ",
+                        label: "Entertainment & Sports ",
                         id: "Entertainmentsports",
                         icon: (
                           <CustomIcon.EntertainmentSports

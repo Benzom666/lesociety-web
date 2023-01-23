@@ -2902,7 +2902,7 @@ body {
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            min-height: 120px;
+            min-height: 107px;
             text-align: center;
 
             h5 {
@@ -3090,8 +3090,8 @@ body .verification_card_header {
     margin-right: 10px;
     flex: 1;
     //min-width: 250px;
-    min-width: 218px;
-    // max-width: 50%;
+     min-width: 209px;
+     //max-width:209px;
 
     .date_list {
       margin: 0;
@@ -3103,7 +3103,7 @@ body .verification_card_header {
         display: flex;
         align-items: center;
         margin-bottom: 2px;
-
+        margin-left: 6px;
         span.icon_wrap {
           width: 45px;
           height: 45px;
@@ -3250,7 +3250,7 @@ body .verification_card_header {
   // margin-right: -50%;
   transform: translate(-50%, -50%);
   position: absolute;
-  width: 540px;
+  width: 424px;
   text-align: left;
   background: transparent !important;
   // padding: 0 20px;
@@ -3275,11 +3275,15 @@ body .verification_card_header {
   }
 }
 
+.model_content::-webkit-scrollbar {
+  display: none;
+}
+
 .intrested_model {
   .model_content {
     text-align: center;
     padding: 20px 0;
-    overflow-y: hidden;
+    overflow-y: scroll;
     max-height: 100vh;
 
     & > svg {
@@ -3347,9 +3351,10 @@ body .verification_card_header {
             bottom: 30px;
             z-index: 999;
             left: calc(50% - 40%);
+            height: 84px;
             width: 76%;
-            padding: 13px 10px;
-            border-radius: 14px;
+            padding: 20px 10px;
+            border-radius: 13px;
             background: radial-gradient(
               104.09% 104.09% at 4.13% 2.42%,
               rgba(0, 0, 0, 0.4) 0%,
@@ -4110,7 +4115,7 @@ body .verification_card_header {
   overflow: hidden;
 
   @media screen and (max-width: 767px) {
-    left: unset;
+    //left: unset;
     right: unset;
     width: 100%;
   }
@@ -5000,7 +5005,7 @@ path {
   background: #151515;
   border: 1px dashed #dddddd;
   border-radius: 15px;
-  margin-top: 10px;
+  margin-top: 13px;
   cursor: pointer;
 
   p {
@@ -5367,9 +5372,10 @@ path {
 .modal-body {
   font-size: 13px !important;
   padding: 30px 0px;
+ // height:700px;
 
   .sidebar_wrap {
-    height: calc(100vh - 130px);
+    height: calc(100vh - 20%);
     margin-top: -26px;
   }
 

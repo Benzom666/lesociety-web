@@ -55,13 +55,14 @@ function HowItWork() {
           )
         })
       }
-      <div className='col mt-2 myCard-3'>
+      <div className='col mt-5 mx-1 myCard-3'>
        <h3 className="The-future-of-Le-Society">The future of Le Society</h3>
        <button type="button" className="btn btn-danger Rectangle-1" >Sneak Peak</button>
        <p className="In-App-Payment-GPS-Tracking-and-more">In App Payment <br/>GPS Tracking<br/>…and more</p>
       </div>
      </div>
      </div>
+     <button type='btn' className='backtoHomepage-btn'>Go back to homepage</button>
      <HomeFooter styleBackground ={style3}/>
     </div>
     </>

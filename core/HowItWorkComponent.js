@@ -11,7 +11,7 @@ import MaskGroup21 from '../assets/img/Mask Group 21.png';
 
 export function HowItWorkMain({title,image,content}) {
   return (
-    <div className='col-xl-6 col-lg-6 col-md-6 '> 
+    <div className='col-xl-6 col-lg-6 col-md-6 mt-5'> 
        <div className='howitWork-image'>
         <img src={image} style={{width:"100%"}} alt="howitWork-image"/>
        </div>

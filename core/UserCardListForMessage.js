@@ -109,6 +109,7 @@ const UserCardListForMessage = ({
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0",
+    adaptiveHeight: true,
   };
   const customStyles = {
     content: {
@@ -121,7 +122,7 @@ const UserCardListForMessage = ({
       width: "312px",
       background: "transparent",
       height: "95%",
-      overFlow: "hidden",
+      overFlowY: "auto",
     },
     overlay: {
       backdropFilter: "blur(5px)",
@@ -231,7 +232,7 @@ const UserCardListForMessage = ({
                                 <ImageShow
                                   max-width={312}
                                   width="95%"
-                                  height={420}
+                                  height={488}
                                   src={profilePic}
                                   alt="user image"
                                   placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
@@ -243,7 +244,7 @@ const UserCardListForMessage = ({
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
                                 <a
                                   className="create-date"
-                                  style={{width:"85%",marginLeft:"6%"}}
+                                  style={{height:"50px",width:"85%",marginLeft:"6%",paddingTop:"3%"}}
                                   onClick={() => {
                                     if (mobile) {
                                       toggleChat(conversation);

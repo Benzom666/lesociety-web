@@ -1,12 +1,14 @@
-
+.home_page_style{
+  font-family: "Montserrat";
+}
 
 .ls-logo {
-  width: 35px;
+  width: 40px;
   margin: 30px 20px;
 }
 
 .ls-text {
-  padding: 10px 20px;
+  padding: 15px 0px;
   color: #fff;
 }
 
@@ -51,7 +53,7 @@
 
 
 .home-main-section {
-  background-size: 287px;
+  background-size: 300px;
   background-position: center;
   background-repeat: no-repeat;
   margin-top: 45px;
@@ -60,10 +62,12 @@
   align-items: center;
 }
 .home-main-sec-1{
-  padding: 77px 0 75px 0;
+  padding: 75px 0 50px 0;
+  font-family: "Montserrat";
 }
 .home-main-sec-2{
-  padding: 28px 0px 0px 0px;
+  //padding: 28px 0px 0px 0px;
+  height: 34rem;
 }
 
 .home-main-sec-3{
@@ -98,7 +102,7 @@ padding: 60px 0px 26px 0px;
   font-size: 40px;
   font-weight: 800;
   line-height: 0.75;
-  letter-spacing: 4.8px;
+  letter-spacing: 6.8px;
   line-height: 1.1;
   text-align: right;
 }
@@ -119,14 +123,14 @@ padding: 60px 0px 26px 0px;
   .main-card {
     backdrop-filter: blur(3px);
     opacity: 1;
-    width: 200px;
+    width: 245px;
     border:1px solid #5c7bff;
     box-shadow: 0 0 3px white;
     border-radius: 10px;
     margin: auto;
 
     .main-card-side-wraper-1 {
-      margin: 20px -54px;
+      margin: 22px -58px;
     }
   }
 }
@@ -190,6 +194,7 @@ padding: 60px 0px 26px 0px;
 }
 
 .aboutCardContent {
+  font-family: "Montserrat";
   padding: 10px 45px;
   text-align: center;
   font-size: 18px;
@@ -276,7 +281,7 @@ padding: 60px 0px 26px 0px;
 
 
 .card_1 {
-  background-image: url('../assets/svg/Fifth Blob.svg');
+  // background-image: url('../assets/svg/Fifth Blob.svg');
   background-position: left;
   background-repeat: no-repeat;
   background-size: 12rem;
@@ -507,4 +512,23 @@ padding: 60px 0px 26px 0px;
 
 .mainCardbackground {
   width: 10rem;
+}
+
+.bottom-box-container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .bottom-box-card-1{
+    background-image: url('../assets/svg/Fifth Blob.svg');
+  }
+}
+
+.animate{
+  transition: mymove 5s ease-in-out;
+  // transition-delay: "15s";
+}
+
+@keyframes mymove {
+  from {right: 0px;}
+  to {right: 500px;}
 }

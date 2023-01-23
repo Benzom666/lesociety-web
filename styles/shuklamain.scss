@@ -43,19 +43,19 @@
 
 @media screen and (max-width: 400px) {
   .choose-city-steps {
-    margin-left: -5px !important;
+    margin-left: 0 px !important;
   }
 }
 
 @media screen and (min-width: 401px) {
   .choose-city-steps {
-    margin-left: 3px !important;
+    margin-left: -1px !important;
   }
 }
 
 @media only screen and (max-width: 425px) and (min-width:400px) {
   .create-date-wrap .step-wraps {
-    margin-left: 0px;
+    margin-left: 6px;
   }
 }
 
@@ -89,8 +89,8 @@
 
 .verified-upload-mobile {
   width: 80%;
-  height: 91px;
-  margin: 20px auto 0 auto;
+  height: 94px;
+  margin: 20px auto 30px auto;
 }
 
 .verified-upload-btn-1 {
@@ -100,6 +100,18 @@
 @media only screen and (min-width: 767px) {
   .verified-upload {
     width: 380px;
+    height: 93px;
+    padding: 26px;
+  }
+  .verified-upload-2 {
+    width: 380px;
+    height: 94px;
+    padding: 26px;
+  }
+  .verifieed-upload-active{
+    height: 94px;
+    width: 380px;
+    padding: 22px;
   }
 }
 
@@ -146,8 +158,9 @@
 
   .date-price-card {
     font-size: 15.21px;
-    font-weight: 100;
+    font-weight: 700;
     letter-spacing: 0.07px;
+    padding-bottom: 3px;
   }
 }
 
@@ -200,7 +213,7 @@
       align-items: flex-end;
       min-height: 65px;
       margin-bottom: 12px;
-      margin-right: 10px;
+      margin-right: 14px;
       flex: 1;
       min-width: 290px;
     }
