@@ -13,7 +13,7 @@ function Modal(props) {
     return null;
   }
   return (
-    <div className="modal-1">
+    <div className="modal-1 modal-open">
       <div className="modal_content">
         <div className="modal_header">
           <h2 className="modal-title">

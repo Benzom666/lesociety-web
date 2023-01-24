@@ -244,7 +244,7 @@ const UserCardListForMessage = ({
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
                                 <a
                                   className="create-date"
-                                  style={{height:"50px",width:"85%",marginLeft:"6%",paddingTop:"3%"}}
+                                  style={{height:"45px",width:"85%",marginLeft:"6%",paddingTop:"6px"}}
                                   onClick={() => {
                                     if (mobile) {
                                       toggleChat(conversation);

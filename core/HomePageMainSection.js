@@ -15,7 +15,6 @@ function HomePageMainSection(props) {
         className={`row align-items-center home-main-section ${styles}`  }
         style={{backgroundImage: `url('${mainBackgroundImage}')`}}
       >
-        {/* <img src={ForthBlob.src} className="mainCardbackground" alt="ghghh"/> */}
       {width >900 &&   <div class="col">
           <div className='main-title'>
             <h5>{title}</h5>

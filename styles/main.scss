@@ -5495,11 +5495,11 @@ path {
     padding-right: 0px !important;
   }
 }
+.modal-open-1{
+  background: rgba(25, 27, 31, 0.72) !important;
+}
 .modal-open {
-  //opacity: 0.51;
-  //z-index: -1;
-  background: rgba(25, 27, 31, 0.72);
-  // backdrop-filter: blur(1px);
+  background: black;
 }
 
 .date_details_desktop_loading {

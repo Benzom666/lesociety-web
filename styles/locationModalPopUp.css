@@ -10,10 +10,12 @@
     backdrop-filter: blur(10px);
 
 }
-
+.modal-open{
+    background-color: black;
+}
 .modal_content{
     border-radius: 10px;
-    width: 300px;
+    width: 310px;
     background-color:black;
     color: #fff;
 }
@@ -72,6 +74,9 @@
     .modal_content{
        width: 95%;
        margin-top: 10%;
+    }
+    .modal-body-1{
+        padding: 20px 10px;
     }
     .Modal-body-image{
         margin: 4rem 0;

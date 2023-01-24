@@ -31,7 +31,7 @@ function sideBarPopup({ isOpen, toggle }) {
   return (
     <div
       className={classNames(
-        `modal fade ${isOpen ? "show d-block modal-open" : "d-none"}`,
+        `modal fade ${isOpen ? "show d-block modal-open modal-open-1" : "d-none"}`,
         width > 1399 && "modal-fade-1"
       )}
       id="sidebarPop"
