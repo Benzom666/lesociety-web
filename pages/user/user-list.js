@@ -54,6 +54,14 @@ function UserList(props) {
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
 
+  const [dateLength, setDateLength] = useState(0);
+
+  useEffect(() => {
+    setDateLength(dates?.length);
+  }, [dates]);
+  const [firstDateShouldLoad, setFirstDateShouldLoad] = useState(false);
+  const [notifData, setNotifdata] = useState(null);
+
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -83,7 +91,35 @@ function UserList(props) {
     [!socket.connected]
   );
 
+  const fetchNotifications = async () => {
+    try {
+      const params = {
+        user_email: user.email,
+        sort: "sent_time",
+      };
+
+      const { data } = await apiRequest({
+        method: "GET",
+        url: `notification`,
+        params: params,
+      });
+      setNotifdata(data?.data?.notification);
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
+
   useEffect(() => {
+    console.log("notiffff ", notifData);
+    const unreadNotifCount = notifData?.filter(
+      (item) => item.status === 0
+    ).length;
+    console.log("count ", unreadNotifCount);
+    localStorage.setItem("unreadNotifCount", JSON.stringify(unreadNotifCount));
+  }, [notifData]);
+
+  useEffect(() => {
+    fetchNotifications();
     getConversations();
   }, []);
 
@@ -145,6 +181,7 @@ function UserList(props) {
         params: params,
       });
       console.log("res dates of user", res);
+
       if (res?.data?.data?.pagination?.current_page !== 1) {
         res?.data?.data?.dates;
         // .sort(function (a, b) {
@@ -324,6 +361,47 @@ function UserList(props) {
     };
   }, [scrollPosition]);
 
+  useEffect(() => {
+    socket.auth = { user: user };
+    socket.connect();
+    console.log("socket", socket.auth);
+    socket.on("connect", () => {
+      console.log("connected", socket.connected);
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+    console.log("Notif socket intiated called");
+  }, []);
+
+  useEffect(() => {
+    socket.on("connect_error", () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    });
+  }, [!socket.connected]);
+
+  useEffect(() => {
+    // if (socket.connected) {
+    console.log("Notif socket connected", socket.connected);
+    //`push-notification-${user.email}`
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+    });
+    // }
+  }, [socket.connected]);
+
+  //  stop scroll when show is true and location popup is not oped
+
+  // useEffect(() => {
+  //   if (locationPopup || show) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [show, locationPopup]);
+
   // useEffect(() => {
   //   router.beforePopState(({ as }) => {
   //     console.log("as", as);
@@ -356,6 +434,10 @@ function UserList(props) {
 
   // console.log("dates", dates);
   // console.log("page", page);
+
+  // console.log("first", !loading && pagination?.total_pages !== page);
+
+  // when show is true disable scroll in iphone
 
   return (
     <div className="inner-page" id="infiniteScroll">
@@ -393,12 +475,12 @@ function UserList(props) {
                                 ? {
                                     position: "fixed",
                                     width: "59%",
-                                    zIndex: "99",
+                                    zIndex: "10",
                                   }
                                 : {
                                     position: "fixed",
                                     left: "34%",
-                                    zIndex: "99",
+                                    zIndex: "10",
                                   }
                               : { position: "relative" }
                           }
@@ -421,11 +503,14 @@ function UserList(props) {
                   </div>
                 </div>
                 <InfiniteScroll
-                  scrollableTarget="infiniteScroll"
-                  dataLength={dates.length}
-                  next={nextPage}
-                  hasMore={pagination?.total_pages !== page}
-                  style={{ overflowX: "hidden" }}
+                  // scrollableTarget="infiniteScroll"
+                  dataLength={dateLength}
+                  next={() => {
+                    nextPage();
+                  }}
+                  scrollThreshold={0.5}
+                  hasMore={!loading && pagination?.total_pages !== page}
+                  style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
                 >
                   <div className="row">
                     {loading && dates.length === 0
@@ -530,35 +615,36 @@ function UserList(props) {
                   </div>
                 </InfiniteScroll>
               </div>
-
-              <div className="col-md-2">
-                <div
-                  className="d-flex align-items-center justify-content-end"
-                  style={{ marginTop: "26px" }}
-                  // style={
-                  //   (scrollType === "up" || "down") &&
-                  //   scrollPosition > 5 &&
-                  //   !locationPopup
-                  //     ? width > 767
-                  //       ? { position: "fixed", width: "59%", zIndex: "99" }
-                  //       : { position: "fixed", left: "34%", zIndex: "99" }
-                  //     : { position: "relative" }
-                  // }
-                >
-                  {/* <span className="hidden-sm">Nearby</span> */}
+              {width > 767 && (
+                <div className="col-md-2">
                   <div
-                    onClick={() => setLocationPoup(true)}
-                    className="selct-wrap-sort position-fixed"
+                    className="d-flex align-items-center justify-content-end"
+                    style={{ marginTop: "26px" }}
+                    // style={
+                    //   (scrollType === "up" || "down") &&
+                    //   scrollPosition > 5 &&
+                    //   !locationPopup
+                    //     ? width > 767
+                    //       ? { position: "fixed", width: "59%", zIndex: "99" }
+                    //       : { position: "fixed", left: "34%", zIndex: "99" }
+                    //     : { position: "relative" }
+                    // }
                   >
-                    <label>
-                      <span className="city-txt city-txt-gallary">
-                        {selectedLocation?.city},{" "}
-                        {selectedLocation?.province?.toUpperCase()}
-                      </span>
-                    </label>
+                    {/* <span className="hidden-sm">Nearby</span> */}
+                    <div
+                      onClick={() => setLocationPoup(true)}
+                      className="selct-wrap-sort position-fixed"
+                    >
+                      <label>
+                        <span className="city-txt city-txt-gallary">
+                          {selectedLocation?.city},{" "}
+                          {selectedLocation?.province?.toUpperCase()}
+                        </span>
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

@@ -124,6 +124,7 @@ function* signup(data) {
 function* signupStep2(data) {
   data.loader(true);
   try {
+    console.log("console from here ", data.payload)
     const response = yield race({
       success: call(apiRequest, {
         data: data.payload,

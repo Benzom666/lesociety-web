@@ -49,6 +49,7 @@ const UserCardListForMessage = ({
     setIsOpen(false);
     //document.body.classList.remove("modal-open-blur");
     setPageLoading(false);
+    tabIndexChange(0);
   }
 
   const postApprovedConversation = async (room_id, conversation) => {
@@ -131,7 +132,7 @@ const UserCardListForMessage = ({
 
   return (
     <>
-      <span
+      <div
         onClick={openModal}
         className={`${
           conversations.filter(
@@ -154,7 +155,7 @@ const UserCardListForMessage = ({
           }
         </span>{" "}
         Requests
-      </span>
+      </div>
 
       {!isDesktopView &&
         conversations?.length > 0 &&
@@ -268,7 +269,10 @@ const UserCardListForMessage = ({
                                     )
                                   }
                                 >
-                                  <HiLockOpen /> <span style={{textDecoration:"underline"}}>View Profile</span> 
+                                  <HiLockOpen />{" "}
+                                  <span style={{ textDecoration: "underline" }}>
+                                    View Profile
+                                  </span>
                                 </a>
                                 {/* </Link> */}
                                 <p>

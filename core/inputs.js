@@ -10,6 +10,7 @@ export function uploadFileField({
   value,
   type,
   meta: { touched, error, warning },
+  disabled
 }) {
   return (
     <div className={`secret-input type-${type}`}>
@@ -25,6 +26,7 @@ export function uploadFileField({
           className="form-control"
           type={type}
           accept={accept}
+          disabled={disabled}
         />
       </React.Fragment>
     </div>
@@ -109,6 +111,7 @@ export function inputField({
   isValid,
   loading,
   validationLength,
+  disabled
 }) {
   let borderColor = "";
   if (meta.active || input.input === "") {
@@ -140,6 +143,7 @@ export function inputField({
             style={{ borderColor }}
             placeholder={placeholder}
             type={type}
+            disabled={disabled}
           />
           {loading && <span className="spin-loader"></span>}
           {isValid && (
@@ -212,6 +216,7 @@ export function textarea({
   type,
   validationLength,
   meta: { touched, error, warning },
+  disabled
 }) {
   return (
     <div className={`secret-input type-${type}`}>
@@ -232,6 +237,7 @@ export function textarea({
               : {}
           }
           placeholder={placeholder}
+          disabled={disabled}
         />
         <span className="position-absolute end-0 f-11">
           {label == "What do you offer?" || "Describe_Date_Details"

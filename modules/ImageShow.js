@@ -2,7 +2,14 @@ import { useEffect } from "react";
 import { useCallback } from "react";
 import { useState } from "react";
 
-export default ({ src, placeholderImg, alt, setLoading, ...props }) => {
+export default ({
+  src,
+  placeholderImg,
+  alt,
+  setLoading,
+  className,
+  ...props
+}) => {
   const placeHolderImage =
     placeholderImg || "https://i.ibb.co/y8RhMrL/Untitled-design.png";
   // "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Untitled%20design.png";

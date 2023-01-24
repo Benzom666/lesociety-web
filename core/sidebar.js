@@ -22,12 +22,13 @@ export default function SideBar() {
   const router = useRouter();
   const [documentUpoaded, setDocumentUpoaded] = useState(false);
 
-  // console.log("formValue", formValue);
   useEffect(() => {
     if (user?.selfie && user?.document) {
       setDocumentUpoaded(true);
     }
   }, [user]);
+  const unreadNotifCount = localStorage.getItem("unreadNotifCount");
+
   return (
     <>
       <div className="sidebar_wrap">
@@ -42,7 +43,9 @@ export default function SideBar() {
               />
             </figure>
             <span className="userdetails">
-              <H5 style={{fontSize:"18px",letterSpacing:"0.09px"}}>{user?.user_name || ""}</H5>
+              <H5 style={{ fontSize: "18px", letterSpacing: "0.09px" }}>
+                {user?.user_name || ""}
+              </H5>
               <SubHeading title="Member since Jan 2021" />
             </span>
           </div>
@@ -120,10 +123,19 @@ export default function SideBar() {
           <div className="sidebar_nav_links">
             <ul>
               <li>
-                <Link href="/">
-                  <a>
-                    Notification <FiChevronRight size={22} />{" "}
-                  </a>
+                <Link href="/user/notifications">
+                  <div>
+                    <a>
+                      Notification <FiChevronRight size={22} />{" "}
+                    </a>
+                    {unreadNotifCount > 0 && (
+                      <div class="notification-container">
+                        <span class="notification-counter">
+                          {unreadNotifCount}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </Link>
               </li>
               <li>

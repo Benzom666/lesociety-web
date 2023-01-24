@@ -11,24 +11,32 @@ const UserCardDetail = ({
   dateDescription,
 }) => {
   const Icon = dateSuggestion?.search_type?.icon;
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 50}`;
+  };
   return (
     <div className="date_card_wrap">
       <figure className="user_img_date">
-        {/* <Image
+        <Image
           src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
+          loader={myLoader}
+          priority={true}
           alt="user image"
           width={500}
           height={500}
           className="date-preview-img"
-        /> */}
-        <ImageShow
+          placeholder="blur"
+          blurDataURL={(user?.images?.length > 0 && user?.images[0]) || UserImg}
+        />
+        {/* <ImageShow
           src={(user?.images?.length > 0 && user?.images[0]) || UserImg}
           alt="user image"
+          style={{ objectFit: "cover" }}
           width={500}
           height={500}
           className="date-preview-img"
           placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
-        />
+        /> */}
         <div className="user-details">
           <div className="user-top-sec">
             <h5>

@@ -3,10 +3,11 @@ import { useState } from "react";
 import useWindowSize from "utils/useWindowSize";
 
 const slideStyles = {
-  width: "100%",
+  maxWidth: "100%",
   height: "100%",
   borderRadius: "10px",
-  backgroundSize: "cover",
+  backgroundSize: "contain",
+  backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
 };
 
@@ -102,6 +103,8 @@ const ImageSlider = ({ slides, viewFullPage }) => {
     ...slideStyles,
     backgroundImage: `url(${slides[currentIndex].url})`,
   };
+
+  console.log('slideStylesWidthBackground', slideStylesWidthBackground)
 
   return (
     <div

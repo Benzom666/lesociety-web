@@ -9,6 +9,8 @@ import validate from "./validate/validate";
 import { login } from "../authActions";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { async } from "rxjs";
+import { apiRequest } from "utils/Utilities";
 
 const SimpleForm = (props) => {
   const { width } = useWindowSize();
@@ -24,6 +26,7 @@ const SimpleForm = (props) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const passRef = useRef(null);
+  const [notifData, setNotifdata] = useState(null)
 
   const submitHandler = async (values) => {
     values.email = values.email?.toLowerCase();
@@ -50,8 +53,30 @@ const SimpleForm = (props) => {
     event.preventDefault();
   };
 
+  const fetchNotifications = async() => {
+    debugger
+    try {
+      const params = {
+        user_email: userLogin.email,
+        sort: 'sent_time'
+      };
+
+      const {data} = await apiRequest({
+        method: "GET",
+        url: `notification`,
+        params: params,
+      });
+      setNotifdata(data?.data?.notification)
+    } catch (err) {
+      console.error("err", err);
+    }
+  }
+
   useEffect(() => {
+    console.log("called",authState)
     if (authState?.isLoggedIn) {
+      // debugger
+      // fetchNotifications()
       if (userLogin?.step_completed === 1 || userLogin?.step_completed === 2) {
         router.push({
           pathname: "/auth/profile",
@@ -71,18 +96,35 @@ const SimpleForm = (props) => {
           router.push({
             pathname: "/user/user-list",
           });
-        } else if (userLogin?.status === 3) {
+        } else if (userLogin?.request_change_fired) {
+          console.log("request change called")
+          router.push({
+            pathname: "/auth/verify-profile",
+          });
+         
+        }
+        else if (userLogin?.status === 3) {
           router.push({
             pathname: "/auth/block",
           });
-        } else {
-          router.push({
-            pathname: "/auth/profile",
-          });
         }
+        
+        // else {
+        //   console.log("auth/profile called")
+        //   router.push({
+        //     pathname: "/auth/profile",
+        //   });
+        // }
       }
     }
   }, [userLogin, router?.isReady]);
+
+
+
+  useEffect(() => {
+    console.log("notiffff ",notifData)
+    //localStorage.setItem('notifications', JSON.stringify(notifData));
+  },[notifData])
 
   const {
     handleSubmit,

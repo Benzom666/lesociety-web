@@ -28,13 +28,18 @@ export default function HeaderLoggedIn({
   const [conversations, setConversations] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  // useEffect(() => {
+  //   if (modalIsOpen) {
+  //     // stop scrolling page
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     // allow scrolling page
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [modalIsOpen]);
+
   function toggleModal() {
     setIsOpen(!modalIsOpen);
-    // if (!modalIsOpen) {
-    //   document.body.classList.add("modal-open");
-    // } else {
-    //   document.body.classList.remove("modal-open");
-    // }
   }
   // useEffect(() => {
   //   getConversations();
@@ -76,8 +81,6 @@ export default function HeaderLoggedIn({
   const unReadMessagesLength = unReadedConversationLength
     ? unReadedConversationLength
     : 0;
-
-  // console.log("unReadMessagesLength", unReadMessagesLength);
 
   const sidbarCloseOutsideClick = (event) => {
     const target = document.querySelector("#sidebar-header");
