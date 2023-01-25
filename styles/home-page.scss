@@ -1,6 +1,4 @@
-// .home_page_style{
-//   font-family: "Montserrat";
-// }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 
 .ls-logo {
   width: 40px;
@@ -26,12 +24,13 @@
 
     .ls-text {
       padding: 0px;
+      margin-left: 16px;
     }
   }
 }
 
 
-@media only screen and (min-width:427px) and (max-width:900px)  {
+@media only screen and (max-width:427px)  {
   .LeSociety-Icon-White {
     display: contents;
     flex-direction: column;
@@ -63,11 +62,12 @@
 }
 .home-main-sec-1{
   padding: 75px 0 50px 0;
-  font-family: "Montserrat";
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 }
 .home-main-sec-2{
-  //padding: 28px 0px 0px 0px;
-  height: 34rem;
+  padding: 28px 0px 0px 0px;
+  //height: 34rem;
   font-family: "Montserrat";
 }
 
@@ -80,11 +80,11 @@
 padding: 60px 0px 26px 0px;
 font-family: "Montserrat";
 }
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:426px) {
   .home-main-section {
     flex-direction: column;
     background-position: top;
-    background-size: 15.8rem;
+    //background-size: 15.8rem;
   }
 
   .main-title {
@@ -118,6 +118,7 @@ font-family: "Montserrat";
     letter-spacing: 4.8px;
     line-height: 1.1;
     text-align: center;
+    margin-top: 2rem;
   }
 }
 
@@ -142,7 +143,9 @@ font-family: "Montserrat";
   padding: 5px 15px;
   font-size: 18px;
 }
-
+.home-footer-main{
+  font-family: "Montserrat"
+}
 @media only screen and (max-width:426px) {
   .home-footer-main {
     padding: 0;
@@ -197,12 +200,13 @@ font-family: "Montserrat";
 }
 
 .aboutCardContent {
+  max-width: 390px;
   font-family: "Montserrat";
   padding: 10px 45px;
   text-align: center;
   font-size: 18px;
   line-height: 1.16;
-  //letter-spacing: 0.02px;
+  letter-spacing: 0px;
 }
 
 .main-content-icon {
@@ -211,14 +215,14 @@ font-family: "Montserrat";
 }
 
 .signUpLadybtn {
-  //width: 327.8px;
+  width: 327.8px;
   height: 35px;
   border-radius: 15px;
   border: #f24462;
   background-color: #f24462;
   color: #fff;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   padding: 0 10px;
   margin: 0 10px;
 }
@@ -245,16 +249,17 @@ font-family: "Montserrat";
 @media only screen and (max-width:426px) {
   .containernavbarfooter {
     display: flex;
-    //flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 25px;
+    text-align: center;
+    padding: 30px 25px;
+    margin-right: 0px !important;
   }
 
   .navbarfooter-text {
     margin: auto;
     display: flex;
-
+    align-items: flex-end;
     .navbarfooter-text-1 {
       margin-top: 12px;
       //width: 240px;
@@ -262,6 +267,10 @@ font-family: "Montserrat";
   }
 }
 
+.containernavbarfooter{
+  margin-right: 4rem;
+  font-family: "Montserrat";
+}
 .navbarfooter-btn {
   transition: ease-in-out;
 }
@@ -276,8 +285,9 @@ font-family: "Montserrat";
     }
 
     .signUpLadybtn {
+      height: 35px;
       margin-top: 10px;
-      width: 275px;
+      width: 100%;
     }
   }
 }
@@ -285,6 +295,7 @@ font-family: "Montserrat";
 
 .card_1 {
   // background-image: url('../assets/svg/Fifth Blob.svg');
+  font-family: 'Montserrat', sans-serif;
   background-position: left;
   background-repeat: no-repeat;
   background-size: 12rem;
@@ -302,6 +313,7 @@ font-family: "Montserrat";
   background-size: 12rem;
   background-color: #222326;
   border-radius: 15px;
+  font-family: 'Montserrat', sans-serif;
   border: 1px solid #83f4ff;
   //width: 320px;
   opacity: 0.5;
@@ -525,7 +537,11 @@ font-family: "Montserrat";
     background-image: url('../assets/svg/Fifth Blob.svg');
   }
 }
-
+@media only screen and (max-width:426px){
+  .bottom-box-container{
+    flex-direction: column;
+  }
+}
 .animate{
   transition: mymove 5s ease-in-out;
   // transition-delay: "15s";

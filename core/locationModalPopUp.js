@@ -1,6 +1,7 @@
 import React from "react";
 import MapImage from "../assets/img/map-image.png";
 import ManImage from "../assets/img/man-img.jpeg";
+import useWindowSize from "utils/useWindowSize";
 import { FiArrowRight } from "react-icons/fi";
 import UserImg from "assets/img/profile.png";
 import { useSelector } from "react-redux";
@@ -8,7 +9,7 @@ import ImageShow from "@/modules/ImageShow";
 
 function Modal(props) {
   const user = useSelector((state) => state.authReducer.user);
-
+  const { width } = useWindowSize();
   if (!props.show) {
     return null;
   }
@@ -42,7 +43,7 @@ function Modal(props) {
                 left: "32%",
               }}
             /> */}
-            <ImageShow
+           { width > 500 ? <ImageShow
               alt="man-img"
               height={120}
               width={120}
@@ -55,7 +56,20 @@ function Modal(props) {
               }}
               src={!_.isEmpty(user) ? user.images[0] : UserImg}
               placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
-            />
+            /> :<ImageShow
+            alt="man-img"
+            height={120}
+            width={120}
+            style={{
+              borderRadius: "7px",
+              border: "2px solid white",
+              position: "absolute",
+              top: "-4%",
+              left: "33%",
+            }}
+            src={!_.isEmpty(user) ? user.images[0] : UserImg}
+            placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
+          />}
             <img
               style={{ borderRadius: "50%", textAlign: "center" }}
               src={MapImage.src}

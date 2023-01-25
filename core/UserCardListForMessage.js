@@ -42,12 +42,10 @@ const UserCardListForMessage = ({
 
   function openModal() {
     setIsOpen(true);
-    //document.body.classList.add("modal-open-blur");
     setPageLoading(true);
   }
   function closeModal() {
     setIsOpen(false);
-    //document.body.classList.remove("modal-open-blur");
     setPageLoading(false);
     tabIndexChange(0);
   }
@@ -171,8 +169,6 @@ const UserCardListForMessage = ({
                 ? "intrested_model modal-open-blur"
                 : "intrested_model"
             }
-            // className="intrested_model"
-            // id={modalIsOpen ? "modal-open-id" : ""}
           >
             <div className="model_content">
               {pageLoading ? (
@@ -245,7 +241,7 @@ const UserCardListForMessage = ({
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
                                 <a
                                   className="create-date"
-                                  style={{height:"45px",width:"85%",marginLeft:"6%",paddingTop:"6px"}}
+                                  style={{height:"40px",width:"85%",marginLeft:"6%",paddingTop:"2px"}}
                                   onClick={() => {
                                     if (mobile) {
                                       toggleChat(conversation);

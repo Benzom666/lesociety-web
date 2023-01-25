@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import withAuth from "../core/withAuth";
 import LeSlogoWhite from '../assets/LeS logoWhite.png';
-import Group556 from '../assets/img/Group 556.png';
-import Group557 from '../assets/img/Group 557.png';
-import Group558 from '../assets/img/Group 558.png';
-import Group567 from '../assets/img/Group 567.png';
-import Group579 from '../assets/img/Group 579.png';
+import Group29 from '../assets/img/Group 29.png';
+import Group30 from '../assets/img/Group 30.png';
+import Group140 from '../assets/img/Group 140.png';
+import Group96 from '../assets/img/Group 96.png';
+import Group152 from '../assets/img/Group 152.png';
 import MaskGroup1 from '../assets/svg/Mask Group 1.svg';
 import MaskGroup7 from '../assets/svg/Mask Group 7.svg';
 import MaskGroup11 from '../assets/svg/Mask Group 11.svg';
@@ -22,6 +22,10 @@ import HomePageCardSection from "@/core/HomePageCardSection";
 import HomeFooter from "@/core/HomeFooter"
 import { content } from '@/core/HomePageContent'
 import HomePageMiddleNav from "@/core/HomePageMiddleNav";
+
+const style1 ={
+  opacity:"1",
+}
 
 function Home({ items }) {
   return (
@@ -42,7 +46,7 @@ function Home({ items }) {
         mainBackgroundImage={FirstBlob.src} styles={"home-main-sec-1"}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
-      <HomePageMiddleNav/>
+      <HomePageMiddleNav style={style1}/>
       <HomePageMainSection title="LADIES" maincardImage={MaskGroup7}
       mainBackgroundImage={SecondBlob.src} styles={"home-main-sec-2"}
       >
@@ -53,27 +57,27 @@ function Home({ items }) {
           <div className='main-content-icon'>
             <div class="row align-items-center justify-content-evenly mt-3">
               <div class="col"  style={{maxWidth:"120px",textAlign:"center"}}>
-                <img src={Group567.src} alt="icon-img" height={35} width={35} />
+                <img src={Group96.src} alt="icon-img" height={35} width={35} />
                 <p style={{ fontSize: "16px" }}>Brunch <br /> Date</p>
               </div>
               <div class="col" style={{maxWidth:"120px" ,textAlign:"center"}}>
-                <img src={Group557.src} alt="icon-img" height={35} width={35} />
+                <img src={Group152.src} alt="icon-img" height={35} width={35} />
                 <p style={{ fontSize: "16px" }}>Entertainment <br />
                   & Sports</p>
               </div>
               <div class="col"  style={{maxWidth:"120px" ,textAlign:"center"}}>
-                <img src={Group556.src} alt="icon-img" height={35} width={35} />
+                <img src={Group140.src} alt="icon-img" height={35} width={35} />
                 <p style={{ fontSize: "16px" }}>Take A <br />Class</p>
               </div>
             </div>
             <div class="row align-items-center justify-content-center mt-3">
               <div class="col"  style={{maxWidth:"120px",textAlign:"center"}}>
-                <img src={Group579.src} alt="icon-img" height={35} width={35} />
+                <img src={Group29.src} alt="icon-img" height={35} width={35} />
                 <p style={{ fontSize: "16px" }}>Bottles <br />
                   & Dance</p>
               </div>
               <div class="col"  style={{maxWidth:"120px",textAlign:"center"}}>
-                <img src={Group558.src} alt="icon-img" height={35} width={35} />
+                <img src={Group30.src} alt="icon-img" height={35} width={35} />
                 <p style={{ fontSize: "16px",textAlign:"center" }}>Wine <br />
                   & Dine</p>
               </div>

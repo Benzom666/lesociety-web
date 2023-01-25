@@ -2290,7 +2290,7 @@ div[id="scrolldiv"] {
 
               svg {
                 margin-right: 10px;
-                margin-top: -5px;
+                //margin-top: -5px;
               }
 
               @media only screen and (max-width: 767px) {
@@ -2902,7 +2902,7 @@ body {
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            min-height: 107px;
+            height: 107px;
             text-align: center;
 
             h5 {

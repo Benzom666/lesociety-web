@@ -18,7 +18,7 @@ function HomePageMiddleNav(props) {
         class="navbar fixed-bottom bg-dark mt-4 navbarfixedmain"
         style={props.style}
       >
-        <div class="container-fluid d-flex justify-content-end containernavbarfooter animate">
+        <div className="container-fluid d-flex justify-content-end containernavbarfooter animate">
           <div className="navbarfooter-text">
             {width > 500 && (
               <div className="navfooter-text-1">
@@ -70,8 +70,8 @@ function HomePageMiddleNav(props) {
                     size={50}
                     style={{
                       color: "#fff",
-                      marginBottom: "5px",
-                      marginLeft: "30px",
+                      //marginBottom: "5px",
+                      //marginLeft: "30px",
                     }}
                     onClick={closeNavBar}
                   />
