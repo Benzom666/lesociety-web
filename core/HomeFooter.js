@@ -16,7 +16,7 @@ export default function Footer(props) {
                <div className='ls-logo mb-0' style={{margin:"0px 20px"}}>
                   <Image src={LeSlogoWhite} alt="ls-logo-footer" sizes={10}/>
                   </div>
-                   <p style={{color:"white"}}>LE SOCIETY</p>
+                   <p style={{color:"white",paddingTop:"10px"}}>LE SOCIETY</p>
              </div>
              <div className='footer-icon-box'>
                 <div className='footer-icon'>
@@ -28,7 +28,7 @@ export default function Footer(props) {
                 </div>
                 <div className='footer-text'>
                    <div className='footer-text-1 mb-2 mt-3'>
-                    <span>FAQ | Safety Tips | Terms | Cookie Policy | Privacy Settings</span>
+                    <span>FAQ | Safety Tips | Terms | Privacy Settings | Our Story</span>
                    </div>
                    <div className='footer-text-2 mb-2 mt-3'>
                     <span>© 2022 Le Society | All Rights Reserved</span>

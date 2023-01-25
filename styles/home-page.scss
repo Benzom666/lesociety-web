@@ -146,7 +146,7 @@ font-family: "Montserrat";
 .home-footer-main{
   font-family: "Montserrat"
 }
-@media only screen and (max-width:426px) {
+@media only screen and (max-width:500px) {
   .home-footer-main {
     padding: 0;
   }
@@ -162,8 +162,8 @@ font-family: "Montserrat";
   }
 
   .footer-icon-box {
-    padding: 0px 20px 10px 20px;
-
+    //padding: 0px 20px 10px 20px;
+    
     .footer-icon {
       text-align: center;
     }
@@ -188,7 +188,7 @@ font-family: "Montserrat";
 
 @media only screen and (max-width:426px) {
   .footer-text-1 {
-    padding: 10px 20px;
+    padding: 10px 30px;
     text-align: center;
   }
 }
@@ -197,6 +197,7 @@ font-family: "Montserrat";
   font-size: 16px;
   color: #686868;
   text-align: start;
+  padding: 0 26px 30px 35px;
 }
 
 .aboutCardContent {
@@ -246,23 +247,27 @@ font-family: "Montserrat";
   }
 }
 
-@media only screen and (max-width:426px) {
+@media only screen and (max-width:480px) {
   .containernavbarfooter {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 30px 25px;
+    padding: 20px 5px;
     margin-right: 0px !important;
   }
 
   .navbarfooter-text {
-    margin: auto;
+    width: 100%;
+    //margin: auto;
     display: flex;
     align-items: flex-end;
+    justify-content: space-around;
+    margin-bottom: 5%;
+    padding: 0px 15px;
     .navbarfooter-text-1 {
       margin-top: 12px;
-      //width: 240px;
+      width: 100% !important;
     }
   }
 }
@@ -277,7 +282,7 @@ font-family: "Montserrat";
 
 @media only screen and (max-width:426px) {
   .navbarfooter-btn {
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
     transition: ease-in-out;
 
     .sidebarhome {
@@ -285,8 +290,8 @@ font-family: "Montserrat";
     }
 
     .signUpLadybtn {
-      height: 35px;
-      margin-top: 10px;
+      height: 50px;
+      margin: 10px 0px;
       width: 100%;
     }
   }
@@ -532,7 +537,7 @@ font-family: "Montserrat";
 .bottom-box-container{
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   .bottom-box-card-1{
     background-image: url('../assets/svg/Fifth Blob.svg');
   }

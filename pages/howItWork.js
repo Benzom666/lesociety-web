@@ -30,13 +30,12 @@ function HowItWork() {
     <>
     <div className="inner-part-page auth-section how-it-works">
       <nav class="navbar navbar-light bg-#f2f5f7 mb-2">
-        <div className="LeSociety-Icon-White d-flex" style={{ padding: " 0px 75px" }}>
+        <div className="LeSociety-Icon-White d-flex">
           <div className="ls-logo">
             <Image src={LeSlogoBlack} alt="ls-logo" sizes={10} />
           </div>
           <div className="ls-text mt-4 ">
-            <p style={{ letterSpacing: "2.2px", color: "black", fontSize: "23px",
-             padding: "5px 0px",textTransform:"uppercase"}}> How it Works</p>
+            <p> How it Works</p>
           </div>
         </div>
       </nav>

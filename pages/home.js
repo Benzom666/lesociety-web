@@ -24,7 +24,7 @@ import { content } from '@/core/HomePageContent'
 import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 
 const style1 ={
-  opacity:"1",
+  opacity:"0.9",
 }
 
 function Home({ items }) {
