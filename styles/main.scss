@@ -2262,9 +2262,10 @@ div[id="scrolldiv"] {
               rgba(25, 25, 25, 0.415923) 95.56%
             );
             color: $white-color;
-            border: 0.607143px solid #293036;
-            backdrop-filter: blur(10.9286px);
+            border: 0.5px solid #293036;
+            backdrop-filter: blur(4.5px);
             border-radius: 8px;
+            opacity: 0.9;
             cursor: pointer;
             margin-top: -6px;
 
@@ -2286,6 +2287,7 @@ div[id="scrolldiv"] {
             span {
               font-size: 13px;
               font-weight: 300;
+              font-family: 'Helvetica';
               letter-spacing: 0.5px;
 
               svg {

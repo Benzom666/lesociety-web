@@ -255,7 +255,7 @@ const UserCardList = ({
                       </span>
                       <div className="tag_wrap">
                         <ul>
-                          <li>
+                          <li style={{display:"flex",alignItems:"center"}}>
                             <span>{category?.icon}</span>
                             <span>{category?.label}</span>
                           </li>
