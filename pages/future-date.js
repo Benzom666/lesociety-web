@@ -47,7 +47,7 @@ function FutureDate() {
   const { width } = useWindowSize();
   return (
     <>
-      <div className="inner-part-page auth-section">
+      <div className="inner-part-page auth-section future-dates-main">
         <nav class="navbar navbar-dark bg-black">
           <div className="LeSociety-Icon-White d-flex" style={{ padding: "0px 75px" }}>
             <div className="ls-logo">

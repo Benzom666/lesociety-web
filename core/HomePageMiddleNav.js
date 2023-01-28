@@ -27,7 +27,7 @@ function HomePageMiddleNav(props) {
                   <span
                     style={{
                       color: " #f24462",
-                      paddingRight: "10px",
+                      //paddingRight: "10px",
                       fontSize: "16px",
                     }}
                   >
@@ -44,7 +44,7 @@ function HomePageMiddleNav(props) {
                   <span
                     style={{
                       color: " #f24462",
-                      paddingRight: "10px",
+                      //paddingRight: "10px",
                       fontSize: "16px",
                     }}
                   >

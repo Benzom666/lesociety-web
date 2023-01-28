@@ -37,8 +37,8 @@ function Home({ items }) {
               <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
             </div>
             <div className="ls-text mt-4 ">
-              <p style={{ fontSize:"20px", letterSpacing: "6.2px" }}>LE SOCIETY</p>
-              <p style={{ fontSize: "13px" }}>Date outside Your League</p>
+              <p className="leSocitey-heading">LE SOCIETY</p>
+              <p className="leSocitey-subheading">Date outside Your League</p>
             </div>
           </div>
         </nav>
@@ -46,7 +46,7 @@ function Home({ items }) {
         mainBackgroundImage={FirstBlob.src} styles={"home-main-sec-1"}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
-      <HomePageMiddleNav style={style1}/>
+      {/* <HomePageMiddleNav style={style1}/> */}
       <HomePageMainSection title="LADIES" maincardImage={MaskGroup7}
       mainBackgroundImage={SecondBlob.src} styles={"home-main-sec-2"}
       >
