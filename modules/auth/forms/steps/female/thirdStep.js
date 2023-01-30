@@ -55,66 +55,122 @@ const smoker = [
 let occupation = [
   {
     id: "1",
-    name: "Administrat/Secretar",
+    name: "Entrepreneur",
   },
   {
     id: "2",
-    name: "Student",
+    name: "Public Figure",
   },
   {
     id: "3",
-    name: "Food services",
+    name: "Influencer",
   },
   {
     id: "4",
-    name: "Executive management",
+    name: "Model",
   },
   {
     id: "5",
-    name: "Medical/Dental",
+    name: "Artist",
   },
   {
     id: "6",
-    name: "Teacher/Professor",
+    name: "Student",
   },
   {
     id: "7",
-    name: "Finance",
+    name: "Retired",
   },
 ];
 
 const loadMoreOptions = [
   {
+    id: "Business",
+    name: "Business",
+  },
+  {
+    id: "Sales",
+    name: "Sales",
+  },
+  {
+    id: "Finance",
+    name: "Finance",
+  },
+  {
+    id: "Designer",
+    name: "Designer",
+  },
+  {
+    id: "Medical",
+    name: "Medical",
+  },
+  {
     id: "Legal",
     name: "Legal",
   },
   {
-    id: "Labor/Contractor",
-    name: "Labor/Contractor",
+    id: "Teacher",
+    name: "Teacher",
   },
   {
-    id: "Transportation",
-    name: "Transportation",
+    id: "Professor",
+    name: "Professor",
   },
   {
-    id: "Political/Government",
-    name: "Political/Government",
+    id: "Marketing",
+    name: "Marketing",
   },
   {
-    id: "Retired",
-    name: "Retired",
+    id: "Dental",
+    name: "Dental",
   },
   {
-    id: "Sales & Marketing",
-    name: "Sales & Marketing",
+    id: "Engineer",
+    name: "Engineer",
   },
   {
-    id: "Self Employed",
-    name: "Self Employed",
+    id: "Political",
+    name: "Political",
   },
   {
-    id: "Science/Engineering",
-    name: "Science/Engineering",
+    id: "Government",
+    name: "Government",
+  },
+  {
+    id: "Social Worker",
+    name: "Social Worker",
+  },
+  {
+    id: "Freelancer",
+    name: "Freelancer",
+  },
+  {
+    id: "Administrator",
+    name: "Administrator",
+  },
+  {
+    id: "Secretary",
+    name: "Secretary",
+  },
+  {
+    id: "Labor",
+    name: "Labor",
+  },
+  {
+    id: "Contractor",
+    name: "Contractor",
+  },
+  {
+    id: "Transport",
+    name: "Transport",
+  },
+  {
+    id: "Science",
+    name: "Science",
+  },
+  {
+    id: "Service",
+    name: "Service",
   },
 ];
 
