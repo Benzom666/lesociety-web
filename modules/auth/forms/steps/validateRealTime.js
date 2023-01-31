@@ -1,153 +1,253 @@
-import _ from 'lodash';
-import { stopSubmit, updateSyncErrors } from 'redux-form';
-import axios from "axios"; 
-import { apiRequest } from '../../../../utils/Utilities'
+import _ from "lodash";
+import { stopSubmit, updateSyncErrors } from "redux-form";
+import axios from "axios";
+import { apiRequest } from "../../../../utils/Utilities";
 
-export const existEmail = _.debounce(async (value, setLoader, setValid, dispatch, gender, error, setMailTest) => {
+export const existEmail = _.debounce(
+  async (value, setLoader, setValid, dispatch, gender, error, setMailTest) => {
     if (value && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    setLoader(true);
-    try {
+      setLoader(true);
+      try {
         const res = await apiRequest({
-            data: {
-            email: value
-            },
-            method: 'POST',
-            url: `user/validatebyEmail`
-        })
-        if(res.data.data.isValid) {
-            setLoader(false);
-            setValid(true);
-        }
-        else {
-            setLoader(false);
-            setValid(false);
-            // return res.data.message;
-            if(gender === 'male') {
-              dispatch(stopSubmit('RegisterFormMale', {...error, email: res.data.message}))
-            } else {
-                dispatch(stopSubmit('RegisterForm', {...error, email: res.data.message}))
-            }
+          data: {
+            email: value,
+          },
+          method: "POST",
+          url: `user/validatebyEmail`,
+        });
+        if (res.data.data.isValid) {
+          setLoader(false);
+          setValid(true);
+        } else {
+          setLoader(false);
+          setValid(false);
+          // return res.data.message;
+          if (gender === "male") {
+            dispatch(
+              stopSubmit("RegisterFormMale", {
+                ...error,
+                email: res.data.message,
+              })
+            );
+          } else {
+            dispatch(
+              stopSubmit("RegisterForm", { ...error, email: res.data.message })
+            );
+          }
         }
         setMailTest(true);
-    } catch (err) {
+      } catch (err) {
         setLoader(false);
         setMailTest(true);
         // dispatch(stopSubmit('RegisterForm', {email: 'checking'}))
+      }
     }
-}
-}, 1000);
-    
-export const existUsername = _.debounce(async (values, setLoader, setValid, dispatch, gender, error, setUserTest) => {
+  },
+  1000
+);
+
+export const existUsername = _.debounce(
+  async (values, setLoader, setValid, dispatch, gender, error, setUserTest) => {
     if (values && values.length >= 3 && values.length <= 15) {
-    setLoader(true);
-    try {
+      setLoader(true);
+      try {
         const res = await apiRequest({
-            data: {
-            user_name: values
-            },
-            method: 'POST',
-            url: `user/validatebyUsername`
-        })
-        if(res.data.data.isValid) {
-            setLoader(false);
-            setValid(true);
+          data: {
+            user_name: values,
+          },
+          method: "POST",
+          url: `user/validatebyUsername`,
+        });
+        if (res.data.data.isValid) {
+          setLoader(false);
+          setValid(true);
+        } else {
+          setLoader(false);
+          setValid(false);
+          if (gender === "male") {
+            dispatch(
+              stopSubmit("RegisterFormMale", {
+                ...error,
+                user_name: res.data.message,
+              })
+            );
+          } else {
+            dispatch(
+              stopSubmit("RegisterForm", {
+                ...error,
+                user_name: res.data.message,
+              })
+            );
+          }
         }
-        else {
-            setLoader(false);
-            setValid(false);
-            if(gender === 'male') {
-                dispatch(stopSubmit('RegisterFormMale', {...error, user_name: res.data.message}))
-              } else {
-                dispatch(stopSubmit('RegisterForm', {...error, user_name: res.data.message}))
-              }
-        }
-        setUserTest(true)
-        } catch (err) {
+        setUserTest(true);
+      } catch (err) {
         setLoader(false);
-        setUserTest(true)
+        setUserTest(true);
         // dispatch(stopSubmit('RegisterForm', {email: 'checking'}))
+      }
     }
-}
-}, 1000);
+  },
+  1000
+);
 
 export const fetchLocation = async () => {
-    try {
-        const res = await apiRequest({
-            method: 'GET',
-            url: `country`
-        })
-        return res.data.data
-    }
-    catch (e) {
-        console.log(e)
-    }
-}
+  try {
+    const res = await apiRequest({
+      method: "GET",
+      url: `country`,
+    });
+    return res.data.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 export const fetchLiveLocation = async (lat, long, countries) => {
-    try {
-        const res = await axios({
-            method: 'GET',
-            url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?types=place%2Cpostcode%2Caddress&limit=1&access_token=${process.env.MAPBOX_TOKEN}`,
-            params: { 
-                country: countries || undefined
-            }
-        })
-        if(res.data.features.length > 0) {
-            const places = res.data.features.map(place => {
-                return {
-                    name: place.place_type?.includes('address') ? place.context.find(item => item.id.includes('place'))?.text : place.text,
-                    country: place.context.filter(item => item.id.includes('country')),
-                    label: place.place_type?.includes('address') ? place.context.find(item => item.id.includes('place'))?.text : place.text,
-                    province: place.place_type?.includes('region') ? [{
-                        "id": "region",
-                        "short_code": place?.properties?.short_code,
-                        "text": place.text
-                    }] : place.context.filter(item => item.id.includes('region'))
-                }
-            })
-            return places
-        }
-        else {
-            return false;
-        }
-        return res.data.features
+  try {
+    const res = await axios({
+      method: "GET",
+      url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?types=place%2Cpostcode%2Caddress&limit=1&access_token=${process.env.MAPBOX_TOKEN}`,
+      params: {
+        country: countries || undefined,
+      },
+    });
+    if (res.data.features.length > 0) {
+      const places = res.data.features.map((place) => {
+        return {
+          name: place.place_type?.includes("address")
+            ? place.context.find((item) => item.id.includes("place"))?.text
+            : place.text,
+          country: place.context.filter((item) => item.id.includes("country")),
+          label: place.place_type?.includes("address")
+            ? place.context.find((item) => item.id.includes("place"))?.text
+            : place.text,
+          province: place.place_type?.includes("region")
+            ? [
+                {
+                  id: "region",
+                  short_code: place?.properties?.short_code,
+                  text: place.text,
+                },
+              ]
+            : place.context.filter((item) => item.id.includes("region")),
+        };
+      });
+      return places;
+    } else {
+      return false;
     }
-    catch (e) {
-        console.log(e)
-    }
-}
+    return res.data.features;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-export const fetchRealLocation = _.debounce(async (values, countries, setPlaces) => {
-    if (values) {
-    try {
-        const res = await axios({
-            url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${values}.json?types=place,postcode,address&access_token=${process.env.MAPBOX_TOKEN}`,
-            params :{
-                country: countries || undefined
-            }
-        })
-        if(res.data.features.length > 0) {
-            const places = res.data.features.map(place => {
-                const province_code = place.place_type?.includes('region') ? 
-                place?.properties?.short_code?.toUpperCase() : place.context.find(item => item.id.includes('region'))?.short_code?.toUpperCase()
-                return {
-                    name: place.text,
-                    country: place.context.filter(item => item.id.includes('country')),
-                    label: place.text + ", " + province_code?.split("-")[1],
-                    province: place.place_type?.includes('region') ? [{
-                        "id": "region",
-                        "short_code": place?.properties?.short_code,
-                        "text": place.text
-                    }] : place.context.filter(item => item.id.includes('region'))
-                }
-            })
-            setPlaces(places)
-        }
-        else {
-            return false;
-        }
-    } catch (err) {
-        console.log(err);
+// fetch cities of state from mapbox
+export const fetchCities = async (state, country) => {
+  // if (!state && !country) {
+  //   return;
+  // }
+
+  try {
+    const res = await axios({
+      method: "GET",
+      // url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${state2}.json?types=place%2Cpostcode%2Caddress&limit=100&access_token=${process.env.MAPBOX_TOKEN}`,
+      url: `https://api.mapbox.com/geocoding/v5/mapbox.places/Maharashtra,India.json?types=region&access_token=${process.env.MAPBOX_TOKEN}`,
+
+      // params: {
+      //   country: country || undefined,
+      // },
+    });
+    console.log(
+      "res fetchCities",
+      res.data.features.length > 0 && res?.data["features"][0]["bbox"]
+    );
+
+    if (res.data.features.length > 0) {
+      const bounds = res?.data["features"][0]["bbox"];
+      const city = "Mumbai";
+      const res2 = await axios({
+        method: "GET",
+        url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${city},${state},${country}.json?types=cities&limit=100&access_token=${process.env.MAPBOX_TOKEN}&bbox=${bounds}`,
+      });
+
+      console.log("res 2", res2);
     }
-}
-}, 1000);
+
+    // if (res.data.features.length > 0) {
+    //   const places = res.data.features.map((place) => {
+    //     return {
+    //       name: place.place_type?.includes("address")
+    //         ? place.context.find((item) => item.id.includes("place"))?.text
+    //         : place.text,
+    //       country: place.context.filter((item) => item.id.includes("country")),
+    //       label: place.place_type?.includes("address")
+    //         ? place.context.find((item) => item.id.includes("place"))?.text
+    //         : place.text,
+    //       province: place.place_type?.includes("region")
+    //         ? [
+    //             {
+    //               id: "region",
+    //               short_code: place?.properties?.short_code,
+    //               text: place.text,
+    //             },
+    //           ]
+    //         : place.context.filter((item) => item.id.includes("region")),
+    //     };
+    //   });
+    //   return places;
+    // } else {
+    //   return false;
+    // }
+    // return res.data.features;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const fetchRealLocation = _.debounce(
+  async (values, countries, setPlaces) => {
+    if (values) {
+      try {
+        const res = await axios({
+          url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${values}.json?types=place,postcode,address&access_token=${process.env.MAPBOX_TOKEN}`,
+          params: {
+            country: countries || undefined,
+          },
+        });
+        if (res.data.features.length > 0) {
+          const places = res.data.features.map((place) => {
+            const province_code = place.place_type?.includes("region")
+              ? place?.properties?.short_code?.toUpperCase()
+              : place.context
+                  .find((item) => item.id.includes("region"))
+                  ?.short_code?.toUpperCase();
+            return {
+              name: place.text,
+              country: place.context.filter((item) =>
+                item.id.includes("country")
+              ),
+              label: place.text + ", " + province_code?.split("-")[1],
+              province: place.place_type?.includes("region")
+                ? [
+                    {
+                      id: "region",
+                      short_code: place?.properties?.short_code,
+                      text: place.text,
+                    },
+                  ]
+                : place.context.filter((item) => item.id.includes("region")),
+            };
+          });
+          setPlaces(places);
+        } else {
+          return false;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  },
+  1000
+);
