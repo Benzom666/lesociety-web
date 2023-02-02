@@ -5,38 +5,34 @@ import useWindowSize from "utils/useWindowSize";
 
 
 function HomePageMainSection(props) {
-  console.log(props)
-  const { title, maincardImage, mainBackgroundImage, children,styles} = props;
-  console.log(mainBackgroundImage)
+  const { title, maincardImage, children,styles} = props;
   const { width } = useWindowSize();
   return (
-    <>
+    <div className='container'>
       <div 
-        className={`row align-items-center home-main-section ${styles}`  }
-        style={{backgroundImage: `url('${mainBackgroundImage}')`}}
-      >
+        className={`row align-items-center mx-0 home-main-section ${styles}`}>
       {width >769 &&   <div class="col-lg-4 col-md-12">
           <div className='main-title'>
             <h5>{title}</h5>
           </div>
         </div>}
-        <div class="col-lg-4 col-sm-12 main-card-side-wraper">
+        <div class="col-lg-4 col-sm-12 main-card-side-wraper" style={{textAlign:"center"}}>
           <div className='main-card'>
             <div className='main-card-side-wraper-1'>
-              {<img src={maincardImage.src}  alt="main-img" style={{height:"25rem"}}/>}
+              {<img src={maincardImage.src}  alt="main-img" style={{height:"35rem"}}/>}
             </div>
           </div>
         </div>
-        {width <769 &&   <div class="col-lg-4 col-md-12 mt-5">
+        {width <769 &&   <div class="col-lg-4 col-sm-12 mt-5">
           <div className='main-title'>
             <h5>{title}</h5>
           </div>
         </div>}
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-4 col-sm-12">
           {children}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

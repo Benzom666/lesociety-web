@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -39,16 +39,24 @@ const futureDatesMiddleContent ={
   },
 }
 const style1 ={
-  opacity:"0.5",
+  opacity:"0.9",
 }
 
+const styleBackground = {
+  backgroundColor : "#000000"
+}
 
 function FutureDate() {
   const { width } = useWindowSize();
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.document.body.style.backgroundColor = "#080808";
+    }
+  }, [])
   return (
     <>
       <div className="inner-part-page auth-section future-dates-main">
-        <nav class="navbar navbar-dark bg-black">
+        <nav class="navbar navbar-dark bg-#080808">
           <div className="LeSociety-Icon-White d-flex" style={{ padding: "0px 75px" }}>
             <div className="ls-logo">
               <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
@@ -70,7 +78,7 @@ function FutureDate() {
         />
         <FutureDates title={futureDatesContent.futureDatesContent2.title}
           contentaboutDating={futureDatesContent.futureDatesContent2.datingContent} />
-        <HomeFooter logo={LeSlogoWhite} height={50} />
+        <HomeFooter logo={LeSlogoWhite} height={50} styleBackground ={styleBackground} />
       </div>
     </>
   )

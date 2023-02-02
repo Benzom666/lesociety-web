@@ -20,10 +20,10 @@ function HomePageMiddleNav(props) {
       >
         <div className="container-fluid d-flex justify-content-end containernavbarfooter animate">
           <div className="navbarfooter-text">
-            {width > 500 && (
+            {width > 769 && (
               <div className="navfooter-text-1">
                 <span style={props.styleText}>
-                  Start a new adventure.
+                  Start a new adventure.{" "}
                   <span
                     style={{
                       color: " #f24462",
@@ -36,24 +36,25 @@ function HomePageMiddleNav(props) {
                 </span>
               </div>
             )}
-            {width < 500 && (
+            {width < 769 && (
               <div className="navfooter-text-1">
                 <span style={{ fontSize: "18px" }}>
                   Start a new adventure.
                   <br />
-                  <span
+                  <p
                     style={{
                       color: " #f24462",
-                      //paddingRight: "10px",
+                      paddingTop: "5px",
+                      // padding:"3px 0px",
                       fontSize: "16px",
                     }}
                   >
                     Already a Member? Login
-                  </span>
+                  </p>
                 </span>
               </div>
             )}
-            {width < 500 && (
+            {width < 769 && (
               <div>
                 {!openNav ? (
                   <button id="signupbtn" type="button" onClick={openNavBar}>
@@ -64,10 +65,10 @@ function HomePageMiddleNav(props) {
             )}
             {openNav && (
               <div className="closefooterbtn">
-                {width < 500 && (
+                {width < 769 && (
                   <IoIosClose
                     className="mouse-point"
-                    size={50}
+                    size={55}
                     style={{
                       color: "#fff",
                       //marginBottom: "5px",
@@ -88,17 +89,17 @@ function HomePageMiddleNav(props) {
                 <button type="button" className="signUpLadybtn">
                   Sign Up as Gentlemen
                 </button>
-                {width > 767 && (
+                {width > 769 && (
                   <IoIosClose
                     className="mouse-point"
-                    size={33}
+                    size={44}
                     style={{ color: "#fff" }}
                     onClick={closeNavBar}
                   />
                 )}
               </div>
             ) : null}
-            {width > 500 && (
+            {width > 769 && (
               <div>
                 {!openNav ? (
                   <button id="signupbtn" type="button" onClick={openNavBar}>

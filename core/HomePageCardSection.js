@@ -1,9 +1,12 @@
+import { urlObjectKeys } from 'next/dist/shared/lib/utils'
 import React from 'react'
+import Card_1 from '../assets/img/Card-1.png'
+import Card_2 from '../assets/img/Card-2.png'
 import FifthBlob from '../assets/svg/Fifth Blob.svg'
 import SixthBlob from '../assets/svg/Sixth Blob.svg'
 function HomePageCardSection() {
   return (
-    <div className='bottom-box-container'>
+    <div className='bottom-box-container mt-5'>
   <div class="bottom-box-card-1" style={{maxWidth:"325px",margin:"20px"}}>
     <div class="card  mb-2 card_1">
       <div class="card-body">
