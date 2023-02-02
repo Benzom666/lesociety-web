@@ -215,14 +215,19 @@
       border-radius: 8px;
       position: relative;
       display: flex;
-      align-items: flex-end;
-      min-height: 65px;
+      align-items: center;
+      min-height: 79px;
       margin-bottom: 12px;
       margin-right: 14px;
       flex: 1;
       min-width: 290px;
+      // span.top-card_tag{
+      //   height: 64px;
+      //   width: 64px;
+      // }
     }
   }
+
 }
 
 @media (min-width: 991px) and (max-width: 1199px) {
