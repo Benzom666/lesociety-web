@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import HeaderLoggedIn from "core/loggedInHeader";
-import NoImage from "assets/img/no-image.png";
 import Image from "next/image";
 import Footer from "core/footer";
-import SubHeading from "@/core/SubHeading";
-import InfiniteScroll from "react-infinite-scroll-component";
-import UserCardList from "@/core/UserCardList";
+import router from "next/router";
 import LocationPopup from "@/core/locationPopup";
 import withAuth from "../../core/withAuth";
 import { apiRequest, countriesCode } from "utils/Utilities";
@@ -15,7 +12,6 @@ import {
 } from "../../modules/auth/forms/steps/validateRealTime";
 import { useDispatch, useSelector } from "react-redux";
 import DatePopup from "core/createDatePopup";
-import router from "next/router";
 import useWindowSize from "utils/useWindowSize";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
@@ -23,7 +19,6 @@ import CustomInput from "Views/CustomInput";
 import { IoIosSend } from "react-icons/io";
 import { useRef } from "react";
 import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
-import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
 import MessageSend from "assets/message_send.png";
@@ -31,6 +26,7 @@ import MessageSend2 from "assets/message_send2.png";
 import LocationModalPopUp from "@/core/locationModalPopUp";
 import classNames from "classnames";
 import { change } from "redux-form";
+import DateAndLocation from "@/modules/location/DateAndLocation";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -38,110 +34,26 @@ export const socket = io("https://staging-api.secrettime.com/", {
 
 function UserList(props) {
   const { width } = useWindowSize();
-  const [dateId, setDateId] = React.useState("");
-  const [dates, setDates] = React.useState([]);
   const [scrollPosition, setScrollPosition] = React.useState(0);
   const [scrollType, setScrollType] = React.useState("down");
   const [classPopup, setPopupClass] = React.useState("hide");
   const [textClass, setTextSlideClass] = React.useState("");
   const [locationPopup, setLocationPoup] = React.useState(false);
   const [selectedLocation, setLocation] = React.useState({});
-  const [page, setPage] = React.useState(1);
-  const [loading, setLoader] = React.useState(true);
-  const [pagination, setPagination] = React.useState("");
+
   const user = useSelector((state) => state.authReducer.user);
-  const country = user?.country && countriesCode[user.country];
   const [modalIsOpen, setIsOpen] = React.useState(user.gender === "female");
   const [receiverData, setReceiverData] = React.useState("");
   const [messageError, setMessageError] = React.useState("");
-  const scrollRef = useRef(null);
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
   const [countries, setCountry] = useState("");
   const dispatch = useDispatch();
-  const [dateLength, setDateLength] = useState(0);
+  const country = user?.country && countriesCode[user.country];
 
   // for current location
   const [currentLocationLoading, setCurrentLocationLoading] = useState(false);
 
-  const [selectedCity, setSelectedCity] = useState("");
-  const [selectedState, setSelectedState] = useState("");
-  const [currentLocation, setCurrentLocation] = useState({});
-
-  const getCoordinates = (city, state) => {
-    // Use Mapbox API to fetch coordinates of selected city and state
-    Mapbox.geocoding.setAccessToken("YOUR_MAPBOX_ACCESS_TOKEN");
-    Mapbox.geocoding.forwardGeocode(
-      {
-        query: city + ", " + state,
-        limit: 1,
-      },
-      (err, data) => {
-        if (err) {
-          console.log(err);
-        } else {
-          setCurrentLocation(data.features[0].center);
-        }
-      }
-    );
-  };
-
-  const getNearbyCities = (coordinates) => {
-    // Use Mapbox API to search for nearby cities within selected state
-    Mapbox.geocoding.setAccessToken("YOUR_MAPBOX_ACCESS_TOKEN");
-    Mapbox.geocoding.reverseGeocode(
-      {
-        query: coordinates,
-        limit: 5,
-        types: "place",
-      },
-      (err, data) => {
-        if (err) {
-          console.log(err);
-        } else {
-          return data.features;
-        }
-      }
-    );
-  };
-
-  const checkDatesAvailability = (nearbyCities) => {
-    for (let i = 0; i < nearbyCities.length; i++) {
-      const city = nearbyCities[i];
-      // Check if the dates for the city are available
-      // If yes, update the current location and fetch the dates for that city
-      axios
-        .get(`your_api_endpoint?city=${city}`)
-        .then((response) => {
-          if (response.data.dates.length > 0) {
-            setCurrentLocation(city);
-            // Fetch the dates for the city
-            fetchDates(city);
-            return;
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    // If no city with available dates is found, show a message to the user
-    alert("No available dates in nearby cities");
-  };
-
-  const fetchDates = (city) => {
-    axios
-      .get(`your_api_endpoint?city=${city}`)
-      .then((response) => {
-        // Update the state variable for the available dates
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    setDateLength(dates?.length);
-  }, [dates]);
   const [notifData, setNotifdata] = useState(null);
 
   const [show, setShow] = useState(false);
@@ -172,6 +84,22 @@ function UserList(props) {
     },
     [!socket.connected]
   );
+
+  useEffect(() => {
+    if (router?.query?.city) {
+      setLocation({
+        city: router?.query?.city,
+        country: router?.query?.country,
+        province: router?.query?.province,
+      });
+    } else {
+      setLocation({
+        city: user.location,
+        country: country,
+        province: user?.province,
+      });
+    }
+  }, [user?.location]);
 
   const fetchNotifications = async () => {
     try {
@@ -242,94 +170,6 @@ function UserList(props) {
       console.log("err", err);
     }
   };
-
-  const lastClickedDate = () => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const fetchDate = async (params) => {
-    try {
-      setLoader(true);
-      const res = await apiRequest({
-        url: "date",
-        params: params,
-      });
-      console.log("res dates of user", res);
-
-      if (res?.data?.data?.pagination?.current_page !== 1) {
-        res?.data?.data?.dates;
-        // .sort(function (a, b) {
-        //   return new Date(b.created_at) - new Date(a.created_at);
-        // });
-        // setTimeout(() => {
-        setDates([...dates, ...res?.data?.data?.dates]);
-        // }, 500);
-      } else {
-        res?.data?.data?.dates;
-        // .sort(function (a, b) {
-        //   return new Date(b.created_at) - new Date(a.created_at);
-        // });
-        setTimeout(() => {
-          setDates(res?.data?.data?.dates);
-        }, 2000);
-      }
-      setPagination(res?.data?.data?.pagination);
-      setTimeout(() => {
-        setLoader(false);
-      }, 2000);
-    } catch (err) {
-      setDates([]);
-      setLoader(false);
-    }
-  };
-
-  useEffect(() => {
-    if (selectedLocation?.city && !show) {
-      const params = {
-        location: selectedLocation?.city,
-        current_page: page,
-        per_page: 10,
-        province: selectedLocation?.province,
-      };
-      if (selectedLocation?.stateName && selectedLocation?.countryName) {
-        nearByCities();
-      }
-
-      fetchDate(params);
-    }
-  }, [selectedLocation, show]);
-
-  const nearByCities = async () => {
-    const cities = await fetchCities(
-      selectedLocation?.stateName,
-      selectedLocation?.countryName
-    );
-    console.log("cities", cities);
-  };
-
-  useEffect(() => {
-    if (router?.query?.city) {
-      setLocation({
-        city: router?.query?.city,
-        country: router?.query?.country,
-        province: router?.query?.province,
-      });
-    } else {
-      setLocation({
-        city: user.location,
-        country: country,
-        province: user?.province,
-      });
-    }
-  }, [user?.location]);
 
   const closePopup = () => {
     setPopupClass("hide");
@@ -424,19 +264,6 @@ function UserList(props) {
     }
   });
 
-  const nextPage = () => {
-    setTimeout(() => {
-      const params = {
-        location: selectedLocation?.city,
-        province: selectedLocation?.province,
-        current_page: page + 1,
-        per_page: 10,
-      };
-      setPage(page + 1);
-      fetchDate(params);
-    }, 500);
-  };
-
   const handleScroll = () => {
     const position = window.pageYOffset;
     if (scrollPosition > position) {
@@ -463,7 +290,6 @@ function UserList(props) {
 
   const handleFectchCurrentLocation = () => {
     setCurrentLocationLoading(true);
-    console.log("handleFectchCurrentLocation called");
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         if (
@@ -476,7 +302,6 @@ function UserList(props) {
             countries
           );
           const location = locations[0];
-          console.log("location handleFectchCurrentLocation", location);
           setLocation({
             city: location.name,
             country: location?.country[0]?.short_code,
@@ -595,118 +420,18 @@ function UserList(props) {
                     </div>
                   </div>
                 </div>
-                <InfiniteScroll
-                  // scrollableTarget="infiniteScroll"
-                  dataLength={dateLength}
-                  next={() => {
-                    nextPage();
-                  }}
-                  scrollThreshold={0.5}
-                  hasMore={!loading && pagination?.total_pages !== page}
-                  style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
-                >
-                  <div className="row">
-                    {currentLocationLoading || (loading && dates.length === 0)
-                      ? [1, 2, 3, 4, 5, 6].map((n) => (
-                          <div className={`col-xl-6 col-lg-12`}>
-                            <SkeletonDate key={n} theme="dark" />
-                          </div>
-                        ))
-                      : dates.length > 0 &&
-                        dates.filter((item) => item?.date_status === true)
-                          ?.length > 0
-                      ? dates
-                          .filter((item) => item?.date_status === true)
-                          .map((item, index) => (
-                            <div
-                              className={`col-xl-6 col-lg-12 ${
-                                (width > 767 && (index === 2 || index === 3)) ||
-                                index === 0 ||
-                                index === 1
-                                  ? "scrollActive"
-                                  : ""
-                              }`}
-                              id={`scrolldiv`}
-                              key={index}
-                              onClick={() => {
-                                // if (index === dates?.length - 1) {
-                                lastClickedDate();
-                                // }
-                              }}
-                            >
-                              {width > 767 ? (
-                                <UserCardList
-                                  setDateId={setDateId}
-                                  date={item}
-                                  cardId={`grow-${index}`}
-                                  openPopup={() => {
-                                    openPopup(item);
-                                  }}
-                                  closePopup={closePopup}
-                                  dateId={dateId}
-                                  isDesktopView={true}
-                                  key={index}
-                                  ref={scrollRef}
-                                  loading={loading}
-                                  setLoader={setLoader}
-                                  receiverData={receiverData}
-                                  alreadyMessagedFromUser={
-                                    alreadyMessagedFromUser
-                                  }
-                                  setAlreadyMessagedFromUser={
-                                    setAlreadyMessagedFromUser
-                                  }
-                                />
-                              ) : (
-                                <UserCardList
-                                  setDateId={setDateId}
-                                  date={item}
-                                  cardId={`grow-${index}`}
-                                  openPopup={() => {
-                                    openPopup(item);
-                                  }}
-                                  setLoader={setLoader}
-                                  closePopup={closePopup}
-                                  growDiv={growDiv}
-                                  dateId={dateId}
-                                  key={index}
-                                  ref={scrollRef}
-                                  loading={loading}
-                                  receiverData={receiverData}
-                                  alreadyMessagedFromUser={
-                                    alreadyMessagedFromUser
-                                  }
-                                  setAlreadyMessagedFromUser={
-                                    setAlreadyMessagedFromUser
-                                  }
-                                />
-                              )}
-                            </div>
-                          ))
-                      : !loading && (
-                          <div className="no-message-card-date">
-                            <figure>
-                              <Image
-                                src={NoImage}
-                                alt="NoImage"
-                                width={205}
-                                height={140}
-                              />
-                            </figure>
-                            <h6>
-                              Sorry, no dates found for the selected location
-                            </h6>
-                            <SubHeading title="Find a date by changing the location!" />
-                          </div>
-                        )}
-                    {loading &&
-                      [1, 2, 3, 4, 5, 6].map((n) => (
-                        <div className={`col-xl-6 col-lg-12`}>
-                          <SkeletonDate key={n} theme="dark" />
-                        </div>
-                      ))}
-                  </div>
-                </InfiniteScroll>
+                <DateAndLocation
+                  currentLocationLoading={currentLocationLoading}
+                  selectedLocation={selectedLocation}
+                  show={show}
+                  openPopup={openPopup}
+                  closePopup={closePopup}
+                  receiverData={receiverData}
+                  alreadyMessagedFromUser={alreadyMessagedFromUser}
+                  setAlreadyMessagedFromUser={setAlreadyMessagedFromUser}
+                  setLocation={setLocation}
+                  growDiv={growDiv}
+                />
               </div>
               {width > 767 && (
                 <div className="col-md-2">

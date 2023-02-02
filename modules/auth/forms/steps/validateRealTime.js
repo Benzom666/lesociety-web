@@ -152,54 +152,43 @@ export const fetchCities = async (state, country) => {
   try {
     const res = await axios({
       method: "GET",
-      // url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${state2}.json?types=place%2Cpostcode%2Caddress&limit=100&access_token=${process.env.MAPBOX_TOKEN}`,
-      url: `https://api.mapbox.com/geocoding/v5/mapbox.places/Maharashtra,India.json?types=region&access_token=${process.env.MAPBOX_TOKEN}`,
+      url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${country},${state}.json?types=place%2Cpostcode%2Caddress&limit=100&access_token=${process.env.MAPBOX_TOKEN}`,
+      params: {
+        country: "IN" || undefined,
+      },
 
-      // params: {
-      //   country: country || undefined,
-      // },
+      // url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${state2}.json?types=place%2Cpostcode%2Caddress&limit=100&access_token=${process.env.MAPBOX_TOKEN}`,
+      // url: `https://api.mapbox.com/geocoding/v5/mapbox.places/pune.json?types=place&limit=100&country=IN&region=maharashtra&access_token=${process.env.MAPBOX_TOKEN}`,
+      // url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${country},${state}.json?types=region&limit=100&access_token=${process.env.MAPBOX_TOKEN}`,
+      url: `https://api.mapbox.com/geocoding/v5/mapbox.places/d.json?types=region&country=us&limit=10&access_token=${process.env.MAPBOX_TOKEN}`,
     });
-    console.log(
-      "res fetchCities",
-      res.data.features.length > 0 && res?.data["features"][0]["bbox"]
-    );
+    console.log("res fetchCities", res);
 
     if (res.data.features.length > 0) {
-      const bounds = res?.data["features"][0]["bbox"];
-      const city = "Mumbai";
-      const res2 = await axios({
-        method: "GET",
-        url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${city},${state},${country}.json?types=cities&limit=100&access_token=${process.env.MAPBOX_TOKEN}&bbox=${bounds}`,
+      const places = res.data.features.map((place) => {
+        return {
+          name: place.place_type?.includes("address")
+            ? place.context.find((item) => item.id.includes("place"))?.text
+            : place.text,
+          country: place.context.filter((item) => item.id.includes("country")),
+          label: place.place_type?.includes("address")
+            ? place.context.find((item) => item.id.includes("place"))?.text
+            : place.text,
+          province: place.place_type?.includes("region")
+            ? [
+                {
+                  id: "region",
+                  short_code: place?.properties?.short_code,
+                  text: place.text,
+                },
+              ]
+            : place.context.filter((item) => item.id.includes("region")),
+        };
       });
-
-      console.log("res 2", res2);
+      return places;
+    } else {
+      return false;
     }
-
-    // if (res.data.features.length > 0) {
-    //   const places = res.data.features.map((place) => {
-    //     return {
-    //       name: place.place_type?.includes("address")
-    //         ? place.context.find((item) => item.id.includes("place"))?.text
-    //         : place.text,
-    //       country: place.context.filter((item) => item.id.includes("country")),
-    //       label: place.place_type?.includes("address")
-    //         ? place.context.find((item) => item.id.includes("place"))?.text
-    //         : place.text,
-    //       province: place.place_type?.includes("region")
-    //         ? [
-    //             {
-    //               id: "region",
-    //               short_code: place?.properties?.short_code,
-    //               text: place.text,
-    //             },
-    //           ]
-    //         : place.context.filter((item) => item.id.includes("region")),
-    //     };
-    //   });
-    //   return places;
-    // } else {
-    //   return false;
-    // }
     // return res.data.features;
   } catch (e) {
     console.log(e);
