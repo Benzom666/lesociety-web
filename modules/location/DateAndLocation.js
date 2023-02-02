@@ -44,7 +44,8 @@ function DateAndLocation({
       const citiesData = City.getCitiesOfState(
         (selectedLocation?.country || user?.country_code)?.toUpperCase(),
         (selectedLocation?.province || user?.province)?.toUpperCase()
-      ).filter((city) => city.name === "New Delhi");
+      );
+      // .filter((city) => city.name === "Pune");
 
       setCities(citiesData);
     };
@@ -55,39 +56,33 @@ function DateAndLocation({
 
   console.log("cities", cities);
 
-  useEffect(() => {
-    if (cities.length > 0) {
-      checkDatesAvailability(cities);
-    }
-  }, [cities]);
+  // useEffect(() => {
+  //   if (cities.length > 0) {
+  //     checkDatesAvailability(cities);
+  //   }
+  // }, [cities]);
 
   const checkDatesAvailability = (nearbyCities) => {
-    for (let i = 0; i < 2; i++) {
-      const city = nearbyCities[i];
-      setTimeout(() => {
-        const params = {
-          location: nearbyCities[i]?.name,
-          province: nearbyCities[i]?.stateCode,
-          current_page: 1,
-          per_page: 10,
-        };
+    for (let i = 0; i < nearbyCities.length; i++) {
+      if (nearbyCities.length > i) {
+        const city = nearbyCities[0];
+        setTimeout(() => {
+          const params = {
+            // location: nearbyCities[i]?.name,
+            province: nearbyCities[i]?.stateCode.toUpperCase(),
+            current_page: 1,
+            per_page: 10,
+            sort: "location",
+          };
 
-        fetchDate(params);
-      }, 10000);
+          fetchDate(params);
+        }, 10000);
+      }
     }
+    //api should call after only when get response from previous api and if get 200 then stop
+
     // If no city with available dates is found, show a message to the user
     // alert("No available dates in nearby cities");
-  };
-
-  const fetchDates = (city) => {
-    axios
-      .get(`your_api_endpoint?city=${city}`)
-      .then((response) => {
-        // Update the state variable for the available dates
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   useEffect(() => {
@@ -97,7 +92,8 @@ function DateAndLocation({
   const nextPage = () => {
     setTimeout(() => {
       const params = {
-        location: selectedLocation?.city,
+        sort: "location",
+        // location: selectedLocation?.city,
         province: selectedLocation?.province,
         current_page: page + 1,
         per_page: 10,
@@ -150,26 +146,16 @@ function DateAndLocation({
   useEffect(() => {
     if (selectedLocation?.city && !show) {
       const params = {
-        location: selectedLocation?.city,
+        // location: selectedLocation?.city,
+        sort: "location",
+        province: selectedLocation?.province,
         current_page: page,
         per_page: 10,
-        province: selectedLocation?.province,
       };
-      //   if (selectedLocation?.stateName && selectedLocation?.countryName) {
-      //     nearByCities();
-      //   }
 
       fetchDate(params);
     }
   }, [selectedLocation, show]);
-
-  const nearByCities = async () => {
-    const cities = await fetchCities(
-      selectedLocation?.stateName,
-      selectedLocation?.countryName
-    );
-    console.log("cities", cities);
-  };
 
   return (
     <InfiniteScroll
