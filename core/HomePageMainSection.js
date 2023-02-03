@@ -16,10 +16,10 @@ function HomePageMainSection(props) {
             <h5>{title}</h5>
           </div>
         </div>}
-        <div class="col-lg-4 col-sm-12 main-card-side-wraper" style={{textAlign:"center"}}>
+        <div class="col-lg-4 col-sm-12 main-card-side-wraper">
           <div className='main-card'>
             <div className='main-card-side-wraper-1'>
-              {<img src={maincardImage.src}  alt="main-img" style={{height:"35rem"}}/>}
+              {<img src={maincardImage.src}  alt="main-img" style={{height:"45rem"}}/>}
             </div>
           </div>
         </div>

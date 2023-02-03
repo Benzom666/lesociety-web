@@ -10,7 +10,7 @@ export default function Footer(props) {
     console.log(props)
   return (
     <footer className='d-flex home-footer-main'style={props.styleBackground}>
-        <div className="container-fluid">
+        <div className="container">
           <div className="d-flex justify-content-between align-items-center mx-0 home-footer">
             <div className='ls-logo-footer'>
                <div className='ls-logo mb-0' style={{margin:"auto"}}>

@@ -40,13 +40,13 @@ function HowItWork() {
         </div>
       </nav>
       <HowitWorkCardComponent/>
-      {width > 500 ? <HomePageMiddleNav styleText={style2} /> : null}
+      {/* {width > 500 ? <HomePageMiddleNav styleText={style2} /> : null} */}
       <div className='container-2 mb-5'>
         <div className=' col-xl-12 col-lg-12 col-md-12 container-2-title'>
           <h3 className='heading'>Date Experiences you can enjoy</h3>
           <p className='sub-heading'>Ladies, you can choose a date category while the men can select their preferred specifics of the date experience, with both parties agreeing on something fun and exciting to do within the man’s budget.</p>
         </div>
-      <div className='row'>
+      <div className='row howitwork-main-card-image-section'>
       {
         contentObject.map((e,index)=>{
           return (
