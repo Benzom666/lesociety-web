@@ -138,7 +138,7 @@ function sideBarPopup({ isOpen, toggle }) {
                       />
                     ) : (
                       <BiTime
-                        color={"white"}
+                        color={"grey"}
                         size={25}
                         style={{ paddingLeft: "5px" }}
                       />

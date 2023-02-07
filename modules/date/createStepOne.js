@@ -32,7 +32,7 @@ const CreateStepOne = (props) => {
     <>
       <div className="inner_container">
         <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-0">
-          <a onClick={previousPage}>
+          <a onClick={previousPage} href="/create-date/choose-city">
             <svg 
             xmlns="http://www.w3.org/2000/svg" 
             width="24" height="24"

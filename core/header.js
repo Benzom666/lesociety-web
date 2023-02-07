@@ -15,7 +15,7 @@ export default function Header(props) {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-4">
-            <div className="logo">
+            <div className="logo" style={{cursor:"pointer"}}>
               <Link href="/auth/login">
                 <img src="/images/logo.svg" width="159" alt="Logo" />
               </Link>

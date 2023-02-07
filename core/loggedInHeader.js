@@ -128,7 +128,7 @@ export default function HeaderLoggedIn({
                     src="/images/logo.svg"
                     width="159"
                     alt="Logo"
-                    className="d-none d-md-block"
+                    className="d-none d-md-block cursor-pointer"
                   />
                 </Link>
               </>
