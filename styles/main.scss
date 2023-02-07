@@ -1971,7 +1971,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         &:before {
           position: absolute;
           left: calc(100% - 50%);
-          top: calc(50% - 1px);
+          top: calc(50% - 0px);
           content: "";
           background-color: #d8d8d8;
           width: 100%;
