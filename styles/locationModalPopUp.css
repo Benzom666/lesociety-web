@@ -64,6 +64,10 @@
   text-align: center;
   text-transform: capitalize;
   margin-bottom: 0.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 500px) {

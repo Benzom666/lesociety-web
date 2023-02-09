@@ -96,8 +96,12 @@ function Modal({ currentLocationLoading, show, ...props }) {
           >
             {currentLocationLoading ? (
               <span className="spin-loader"></span>
-            ) : null}
-            Search nearby <FiArrowRight size={20} />
+            ) : (
+              <>
+                {" "}
+                Search nearby <FiArrowRight size={20} />
+              </>
+            )}
           </button>
         </div>
       </div>

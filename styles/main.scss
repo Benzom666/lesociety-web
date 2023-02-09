@@ -5742,3 +5742,10 @@ path {
 .overflow-hidden {
   overflow: hidden !important;
 }
+
+.footer-btn .spin-loader {
+  position: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -30,6 +30,16 @@ function LocationPopup({
   const [todo, setTodo] = useState([]);
   const user = useSelector((state) => state?.authReducer?.user);
 
+  useEffect(() => {
+    if (modalIsOpen) {
+      // stop scrolling page
+      document.body.style.overflow = "hidden";
+    } else {
+      // allow scrolling page
+      document.body.style.overflow = "unset";
+    }
+  }, [modalIsOpen]);
+
   const handleFetchLocation = async (cities) => {
     const alreadyInList = todo.find((item) =>
       item.data?.name?.toLowerCase()?.includes(cities?.toLowerCase())

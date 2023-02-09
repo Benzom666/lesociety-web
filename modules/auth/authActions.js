@@ -7,6 +7,7 @@ import {
   SIGNUP3,
   SIGNUP4,
   LOGIN,
+  CHANGE_SELECTED_LOCATION_POPUP,
 } from "./actionConstants";
 
 import { reset } from "redux-form";
@@ -23,6 +24,13 @@ export const authenticateAction = (user) => {
 export const deAuthenticateAction = () => {
   return {
     type: DEAUTHENTICATE,
+  };
+};
+
+export const changeSelectedLocationPopup = (payload) => {
+  return {
+    type: CHANGE_SELECTED_LOCATION_POPUP,
+    payload,
   };
 };
 
