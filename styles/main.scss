@@ -314,6 +314,7 @@ $GradientColor-second: rgba(#191919, 0.8);
               background-color: #151515;
               color: #4e4d52;
               padding-left: 45px;
+              padding-top: 20px;
               position: relative;
 
               &:before {
@@ -4362,7 +4363,7 @@ body .verification_card_header {
   font-weight: 300;
   // margin-left: 30px;
   margin-top: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 1.5rem;
 
   span {
     font-weight: bold;

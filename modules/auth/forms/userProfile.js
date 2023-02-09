@@ -1066,7 +1066,7 @@ function UserProfile({ preview, editHandle }) {
                                       user.max_education}
                                   </h5>
                                 )}
-                                <p>Education Completed </p>
+                                <p>Education </p>
                               </div>
                             </div>
                             <div className="about_me_card_inner">

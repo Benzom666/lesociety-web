@@ -122,7 +122,7 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
-      {width > 425 ? <HeaderLoggedIn /> : <VerifiedProfileMobileHeader />}
+      {width > 450 ? <HeaderLoggedIn /> : <VerifiedProfileMobileHeader />}
       <div className="inner-part-page">
         <div
           //className="d-flex justify-content-center"
@@ -142,7 +142,7 @@ const VerifiedProfilePage = (props) => {
                 <Form>
                   <div className="top-head mt-5 mb-3 text-center w-100 document-verfied">
                     <p></p>
-                    {width > 425 ? (
+                    {width > 450 ? (
                       <>
                         {" "}
                         <h2
@@ -227,7 +227,7 @@ const VerifiedProfilePage = (props) => {
 
                       <div
                         className={
-                          width > 425
+                          width > 450
                             ? "verified-upload-btn"
                             : "verified-upload-btn-1"
                         }
@@ -271,7 +271,7 @@ const VerifiedProfilePage = (props) => {
                       />
                       <div
                         className={
-                          width > 425
+                          width > 450
                             ? "verified-upload-btn"
                             : "verified-upload-btn-1"
                         }
@@ -321,7 +321,7 @@ const VerifiedProfilePage = (props) => {
                       </div>
                     </div>
                   </div>
-                  {width > 425 ? (
+                  {width > 450 ? (
                     <p
                       style={{
                         textAlign: "center",

@@ -11,7 +11,7 @@ export default function Footer(props) {
   return (
     <footer className='d-flex home-footer-main'style={props.styleBackground}>
         <div className="container-fluid">
-          <div className="d-flex justify-content-between align-items-center mx-4 home-footer">
+          <div className="d-flex justify-content-between align-items-center mx-0 home-footer">
             <div className='ls-logo-footer'>
                <div className='ls-logo mb-0' style={{margin:"auto"}}>
                   <Image src={LeSlogoWhite} alt="ls-logo-footer" sizes={20}/>

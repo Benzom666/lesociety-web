@@ -39,8 +39,8 @@ const education = [
     name: "In university",
   },
   {
-    id: "Undergraduate degree",
-    name: "Undergraduate degree",
+    id: "Undergraduate",
+    name: "Undergraduate",
   },
 ];
 
@@ -57,67 +57,123 @@ const smoker = [
 
 let occupation = [
   {
-    id: "Administrat/Secretar",
-    name: "Administrat/Secretar",
+    id: "Entrepreneur",
+    name: "Entrepreneur",
+  },
+  {
+    id: "Public Figure",
+    name: "Public Figure",
+  },
+  {
+    id: "Influencer",
+    name: "Influencer",
+  },
+  {
+    id: "Model",
+    name: "Model",
+  },
+  {
+    id: "Artist",
+    name: "Artist",
   },
   {
     id: "Student",
     name: "Student",
   },
   {
-    id: "Food services",
-    name: "Food services",
-  },
-  {
-    id: "Executive management",
-    name: "Executive management",
-  },
-  {
-    id: "Medical/Dental",
-    name: "Medical/Dental",
-  },
-  {
-    id: "Teacher/Professor",
-    name: "Teacher/Professor",
-  },
-  {
-    id: "Finance",
-    name: "Finance",
+    id: "Medical",
+    name: "Medical",
   },
 ];
 
 const loadMoreOptions = [
   {
+    id: "Business",
+    name: "Business",
+  },
+  {
+    id: "Sales",
+    name: "Sales",
+  },
+  {
+    id: "Finance",
+    name: "Finance",
+  },
+  {
+    id: "Designer",
+    name: "Designer",
+  },
+  {
+    id: "Medical",
+    name: "Medical",
+  },
+  {
     id: "Legal",
     name: "Legal",
   },
   {
-    id: "Labor/Contractor",
-    name: "Labor/Contractor",
+    id: "Teacher",
+    name: "Teacher",
   },
   {
-    id: "Transportation",
-    name: "Transportation",
+    id: "Professor",
+    name: "Professor",
   },
   {
-    id: "Political/Government",
-    name: "Political/Government",
+    id: "Marketing",
+    name: "Marketing",
   },
   {
-    id: "Retired",
-    name: "Retired",
+    id: "Dental",
+    name: "Dental",
   },
   {
-    id: "Sales & Marketing",
-    name: "Sales & Marketing",
+    id: "Engineer",
+    name: "Engineer",
   },
   {
-    id: "Self Employed",
-    name: "Self Employed",
+    id: "Political",
+    name: "Political",
   },
   {
-    id: "Science/Engineering",
-    name: "Science/Engineering",
+    id: "Government",
+    name: "Government",
+  },
+  {
+    id: "Social Worker",
+    name: "Social Worker",
+  },
+  {
+    id: "Freelancer",
+    name: "Freelancer",
+  },
+  {
+    id: "Administrator",
+    name: "Administrator",
+  },
+  {
+    id: "Secretary",
+    name: "Secretary",
+  },
+  {
+    id: "Labor",
+    name: "Labor",
+  },
+  {
+    id: "Contractor",
+    name: "Contractor",
+  },
+  {
+    id: "Transport",
+    name: "Transport",
+  },
+  {
+    id: "Science",
+    name: "Science",
+  },
+  {
+    id: "Service",
+    name: "Service",
   },
 ];
 
