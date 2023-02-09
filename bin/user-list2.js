@@ -4,12 +4,12 @@ import Image from "next/image";
 import Footer from "core/footer";
 import router from "next/router";
 import LocationPopup from "@/core/locationPopup";
-import withAuth from "../../core/withAuth";
+import withAuth from "../core/withAuth";
 import { apiRequest, countriesCode } from "utils/Utilities";
 import {
   fetchCities,
   fetchLiveLocation,
-} from "../../modules/auth/forms/steps/validateRealTime";
+} from "../modules/auth/forms/steps/validateRealTime";
 import { useDispatch, useSelector } from "react-redux";
 import DatePopup from "core/createDatePopup";
 import useWindowSize from "utils/useWindowSize";
