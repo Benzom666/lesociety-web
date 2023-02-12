@@ -322,14 +322,17 @@ const VerifiedProfilePage = (props) => {
                     </div>
                   </div>
                   {width > 450 ? (
-                    <p
-                      style={{
+                 <Link href="/user/user-list">
+                 <p 
+                       style={{
                         textAlign: "center",
                         textDecorationLine: "underline",
+                        cursor:"pointer"
                       }}
                     >
                       Maybe Later
                     </p>
+                 </Link>   
                   ) : null}
                 </Form>
               );

@@ -1,5 +1,6 @@
 $GradientColor-first: rgba(#2e313a, 0.8);
 $GradientColor-second: rgba(#191919, 0.8);
+
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
   html,
   body {
@@ -960,6 +961,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           //   color: red;
           // }
         }
+
         .resend-mail-text-active {
           font-family: Helvetica;
           font-style: normal;
@@ -984,6 +986,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         .resend-mail-text:hover {
           color: #f24462 !important;
         }
+
         // .resend-mail-text::selection {
         //   color: #f24462 !important;
         // }
@@ -1400,6 +1403,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       font-style: normal;
       font-size: 18px;
       margin-right: 5px;
+      cursor: pointer;
     }
 
     select {
@@ -1970,7 +1974,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         &:before {
           position: absolute;
           left: calc(100% - 50%);
-          top: calc(50% - 1px);
+          top: calc(50% - 0px);
           content: "";
           background-color: #d8d8d8;
           width: 100%;
@@ -2616,6 +2620,7 @@ div[id="scrolldiv"] {
   .user-card-sidebar {
     //margin-top: 30px;
     padding: 30px 30px;
+
     figure {
       margin-right: 15px;
 
@@ -2929,6 +2934,7 @@ body {
               font-size: 20px;
               //word-break: break-all;
             }
+
             .administrat-font-1 {
               font-size: 12px;
               //word-break: break-all;
@@ -2941,6 +2947,7 @@ body {
                 font-size: 20px;
               }
             }
+
             .education-font-1 {
               font-size: 12px;
             }
@@ -3065,6 +3072,7 @@ body .verification_card_header {
     display: flex;
     //flex-wrap: wrap;
   }
+
   // .available-dates-box::-webkit-scrollbar{
   //   display: none;
   // }
@@ -3107,6 +3115,7 @@ body .verification_card_header {
         align-items: center;
         margin-bottom: 2px;
         margin-left: 6px;
+
         span.icon_wrap {
           width: 45px;
           height: 45px;
@@ -3172,6 +3181,7 @@ body .verification_card_header {
       display: flex;
       align-items: center;
       background: #464646;
+      //background-image: url('../assets/img/TopCardBadge.png');
       justify-content: center;
       font-size: 1rem;
       font-weight: 600;
@@ -3186,8 +3196,8 @@ body .verification_card_header {
         width: calc(100% - 0px);
         left: 0px;
         content: "";
-        border-left: 27px solid transparent;
-        border-right: 27px solid transparent;
+        border-left: 25px solid transparent;
+        border-right: 23px solid transparent;
         border-top: 13px solid #464646;
       }
 
@@ -3241,6 +3251,10 @@ body .verification_card_header {
         }
       }
     }
+  }
+  .availabe_card_inner:hover {
+    cursor: pointer;
+    border: 0.5px solid #fff;
   }
 }
 
@@ -3355,18 +3369,26 @@ body .verification_card_header {
             bottom: 30px;
             z-index: 999;
             left: calc(50% - 40%);
-            height: 84px;
+            height: 72px;
             width: 76%;
-            padding: 20px 10px;
+            padding: 16px 10px;
             border-radius: 13px;
             background: radial-gradient(
               104.09% 104.09% at 4.13% 2.42%,
               rgba(0, 0, 0, 0.4) 0%,
               rgba(0, 0, 0, 0) 100%
             );
+            border-width: 0.7px;
+            border-style: solid;
+            border-image: radial-gradient(
+              87.95% 87.95% at 50% 50%,
+              #ffffff 0%,
+              rgba(0, 0, 0, 0) 100%
+            );
             backdrop-filter: blur(21px);
+            font-family: "Helvetica";
             font-size: 18px;
-            font-weight: 300;
+            font-weight: 100;
             line-height: 21px;
           }
         }
@@ -4032,6 +4054,7 @@ body .verification_card_header {
                 font-size: 11px;
                 color: rgba($color: $white-color, $alpha: 0.4);
               }
+
               .message_time_send {
                 position: absolute;
                 bottom: 100%;
@@ -4173,6 +4196,7 @@ body .verification_card_header {
     justify-content: center;
     display: flex;
     align-items: flex-start;
+
     input.show {
       -webkit-animation: inputTextSlide 2s linear;
       /* Safari */
@@ -4939,6 +4963,7 @@ body .verification_card_header {
   0% {
     background-color: hsl(0, 0%, 15%);
   }
+
   100% {
     background-color: hsl(0, 0%, 9%);
   }
@@ -4988,7 +5013,7 @@ path {
   border-radius: 12px;
   padding: 10px;
   background: #151515;
-  border: 1px dashed #dddddd;
+  border: 2px dashed #dddddd;
   border-radius: 15px;
   margin-top: 20px;
   cursor: pointer;
@@ -5008,7 +5033,7 @@ path {
   border-radius: 12px;
   padding: 10px;
   background: #151515;
-  border: 1px dashed #dddddd;
+  border: 2px dashed #dddddd;
   border-radius: 15px;
   margin-top: 13px;
   cursor: pointer;
@@ -5022,6 +5047,7 @@ path {
     margin-top: 2px;
   }
 }
+
 .verifieed-upload-active {
   width: 100%;
   border-radius: 12px;
@@ -5031,6 +5057,7 @@ path {
   border-radius: 15px;
   margin-top: 20px;
   cursor: pointer;
+
   p {
     font-weight: 400;
     font-size: 13px;
@@ -5508,6 +5535,7 @@ path {
 .modal-open-1 {
   background: rgba(25, 27, 31, 0.72) !important;
 }
+
 .modal-open {
   background: black;
 }
@@ -5547,9 +5575,11 @@ path {
   width: 100%;
   height: 100%;
 }
+
 .full {
   transition: opacity 400ms ease 0ms;
 }
+
 .thumb {
   filter: blur(25px);
   transform: scale(1.1);
@@ -5607,6 +5637,7 @@ path {
     margin: 0px;
     left: 50%;
   }
+
   .overlay .closebtn {
     font-size: 40px;
     top: 10px;
@@ -5618,6 +5649,7 @@ path {
   .overlay a {
     font-size: 20px;
   }
+
   .overlay .closebtn {
     font-size: 40px;
     top: 15px;
@@ -5637,6 +5669,7 @@ path {
 .message-create-date a {
   border: none !important;
 }
+
 // Notifications
 // styling
 
@@ -5645,6 +5678,7 @@ path {
   margin: 0 auto;
   padding: 0 40px;
   background-color: #262629;
+
   // height: 100vh;
   .main-header {
     padding: 30px 0;
@@ -5657,6 +5691,7 @@ path {
       font-weight: 500;
     }
   }
+
   .notif-items {
     display: flex;
     flex-direction: column;
@@ -5664,14 +5699,17 @@ path {
     border-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #3b3737;
+
     .notif-time {
       display: flex;
       justify-content: space-between;
+
       .timing {
         font-size: 16px;
         color: darkgray;
       }
     }
+
     .edit-btn {
       border: none;
       background: transparent;
@@ -5680,31 +5718,38 @@ path {
       border-style: solid;
       border-width: 0 0 1px;
     }
+
     .title {
       font-size: 25px;
       color: darkgray;
       padding-bottom: 20px;
     }
+
     .actions {
       font-size: 20px;
       padding-bottom: 10px;
     }
+
     .msg {
       font-size: 16px;
       padding-bottom: 6px;
     }
   }
+
   .notif-items:last-child {
     border-bottom-width: 0;
   }
+
   .no-notif {
     font-size: 20px;
     padding: 40px 0;
   }
 }
+
 .no-notifWrap {
   height: 100vh;
 }
+
 @media screen and (max-width: 480px) {
   .notification-wrapper {
     max-width: 100%;

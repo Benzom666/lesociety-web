@@ -21,9 +21,11 @@
     .container-1 {
         display: flex;
         flex-direction: column;
-        margin-left: 5rem;
-        margin-right: 5rem;
-        margin-bottom: 4rem;
+        // margin-left: 5rem;
+        // margin-right: 5rem;
+        // margin-bottom: 4rem;
+        width: 812px;
+        margin: auto;
     }
 
     .myCard {
@@ -45,7 +47,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            width: 100%;
+            width: 365px;
             margin-left: 2rem;
         }
     }
@@ -94,7 +96,7 @@
             letter-spacing: normal;
             text-align: center;
             color: #1a415c;
-            padding: 0px 45px;
+            padding: 15px 45px;
             text-transform: capitalize;
         }
 
@@ -112,14 +114,15 @@
     }
 
     .container-2 {
-        margin-left: 30%;
-        margin-right: 30%;
-
+        margin-left: 25%;
+        margin-right: 25%;
+        //min-width: 812px;
         .container-2-title {
             padding: 5px 56px;
             margin: 10px 20px;
 
             .heading {
+                width: 523px;
                 font-size: 40px;
                 font-weight: bold;
                 font-stretch: normal;
@@ -132,8 +135,9 @@
             }
 
             .sub-heading {
+                width: 568px;
                 font-size: 18px;
-                font-family:'Montserrat' ;
+                font-family: 'Montserrat';
                 font-weight: normal;
                 font-stretch: normal;
                 font-style: normal;
@@ -142,11 +146,15 @@
                 text-align: center;
                 color: #3a5e77;
                 // margin: 10px 0px 25px 0px;
-                 padding:20px 10px;
+                padding: 20px 10px;
             }
         }
-
+.howitwork-main-card-image-section{
+    width: 812px;
+    //margin: auto;
+}
         .myCard-3 {
+            height: 238px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -157,7 +165,7 @@
         }
 
         .howitWork-heading {
-            padding: 8px 5px;
+            padding: 8px 71px;
             font-size: 20px;
             font-weight: bold;
             font-stretch: normal;
@@ -179,7 +187,7 @@
             letter-spacing: 0px;
             text-align: center;
             color: #3a5e77;
-            padding: 5px 13px;
+            padding: 5px 36px;
         }
 
         .The-future-of-Le-Society {
@@ -192,7 +200,7 @@
             text-align: center;
             color: #1a415c;
             text-transform: uppercase;
-            padding: 20px 22px;
+            padding: 20px 65px;
             margin-bottom: 8px;
         }
 
@@ -204,6 +212,7 @@
             border: #f24462;
             margin-left: 25%;
             margin-right: 25%;
+            padding: 2px 35px;
         }
 
         .In-App-Payment-GPS-Tracking-and-more {
@@ -221,17 +230,32 @@
     }
 }
 
-@media only screen and (max-width:480px) {
+// @media only screen and (max-width:370px) {
+//     .ls-text{
+//         p{
+//             letter-spacing: 0.2px !important;
+//         }
+//     }
+// }
+
+@media only screen and (max-width:769px) and (min-width:500px) {
     .how-it-works {
+        overflow-x: hidden;
+
         .container-1 {
             margin-left: 0;
             margin-right: 0;
 
             .myCard {
                 flex-direction: column;
-                .textContent{
+                width: 365px;
+                margin: auto;
+                margin-top: 2rem;
+
+                .textContent {
                     padding: 20px 0px;
                 }
+
                 .myCard-1 {
                     display: flex;
                     flex-direction: column;
@@ -262,8 +286,108 @@
                 flex-direction: column;
 
                 .myCard-1 {
-                    margin-left: 0;
-                    margin-top: 1rem;
+                    // margin-left: 0;
+                    // margin-top: 1rem;
+                    // margin: auto;
+                }
+            }
+        }
+
+        .container-2 {
+            margin-left: 10%;
+            margin-right: 10%;
+
+            .container-2-title {
+                margin: 5px 0;
+                padding: 10px 0px;
+
+                .heading {
+                    font-size: 20px;
+                    padding: 25px 112px;
+                    letter-spacing: 3.2px;
+                }
+
+                .sub-heading {
+                    font-size: 16px;
+                    padding: 5px 8px;
+                }
+            }
+            .howitwork-main-card-image-section{
+                width: 100%;
+                margin: auto;
+            }
+            .howitWork-heading {
+                letter-spacing: 3.2px;
+            }
+
+            .howitWork-content {
+                padding: 5px 43px;
+            }
+
+            .The-future-of-Le-Society {
+                padding: 12px 50px;
+            }
+
+            .Rectangle-1 {
+                margin: 0% 30%;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width:500px) {
+    .how-it-works {
+        overflow-x: hidden;
+
+        .container-1 {
+            // margin-left: 0;
+            // margin-right: 0;
+             width: 365px !important;
+            // margin: auto;
+            .myCard {
+                flex-direction: column;
+                 width: 100%;
+                margin: auto;
+                margin-top: 2rem;
+
+                .textContent {
+                    padding: 20px 0px;
+                }
+
+                .myCard-1 {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+
+                }
+
+                .textContent {
+                    .sub-heading {
+                        font-size: 16px;
+                        margin-top: 10px;
+                        text-align: center;
+                    }
+
+                    .main-heading {
+                        font-family: Montserrat;
+                        font-size: 20px;
+                        margin: 5px 0 5px 0;
+                    }
+                }
+
+                .subCard-heading {
+                    font-size: 20px;
+                }
+            }
+
+            .parentdiv-2 {
+                flex-direction: column;
+
+                .myCard-1 {
+                    // margin-left: 0;
+                    // margin-top: 1rem;
+                    // margin: auto;
                 }
             }
         }
@@ -279,14 +403,19 @@
                 .heading {
                     font-size: 20px;
                     padding: 5px 40px;
+                    width: 100%;
                 }
 
                 .sub-heading {
                     font-size: 16px;
-                    padding: 5px 8px;
+                    padding: 5px 1px;
+                    width: 100%;
                 }
             }
-
+            .howitwork-main-card-image-section{
+                width: 100%;
+                margin: auto;
+            }
             .howitWork-heading {
                 letter-spacing: 3.2px;
             }
@@ -325,7 +454,7 @@
 .how-it-works {
     button {
         //width: 180px;
-        height: 35px;
+        height: 44px;
         background: #F24462 0% 0% no-repeat padding-box;
         border: #F24462;
         color: #fff;

@@ -7,7 +7,7 @@ export default ({
   placeholderImg,
   alt,
   setLoading,
-  className,
+  className="",
   ...props
 }) => {
   const placeHolderImage =
@@ -37,7 +37,7 @@ export default ({
     <img
       {...props}
       alt={alt}
-      // className={imgSrc !== src && "thumb"}
+      className={className}
       src={imgSrc}
     />
   );

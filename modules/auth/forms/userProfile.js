@@ -13,6 +13,7 @@ import useWindowSize from "utils/useWindowSize";
 import { CustomIcon } from "core/icon";
 import Modal from "react-modal";
 import Link from "next/link";
+import TopBadgeCard from '../../../assets/img/TopCardBadge.png'
 import moment from "moment";
 import { signupStep4 } from "../authActions";
 import { useEffect } from "react";
@@ -766,7 +767,7 @@ function UserProfile({ preview, editHandle }) {
                           </div>
                           <>
                             <h4 className="mb-5 mt-4 text-center tagline-font  word-break: break-word">
-                              “ {userTagline} ”
+                              “{userTagline}”
                               {/* { userDetail?.tagline || user?.tagline } */}
                             </h4>
 
@@ -849,9 +850,13 @@ function UserProfile({ preview, editHandle }) {
                                                     </span>
                                                     <p
                                                       style={{
+                                                        fontFamily:"Helvetica",
                                                         fontSize: "14px",
                                                         fontWeight: "300",
-                                                        borderRadius: "11px",
+                                                        letterSpacing:"0.06px",
+                                                        whiteSpace: "pre-wrap",
+                                                          width: "6rem",
+                                                        // borderRadius: "11px",
                                                       }}
                                                     >
                                                       {category?.label}
@@ -927,7 +932,7 @@ function UserProfile({ preview, editHandle }) {
                                           </p>
                                         </div>
                                       ) : (
-                                        <div className="d-flex align-items-center mb-0 mt-2 header_btn_wrap w-100 justify-content-center">
+                                        <div className="d-flex align-items-center mb-0 mt-4 header_btn_wrap w-100 justify-content-center">
                                           <button
                                             type="button"
                                             onClick={() =>

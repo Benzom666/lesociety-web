@@ -92,7 +92,7 @@ export default function SideBar() {
                 />
               ) : (
                 <BiTime
-                  color={"white"}
+                  color={"grey"}
                   size={25}
                   style={{ paddingLeft: "5px" }}
                 />

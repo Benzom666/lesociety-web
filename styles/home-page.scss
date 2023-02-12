@@ -133,47 +133,12 @@
   font-size: 18px;
   line-height: 1.16;
   letter-spacing: 0px;
+ // margin-left: 5rem;
 }
 
 .main-content-icon {
   width: 390px;
   padding: 10px 45px;
-}
-
-
-@media only screen and (max-width:769px) and (min-width:501px) {
-  .home-main-section {
-    flex-direction: column;
-    background-position: top;
-
-    .main-title {
-      padding: 20px 10px;
-
-      h5 {
-        font-family: "Montserrat";
-        font-size: 30px;
-        text-align: center;
-        padding: 0 22px;
-      }
-    }
-  }
-
-  .home-main-sec-1 {
-    padding: 40px 0px 50px 0px;
-  }
-
-  .aboutCardContent {
-    max-width: 365px;
-    margin: auto;
-    font-size: 16px !important;
-    padding: 10px 4px !important;
-  }
-
-  .main-content-icon {
-    width: 365px !important;
-    margin: auto !important;
-    padding: 10px 5px;
-  }
 }
 
 
@@ -199,16 +164,62 @@
   .main-content {
     font-size: 16px;
     padding: 15px 10px;
+    .main-content-icon{
+      width: 300px !important;
+      margin: auto;
+      padding: 0px !important;
+    }
   }
 
   .aboutCardContent {
-    max-width: 365px !important;
+    //max-width: 365px !important;
+    width: 100%;
     font-size: 15px !important;
     margin: auto;
     padding: 10px;
   }
 
 }
+
+@media only screen and (min-width:501px) and (max-width:769px) {
+  .home-main-section {
+    flex-direction: column;
+    background-position: top;
+
+    .main-title {
+      padding: 20px 10px;
+
+      h5 {
+        font-family: "Montserrat";
+        font-size: 30px;
+        text-align: center;
+        padding: 0 22px;
+      }
+    }
+  }
+
+  .home-main-sec-1 {
+    padding: 40px 0px 50px 0px;
+  }
+
+  .main-card {
+    text-align: center;
+  }
+
+  .aboutCardContent {
+    max-width: 365px;
+    margin: auto;
+    font-size: 16px !important;
+    padding: 10px 4px !important;
+  }
+
+  .main-content-icon {
+    width: 365px !important;
+    margin: auto !important;
+    padding: 10px 5px;
+  }
+}
+
 
 
 // .ls-logo-footer{
@@ -285,9 +296,11 @@
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
+
     .footer-icon-box {
       .footer-icon {
         margin-left: 4rem;
+
         img {
           text-align: center !important;
           margin: 0px 5px;
@@ -363,6 +376,7 @@
       justify-content: space-around;
       margin: auto;
       padding: 0px 192px;
+
       .navbarfooter-text-1 {
         //margin-top: 12px;
         width: 100% !important;
@@ -372,7 +386,8 @@
   }
 
   .navbarfooter-btn {
-     margin: auto;
+    margin: auto;
+
     .sidebarhome {
       padding: 10px 20px;
     }
@@ -426,7 +441,8 @@
       width: 100%;
     }
   }
-  .navbarfooter-btn{
+
+  .navbarfooter-btn {
     margin: auto;
   }
 }

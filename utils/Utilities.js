@@ -176,7 +176,7 @@ export const dateCategory = [
     category: "middle_class_date",
   },
   {
-    label: "Entertainment & sports ",
+    label: "Entertainment & Sports ",
     id: "Entertainmentsports",
     icon: <CustomIcon.EntertainmentSports color={"white"} size={20} />,
     iconName: "CustomIcon.EntertainmentSports",
