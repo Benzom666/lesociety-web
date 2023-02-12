@@ -6,7 +6,6 @@ import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Country, State, City } from "country-state-city";
 import NoImage from "assets/img/no-image.png";
 import Image from "next/image";
 import { apiRequest } from "utils/Utilities";
@@ -56,7 +55,6 @@ function DateAndLocation({
         (selectedLocation?.country || user?.country_code)?.toUpperCase(),
         (selectedLocation?.province || user?.province)?.toUpperCase()
       );
-      // .filter((city) => city.name === "Pune");
 
       setCities(citiesData);
     };
