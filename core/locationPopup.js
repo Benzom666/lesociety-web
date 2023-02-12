@@ -28,6 +28,7 @@ function LocationPopup({
   const [city, setCity] = useState([]);
   const [loading, setLoading] = useState(false);
   const [todo, setTodo] = useState([]);
+  const [recentSearches, setRecentSearches] = useState([]);
   const user = useSelector((state) => state?.authReducer?.user);
 
   useEffect(() => {
@@ -183,6 +184,8 @@ function LocationPopup({
     };
   };
 
+  console.log("todo", todo);
+
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -260,6 +263,7 @@ function LocationPopup({
                         country: data?.short_code,
                         province: data?.province?.short_code?.split("-")[1],
                       });
+                      9;
                       setTimeout(() => {
                         closeModal();
                       }, 1000);

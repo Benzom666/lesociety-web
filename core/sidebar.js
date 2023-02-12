@@ -27,7 +27,7 @@ export default function SideBar() {
       setDocumentUpoaded(true);
     }
   }, [user]);
-  const unreadNotifCount = localStorage.getItem("unreadNotifCount");
+  const unreadNotifCount = localStorage?.getItem("unreadNotifCount");
 
   return (
     <>
