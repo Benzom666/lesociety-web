@@ -149,13 +149,8 @@ function MessageModal({ user, date, toggle }) {
                     <button
                       type="button"
                       style={{
-<<<<<<< HEAD
                         position: "absolute",
-                        left: "80%",
-=======
-                        position:"absolute",
-                        left:"82%",
->>>>>>> 669888ade367a8c7ee598455ccc732be4a0f3fbb
+                        left: "82%",
                         background: "transparent",
                         border: "none",
                         paddingBottom: "5px",

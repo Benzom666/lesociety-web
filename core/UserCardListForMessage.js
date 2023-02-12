@@ -134,12 +134,13 @@ const UserCardListForMessage = ({
     <>
       <div
         onClick={openModal}
-        className={`${conversations.filter(
-          (c) => c.status == 0 && c.message?.sender_id !== user?._id
-        )?.length === 0 &&
+        className={`${
+          conversations.filter(
+            (c) => c.status == 0 && c.message?.sender_id !== user?._id
+          )?.length === 0 &&
           selectedTabIndex !== 1 &&
           "request__header"
-          }`}
+        }`}
       >
         <span>
           {
@@ -172,72 +173,60 @@ const UserCardListForMessage = ({
             }
           >
             <div className="model_content">
-              <>
-                {pageLoading ? (
-                  <SkeletonElement type="close-icon-view-profile" />
-                ) : (
-                  <IoIosClose
-                    size={50}
-                    className="close_btn"
-                    onClick={closeModal}
-                    color={"#A8A8A8"}
-                  />
-                )}
-              </>
+              {pageLoading ? (
+                <SkeletonElement type="close-icon-view-profile" />
+              ) : (
+                <IoIosClose
+                  size={100}
+                  className="close_btn"
+                  onClick={closeModal}
+                  color={"#A8A8A8"}
+                />
+              )}
 
               <Slider {...settings}>
                 {conversations.length > 0
                   ? conversations.filter((c) => c.status == 0)?.length > 0
                     ? conversations
-                      .filter((c) => c.status == 0)
-                      .map((conversation, index) => {
-                        const profilePic =
-                          conversation.user?.images.length > 0
-                            ? conversation.user?.images[0]
-                            : "";
+                        .filter((c) => c.status == 0)
+                        .map((conversation, index) => {
+                          const profilePic =
+                            conversation.user?.images.length > 0
+                              ? conversation.user?.images[0]
+                              : "";
 
-                        setTimeout(() => {
-                          if (profilePic) {
-                            setPageLoading(false);
-                          }
-                        }, 5000);
+                          setTimeout(() => {
+                            if (profilePic) {
+                              setPageLoading(false);
+                            }
+                          }, 5000);
 
-                        return pageLoading ? (
-                          <SkeletonUserCardListForMessage
-                            conversation={conversation}
-                            getConversations={getConversations}
-                            user={user}
-                            setCurrentChat={setCurrentChat}
-                            tabIndexChange={tabIndexChange}
-                            selectedTabIndex={selectedTabIndex}
-                            socket={socket}
-                            profilePic={profilePic}
-                          />
-                        ) : (
-                          <div key={index}>
-                            <H5 style1={true}>
-                              {conversation?.user?.user_name} is
-                            </H5>
-                            <CustomIcon.IntrestedText
-                              color={"white"}
-                              size={150}
+                          return pageLoading ? (
+                            <SkeletonUserCardListForMessage
+                              conversation={conversation}
+                              getConversations={getConversations}
+                              user={user}
+                              setCurrentChat={setCurrentChat}
+                              tabIndexChange={tabIndexChange}
+                              selectedTabIndex={selectedTabIndex}
+                              socket={socket}
+                              profilePic={profilePic}
                             />
-                            <figure>
-                              <ImageShow
-                               className="requested-profile-img"
-                                max-width={312}
-                                width="95%"
-                                height={320}
-                                src={profilePic}
-                                alt="user image"
-<<<<<<< HEAD
-                                width={280}
-                                height={420}
-                              /> */}
+                          ) : (
+                            <div key={index}>
+                              <H5 style1={true}>
+                                {conversation?.user?.user_name} is
+                              </H5>
+                              <CustomIcon.IntrestedText
+                                color={"white"}
+                                size={150}
+                              />
+                              <figure>
                                 <ImageShow
+                                  className="requested-profile-img"
                                   max-width={312}
                                   width="95%"
-                                  height={488}
+                                  height={320}
                                   src={profilePic}
                                   alt="user image"
                                   placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
@@ -276,60 +265,27 @@ const UserCardListForMessage = ({
                                     router.push(
                                       `/user/user-profile/${conversation?.user?.user_name}`
                                     )
-=======
-                                placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
-                              />
-                              <span className="image_tagline">
-                                "{showText(conversation?.message?.message)}"
-                              </span>
-                            </figure>
-                            <div className="d-flex align-items-center my-4 header_btn_wrap">
-                              <a
-                                className="create-date"
-                                style={{ height: "40px", width: "85%", marginLeft: "6%", paddingTop: "2px" }}
-                                onClick={() => {
-                                  if (mobile) {
-                                    toggleChat(conversation);
->>>>>>> 669888ade367a8c7ee598455ccc732be4a0f3fbb
                                   }
-                                  postApprovedConversation(
-                                    conversation?.message?.room_id,
-                                    conversation
-                                  );
-                                }}
-                              >
-                                START CONVERSATION
-                              </a>
+                                >
+                                  <HiLockOpen />{" "}
+                                  <span style={{ textDecoration: "underline" }}>
+                                    View Profile
+                                  </span>
+                                </a>
+                                {/* </Link> */}
+                                <p>
+                                  {conversation?.user?.user_name} has granted
+                                  you the access to his profile
+                                </p>
+                              </div>
                             </div>
-                            <div className="my-4 bottom_content">
-                              {/* <Link href="/user/user-profile"> */}
-                              <a
-                                className="view_profile"
-                                onClick={() =>
-                                  router.push(
-                                    `/user/user-profile/${conversation?.user?.user_name}`
-                                  )
-                                }
-                              >
-                                <HiLockOpen />{" "}
-                                <span style={{ textDecoration: "underline" }}>
-                                  View Profile
-                                </span>
-                              </a>
-                              {/* </Link> */}
-                              <p>
-                                {conversation?.user?.user_name} has granted
-                                you the access to his profile
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      })
+                          );
+                        })
                     : "No Request yet"
                   : "No Request yet"}
               </Slider>
             </div>
-          </Modal> 
+          </Modal>
         )}
     </>
   );
