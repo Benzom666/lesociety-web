@@ -77,7 +77,7 @@ const VerifiedProfilePage = (props) => {
           const data = {
             selfie: imageUploaded[0].url ?? "",
             document: imageUploaded[1].url ?? "",
-            email: user.email,
+            email: user?.email,
           };
 
           const res = await apiRequest({

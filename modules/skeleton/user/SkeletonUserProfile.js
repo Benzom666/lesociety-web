@@ -104,7 +104,7 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
                               )} */}
                             </div>
                           </label>
-                          {/* {(router?.query?.userName === user.user_name ||
+                          {/* {(router?.query?.userName === user?.user_name ||
                             router?.pathname === "/user/user-profile") && (
                             <div className="d-flex align-items-center mb-0 mt-3">
 

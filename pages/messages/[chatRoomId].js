@@ -58,7 +58,7 @@ function ChatMessages({ ...props }) {
   useEffect(() => {
     // if (socket.connected) {
     console.log("socket request Accept Event", socket.connected);
-    socket.on(`requestAccept-${user._id}`, (message) => {
+    socket.on(`requestAccept-${user?._id}`, (message) => {
       console.log("requestAccept message", message);
       getConversations();
     });
@@ -68,7 +68,7 @@ function ChatMessages({ ...props }) {
   useEffect(() => {
     // if (socket.connected) {
     console.log("socket request message mobile", socket.connected);
-    socket.on(`request-${user._id}`, (message) => {
+    socket.on(`request-${user?._id}`, (message) => {
       console.log("reqested message", message);
       getConversations();
     });
@@ -78,7 +78,7 @@ function ChatMessages({ ...props }) {
   useEffect(() => {
     if (socket.connected) {
       console.log("socket receiver message mobile", socket.connected);
-      socket.on(`recieve-${user._id}`, (message) => {
+      socket.on(`recieve-${user?._id}`, (message) => {
         console.log("reciever message", message);
         if (message.message == "") {
           return getConversations();
@@ -124,7 +124,7 @@ function ChatMessages({ ...props }) {
 
   useEffect(() => {
     if (socket.connected) {
-      socket.on(`requestBlock-${user._id}`, (message) => {
+      socket.on(`requestBlock-${user?._id}`, (message) => {
         console.log("Blocked Chat", message);
         setCurrentChat((prev) => ({
           ...prev,
@@ -141,7 +141,7 @@ function ChatMessages({ ...props }) {
     if (currentChat && messages.length > 0 && socket.connected) {
       const messageData = messages[messages.length - 1];
       if (
-        messageData?.sender_id !== user._id &&
+        messageData?.sender_id !== user?._id &&
         !messageData?.read_date_time &&
         messageData?.room_id === currentChat?._id
       ) {
@@ -176,7 +176,7 @@ function ChatMessages({ ...props }) {
   useEffect(() => {
     if (socket.connected) {
       console.log("socket read message called", socket.connected);
-      socket.on(`readed-${user._id}`, (message) => {
+      socket.on(`readed-${user?._id}`, (message) => {
         console.log("message read", message);
         setConversations((prev) => {
           return prev.map((conversation) => {
@@ -200,7 +200,7 @@ function ChatMessages({ ...props }) {
   useEffect(() => {
     // if (socket.connected) {
     console.log("chat Room Cleared called", socket.connected);
-    socket.on(`chatRoomCleared-${user._id}`, (message) => {
+    socket.on(`chatRoomCleared-${user?._id}`, (message) => {
       console.log("chatRoomCleared", message);
       if (message?.deleted) {
         setMessages([]);
@@ -373,7 +373,7 @@ function ChatMessages({ ...props }) {
                                 currentChat?.user?.images?.length > 0 &&
                                 currentChat?.user?.images
                                   ? currentChat?.user?.images[0]
-                                  : (user.images && user.images[0]) || NoImage
+                                  : (user?.images && user?.images[0]) || NoImage
                               }
                               alt="user image"
                               width={32}
@@ -445,7 +445,7 @@ function ChatMessages({ ...props }) {
                                 return (
                                   <li
                                     className={
-                                      message.sender_id === user._id
+                                      message.sender_id === user?._id
                                         ? "send"
                                         : "receive"
                                     }
@@ -454,7 +454,7 @@ function ChatMessages({ ...props }) {
                                   >
                                     <div
                                       className={`message_content ${
-                                        message.sender_id === user._id
+                                        message.sender_id === user?._id
                                           ? "message_content_send"
                                           : "message_content_receive"
                                       }`}

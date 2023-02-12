@@ -46,8 +46,8 @@ function UserList(props) {
   const [loading, setLoader] = React.useState(true);
   const [pagination, setPagination] = React.useState("");
   const user = useSelector((state) => state.authReducer.user);
-  const country = user?.country && countriesCode[user.country];
-  const [modalIsOpen, setIsOpen] = React.useState(user.gender === "female");
+  const country = user?.country && countriesCode[user?.country];
+  const [modalIsOpen, setIsOpen] = React.useState(user?.gender === "female");
   const [receiverData, setReceiverData] = React.useState("");
   const [messageError, setMessageError] = React.useState("");
   const scrollRef = useRef(null);
@@ -94,7 +94,7 @@ function UserList(props) {
   const fetchNotifications = async () => {
     try {
       const params = {
-        user_email: user.email,
+        user_email: user?.email,
         sort: "sent_time",
       };
 
@@ -124,14 +124,14 @@ function UserList(props) {
   }, []);
 
   useEffect(() => {
-    socket.on(`request-${user._id}`, (message) => {
+    socket.on(`request-${user?._id}`, (message) => {
       console.log("reqested message header", message);
       getConversations();
     });
   }, [socket.connected]);
 
   useEffect(() => {
-    socket.on(`recieve-${user._id}`, (message) => {
+    socket.on(`recieve-${user?._id}`, (message) => {
       console.log("recieve message header", message);
       getConversations();
     });
@@ -230,7 +230,7 @@ function UserList(props) {
       });
     } else {
       setLocation({
-        city: user.location,
+        city: user?.location,
         country: country,
         province: user?.province,
       });
@@ -385,8 +385,8 @@ function UserList(props) {
   useEffect(() => {
     // if (socket.connected) {
     console.log("Notif socket connected", socket.connected);
-    //`push-notification-${user.email}`
-    socket.on(`push-notification-${user.email}`, (message) => {
+    //`push-notification-${user?.email}`
+    socket.on(`push-notification-${user?.email}`, (message) => {
       console.log("notif received", message);
     });
     // }

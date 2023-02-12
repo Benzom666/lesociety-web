@@ -10,7 +10,7 @@ import {
   CHANGE_SELECTED_LOCATION_POPUP,
 } from "./actionConstants";
 
-import { reset } from "redux-form";
+import { reset, initialize } from "redux-form";
 
 // import { removeCookie } from "../utils/cookie";
 
@@ -53,32 +53,48 @@ export const signUp = (signUpDetails) => {
   };
 };
 
-export const logout = () => {
-  return async (dispatch) => {
-    dispatch(deAuthenticateAction());
+export const logout = (router, dispatch) => {
+  dispatch(deAuthenticateAction());
+  // redirect to login and refresh
+  router.push("/auth/login");
+  window?.location?.replace("/auth/login");
+  dispatch(initialize("signupStep2", ""));
+  dispatch(initialize("DatePreview", ""));
+  dispatch(initialize("RegisterFormMale", ""));
+  dispatch(initialize("signupStep3", ""));
+  dispatch(initialize("RegisterForm", ""));
+  dispatch(initialize("forgotpassword", ""));
+  dispatch(initialize("LoginForm", ""));
+  dispatch(initialize("SecondStep", ""));
+  dispatch(initialize("ThirdStep", ""));
+  dispatch(initialize("CreateStepFour", ""));
+  dispatch(initialize("CreateStepOne", ""));
+  dispatch(initialize("CreateStepThree", ""));
+  dispatch(initialize("CreateStepTwo", ""));
+  dispatch(initialize("SkeletonUserProfile", ""));
+  dispatch(initialize("Messages", ""));
+  dispatch(initialize("VerifiedProfilePage", ""));
+  dispatch(initialize("ChooseCity", ""));
+  dispatch(initialize("LocationPopup", ""));
 
-    //  clear out all the data from the local storage
-
-    dispatch(reset("signupStep2"));
-    dispatch(reset("DatePreview"));
-    dispatch(reset("RegisterFormMale"));
-    dispatch(reset("signupStep3"));
-    dispatch(reset("RegisterForm"));
-    dispatch(reset("forgotpassword"));
-    dispatch(reset("LoginForm"));
-    dispatch(reset("SecondStep"));
-    dispatch(reset("ThirdStep"));
-    dispatch(reset("CreateStepFour"));
-    dispatch(reset("CreateStepOne"));
-    dispatch(reset("CreateStepThree"));
-    dispatch(reset("CreateStepTwo"));
-    dispatch(reset("SkeletonUserProfile"));
-    dispatch(reset("Messages"));
-    dispatch(reset("VerifiedProfilePage"));
-    dispatch(reset("ChooseCity"));
-
-    // removeCookie("auth");
-  };
+  dispatch(reset("signupStep2"));
+  dispatch(reset("DatePreview"));
+  dispatch(reset("RegisterFormMale"));
+  dispatch(reset("signupStep3"));
+  dispatch(reset("RegisterForm"));
+  dispatch(reset("forgotpassword"));
+  dispatch(reset("LoginForm"));
+  dispatch(reset("SecondStep"));
+  dispatch(reset("ThirdStep"));
+  dispatch(reset("CreateStepFour"));
+  dispatch(reset("CreateStepOne"));
+  dispatch(reset("CreateStepThree"));
+  dispatch(reset("CreateStepTwo"));
+  dispatch(reset("SkeletonUserProfile"));
+  dispatch(reset("Messages"));
+  dispatch(reset("VerifiedProfilePage"));
+  dispatch(reset("ChooseCity"));
+  dispatch(reset("LocationPopup"));
 };
 
 export const restore = (savedState) => {

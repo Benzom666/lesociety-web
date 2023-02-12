@@ -15,7 +15,7 @@ function Chat({ currentChat, category }) {
                     currentChat?.user?.images?.length > 0 &&
                     currentChat?.user?.images
                       ? currentChat?.user?.images[0]
-                      : (user.images && user.images[0]) || NoImage
+                      : (user?.images && user?.images[0]) || NoImage
                   }
                   alt="user image"
                   width={40}
@@ -84,7 +84,7 @@ function Chat({ currentChat, category }) {
                     return (
                       <li
                         className={
-                          message.sender_id === user._id ? "send" : "receive"
+                          message.sender_id === user?._id ? "send" : "receive"
                         }
                         key={index}
                         ref={scrollRef}

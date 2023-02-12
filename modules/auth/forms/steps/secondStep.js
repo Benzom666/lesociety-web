@@ -30,12 +30,12 @@ const SecondStep = (props) => {
   const dispatch = useDispatch();
   const width = useWindowSize();
   const user = useSelector((state) => state.authReducer.user);
-  console.log("nnnnnn", props?.notifObj)
-  let fromNotifPage, notifType, notifId
-  if( props.notifObj){
-    fromNotifPage = props.notifObj.fromNotifPage
-    notifType=props.notifObj.notifType
-    notifId = props.notifObj.id
+  console.log("nnnnnn", props?.notifObj);
+  let fromNotifPage, notifType, notifId;
+  if (props.notifObj) {
+    fromNotifPage = props.notifObj.fromNotifPage;
+    notifType = props.notifObj.notifType;
+    notifId = props.notifObj.id;
   }
   // const {fromNotifPage, notifType} = props?.notifObj
 
@@ -93,7 +93,7 @@ const SecondStep = (props) => {
   //     if (imageUploaded) {
   //       // values.un_verified_images = imageUploaded.map((image) => image?.url);
   //       values.images = imageUploaded.map((image) => image?.url);
-  //       values.email = user.email;
+  //       values.email = user?.email;
   //       // if(!router?.query?.edit) {
   //       values.step_completed = 2;
   //       // }
@@ -178,9 +178,9 @@ const SecondStep = (props) => {
               values.description !== user?.description
                 ? values.description
                 : "",
-            email: user.email,
+            email: user?.email,
             step_completed: 2,
-            notificationId: notifId || ""
+            notificationId: notifId || "",
           };
         } else {
           data = {
@@ -417,7 +417,7 @@ const SecondStep = (props) => {
         {!router?.query?.edit && (
           <>
             <p className="auth-register-p-text">Registration Completed</p>
-            <h2 style={{ textTransform: "capitalize",marginTop:"1rem" }}>
+            <h2 style={{ textTransform: "capitalize", marginTop: "1rem" }}>
               Welcome, {user?.user_name || ""}
             </h2>
           </>
@@ -475,9 +475,11 @@ const SecondStep = (props) => {
                   }
                 }}
                 props={{
-                  disabled: fromNotifPage && (
-                    (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
-                  )
+                  disabled:
+                    fromNotifPage &&
+                    (notifType === "description" ||
+                      notifType === "tagline" ||
+                      notifType === "taglineAndDesc"),
                 }}
               />
               {reduxValues?.imageUpload?.length > 0 ||
@@ -491,7 +493,7 @@ const SecondStep = (props) => {
                 //     ? reduxValues?.imageUpload
                 //     : reduxValues?.imageUpload?.length > 0
                 //     ? URL.createObjectURL(reduxValues?.imageUpload[0])
-                //     : user.images[0]
+                //     : user?.images[0]
                 // }
                 // />
 
@@ -505,7 +507,7 @@ const SecondStep = (props) => {
                       ? reduxValues?.imageUpload
                       : reduxValues?.imageUpload?.length > 0
                       ? URL.createObjectURL(reduxValues?.imageUpload[0])
-                      : user.images[0]
+                      : user?.images[0]
                   }
                   placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
                 />
@@ -556,9 +558,11 @@ const SecondStep = (props) => {
                     }
                   }}
                   props={{
-                    disabled: fromNotifPage && (
-                      (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
-                    )
+                    disabled:
+                      fromNotifPage &&
+                      (notifType === "description" ||
+                        notifType === "tagline" ||
+                        notifType === "taglineAndDesc"),
                   }}
                 />
                 {reduxValues?.imageUpload2?.length > 0 ||
@@ -635,13 +639,15 @@ const SecondStep = (props) => {
                     }
                   }}
                   props={{
-                    disabled: fromNotifPage && (
-                      (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
-                    )
+                    disabled:
+                      fromNotifPage &&
+                      (notifType === "description" ||
+                        notifType === "tagline" ||
+                        notifType === "taglineAndDesc"),
                   }}
                 />
                 {reduxValues?.imageUpload3?.length > 0 ||
-                (user?.images && user.images[2]) ? (
+                (user?.images && user?.images[2]) ? (
                   // <img
                   //   alt="not fount"
                   //   style={{ objectFit: "cover" }}
@@ -714,14 +720,15 @@ const SecondStep = (props) => {
                     }
                   }}
                   props={{
-                    disabled: fromNotifPage && (
-                      (notifType==='description' || notifType==='tagline' || notifType==='taglineAndDesc')
-                    )
+                    disabled:
+                      fromNotifPage &&
+                      (notifType === "description" ||
+                        notifType === "tagline" ||
+                        notifType === "taglineAndDesc"),
                   }}
-                  
                 />
                 {reduxValues?.imageUpload4?.length > 0 ||
-                (user?.images && user.images[3]) ? (
+                (user?.images && user?.images[3]) ? (
                   // <img
                   //   alt="not fount"
                   //   style={{ objectFit: "cover" }}
@@ -819,11 +826,12 @@ const SecondStep = (props) => {
             placeholder="Write a few words to tempt"
             validationLength={100}
             props={{
-              disabled: fromNotifPage && (
-                (notifType==='description' || notifType==='photos' || notifType==='photosDescription')
-              )
+              disabled:
+                fromNotifPage &&
+                (notifType === "description" ||
+                  notifType === "photos" ||
+                  notifType === "photosDescription"),
             }}
-            
           />
           <div className="offer-textarea">
             <Field
@@ -833,10 +841,14 @@ const SecondStep = (props) => {
               label="What do you offer?"
               placeholder="Describe yourself, and explain why someone should want to take you out as their date "
               validationLength={500}
-              disabled={(fromNotifPage && 
-                (notifType==='tagline' || notifType==='photos' || notifType==='photosTagline' )
-                ) 
-              ? true : false}
+              disabled={
+                fromNotifPage &&
+                (notifType === "tagline" ||
+                  notifType === "photos" ||
+                  notifType === "photosTagline")
+                  ? true
+                  : false
+              }
             />
           </div>
         </div>

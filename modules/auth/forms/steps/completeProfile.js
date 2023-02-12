@@ -20,7 +20,7 @@ const CompleteProfile = (props) => {
       try {
         const res = await apiRequest({
           data: {
-            email: user.email,
+            email: user?.email,
           },
           method: "POST",
           url: `user/verify-email`,

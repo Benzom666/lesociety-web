@@ -154,12 +154,14 @@ const DatePreview = (props) => {
                 </svg>
               </a>
               <h6 className="m-0 text-white-50">CREATE A NEW DATE</h6>
-              <IoIosClose
-                className="mouse-point"
-                size={32}
-                style={{ color: " rgba(255, 255, 255, 0.5)" }}
-                onClick={toggle}
-              />
+              <div onClick={toggle} className="w-15 cursor-pointer">
+                <IoIosClose
+                  className="mouse-point"
+                  size={33}
+                  style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                  onClick={toggle}
+                />
+              </div>
             </div>
             {/* {width < 768 && <h6 className="m-3 text-center">Date Preview</h6>} */}
             {width < 430 ? (
@@ -209,11 +211,13 @@ const DatePreview = (props) => {
                       >
                         CREATE A NEW DATE
                       </h6>
-                      <IoIosClose
-                        className="desk-close-first mouse-point"
-                        size={32}
-                        onClick={toggle}
-                      />
+                      <div onClick={toggle} className="w-15 cursor-pointer">
+                        <IoIosClose
+                          className="desk-close-first mouse-point"
+                          size={33}
+                          onClick={toggle}
+                        />
+                      </div>
                     </div>
                     <div className="step-wraps steps_wraps_previewdate">
                       <ul>

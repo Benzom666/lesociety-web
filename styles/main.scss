@@ -3295,8 +3295,9 @@ body .verification_card_header {
       right: 15px;
       z-index: 999;
       background: rgba(0, 0, 0, 0.25);
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
+
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -5749,4 +5750,14 @@ path {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.close_btn {
+  margin: 10px;
+  cursor: pointer;
+  font-size: 30px !important;
+}
+
+.w-15 {
+  width: 15%;
 }

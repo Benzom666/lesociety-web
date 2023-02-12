@@ -56,7 +56,7 @@ function MessageModal({ user, date, toggle }) {
   };
 
   const handleSubmit = async (values) => {
-    // moveIcon();
+    moveIcon();
     console.log("values", values);
     try {
       const data = {
@@ -149,8 +149,8 @@ function MessageModal({ user, date, toggle }) {
                     <button
                       type="button"
                       style={{
-                        position:"absolute",
-                        left:"80%",
+                        position: "absolute",
+                        left: "80%",
                         background: "transparent",
                         border: "none",
                         paddingBottom: "5px",

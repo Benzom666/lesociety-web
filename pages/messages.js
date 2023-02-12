@@ -100,7 +100,7 @@ const Messages = (props) => {
   useEffect(
     () => {
       console.log("socket request Accept Event", socket.connected);
-      socket.on(`requestAccept-${user._id}`, (message) => {
+      socket.on(`requestAccept-${user?._id}`, (message) => {
         console.log("requestAccept message", message);
         getConversations();
       });
@@ -113,7 +113,7 @@ const Messages = (props) => {
   useEffect(
     () => {
       console.log("socket request message will", socket.connected);
-      socket.on(`request-${user._id}`, (message) => {
+      socket.on(`request-${user?._id}`, (message) => {
         console.log("reqested message", message);
         getConversations();
       });
@@ -166,7 +166,7 @@ const Messages = (props) => {
   useEffect(
     () => {
       console.log("socket receiver message will", socket.connected);
-      socket.on(`recieve-${user._id}`, (message) => {
+      socket.on(`recieve-${user?._id}`, (message) => {
         console.log("reciever message", message);
         if (message.message == "") {
           // getChatHistoryConversation(message?.room_id);
@@ -223,7 +223,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     if (socket.connected) {
-      socket.on(`requestBlock-${user._id}`, (message) => {
+      socket.on(`requestBlock-${user?._id}`, (message) => {
         console.log("Blocked Chat", message);
         setCurrentChat((prev) => ({
           ...prev,
@@ -248,7 +248,7 @@ const Messages = (props) => {
     if (currentChat && messages.length > 0 && socket.connected) {
       const messageData = messages[messages.length - 1];
       if (
-        messageData?.sender_id !== user._id &&
+        messageData?.sender_id !== user?._id &&
         !messageData?.read_date_time &&
         messageData?.room_id === currentChat?._id
       ) {
@@ -283,7 +283,7 @@ const Messages = (props) => {
   useEffect(() => {
     if (socket.connected) {
       console.log("socket read message called", socket.connected);
-      socket.on(`readed-${user._id}`, (message) => {
+      socket.on(`readed-${user?._id}`, (message) => {
         console.log("message read", message);
         setConversations((prev) => {
           return prev.map((conversation) => {
@@ -308,7 +308,7 @@ const Messages = (props) => {
     () => {
       // if (socket.connected) {
       console.log("chat Room Cleared called", socket.connected);
-      socket.on(`chatRoomCleared-${user._id}`, (message) => {
+      socket.on(`chatRoomCleared-${user?._id}`, (message) => {
         console.log("chatRoomCleared", message);
         if (message?.deleted) {
           setMessages([]);
@@ -460,7 +460,7 @@ const Messages = (props) => {
               status: 2,
               blocked_by: {
                 ...prev.blocked_by,
-                _id: user._id,
+                _id: user?._id,
               },
             }
         );
@@ -552,6 +552,11 @@ const Messages = (props) => {
   // console.log("conversation", conversations);
   // console.log("messages", messages);
   // console.log("arrivalMessage", arrivalMessage);
+
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 70}`;
+  };
+
   return (
     <div
       className="inner-page"
@@ -591,7 +596,7 @@ const Messages = (props) => {
                       selectedIndex={selectedTabIndex}
                       onSelect={tabIndexChange}
                     >
-                      {user.gender === "female" ? (
+                      {user?.gender === "female" ? (
                         <TabList>
                           <Tab>Conversations</Tab>
                           <Tab>
@@ -683,8 +688,19 @@ const Messages = (props) => {
                                                 c.user?.images?.length > 0 &&
                                                 c.user?.images
                                                   ? c.user?.images[0]
-                                                  : (user.images &&
-                                                      user.images[0]) ||
+                                                  : (user?.images &&
+                                                      user?.images[0]) ||
+                                                    NoImage
+                                              }
+                                              loader={myLoader}
+                                              priority={true}
+                                              placeholder="blur"
+                                              blurDataURL={
+                                                c.user?.images?.length > 0 &&
+                                                c.user?.images
+                                                  ? c.user?.images[0]
+                                                  : (user?.images &&
+                                                      user?.images[0]) ||
                                                     NoImage
                                               }
                                               alt="user image"
@@ -805,7 +821,7 @@ const Messages = (props) => {
                                     currentChat?.user?.images?.length > 0 &&
                                     currentChat?.user?.images
                                       ? currentChat?.user?.images[0]
-                                      : (user.images && user.images[0]) ||
+                                      : (user?.images && user?.images[0]) ||
                                         NoImage
                                   }
                                   alt="user image"
@@ -906,7 +922,7 @@ const Messages = (props) => {
                                       return (
                                         <li
                                           className={
-                                            message.sender_id === user._id
+                                            message.sender_id === user?._id
                                               ? "send"
                                               : "receive"
                                           }
@@ -915,16 +931,16 @@ const Messages = (props) => {
                                         >
                                           <div
                                             className={`message_content ${
-                                              message.sender_id === user._id
+                                              message.sender_id === user?._id
                                                 ? "message_content_send"
                                                 : "message_content_receive"
                                             }`}
                                           >
                                             <span
                                               className={` ${
-                                                message.sender_id === user._id
-                                                  ? "message_time_send"
-                                                  : "message_time"
+                                                message.sender_id === user?._id
+                                                  ? "message_time"
+                                                  : "message_time_send"
                                               }`}
                                             >
                                               {format(message?.sent_time)}

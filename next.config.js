@@ -1,13 +1,34 @@
 const path = require("path");
 
 module.exports = {
+  // compiler: {
+  //   removeConsole: true,
+  // },
   images: {
     domains: ["secrettime-cdn.s3.eu-west-2.amazonaws.com"],
   },
+  // remove console log
+  // webpack: (config, { isServer }) => {
+  //   if (!isServer) {
+  //     config.resolve.alias["@sentry/node"] = "@sentry/browser";
+  //   }
+  //   if (isServer) {
+  //     config.externals = config.externals || [];
+  //     config.externals.push((context, request, callback) => {
+  //       if (/^@sentry/.test(request)) {
+  //         return callback(null, "commonjs " + request);
+  //       }
+  //       callback();
+  //     });
+  //   }
+  //   return config;
+  // },
+
   devIndicators: {
     autoPrerender: false,
     buildActivity: false,
   },
+
   env: {
     modules: ["auth", "event"],
     MAPBOX_TOKEN:

@@ -33,26 +33,47 @@ const CreateStepOne = (props) => {
       <div className="inner_container">
         <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-0">
           <a onClick={previousPage}>
-            <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" height="24"
-             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" 
-             className="feather feather-chevron-left">
-            <polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-chevron-left"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
           </a>
-          <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
-          <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
+          <h6 className="m-0 text-white-50 text-uppercase">
+            Create a New Date
+          </h6>
 
+          <div onClick={toggle} className="w-15 cursor-pointer">
+            <IoIosClose
+              className="mouse-point"
+              size={33}
+              onClick={toggle}
+              style={{ color: " rgba(255, 255, 255, 0.5)" }}
+            />
+          </div>
         </div>
         {width > 767 && (
-          <div className="d-flex justify-content-center" style={{marginLeft:"40px"}}>
+          <div
+            className="d-flex justify-content-center"
+            style={{ marginLeft: "40px" }}
+          >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
-            <IoIosClose
-              className="desk-close-icon mouse-point"
-              size={32}
-              onClick={toggle}
-            />
+            <div onClick={toggle} className="w-15 cursor-pointer">
+              <IoIosClose
+                className="desk-close-first mouse-point"
+                size={33}
+                onClick={toggle}
+              />
+            </div>
           </div>
         )}
         <div className="step-wraps">
@@ -88,8 +109,9 @@ const CreateStepOne = (props) => {
             >
               <h6>Suggest a date.</h6>
               <p>
-              Select the experience you would like to go on with your date. Keep in mind the gentlemen pays for the experience and your price.
-                      {" "}
+                Select the experience you would like to go on with your date.
+                Keep in mind the gentlemen pays for the experience and your
+                price.{" "}
               </p>
             </div>
           </div>
@@ -106,13 +128,16 @@ const CreateStepOne = (props) => {
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Standard Class Dates</H5> */}
-                    <H5>When your availability is more important than a date suggestion.</H5>
+                    <H5>
+                      When your availability is more important than a date
+                      suggestion.
+                    </H5>
                     {/* <span className="price-tag">$</span> */}
                   </div>
                   {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
                     Higher response rate
                   </div> */}
-                  
+
                   <Field
                     name="search_type"
                     textColor={"#AFABAB"}
@@ -124,7 +149,7 @@ const CreateStepOne = (props) => {
                         iconName: "CustomIcon.Sun",
                         icon: <CustomIcon.Sun color={"#AFABAB"} size={30} />,
                         category: "standard_class_date",
-                        rate :"$ - $$"
+                        rate: "$ - $$",
                       },
                       {
                         label: "Evening Date",
@@ -132,7 +157,7 @@ const CreateStepOne = (props) => {
                         icon: <CustomIcon.Moon color={"#AFABAB"} size={30} />,
                         iconName: "CustomIcon.Moon",
                         category: "standard_class_date",
-                        rate:"$ - $$",
+                        rate: "$ - $$",
                       },
                       // {
                       //   label: "Outdoor Adventure",
@@ -148,13 +173,15 @@ const CreateStepOne = (props) => {
                       // },
                     ]}
                     component={ClassSelection}
-          
                   />
                 </div>
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Middle Class Dates</H5> */}
-                    <H5>When a date suggestion is more important than your availability.</H5>
+                    <H5>
+                      When a date suggestion is more important than your
+                      availability.
+                    </H5>
                     {/* <span className="price-tag">$$</span> */}
                   </div>
                   {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
@@ -168,12 +195,10 @@ const CreateStepOne = (props) => {
                       {
                         label: "Get Sporty",
                         id: "GetSporty",
-                        icon: (
-                        <CustomIcon.Sporty color={"#AFABAB"} size={30} />
-                        ),
+                        icon: <CustomIcon.Sporty color={"#AFABAB"} size={30} />,
                         iconName: "CustomIcon.GetSporty",
                         category: "middle_class_dates",
-                        rate:"$ - $$"
+                        rate: "$ - $$",
                       },
                       {
                         label: "Take A Class",
@@ -183,7 +208,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.TakeClass",
                         category: "middle_class_dates",
-                        rate:"$ - $$"
+                        rate: "$ - $$",
                       },
                       {
                         label: "Entertainment & Sports ",
@@ -196,7 +221,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.EntertainmentSports",
                         category: "middle_class_dates",
-                        rate:"$$ - $$$$"
+                        rate: "$$ - $$$$",
                       },
                       {
                         label: "Wine & Dine ",
@@ -206,7 +231,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.WineDine",
                         category: "middle_class_dates",
-                        rate:"$$$ - $$$$"
+                        rate: "$$$ - $$$$",
                       },
                       {
                         label: "Bottles & Dance",
@@ -219,7 +244,7 @@ const CreateStepOne = (props) => {
                         ),
                         iconName: "CustomIcon.BottlesDance",
                         category: "executive_class_dates",
-                        rate:"$$$ - $$$$"
+                        rate: "$$$ - $$$$",
                       },
                     ]}
                     component={ClassSelection}

@@ -74,17 +74,32 @@ const CreateStepThree = (props) => {
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </a>
-          <h6 className="m-0 text-white-50 text-uppercase">Create a New Date</h6>
-          <IoIosClose className="mouse-point" size={32} style={{color:" rgba(255, 255, 255, 0.5)"}} onClick={toggle} />
-        </div>
-        {width > 767 && (
-          <div className="d-flex justify-content-center" style={{marginLeft:"40px"}}>
-            <h3 className="text-center text-uppercase">Create a New Date</h3>
+          <h6 className="m-0 text-white-50 text-uppercase">
+            Create a New Date
+          </h6>
+
+          <div onClick={toggle} className="w-15 cursor-pointer">
             <IoIosClose
-              className="desk-close-icon mouse-point"
-              size={32}
+              className="mouse-point"
+              style={{ color: " rgba(255, 255, 255, 0.5)" }}
+              size={33}
               onClick={toggle}
             />
+          </div>
+        </div>
+        {width > 767 && (
+          <div
+            className="d-flex justify-content-center"
+            style={{ marginLeft: "40px" }}
+          >
+            <h3 className="text-center text-uppercase">Create a New Date</h3>
+            <div onClick={toggle} className="w-15 cursor-pointer">
+              <IoIosClose
+                className="desk-close-first mouse-point"
+                size={33}
+                onClick={toggle}
+              />
+            </div>
           </div>
         )}
         <div
@@ -123,8 +138,8 @@ const CreateStepThree = (props) => {
             >
               <h6>Set date duration.</h6>
               <p>
-              What is the approximate length of time you’re willing to spend on this particular date experience.
-
+                What is the approximate length of time you’re willing to spend
+                on this particular date experience.
               </p>
             </div>
           </div>

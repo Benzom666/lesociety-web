@@ -167,7 +167,7 @@ const UserCardList = ({
   //   setSrc(src);
   // }, [src]);
 
-  if (loader && dateDetailsIsOpen && user.gender === "male") {
+  if (loader && dateDetailsIsOpen && user?.gender === "male") {
     return (
       <div className="date_card_wrap">
         <div className="date_details_desktop_loading">
@@ -255,7 +255,7 @@ const UserCardList = ({
                       </span>
                       <div className="tag_wrap">
                         <ul>
-                          <li style={{display:"flex",alignItems:"center"}}>
+                          <li style={{ display: "flex", alignItems: "center" }}>
                             <span>{category?.icon}</span>
                             <span>{category?.label}</span>
                           </li>

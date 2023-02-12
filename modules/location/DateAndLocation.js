@@ -34,10 +34,45 @@ function DateAndLocation({
   const [dateId, setDateId] = React.useState("");
   const { width } = useWindowSize();
   const scrollRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = React.useState(0);
+  const [scrollType, setScrollType] = React.useState("down");
 
   useEffect(() => {
     setDateLength(dates?.length);
   }, [dates]);
+
+  document.addEventListener("scroll", function () {
+    const reveals = document.querySelectorAll("#scrolldiv");
+
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      //   const elementVisible = reveals[i]?.clientHeight;
+      if (elementTop < windowHeight) {
+        reveals[i].classList.add("scrollActive");
+      } else {
+        reveals[i].classList.remove("scrollActive");
+      }
+    }
+  });
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    if (scrollPosition > position) {
+      setScrollType("up");
+    } else {
+      setScrollType("down");
+    }
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPosition]);
 
   const nextPage = () => {
     setTimeout(() => {

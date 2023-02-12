@@ -171,16 +171,18 @@ const UserCardListForMessage = ({
             }
           >
             <div className="model_content">
-              {pageLoading ? (
-                <SkeletonElement type="close-icon-view-profile" />
-              ) : (
-                <IoIosClose
-                  size={40}
-                  className="close_btn"
-                  onClick={closeModal}
-                  color={"#A8A8A8"}
-                />
-              )}
+              <>
+                {pageLoading ? (
+                  <SkeletonElement type="close-icon-view-profile" />
+                ) : (
+                  <IoIosClose
+                    size={50}
+                    className="close_btn"
+                    onClick={closeModal}
+                    color={"#A8A8A8"}
+                  />
+                )}
+              </>
 
               <Slider {...settings}>
                 {conversations.length > 0
@@ -241,7 +243,12 @@ const UserCardListForMessage = ({
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
                                 <a
                                   className="create-date"
-                                  style={{height:"40px",width:"85%",marginLeft:"6%",paddingTop:"2px"}}
+                                  style={{
+                                    height: "40px",
+                                    width: "85%",
+                                    marginLeft: "6%",
+                                    paddingTop: "2px",
+                                  }}
                                   onClick={() => {
                                     if (mobile) {
                                       toggleChat(conversation);

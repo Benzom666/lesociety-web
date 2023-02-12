@@ -35,8 +35,6 @@ export const socket = io("https://staging-api.secrettime.com/", {
 
 function UserList(props) {
   const { width } = useWindowSize();
-  const [scrollPosition, setScrollPosition] = React.useState(0);
-  const [scrollType, setScrollType] = React.useState("down");
   const [classPopup, setPopupClass] = React.useState("hide");
   const [textClass, setTextSlideClass] = React.useState("");
   const [locationPopup, setLocationPoup] = React.useState(false);
@@ -44,14 +42,14 @@ function UserList(props) {
 
   const user = useSelector((state) => state.authReducer.user);
   const state = useSelector((state) => state.authReducer);
-  const [modalIsOpen, setIsOpen] = React.useState(user.gender === "female");
+  const [modalIsOpen, setIsOpen] = React.useState(user?.gender === "female");
   const [receiverData, setReceiverData] = React.useState("");
   const [messageError, setMessageError] = React.useState("");
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
   const [countries, setCountry] = useState("");
   const dispatch = useDispatch();
-  const country = user?.country && countriesCode[user.country];
+  const country = user?.country && countriesCode[user?.country];
 
   // for current location
   const [currentLocationLoading, setCurrentLocationLoading] = useState(false);
@@ -60,11 +58,11 @@ function UserList(props) {
 
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    if (user?.gender === "male" && state?.showSelectedLocationPopup) {
-      setShow(true);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user?.gender === "male" && state?.showSelectedLocationPopup) {
+  //     setShow(true);
+  //   }
+  // }, [user]);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -96,7 +94,7 @@ function UserList(props) {
       });
     } else {
       setLocation({
-        city: user.location,
+        city: user?.location,
         country: country,
         province: user?.province,
       });
@@ -106,7 +104,7 @@ function UserList(props) {
   const fetchNotifications = async () => {
     try {
       const params = {
-        user_email: user.email,
+        user_email: user?.email,
         sort: "sent_time",
       };
 
@@ -136,14 +134,14 @@ function UserList(props) {
   }, []);
 
   useEffect(() => {
-    socket.on(`request-${user._id}`, (message) => {
+    socket.on(`request-${user?._id}`, (message) => {
       console.log("reqested message header", message);
       getConversations();
     });
   }, [socket.connected]);
 
   useEffect(() => {
-    socket.on(`recieve-${user._id}`, (message) => {
+    socket.on(`recieve-${user?._id}`, (message) => {
       console.log("recieve message header", message);
       getConversations();
     });
@@ -251,39 +249,6 @@ function UserList(props) {
     }, 1000);
   };
 
-  document.addEventListener("scroll", function () {
-    const reveals = document.querySelectorAll("#scrolldiv");
-
-    for (let i = 0; i < reveals.length; i++) {
-      const windowHeight = window.innerHeight;
-      const elementTop = reveals[i].getBoundingClientRect().top;
-      //   const elementVisible = reveals[i]?.clientHeight;
-      if (elementTop < windowHeight) {
-        reveals[i].classList.add("scrollActive");
-      } else {
-        reveals[i].classList.remove("scrollActive");
-      }
-    }
-  });
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    if (scrollPosition > position) {
-      setScrollType("up");
-    } else {
-      setScrollType("down");
-    }
-    setScrollPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrollPosition]);
-
   useEffect(() => {
     if (user?.gender === "male") {
       setCountry(user?.country_code);
@@ -311,7 +276,7 @@ function UserList(props) {
             stateName: location?.province[0]?.text,
             countryName: location?.country[0]?.text,
           });
-          setShow(false);
+          // setShow(false);
           dispatch(changeSelectedLocationPopup(false));
           dispatch(change("LocationPopup", "enter_city", location?.name));
           setCurrentLocationLoading(false);
@@ -347,28 +312,26 @@ function UserList(props) {
   useEffect(() => {
     // if (socket.connected) {
     console.log("Notif socket connected", socket.connected);
-    //`push-notification-${user.email}`
-    socket.on(`push-notification-${user.email}`, (message) => {
+    //`push-notification-${user?.email}`
+    socket.on(`push-notification-${user?.email}`, (message) => {
       console.log("notif received", message);
     });
     // }
   }, [socket.connected]);
 
-  console.log("showSelectedLocationPopup", state);
-
-  if (show) {
-    return (
-      <LocationModalPopUp
-        onClose={() => {
-          setShow(false);
-          dispatch(changeSelectedLocationPopup(false));
-        }}
-        show={show}
-        handleFectchCurrentLocation={handleFectchCurrentLocation}
-        currentLocationLoading={currentLocationLoading}
-      />
-    );
-  }
+  // if (show) {
+  //   return (
+  //     <LocationModalPopUp
+  //       onClose={() => {
+  //         setShow(false);
+  //         dispatch(changeSelectedLocationPopup(false));
+  //       }}
+  //       show={show}
+  //       handleFectchCurrentLocation={handleFectchCurrentLocation}
+  //       currentLocationLoading={currentLocationLoading}
+  //     />
+  //   );
+  // }
 
   return (
     <div className="inner-page" id="infiniteScroll">
@@ -377,12 +340,12 @@ function UserList(props) {
         isBlack={locationPopup}
         unReadedConversationLength={unReadedConversationLength}
       />
-      <div
+      {/* <div
         className={classNames(
           `modal fade ${show ? "show d-block modal-open" : "d-none"}`,
           width > 1399 && "modal-fade-1"
         )}
-      ></div>
+      ></div> */}
       <div className="inner-part-page">
         <div className="pt-5 pb-4">
           <div className="container user_list_wrap">
@@ -396,23 +359,23 @@ function UserList(props) {
                       {width < 430 ? (
                         <div
                           className="d-flex align-items-center justify-content-end"
-                          style={
-                            (scrollType === "up" || "down") &&
-                            scrollPosition > 5 &&
-                            !locationPopup
-                              ? width > 767
-                                ? {
-                                    position: "fixed",
-                                    width: "59%",
-                                    zIndex: "10",
-                                  }
-                                : {
-                                    position: "fixed",
-                                    left: "34%",
-                                    zIndex: "10",
-                                  }
-                              : { position: "relative" }
-                          }
+                          // style={
+                          //   (scrollType === "up" || "down") &&
+                          //   scrollPosition > 5 &&
+                          //   !locationPopup
+                          //     ? width > 767
+                          //       ? {
+                          //           position: "fixed",
+                          //           width: "59%",
+                          //           zIndex: "10",
+                          //         }
+                          //       : {
+                          //           position: "fixed",
+                          //           left: "34%",
+                          //           zIndex: "10",
+                          //         }
+                          //     : { position: "relative" }
+                          // }
                         >
                           {/* <span className="hidden-sm">Nearby</span> */}
                           <div
