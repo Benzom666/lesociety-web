@@ -44,7 +44,7 @@ const SecondStep = (props) => {
     // const imageUploaded = imageUploader([values.imageUpload, values.imageUpload2, values.imageUpload3, values.imageUpload4]);
     // console.log('object', imageUploaded)
     values.images = JSON.stringify(profileImages);
-    values.email = user.email;
+    values.email = user?.email;
     values.step_completed = 2;
     const formData = new FormData();
     Object.keys(values).forEach((key) => {

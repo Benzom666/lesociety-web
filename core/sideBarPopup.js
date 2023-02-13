@@ -8,12 +8,12 @@ import H5 from "./H5";
 import { HiBadgeCheck } from "react-icons/hi";
 import { FiChevronRight } from "react-icons/fi";
 import { useSelector, useDispatch } from "react-redux";
-import { deAuthenticateAction } from "../modules/auth/authActions";
+import { deAuthenticateAction, logout } from "../modules/auth/authActions";
 import { useRouter } from "next/router";
 import _ from "lodash";
 import { BiTime } from "react-icons/bi";
 import close1 from "../assets/close1.png";
-import { reset } from "redux-form";
+import { reset, initialize } from "redux-form";
 import classNames from "classnames";
 import useWindowSize from "utils/useWindowSize";
 function sideBarPopup({ isOpen, toggle }) {
@@ -28,12 +28,14 @@ function sideBarPopup({ isOpen, toggle }) {
       setDocumentUpoaded(true);
     }
   }, [user]);
-  const unreadNotifCount =  localStorage.getItem('unreadNotifCount');
-  console.log("unreadNotifCount ",unreadNotifCount)
+  const unreadNotifCount = localStorage.getItem("unreadNotifCount");
+  console.log("unreadNotifCount ", unreadNotifCount);
   return (
     <div
       className={classNames(
-        `modal fade ${isOpen ? "show d-block modal-open modal-open-1" : "d-none"}`,
+        `modal fade ${
+          isOpen ? "show d-block modal-open modal-open-1" : "d-none"
+        }`,
         width > 1399 && "modal-fade-1"
       )}
       id="sidebarPop"
@@ -75,7 +77,7 @@ function sideBarPopup({ isOpen, toggle }) {
               />
             </button>
           </div>
-          <div className="modal-body" style={{height:`cal(100vh-25%)`}}>
+          <div className="modal-body" style={{ height: `cal(100vh-25%)` }}>
             <div className="sidebar_wrap">
               <div
                 className="user-card-sidebar"
@@ -84,7 +86,7 @@ function sideBarPopup({ isOpen, toggle }) {
                 <div className="d-flex align-items-center mb-4">
                   <figure className="mb-0 p-0">
                     <img
-                      src={!_.isEmpty(user) ? user.images[0] : UserImg}
+                      src={!_.isEmpty(user) ? user?.images[0] : UserImg}
                       alt="user image"
                       width={40}
                       height={40}
@@ -147,7 +149,7 @@ function sideBarPopup({ isOpen, toggle }) {
                 </div>
                 <SubHeading title="Let them know you are real" />
               </div>
-              {user.gender === "female" && (
+              {user?.gender === "female" && (
                 <div className="verification_card_header text-center mb-0">
                   {/* <div className="mb-1">
                                         <CustomIcon.ChampaignCaviar color={"#AFABAB"} size={50} />
@@ -168,22 +170,23 @@ function sideBarPopup({ isOpen, toggle }) {
               <div className="user-card-sidebar">
                 <div
                   className="sidebar_nav_links "
-                  style={{marginTop:"50px", padding: "15px 15px 0px 15px" }}
+                  style={{ marginTop: "50px", padding: "15px 15px 0px 15px" }}
                 >
                   <ul>
                     <li>
                       <Link href="/user/notifications">
-                      <div style={{'cursor':'pointer'}}>
-                        <a>
-                        Notification <FiChevronRight size={22} />{" "}
-                      </a>
-                      {
-                        unreadNotifCount > 0 &&
-                        <div class="notification-container">
-                          <span class="notification-counter">{unreadNotifCount}</span>
+                        <div style={{ cursor: "pointer" }}>
+                          <a>
+                            Notification <FiChevronRight size={22} />{" "}
+                          </a>
+                          {unreadNotifCount > 0 && (
+                            <div class="notification-container">
+                              <span class="notification-counter">
+                                {unreadNotifCount}
+                              </span>
+                            </div>
+                          )}
                         </div>
-                      }
-                      </div>
                       </Link>
                     </li>
                     <li>
@@ -210,32 +213,17 @@ function sideBarPopup({ isOpen, toggle }) {
                   </ul>
                 </div>
               </div>
-              <div className="bottom-footer-sidebar" style={{position: "inherit"}}>
+              <div
+                className="bottom-footer-sidebar"
+                style={{ position: "inherit" }}
+              >
                 <div className="d-flex align-items-center mb-0 header_btn_wrap log-btn login-btn">
                   <button
                     className="log-btn"
                     type="button"
                     style={{ lineHeight: "3" }}
                     onClick={() => {
-                      dispatch(reset("signupStep2"));
-                      dispatch(reset("signupStep3"));
-                      dispatch(reset("DatePreview"));
-                      dispatch(reset("RegisterFormMale"));
-                      dispatch(reset("RegisterForm"));
-                      dispatch(reset("forgotpassword"));
-                      dispatch(reset("LoginForm"));
-                      dispatch(reset("SecondStep"));
-                      dispatch(reset("ThirdStep"));
-                      dispatch(reset("CreateStepFour"));
-                      dispatch(reset("CreateStepOne"));
-                      dispatch(reset("CreateStepThree"));
-                      dispatch(reset("CreateStepTwo"));
-                      dispatch(reset("SkeletonUserProfile"));
-                      dispatch(reset("Messages"));
-                      dispatch(reset("VerifiedProfilePage"));
-                      dispatch(reset("ChooseCity"));
-                      dispatch(deAuthenticateAction());
-                      window.location.reload();
+                      logout(router, dispatch);
                     }}
                   >
                     Log Out

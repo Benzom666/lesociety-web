@@ -8,7 +8,7 @@ function HomePageMainSection(props) {
   const { title, maincardImage, children,styles} = props;
   const { width } = useWindowSize();
   return (
-    <div className='container'>
+    <div className='container-fluid'>
       <div 
         className={`row align-items-center mx-0 home-main-section ${styles}`}>
       {width >769 &&   <div class="col-lg-4 col-md-12">
@@ -19,7 +19,7 @@ function HomePageMainSection(props) {
         <div class="col-lg-4 col-sm-12 main-card-side-wraper">
           <div className='main-card'>
             <div className='main-card-side-wraper-1'>
-              {<img src={maincardImage.src}  alt="main-img" style={{height:"45rem"}}/>}
+              {<img src={maincardImage.src}  alt="main-img" style={{height:"46rem"}}/>}
             </div>
           </div>
         </div>

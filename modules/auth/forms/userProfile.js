@@ -281,33 +281,36 @@ function UserProfile({ preview, editHandle }) {
     fetchDates(params);
   };
 
+  const faltuImage =
+    "https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000";
+
   const userImageProfile =
     userDetail?.images?.length > 0
       ? userDetail?.images[0]
       : user?.un_verified_images?.length > 0 && router.query?.edit
       ? user?.un_verified_images[0]
-      : user.images && user.images[0];
+      : (user?.images && user?.images[0]) || faltuImage;
 
   const userImage1 =
     userDetail?.images?.length > 0
       ? userDetail?.images[1]
       : user?.un_verified_images?.length > 0 && router.query?.edit
       ? user?.un_verified_images[1]
-      : user.images && user.images[1];
+      : (user?.images && user?.images[1]) || faltuImage;
 
   const userImage2 =
     userDetail?.images?.length > 0
       ? userDetail?.images[2]
       : user?.un_verified_images?.length > 0 && router.query?.edit
       ? user?.un_verified_images[2]
-      : user.images && user.images[2];
+      : (user?.images && user?.images[2]) || faltuImage;
 
   const userImage3 =
     userDetail?.images?.length > 0
       ? userDetail?.images[3]
       : user?.un_verified_images?.length > 0 && router.query?.edit
       ? user?.un_verified_images[3]
-      : user.images && user.images[3];
+      : (user?.images && user?.images[3]) || faltuImage;
 
   const userTagline =
     userDetail?.tagline ||
@@ -466,8 +469,8 @@ function UserProfile({ preview, editHandle }) {
                     <div className="col-xl-8 col-lg-7 col-md-12 col-12 padd0-responsive">
                       <div className="userdetails resposnive-data-profile">
                         <h4>
-                          {userDetail?.user_name || user.user_name},{" "}
-                          <span>{userDetail?.age || user.age}</span>
+                          {userDetail?.user_name || user?.user_name},{" "}
+                          <span>{userDetail?.age || user?.age}</span>
                         </h4>
 
                         {width < 991 && (
@@ -529,7 +532,7 @@ function UserProfile({ preview, editHandle }) {
                                       src={
                                         // userDetail?.images
                                         //   ? userDetail?.images[0]
-                                        //   : user.images && user.images[0]
+                                        //   : user?.images && user?.images[0]
                                         userImageProfile
                                       }
                                       alt="user image"
@@ -782,7 +785,7 @@ function UserProfile({ preview, editHandle }) {
                                   <div className="verification_card_header text-center mb-5 mt-4">
                                     <div
                                       className={
-                                        userDates.length > 0 &&
+                                        userDates?.length > 0 &&
                                         userDates.filter(
                                           (item) => item?.date_status === true
                                         )?.length === 1
@@ -802,7 +805,7 @@ function UserProfile({ preview, editHandle }) {
                                         <div className="w-100 d-flex justify-content-center align-items-center">
                                           <span className="date-spin-loader-button"></span>
                                         </div>
-                                      ) : userDates.length > 0 &&
+                                      ) : userDates?.length > 0 &&
                                         userDates.filter(
                                           (item) => item?.date_status === true
                                         )?.length > 0 ? (
@@ -827,7 +830,7 @@ function UserProfile({ preview, editHandle }) {
                                                   if (
                                                     !router?.query?.userName ||
                                                     router?.query?.userName ===
-                                                      user.user_name
+                                                      user?.user_name
                                                   ) {
                                                     setSelectedDate(date);
                                                     dateModalIsOpen();
@@ -895,10 +898,10 @@ function UserProfile({ preview, editHandle }) {
                                       )} */}
                                     </div>
                                     {(router?.query?.userName ===
-                                      user.user_name ||
+                                      user?.user_name ||
                                       router?.pathname ===
                                         "/user/user-profile") &&
-                                      (!userDates.length ? (
+                                      (!userDates?.length ? (
                                         <div className="d-flex flex-column justify-content-center align-items-center header_btn_wrap w-100 date-block-section">
                                           <button
                                             type="button"
@@ -1054,13 +1057,13 @@ function UserProfile({ preview, editHandle }) {
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-                                {user.max_education.length > 15 ? (
+                                {user?.max_education?.length > 15 ? (
                                   <h5
                                     className="education-font-1"
                                     style={{ wordBreak: "unset" }}
                                   >
                                     {userDetail?.max_education ||
-                                      user.max_education}
+                                      user?.max_education}
                                   </h5>
                                 ) : (
                                   <h5
@@ -1068,7 +1071,7 @@ function UserProfile({ preview, editHandle }) {
                                     style={{ wordBreak: "unset" }}
                                   >
                                     {userDetail?.max_education ||
-                                      user.max_education}
+                                      user?.max_education}
                                   </h5>
                                 )}
                                 <p>Education </p>
@@ -1085,7 +1088,7 @@ function UserProfile({ preview, editHandle }) {
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
                                 <H5>
-                                  {userDetail?.is_smoker || user.is_smoker}
+                                  {userDetail?.is_smoker || user?.is_smoker}
                                 </H5>
                                 <p>Smoker</p>
                               </div>
@@ -1093,26 +1096,26 @@ function UserProfile({ preview, editHandle }) {
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
                                 <H5>
-                                  {userDetail?.ethnicity || user.ethnicity}
+                                  {userDetail?.ethnicity || user?.ethnicity}
                                 </H5>
                                 <p>Ethnicity</p>
                               </div>
                             </div>
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">
-                                {user.occupation.length > 15 ? (
+                                {user?.occupation?.length > 15 ? (
                                   <h5
                                     className="administrat-font-1"
                                     style={{ wordBreak: "unset" }}
                                   >
-                                    {userDetail?.occupation || user.occupation}
+                                    {userDetail?.occupation || user?.occupation}
                                   </h5>
                                 ) : (
                                   <h5
                                     className="administrat-font"
                                     style={{ wordBreak: "unset" }}
                                   >
-                                    {userDetail?.occupation || user.occupation}
+                                    {userDetail?.occupation || user?.occupation}
                                   </h5>
                                 )}
                                 <p>Occupation </p>
@@ -1124,7 +1127,7 @@ function UserProfile({ preview, editHandle }) {
                               <h6 className=" text-left-more more-about">
                                 More about{" "}
                                 <span>
-                                  {userDetail?.user_name || user.user_name}
+                                  {userDetail?.user_name || user?.user_name}
                                 </span>
                               </h6>
                               <svg
@@ -1166,7 +1169,7 @@ function UserProfile({ preview, editHandle }) {
                               </svg>
                               <p className="">
                                 {userDescription}
-                                {/* {user.description} */}
+                                {/* {user?.description} */}
                               </p>
                               {preview && (
                                 <div className="button-wrapper profile-btn">

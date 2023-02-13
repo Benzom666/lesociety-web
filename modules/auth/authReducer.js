@@ -4,6 +4,7 @@ import {
   DEAUTHENTICATE,
   AUTHENTICATE_UPDATE,
   DELETE_FORM_DATA,
+  CHANGE_SELECTED_LOCATION_POPUP,
 } from "./actionConstants";
 import { getCookie, setCookie, removeCookie } from "../../utils/cookie";
 import {
@@ -21,19 +22,20 @@ if (typeof localStorage !== "undefined") {
   // const authCookie = getSessionStorage("auth");
   const authCookie = loadFromLocalStorage();
 
-  console.log("authCookie", authCookie);
   if (authCookie) {
     initialState = authCookie;
     // initialState = JSON.parse(decodeURIComponent(authCookie));
   } else {
     initialState = {
       isLoggedIn: false,
+      showSelectedLocationPopup: true,
       user: {},
     };
   }
 } else {
   initialState = {
     isLoggedIn: false,
+    showSelectedLocationPopup: true,
     user: {},
   };
 }
@@ -52,9 +54,11 @@ const authReducer = (state = initialState, action) => {
 
     case AUTHENTICATE:
       const authObj = {
+        showSelectedLocationPopup: true,
         isLoggedIn: true,
         user: action.payload,
       };
+
       // setCookie("auth", JSON.stringify(authObj));
       // setSessionStorage("auth", JSON.stringify(authObj));
       saveToLocalStorage(authObj);
@@ -62,8 +66,10 @@ const authReducer = (state = initialState, action) => {
 
     case AUTHENTICATE_UPDATE:
       const updateAuth = {
+        ...state,
         isLoggedIn: true,
         user: { ...state.user, ...action.payload },
+        showSelectedLocationPopup: true,
       };
       // setCookie("auth", JSON.stringify(updateAuth));
       // setSessionStorage("auth", JSON.stringify(updateAuth));
@@ -78,6 +84,16 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: action.payload.user,
       };
+    case CHANGE_SELECTED_LOCATION_POPUP:
+      const selectedLocationObj = {
+        ...state,
+        showSelectedLocationPopup: action.payload,
+        isLoggedIn: true,
+        user: { ...state.user },
+      };
+      saveToLocalStorage(selectedLocationObj);
+      return selectedLocationObj;
+
     default:
       return { ...state };
   }

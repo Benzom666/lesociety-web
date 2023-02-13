@@ -46,6 +46,11 @@ class MyApp extends App {
       }, 2000);
       // console.log("I am Loaded...");
     });
+
+    // hide all console logs and errors
+    if (process.env.NODE_ENV === "production") {
+      console.log = console.error = console.warn = function () {};
+    }
   }
 
   componentDidUpdate() {
@@ -59,6 +64,9 @@ class MyApp extends App {
       this.setState((prevState) => ({
         history: [...prevState.history, asPath],
       }));
+    }
+    if (process.env.NODE_ENV === "production") {
+      console.log = console.error = console.warn = function () {};
     }
   }
 
@@ -86,7 +94,6 @@ class MyApp extends App {
         !asPath.includes("/user/user-profile/")) ||
       (this.state.isLoading && !accessToken);
 
-    // console.log("lsLoader", asPath, lsLoader);
     return (
       <Provider store={store}>
         <Head>

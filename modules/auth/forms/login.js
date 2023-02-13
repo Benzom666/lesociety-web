@@ -26,7 +26,7 @@ const SimpleForm = (props) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const passRef = useRef(null);
-  const [notifData, setNotifdata] = useState(null)
+  const [notifData, setNotifdata] = useState(null);
 
   const submitHandler = async (values) => {
     values.email = values.email?.toLowerCase();
@@ -53,27 +53,27 @@ const SimpleForm = (props) => {
     event.preventDefault();
   };
 
-  const fetchNotifications = async() => {
-    debugger
+  const fetchNotifications = async () => {
+    debugger;
     try {
       const params = {
         user_email: userLogin.email,
-        sort: 'sent_time'
+        sort: "sent_time",
       };
 
-      const {data} = await apiRequest({
+      const { data } = await apiRequest({
         method: "GET",
         url: `notification`,
         params: params,
       });
-      setNotifdata(data?.data?.notification)
+      setNotifdata(data?.data?.notification);
     } catch (err) {
       console.error("err", err);
     }
-  }
+  };
 
   useEffect(() => {
-    console.log("called",authState)
+    console.log("called", authState);
     if (authState?.isLoggedIn) {
       // debugger
       // fetchNotifications()
@@ -97,18 +97,16 @@ const SimpleForm = (props) => {
             pathname: "/user/user-list",
           });
         } else if (userLogin?.request_change_fired) {
-          console.log("request change called")
+          console.log("request change called");
           router.push({
             pathname: "/auth/verify-profile",
           });
-         
-        }
-        else if (userLogin?.status === 3) {
+        } else if (userLogin?.status === 3) {
           router.push({
             pathname: "/auth/block",
           });
         }
-        
+
         // else {
         //   console.log("auth/profile called")
         //   router.push({
@@ -119,12 +117,10 @@ const SimpleForm = (props) => {
     }
   }, [userLogin, router?.isReady]);
 
-
-
   useEffect(() => {
-    console.log("notiffff ",notifData)
+    console.log("notiffff ", notifData);
     //localStorage.setItem('notifications', JSON.stringify(notifData));
-  },[notifData])
+  }, [notifData]);
 
   const {
     handleSubmit,
@@ -146,7 +142,7 @@ const SimpleForm = (props) => {
             component={Inputs.inputField}
             type="text"
             label="User Email"
-            value={user.name}
+            value={user?.name}
             onKeyPress={handleKeyPress}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
             placeholder="E.g. Janedoe@gmail.com"
@@ -222,7 +218,7 @@ const SimpleForm = (props) => {
             type="text"
             label="User Email"
             // validate={[userRequired] || apiError}
-            value={user.name}
+            value={user?.name}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
             placeholder="E.g. Janedoe@gmail.com"
           />

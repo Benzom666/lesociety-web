@@ -27,7 +27,7 @@ export default function SideBar() {
       setDocumentUpoaded(true);
     }
   }, [user]);
-  const unreadNotifCount = localStorage.getItem("unreadNotifCount");
+  const unreadNotifCount = localStorage?.getItem("unreadNotifCount");
 
   return (
     <>
@@ -36,7 +36,7 @@ export default function SideBar() {
           <div className="d-flex align-items-center mb-4">
             <figure className="mb-0 p-0">
               <img
-                src={!_.isEmpty(user) ? user.images[0] : UserImg}
+                src={!_.isEmpty(user) ? user?.images[0] : UserImg}
                 alt="user image"
                 width={50}
                 height={50}
@@ -101,7 +101,7 @@ export default function SideBar() {
           </div>
           <SubHeading title="Let them know you are real" />
         </div>
-        {user.gender === "female" && (
+        {user?.gender === "female" && (
           <div className="verification_card_header text-center mb-2">
             {/* <div className="mb-2">
               <CustomIcon.ChampaignCaviar color={"#AFABAB"} size={50} />
@@ -168,27 +168,7 @@ export default function SideBar() {
               className="log-btn"
               type="button"
               onClick={() => {
-                dispatch(reset("signupStep2"));
-                dispatch(reset("signupStep3"));
-                dispatch(reset("DatePreview"));
-                dispatch(reset("RegisterFormMale"));
-                dispatch(reset("RegisterForm"));
-                dispatch(reset("forgotpassword"));
-                dispatch(reset("LoginForm"));
-                dispatch(reset("SecondStep"));
-                dispatch(reset("ThirdStep"));
-                dispatch(reset("CreateStepFour"));
-                dispatch(reset("CreateStepOne"));
-                dispatch(reset("CreateStepThree"));
-                dispatch(reset("CreateStepTwo"));
-                dispatch(reset("SkeletonUserProfile"));
-                dispatch(reset("Messages"));
-                dispatch(reset("VerifiedProfilePage"));
-                dispatch(reset("ChooseCity"));
-                dispatch(deAuthenticateAction());
-                window.location.reload();
-                // router.push("/auth/login");
-                // refresh page
+                logout(router, dispatch);
               }}
             >
               Log Out

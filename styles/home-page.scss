@@ -1,26 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 
-.ls-logo {
-  width: 45px;
-  margin: 30px 20px;
+.home-page-navbar {
+  margin-left: 55px;
+
+  .LeSociety-Icon-White {
+    padding: 0 75px;
+
+    .ls-logo {
+      width: 45px;
+      margin: 30px 20px;
+    }
+
+    .ls-text {
+      width: 229px;
+      padding: 15px 0px;
+      color: #fff;
+      margin-left: 1.5rem;
+      margin-top: 1.5rem;
+
+      .leSocitey-heading {
+        margin-bottom: 2rem;
+      }
+
+      .leSocitey-subheading {
+        font-size: 13px;
+        padding-top: 5px;
+        font-family: "Montserrat";
+      }
+    }
+  }
 }
 
-.ls-text {
-  padding: 15px 0px;
-  color: #fff;
-
-  .leSocitey-heading {
-    //font-family:'Montserrat' ;
-    font-size: 20px;
-    letter-spacing: 12.2px;
-  }
-
-  .leSocitey-subheading {
-    font-size: 13px;
-  }
-}
 
 @media only screen and (max-width:769px) and (min-width:501px) {
+  .home-page-navbar {
+    margin-left: 0px !important;
+  }
+
   .LeSociety-Icon-White {
     display: contents;
     flex-direction: column;
@@ -30,12 +46,13 @@
 
     .ls-logo {
       margin: 30px 20px 0px 20px;
+      margin-bottom: 0px !important;
     }
 
     .ls-text {
       font-size: 20px;
       padding: 0px 10px;
-
+     margin-top: 2px !important;
       .leSocitey-heading {
         letter-spacing: 9.2px;
       }
@@ -50,6 +67,10 @@
 
 
 @media only screen and (max-width:500px) {
+  .home-page-navbar {
+    margin-left: 0px !important;
+  }
+
   .LeSociety-Icon-White {
     display: contents;
     flex-direction: column;
@@ -59,12 +80,13 @@
 
     .ls-logo {
       margin: 30px 20px 0px 20px;
+      margin-bottom: 0px !important;
     }
 
     .ls-text {
       font-size: 20px;
       padding: 0px 10px;
-
+      margin-top: 2px !important;
       .leSocitey-heading {
         letter-spacing: 6.2px;
       }
@@ -133,7 +155,7 @@
   font-size: 18px;
   line-height: 1.16;
   letter-spacing: 0px;
- // margin-left: 5rem;
+  // margin-left: 5rem;
 }
 
 .main-content-icon {
@@ -164,7 +186,8 @@
   .main-content {
     font-size: 16px;
     padding: 15px 10px;
-    .main-content-icon{
+
+    .main-content-icon {
       width: 300px !important;
       margin: auto;
       padding: 0px !important;
@@ -179,6 +202,13 @@
     padding: 10px;
   }
 
+  .main-card-side-wraper-1 {
+    img {
+      width: 100%;
+      object-fit: contain;
+      height: unset !important;
+    }
+  }
 }
 
 @media only screen and (min-width:501px) and (max-width:769px) {
@@ -448,68 +478,104 @@
 }
 
 
+.bottom-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.card_1 {
-  // background-image: url('../assets/svg/Fifth Blob.svg');
-  font-family: 'Montserrat', sans-serif;
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: 12rem;
-  background-color: #222326;
-  border-radius: 15px;
-  border: 1px solid #83f4ff;
-  //width: 320px;
-  opacity: 0.5;
+  .bottom-box-card-1 {
+    width: 328px;
+    min-height: 250px;
+    background-image: url('../assets/img/card_1.png');
+    background-repeat: no-repeat;
+    background-size: 20rem;
+
+    //margin: 20px;
+    .card_1 {
+      margin-top: 5%;
+      font-family: 'Montserrat', sans-serif;
+      opacity: 0.9;
+
+      .card-title {
+        width: 264px;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1.24px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px 0px 0px 10px;
+        margin: 0 18%;
+      }
+
+      #howitworkbtn {
+        width: 179px;
+        background-color: #f24462;
+        border-radius: 15px;
+        text-align: center;
+        margin: 5% 32%;
+      }
+    }
+  }
+
+  .bottom-box-card-2 {
+    width: 420px;
+    min-height: 268px;
+    background-image: url('../assets/img/card_2.png');
+    background-size: 25rem;
+    background-repeat: no-repeat;
+    margin-left: 2%;
+
+    .card_2 {
+      margin-top: 6%;
+      font-family: 'Montserrat', sans-serif;
+      opacity: 0.9;
+
+      .card-title {
+        width: 264px;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1.24px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px 0px 0px 50px;
+      }
+
+      #sneakPeakbtn {
+        width: 179px;
+        background-color: #f24462;
+        border-radius: 15px;
+        text-align: center;
+        margin: 5% 15%;
+      }
+
+      .card-app-pay {
+        color: #BCBCBC;
+        width: 255px;
+        font-size: 14px;
+        font-weight: normal;
+        text-align: center;
+        letter-spacing: normal;
+        padding: 10px 61px;
+        margin-top: -5%;
+        margin-left: 6%;
+      }
+    }
+  }
 }
 
-.card_2 {
-  background-image: url('../assets/img/Card-2.png');
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: 12rem;
-  background-color: #222326;
-  border-radius: 15px;
-  font-family: 'Montserrat', sans-serif;
-  // border: 1px solid #83f4ff;
-  //width: 320px;
-  opacity: 0.5;
+@media only screen and (max-width:769px) {
+  .bottom-box-container {
+    flex-direction: column;
+  }
 }
 
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 4.24px;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 20px 5px 0px 5px;
-}
 
-.card-app-pay {
-  font-size: 14px;
-  font-weight: normal;
-  text-align: center;
-  letter-spacing: normal;
-  padding: 10px 82px;
-  //margin: 10px 15px;
-}
-
-#sneakPeakbtn {
-  background-color: #f24462;
-  border-radius: 15px;
-  text-align: center;
-  margin: 15px 75px;
-}
 
 .future-dates-main {
   font-family: 'Montserrat'
 }
 
-#howitworkbtn {
-  background-color: #f24462;
-  border-radius: 15px;
-  text-align: center;
-  margin: 10px 70px;
-}
+
 
 @media only screen and (min-width:760px) {
   .futuredate-header {
@@ -527,6 +593,7 @@
 }
 
 .futureDatingContent {
+  width: 767px;
   font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
@@ -603,6 +670,7 @@
 
   //width:480px;
   h3 {
+    width: 462px;
     //padding: 0px 35px;
     font-size: 30px;
     font-weight: normal;
@@ -622,6 +690,7 @@
   }
 
   p {
+    width: 480px;
     //padding: 0 28px;
     font-size: 18px;
     font-weight: normal;
@@ -681,25 +750,11 @@
   }
 }
 
-.mainCardbackground {
-  width: 10rem;
-}
+// .mainCardbackground {
+//   width: 10rem;
+// }
 
-.bottom-box-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  .bottom-box-card-1 {
-    background-image: url('../assets/svg/Fifth Blob.svg');
-  }
-}
-
-@media only screen and (max-width:769px) {
-  .bottom-box-container {
-    flex-direction: column;
-  }
-}
 
 .animate {
   transition: mymove 5s ease-in-out;
@@ -713,5 +768,216 @@
 
   to {
     right: 500px;
+  }
+}
+
+// @media only screen and (max-width:769px) and (min-width:500px) {
+//   .bottom-Card-mobile{
+//     //width : 600px;
+//     height: 38rem;
+//     background-image: url('../assets/img/Card_Mobile.png');
+//     background-repeat: no-repeat;
+//     background-size: 40rem;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+//     align-items: center;
+//     .card-1{
+//       margin-top: -5%;
+//       margin-right: 10%;
+//       .card-title{
+//         .heading{
+//          // width: 264px;
+//           font-size: 24px;
+//           font-weight: bold;
+//           letter-spacing: 4.24px;
+//           text-align: center;
+//           text-transform: uppercase;
+//           padding: 10px 50px 15px 50px; 
+//         }
+//       }
+//       #howitworkbtn {
+//         width: 179px;
+//         background-color: #f24462;
+//         border-radius: 15px;
+//         text-align: center;
+//         padding: 10px;
+//         margin: 5% 20%;
+//       }
+//     }
+//     .card-2{
+//       margin-right: 15%;
+//       .card-title{
+//         .heading{
+//          // width: 264px;
+//           font-size: 24px;
+//           font-weight: bold;
+//           letter-spacing: 4.24px;
+//           text-align: center;
+//           text-transform: uppercase;
+//           padding: 10px 0px 0px 50px; 
+//         }
+//       }
+//       #sneakPeakbtn {
+//         width: 179px;
+//         background-color: #f24462;
+//         border-radius: 15px;
+//         text-align: center;
+//         margin: 10% 24%;
+//         padding: 10px;
+//       }
+//       .card-app-pay {
+//         color: #BCBCBC;
+//         width: 255px;
+//         font-size: 14px;
+//         font-weight: normal;
+//         text-align: center;
+//         letter-spacing: normal;
+//         padding: 10px 76px;
+//         margin-top: -10%;
+//         margin-left: 9%;
+//       }
+//     }
+//   }
+// }
+
+// @media only screen and (max-width:500px) {
+//   .bottom-Card-mobile{
+//     overflow-x: hidden;
+//     //width : 600px;
+//     height: 38rem;
+//     background-image: url('../assets/img/Card_Mobile.png');
+//     background-repeat: no-repeat;
+//     background-size: 24rem;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+//     align-items: center;
+//     .card-1{
+//       margin-top: -20%;
+//       margin-right: 4%;
+//       .card-title{
+//         .heading{
+//          // width: 264px;
+//           font-size: 15px;
+//           font-weight: bold;
+//           letter-spacing: 2.24px;
+//           text-align: center;
+//           text-transform: uppercase;
+//           padding: 5px 5px 11px 81px; 
+//         }
+//       }
+//       #howitworkbtn {
+//         width: 120px;
+//         background-color: #f24462;
+//         border-radius: 15px;
+//         text-align: center;
+//         padding: 10px;
+//         margin: 5% 36%;
+//       }
+//     }
+//     .card-2{
+//       margin-right: 15%;
+//       .card-title{
+//         .heading{
+//          // width: 264px;
+//           font-size: 15px;
+//           font-weight: bold;
+//           letter-spacing: 2.24px;
+//           text-align: center;
+//           text-transform: uppercase;
+//           padding: 10px 0px 0px 50px; 
+//         }
+//       }
+//       #sneakPeakbtn {
+//         width: 179px;
+//         background-color: #f24462;
+//         border-radius: 15px;
+//         text-align: center;
+//         margin: 10% 24%;
+//         padding: 10px;
+//       }
+//       .card-app-pay {
+//         color: #BCBCBC;
+//         width: 255px;
+//         font-size: 14px;
+//         font-weight: normal;
+//         text-align: center;
+//         letter-spacing: normal;
+//         padding: 10px 76px;
+//         margin-top: -10%;
+//         margin-left: 9%;
+//       }
+//     }
+//   }
+// }
+
+.bottom-Card-mobile {
+  position: relative;
+
+  .card-1 {
+    position: absolute;
+    bottom: 70%;
+    left: 32%;
+
+    .card-title {
+      .heading {
+        // width: 264px;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 4.24px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px 50px 15px 50px;
+      }
+    }
+
+    #howitworkbtn {
+      width: 179px;
+      background-color: #f24462;
+      border-radius: 15px;
+      text-align: center;
+      padding: 10px;
+      margin: 5% 20%;
+    }
+  }
+
+  .card-2 {
+    position: absolute;
+    bottom: 15%;
+    left: 32%;
+
+    .card-title {
+      .heading {
+        // width: 264px;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 4.24px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px 0px 0px 50px;
+      }
+    }
+
+    #sneakPeakbtn {
+      width: 179px;
+      background-color: #f24462;
+      border-radius: 15px;
+      text-align: center;
+      margin: 10% 24%;
+      padding: 10px;
+    }
+
+    .card-app-pay {
+      color: #BCBCBC;
+      width: 255px;
+      font-size: 14px;
+      font-weight: normal;
+      text-align: center;
+      letter-spacing: normal;
+      padding: 10px 76px;
+      margin-top: -10%;
+      margin-left: 9%;
+    }
   }
 }

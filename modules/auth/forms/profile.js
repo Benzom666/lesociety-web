@@ -31,13 +31,13 @@ const RegisterForm = (props) => {
   };
 
   useEffect(() => {
-    if (user.step_completed === 2) {
+    if (user?.step_completed === 2) {
       setPage(1);
     }
-    if (user.step_completed === 3) {
+    if (user?.step_completed === 3) {
       setPage(2);
     }
-    if (user.step_completed === 4) {
+    if (user?.step_completed === 4) {
       setPage(3);
     }
   }, [user]);
@@ -47,13 +47,13 @@ const RegisterForm = (props) => {
       setPage(0);
     }
   }, [router?.query]);
-  let notifObj
-  if(router?.query?.type){
+  let notifObj;
+  if (router?.query?.type) {
     notifObj = {
-      "fromNotifPage":true,
-      "notifType":router?.query?.type, 
-      "id": router?.query?.id
-    }
+      fromNotifPage: true,
+      notifType: router?.query?.type,
+      id: router?.query?.id,
+    };
   }
 
   return (

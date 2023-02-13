@@ -158,16 +158,16 @@ const ChooseCity = (props) => {
       }
     };
     fetch();
-    if (user.country && user.location) {
+    if (user?.country && user?.location) {
       const data = {
         enter_country: {
-          label: user.country,
-          value: countriesCode[user.country],
+          label: user?.country,
+          value: countriesCode[user?.country],
         },
         enter_city: {
-          name: user.location,
-          country: user.country,
-          label: user.location + ", " + user?.province?.toUpperCase(),
+          name: user?.location,
+          country: user?.country,
+          label: user?.location + ", " + user?.province?.toUpperCase(),
           province: [{ short_code: user?.province?.toUpperCase() }],
         },
       };
@@ -257,12 +257,15 @@ const ChooseCity = (props) => {
                       </svg>
                     </a>
                     <h6 className="m-0 text-white-50">CREATE NEW DATE</h6>
-                    <IoIosClose
-                      className="mouse-point"
-                      size={32}
-                      style={{ color: " rgba(255, 255, 255, 0.5)" }}
-                      onClick={toggle}
-                    />
+
+                    <div onClick={toggle} className="w-15 cursor-pointer">
+                      <IoIosClose
+                        className="desk-close-first mouse-point"
+                        size={33}
+                        style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                        onClick={toggle}
+                      />
+                    </div>
                   </div>
                   {width > 767 && (
                     <div
@@ -272,11 +275,13 @@ const ChooseCity = (props) => {
                       <h3 className="text-center text-uppercase">
                         Create a New Date
                       </h3>
-                      <IoIosClose
-                        className="desk-close-first mouse-point"
-                        size={32}
-                        onClick={toggle}
-                      />
+                      <div onClick={toggle} className="w-15 cursor-pointer">
+                        <IoIosClose
+                          className="desk-close-first mouse-point"
+                          size={33}
+                          onClick={toggle}
+                        />
+                      </div>
                     </div>
                   )}
 

@@ -16,6 +16,39 @@ const withAuth = (WrappedComponent) => {
         Router.replace("/auth/login");
         return null;
       }
+      if (accessToken?.isLoggedIn) {
+        const userLogin = accessToken?.user;
+
+        if (userLogin?.status !== 2) {
+          if (
+            Router?.asPath?.includes("/user") ||
+            Router?.asPath?.includes("/create-date") ||
+            Router?.asPath?.includes("/messages") ||
+            Router?.asPath?.includes("/chat") ||
+            Router?.asPath?.includes("/future-date") ||
+            Router?.asPath?.includes("/home") ||
+            Router?.asPath?.includes("/howItWork") ||
+            Router?.asPath?.includes("/payment") ||
+            Router?.asPath?.includes("/verified-profile")
+          ) {
+            Router.back();
+            return null;
+          }
+        }
+
+        if (
+          userLogin?.status === 2 &&
+          userLogin?.verified_screen_shown === true
+        ) {
+          if (
+            Router?.asPath?.includes("/auth") ||
+            Router?.asPath?.includes("/user/verified")
+          ) {
+            Router.replace("/user/user-list");
+            return null;
+          }
+        }
+      }
 
       // If this is an accessToken we just render the component that was passed with all its props
 

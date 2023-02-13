@@ -14,7 +14,7 @@ export default function Footer(props) {
           <div className="d-flex justify-content-between align-items-center mx-0 home-footer">
             <div className='ls-logo-footer'>
                <div className='ls-logo mb-0' style={{margin:"auto"}}>
-                  <Image src={LeSlogoWhite} alt="ls-logo-footer" sizes={20}/>
+                  <Image src={LeSlogoWhite} alt="ls-logo-footer" sizes={10}/>
                   </div>
                    <p style={{color:"white",paddingTop:"10px",letterSpacing:"5.2px"}}>LE SOCIETY</p>
              </div>

@@ -28,15 +28,15 @@ export default function HeaderLoggedIn({
   const [conversations, setConversations] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  // useEffect(() => {
-  //   if (modalIsOpen) {
-  //     // stop scrolling page
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     // allow scrolling page
-  //     document.body.style.overflow = "unset";
-  //   }
-  // }, [modalIsOpen]);
+  useEffect(() => {
+    if (modalIsOpen || isActive) {
+      // stop scrolling page
+      document.body.style.overflow = "hidden";
+    } else {
+      // allow scrolling page
+      document.body.style.overflow = "unset";
+    }
+  }, [modalIsOpen, isActive]);
 
   function toggleModal() {
     setIsOpen(!modalIsOpen);
@@ -46,7 +46,7 @@ export default function HeaderLoggedIn({
   // }, [user]);
 
   // useEffect(() => {
-  //   socket.on(`request-${user._id}`, (message) => {
+  //   socket.on(`request-${user?._id}`, (message) => {
   //     console.log("reqested message header", message);
   //     getConversations();
   //   });
@@ -54,7 +54,7 @@ export default function HeaderLoggedIn({
 
   // useEffect(() => {
   //   if (socket.connected) {
-  //     socket.on(`recieve-${user._id}`, (message) => {
+  //     socket.on(`recieve-${user?._id}`, (message) => {
   //       console.log("recieve message header", message);
   //       getConversations();
   //     });
@@ -172,7 +172,7 @@ export default function HeaderLoggedIn({
                       role="button"
                     >
                       <img
-                        src={!_.isEmpty(user) ? user.images[0] : UserImg}
+                        src={!_.isEmpty(user) ? user?.images[0] : UserImg}
                         alt="user image"
                         width={32}
                         height={32}

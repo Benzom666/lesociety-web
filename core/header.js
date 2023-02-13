@@ -29,25 +29,7 @@ export default function Header(props) {
                     <Link href="#">
                       <a
                         onClick={() => {
-                          dispatch(deAuthenticateAction());
-                          router.push("/auth/login");
-                          dispatch(initialize("signupStep2", ""));
-                          dispatch(initialize("DatePreview", ""));
-                          dispatch(initialize("RegisterFormMale", ""));
-                          dispatch(initialize("signupStep3", ""));
-                          dispatch(initialize("RegisterForm", ""));
-                          dispatch(initialize("forgotpassword", ""));
-                          dispatch(initialize("LoginForm", ""));
-                          dispatch(initialize("SecondStep", ""));
-                          dispatch(initialize("ThirdStep", ""));
-                          dispatch(initialize("CreateStepFour", ""));
-                          dispatch(initialize("CreateStepOne", ""));
-                          dispatch(initialize("CreateStepThree", ""));
-                          dispatch(initialize("CreateStepTwo", ""));
-                          dispatch(initialize("SkeletonUserProfile", ""));
-                          dispatch(initialize("Messages", ""));
-                          dispatch(initialize("VerifiedProfilePage", ""));
-                          dispatch(initialize("ChooseCity", ""));
+                          logout(router, dispatch);
                         }}
                       >
                         Sign Out

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import HeaderLoggedIn from "core/loggedInHeader";
-import NoImage from "assets/img/no-image.png";
 import Image from "next/image";
 import Footer from "core/footer";
-import SubHeading from "@/core/SubHeading";
-import InfiniteScroll from "react-infinite-scroll-component";
-import UserCardList from "@/core/UserCardList";
+import router from "next/router";
 import LocationPopup from "@/core/locationPopup";
 import withAuth from "../../core/withAuth";
 import { apiRequest, countriesCode } from "utils/Utilities";
-import { fetchLiveLocation } from "../../modules/auth/forms/steps/validateRealTime";
-import { useSelector } from "react-redux";
+import {
+  fetchCities,
+  fetchLiveLocation,
+} from "../../modules/auth/forms/steps/validateRealTime";
+import { useDispatch, useSelector } from "react-redux";
 import DatePopup from "core/createDatePopup";
-import router from "next/router";
 import useWindowSize from "utils/useWindowSize";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
@@ -20,13 +19,15 @@ import CustomInput from "Views/CustomInput";
 import { IoIosSend } from "react-icons/io";
 import { useRef } from "react";
 import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
-import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
 import MessageSend from "assets/message_send.png";
 import MessageSend2 from "assets/message_send2.png";
 import LocationModalPopUp from "@/core/locationModalPopUp";
 import classNames from "classnames";
+import { change } from "redux-form";
+import DateAndLocation from "@/modules/location/DateAndLocation";
+import { changeSelectedLocationPopup } from "@/modules/auth/authActions";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -34,41 +35,34 @@ export const socket = io("https://staging-api.secrettime.com/", {
 
 function UserList(props) {
   const { width } = useWindowSize();
-  const [dateId, setDateId] = React.useState("");
-  const [dates, setDates] = React.useState([]);
-  const [scrollPosition, setScrollPosition] = React.useState(0);
-  const [scrollType, setScrollType] = React.useState("down");
   const [classPopup, setPopupClass] = React.useState("hide");
   const [textClass, setTextSlideClass] = React.useState("");
   const [locationPopup, setLocationPoup] = React.useState(false);
   const [selectedLocation, setLocation] = React.useState({});
-  const [page, setPage] = React.useState(1);
-  const [loading, setLoader] = React.useState(true);
-  const [pagination, setPagination] = React.useState("");
+
   const user = useSelector((state) => state.authReducer.user);
-  const country = user?.country && countriesCode[user.country];
-  const [modalIsOpen, setIsOpen] = React.useState(user.gender === "female");
+  const state = useSelector((state) => state.authReducer);
+  const [modalIsOpen, setIsOpen] = React.useState(user?.gender === "female");
   const [receiverData, setReceiverData] = React.useState("");
   const [messageError, setMessageError] = React.useState("");
-  const scrollRef = useRef(null);
   const [conversations, setConversations] = useState([]);
   const [alreadyMessagedFromUser, setAlreadyMessagedFromUser] = useState(false);
+  const [countries, setCountry] = useState("");
+  const dispatch = useDispatch();
+  const country = user?.country && countriesCode[user?.country];
 
-  const [dateLength, setDateLength] = useState(0);
+  // for current location
+  const [currentLocationLoading, setCurrentLocationLoading] = useState(false);
 
-  useEffect(() => {
-    setDateLength(dates?.length);
-  }, [dates]);
-  const [firstDateShouldLoad, setFirstDateShouldLoad] = useState(false);
   const [notifData, setNotifdata] = useState(null);
 
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    if (user?.gender === "male") {
-      setShow(true);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user?.gender === "male" && state?.showSelectedLocationPopup) {
+  //     setShow(true);
+  //   }
+  // }, [user]);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -91,10 +85,26 @@ function UserList(props) {
     [!socket.connected]
   );
 
+  useEffect(() => {
+    if (router?.query?.city) {
+      setLocation({
+        city: router?.query?.city,
+        country: router?.query?.country,
+        province: router?.query?.province,
+      });
+    } else {
+      setLocation({
+        city: user?.location,
+        country: country,
+        province: user?.province,
+      });
+    }
+  }, [user?.location]);
+
   const fetchNotifications = async () => {
     try {
       const params = {
-        user_email: user.email,
+        user_email: user?.email,
         sort: "sent_time",
       };
 
@@ -124,14 +134,14 @@ function UserList(props) {
   }, []);
 
   useEffect(() => {
-    socket.on(`request-${user._id}`, (message) => {
+    socket.on(`request-${user?._id}`, (message) => {
       console.log("reqested message header", message);
       getConversations();
     });
   }, [socket.connected]);
 
   useEffect(() => {
-    socket.on(`recieve-${user._id}`, (message) => {
+    socket.on(`recieve-${user?._id}`, (message) => {
       console.log("recieve message header", message);
       getConversations();
     });
@@ -160,82 +170,6 @@ function UserList(props) {
       console.log("err", err);
     }
   };
-
-  const lastClickedDate = () => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const fetchDate = async (params) => {
-    try {
-      setLoader(true);
-      const res = await apiRequest({
-        url: "date",
-        params: params,
-      });
-      console.log("res dates of user", res);
-
-      if (res?.data?.data?.pagination?.current_page !== 1) {
-        res?.data?.data?.dates;
-        // .sort(function (a, b) {
-        //   return new Date(b.created_at) - new Date(a.created_at);
-        // });
-        // setTimeout(() => {
-        setDates([...dates, ...res?.data?.data?.dates]);
-        // }, 500);
-      } else {
-        res?.data?.data?.dates;
-        // .sort(function (a, b) {
-        //   return new Date(b.created_at) - new Date(a.created_at);
-        // });
-        setTimeout(() => {
-          setDates(res?.data?.data?.dates);
-        }, 2000);
-      }
-      setPagination(res?.data?.data?.pagination);
-      setTimeout(() => {
-        setLoader(false);
-      }, 2000);
-    } catch (err) {
-      setDates([]);
-      setLoader(false);
-    }
-  };
-
-  useEffect(() => {
-    if (selectedLocation?.city) {
-      const params = {
-        location: selectedLocation?.city,
-        current_page: page,
-        per_page: 10,
-        province: selectedLocation?.province,
-      };
-      fetchDate(params);
-    }
-  }, [selectedLocation]);
-
-  useEffect(() => {
-    if (router?.query?.city) {
-      setLocation({
-        city: router?.query?.city,
-        country: router?.query?.country,
-        province: router?.query?.province,
-      });
-    } else {
-      setLocation({
-        city: user.location,
-        country: country,
-        province: user?.province,
-      });
-    }
-  }, [user?.location]);
 
   const closePopup = () => {
     setPopupClass("hide");
@@ -315,51 +249,45 @@ function UserList(props) {
     }, 1000);
   };
 
-  document.addEventListener("scroll", function () {
-    const reveals = document.querySelectorAll("#scrolldiv");
-
-    for (let i = 0; i < reveals.length; i++) {
-      const windowHeight = window.innerHeight;
-      const elementTop = reveals[i].getBoundingClientRect().top;
-      //   const elementVisible = reveals[i]?.clientHeight;
-      if (elementTop < windowHeight) {
-        reveals[i].classList.add("scrollActive");
-      } else {
-        reveals[i].classList.remove("scrollActive");
-      }
-    }
-  });
-
-  const nextPage = () => {
-    setTimeout(() => {
-      const params = {
-        location: selectedLocation?.city,
-        province: selectedLocation?.province,
-        current_page: page + 1,
-        per_page: 10,
-      };
-      setPage(page + 1);
-      fetchDate(params);
-    }, 500);
-  };
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    if (scrollPosition > position) {
-      setScrollType("up");
-    } else {
-      setScrollType("down");
-    }
-    setScrollPosition(position);
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    if (user?.gender === "male") {
+      setCountry(user?.country_code);
+    }
+  }, []);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrollPosition]);
+  const handleFectchCurrentLocation = () => {
+    setCurrentLocationLoading(true);
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        if (
+          position.coords.latitude !== undefined &&
+          position.coords.longitude !== undefined
+        ) {
+          const locations = await fetchLiveLocation(
+            position.coords.latitude,
+            position.coords.longitude,
+            countries
+          );
+          const location = locations[0];
+          setLocation({
+            city: location.name,
+            country: location?.country[0]?.short_code,
+            province: location?.province[0]?.short_code?.split("-")[1],
+            stateName: location?.province[0]?.text,
+            countryName: location?.country[0]?.text,
+          });
+          // setShow(false);
+          dispatch(changeSelectedLocationPopup(false));
+          dispatch(change("LocationPopup", "enter_city", location?.name));
+          setCurrentLocationLoading(false);
+        }
+      },
+      (err) => {
+        setCurrentLocationLoading(false);
+      },
+      { enableHighAccuracy: true }
+    );
+  };
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -371,7 +299,6 @@ function UserList(props) {
     socket.on("disconnect", (reason) => {
       console.log("socket disconnected reason", reason);
     });
-    console.log("Notif socket intiated called");
   }, []);
 
   useEffect(() => {
@@ -385,59 +312,26 @@ function UserList(props) {
   useEffect(() => {
     // if (socket.connected) {
     console.log("Notif socket connected", socket.connected);
-    //`push-notification-${user.email}`
-    socket.on(`push-notification-${user.email}`, (message) => {
+    //`push-notification-${user?.email}`
+    socket.on(`push-notification-${user?.email}`, (message) => {
       console.log("notif received", message);
     });
     // }
   }, [socket.connected]);
 
-  //  stop scroll when show is true and location popup is not oped
-
-  // useEffect(() => {
-  //   if (locationPopup || show) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "unset";
-  //   }
-  // }, [show, locationPopup]);
-
-  // useEffect(() => {
-  //   router.beforePopState(({ as }) => {
-  //     console.log("as", as);
-  //     if (
-  //       as === "/create-date/date-event" ||
-  //       as === "/create-date/date-event?drafted=true" ||
-  //       as === "/create-date/date-event?edit=true" ||
-  //       as === "/create-date/date-event?new_edit=true"
-  //     ) {
-  //       // Will run when leaving the current page; on back/forward actions
-  //       // Add your logic here, like toggling the modal state
-  //       console.log("as after", as);
-  //       console.log(
-  //         "as path",
-  //         as === "/create-date/date-event" ||
-  //           as === "/create-date/date-event?drafted=true" ||
-  //           as === "/create-date/date-event?edit=true" ||
-  //           as === "/create-date/date-event?new_edit=true"
-  //       );
-
-  //       return router.replace("/auth/login");
-  //     }
-  //     // return true;
-  //   });
-
-  //   // return () => {
-  //   //   router.beforePopState(() => true);
-  //   // };
-  // }, [router]);
-
-  // console.log("dates", dates);
-  // console.log("page", page);
-
-  // console.log("first", !loading && pagination?.total_pages !== page);
-
-  // when show is true disable scroll in iphone
+  // if (show) {
+  //   return (
+  //     <LocationModalPopUp
+  //       onClose={() => {
+  //         setShow(false);
+  //         dispatch(changeSelectedLocationPopup(false));
+  //       }}
+  //       show={show}
+  //       handleFectchCurrentLocation={handleFectchCurrentLocation}
+  //       currentLocationLoading={currentLocationLoading}
+  //     />
+  //   );
+  // }
 
   return (
     <div className="inner-page" id="infiniteScroll">
@@ -446,14 +340,12 @@ function UserList(props) {
         isBlack={locationPopup}
         unReadedConversationLength={unReadedConversationLength}
       />
-      <div
+      {/* <div
         className={classNames(
           `modal fade ${show ? "show d-block modal-open" : "d-none"}`,
           width > 1399 && "modal-fade-1"
         )}
-      >
-        <LocationModalPopUp onClose={() => setShow(false)} show={show} />
-      </div>
+      ></div> */}
       <div className="inner-part-page">
         <div className="pt-5 pb-4">
           <div className="container user_list_wrap">
@@ -467,23 +359,23 @@ function UserList(props) {
                       {width < 430 ? (
                         <div
                           className="d-flex align-items-center justify-content-end"
-                          style={
-                            (scrollType === "up" || "down") &&
-                            scrollPosition > 5 &&
-                            !locationPopup
-                              ? width > 767
-                                ? {
-                                    position: "fixed",
-                                    width: "59%",
-                                    zIndex: "10",
-                                  }
-                                : {
-                                    position: "fixed",
-                                    left: "34%",
-                                    zIndex: "10",
-                                  }
-                              : { position: "relative" }
-                          }
+                          // style={
+                          //   (scrollType === "up" || "down") &&
+                          //   scrollPosition > 5 &&
+                          //   !locationPopup
+                          //     ? width > 767
+                          //       ? {
+                          //           position: "fixed",
+                          //           width: "59%",
+                          //           zIndex: "10",
+                          //         }
+                          //       : {
+                          //           position: "fixed",
+                          //           left: "34%",
+                          //           zIndex: "10",
+                          //         }
+                          //     : { position: "relative" }
+                          // }
                         >
                           {/* <span className="hidden-sm">Nearby</span> */}
                           <div
@@ -502,118 +394,18 @@ function UserList(props) {
                     </div>
                   </div>
                 </div>
-                <InfiniteScroll
-                  // scrollableTarget="infiniteScroll"
-                  dataLength={dateLength}
-                  next={() => {
-                    nextPage();
-                  }}
-                  scrollThreshold={0.5}
-                  hasMore={!loading && pagination?.total_pages !== page}
-                  style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
-                >
-                  <div className="row">
-                    {loading && dates.length === 0
-                      ? [1, 2, 3, 4, 5, 6].map((n) => (
-                          <div className={`col-xl-6 col-lg-12`}>
-                            <SkeletonDate key={n} theme="dark" />
-                          </div>
-                        ))
-                      : dates.length > 0 &&
-                        dates.filter((item) => item?.date_status === true)
-                          ?.length > 0
-                      ? dates
-                          .filter((item) => item?.date_status === true)
-                          .map((item, index) => (
-                            <div
-                              className={`col-xl-6 col-lg-12 ${
-                                (width > 767 && (index === 2 || index === 3)) ||
-                                index === 0 ||
-                                index === 1
-                                  ? "scrollActive"
-                                  : ""
-                              }`}
-                              id={`scrolldiv`}
-                              key={index}
-                              onClick={() => {
-                                // if (index === dates?.length - 1) {
-                                lastClickedDate();
-                                // }
-                              }}
-                            >
-                              {width > 767 ? (
-                                <UserCardList
-                                  setDateId={setDateId}
-                                  date={item}
-                                  cardId={`grow-${index}`}
-                                  openPopup={() => {
-                                    openPopup(item);
-                                  }}
-                                  closePopup={closePopup}
-                                  dateId={dateId}
-                                  isDesktopView={true}
-                                  key={index}
-                                  ref={scrollRef}
-                                  loading={loading}
-                                  setLoader={setLoader}
-                                  receiverData={receiverData}
-                                  alreadyMessagedFromUser={
-                                    alreadyMessagedFromUser
-                                  }
-                                  setAlreadyMessagedFromUser={
-                                    setAlreadyMessagedFromUser
-                                  }
-                                />
-                              ) : (
-                                <UserCardList
-                                  setDateId={setDateId}
-                                  date={item}
-                                  cardId={`grow-${index}`}
-                                  openPopup={() => {
-                                    openPopup(item);
-                                  }}
-                                  setLoader={setLoader}
-                                  closePopup={closePopup}
-                                  growDiv={growDiv}
-                                  dateId={dateId}
-                                  key={index}
-                                  ref={scrollRef}
-                                  loading={loading}
-                                  receiverData={receiverData}
-                                  alreadyMessagedFromUser={
-                                    alreadyMessagedFromUser
-                                  }
-                                  setAlreadyMessagedFromUser={
-                                    setAlreadyMessagedFromUser
-                                  }
-                                />
-                              )}
-                            </div>
-                          ))
-                      : !loading && (
-                          <div className="no-message-card-date">
-                            <figure>
-                              <Image
-                                src={NoImage}
-                                alt="NoImage"
-                                width={205}
-                                height={140}
-                              />
-                            </figure>
-                            <h6>
-                              Sorry, no dates found for the selected location
-                            </h6>
-                            <SubHeading title="Find a date by changing the location!" />
-                          </div>
-                        )}
-                    {loading &&
-                      [1, 2, 3, 4, 5, 6].map((n) => (
-                        <div className={`col-xl-6 col-lg-12`}>
-                          <SkeletonDate key={n} theme="dark" />
-                        </div>
-                      ))}
-                  </div>
-                </InfiniteScroll>
+                <DateAndLocation
+                  currentLocationLoading={currentLocationLoading}
+                  selectedLocation={selectedLocation}
+                  show={show}
+                  openPopup={openPopup}
+                  closePopup={closePopup}
+                  receiverData={receiverData}
+                  alreadyMessagedFromUser={alreadyMessagedFromUser}
+                  setAlreadyMessagedFromUser={setAlreadyMessagedFromUser}
+                  setLocation={setLocation}
+                  growDiv={growDiv}
+                />
               </div>
               {width > 767 && (
                 <div className="col-md-2">
