@@ -76,9 +76,9 @@ function DateAndLocation({
   const nextPage = () => {
     setTimeout(() => {
       const params = {
-        sort: "location",
-        selectedLocation: selectedLocation?.city,
-        // location: selectedLocation?.city,
+        // sort: "location",
+        // selectedLocation: selectedLocation?.city,
+        location: selectedLocation?.city,
         province: selectedLocation?.province,
         current_page: page + 1,
         per_page: 10,
@@ -136,9 +136,9 @@ function DateAndLocation({
     }
     if (selectedLocation?.city && !show) {
       const params = {
-        // location: selectedLocation?.city,
-        sort: "location",
-        selectedLocation: selectedLocation?.city,
+        location: selectedLocation?.city,
+        // sort: "location",
+        // selectedLocation: selectedLocation?.city,
         province: selectedLocation?.province,
         current_page: 1,
         per_page: 10,
