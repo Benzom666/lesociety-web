@@ -193,7 +193,7 @@ export default function HeaderLoggedIn({
                     isActive ? "sidebar-nav open_nav_menu" : "sidebar-nav"
                   }
                 >
-                  <SideBar />
+                  <SideBar isActive={isActive}/>
                 </div>
               )}
             </nav>

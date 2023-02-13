@@ -7,66 +7,118 @@ import Header from "core/header";
 import Footer from "core/footer";
 import withAuth from "@/core/withAuth";
 import { apiRequest } from "utils/Utilities";
+import { PROFILE_UNVERIFIED } from "data/constants";
 
 const VerifyProfile = () => {
-  const user = useSelector((state) => state.authReducer.user);
-  const [tokenValid, setTokenValid] = useState(true);
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const [notifData, setNotifData] = useState(null);
+const user = useSelector((state) => state.authReducer.user);
+const [tokenValid, setTokenValid] = useState(true);
+const dispatch = useDispatch();
+const router = useRouter();
+const [notifData, setNotifData] = useState(null)
 
-  const fetchNotifications = async () => {
+const fetchNotifications = async() => {
     try {
-      const params = {
-        user_email: user?.email,
-        sort: "sent_time",
-      };
-      const { data } = await apiRequest({
+        const params = {
+        user_email: user.email,
+        sort: 'sent_time'
+    }
+        const {data} = await apiRequest({
         method: "GET",
         url: `notification`,
         params: params,
-      });
-      setNotifData(
-        data?.data?.notification[data?.data?.notification?.length - 1]
-      );
+    });
+    setNotifData(data?.data?.notification[data?.data?.notification?.length-1])
     } catch (err) {
-      console.log("err", err);
+        console.log("err", err);
     }
-  };
+}
 
-  useEffect(() => {
-    fetchNotifications();
-  }, []);
+const authState = useSelector((state) => state.authReducer);
+const userLogin = authState?.user;
 
-  console.log("notif ", notifData);
+useEffect(() => {
+    fetchNotifications()
+},[])
 
-  return (
-    <div className="inner-page">
-      <Header />
+useEffect(() => {
+    console.log("called",authState)
+    if (authState?.isLoggedIn) {
+      //debugger
+      // fetchNotifications()
+      if (userLogin?.step_completed === 1 || userLogin?.step_completed === 2) {
+        router.push({
+          pathname: "/auth/profile",
+        });
+      } else {
+        if (
+          userLogin?.status === 2 &&
+          userLogin?.verified_screen_shown === false
+        ) {
+          router.push({
+            pathname: "/user/verified",
+          });
+        } else if (
+          userLogin?.status === 2 &&
+          userLogin?.verified_screen_shown === true
+        ) {
+          router.push({
+            pathname: "/user/user-list",
+          });
+        }
+        else if (userLogin?.status === 3) {
+            router.push({
+              pathname: "/auth/block",
+            });
+          }
+        
+        // else if (userLogin?.request_change_fired) {
+        //   console.log("request change called")
+        //   router.push({
+        //     pathname: "/auth/verify-profile",
+        //   });
+        // }
+        
+        
+        // else {
+        //   console.log("auth/profile called")
+        //   router.push({
+        //     pathname: "/auth/profile",
+        //   });
+        // }
+      }
+    }
+  }, [userLogin, router?.isReady]);
 
-      <div className="inner-part-page auth-section">
-        <div className="container">
-          <div className="auth-section auth-section-register">
-            <div>
-              <div className="upload-pics profile-completion">
-                <h2>Verification Unsuccessful</h2>
-                <p className="pt-4">{notifData?.message}</p>
-              </div>
+console.log("notif ", notifData)
+
+return (
+<div className="inner-page">
+    <Header />
+
+    <div className="inner-part-page auth-section">
+    <div className="container">
+        <div className="auth-section auth-section-register">
+        <div>
+            <div className="upload-pics profile-completion">
+            <h2>Verification Unsuccessful</h2>
+            <p className="pt-4">
+                { `${PROFILE_UNVERIFIED} ${notifData?.message}`}
+            </p>
             </div>
-          </div>
-          <div className="btn-container">
-            <button
-              className="edit-btn-verify"
-              onClick={() => router.push("/auth/profile?edit=true")}
-            >
-              Edit now
-            </button>
-          </div>
         </div>
-      </div>
-      <Footer />
+        <div className='btn-container-2'>
+            <button className='edit-btn-verify' 
+                onClick={() => router.push({pathname: "/auth/profile", query: {edit: true,type: notifData.type, id: notifData._id }})}>
+                Edit now
+            </button>
+        </div>
+        </div>
+
     </div>
-  );
+    </div>
+    <Footer />
+</div>
+);
 };
 
 export default withAuth(VerifyProfile);

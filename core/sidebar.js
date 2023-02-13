@@ -14,20 +14,101 @@ import { useRouter } from "next/router";
 import _ from "lodash";
 import { BiTime } from "react-icons/bi";
 import { reset } from "redux-form";
+import { apiRequest } from "utils/Utilities";
+import io from "socket.io-client";
 
-export default function SideBar() {
+export default function SideBar({isActive}) {
   const user = useSelector((state) => state.authReducer.user);
   const formValue = useSelector((state) => state.form);
   const dispatch = useDispatch();
   const router = useRouter();
   const [documentUpoaded, setDocumentUpoaded] = useState(false);
+  const [notifData, setNotifdata] = useState(null)
+  const [count, setCount] = useState(0)
+  const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
+
+useEffect(() => {
+  if (user?.selfie && user?.document) {
+    setDocumentUpoaded(true);
+  }
+}, [user]);
+
+const fetchNotifications = async() => {
+    try {
+      const params = {
+        user_email: user.email,
+        sort: 'sent_time'
+      };
+      const {data} = await apiRequest({
+        method: "GET",
+        url: `notification`,
+        params: params,
+      });
+      setNotifdata(data?.data?.notification)
+    } catch (err) {
+      console.error("err", err);
+    }
+  }
+  
+  useEffect(() => {
+    fetchNotifications()
+  },[])
 
   useEffect(() => {
-    if (user?.selfie && user?.document) {
-      setDocumentUpoaded(true);
+    if(isActive){
+      fetchNotifications()
     }
-  }, [user]);
-  const unreadNotifCount = localStorage?.getItem("unreadNotifCount");
+  },[isActive])
+  
+  useEffect(() => {
+    socket.auth = { user: 'admin@getnada.com' };
+    socket.connect();
+    console.log("socket", socket.auth);
+    socket.on("connect", () => {
+      console.log("connected", socket.connected);
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+    console.log("socket Notif socket intiated called");
+}, []);
+  
+  useEffect(() => {
+    socket.on("connect_error", () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    });
+  }, [!socket.connected]);
+  
+  
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+      const unc = message?.notifications?.filter(item => item.status===0 && item.type!=='notification').length
+      localStorage.setItem('unreadNotifCount', JSON.stringify(unc));
+      setCount(unc)
+    });
+    
+  }, [socket.connected]);
+
+  useEffect(() => {
+    console.log("notiffff ",notifData)
+    const unc = notifData?.filter(item => item.status===0 && item.type!=='notification').length
+    console.log("count ",unc)
+    localStorage.setItem('unreadNotifCount', JSON.stringify(unc));
+    let unreadNotifCount
+    unreadNotifCount =  localStorage.getItem('unreadNotifCount');
+    setCount(unreadNotifCount)
+    console.log("unreadNotifCount ",unreadNotifCount)
+  },[notifData])
+  console.log("first",count)
 
   return (
     <>
@@ -128,11 +209,9 @@ export default function SideBar() {
                     <a>
                       Notification <FiChevronRight size={22} />{" "}
                     </a>
-                    {unreadNotifCount > 0 && (
+                    {count > 0 && (
                       <div class="notification-container">
-                        <span class="notification-counter">
-                          {unreadNotifCount}
-                        </span>
+                          <span class="notification-counter">{count}</span>
                       </div>
                     )}
                   </div>

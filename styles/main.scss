@@ -5676,115 +5676,138 @@ path {
 .notification-wrapper {
   max-width: 60%;
   margin: 0 auto;
-  padding: 0 40px;
-  background-color: #262629;
-
+  min-height: 74vh;
+  //padding: 0 40px;
+  //background-color: #262629;
   // height: 100vh;
-  .main-header {
-    padding: 30px 0;
+  .main-header{
+    padding: 30px;
     border-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #3b3737;
-
-    .header {
+  
+    .header{
       font-size: 30px;
       font-weight: 500;
     }
   }
-
-  .notif-items {
+  .notif-items{
     display: flex;
     flex-direction: column;
     padding: 30px 0;
     border-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #3b3737;
-
-    .notif-time {
+    .notif-time{
       display: flex;
       justify-content: space-between;
-
-      .timing {
+      padding-left: 30px;
+      padding-top: 10px;
+      .timing{
         font-size: 16px;
         color: darkgray;
       }
     }
-
-    .edit-btn {
+    .edit-btn{
       border: none;
       background: transparent;
-      color: rgb(194, 41, 125);
+      color: #EF4762;
       cursor: pointer;
       border-style: solid;
       border-width: 0 0 1px;
     }
-
-    .title {
+    .title{
       font-size: 25px;
       color: darkgray;
       padding-bottom: 20px;
+      padding-left: 30px;
     }
-
-    .actions {
+    .actions{
       font-size: 20px;
       padding-bottom: 10px;
+      padding-left: 30px;
+      
     }
-
-    .msg {
+    .msg{
       font-size: 16px;
       padding-bottom: 6px;
+      padding-left: 30px;
     }
+    
   }
-
-  .notif-items:last-child {
+  .notif-items:last-child{
     border-bottom-width: 0;
   }
-
-  .no-notif {
+  .no-notif{
     font-size: 20px;
-    padding: 40px 0;
+    padding: 40px 20px;
   }
-}
+ 
 
-.no-notifWrap {
-  height: 100vh;
-}
-
-@media screen and (max-width: 480px) {
-  .notification-wrapper {
-    max-width: 100%;
-    background-color: transparent;
   }
-}
-
-.notification-container {
-  position: relative;
-
-  .notification-counter {
-    position: absolute;
-    top: -32px;
-    right: 30px;
-    background-color: #f24462;
-    color: #fff;
-    padding: 6px 7px;
-    border-radius: 12px;
+  .no-notifWrap{
+    height: 77vh;
   }
-}
+  @media screen and (max-width: 480px){
+    .notification-wrapper{
+      max-width: 100%;
+      background-color: transparent;
+    }
+  }
+  
+  
+  .notification-container {
+    position: relative;
+  
+    .notification-counter {
+      position: absolute;
+      top: -35px;
+      right: 28px;
+      background-color:#F24462;
+      color: #fff;
+      padding: 6px 9px;
+      border-radius: 12px;
+      font-size: 14px;
+  }
+  }
 
-.btn-container {
-  // width: 100%;
-  text-align: center;
-}
+  .btn-container{
+    // width: 100%;
+    text-align: center;
+    margin-right: 20px;
+    //margin-top: 50px;
+  }
 
-.edit-btn-verify {
-  border: none;
-  background: transparent;
-  color: rgba(219, 43, 140, 0.95);
-  cursor: pointer;
-  border-style: solid;
-  border-width: 0 0 1px;
-  display: inline-block;
-}
+  .btn-container-2{
+    // width: 100%;
+    text-align: center;
+    padding: 50px;
+  }
+
+  .edit-btn-verify{
+    border: none;
+    background: transparent;
+    color:#EF4762;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 0 0 1px;
+    display: inline-block;
+    font-size: 18px;
+  }
+  .edit-btn-done{
+    border: none;
+    background: #EF4762;
+    color: white;
+    cursor: pointer;
+    /* border-style: solid; */
+    /* border-width: 0 0 1px; */
+    display: inline-block;
+    font-size: 16px;
+    width: 80%;
+    padding: 10px 0px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
 
 .overflow-hidden {
   overflow: hidden !important;
