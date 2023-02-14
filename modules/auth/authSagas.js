@@ -51,7 +51,18 @@ export function* login(action) {
           Router.push({
             pathname: "/auth/block",
           });
-        } else {
+        }else if (response.success.data.data.request_change_fired) {
+          Router.push({
+            pathname: "/auth/verify-profile",
+          });
+        }
+        // else if (!response.success.data.data.tag_desc_verified) {
+        //   Router.push({
+        //     pathname: "/auth/verify-profile-done",
+        //   });
+        // }
+        
+        else {
           Router.push({
             pathname: "/auth/profile",
           });
