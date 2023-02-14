@@ -65,10 +65,11 @@ function FutureDate() {
             style={{ padding: "0px 75px" }}
           >
             <div className="ls-logo">
-              <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
+              <img src={LeSlogoWhite.src} alt="ls-logo" width="35px" />
             </div>
           </div>
         </nav>
+        
         <FutureDates title={futureDatesContent.futureDatesContent1.title}
           contentaboutDating={futureDatesContent.futureDatesContent1.datingContent} />
         <FutureDateMain heading={futureDatesMiddleContent.futureDatesMiddleContent1.heading}

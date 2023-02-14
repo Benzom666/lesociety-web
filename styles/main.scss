@@ -3254,7 +3254,8 @@ body .verification_card_header {
   }
   .availabe_card_inner:hover {
     cursor: pointer;
-    border: 0.5px solid #fff;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 }
 

@@ -13,7 +13,7 @@ export function HowItWorkMain({title,image,content}) {
   return (
     <div className='col-lg-6 col-md-12 mt-5'> 
        <div className='howitWork-image'>
-        <img src={image} style={{width:"100%"}} alt="howitWork-image"/>
+        <img src={image} style={{width:"90%"}} alt="howitWork-image"/>
        </div>
        <h3 className='howitWork-heading'>{title} </h3>
        <p  className='howitWork-content'> {content}</p>
