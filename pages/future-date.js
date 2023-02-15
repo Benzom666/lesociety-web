@@ -59,17 +59,15 @@ function FutureDate() {
   return (
     <>
       <div className="inner-part-page auth-section future-dates-main">
+        <div className="future-date-navbar">
         <nav class="navbar navbar-dark bg-#080808">
-          <div
-            className="LeSociety-Icon-White d-flex"
-            style={{ padding: "0px 75px" }}
-          >
+          <div className="LeSociety-Icon-White d-flex">
             <div className="ls-logo">
               <img src={LeSlogoWhite.src} alt="ls-logo" width="35px" />
             </div>
           </div>
         </nav>
-        
+        </div>
         <FutureDates title={futureDatesContent.futureDatesContent1.title}
           contentaboutDating={futureDatesContent.futureDatesContent1.datingContent} />
         <FutureDateMain heading={futureDatesMiddleContent.futureDatesMiddleContent1.heading}
@@ -85,6 +83,10 @@ function FutureDate() {
         />
         {/* <FutureDates title={futureDatesContent.futureDatesContent2.title}
           contentaboutDating={futureDatesContent.futureDatesContent2.datingContent} /> */}
+
+          <Link   href='/home'>
+          <button type='btn' className='backtoHomepage-btn'>Go back to homepage</button>
+          </Link>
           
         <HomeFooter logo={LeSlogoWhite} height={50} styleBackground ={styleBackground} />
       </div>

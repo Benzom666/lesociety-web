@@ -95,7 +95,7 @@ function Home({ items }) {
       <HomePageMainSection title="THE GOAL" maincardImage={Goal}>
         <p className="aboutCardContent">{content.aboutCardContent2}</p>
       </HomePageMainSection>
-      <HomePageMainSection title="A Gentlemen’s Choice" maincardImage={Choice}>
+      <HomePageMainSection title="A GENTLEMEN’S CHOICE" maincardImage={Choice}>
         <p className="aboutCardContent">{content.aboutCardContent3}</p>
       </HomePageMainSection>
      { width >768 ? <HomePageCardSection /> :<HomePageCardSectionMobile/> }

@@ -203,7 +203,7 @@ const DatePreview = (props) => {
                   <>
                     <div
                       className="d-flex justify-content-center"
-                      style={{ marginLeft: "24px" }}
+                      style={{ margin:"0 auto",paddingLeft:"30px" }}
                     >
                       <h6
                         className="m-0 text-white"
@@ -211,7 +211,7 @@ const DatePreview = (props) => {
                       >
                         CREATE A NEW DATE
                       </h6>
-                      <div onClick={toggle} className="w-15 cursor-pointer">
+                      <div onClick={toggle} className="w-0 cursor-pointer">
                         <IoIosClose
                           className="desk-close-first mouse-point"
                           size={33}

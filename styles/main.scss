@@ -5807,3 +5807,10 @@ path {
 .w-15 {
   width: 15%;
 }
+
+@media only screen and (max-width:480px) {
+  .w-15 {
+    width: 10%;
+   // margin-top: 1rem;
+  }
+}

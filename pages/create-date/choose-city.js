@@ -258,7 +258,8 @@ const ChooseCity = (props) => {
                     </a>
                     <h6 className="m-0 text-white-50">CREATE NEW DATE</h6>
 
-                    <div onClick={toggle} className="w-15 cursor-pointer">
+                    <div onClick={toggle} className="w-15 cursor-pointer"
+                    style={{marginTop:"1rem"}}>
                       <IoIosClose
                         className="desk-close-first mouse-point"
                         size={33}
