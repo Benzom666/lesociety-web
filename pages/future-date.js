@@ -59,55 +59,39 @@ function FutureDate() {
   return (
     <>
       <div className="inner-part-page auth-section future-dates-main">
+        <div className="future-date-navbar">
         <nav class="navbar navbar-dark bg-#080808">
-          <div
-            className="LeSociety-Icon-White d-flex"
-            style={{ padding: "0px 75px" }}
-          >
+          <div className="LeSociety-Icon-White d-flex">
             <div className="ls-logo">
-              <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
+              <img src={LeSlogoWhite.src} alt="ls-logo" width="35px" />
             </div>
           </div>
         </nav>
-        <FutureDates
-          title={futureDatesContent.futureDatesContent1.title}
-          contentaboutDating={
-            futureDatesContent.futureDatesContent1.datingContent
-          }
+        </div>
+        <FutureDates title={futureDatesContent.futureDatesContent1.title}
+          contentaboutDating={futureDatesContent.futureDatesContent1.datingContent} />
+        <FutureDateMain heading={futureDatesMiddleContent.futureDatesMiddleContent1.heading}
+        mainHeadingContent ={futureDatesMiddleContent.futureDatesMiddleContent1.mainHeadingContent}
+        imgUrl={futureDatesMiddleContent.futureDatesMiddleContent1.imgUrl} 
+        imgText={futureDatesMiddleContent.futureDatesMiddleContent1.imgText}
+         />
+        <HomePageMiddleNav style={style1}/>
+        <FutureDateMain heading={futureDatesMiddleContent.futureDatesMiddleContent2.heading}
+        mainHeadingContent ={futureDatesMiddleContent.futureDatesMiddleContent2.mainHeadingContent}
+        imgUrl={futureDatesMiddleContent.futureDatesMiddleContent2.imgUrl} 
+        imgText={futureDatesMiddleContent.futureDatesMiddleContent2.imgText}
         />
-        <FutureDateMain
-          heading={futureDatesMiddleContent.futureDatesMiddleContent1.heading}
-          mainHeadingContent={
-            futureDatesMiddleContent.futureDatesMiddleContent1
-              .mainHeadingContent
-          }
-          imgUrl={futureDatesMiddleContent.futureDatesMiddleContent1.imgUrl}
-          imgText={futureDatesMiddleContent.futureDatesMiddleContent1.imgText}
-        />
-        {width > 766 ? <HomePageMiddleNav style={style1} /> : null}
-        <FutureDateMain
-          heading={futureDatesMiddleContent.futureDatesMiddleContent2.heading}
-          mainHeadingContent={
-            futureDatesMiddleContent.futureDatesMiddleContent2
-              .mainHeadingContent
-          }
-          imgUrl={futureDatesMiddleContent.futureDatesMiddleContent2.imgUrl}
-          imgText={futureDatesMiddleContent.futureDatesMiddleContent2.imgText}
-        />
-        <FutureDates
-          title={futureDatesContent.futureDatesContent2.title}
-          contentaboutDating={
-            futureDatesContent.futureDatesContent2.datingContent
-          }
-        />
-        <HomeFooter
-          logo={LeSlogoWhite}
-          height={50}
-          styleBackground={styleBackground}
-        />
+        {/* <FutureDates title={futureDatesContent.futureDatesContent2.title}
+          contentaboutDating={futureDatesContent.futureDatesContent2.datingContent} /> */}
+
+          <Link   href='/home'>
+          <button type='btn' className='backtoHomepage-btn'>Go back to homepage</button>
+          </Link>
+          
+        <HomeFooter logo={LeSlogoWhite} height={50} styleBackground ={styleBackground} />
       </div>
     </>
   );
 }
 
-export default withAuth(FutureDate);
+export default FutureDate;

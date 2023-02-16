@@ -38,7 +38,7 @@ function HomePageMiddleNav(props) {
             )}
             {width < 769 && (
               <div className="navfooter-text-1">
-                <span style={{ fontSize: "18px" }}>
+                <span style={{ fontSize: "18px",color:"#fff"}}>
                   Start a new adventure.
                   <br />
                   <p

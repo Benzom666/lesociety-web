@@ -105,7 +105,7 @@ const CreateStepOne = (props) => {
           <div className="date-suggetion-text">
             <div
               className="inner_container"
-              style={{ paddingRight: "35px", paddingLeft: "35px" }}
+              style={{ paddingRight: "20px", paddingLeft: "20px" }}
             >
               <h6>Suggest a date.</h6>
               <p>

@@ -3,13 +3,16 @@ import Link from "next/link";
 import React, { useState,useEffect } from 'react';
 import Image from "next/image";
 import withAuth from "../core/withAuth";
+import useWindowSize from "utils/useWindowSize";
 import LeSlogoWhite from '../assets/LeS logoWhite.png';
+import LeSlogoText from '../assets/img/LeSocietylogotext.png'
 import Group29 from '../assets/img/Group 29.png';
 import Group30 from '../assets/img/Group 30.png';
 import Group140 from '../assets/img/Group 140.png';
 import Group96 from '../assets/img/Group 96.png';
 import Group152 from '../assets/img/Group 152.png';
-import GentalMan from '../assets/img/GentalMan.png'
+//import GentalMan from '../assets/img/GentalMan.png'
+import Gentalman from '../assets/img/Gentalman (2).png'
 import Ladies from '../assets/img/Ladies.png'
 import Goal from '../assets/img/Goal.png'
 import Choice from '../assets/img/Choice.png'
@@ -18,6 +21,7 @@ import HomePageCardSection from "@/core/HomePageCardSection";
 import HomeFooter from "@/core/HomeFooter"
 import { content } from '@/core/HomePageContent'
 import HomePageMiddleNav from "@/core/HomePageMiddleNav";
+import HomePageCardSectionMobile from "@/core/HomePageCardSectionMobile";
 
 const style1 ={
   opacity:"0.9",
@@ -26,6 +30,7 @@ const styleBackground = {
   backgroundColor : "#000000"
 }
 function Home({ items }) {
+  const { width } = useWindowSize();
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.document.body.style.backgroundColor = "#080808";
@@ -34,18 +39,20 @@ function Home({ items }) {
   return (
     <>
       <div className="inner-part-page auth-section home_page_style">
+        <div className="home-page-navbar">
         <nav class="navbar navbar-dark bg-#080808">
-          <div className="LeSociety-Icon-White d-flex" style={{padding:" 0px 75px"}}>
+          <div className="LeSociety-Icon-White d-flex">
             <div className="ls-logo">
               <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
             </div>
-            <div className="ls-text mt-4 ">
-              <p className="leSocitey-heading">LE  SOCIETY</p>
+            <div className="ls-text">
+              <Image className="leSocitey-heading" src={LeSlogoText} sizes={100} />
               <p className="leSocitey-subheading">Date outside Your League</p>
             </div>
           </div>
         </nav>
-        <HomePageMainSection title="GENTLEMEN" maincardImage={GentalMan}>
+        </div>
+        <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
       {/* <HomePageMiddleNav style={style1}/> */}
@@ -88,11 +95,11 @@ function Home({ items }) {
       <HomePageMainSection title="THE GOAL" maincardImage={Goal}>
         <p className="aboutCardContent">{content.aboutCardContent2}</p>
       </HomePageMainSection>
-      <HomePageMainSection title="A Gentlemen’s Choice" maincardImage={Choice}>
+      <HomePageMainSection title="A GENTLEMEN’S CHOICE" maincardImage={Choice}>
         <p className="aboutCardContent">{content.aboutCardContent3}</p>
       </HomePageMainSection>
-      <HomePageCardSection />
-      <HomeFooter logo={LeSlogoWhite} height={50} styleBackground ={styleBackground} />
+     { width >768 ? <HomePageCardSection /> :<HomePageCardSectionMobile/> }
+      <HomeFooter logo={LeSlogoWhite}  styleBackground ={styleBackground} />
       </div>
      </>
   );

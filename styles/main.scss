@@ -3254,7 +3254,8 @@ body .verification_card_header {
   }
   .availabe_card_inner:hover {
     cursor: pointer;
-    border: 0.5px solid #fff;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 }
 
@@ -5828,4 +5829,11 @@ path {
 
 .w-15 {
   width: 15%;
+}
+
+@media only screen and (max-width:480px) {
+  .w-15 {
+    width: 10%;
+   // margin-top: 1rem;
+  }
 }

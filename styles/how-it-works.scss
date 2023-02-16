@@ -3,20 +3,34 @@
 .how-it-works {
     font-family: 'Montserrat';
 
-    .LeSociety-Icon-White {
-        padding: 0 75px;
+    .howItWork-navbar {
+        margin-left: 55px;
+        margin-bottom: 2rem;
 
-        .ls-text {
-            p {
-                font-weight: 800;
-                letter-spacing: 1.2px;
-                color: black;
-                font-size: 23px;
-                padding: 5px 0px;
-                text-transform: uppercase;
+        .LeSociety-Icon-White {
+            padding: 0 75px;
+
+            .ls-logo {
+                margin: 20px 20px;
+
+                img {
+                    width: 35px;
+                }
+            }
+
+            .ls-text {
+                p {
+                    font-weight: 800;
+                    letter-spacing: 0.2px;
+                    color: black;
+                    font-size: 23px;
+                    padding: 5px 0px;
+                    text-transform: uppercase;
+                }
             }
         }
     }
+
 
     .container-1 {
         display: flex;
@@ -26,6 +40,10 @@
         // margin-bottom: 4rem;
         width: 812px;
         margin: auto;
+
+        .parentdiv-1 {
+            margin-bottom: 2rem;
+        }
     }
 
     .myCard {
@@ -34,13 +52,14 @@
         //flex-direction: column;
         align-items: center;
         background-color: #f2f5f7;
-        padding: 20px 8px;
+        padding: 46px 8px;
         border-radius: 14px;
         box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
     }
 
     .parentdiv-2 {
         display: flex;
+        justify-content: space-between;
         margin-top: 3rem;
 
         .myCard-1 {
@@ -48,7 +67,7 @@
             flex-direction: column;
             justify-content: flex-start;
             width: 365px;
-            margin-left: 2rem;
+            //margin-left: 2rem;
         }
     }
 
@@ -96,7 +115,7 @@
             letter-spacing: normal;
             text-align: center;
             color: #1a415c;
-            padding: 15px 45px;
+            padding: 10px 45px;
             text-transform: capitalize;
         }
 
@@ -114,15 +133,20 @@
     }
 
     .container-2 {
-        margin-left: 25%;
-        margin-right: 25%;
-        //min-width: 812px;
+        //margin: 5% 25% 0 25%;
+        //width: 812px;
+        text-align: center;
+        margin:0  auto;
+
         .container-2-title {
-            padding: 5px 56px;
-            margin: 10px 20px;
+            width: 568px;
+            margin: 5rem auto 2rem auto;
+            padding: 5px;
+            //margin: 10px 0px;
 
             .heading {
-                width: 523px;
+                //margin-left: auto;
+                //width: 523px;
                 font-size: 40px;
                 font-weight: bold;
                 font-stretch: normal;
@@ -135,7 +159,8 @@
             }
 
             .sub-heading {
-                width: 568px;
+                //margin-left: auto;
+                // width: 568px;
                 font-size: 18px;
                 font-family: 'Montserrat';
                 font-weight: normal;
@@ -149,10 +174,12 @@
                 padding: 20px 10px;
             }
         }
-.howitwork-main-card-image-section{
-    width: 812px;
-    //margin: auto;
-}
+
+        .howitwork-main-card-image-section {
+            width: 812px;
+            margin: 0 auto;
+        }
+
         .myCard-3 {
             height: 238px;
             display: flex;
@@ -165,7 +192,7 @@
         }
 
         .howitWork-heading {
-            padding: 8px 71px;
+            padding: 8px 50px;
             font-size: 20px;
             font-weight: bold;
             font-stretch: normal;
@@ -187,7 +214,7 @@
             letter-spacing: 0px;
             text-align: center;
             color: #3a5e77;
-            padding: 5px 36px;
+            padding: 5px 26px;
         }
 
         .The-future-of-Le-Society {
@@ -196,12 +223,12 @@
             font-stretch: normal;
             font-style: normal;
             line-height: normal;
-            letter-spacing: 3.2px;
+            letter-spacing: 1.2px;
             text-align: center;
             color: #1a415c;
             text-transform: uppercase;
-            padding: 20px 65px;
-            margin-bottom: 8px;
+            //padding: 20px 65px;
+            //margin-bottom: 8px;
         }
 
         .Rectangle-1 {
@@ -212,7 +239,7 @@
             border: #f24462;
             margin-left: 25%;
             margin-right: 25%;
-            padding: 2px 35px;
+            padding: 10px 32px;
         }
 
         .In-App-Payment-GPS-Tracking-and-more {
@@ -230,13 +257,6 @@
     }
 }
 
-// @media only screen and (max-width:370px) {
-//     .ls-text{
-//         p{
-//             letter-spacing: 0.2px !important;
-//         }
-//     }
-// }
 
 @media only screen and (max-width:769px) and (min-width:500px) {
     .how-it-works {
@@ -294,28 +314,32 @@
         }
 
         .container-2 {
-            margin-left: 10%;
-            margin-right: 10%;
+            margin: 0 10%;
 
             .container-2-title {
-                margin: 5px 0;
+                margin: 2rem auto;
+                text-align: center;
                 padding: 10px 0px;
 
                 .heading {
                     font-size: 20px;
-                    padding: 25px 112px;
+                    padding: 2px 10px;
                     letter-spacing: 3.2px;
                 }
 
                 .sub-heading {
+                    width: 344px !important;
                     font-size: 16px;
-                    padding: 5px 8px;
+                    padding: 5px 3px;
+                    margin: auto;
                 }
             }
-            .howitwork-main-card-image-section{
-                width: 100%;
+
+            .howitwork-main-card-image-section {
+                width: 75%;
                 margin: auto;
             }
+
             .howitWork-heading {
                 letter-spacing: 3.2px;
             }
@@ -343,11 +367,12 @@
         .container-1 {
             // margin-left: 0;
             // margin-right: 0;
-             width: 365px !important;
+            width: 365px !important;
+
             // margin: auto;
             .myCard {
                 flex-direction: column;
-                 width: 100%;
+                width: 100%;
                 margin: auto;
                 margin-top: 2rem;
 
@@ -397,12 +422,13 @@
             margin-right: 10%;
 
             .container-2-title {
-                margin: 5px 0;
+                margin: 30px 0;
                 padding: 10px 0px;
+                width: 100%;
 
                 .heading {
                     font-size: 20px;
-                    padding: 5px 40px;
+                    padding: 5px 14px;
                     width: 100%;
                 }
 
@@ -412,24 +438,27 @@
                     width: 100%;
                 }
             }
-            .howitwork-main-card-image-section{
+
+            .howitwork-main-card-image-section {
                 width: 100%;
                 margin: auto;
             }
+
             .howitWork-heading {
                 letter-spacing: 3.2px;
+                padding: 8px 12px;
             }
 
             .howitWork-content {
-                padding: 5px 43px;
+                padding: 4px;
             }
 
             .The-future-of-Le-Society {
-                padding: 12px 50px;
+                padding: 10px 5px;
             }
 
             .Rectangle-1 {
-                margin: 0% 30%;
+                margin: 0% 7%;
             }
         }
     }
@@ -438,15 +467,18 @@
 @media only screen and (max-width:1024px) and (min-width :767px) {
     .how-it-works {
         .container-2 {
-            margin: 0 22%;
+            margin: 0 auto;
+            text-align: center;
         }
     }
 }
 
-@media only screen and (max-width:768px) and (min-width :427px) {
+@media only screen and (max-width:768px) and (min-width :500px) {
     .how-it-works {
         .container-2 {
-            margin: 0 15%;
+            margin: 0 auto;
+            text-align: center;
+            // width: 100%;
         }
     }
 }
@@ -468,5 +500,21 @@
         align-items: center;
         width: 328px;
         margin: 20px auto;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .how-it-works{
+     .howItWork-navbar{
+        margin: 10px auto !important;
+        // margin-bottom: 2rem;
+        .LeSociety-Icon-White{
+            padding: 0px !important;
+
+            .ls-text{
+                padding-left: 1rem !important;
+            }
+        }
+     }
     }
 }

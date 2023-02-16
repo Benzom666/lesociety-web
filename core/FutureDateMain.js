@@ -1,33 +1,33 @@
 import React from 'react'
 import Image from 'next/image'
-
+import useWindowSize from "utils/useWindowSize";
 
 
 function FutureDateMain(props) {
-  const {heading,mainHeadingContent,imgText,imgUrl} = props;
+  const { heading, mainHeadingContent, imgText, imgUrl } = props;
+  const { width } = useWindowSize();
   console.log(props);
   return (
     <>
-      <div class="container mt-3">
-    <div class="row future-main-content">
-    <div class="col-lg-5 col main-content-heading">
-      <div className='main-content-headig-1'>
-        <h3 dangerouslySetInnerHTML={{__html: heading}}></h3>
-        <p>{mainHeadingContent}</p>
-      </div>
-    </div>
-    <div class="col-lg-4 col main-content-image-text">
-      <div className='main-content-headig-2' style={{textAlign:"center"}}>
-        <p style={{fontSize:"20px",fontWeight:"bold",letterSpacing:"3.1px",
-        lineHeight:"normal",padding:"15px 0px"}} dangerouslySetInnerHTML={{__html: imgText}}></p>
-         <div className='main-imagefuture'>
-        <img src={imgUrl.src}  alt="mobileview" width={210}/>
+      <div class="container my-5">
+        <div class="row future-main-content">
+          <div class="col-lg-6 col-sm-12 main-content-heading">
+            <div className='main-content-headig-1'>
+              <h3 dangerouslySetInnerHTML={{ __html: heading }}></h3>
+              <p>{mainHeadingContent}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 main-content-image-text">
+            <div className='main-content-headig-2' style={{ textAlign: "center" }}>
+              <p className='futureDates-content-over-img' dangerouslySetInnerHTML={{ __html: imgText }}></p>
+              <div className='main-imagefuture'>
+                <img src={imgUrl.src} alt="mobileview" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
-      
+
     </>
   )
 }
