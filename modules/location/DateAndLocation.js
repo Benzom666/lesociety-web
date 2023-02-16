@@ -24,6 +24,7 @@ function DateAndLocation({
   setAlreadyMessagedFromUser,
   setLocation,
   growDiv,
+  searchStatus,
 }) {
   const [dateLength, setDateLength] = useState(0);
   const [loading, setLoader] = React.useState(true);
@@ -75,14 +76,21 @@ function DateAndLocation({
 
   const nextPage = () => {
     setTimeout(() => {
-      const params = {
-        sort: "location",
-        selectedLocation: selectedLocation?.city,
-        // location: selectedLocation?.city,
-        province: selectedLocation?.province,
-        current_page: page + 1,
-        per_page: 10,
-      };
+      const params = searchStatus
+        ? {
+            location: selectedLocation?.city,
+            province: selectedLocation?.province?.toLowerCase(),
+            current_page: page + 1,
+            per_page: 10,
+          }
+        : {
+            sort: "location",
+            // selectedLocation: selectedLocation?.city?.toLowerCase(),
+            // location: selectedLocation?.city,
+            province: selectedLocation?.province?.toLowerCase(),
+            current_page: page + 1,
+            per_page: 10,
+          };
 
       setPage(page + 1);
       fetchDate(params);
@@ -135,14 +143,21 @@ function DateAndLocation({
       setPage(1);
     }
     if (selectedLocation?.city && !show) {
-      const params = {
-        // location: selectedLocation?.city,
-        sort: "location",
-        selectedLocation: selectedLocation?.city,
-        province: selectedLocation?.province,
-        current_page: 1,
-        per_page: 10,
-      };
+      const params = searchStatus
+        ? {
+            location: selectedLocation?.city,
+            province: selectedLocation?.province?.toLowerCase(),
+            current_page: 1,
+            per_page: 10,
+          }
+        : {
+            // location: selectedLocation?.city,
+            sort: "location",
+            // selectedLocation: selectedLocation?.city?.toLowerCase(),
+            province: selectedLocation?.province?.toLowerCase(),
+            current_page: 1,
+            per_page: 10,
+          };
 
       fetchDate(params);
     }

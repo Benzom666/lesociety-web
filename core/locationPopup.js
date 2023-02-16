@@ -20,6 +20,7 @@ function LocationPopup({
   closeModal,
   selectedLocation,
   setLocation,
+  setSearchStaus,
 }) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -184,7 +185,26 @@ function LocationPopup({
     };
   };
 
-  console.log("todo", todo);
+  function updateSearch(newData) {
+    // const existingData = recentSearches.find(
+    //   (data) => data.key === newData.key
+    // );
+    // if (existingData) {
+    //   setRecentSearches([...recentSearches.slice(0, 2)]);
+    // } else {
+    //   setRecentSearches([newData, ...recentSearches.slice(0, 2)]);
+    // }
+    // store only latest three and if same key found then remove previous one
+    const existingData = recentSearches.filter(
+      (data) => data.key !== newData.key
+    );
+    setRecentSearches([newData, ...existingData.slice(0, 2)]);
+    // setRecentSearches([newData, ...recentSearches.slice(0, 2)]);
+  }
+
+  // console field value of enter_city
+
+  console.log("recentSearches", recentSearches);
 
   return (
     <Modal
@@ -253,38 +273,90 @@ function LocationPopup({
           >
             {(styles) => (
               <ul>
-                {styles.map(({ key, style, data }) => (
-                  <li
-                    key={key}
-                    style={style}
-                    onClick={() => {
-                      setLocation({
-                        city: data?.name,
-                        country: data?.short_code,
-                        province: data?.province?.short_code?.split("-")[1],
-                      });
-                      9;
-                      setTimeout(() => {
-                        closeModal();
-                      }, 1000);
-                      // closeModal();
-                    }}
-                  >
-                    <span>{data?.name}</span>
-                    <br />
-                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                      {data?.province?.text}, {data?.country}
-                    </span>
-                    <input
-                      type="radio"
-                      checked={
-                        selectedLocation?.city?.toLowerCase() ===
-                        data?.name?.toLowerCase()
-                      }
-                    />
-                    <div className="check"></div>
-                  </li>
-                ))}
+                {
+                  // places === ""
+                  //   ? recentSearches.map(({ key, style, data }) => (
+                  //       <li
+                  //         key={key}
+                  //         style={style}
+                  //         onClick={() => {
+                  //           setLocation({
+                  //             city: data?.name,
+                  //             country: data?.short_code,
+                  //             province: data?.province?.short_code?.split("-")[1],
+                  //           });
+                  //           // do not save the same key
+                  //           const search = {
+                  //             data,
+                  //             key,
+                  //             style,
+                  //           };
+
+                  //           updateSearch(search);
+
+                  //           setTimeout(() => {
+                  //             closeModal();
+                  //           }, 1000);
+                  //           // closeModal();
+                  //         }}
+                  //       >
+                  //         <span>{data?.name}</span>
+                  //         <br />
+                  //         <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                  //           {data?.province?.text}, {data?.country}
+                  //         </span>
+                  //         <input
+                  //           type="radio"
+                  //           checked={
+                  //             selectedLocation?.city?.toLowerCase() ===
+                  //             data?.name?.toLowerCase()
+                  //           }
+                  //         />
+                  //         <div className="check"></div>
+                  //       </li>
+                  //     ))
+                  //   :
+                  styles.map(({ key, style, data }) => (
+                    <li
+                      key={key}
+                      style={style}
+                      onClick={() => {
+                        setLocation({
+                          city: data?.name,
+                          country: data?.short_code,
+                          province: data?.province?.short_code?.split("-")[1],
+                        });
+                        setSearchStaus(true);
+                        setRecentSearches([
+                          ...recentSearches,
+                          {
+                            key,
+                            data,
+                            style,
+                          },
+                        ]);
+                        setTimeout(() => {
+                          closeModal();
+                        }, 1000);
+                        // closeModal();
+                      }}
+                    >
+                      <span>{data?.name}</span>
+                      <br />
+                      <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                        {data?.province?.text}, {data?.country}
+                      </span>
+                      <input
+                        type="radio"
+                        checked={
+                          selectedLocation?.city?.toLowerCase() ===
+                          data?.name?.toLowerCase()
+                        }
+                      />
+                      <div className="check"></div>
+                    </li>
+                  ))
+                }
               </ul>
             )}
           </TransitionMotion>

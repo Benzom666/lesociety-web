@@ -50,6 +50,7 @@ function UserList(props) {
   const [countries, setCountry] = useState("");
   const dispatch = useDispatch();
   const country = user?.country && countriesCode[user?.country];
+  const [searchStatus, setSearchStaus] = useState(false);
 
   // for current location
   const [currentLocationLoading, setCurrentLocationLoading] = useState(false);
@@ -585,6 +586,7 @@ function UserList(props) {
         closeModal={() => setLocationPoup(false)}
         selectedLocation={selectedLocation}
         setLocation={setLocation}
+        setSearchStaus={setSearchStaus}
       />
     </div>
   );

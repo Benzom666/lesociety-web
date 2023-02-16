@@ -334,6 +334,7 @@ export const countriesCode = {
   Israel: "IL",
   "Isle of Man": "IM",
   India: "IN",
+  india: "IN",
   "British Indian Ocean Territory (the)": "IO",
   Iraq: "IQ",
   "Iran (Islamic Republic of)": "IR",
