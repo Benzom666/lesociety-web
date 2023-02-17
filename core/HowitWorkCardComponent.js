@@ -16,13 +16,13 @@ export function HowitWorkCardComponent() {
           </div>
         </div>
         <div className='parentdiv-2'>
-          <div className='myCard myCard-1' style={{padding:"20px 8px"}}>
+          <div className='myCard myCard-1 myCard-ladies' style={{padding:"20px 8px"}}>
             <h3 className='subCard-heading'>Ladies</h3>
             <span>You pay $10 to post 1 date card</span>
             <p className='subCard-sub-heading' style={{ padding: "5px 17px" }}>Each Date Card offers you the potential of being rewarded with anything between $80 to $250… talk about time well spent!</p>
             <p className='subCard-sub-heading' style={{ padding: "5px 17px" }}>  Create and customize as many dates as you wish, and select a suggested date experience for each. Our Gentlemen will then take the lead, and hopefully impress you, so don’t be shy.</p>
           </div>
-          <div className='myCard myCard-1' style={{height:"236px",padding:"5px 8px"}}>
+          <div className='myCard myCard-1 myCard-gentalman' style={{height:"236px",padding:"20px 8px"}}>
             <h3 className='subCard-heading'>Gentlemen,</h3>
             <span>You pay for her price, <br />and the experience</span>
             <p className='subCard-sub-heading' style={{ padding: "5px 17px" }}>With our service, all our features are at your fingertips, free of charge. If you don’t go on a date, you don’t pay for anything.</p>

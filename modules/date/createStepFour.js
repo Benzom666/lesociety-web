@@ -111,7 +111,7 @@ const CreateStepFour = (props) => {
         {width > 767 && (
           <div
             className="d-flex justify-content-center"
-            style={{ marginLeft: "40px" }}
+            style={{ marginLeft: "30px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <IoIosClose

@@ -52,7 +52,7 @@
         //flex-direction: column;
         align-items: center;
         background-color: #f2f5f7;
-        padding: 46px 8px;
+        padding: 60px 0px;
         border-radius: 14px;
         box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
     }
@@ -192,7 +192,8 @@
         }
 
         .howitWork-heading {
-            padding: 8px 50px;
+            // padding-top: 20px !important;
+            padding:20px 50px 8px 77px;
             font-size: 20px;
             font-weight: bold;
             font-stretch: normal;
@@ -214,7 +215,7 @@
             letter-spacing: 0px;
             text-align: center;
             color: #3a5e77;
-            padding: 5px 26px;
+            padding: 5px 22px;
         }
 
         .The-future-of-Le-Society {
@@ -223,7 +224,7 @@
             font-stretch: normal;
             font-style: normal;
             line-height: normal;
-            letter-spacing: 1.2px;
+            letter-spacing: 3.2px;
             text-align: center;
             color: #1a415c;
             text-transform: uppercase;
@@ -455,6 +456,7 @@
 
             .The-future-of-Le-Society {
                 padding: 10px 5px;
+                letter-spacing: 1.2px;
             }
 
             .Rectangle-1 {
@@ -517,4 +519,62 @@
         }
      }
     }
+}
+
+.parentdiv-1 .myCard:before {
+    content: '';
+    background: url('../assets/img/Group 96.png') no-repeat;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    position: absolute;
+    left: -76px;
+    top:80px;
+    z-index: 99;
+}
+
+.parentdiv-1 .myCard {
+    position: relative;
+}
+
+
+.parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+    content: '';
+    background: url('../assets/img/Group 140.png') no-repeat;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: -74px;
+    z-index: 99;
+    top: -33px;
+}
+
+.parentdiv-2 .myCard.myCard-1 {
+    position: relative;
+}
+
+.parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+    content: '';
+    background: url('../assets/img/Group 573.png') no-repeat;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: -74px;
+    z-index: 99;
+    top: 100px;
+}
+
+
+.container-2-title:after {
+    content: '';
+    background: url('../assets/img/Group 29.png') no-repeat;
+    height: 50px;
+    width: 50px;
+    right: -70px;
+    top: -100px;
+    position: absolute;
+}
+
+.container-2-title {
+    position: relative;
 }

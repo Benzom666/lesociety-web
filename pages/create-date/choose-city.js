@@ -236,7 +236,7 @@ const ChooseCity = (props) => {
                   className="city-top"
                   style={{ maxWidth: "340px", margin: "0px auto" }}
                 >
-                  <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+                  <div className="d-flex d-md-none justify-content-around align-items-center login-text mb-0">
                     <a
                       onClick={previousPage}
                       //style={{ width: "24px" }}

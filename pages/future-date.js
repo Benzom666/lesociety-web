@@ -84,9 +84,9 @@ function FutureDate() {
         {/* <FutureDates title={futureDatesContent.futureDatesContent2.title}
           contentaboutDating={futureDatesContent.futureDatesContent2.datingContent} /> */}
 
-          <Link   href='/home'>
+          <a  href='/home' style={{textDecoration:"none"}}>
           <button type='btn' className='backtoHomepage-btn'>Go back to homepage</button>
-          </Link>
+          </a>
           
         <HomeFooter logo={LeSlogoWhite} height={50} styleBackground ={styleBackground} />
       </div>

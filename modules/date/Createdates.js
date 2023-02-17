@@ -38,6 +38,9 @@ const CreateDate = (props) => {
     window.scrollTo(0, 0);
   };
   const previousPage = () => {
+    if(mobile && page===0){
+      router.push("/create-date/choose-city");
+    }
     setPage(page - 1);
     window.scrollTo(0, 0);
   };
@@ -83,7 +86,7 @@ const CreateDate = (props) => {
         )}
 
       {!router.query.drafted && page == 0 && (
-        <CreateStepOne onSubmit={nextPage} onClose={toggle} />
+        <CreateStepOne  previousPage={previousPage} onSubmit={nextPage} onClose={toggle} />
       )}
       {!router.query.drafted && page == 1 && (
         <>
