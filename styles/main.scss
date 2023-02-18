@@ -41,7 +41,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     .Territory_title {
       letter-spacing: 0.08px;
       font-size: 20px;
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-style: normal;
       font-weight: 700;
     }
@@ -52,7 +52,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     }
 
     h2 {
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-style: normal;
       font-weight: 700;
       font-size: 26px !important;
@@ -82,7 +82,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       letter-spacing: 0.5px;
 
       &.text-suggestion-city {
-        font-family: "Helvetica";
+        font-family: "Conv_Helvetica";
         font-size: 16px;
         line-height: 18px;
         color: #afabab;
@@ -136,7 +136,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         a {
           color: $white-color;
           text-decoration: none;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
           font-weight: 400;
         }
       }
@@ -226,7 +226,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         a {
           color: rgba(255, 255, 255, 0.8);
           text-decoration: none;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
         }
 
         @media only screen and (max-width: 767px) {
@@ -493,7 +493,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           letter-spacing: 0.5px;
           top: 100%;
           left: 0;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
           position: absolute;
         }
 
@@ -512,7 +512,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           font-size: 15px;
           letter-spacing: 1px;
           padding-bottom: 7px;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
         }
 
         .form-control {
@@ -524,7 +524,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           outline: none;
           box-shadow: none;
           font-size: 14px;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
 
           // &:active {
           //     border-color: #3371cd;
@@ -570,7 +570,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           border-radius: 10px;
           text-transform: uppercase;
           text-decoration: none;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
           display: flex;
           align-items: center;
           justify-content: center;
@@ -637,7 +637,7 @@ $GradientColor-second: rgba(#191919, 0.8);
                   -webkit-box-shadow: none;
                   box-shadow: none;
                   font-size: 14px;
-                  font-family: "Helvetica-Light";
+                  font-family: "Conv_Helvetica";
                   width: 100%;
                   padding-left: 50px;
                   cursor: pointer;
@@ -682,7 +682,7 @@ $GradientColor-second: rgba(#191919, 0.8);
             display: flex;
             justify-content: space-between;
             font-size: 16px;
-            font-family: "Helvetica-Light";
+            font-family: "Conv_Helvetica";
             padding-bottom: 10px;
 
             a {
@@ -755,7 +755,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           p {
             text-align: center;
             font-size: 18px;
-            font-family: "Helvetica-Light";
+            font-family: "Conv_Helvetica";
             margin-bottom: 7px;
           }
 
@@ -782,7 +782,7 @@ $GradientColor-second: rgba(#191919, 0.8);
             p {
               text-align: center;
               font-size: 16px;
-              font-family: "Helvetica-Light";
+              font-family: "Conv_Helvetica";
               padding-bottom: 0;
               line-height: 22px;
             }
@@ -790,7 +790,7 @@ $GradientColor-second: rgba(#191919, 0.8);
             h2 {
               text-align: center;
               padding-bottom: 10px;
-              font-family: "Helvetica-Light";
+              font-family: "Conv_Helvetica";
               font-size: 18px;
               line-height: 22px;
               font-weight: 400;
@@ -823,7 +823,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           letter-spacing: 0.5px;
           top: 100%;
           left: 0;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
           // position: absolute;
         }
 
@@ -945,7 +945,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
       &.profile-completion {
         .resend-mail-text {
-          font-family: Helvetica;
+          font-family: Conv_Helvetica;
           font-style: normal;
           font-weight: normal;
           line-height: 16px;
@@ -963,7 +963,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         }
 
         .resend-mail-text-active {
-          font-family: Helvetica;
+          font-family: Conv_Helvetica;
           font-style: normal;
           font-weight: normal;
           line-height: 16px;
@@ -1012,7 +1012,7 @@ $GradientColor-second: rgba(#191919, 0.8);
             line-height: 22px;
             color: #a8a8a8;
             font-weight: 400;
-            font-family: "Helvetica-Light";
+            font-family: "Conv_Helvetica";
             padding-bottom: 0;
             margin-bottom: 0;
 
@@ -1048,7 +1048,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         }
 
         a {
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
           color: #fff;
         }
       }
@@ -1087,7 +1087,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         display: block;
         padding: 20px 20px;
         font-weight: 400;
-        font-family: "Helvetica-Light";
+        font-family: "Conv_Helvetica";
         margin-top: 20px;
 
         @media only screen and (max-width: 767px) {
@@ -1147,7 +1147,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
         .dont-have {
           p {
-            font-family: "Helvetica-Light";
+            font-family: "Conv_Helvetica";
             margin-bottom: 20px;
           }
         }
@@ -1240,7 +1240,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           line-height: unset;
           text-align: unset;
           color: #afabab;
-          font-family: "Helvetica-Light";
+          font-family: "Conv_Helvetica";
           margin-bottom: 7px;
         }
       }
@@ -1360,7 +1360,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     }
 
     .resend-mail-text {
-      font-family: Helvetica;
+      font-family: Conv_Helvetica;
       font-style: normal;
       font-weight: normal;
       line-height: 16px;
@@ -1378,7 +1378,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       color: rgb(70, 69, 69);
       line-height: 22px;
       margin-bottom: 0;
-      font-family: "Helvetica-Light";
+      font-family: "Conv_Helvetica";
       font-weight: 400;
 
       @media only screen and (max-width: 767px) {
@@ -1399,7 +1399,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     }
 
     .city-txt-gallary {
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-style: normal;
       font-size: 18px;
       margin-right: 5px;
@@ -1606,7 +1606,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       border-radius: 10px;
       text-transform: uppercase;
       text-decoration: none;
-      font-family: "Helvetica-Light";
+      font-family: "Conv_Helvetica";
       display: -webkit-flex;
       display: flex;
       -webkit-align-items: center;
@@ -1903,7 +1903,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         -webkit-box-shadow: none;
         box-shadow: none;
         font-size: 14px;
-        font-family: "Helvetica-Light";
+        font-family: "Conv_Helvetica";
       }
     }
 
@@ -2016,7 +2016,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     background: #0b0b0b;
 
     p {
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-size: 16px;
       line-height: 18px;
       color: #afabab;
@@ -2030,7 +2030,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     h6 {
       font-weight: 700;
       font-size: 20px;
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-style: normal;
       margin-bottom: 5px;
       //padding-right: 54px;
@@ -2043,7 +2043,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       width: 400px;
       padding: 14px 0px;
       margin: auto;
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-size: 16px;
       line-height: 18px;
       color: #afabab;
@@ -2133,7 +2133,7 @@ $GradientColor-second: rgba(#191919, 0.8);
             text-decoration: none;
             font-style: normal;
             font-weight: 400;
-            font-family: "Helvetica";
+            font-family: "Conv_Helvetica";
           }
         }
       }
@@ -2233,7 +2233,7 @@ div[id="scrolldiv"] {
 
         small {
           font-size: 14px;
-          font-family: "Helvetica";
+          font-family: "Conv_Helvetica";
         }
       }
 
@@ -2292,7 +2292,7 @@ div[id="scrolldiv"] {
             span {
               font-size: 13px;
               font-weight: 300;
-              font-family: "Helvetica";
+              font-family: "Conv_Helvetica";
               letter-spacing: 0.5px;
 
               svg {
@@ -2341,7 +2341,7 @@ div[id="scrolldiv"] {
     backdrop-filter: blur(10.9286px);
 
     .less-txt {
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
@@ -2378,7 +2378,7 @@ div[id="scrolldiv"] {
         border-radius: 10px;
         text-transform: uppercase;
         text-decoration: none;
-        font-family: "Helvetica-Light";
+        font-family: "Conv_Helvetica";
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2426,7 +2426,7 @@ div[id="scrolldiv"] {
         border-radius: 10px;
         text-transform: uppercase;
         text-decoration: none;
-        font-family: "Helvetica-Light";
+        font-family: "Conv_Helvetica";
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2452,7 +2452,7 @@ div[id="scrolldiv"] {
     backdrop-filter: blur(10.9286px);
 
     h4 {
-      font-family: "Helvetica";
+      font-family: "Conv_Helvetica";
       font-style: normal;
       font-weight: 700;
       font-size: 19px;
@@ -2866,7 +2866,7 @@ body {
 
     .user-images-wrap {
       .tagline-font {
-        font-family: "Helvetica";
+        font-family: "Conv_Helvetica";
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
@@ -2923,7 +2923,7 @@ body {
             p {
               color: #4f4e54;
               font-weight: 700;
-              font-family: "Helvetica";
+              font-family: "Conv_Helvetica";
               font-style: normal;
               font-size: 16px;
               letter-spacing: 0.06px;
@@ -3226,7 +3226,7 @@ body .verification_card_header {
         .hour {
           font-size: 13.5px;
           text-align: center;
-          //font-family: "HelveticaNeueCyr";
+          //font-family: "Conv_HelveticaNeueCyr";
           font-style: normal;
           font-weight: 300;
           padding-top: 4px;
@@ -3387,7 +3387,7 @@ body .verification_card_header {
               rgba(0, 0, 0, 0) 100%
             );
             backdrop-filter: blur(21px);
-            font-family: "Helvetica";
+            font-family: "Conv_Helvetica";
             font-size: 18px;
             font-weight: 100;
             line-height: 21px;
@@ -3417,7 +3417,7 @@ body .verification_card_header {
     position: absolute;
     top: 100%;
     left: 0;
-    font-family: "Helvetica-Light";
+    font-family: "Conv_Helvetica";
     font-size: 11px;
     color: #f24462;
   }
@@ -4171,7 +4171,7 @@ body .verification_card_header {
   }
 
   .msg {
-    font-family: Helvetica;
+    font-family: Conv_Helvetica;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
@@ -4182,7 +4182,7 @@ body .verification_card_header {
   }
 
   .tip {
-    font-family: Helvetica;
+    font-family: Conv_Helvetica;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -4210,9 +4210,16 @@ body .verification_card_header {
       width: 320px;
       height: 50px;
       border: none;
-      padding: 17px;
+      padding: 20px;
+      padding-right: 65px;
       color: white;
       margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 767px) {
+      input {
+        padding: 17px;
+      }
     }
 
     input:focus-visible {
@@ -4362,7 +4369,7 @@ body .verification_card_header {
     border-radius: 10px;
     text-transform: uppercase;
     text-decoration: none;
-    font-family: "Helvetica-Light";
+    font-family: "Conv_Helvetica";
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
@@ -4384,7 +4391,7 @@ body .verification_card_header {
 }
 
 .more-about {
-  font-family: "Helvetica";
+  font-family: "Conv_Helvetica";
   font-style: normal;
   font-weight: 300;
   // margin-left: 30px;
@@ -5104,7 +5111,7 @@ path {
   border-radius: 10px;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: "Helvetica-Light";
+  font-family: "Conv_Helvetica";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5360,7 +5367,7 @@ path {
 
   .dont-have {
     p {
-      font-family: "Helvetica-Light";
+      font-family: "Conv_Helvetica";
       margin-bottom: 20px;
     }
   }
@@ -5681,134 +5688,129 @@ path {
   //padding: 0 40px;
   //background-color: #262629;
   // height: 100vh;
-  .main-header{
+  .main-header {
     padding: 30px;
     border-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #3b3737;
-  
-    .header{
+
+    .header {
       font-size: 30px;
       font-weight: 500;
     }
   }
-  .notif-items{
+  .notif-items {
     display: flex;
     flex-direction: column;
     padding: 30px 0;
     border-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #3b3737;
-    .notif-time{
+    .notif-time {
       display: flex;
       justify-content: space-between;
       padding-left: 30px;
       padding-top: 10px;
-      .timing{
+      .timing {
         font-size: 16px;
         color: darkgray;
       }
     }
-    .edit-btn{
+    .edit-btn {
       border: none;
       background: transparent;
-      color: #EF4762;
+      color: #ef4762;
       cursor: pointer;
       border-style: solid;
       border-width: 0 0 1px;
     }
-    .title{
+    .title {
       font-size: 25px;
       color: darkgray;
       padding-bottom: 20px;
       padding-left: 30px;
     }
-    .actions{
+    .actions {
       font-size: 20px;
       padding-bottom: 10px;
       padding-left: 30px;
-      
     }
-    .msg{
+    .msg {
       font-size: 16px;
       padding-bottom: 6px;
       padding-left: 30px;
     }
-    
   }
-  .notif-items:last-child{
+  .notif-items:last-child {
     border-bottom-width: 0;
   }
-  .no-notif{
+  .no-notif {
     font-size: 20px;
     padding: 40px 20px;
   }
- 
+}
+.no-notifWrap {
+  height: 77vh;
+}
+@media screen and (max-width: 480px) {
+  .notification-wrapper {
+    max-width: 100%;
+    background-color: transparent;
+  }
+}
 
-  }
-  .no-notifWrap{
-    height: 77vh;
-  }
-  @media screen and (max-width: 480px){
-    .notification-wrapper{
-      max-width: 100%;
-      background-color: transparent;
-    }
-  }
-  
-  
-  .notification-container {
-    position: relative;
-  
-    .notification-counter {
-      position: absolute;
-      top: -35px;
-      right: 28px;
-      background-color:#F24462;
-      color: #fff;
-      padding: 6px 9px;
-      border-radius: 12px;
-      font-size: 14px;
-  }
-  }
+.notification-container {
+  position: relative;
 
-  .btn-container{
-    // width: 100%;
-    text-align: center;
-    margin-right: 20px;
-    //margin-top: 50px;
+  .notification-counter {
+    position: absolute;
+    top: -35px;
+    right: 28px;
+    background-color: #f24462;
+    color: #fff;
+    padding: 6px 9px;
+    border-radius: 12px;
+    font-size: 14px;
   }
+}
 
-  .btn-container-2{
-    // width: 100%;
-    text-align: center;
-    padding: 50px;
-  }
+.btn-container {
+  // width: 100%;
+  text-align: center;
+  margin-right: 20px;
+  //margin-top: 50px;
+}
 
-  .edit-btn-verify{
-    border: none;
-    background: transparent;
-    color:#EF4762;
-    cursor: pointer;
-    border-style: solid;
-    border-width: 0 0 1px;
-    display: inline-block;
-    font-size: 18px;
-  }
-  .edit-btn-done{
-    border: none;
-    background: #EF4762;
-    color: white;
-    cursor: pointer;
-    /* border-style: solid; */
-    /* border-width: 0 0 1px; */
-    display: inline-block;
-    font-size: 16px;
-    width: 80%;
-    padding: 10px 0px;
-    border-radius: 5px;
-    text-decoration: none;
-  }
+.btn-container-2 {
+  // width: 100%;
+  text-align: center;
+  padding: 50px;
+}
+
+.edit-btn-verify {
+  border: none;
+  background: transparent;
+  color: #ef4762;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 0 0 1px;
+  display: inline-block;
+  font-size: 18px;
+}
+.edit-btn-done {
+  border: none;
+  background: #ef4762;
+  color: white;
+  cursor: pointer;
+  /* border-style: solid; */
+  /* border-width: 0 0 1px; */
+  display: inline-block;
+  font-size: 16px;
+  width: 80%;
+  padding: 10px 0px;
+  border-radius: 5px;
+  text-decoration: none;
+}
 
 .overflow-hidden {
   overflow: hidden !important;
@@ -5831,9 +5833,9 @@ path {
   width: 15%;
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width: 480px) {
   .w-15 {
     width: 10%;
-   // margin-top: 1rem;
+    // margin-top: 1rem;
   }
 }

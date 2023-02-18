@@ -51,6 +51,7 @@ class MyApp extends App {
     if (process.env.NODE_ENV === "production") {
       console.log = console.error = console.warn = function () {};
     }
+    document.body.style.overflow = "unset";
   }
 
   componentDidUpdate() {
@@ -68,6 +69,7 @@ class MyApp extends App {
     if (process.env.NODE_ENV === "production") {
       console.log = console.error = console.warn = function () {};
     }
+    document.body.style.overflow = "unset";
   }
 
   static async getInitialProps({ Component, ctx }) {

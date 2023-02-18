@@ -41,6 +41,8 @@ function DateAndLocation({
     setDateLength(dates?.length);
   }, [dates]);
 
+  console.log("scrollPosition", scrollPosition);
+
   document.addEventListener("scroll", function () {
     const reveals = document.querySelectorAll("#scrolldiv");
 
@@ -55,6 +57,8 @@ function DateAndLocation({
       }
     }
   });
+
+  const position = window.pageYOffset;
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -190,7 +194,8 @@ function DateAndLocation({
                   className={`col-xl-6 col-lg-12 ${
                     (width > 767 && (index === 2 || index === 3)) ||
                     index === 0 ||
-                    index === 1
+                    index === 1 ||
+                    scrollPosition <= position
                       ? "scrollActive"
                       : ""
                   }`}

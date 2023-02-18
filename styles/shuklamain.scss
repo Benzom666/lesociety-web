@@ -59,7 +59,7 @@
   }
 }
 
-@media only screen and (max-width: 395px) and (min-width:392px) {
+@media only screen and (max-width: 395px) and (min-width: 392px) {
   .create-date-wrap .step-wraps {
     margin-left: 2px;
   }
@@ -89,7 +89,7 @@
   border-radius: 10px;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: "Helvetica-Light";
+  font-family: "Conv_Helvetica";
   margin-top: 20px;
 }
 
@@ -114,7 +114,7 @@
     height: 94px;
     padding: 26px;
   }
-  .verifieed-upload-active{
+  .verifieed-upload-active {
     height: 94px;
     width: 380px;
     padding: 22px;
@@ -162,7 +162,7 @@
   flex-direction: column;
 
   .date-price-card {
-    font-family: 'Helvetica';
+    font-family: "Conv_Helvetica";
     font-size: 15.21px;
     font-weight: 700;
     letter-spacing: 0.07px;
@@ -228,7 +228,6 @@
       // }
     }
   }
-
 }
 
 @media (min-width: 991px) and (max-width: 1199px) {
@@ -258,9 +257,8 @@
   color: #f24462 !important;
 }
 
-
-@media screen and (max-width:480px) {
-  .requested-profile-img{
+@media screen and (max-width: 480px) {
+  .requested-profile-img {
     height: 488px;
   }
 }
