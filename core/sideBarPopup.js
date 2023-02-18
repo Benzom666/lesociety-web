@@ -112,7 +112,6 @@ function sideBarPopup({ isOpen, toggle }) {
     setCount(unreadNotifCount);
     console.log("unreadNotifCount ", unreadNotifCount);
   }, [notifData]);
-  console.log("first", count);
 
   return (
     <div

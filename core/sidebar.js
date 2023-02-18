@@ -110,7 +110,6 @@ export default function SideBar({ isActive }) {
     setCount(unreadNotifCount);
     console.log("unreadNotifCount ", unreadNotifCount);
   }, [notifData]);
-  console.log("first", count);
 
   return (
     <>
