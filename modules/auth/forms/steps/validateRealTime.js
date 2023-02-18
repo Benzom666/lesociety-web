@@ -107,7 +107,8 @@ export const fetchLiveLocation = async (lat, long, countries) => {
   try {
     const res = await axios({
       method: "GET",
-      url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?types=place%2Cpostcode%2Caddress&limit=1&access_token=${process.env.MAPBOX_TOKEN}`,
+      // url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?types=place%2Cpostcode%2Caddress&limit=1&access_token=${process.env.MAPBOX_TOKEN}`,
+      url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?types=place%2Caddress&limit=1&access_token=${process.env.MAPBOX_TOKEN}`,
       params: {
         country: countries || undefined,
       },

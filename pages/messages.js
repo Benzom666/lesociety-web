@@ -472,6 +472,34 @@ const Messages = (props) => {
       console.log("err", err);
     }
   };
+  const unblockChat = async (currentChat) => {
+    try {
+      const data = {
+        chatRoomId: currentChat?.message?.room_id,
+        recieverId: currentChat?.user?.id,
+      };
+
+      const res = await apiRequest({
+        data: data,
+        method: "POST",
+        url: `chat/unblock`,
+      });
+      console.log("res", res);
+      if (res?.data?.message === "Accepted!!") {
+        setCurrentChat(
+          (prev) =>
+            prev && {
+              ...prev,
+              status: 1,
+            }
+        );
+      }
+      getConversations();
+      getChatHistory(currentChat);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
 
   const deleteChat = async (currentChat) => {
     try {
@@ -875,7 +903,11 @@ const Messages = (props) => {
                                       {currentChat?.status === 2 ? (
                                         currentChat?.blocked_by?._id ==
                                           user?._id && (
-                                          <li>
+                                          <li
+                                            onClick={() =>
+                                              unblockChat(currentChat)
+                                            }
+                                          >
                                             <a>Unblock</a>
                                           </li>
                                         )
