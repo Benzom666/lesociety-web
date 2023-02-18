@@ -17,27 +17,27 @@ const education = [
   },
   {
     id: "2",
-    name: "College degree",
+    name: "College Degree",
   },
   {
     id: "3",
-    name: "Graduate degree",
+    name: "Graduate Degree",
   },
   {
     id: "4",
-    name: "Master degree",
+    name: "Master Degree",
   },
   {
     id: "5",
-    name: "In college",
+    name: "In College",
   },
   {
     id: "6",
-    name: "In university",
+    name: "In University",
   },
   {
     id: "7",
-    name: "Undergraduate degree",
+    name: "Undergraduate",
   },
 ];
 

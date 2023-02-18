@@ -8,7 +8,7 @@ function HomePageMainSection(props) {
   const { title, maincardImage, children,styles} = props;
   const { width } = useWindowSize();
   return (
-    <div className='container-fluid'>
+    <div className='container'>
       <div 
         className={`row align-items-center mx-0 home-main-section ${styles}`}>
       {width >769 &&   <div class="col-lg-3 col-md-12">

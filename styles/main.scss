@@ -311,11 +311,11 @@ $GradientColor-second: rgba(#191919, 0.8);
               width: 100%;
               border-radius: 8px;
               font-size: 13px;
-              padding: 18px 10px;
+              padding: 20px 10px;
               background-color: #151515;
               color: #4e4d52;
               padding-left: 45px;
-              padding-top: 20px;
+              //padding-top: 20px;
               position: relative;
 
               &:before {
@@ -333,7 +333,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
               @media only screen and (max-width: 767px) {
                 background-color: #191c21;
-                padding: 18px 35px;
+                padding: 22px 35px;
                 padding-left: 55px;
                 border: none;
                 color: #fff;
@@ -3255,7 +3255,8 @@ body .verification_card_header {
   .availabe_card_inner:hover {
     cursor: pointer;
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    // border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid #f24462;
   }
 }
 
@@ -5829,13 +5830,13 @@ path {
   font-size: 30px !important;
 }
 
-.w-15 {
-  width: 15%;
-}
+// .w-15 {
+//   width: 15%;
+// }
 
-@media only screen and (max-width: 480px) {
-  .w-15 {
-    width: 10%;
-    // margin-top: 1rem;
-  }
-}
+// @media only screen and (max-width:480px) {
+//   .w-15 {
+//     width: 10%;
+//    // margin-top: 1rem;
+//   }
+// }

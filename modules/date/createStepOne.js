@@ -32,7 +32,7 @@ const CreateStepOne = (props) => {
     <>
       <div className="inner_container">
         <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-0">
-          <a onClick={previousPage}>
+          <a onClick={previousPage} role="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -64,7 +64,7 @@ const CreateStepOne = (props) => {
         {width > 767 && (
           <div
             className="d-flex justify-content-center"
-            style={{ marginLeft: "40px" }}
+            style={{ marginLeft: "30px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <div onClick={toggle} className="w-15 cursor-pointer">

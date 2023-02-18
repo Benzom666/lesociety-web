@@ -203,7 +203,7 @@ const DatePreview = (props) => {
                   <>
                     <div
                       className="d-flex justify-content-center"
-                      style={{ margin:"0 auto",paddingLeft:"30px" }}
+                      style={{ margin:"0 auto",paddingLeft:"25px" }}
                     >
                       <h6
                         className="m-0 text-white"

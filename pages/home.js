@@ -55,35 +55,35 @@ function Home({ items }) {
         <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
-      {/* <HomePageMiddleNav style={style1}/> */}
+      <HomePageMiddleNav style={style1}/>
       <HomePageMainSection title="LADIES" maincardImage={Ladies}>
         <div className='main-content'>
-          <p className="aboutCardContent" style={{padding:"0px 40px"}}>{content.aboutCardContent1}</p>
+          <p className="aboutCardContent" style={{padding:"30px 40px"}}>{content.aboutCardContent1}</p>
           <p className="aboutCardContent"  style={{padding:"10px 30px"}}>{content.aboutCardContent4}</p>
           <p className="aboutCardContent" style={{ textAlign: "center", fontSize: "16px", color: "#a2a2a2" }}>{content.aboutCardContent5}</p>
           <div className='main-content-icon'>
             <div class="row align-items-center justify-content-evenly mt-3">
-              <div class="col"  style={{maxWidth:"120px",textAlign:"center"}}>
+              <div class="col-4"  style={{maxWidth:"120px",textAlign:"center"}}>
                 <img src={Group96.src} alt="icon-img" height={25} width={25} />
                 <p style={{fontFamily:"Montserrat", fontSize: "16px",}}>Brunch <br /> Date</p>
               </div>
-              <div class="col" style={{maxWidth:"120px" ,textAlign:"center"}}>
+              <div class="col-4" style={{maxWidth:"120px" ,textAlign:"center"}}>
                 <img src={Group152.src} alt="icon-img" height={25} width={25} />
                 <p style={{fontFamily:"Montserrat", fontSize: "16px" }}>Entertainment <br />
                   & Sports</p>
               </div>
-              <div class="col"  style={{maxWidth:"120px" ,textAlign:"center"}}>
+              <div class="col-4"  style={{maxWidth:"120px" ,textAlign:"center"}}>
                 <img src={Group140.src} alt="icon-img" height={25} width={25} />
                 <p style={{fontFamily:"Montserrat", fontSize: "16px" }}>Take A <br />Class</p>
               </div>
             </div>
             <div class="row align-items-center justify-content-center mt-3">
-              <div class="col"  style={{maxWidth:"120px",textAlign:"center"}}>
+              <div class="col-6"  style={{maxWidth:"120px",textAlign:"center"}}>
                 <img src={Group29.src} alt="icon-img" height={25} width={25} />
                 <p style={{fontFamily:"Montserrat", fontSize: "16px" }}>Bottles <br />
                   & Dance</p>
               </div>
-              <div class="col"  style={{maxWidth:"120px",textAlign:"center"}}>
+              <div class="col-6"  style={{maxWidth:"120px",textAlign:"center"}}>
                 <img src={Group30.src} alt="icon-img" height={25} width={25} />
                 <p style={{fontFamily:"Montserrat", fontSize: "16px",textAlign:"center" }}>Wine <br />
                   & Dine</p>
@@ -98,7 +98,8 @@ function Home({ items }) {
       <HomePageMainSection title="A GENTLEMEN’S CHOICE" maincardImage={Choice}>
         <p className="aboutCardContent">{content.aboutCardContent3}</p>
       </HomePageMainSection>
-     { width >768 ? <HomePageCardSection /> :<HomePageCardSectionMobile/> }
+     {/* { width >768 ? <HomePageCardSection /> :<HomePageCardSectionMobile/> } */}
+      <HomePageCardSection/>
       <HomeFooter logo={LeSlogoWhite}  styleBackground ={styleBackground} />
       </div>
      </>
