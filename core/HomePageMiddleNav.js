@@ -15,7 +15,7 @@ function HomePageMiddleNav(props) {
   return (
     <>
       <nav
-        class="navbar fixed-bottom bg-dark mt-4 navbarfixedmain"
+        className="navbar fixed-bottom bg-dark mt-4 navbarfixedmain"
         style={props.style}
       >
         <div className="container-fluid d-flex justify-content-end containernavbarfooter animate">

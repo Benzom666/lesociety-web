@@ -40,7 +40,7 @@ function Home({ items }) {
     <>
       <div className="inner-part-page auth-section home_page_style">
         <div className="home-page-navbar">
-        <nav class="navbar navbar-dark bg-#080808">
+        <nav className="navbar navbar-dark bg-#080808">
           <div className="LeSociety-Icon-White d-flex">
             <div className="ls-logo">
               <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
@@ -55,7 +55,7 @@ function Home({ items }) {
         <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
-      <HomePageMiddleNav style={style1}/>
+      {/* <HomePageMiddleNav style={style1}/> */}
       <HomePageMainSection title="LADIES" maincardImage={Ladies}>
         <div className='main-content'>
           <p className="aboutCardContent" style={{padding:"30px 40px"}}>{content.aboutCardContent1}</p>

@@ -31,7 +31,7 @@ function HowItWork() {
     <>
       <div className="inner-part-page auth-section how-it-works">
         <div className="howItWork-navbar">
-        <nav class="navbar navbar-light bg-#f2f5f7">
+        <nav className="navbar navbar-light bg-#f2f5f7">
           <div className="LeSociety-Icon-White d-flex">
             <div className="ls-logo">
               <img src={LeSlogoBlack.src} alt="ls-logo" />

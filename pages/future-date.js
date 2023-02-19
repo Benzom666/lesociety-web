@@ -60,7 +60,7 @@ function FutureDate() {
     <>
       <div className="inner-part-page auth-section future-dates-main">
         <div className="future-date-navbar">
-        <nav class="navbar navbar-dark bg-#080808">
+        <nav className="navbar navbar-dark bg-#080808">
           <div className="LeSociety-Icon-White d-flex">
             <div className="ls-logo">
               <img src={LeSlogoWhite.src} alt="ls-logo" width="35px" />
