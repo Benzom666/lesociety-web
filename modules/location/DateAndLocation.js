@@ -41,8 +41,6 @@ function DateAndLocation({
     setDateLength(dates?.length);
   }, [dates]);
 
-  console.log("scrollPosition", scrollPosition);
-
   document.addEventListener("scroll", function () {
     const reveals = document.querySelectorAll("#scrolldiv");
 
@@ -88,7 +86,7 @@ function DateAndLocation({
             per_page: 10,
           }
         : {
-            sort: "location",
+            // sort: "location",
             // selectedLocation: selectedLocation?.city?.toLowerCase(),
             // location: selectedLocation?.city,
             province: selectedLocation?.province?.toLowerCase(),
@@ -156,7 +154,7 @@ function DateAndLocation({
           }
         : {
             // location: selectedLocation?.city,
-            sort: "location",
+            // sort: "location",
             // selectedLocation: selectedLocation?.city?.toLowerCase(),
             province: selectedLocation?.province?.toLowerCase(),
             current_page: 1,
