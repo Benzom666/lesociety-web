@@ -264,3 +264,25 @@
     height: 488px;
   }
 }
+
+
+.explore-home-page-btn{
+  //font-family: 'Helvetica';
+  height: 50px;
+  width:80%;
+  background-color: #f24462;
+  border-radius: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.5px;
+  border: none;
+  padding: 5px;
+  margin-top: 1rem;
+}
+
+@media only  screen and (max-width:"480px"){
+  .explore-home-page-btn{
+    width: 100%;
+  }
+}

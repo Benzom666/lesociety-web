@@ -233,13 +233,13 @@ const ChooseCity = (props) => {
             <div className="auth-section choose-city new-city">
               <form onSubmit={handleSubmit}>
                 <div
-                  className="city-top"
-                  style={{ maxWidth: "340px", margin: "0px auto" }}
+                  className="city-top inner_container"
+                  //style={{ maxWidth: "340px", margin: "0px auto" }}
                 >
-                  <div className="d-flex d-md-none justify-content-around align-items-center login-text mb-0">
+                  <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
                     <a
                       onClick={previousPage}
-                      //style={{ width: "24px" }}
+                      //style={{ marginLeft:"-23px" }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -261,7 +261,7 @@ const ChooseCity = (props) => {
                     <div onClick={toggle} className="w-15 cursor-pointer"
                     style={{marginTop:"1rem"}}>
                       <IoIosClose
-                        className="desk-close-first mouse-point"
+                        className="mouse-point"
                         size={33}
                         style={{ color: " rgba(255, 255, 255, 0.5)" }}
                         onClick={toggle}
@@ -271,7 +271,7 @@ const ChooseCity = (props) => {
                   {width > 767 && (
                     <div
                       className="d-flex justify-content-center"
-                      style={{ marginLeft: "18px" }}
+                      style={{ marginLeft: "-11px" }}
                     >
                       <h3 className="text-center text-uppercase">
                         Create a New Date

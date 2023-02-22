@@ -111,7 +111,7 @@ const CreateStepFour = (props) => {
         {width > 767 && (
           <div
             className="d-flex justify-content-center"
-            style={{ marginLeft: "30px" }}
+            style={{ marginLeft: "22px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <IoIosClose
@@ -216,7 +216,7 @@ const CreateStepFour = (props) => {
                 className="mb-8 bottom-content text-center"
                 style={{ marginBottom: "28px" }}
               >
-                <p style={{ fontSize: "16px" }}>
+                <p style={{ fontSize: "16px",paddingBottom:"30px" }}>
                   Thank you for being one of our early adopters! To show you our
                   appreciation, we will keep your posts active until you delete
                   it. This allows you to earn multiple times for each post.

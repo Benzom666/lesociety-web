@@ -64,7 +64,7 @@ const CreateStepOne = (props) => {
         {width > 767 && (
           <div
             className="d-flex justify-content-center"
-            style={{ marginLeft: "30px" }}
+            style={{ marginLeft: "22px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <div onClick={toggle} className="w-15 cursor-pointer">

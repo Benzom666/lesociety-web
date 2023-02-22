@@ -12,6 +12,8 @@ import io from "socket.io-client";
 import SideBarPopup from "./sideBarPopup";
 import Image from "next/image";
 import close1 from "../assets/close1.png";
+import LeSlogoWhite from '../assets/LeS logoWhite.png';
+import LeSlogoText from '../assets/img/LeSocietylogotext.png'
 // const socket = io("https://staging-api.secrettime.com/", {
 //   autoConnect: true,
 // });
@@ -121,7 +123,14 @@ export default function HeaderLoggedIn({
             <div className="logo">
               <>
                 <Link href="/auth/login">
-                  <h3 className="d-md-none mb-0 st-logo">ST</h3>
+                  {/* <h3 className="d-md-none mb-0 st-logo">ST</h3> */}
+                  <img
+                    src={LeSlogoWhite.src}
+                    width="35px"
+                    height="35px"
+                    alt="Logo"
+                    className=" d-md-none cursor-pointer"
+                  />
                 </Link>
                 <Link href="/auth/login">
                   <img
@@ -130,6 +139,12 @@ export default function HeaderLoggedIn({
                     alt="Logo"
                     className="d-none d-md-block cursor-pointer"
                   />
+                  {/* <img
+                    src={LeSlogoWhite.src}
+                    width="45"
+                    alt="Logo"
+                    className="d-none d-md-block cursor-pointer"
+                  /> */}
                 </Link>
               </>
             </div>

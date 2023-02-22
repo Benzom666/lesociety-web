@@ -72,9 +72,11 @@ function HowItWork() {
               <h3 className="The-future-of-Le-Society" style={{padding:"5px",marginBottom:"1rem"}}>
                Le Society
               </h3>
+              <a href="/future-date" style={{textDecoration:"none"}}>
               <button type="button" className="btn btn-danger Rectangle-1">
                 Sneak Peak
               </button>
+              </a>
               <p className="In-App-Payment-GPS-Tracking-and-more">
                 In App Payment <br />
                 GPS Tracking

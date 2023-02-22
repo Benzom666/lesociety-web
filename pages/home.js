@@ -55,7 +55,7 @@ function Home({ items }) {
         <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman}>
         <p className="aboutCardContent">{content.aboutCardContent}</p>
       </HomePageMainSection>
-      {/* <HomePageMiddleNav style={style1}/> */}
+      <HomePageMiddleNav style={style1}/>
       <HomePageMainSection title="LADIES" maincardImage={Ladies}>
         <div className='main-content'>
           <p className="aboutCardContent" style={{padding:"30px 40px"}}>{content.aboutCardContent1}</p>
@@ -98,8 +98,8 @@ function Home({ items }) {
       <HomePageMainSection title="A GENTLEMEN’S CHOICE" maincardImage={Choice}>
         <p className="aboutCardContent">{content.aboutCardContent3}</p>
       </HomePageMainSection>
-     {/* { width >768 ? <HomePageCardSection /> :<HomePageCardSectionMobile/> } */}
-      <HomePageCardSection/>
+     { width >768 ? <HomePageCardSection /> :<HomePageCardSectionMobile/> }
+      {/* <HomePageCardSection/> */}
       <HomeFooter logo={LeSlogoWhite}  styleBackground ={styleBackground} />
       </div>
      </>
