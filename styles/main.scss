@@ -2614,7 +2614,7 @@ div[id="scrolldiv"] {
 }
 
 .sidebar_wrap {
-  height: calc(100vh - 105px);
+  height: calc(100% - 105px);
   overflow-y: auto;
 
   .user-card-sidebar {
