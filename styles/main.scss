@@ -2007,6 +2007,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       margin-bottom: 15px;
       font-size: 20px;
       font-weight: 700;
+      text-transform: capitalize;
     }
 
     padding: 35px 0;
@@ -2057,7 +2058,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     padding-top: 40px !important;
 
     .price-tag {
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 300;
       color: $primary-color;
     }

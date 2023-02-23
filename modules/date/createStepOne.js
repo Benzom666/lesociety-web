@@ -128,10 +128,12 @@ const CreateStepOne = (props) => {
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Standard Class Dates</H5> */}
+                    <div style={{marginBottom:"1rem"}}>
                     <H5>
                       When your availability is more important than a date
                       suggestion.
                     </H5>
+                    </div>
                     {/* <span className="price-tag">$</span> */}
                   </div>
                   {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
@@ -178,10 +180,12 @@ const CreateStepOne = (props) => {
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Middle Class Dates</H5> */}
+                    <div style={{marginBottom:"1rem"}}>
                     <H5>
                       When a date suggestion is more important than your
                       availability.
                     </H5>
+                    </div>
                     {/* <span className="price-tag">$$</span> */}
                   </div>
                   {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>

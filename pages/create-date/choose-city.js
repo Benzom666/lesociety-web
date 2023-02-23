@@ -236,7 +236,7 @@ const ChooseCity = (props) => {
                   className="city-top inner_container"
                   //style={{ maxWidth: "340px", margin: "0px auto" }}
                 >
-                  <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+                  <div className="d-flex d-md-none justify-content-around align-items-center login-text mb-0">
                     <a
                       onClick={previousPage}
                       //style={{ marginLeft:"-23px" }}
@@ -259,7 +259,7 @@ const ChooseCity = (props) => {
                     <h6 className="m-0 text-white-50">CREATE NEW DATE</h6>
 
                     <div onClick={toggle} className="w-15 cursor-pointer"
-                    style={{marginTop:"1rem"}}>
+                  >
                       <IoIosClose
                         className="mouse-point"
                         size={33}

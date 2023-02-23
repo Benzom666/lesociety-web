@@ -9,9 +9,8 @@ function HomePageMainSection(props) {
   const { width } = useWindowSize();
   return (
     <div className='container'>
-      <div 
-        className={`row align-items-center mx-0 home-main-section ${styles}`}>
-      {width >769 &&   <div class="col-lg-3 col-md-12">
+      <div className={`row align-items-center mx-0 home-main-section ${styles}`}>
+      {width >769 &&   <div className="col-lg-3 col-sm-12">
           <div className='main-title'>
             <h5>{title}</h5>
           </div>
