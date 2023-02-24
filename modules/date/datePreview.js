@@ -135,6 +135,15 @@ const DatePreview = (props) => {
     <>
       {!confirmPopup ? (
         <>
+          <div onClick={toggle} className="w-15 d-none d-sm-block cursor-pointer text-end pe-5"
+          >
+            <IoIosClose
+              className="mouse-point"
+              size={33}
+              //style={{ color: " rgba(255, 255, 255, 0.5)" }}
+              onClick={toggle}
+            />
+          </div>
           <div className="inner_container">
             <div className=" d-md-none justify-content-between align-items-center login-text mb-0 d-flex">
               <a onClick={previousPage}>
@@ -167,7 +176,7 @@ const DatePreview = (props) => {
             {width < 430 ? (
               <div
                 className="step-wraps"
-                //  style={{ marginLeft: '16px' }}
+              //  style={{ marginLeft: '16px' }}
               >
                 <ul>
                   <li className="complete active">
@@ -193,9 +202,8 @@ const DatePreview = (props) => {
             ) : null}
           </div>
           <div
-            className={`${
-              width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"
-            } `}
+            className={`${width > 767 ? "date-Preview-text" : "date-suggetion-text mt-4"
+              } `}
           >
             <div className="inner_container preview-date-header">
               <div className="d-flex justify-content-center flex-column">
@@ -203,7 +211,7 @@ const DatePreview = (props) => {
                   <>
                     <div
                       className="d-flex justify-content-center"
-                      style={{ margin:"0 auto",paddingLeft:"25px" }}
+                    //style={{ margin:"0 auto",paddingLeft:"25px" }}
                     >
                       <h6
                         className="m-0 text-white"
@@ -212,15 +220,15 @@ const DatePreview = (props) => {
                         CREATE A NEW DATE
                       </h6>
                       <div onClick={toggle} className="w-0 cursor-pointer">
-                        <IoIosClose
+                        {/* <IoIosClose
                           className="desk-close-first mouse-point"
                           size={33}
                           onClick={toggle}
-                        />
+                        /> */}
                       </div>
                     </div>
                     <div className="step-wraps steps_wraps_previewdate">
-                      <ul>
+                      <ul style={{ margin: "0 auto" }}>
                         <li className=" complete active">
                           <span></span>
                         </li>
@@ -247,8 +255,8 @@ const DatePreview = (props) => {
                 {width > 767 && (
                   <>
                     <div className="city-suggestion-text">
-                      <h6 style={{ marginRight: "15px" }}>Date Preview</h6>
-                      <p style={{ maxWidth: "430px" }}>
+                      <h6>Date Preview</h6>
+                      <p>
                         Please check all the details of your date before
                         posting. You will have a chance to edit it in the future
                       </p>

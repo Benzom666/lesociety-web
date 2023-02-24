@@ -1927,8 +1927,8 @@ $GradientColor-second: rgba(#191919, 0.8);
 .create-date-wrap {
   .step-wraps {
     // margin: 15px  50px;
-    width: 80%;
-    margin-left: 16px;
+    width: 100%;
+    //margin-left: 16px;
     margin-right: auto;
     margin-top: 15px;
     margin-bottom: 50px;
@@ -1940,22 +1940,24 @@ $GradientColor-second: rgba(#191919, 0.8);
       justify-content: space-around;
       padding: 0;
       max-width: 234px;
-      margin: 0 0 0 22%;
+      margin: 0 0 0 20.5%;
 
       @media only screen and (max-width: 435px) {
-        margin: 0 0 0 22%;
+        margin: 0  19%;
       }
 
       @media only screen and (max-width: 390px) {
-        margin: 0 0 0 84px;
+        //margin: 0 0 0 84px;
+        margin: 0 auto;
       }
 
       @media only screen and (max-width: 375px) {
-        margin: 0 0 0 78px;
+        // margin: 0 0 0 78px;
+        margin: 0 50px;
       }
 
       @media only screen and (max-width: 340px) {
-        margin: 0 0 0 64px;
+        margin: 0 0 0 22px;
       }
 
       li {
@@ -5372,11 +5374,11 @@ path {
   }
 }
 
-@media only screen and (max-width: 400px) {
-  .create-date-wrap .step-wraps {
-    margin-left: -10px;
-  }
-}
+// @media only screen and (max-width: 400px) {
+//   .create-date-wrap .step-wraps {
+//     margin-left: -10px;
+//   }
+// }
 
 @media only screen and (max-width: 420px) {
   .inner-part-page .auth-section .login-text {

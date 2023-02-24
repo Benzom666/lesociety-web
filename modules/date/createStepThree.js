@@ -90,15 +90,15 @@ const CreateStepThree = (props) => {
         {width > 767 && (
           <div
             className="d-flex justify-content-center"
-            style={{ marginLeft: "22px" }}
+            //style={{ marginLeft: "22px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
             <div onClick={toggle} className="w-15 cursor-pointer">
-              <IoIosClose
+              {/* <IoIosClose
                 className="desk-close-first mouse-point"
                 size={33}
                 onClick={toggle}
-              />
+              /> */}
             </div>
           </div>
         )}
@@ -134,7 +134,7 @@ const CreateStepThree = (props) => {
           <div className="date-suggetion-text">
             <div
               className="inner_container"
-              style={{ paddingRight: "20px", paddingLeft: "20px" }}
+              // style={{ paddingRight: "20px", paddingLeft: "20px" }}
             >
               <h6>Set date duration.</h6>
               <p>

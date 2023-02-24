@@ -64,16 +64,16 @@ const CreateStepOne = (props) => {
         {width > 767 && (
           <div
             className="d-flex justify-content-center"
-            style={{ marginLeft: "22px" }}
+          // style={{ marginLeft: "22px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
-            <div onClick={toggle} className="w-15 cursor-pointer">
+            {/* <div onClick={toggle} className="w-15 cursor-pointer">
               <IoIosClose
                 className="desk-close-first mouse-point"
                 size={33}
                 onClick={toggle}
               />
-            </div>
+            </div> */}
           </div>
         )}
         <div className="step-wraps">
@@ -105,7 +105,7 @@ const CreateStepOne = (props) => {
           <div className="date-suggetion-text">
             <div
               className="inner_container"
-              style={{ paddingRight: "20px", paddingLeft: "20px" }}
+            // style={{ paddingRight: "20px", paddingLeft: "20px" }}
             >
               <h6>Suggest a date.</h6>
               <p>
@@ -128,11 +128,11 @@ const CreateStepOne = (props) => {
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Standard Class Dates</H5> */}
-                    <div style={{marginBottom:"1rem"}}>
-                    <H5>
-                      When your availability is more important than a date
-                      suggestion.
-                    </H5>
+                    <div style={{ marginBottom: "1rem" }}>
+                      <H5>
+                        When your availability is more important than a date
+                        suggestion.
+                      </H5>
                     </div>
                     {/* <span className="price-tag">$</span> */}
                   </div>
@@ -180,11 +180,11 @@ const CreateStepOne = (props) => {
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Middle Class Dates</H5> */}
-                    <div style={{marginBottom:"1rem"}}>
-                    <H5>
-                      When a date suggestion is more important than your
-                      availability.
-                    </H5>
+                    <div style={{ marginBottom: "1rem" }}>
+                      <H5>
+                        When a date suggestion is more important than your
+                        availability.
+                      </H5>
                     </div>
                     {/* <span className="price-tag">$$</span> */}
                   </div>

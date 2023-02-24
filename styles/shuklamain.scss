@@ -12,21 +12,21 @@
   margin: 0 auto !important;
 }
 
-@media screen and (min-width: 767px) {
-  .steps_wraps_previewdate {
-    margin-left: auto !important;
+// @media screen and (min-width: 767px) {
+//   .steps_wraps_previewdate {
+//     margin-left: auto !important;
 
-    ul {
-      margin: 0 auto !important;
-    }
-  }
-}
+//     ul {
+//       margin: 0 auto !important;
+//     }
+//   }
+// }
 
-@media screen and (min-width: 767px) {
-  .step-1 {
-    margin-left: 70px;
-  }
-}
+// @media screen and (min-width: 767px) {
+//   .step-1 {
+//     margin-left: 70px;
+//   }
+// }
 
 @media screen and (max-width: 430px) {
   .step-1 {
@@ -47,23 +47,23 @@
   }
 }
 
-@media screen and (min-width: 401px) {
-  .choose-city-steps {
-    margin-left: -1px !important;
+@media screen and (min-width: 400px) {
+  .choose-city-steps ul {
+    margin:0 19% !important ;
   }
 }
 
-@media only screen and (max-width: 450px) and (min-width: 400px) {
-  .create-date-wrap .step-wraps {
-    margin-left: 7px;
-  }
-}
+// @media only screen and (max-width: 450px) and (min-width: 400px) {
+//   .create-date-wrap .step-wraps {
+//     margin-left: 7px;
+//   }
+// }
 
-@media only screen and (max-width: 395px) and (min-width:392px) {
-  .create-date-wrap .step-wraps {
-    margin-left: 2px;
-  }
-}
+// @media only screen and (max-width: 395px) and (min-width:392px) {
+//   .create-date-wrap .step-wraps {
+//     margin-left: 2px;
+//   }
+// }
 
 .rate-tag {
   padding: 0px 8px 5px 18px;
@@ -285,4 +285,14 @@
   .explore-home-page-btn{
     width: 100%;
   }
+}
+
+
+.labelofcard-1{
+  filter: blur(3.5px);
+    position: absolute;
+    transform: translate(-50px,-50px);
+    top: 60px;
+    left: 88px;
+    width: 100%;
 }

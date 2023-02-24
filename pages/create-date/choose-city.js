@@ -232,11 +232,21 @@ const ChooseCity = (props) => {
           <div className="container create-date-wrap new-date">
             <div className="auth-section choose-city new-city">
               <form onSubmit={handleSubmit}>
+                
+              <div onClick={toggle} className="w-15 d-none d-sm-block cursor-pointer text-end pe-5"
+                  >
+                      <IoIosClose
+                        className="mouse-point"
+                        size={33}
+                        //style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                        onClick={toggle}
+                      />
+                    </div>
                 <div
                   className="city-top inner_container"
                   //style={{ maxWidth: "340px", margin: "0px auto" }}
                 >
-                  <div className="d-flex d-md-none justify-content-around align-items-center login-text mb-0">
+                  <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
                     <a
                       onClick={previousPage}
                       //style={{ marginLeft:"-23px" }}
@@ -271,23 +281,25 @@ const ChooseCity = (props) => {
                   {width > 767 && (
                     <div
                       className="d-flex justify-content-center"
-                      style={{ marginLeft: "-11px" }}
+                      //style={{ marginLeft: "-11px" }}
                     >
                       <h3 className="text-center text-uppercase">
                         Create a New Date
                       </h3>
                       <div onClick={toggle} className="w-15 cursor-pointer">
-                        <IoIosClose
+                        {/* <IoIosClose
                           className="desk-close-first mouse-point"
                           size={33}
                           onClick={toggle}
-                        />
+                        /> */}
                       </div>
                     </div>
                   )}
 
                   {width > 767 ? (
-                    <div className="step-wraps" style={{ marginLeft: "-2px" }}>
+                    <div className="step-wraps" 
+                    //style={{ marginLeft: "-2px" }}
+                    >
                       <ul>
                         <li className="active">
                           <span></span>
