@@ -116,10 +116,12 @@ const Verfied = (props) => {
                 </span>
                 <h2>Profile Verified</h2>
                 <p className="pt-4">
-                  <p className="mb-4">Thank you for your patience.</p>
+                  <p className="mb-4">
+                    Your Profile with Le Society Has Been Approved!
+                  </p>
                   <p>
                     {user?.gender === "female"
-                      ? "You have now gained access to Le Society. Please create your first date."
+                      ? "Thank you for being so patient! We've had the opportunity to review your images and profile and are pleased to let you know you can now browse Le Society and start the journey of finding your perfect match."
                       : "You can now start enjoying your new dating experience."}
                   </p>
                 </p>

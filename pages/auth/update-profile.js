@@ -78,15 +78,20 @@ const UpdatedProfile = (props) => {
                     </g>
                   </svg>
                 </span>
-                <h2>Profile Updated</h2>
+                <h2>Edit Profile Completed</h2>
                 <p className="pt-4">
                   <p className="mb-4">
-                    Please wait up to 24 hours for your profile to be verified.
+                    We've received your change request for images or your
+                    profile description or tagline. Your latest information is
+                    now under review and will go live upon approval. Please make
+                    sure your most recent changes abide by our company's
+                    policies. A review of your most recent changes can take up
+                    to 24 hours. Thank you for your patience!
                   </p>
-                  <p>
+                  {/* <p>
                     Le Society provide optimal experience by only allowing
                     serious members to join.
-                  </p>
+                  </p> */}
                   {/* <p className="mb-4">Thank you for your patience.</p>
                   <p>
                     {user?.gender === "female"
@@ -123,4 +128,5 @@ const UpdatedProfile = (props) => {
   );
 };
 
+// export default UpdatedProfile;
 export default withAuth(UpdatedProfile);

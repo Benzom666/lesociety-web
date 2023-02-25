@@ -22,9 +22,12 @@ const Block = (props) => {
           <div className="auth-section auth-section-register">
             <div>
               <div className="upload-pics profile-completion">
-                <h2>Verification Unsuccessful</h2>
+                <h2>You’ve Been Blocked From Le Society</h2>
                 <p className="pt-4">
-                  You have broken our rules. You are permanently blocked.
+                  Unfortunately, we've blocked you from Le Society because you
+                  violated our policy during registration. We take our policy
+                  seriously because it allows us to provide a safe and enjoyable
+                  environment for our users. Thank you for understanding.
                 </p>
               </div>
             </div>

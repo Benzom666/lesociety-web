@@ -1001,35 +1001,36 @@ function UserProfile({ preview, editHandle }) {
                                       className="date-selected-modal"
                                     >
                                       {messageLoading ? (
-                                            <div className="user-message-loader">
-                                              <Image
-                                                src={require("../../../assets/squareLogoNoBack.gif")}
-                                                alt="loading..."
-                                                className=""
-                                                width={100}
-                                                height={100}
-                                              />
-                                            </div>
-                                          ) : <>
-                                          
-                                        
-                                      <div className="model_content verification_card_header mb-3">
-                                        <SubHeading title="Available dates" />
-                                        <div className="availabe_card_inner">
-                                          <ul className="date_list">
-                                            {selectedDate ? (
-                                              <>
-                                                <li>
-                                                  <span className="icon_wrap">
-                                                    {selectedDateCategory?.icon}
-                                                  </span>
-                                                  <p>
-                                                    {
-                                                      selectedDateCategory?.label
-                                                    }
-                                                  </p>
-                                                </li>
-                                                {/* <span className="top-card_tag">
+                                        <div className="user-message-loader">
+                                          <Image
+                                            src={require("../../../assets/squareLogoNoBack.gif")}
+                                            alt="loading..."
+                                            className=""
+                                            width={100}
+                                            height={100}
+                                          />
+                                        </div>
+                                      ) : (
+                                        <>
+                                          <div className="model_content verification_card_header mb-3">
+                                            <SubHeading title="Available dates" />
+                                            <div className="availabe_card_inner">
+                                              <ul className="date_list">
+                                                {selectedDate ? (
+                                                  <>
+                                                    <li>
+                                                      <span className="icon_wrap">
+                                                        {
+                                                          selectedDateCategory?.icon
+                                                        }
+                                                      </span>
+                                                      <p>
+                                                        {
+                                                          selectedDateCategory?.label
+                                                        }
+                                                      </p>
+                                                    </li>
+                                                    {/* <span className="top-card_tag">
                                                 <span className="top-badge"></span>{" "}
                                                 ${selectedDate?.price}
                                               </span>
@@ -1042,98 +1043,102 @@ function UserProfile({ preview, editHandle }) {
                                                   )}
                                                 </h2>
                                               </span> */}
-                                                <span className="top-card_tag">
-                                                  <span className="top-badge"></span>
-                                                  <div className="price-card-name">
-                                                    <span>
-                                                      ${selectedDate?.price}
+                                                    <span className="top-card_tag">
+                                                      <span className="top-badge"></span>
+                                                      <div className="price-card-name">
+                                                        <span>
+                                                          ${selectedDate?.price}
+                                                        </span>
+                                                        <span className="hour">
+                                                          <span>
+                                                            {selectedDate?.date_length.replace(
+                                                              "H",
+                                                              ""
+                                                            )}
+                                                            H
+                                                          </span>
+                                                        </span>
+                                                      </div>
                                                     </span>
-                                                    <span className="hour">
-                                                      <span>
-                                                        {selectedDate?.date_length.replace(
-                                                          "H",
-                                                          ""
-                                                        )}
-                                                        H
-                                                      </span>
-                                                    </span>
+                                                  </>
+                                                ) : null}
+                                              </ul>
+                                            </div>
+                                          </div>
+                                          {user?.gender === "male" ? (
+                                            <div className="date_details_desktop mt-4 pt-4">
+                                              {alreadyMessaged ? (
+                                                <div className="user-message-loader already-messaged">
+                                                  Already Requested
+                                                </div>
+                                              ) : (
+                                                <div className="verification_card_header">
+                                                  <div className="">
+                                                    <h4
+                                                      style={{
+                                                        fontWeight: "700",
+                                                        letterSpacing:
+                                                          "0.066px",
+                                                      }}
+                                                    >
+                                                      Date Details
+                                                    </h4>
+                                                    <p
+                                                      style={{
+                                                        fontWeight: "300",
+                                                        letterSpacing: "0.06px",
+                                                        paddingTop: "1.1rem",
+                                                      }}
+                                                    >
+                                                      {
+                                                        selectedDate?.date_details
+                                                      }
+                                                    </p>
                                                   </div>
-                                                </span>
-                                              </>
-                                            ) : null}
-                                          </ul>
-                                        </div>
-                                      </div>
-                                      {user?.gender === "male" ? (
-                                        <div className="date_details_desktop mt-4 pt-4">
-                                          {alreadyMessaged ? (
-                                            <div className="user-message-loader already-messaged">
-                                              Already Requested
+                                                  <div className="">
+                                                    <MessageModal
+                                                      date={selectedDate}
+                                                      user={user}
+                                                      userMessageNoModal={true}
+                                                      close={() =>
+                                                        dateSetIsOpen(false)
+                                                      }
+                                                    />
+                                                  </div>
+                                                </div>
+                                              )}
                                             </div>
                                           ) : (
-                                            <div className="verification_card_header">
-                                              <div className="">
-                                                <h4
-                                                  style={{
-                                                    fontWeight: "700",
-                                                    letterSpacing: "0.066px",
-                                                  }}
-                                                >
-                                                  Date Details
-                                                </h4>
-                                                <p
-                                                  style={{
-                                                    fontWeight: "300",
-                                                    letterSpacing: "0.06px",
-                                                    paddingTop: "1.1rem",
-                                                  }}
-                                                >
-                                                  {selectedDate?.date_details}
-                                                </p>
-                                              </div>
-                                              <div className="">
-                                                <MessageModal
-                                                  date={selectedDate}
-                                                  user={user}
-                                                  userMessageNoModal={true}
-                                                  close={() =>
-                                                    dateSetIsOpen(false)
-                                                  }
-                                                />
+                                            <div className="model_content verification_card_header">
+                                              <div className="availabe_card_inner px-4">
+                                                <ul className="date_action_model">
+                                                  <li onClick={dateCloseModal}>
+                                                    <BiChevronLeft
+                                                      size={25}
+                                                      color={"white"}
+                                                    />
+                                                    <span>Go back</span>
+                                                  </li>
+                                                  <li onClick={editDate}>
+                                                    <BiEditAlt
+                                                      size={20}
+                                                      color={"white"}
+                                                    />
+                                                    <span>Edit</span>
+                                                  </li>
+                                                  <li onClick={deleteDate}>
+                                                    <BiTrashAlt
+                                                      size={20}
+                                                      color={"white"}
+                                                    />
+                                                    <span>Delete</span>
+                                                  </li>
+                                                </ul>
                                               </div>
                                             </div>
                                           )}
-                                        </div>
-                                      ) : (
-                                        <div className="model_content verification_card_header">
-                                          <div className="availabe_card_inner px-4">
-                                            <ul className="date_action_model">
-                                              <li onClick={dateCloseModal}>
-                                                <BiChevronLeft
-                                                  size={25}
-                                                  color={"white"}
-                                                />
-                                                <span>Go back</span>
-                                              </li>
-                                              <li onClick={editDate}>
-                                                <BiEditAlt
-                                                  size={20}
-                                                  color={"white"}
-                                                />
-                                                <span>Edit</span>
-                                              </li>
-                                              <li onClick={deleteDate}>
-                                                <BiTrashAlt
-                                                  size={20}
-                                                  color={"white"}
-                                                />
-                                                <span>Delete</span>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </div>
+                                        </>
                                       )}
-                                        </>}
                                     </Modal>
                                   </div>
                                 </>

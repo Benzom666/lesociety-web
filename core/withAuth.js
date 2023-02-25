@@ -41,8 +41,9 @@ const withAuth = (WrappedComponent) => {
           userLogin?.verified_screen_shown === true
         ) {
           if (
-            Router?.asPath?.includes("/auth") ||
-            Router?.asPath?.includes("/user/verified")
+            Router?.asPath !== "/auth/update-profile" &&
+            (Router?.asPath?.includes("/auth") ||
+              Router?.asPath?.includes("/user/verified"))
           ) {
             Router.replace("/user/user-list");
             return null;

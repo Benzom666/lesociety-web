@@ -51,7 +51,7 @@ export function* login(action) {
           Router.push({
             pathname: "/auth/block",
           });
-        }else if (response.success.data.data.request_change_fired) {
+        } else if (response.success.data.data.request_change_fired) {
           Router.push({
             pathname: "/auth/verify-profile",
           });
@@ -61,7 +61,6 @@ export function* login(action) {
         //     pathname: "/auth/verify-profile-done",
         //   });
         // }
-        
         else {
           Router.push({
             pathname: "/auth/profile",
@@ -135,7 +134,7 @@ function* signup(data) {
 function* signupStep2(data) {
   data.loader(true);
   try {
-    console.log("console from here ", data.payload)
+    console.log("console from here ", data.payload);
     const response = yield race({
       success: call(apiRequest, {
         data: data.payload,

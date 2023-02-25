@@ -110,6 +110,14 @@ const CompleteProfile = (props) => {
       router.push({
         pathname: "/user/verified",
       });
+    } else if (
+      router.query?.edit &&
+      user?.status === 2 &&
+      user?.verified_screen_shown === true
+    ) {
+      router.push({
+        pathname: "/auth/update-profile",
+      });
     } else if (user?.status === 2 && user?.verified_screen_shown === true) {
       router.push({
         pathname: "/user/user-list",
