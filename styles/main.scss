@@ -2620,7 +2620,7 @@ div[id="scrolldiv"] {
   .user-card-sidebar {
     //margin-top: 30px;
     padding: 30px 30px;
-
+    -webkit-overflow-scrolling: touch;
     figure {
       margin-right: 15px;
 
@@ -2673,6 +2673,7 @@ div[id="scrolldiv"] {
     padding-bottom: 28px;
     border-top: 1px solid #242424;
     border-bottom: 1px solid #242424;
+    -webkit-overflow-scrolling: touch;
   }
 
   .bottom-footer-sidebar {
@@ -5828,6 +5829,55 @@ path {
   margin: 10px;
   cursor: pointer;
   font-size: 30px !important;
+}
+
+.user-message-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.already-messaged {
+  color: #4f4e54;
+  font-size: 20px;
+}
+
+.user-message-popup {
+  display: flex;
+  justify-content: end;
+  margin-right: 10px;
+
+  .user-message-popup-input {
+    margin-top: 50px;
+    background: #1e2023;
+    border-radius: 25px;
+    width: 400px;
+    height: 50px;
+    border: none;
+    padding: 20px;
+    padding-right: 65px;
+    color: white;
+    margin-bottom: 20px;
+    position: relative;
+    outline: none;
+  }
+  .message-user-popup-button {
+    position: absolute;
+    left: 84%;
+    background: transparent;
+    border: none;
+    padding-bottom: 5px;
+    width: 9%;
+    border-radius: 0;
+    margin-top: 60px;
+  }
+  @media only screen and (max-width: 767px) {
+    .message-user-popup-button {
+      left: 80%;
+      width: 10%;
+    }
+  }
 }
 
 // .w-15 {

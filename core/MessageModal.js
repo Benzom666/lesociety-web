@@ -7,7 +7,7 @@ import MessageSend2 from "assets/message_send2.png";
 import * as Yup from "yup";
 import Image from "next/image";
 
-function MessageModal({ user, date, toggle }) {
+function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   const [classPopup, setPopupClass] = React.useState("hide");
   const [receiverData, setReceiverData] = React.useState("");
 
@@ -55,7 +55,35 @@ function MessageModal({ user, date, toggle }) {
     }, 1000);
   };
 
+  const handleUserMessageSubmit = async (values) => {
+    try {
+      const data = {
+        senderId: user?._id ?? "",
+        recieverId: date?.user_data?.length > 0 ? date?.user_data[0]?._id : "",
+        message: values.message ?? "",
+        dateId: date?._id ?? "",
+      };
+      const res = await apiRequest({
+        data: data,
+        method: "POST",
+        url: `chat/request`,
+      });
+
+      console.log("res", res);
+      values.message = "";
+      close();
+    } catch (err) {
+      setMessageError(err.response?.data?.message ?? "");
+    }
+    return;
+  };
+
   const handleSubmit = async (values) => {
+    if (userMessageNoModal) {
+      handleUserMessageSubmit(values);
+      return;
+    }
+
     moveIcon();
     console.log("values", values);
     try {
@@ -73,8 +101,8 @@ function MessageModal({ user, date, toggle }) {
         method: "POST",
         url: `chat/request`,
       });
-      closePopup();
       toggle();
+      closePopup();
       console.log("res", res);
       values.message = "";
     } catch (err) {
@@ -85,41 +113,7 @@ function MessageModal({ user, date, toggle }) {
 
   return (
     <>
-      <button onClick={() => openPopup(date)} className="next">
-        Message
-      </button>
-
-      <div id="message-popup" className={`message-popup ${classPopup}`}>
-        <span onClick={closePopup} className="close-button">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.9924 12.9926L1.00244 1.00006"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M12.9887 1.00534L1.00873 12.9853"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <p className="msg">
-          "
-          {receiverData?.user_data?.length > 0 &&
-            receiverData?.user_data[0]?.tagline}
-          "
-        </p>
+      {userMessageNoModal ? (
         <div>
           <Formik
             initialValues={{
@@ -137,27 +131,16 @@ function MessageModal({ user, date, toggle }) {
             {(formProps) => {
               return (
                 <Form>
-                  <div className="position-relative">
+                  <div className="user-message-popup">
                     <Field
-                      className={`${textClass}`}
+                      className={`user-message-popup-input`}
                       placeholder="Type your message here…"
                       name="message"
                       id="message"
                       component={CustomInput}
                     />
 
-                    <button
-                      type="button"
-                      style={{
-                        position: "absolute",
-                        left: "82%",
-                        background: "transparent",
-                        border: "none",
-                        paddingBottom: "5px",
-                        width: "12%",
-                        borderRadius: "0",
-                      }}
-                    >
+                    <button type="button" className="message-user-popup-button">
                       <Image
                         src={
                           formProps.values.message === ""
@@ -179,8 +162,106 @@ function MessageModal({ user, date, toggle }) {
             }}
           </Formik>
         </div>
-        <p className="tip">Tip: ask her which date she prefers</p>
-      </div>
+      ) : (
+        <>
+          <button onClick={() => openPopup(date)} className="next">
+            Message
+          </button>
+
+          <div id="message-popup" className={`message-popup ${classPopup}`}>
+            <span onClick={closePopup} className="close-button">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.9924 12.9926L1.00244 1.00006"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12.9887 1.00534L1.00873 12.9853"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <p className="msg">
+              "
+              {receiverData?.user_data?.length > 0 &&
+                receiverData?.user_data[0]?.tagline}
+              "
+            </p>
+            <div>
+              <Formik
+                initialValues={{
+                  message: "",
+                }}
+                validationSchema={Yup.object({
+                  message: Yup.string().required("Please enter your message"),
+                })}
+                onSubmit={(values) => {
+                  if (values.message?.trim() !== "") {
+                    handleSubmit(values);
+                  }
+                }}
+              >
+                {(formProps) => {
+                  return (
+                    <Form>
+                      <div className="position-relative">
+                        <Field
+                          className={`${textClass}`}
+                          placeholder="Type your message here…"
+                          name="message"
+                          id="message"
+                          component={CustomInput}
+                        />
+
+                        <button
+                          type="button"
+                          style={{
+                            position: "absolute",
+                            left: "82%",
+                            background: "transparent",
+                            border: "none",
+                            paddingBottom: "5px",
+                            width: "12%",
+                            borderRadius: "0",
+                          }}
+                        >
+                          <Image
+                            src={
+                              formProps.values.message === ""
+                                ? MessageSend
+                                : MessageSend2
+                            }
+                            alt="send-btn"
+                            type="submit"
+                            onClick={() => {
+                              handleSubmit(formProps.values);
+                              formProps.resetForm();
+                            }}
+                            className="no-radius"
+                          />
+                        </button>
+                      </div>
+                    </Form>
+                  );
+                }}
+              </Formik>
+            </div>
+            <p className="tip">Tip: ask her which date she prefers</p>
+          </div>
+        </>
+      )}
     </>
   );
 }

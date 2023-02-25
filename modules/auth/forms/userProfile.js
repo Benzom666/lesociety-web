@@ -13,7 +13,7 @@ import useWindowSize from "utils/useWindowSize";
 import { CustomIcon } from "core/icon";
 import Modal from "react-modal";
 import Link from "next/link";
-import TopBadgeCard from '../../../assets/img/TopCardBadge.png'
+import TopBadgeCard from "../../../assets/img/TopCardBadge.png";
 import moment from "moment";
 import { signupStep4 } from "../authActions";
 import { useEffect } from "react";
@@ -24,6 +24,7 @@ import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
 import close1 from "../../../assets/close1.png";
 import ProfileImageSlider from "./ProfileImageSlider";
 import ImageSlider from "./ImageSlider";
+import MessageModal from "@/core/MessageModal";
 
 function UserProfile({ preview, editHandle }) {
   const { width } = useWindowSize();
@@ -37,6 +38,8 @@ function UserProfile({ preview, editHandle }) {
   const [pageLoading, setPageLoading] = useState(true);
   const [dateloading, setDateloading] = useState(true);
   const [page, setPage] = useState(1);
+  const [alreadyMessaged, setAlreadyMessaged] = useState(false);
+  const [messageLoading, setMessageLoading] = useState(false);
 
   const [viewFullPage, setViewFullPage] = useState(false);
   const [slideShowIndex, setSlideShowIndex] = useState(0);
@@ -47,14 +50,14 @@ function UserProfile({ preview, editHandle }) {
   const [image4Loading, setImage4Loading] = useState(true);
 
   useEffect(() => {
-    if (viewFullPage) {
+    if (viewFullPage || dateModalOpen) {
       // stop scrolling page
       document.body.style.overflow = "hidden";
     } else {
       // allow scrolling page
       document.body.style.overflow = "unset";
     }
-  }, [viewFullPage]);
+  }, [viewFullPage, dateModalOpen]);
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -75,12 +78,46 @@ function UserProfile({ preview, editHandle }) {
     return feet + "'" + inches;
   };
 
+  useEffect(() => {
+    if (dateModalOpen && user?.gender === "male") {
+      setMessageLoading(true);
+      checkMessage();
+    }
+  }, [dateModalOpen]);
+
+  const checkMessage = async () => {
+    try {
+      const data = {
+        recieverId:
+          selectedDate?.user_data?.length > 0
+            ? selectedDate?.user_data[0]?._id
+            : "",
+        dateId: selectedDate?._id ?? "",
+      };
+      const res = await apiRequest({
+        params: data,
+        method: "GET",
+        url: `chat/exist`,
+      });
+      setTimeout(() => {
+        setMessageLoading(false);
+      }, 1000);
+      if (res?.data?.message) {
+        setAlreadyMessaged(true);
+      }
+    } catch (err) {
+      setMessageLoading(false);
+      console.log("err", err);
+    }
+  };
+
   function dateModalIsOpen() {
     dateSetIsOpen(true);
   }
   function dateCloseModal() {
     dateSetIsOpen(false);
     setSelectedDate("");
+    setAlreadyMessaged(false);
   }
 
   const fetchDates = async (params) => {
@@ -830,7 +867,8 @@ function UserProfile({ preview, editHandle }) {
                                                   if (
                                                     !router?.query?.userName ||
                                                     router?.query?.userName ===
-                                                      user?.user_name
+                                                      user?.user_name ||
+                                                    user?.gender === "male"
                                                   ) {
                                                     setSelectedDate(date);
                                                     dateModalIsOpen();
@@ -850,12 +888,12 @@ function UserProfile({ preview, editHandle }) {
                                                     </span>
                                                     <p
                                                       style={{
-                                                        fontFamily:"Helvetica",
+                                                        fontFamily: "Helvetica",
                                                         fontSize: "14px",
                                                         fontWeight: "300",
-                                                        letterSpacing:"0.06px",
+                                                        letterSpacing: "0.06px",
                                                         whiteSpace: "pre-wrap",
-                                                          width: "6rem",
+                                                        width: "6rem",
                                                         // borderRadius: "11px",
                                                       }}
                                                     >
@@ -962,6 +1000,19 @@ function UserProfile({ preview, editHandle }) {
                                       // style= {customStyles}
                                       className="date-selected-modal"
                                     >
+                                      {messageLoading ? (
+                                            <div className="user-message-loader">
+                                              <Image
+                                                src={require("../../../assets/squareLogoNoBack.gif")}
+                                                alt="loading..."
+                                                className=""
+                                                width={100}
+                                                height={100}
+                                              />
+                                            </div>
+                                          ) : <>
+                                          
+                                        
                                       <div className="model_content verification_card_header mb-3">
                                         <SubHeading title="Available dates" />
                                         <div className="availabe_card_inner">
@@ -1013,33 +1064,76 @@ function UserProfile({ preview, editHandle }) {
                                           </ul>
                                         </div>
                                       </div>
-                                      <div className="model_content verification_card_header">
-                                        <div className="availabe_card_inner px-4">
-                                          <ul className="date_action_model">
-                                            <li onClick={dateCloseModal}>
-                                              <BiChevronLeft
-                                                size={25}
-                                                color={"white"}
-                                              />
-                                              <span>Go back</span>
-                                            </li>
-                                            <li onClick={editDate}>
-                                              <BiEditAlt
-                                                size={20}
-                                                color={"white"}
-                                              />
-                                              <span>Edit</span>
-                                            </li>
-                                            <li onClick={deleteDate}>
-                                              <BiTrashAlt
-                                                size={20}
-                                                color={"white"}
-                                              />
-                                              <span>Delete</span>
-                                            </li>
-                                          </ul>
+                                      {user?.gender === "male" ? (
+                                        <div className="date_details_desktop mt-4 pt-4">
+                                          {alreadyMessaged ? (
+                                            <div className="user-message-loader already-messaged">
+                                              Already Requested
+                                            </div>
+                                          ) : (
+                                            <div className="verification_card_header">
+                                              <div className="">
+                                                <h4
+                                                  style={{
+                                                    fontWeight: "700",
+                                                    letterSpacing: "0.066px",
+                                                  }}
+                                                >
+                                                  Date Details
+                                                </h4>
+                                                <p
+                                                  style={{
+                                                    fontWeight: "300",
+                                                    letterSpacing: "0.06px",
+                                                    paddingTop: "1.1rem",
+                                                  }}
+                                                >
+                                                  {selectedDate?.date_details}
+                                                </p>
+                                              </div>
+                                              <div className="">
+                                                <MessageModal
+                                                  date={selectedDate}
+                                                  user={user}
+                                                  userMessageNoModal={true}
+                                                  close={() =>
+                                                    dateSetIsOpen(false)
+                                                  }
+                                                />
+                                              </div>
+                                            </div>
+                                          )}
                                         </div>
-                                      </div>
+                                      ) : (
+                                        <div className="model_content verification_card_header">
+                                          <div className="availabe_card_inner px-4">
+                                            <ul className="date_action_model">
+                                              <li onClick={dateCloseModal}>
+                                                <BiChevronLeft
+                                                  size={25}
+                                                  color={"white"}
+                                                />
+                                                <span>Go back</span>
+                                              </li>
+                                              <li onClick={editDate}>
+                                                <BiEditAlt
+                                                  size={20}
+                                                  color={"white"}
+                                                />
+                                                <span>Edit</span>
+                                              </li>
+                                              <li onClick={deleteDate}>
+                                                <BiTrashAlt
+                                                  size={20}
+                                                  color={"white"}
+                                                />
+                                                <span>Delete</span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      )}
+                                        </>}
                                     </Modal>
                                   </div>
                                 </>
