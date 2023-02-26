@@ -114,7 +114,7 @@ export default function SideBar({ isActive }) {
   return (
     <>
       <div className="sidebar_wrap">
-        <div className="sidebar_content">
+        <div className="sidebar-content">
           <div className="user-card-sidebar">
             <div className="d-flex align-items-center mb-4">
               <figure className="mb-0 p-0">
