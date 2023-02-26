@@ -114,132 +114,134 @@ export default function SideBar({ isActive }) {
   return (
     <>
       <div className="sidebar_wrap">
-        <div className="user-card-sidebar">
-          <div className="d-flex align-items-center mb-4">
-            <figure className="mb-0 p-0">
-              <img
-                src={!_.isEmpty(user) ? user?.images[0] : UserImg}
-                alt="user image"
-                width={50}
-                height={50}
-              />
-            </figure>
-            <span className="userdetails">
-              <H5 style={{ fontSize: "18px", letterSpacing: "0.09px" }}>
-                {user?.user_name || ""}
-              </H5>
-              <SubHeading title="Member since Jan 2021" />
-            </span>
-          </div>
-          <div className="d-flex align-items-center mb-0 header_btn_wrap">
-            <Link href="/user/user-profile">
-              <a>View Profile</a>
-            </Link>
-            <Link href="/auth/profile?edit=true">
-              <a>Edit Profile</a>
-            </Link>
-          </div>
-        </div>
-        <div className="verification_card_header text-center mb-3">
-          <div className="mb-5">
-            {/* <HiBadgeCheck color={"white"} size={50} /> */}
-          </div>
-          <div className="d-flex align-items-center mb-0 header_btn_wrap">
-            <button
-              type="button"
-              style={{ marginTop: "-42px" }}
-              className="d-flex align-items-center justify-content-center"
-              onClick={() =>
-                !documentUpoaded && router.push("/verified-profile")
-              }
-            >
-              <span className="pt-1">
-                {user?.documents_verified
-                  ? "VERIFIED"
-                  : !documentUpoaded
-                  ? "VERIFY PROFILE"
-                  : "PENDING"}
+        <div className="sidebar_content">
+          <div className="user-card-sidebar">
+            <div className="d-flex align-items-center mb-4">
+              <figure className="mb-0 p-0">
+                <img
+                  src={!_.isEmpty(user) ? user?.images[0] : UserImg}
+                  alt="user image"
+                  width={50}
+                  height={50}
+                />
+              </figure>
+              <span className="userdetails">
+                <H5 style={{ fontSize: "18px", letterSpacing: "0.09px" }}>
+                  {user?.user_name || ""}
+                </H5>
+                <SubHeading title="Member since Jan 2021" />
               </span>
-              {user?.documents_verified ? (
-                <HiBadgeCheck
-                  color={"white"}
-                  size={25}
-                  style={{ paddingLeft: "5px" }}
-                />
-              ) : !documentUpoaded ? (
-                <HiBadgeCheck
-                  color={"white"}
-                  size={25}
-                  style={{ paddingLeft: "5px" }}
-                />
-              ) : (
-                <BiTime
-                  color={"grey"}
-                  size={25}
-                  style={{ paddingLeft: "5px" }}
-                />
-              )}
-            </button>
+            </div>
+            <div className="d-flex align-items-center mb-0 header_btn_wrap">
+              <Link href="/user/user-profile">
+                <a>View Profile</a>
+              </Link>
+              <Link href="/auth/profile?edit=true">
+                <a>Edit Profile</a>
+              </Link>
+            </div>
           </div>
-          <SubHeading title="Let them know you are real" />
-        </div>
-        {user?.gender === "female" && (
-          <div className="verification_card_header text-center mb-2">
-            {/* <div className="mb-2">
-              <CustomIcon.ChampaignCaviar color={"#AFABAB"} size={50} />
-            </div> */}
-            {/* <SubHeading title="Stay ahead of the crowd" /> */}
-            <div className="d-flex align-items-center mb-0 mt-3 header_btn_wrap">
+          <div className="verification_card_header text-center mb-3">
+            <div className="mb-5">
+              {/* <HiBadgeCheck color={"white"} size={50} /> */}
+            </div>
+            <div className="d-flex align-items-center mb-0 header_btn_wrap">
               <button
-                onClick={() => router.push("/create-date/choose-city")}
                 type="button"
-                className="create-date"
+                style={{ marginTop: "-42px" }}
+                className="d-flex align-items-center justify-content-center"
+                onClick={() =>
+                  !documentUpoaded && router.push("/verified-profile")
+                }
               >
-                Create New Date
+                <span className="pt-1">
+                  {user?.documents_verified
+                    ? "VERIFIED"
+                    : !documentUpoaded
+                    ? "VERIFY PROFILE"
+                    : "PENDING"}
+                </span>
+                {user?.documents_verified ? (
+                  <HiBadgeCheck
+                    color={"white"}
+                    size={25}
+                    style={{ paddingLeft: "5px" }}
+                  />
+                ) : !documentUpoaded ? (
+                  <HiBadgeCheck
+                    color={"white"}
+                    size={25}
+                    style={{ paddingLeft: "5px" }}
+                  />
+                ) : (
+                  <BiTime
+                    color={"grey"}
+                    size={25}
+                    style={{ paddingLeft: "5px" }}
+                  />
+                )}
               </button>
             </div>
-            <SubHeading title="Stay ahead of the crowd" />
+            <SubHeading title="Let them know you are real" />
           </div>
-        )}
-        <div className="user-card-sidebar sidebar-nav-link">
-          <div className="sidebar_nav_links">
-            <ul>
-              <li>
-                <Link href="/user/notifications">
-                  <div>
+          {user?.gender === "female" && (
+            <div className="verification_card_header text-center mb-2">
+              {/* <div className="mb-2">
+              <CustomIcon.ChampaignCaviar color={"#AFABAB"} size={50} />
+            </div> */}
+              {/* <SubHeading title="Stay ahead of the crowd" /> */}
+              <div className="d-flex align-items-center mb-0 mt-3 header_btn_wrap">
+                <button
+                  onClick={() => router.push("/create-date/choose-city")}
+                  type="button"
+                  className="create-date"
+                >
+                  Create New Date
+                </button>
+              </div>
+              <SubHeading title="Stay ahead of the crowd" />
+            </div>
+          )}
+          <div className="user-card-sidebar sidebar-nav-link">
+            <div className="sidebar_nav_links">
+              <ul>
+                <li>
+                  <Link href="/user/notifications">
+                    <div>
+                      <a>
+                        Notification <FiChevronRight size={22} />{" "}
+                      </a>
+                      {count > 0 && (
+                        <div class="notification-container">
+                          <span class="notification-counter">{count}</span>
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
                     <a>
-                      Notification <FiChevronRight size={22} />{" "}
+                      Setting <FiChevronRight size={22} />{" "}
                     </a>
-                    {count > 0 && (
-                      <div class="notification-container">
-                        <span class="notification-counter">{count}</span>
-                      </div>
-                    )}
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>
-                    Setting <FiChevronRight size={22} />{" "}
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>
-                    Privacy <FiChevronRight size={22} />
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>
-                    Terms <FiChevronRight size={22} />
-                  </a>
-                </Link>
-              </li>
-            </ul>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <a>
+                      Privacy <FiChevronRight size={22} />
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <a>
+                      Terms <FiChevronRight size={22} />
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="bottom-footer-sidebar">
