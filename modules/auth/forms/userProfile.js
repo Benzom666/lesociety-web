@@ -1013,8 +1013,8 @@ function UserProfile({ preview, editHandle }) {
                                       ) : (
                                         <>
                                           <div className="model_content verification_card_header mb-3">
-                                            <SubHeading title="Available dates" />
-                                            <div className="availabe_card_inner">
+                                            <SubHeading title="Available Experiences" />
+                                            <div className="availabe_card_inner date_border_red">
                                               <ul className="date_list">
                                                 {selectedDate ? (
                                                   <>
