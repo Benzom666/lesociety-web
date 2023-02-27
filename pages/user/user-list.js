@@ -500,6 +500,7 @@ function UserList(props) {
                         paddingBottom: "10px",
                         paddingTop: "8px",
                       }}
+                      className="icon-move-1"
                     >
                       <Image
                         src={
