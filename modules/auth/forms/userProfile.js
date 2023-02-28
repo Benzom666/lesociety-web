@@ -101,7 +101,7 @@ function UserProfile({ preview, editHandle }) {
       });
       setTimeout(() => {
         setMessageLoading(false);
-      }, 1000);
+      }, 10);
       if (res?.data?.message) {
         setAlreadyMessaged(true);
       }

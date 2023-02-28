@@ -92,7 +92,7 @@ const UserCardList = ({
       setTimeout(() => {
         setLoading(false);
         setMobileLoading(false);
-      }, 1500);
+      }, 500);
       if (res?.data?.message) {
         setAlreadyMessaged(true);
       }

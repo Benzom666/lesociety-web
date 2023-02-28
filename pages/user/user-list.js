@@ -119,6 +119,16 @@ function UserList(props) {
     });
   }, [socket.connected]);
 
+  useEffect(() => {
+    if (classPopup === "show") {
+      // stop scrolling page
+      document.body.style.overflow = "hidden";
+    } else {
+      // allow scrolling page
+      document.body.style.overflow = "unset";
+    }
+  }, [classPopup]);
+
   const unReadedConversationLength = conversations?.filter(
     (c) =>
       c?.message &&
@@ -500,7 +510,7 @@ function UserList(props) {
                         paddingBottom: "10px",
                         paddingTop: "8px",
                       }}
-                      className="icon-move-1"
+                      // className="icon-move-1"
                     >
                       <Image
                         src={

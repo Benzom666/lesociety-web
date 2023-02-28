@@ -14,6 +14,8 @@ import {
   fetchRealLocation,
   fetchLiveLocation,
 } from "../modules/auth/forms/steps/validateRealTime";
+import { useRef } from "react";
+import { defaultSearchData } from "assets/defaultSearch/defaultSearchData";
 
 function LocationPopup({
   modalIsOpen,
@@ -31,6 +33,21 @@ function LocationPopup({
   const [todo, setTodo] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
   const user = useSelector((state) => state?.authReducer?.user);
+
+  const locationRef = useRef(null);
+  const [isFocused, setFocused] = useState(false);
+
+  // useEffect(() => {
+  //   // if location ref is focused then isFocused will true
+  //   console.log("first welll");
+  //   if (locationRef.current) {
+  //     locationRef.current.addEventListener("focus", () => {
+  //       setFocused(true);
+  //     });
+  //   } else {
+  //     setFocused(false);
+  //   }
+  // }, [locationRef]);
 
   useEffect(() => {
     if (modalIsOpen) {
@@ -204,7 +221,7 @@ function LocationPopup({
 
   // console field value of enter_city
 
-  console.log("recentSearches", recentSearches);
+  // console.log("recentSearches", { selectedLocation, places });
 
   return (
     <Modal
@@ -262,6 +279,13 @@ function LocationPopup({
             iconClick={handleIcon}
             className="radio-list"
             loading={loading}
+            // ref={locationRef}
+            onFocus={() => {
+              setFocused(true);
+            }}
+            onBlur={() => {
+              setFocused(false);
+            }}
           />
         </div>
         <div className="radio-list">
@@ -273,9 +297,10 @@ function LocationPopup({
           >
             {(styles) => (
               <ul>
+                {/* {console.log("styles", styles)} */}
                 {
-                  // places === ""
-                  //   ? recentSearches.map(({ key, style, data }) => (
+                  // !isFocused
+                  //   ? defaultSearchData.map(({ key, style, data }) => (
                   //       <li
                   //         key={key}
                   //         style={style}
