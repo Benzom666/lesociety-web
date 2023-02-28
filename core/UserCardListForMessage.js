@@ -200,7 +200,7 @@ const UserCardListForMessage = ({
                             if (profilePic) {
                               setPageLoading(false);
                             }
-                          }, 2000);
+                          }, 5000);
 
                           return pageLoading ? (
                             <SkeletonUserCardListForMessage
