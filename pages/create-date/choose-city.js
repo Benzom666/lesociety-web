@@ -230,26 +230,26 @@ const ChooseCity = (props) => {
         {/* {width > 767 && <HeaderLoggedIn />} */}
         <div className="inner-part-page">
           <div className="container create-date-wrap new-date">
-            <div className="auth-section choose-city new-city">
+            {!confirmPopup ? <div className="auth-section choose-city new-city">
               <form onSubmit={handleSubmit}>
-                
-              <div onClick={toggle} className="w-15 d-none d-sm-block cursor-pointer text-end pe-5"
-                  >
-                      <IoIosClose
-                        className="mouse-point"
-                        size={33}
-                        //style={{ color: " rgba(255, 255, 255, 0.5)" }}
-                        onClick={toggle}
-                      />
-                    </div>
+
+                <div onClick={toggle} className="w-15 d-none d-sm-block cursor-pointer text-end pe-5"
+                >
+                  <IoIosClose
+                    className="mouse-point"
+                    size={33}
+                    //style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                    onClick={toggle}
+                  />
+                </div>
                 <div
                   className="city-top inner_container"
-                  //style={{ maxWidth: "340px", margin: "0px auto" }}
+                //style={{ maxWidth: "340px", margin: "0px auto" }}
                 >
                   <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
                     <a
                       onClick={previousPage}
-                      //style={{ marginLeft:"-23px" }}
+                    //style={{ marginLeft:"-23px" }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -269,7 +269,7 @@ const ChooseCity = (props) => {
                     <h6 className="m-0 text-white-50">CREATE NEW DATE</h6>
 
                     <div onClick={toggle} className="w-15 cursor-pointer"
-                  >
+                    >
                       <IoIosClose
                         className="mouse-point"
                         size={33}
@@ -281,7 +281,7 @@ const ChooseCity = (props) => {
                   {width > 767 && (
                     <div
                       className="d-flex justify-content-center"
-                      //style={{ marginLeft: "-11px" }}
+                    //style={{ marginLeft: "-11px" }}
                     >
                       <h3 className="text-center text-uppercase">
                         Create a New Date
@@ -297,7 +297,7 @@ const ChooseCity = (props) => {
                   )}
 
                   {width > 767 ? (
-                    <div className="step-wraps" 
+                    <div className="step-wraps"
                     //style={{ marginLeft: "-2px" }}
                     >
                       <ul>
@@ -324,7 +324,7 @@ const ChooseCity = (props) => {
                   ) : (
                     <div
                       className="step-wraps choose-city-steps"
-                      //style={{ marginLeft: '16px' }}
+                    //style={{ marginLeft: '16px' }}
                     >
                       <ul>
                         <li className="active">
@@ -365,7 +365,7 @@ const ChooseCity = (props) => {
                             {/* <h2>Spark a New Adventure</h2> */}
                             <h6
                               className="text-white pt-1 Territory_title mb-3"
-                              style={{ marginLeft: "-16px" }}
+                              style={{ marginLeft: "-16px", textTransform: "capitalize" }}
                             >
                               Select your territory
                             </h6>
@@ -474,7 +474,7 @@ const ChooseCity = (props) => {
                   </div>
                 </div>
               </form>
-            </div>
+            </div> : null}
           </div>
         </div>
         <Footer />

@@ -21,15 +21,17 @@ const CreateStepOne = (props) => {
     reset,
     submitting,
     onClose,
+    confirmPopup,
   } = props;
   const state = useSelector((state) => state.form.CreateStepOne);
   const { width } = useWindowSize();
-  const [confirmPopup, setConfirmPopup] = useState(false);
+  // const [confirmPopup, setConfirmPopup] = useState(false);
 
-  const toggle = () => setConfirmPopup(!confirmPopup);
+  // const toggle = () => setConfirmPopup(!confirmPopup);
 
   return (
     <>
+    {!confirmPopup ? <>
       <div className="inner_container">
         <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-0">
           <a onClick={previousPage} role="button">
@@ -52,11 +54,11 @@ const CreateStepOne = (props) => {
             Create a New Date
           </h6>
 
-          <div onClick={toggle} className="w-15 cursor-pointer">
+          <div onClick={onClose} className="w-15 cursor-pointer">
             <IoIosClose
               className="mouse-point"
               size={33}
-              onClick={toggle}
+              onClick={onClose}
               style={{ color: " rgba(255, 255, 255, 0.5)" }}
             />
           </div>
@@ -67,11 +69,11 @@ const CreateStepOne = (props) => {
           // style={{ marginLeft: "22px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
-            {/* <div onClick={toggle} className="w-15 cursor-pointer">
+            {/* <div onClick={onClose} className="w-15 cursor-pointer">
               <IoIosClose
                 className="desk-close-first mouse-point"
                 size={33}
-                onClick={toggle}
+                onClick={onClose}
               />
             </div> */}
           </div>
@@ -99,7 +101,6 @@ const CreateStepOne = (props) => {
           </ul>
         </div>
       </div>
-      {!confirmPopup ? (
         <>
           {" "}
           <div className="date-suggetion-text">
@@ -326,9 +327,9 @@ const CreateStepOne = (props) => {
               </div>
             </form>
           </div>
-        </>
-      ) : null}
-      <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
+        </> 
+      </>: null}
+      {/* <ConfirmDate isOpen={confirmPopup} toggle={toggle} /> */}
     </>
   );
 };

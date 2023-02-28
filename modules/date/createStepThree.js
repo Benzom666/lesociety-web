@@ -46,16 +46,18 @@ const CreateStepThree = (props) => {
     reset,
     submitting,
     onClose,
+    confirmPopup
   } = props;
   const state = useSelector((state) => state.form.CreateStepThree);
   const { width } = useWindowSize();
-  const [confirmPopup, setConfirmPopup] = useState(false);
+  // const [confirmPopup, setConfirmPopup] = useState(false);
 
-  const toggle = () => {
-    setConfirmPopup(!confirmPopup);
-  };
+  // const toggle = () => {
+  //   setConfirmPopup(!confirmPopup);
+  // };
   return (
     <>
+    {!confirmPopup ? <>
       <div className="inner_container">
         <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
           <a onClick={previousPage}>
@@ -78,12 +80,12 @@ const CreateStepThree = (props) => {
             Create a New Date
           </h6>
 
-          <div onClick={toggle} className="w-15 cursor-pointer">
+          <div onClick={onClose} className="w-15 cursor-pointer">
             <IoIosClose
               className="mouse-point"
               style={{ color: " rgba(255, 255, 255, 0.5)" }}
               size={33}
-              onClick={toggle}
+              onClick={onClose}
             />
           </div>
         </div>
@@ -93,13 +95,13 @@ const CreateStepThree = (props) => {
             //style={{ marginLeft: "22px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
-            <div onClick={toggle} className="w-15 cursor-pointer">
-              {/* <IoIosClose
+            {/* <div onClick={toggle} className="w-15 cursor-pointer">
+              <IoIosClose
                 className="desk-close-first mouse-point"
                 size={33}
                 onClick={toggle}
-              /> */}
-            </div>
+              />
+            </div> */}
           </div>
         )}
         <div
@@ -128,7 +130,6 @@ const CreateStepThree = (props) => {
           </ul>
         </div>
       </div>
-      {!confirmPopup ? (
         <>
           {" "}
           <div className="date-suggetion-text">
@@ -184,8 +185,8 @@ const CreateStepThree = (props) => {
             </form>
           </div>
         </>
-      ) : null}
-      <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
+      </> : null}
+      {/* <ConfirmDate isOpen={confirmPopup} toggle={toggle} /> */}
     </>
   );
 };

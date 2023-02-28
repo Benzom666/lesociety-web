@@ -147,6 +147,7 @@ function MessageModal({ user, date, toggle }) {
                     />
 
                     <button
+                    id="message-icon"
                       type="button"
                       style={{
                         position: "absolute",

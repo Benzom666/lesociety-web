@@ -2,7 +2,8 @@ import React from 'react'
 import Card_Mobile from '../assets/img/Card_Mobile.png';
 import CardMob_1 from '../assets/img/CardMob_1.png';
 import CardMob_2 from '../assets/img/CardMob_2.png';
-
+import CardMob$$_1 from '../assets/img/CardMob$$_1.png';
+import CardMob$$_2 from '../assets/img/CardMob$$_2.png';
 function HomePageCardSectionMobile() {
     return (
         <div className='bottom-Card-mobile mt-5 mb-5'>
@@ -56,7 +57,7 @@ function HomePageCardSectionMobile() {
             </div>
             < div className='card-2'>
                 <figure>
-                    <img src={CardMob_2.src} alt="card-1"/>
+                    <img src={CardMob_2.src} alt="card-1" />
                     <figcaption className='text-over-2'>
                         <div className='card-title-2'>
                             <h5 className="heading-2">The future of</h5>

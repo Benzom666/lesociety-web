@@ -243,7 +243,7 @@
 
   .aboutCardContent {
     max-width: 365px;
-    margin:0 auto;
+    margin: 0 auto;
     font-size: 16px !important;
     padding: 10px 4px !important;
   }
@@ -257,7 +257,7 @@
 
 // @media only screen and (min-width :769px) and (max-width:1200px){
 //   .home-main-section{
-    
+
 //   }
 // }
 
@@ -378,6 +378,9 @@
 }
 
 #signupbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 44px;
   border: #f24462;
   background-color: #f24462;
@@ -533,6 +536,9 @@
       }
 
       #howitworkbtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 8px 0px;
         height: 44px;
         width: 179px;
@@ -569,6 +575,9 @@
       }
 
       #sneakPeakbtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 8px 0px;
         height: 44px;
         width: 179px;
@@ -623,10 +632,32 @@
 //   }
 // }
 
-.animate {
-  transition: mymove 5s ease-in-out;
-  // transition-delay: "15s";
+.animate-1 {
+  animation: 0.6s ease-in-out slide;
 }
+
+@keyframes slide {
+  0%{
+    transform: translateX(150px);
+  }
+  50%{
+    transform: translateX(0px);
+  }
+}
+
+// .animate-2 {
+//   animation: slide 0.5s ease-in-out;
+// }
+
+// @keyframes slide {
+//   0%{
+//     transform: translateX(0px);
+//   }
+//   100%{
+//     transform: translateX(150px);
+//   }
+// }
+
 
 
 
@@ -828,7 +859,7 @@
   .card-1 {
     //width: 700px;
     position: relative;
-    
+
     .text-over-1 {
       position: absolute;
       top: 34px;
@@ -851,6 +882,9 @@
 
       .card-btn-1 {
         #howitworkbtn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           height: 50px;
           width: 179px;
           background-color: #f24462;
@@ -890,6 +924,9 @@
 
       .card-btn-2 {
         #sneakPeakbtn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           height: 50px;
           width: 179px;
           background-color: #f24462;
@@ -914,8 +951,8 @@
 
 }
 
-@media only screen and (max-width:480px){
-  .bottom-Card-mobile{
+@media only screen and (max-width:480px) {
+  .bottom-Card-mobile {
     overflow-x: hidden !important;
   }
 }

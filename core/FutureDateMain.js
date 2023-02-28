@@ -22,6 +22,7 @@ function FutureDateMain(props) {
               <p className='futureDates-content-over-img' dangerouslySetInnerHTML={{ __html: imgText }}></p>
               <div className='main-imagefuture'>
                 <img src={imgUrl.src} alt="mobileview" />
+                {/* <video src={imgUrl.src} /> */}
               </div>
             </div>
           </div>
