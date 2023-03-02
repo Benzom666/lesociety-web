@@ -33,21 +33,17 @@ function LocationPopup({
   const [todo, setTodo] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
   const user = useSelector((state) => state?.authReducer?.user);
+  const [searching, setSearching] = useState(false);
 
   const locationRef = useRef(null);
   const [isFocused, setFocused] = useState(false);
 
-  // useEffect(() => {
-  //   // if location ref is focused then isFocused will true
-  //   console.log("first welll");
-  //   if (locationRef.current) {
-  //     locationRef.current.addEventListener("focus", () => {
-  //       setFocused(true);
-  //     });
-  //   } else {
-  //     setFocused(false);
-  //   }
-  // }, [locationRef]);
+  useEffect(() => {
+    if (!modalIsOpen) {
+      setFocused(false);
+      setSearching(false);
+    }
+  }, [modalIsOpen]);
 
   useEffect(() => {
     if (modalIsOpen) {
@@ -97,7 +93,7 @@ function LocationPopup({
         (item, index) =>
           data?.findIndex(
             (ele) =>
-              ele.data.name.toLowerCase() === item?.data?.name?.toLowerCase()
+              ele?.data?.name?.toLowerCase() === item?.data?.name?.toLowerCase()
           ) === index
       );
       setTodo(finalTodo);
@@ -128,9 +124,9 @@ function LocationPopup({
             setTodo([
               ...todo,
               {
-                key: "t" + location.name + location.country[0]?.id,
+                key: "t" + location?.name + location?.country[0]?.id,
                 data: {
-                  name: location.name,
+                  name: location?.name,
                   country: location?.country[0]?.text,
                   short_code: location?.country[0]?.short_code,
                   province: location?.province[0],
@@ -175,7 +171,7 @@ function LocationPopup({
   const getStyles = () => {
     return todo
       .filter(({ data }) => {
-        return data?.name?.toLowerCase()?.indexOf(places.toLowerCase()) >= 0;
+        return data?.name?.toLowerCase()?.indexOf(places?.toLowerCase()) >= 0;
       })
       .map((todo, i) => {
         return {
@@ -221,7 +217,30 @@ function LocationPopup({
 
   // console field value of enter_city
 
-  // console.log("recentSearches", { selectedLocation, places });
+  // console.log("recentSearches", {
+  //   isFocused,
+  //   searching,
+  //   places,
+  // });
+
+  const mainDefaultSearch = [
+    {
+      key: "t" + user?.location + user?._id,
+      data: {
+        name: user?.location,
+        country: user?.country,
+        short_code: user?.country_code,
+        province: {
+          name: user?.province,
+          short_code: `${user?.country_code?.toUpperCase()}-${user?.province?.toUpperCase()}`,
+          text: user?.province === "on" ? "Ontario" : user?.province,
+        },
+      },
+    },
+    ...defaultSearchData.filter(
+      (n) => n.data?.name?.toLowerCase() !== user?.location?.toLowerCase()
+    ),
+  ];
 
   return (
     <Modal
@@ -282,6 +301,7 @@ function LocationPopup({
             // ref={locationRef}
             onFocus={() => {
               setFocused(true);
+              setSearching(true);
             }}
             onBlur={() => {
               setFocused(false);
@@ -297,91 +317,90 @@ function LocationPopup({
           >
             {(styles) => (
               <ul>
-                {/* {console.log("styles", styles)} */}
-                {
-                  // !isFocused
-                  //   ? defaultSearchData.map(({ key, style, data }) => (
-                  //       <li
-                  //         key={key}
-                  //         style={style}
-                  //         onClick={() => {
-                  //           setLocation({
-                  //             city: data?.name,
-                  //             country: data?.short_code,
-                  //             province: data?.province?.short_code?.split("-")[1],
-                  //           });
-                  //           // do not save the same key
-                  //           const search = {
-                  //             data,
-                  //             key,
-                  //             style,
-                  //           };
+                {console.log("styles", styles)}
+                {((!isFocused && !searching) || !places) &&
+                user?.country_code === "ca" &&
+                user?.country === "Canada"
+                  ? mainDefaultSearch.map(({ key, style, data }) => (
+                      <li
+                        key={key}
+                        style={style}
+                        onClick={() => {
+                          setLocation({
+                            city: data?.name,
+                            country: data?.short_code,
+                            province: data?.province?.short_code?.split("-")[1],
+                          });
+                          setSearchStaus(true);
+                          // const search = {
+                          //   data,
+                          //   key,
+                          //   style,
+                          // };
 
-                  //           updateSearch(search);
+                          // updateSearch(search);
 
-                  //           setTimeout(() => {
-                  //             closeModal();
-                  //           }, 1000);
-                  //           // closeModal();
-                  //         }}
-                  //       >
-                  //         <span>{data?.name}</span>
-                  //         <br />
-                  //         <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                  //           {data?.province?.text}, {data?.country}
-                  //         </span>
-                  //         <input
-                  //           type="radio"
-                  //           checked={
-                  //             selectedLocation?.city?.toLowerCase() ===
-                  //             data?.name?.toLowerCase()
-                  //           }
-                  //         />
-                  //         <div className="check"></div>
-                  //       </li>
-                  //     ))
-                  //   :
-                  styles.map(({ key, style, data }) => (
-                    <li
-                      key={key}
-                      style={style}
-                      onClick={() => {
-                        setLocation({
-                          city: data?.name,
-                          country: data?.short_code,
-                          province: data?.province?.short_code?.split("-")[1],
-                        });
-                        setSearchStaus(true);
-                        setRecentSearches([
-                          ...recentSearches,
-                          {
-                            key,
-                            data,
-                            style,
-                          },
-                        ]);
-                        setTimeout(() => {
-                          closeModal();
-                        }, 1000);
-                        // closeModal();
-                      }}
-                    >
-                      <span>{data?.name}</span>
-                      <br />
-                      <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                        {data?.province?.text}, {data?.country}
-                      </span>
-                      <input
-                        type="radio"
-                        checked={
-                          selectedLocation?.city?.toLowerCase() ===
-                          data?.name?.toLowerCase()
-                        }
-                      />
-                      <div className="check"></div>
-                    </li>
-                  ))
-                }
+                          setTimeout(() => {
+                            closeModal();
+                          }, 1000);
+                          // closeModal();
+                        }}
+                      >
+                        <span>{data?.name}</span>
+                        <br />
+                        <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                          {data?.province?.text}, {data?.country}
+                        </span>
+                        <input
+                          type="radio"
+                          checked={
+                            selectedLocation?.city?.toLowerCase() ===
+                            data?.name?.toLowerCase()
+                          }
+                        />
+                        <div className="check"></div>
+                      </li>
+                    ))
+                  : styles.map(({ key, style, data }) => (
+                      <li
+                        key={key}
+                        style={style}
+                        onClick={() => {
+                          setLocation({
+                            city: data?.name,
+                            country: data?.short_code,
+                            province: data?.province?.short_code?.split("-")[1],
+                          });
+                          setSearchStaus(true);
+                          // setRecentSearches([
+                          //   ...recentSearches,
+                          //   {
+                          //     key,
+                          //     data,
+                          //     style,
+                          //   },
+                          // ]);
+                          setTimeout(() => {
+                            closeModal();
+                          }, 1000);
+                          // closeModal();
+                        }}
+                      >
+                        <span>{data?.name}</span>
+                        <br />
+                        <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                          {data?.province?.text}, {data?.country}
+                        </span>
+                        <input
+                          type="radio"
+                          checked={
+                            selectedLocation?.city?.toLowerCase() ===
+                            data?.name?.toLowerCase()
+                          }
+                        />
+                        <div className="check"></div>
+                      </li>
+                    ))}
               </ul>
             )}
           </TransitionMotion>

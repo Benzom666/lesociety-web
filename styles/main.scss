@@ -1793,7 +1793,8 @@ $GradientColor-second: rgba(#191919, 0.8);
 
     .radio-list {
       overflow: auto;
-      max-height: 500px;
+      max-height: 450px;
+      // max-height: 500px;
       padding: 20px;
 
       ul {
