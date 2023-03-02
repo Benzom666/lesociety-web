@@ -331,7 +331,11 @@ function LocationPopup({
                             country: data?.short_code,
                             province: data?.province?.short_code?.split("-")[1],
                           });
-                          setSearchStaus(true);
+                          if (user?.location === data?.name) {
+                            setSearchStaus(false);
+                          } else {
+                            setSearchStaus(true);
+                          }
                           // const search = {
                           //   data,
                           //   key,
