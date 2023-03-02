@@ -2,6 +2,7 @@ $GradientColor-first: rgba(#2e313a, 0.8);
 $GradientColor-second: rgba(#191919, 0.8);
 
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+
   html,
   body {
     transform: rotate(-90deg);
@@ -208,7 +209,7 @@ $GradientColor-second: rgba(#191919, 0.8);
             width: 100%;
             height: 100%;
 
-            &:checked + span {
+            &:checked+span {
               display: block;
             }
           }
@@ -258,11 +259,11 @@ $GradientColor-second: rgba(#191919, 0.8);
             cursor: pointer;
             z-index: 999;
 
-            &:checked + label {
+            &:checked+label {
               background-color: #272c33;
             }
 
-            &:hover + label {
+            &:hover+label {
               background-color: #272c33;
             }
           }
@@ -289,8 +290,8 @@ $GradientColor-second: rgba(#191919, 0.8);
             width: calc(50% - 12.5px);
             margin: 0px 5px 10px;
 
-            input:checked + label,
-            input:hover + label {
+            input:checked+label,
+            input:hover+label {
               background-color: #151515;
               color: #fff;
               border: 1px solid rgba(255, 255, 255, 0.3);
@@ -301,7 +302,7 @@ $GradientColor-second: rgba(#191919, 0.8);
               }
             }
 
-            input:checked + label {
+            input:checked+label {
               &:before {
                 background-color: $primary-color;
               }
@@ -497,14 +498,14 @@ $GradientColor-second: rgba(#191919, 0.8);
           position: absolute;
         }
 
-        .error + span input,
-        .error + span input:hover,
-        .error + span input:focus {
+        .error+span input,
+        .error+span input:hover,
+        .error+span input:focus {
           border: 3px solid #f24462;
         }
 
-        .error + span input + .has-check,
-        .error + span input:focus + .has-check {
+        .error+span input+.has-check,
+        .error+span input:focus+.has-check {
           display: none;
         }
 
@@ -624,7 +625,7 @@ $GradientColor-second: rgba(#191919, 0.8);
             input[type="checkbox"] {
               display: none;
 
-              & ~ span {
+              &~span {
                 &.check-lable {
                   display: flex;
                   align-items: center;
@@ -656,7 +657,7 @@ $GradientColor-second: rgba(#191919, 0.8);
               }
 
               &:checked {
-                & ~ span {
+                &~span {
                   &.check-lable {
                     &::after {
                       background: url(/images/check.svg);
@@ -939,6 +940,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
           @media only screen and (max-width: 767px) {
             justify-content: center;
+            margin: 0 auto;
           }
         }
       }
@@ -1099,6 +1101,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     }
 
     .choose-gender {
+
       h2,
       p {
         text-align: center;
@@ -1331,8 +1334,9 @@ $GradientColor-second: rgba(#191919, 0.8);
       right: 12px;
     }
 
-    .type-text + .icon {
+    .type-text+.icon {
       svg {
+
         path,
         circle,
         rect {
@@ -1528,23 +1532,17 @@ $GradientColor-second: rgba(#191919, 0.8);
 
       background: rgba(46, 49, 58, 1) !important;
       /* Old browsers */
-      background: -moz-linear-gradient(
-        231.4deg,
+      background: -moz-linear-gradient(231.4deg,
         rgba(46, 49, 58, 0.8) 18.16%,
-        rgba(25, 25, 25, 0.8) 95.56%
-      ) !important;
+        rgba(25, 25, 25, 0.8) 95.56%) !important;
       /* FF3.6-15 */
-      background: -webkit-linear-gradient(
-        231.4deg,
+      background: -webkit-linear-gradient(231.4deg,
         rgba(46, 49, 58, 0.8) 18.16%,
-        rgba(25, 25, 25, 0.8) 95.56%
-      ) !important;
+        rgba(25, 25, 25, 0.8) 95.56%) !important;
       /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(
-        231.4deg,
+      background: linear-gradient(231.4deg,
         rgba(46, 49, 58, 1) 18.16%,
-        rgba(25, 25, 25, 1) 95.56%
-      ) !important;
+        rgba(25, 25, 25, 1) 95.56%) !important;
       /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       opacity: 0.89;
     }
@@ -1856,7 +1854,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         -webkit-transition: border 0.25s linear;
       }
 
-      ul li input[type="radio"]:checked ~ .check::before {
+      ul li input[type="radio"]:checked~.check::before {
         background: #f24462;
         margin-top: 2px;
         margin-left: 2px;
@@ -1943,7 +1941,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       margin: 0 0 0 20.5%;
 
       @media only screen and (max-width: 435px) {
-        margin: 0  19%;
+        margin: 0 19%;
       }
 
       @media only screen and (max-width: 390px) {
@@ -2078,7 +2076,7 @@ $GradientColor-second: rgba(#191919, 0.8);
           margin: 0px 0px 10px !important;
 
           input {
-            & ~ label {
+            &~label {
               min-height: 80px;
               display: flex;
               align-items: center;
@@ -2204,11 +2202,9 @@ div[id="scrolldiv"] {
       align-items: start;
       flex-direction: column;
       justify-content: end;
-      background: linear-gradient(
-        180deg,
-        rgba(21, 21, 21, 0.0001) 0%,
-        #151515 96.04%
-      );
+      background: linear-gradient(180deg,
+          rgba(21, 21, 21, 0.0001) 0%,
+          #151515 96.04%);
       mix-blend-mode: normal;
       padding: 10px 20px;
 
@@ -2264,11 +2260,7 @@ div[id="scrolldiv"] {
 
           li {
             padding: 8px;
-            background: linear-gradient(
-              231.4deg,
-              rgba(46, 49, 58, 0.40422) 18.16%,
-              rgba(25, 25, 25, 0.415923) 95.56%
-            );
+            background: linear-gradient(231.4deg, rgba(46, 49, 58, 1.83422) 18.16%, rgba(25, 25, 25, 1.835923) 95.56%);
             color: $white-color;
             border: 0.5px solid #293036;
             backdrop-filter: blur(4.5px);
@@ -2276,6 +2268,7 @@ div[id="scrolldiv"] {
             opacity: 0.9;
             cursor: pointer;
             margin-top: -6px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
             .icon-white {
               svg {
@@ -2297,6 +2290,7 @@ div[id="scrolldiv"] {
               font-weight: 300;
               font-family: "Helvetica-Light";
               letter-spacing: 0.5px;
+
               svg {
                 margin-right: 10px;
                 //margin-top: -5px;
@@ -2315,7 +2309,7 @@ div[id="scrolldiv"] {
       }
     }
 
-    & > div {
+    &>div {
       display: block;
     }
   }
@@ -2511,6 +2505,9 @@ div[id="scrolldiv"] {
 
       .user-details {
         border-radius: 8px;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) -0.01%, rgba(0, 0, 0, 0.8) 67.72%, #000000 99.92%);
+        mix-blend-mode: normal;
+        opacity: 0.95;
       }
     }
   }
@@ -2572,7 +2569,7 @@ div[id="scrolldiv"] {
       z-index: 1;
       opacity: 0;
 
-      & ~ div.active_class label {
+      &~div.active_class label {
         font-size: 13px !important;
         font-weight: 500;
         line-height: 18px;
@@ -2586,7 +2583,7 @@ div[id="scrolldiv"] {
       }
 
       &:checked {
-        & ~ div.active_class label {
+        &~div.active_class label {
           color: $white-color;
 
           &:before {
@@ -2594,7 +2591,7 @@ div[id="scrolldiv"] {
           }
         }
 
-        & ~ div.active_class {
+        &~div.active_class {
           border-color: $white-color;
 
           span {
@@ -2631,7 +2628,7 @@ div[id="scrolldiv"] {
         object-fit: cover;
       }
 
-      & > div {
+      &>div {
         display: block;
       }
     }
@@ -2696,6 +2693,7 @@ div[id="scrolldiv"] {
 
 body {
   .header_btn_wrap {
+
     a,
     button {
       outline: none;
@@ -2809,11 +2807,9 @@ body {
       bottom: 70px;
       right: 0;
       padding: 5px 10px;
-      background: linear-gradient(
-        261.67deg,
-        rgba(58, 62, 71, 0.7) 14.2%,
-        rgba(46, 49, 58, 0.7) 92.52%
-      );
+      background: linear-gradient(261.67deg,
+          rgba(58, 62, 71, 0.7) 14.2%,
+          rgba(46, 49, 58, 0.7) 92.52%);
       backdrop-filter: blur(16.3097px);
       border-radius: 5px 0 0 5px;
       font-size: 10px;
@@ -2831,7 +2827,7 @@ body {
       label {
         cursor: pointer;
 
-        .pos-relative > div {
+        .pos-relative>div {
           display: block !important;
         }
       }
@@ -3254,6 +3250,7 @@ body .verification_card_header {
       }
     }
   }
+
   .availabe_card_inner:hover {
     cursor: pointer;
     color: #fff;
@@ -3307,7 +3304,7 @@ body .verification_card_header {
     overflow-y: scroll;
     max-height: 100vh;
 
-    & > svg {
+    &>svg {
       position: absolute;
       top: 15px;
       right: 15px;
@@ -3377,18 +3374,14 @@ body .verification_card_header {
             width: 76%;
             padding: 16px 10px;
             border-radius: 13px;
-            background: radial-gradient(
-              104.09% 104.09% at 4.13% 2.42%,
-              rgba(0, 0, 0, 0.4) 0%,
-              rgba(0, 0, 0, 0) 100%
-            );
+            background: radial-gradient(104.09% 104.09% at 4.13% 2.42%,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0) 100%);
             border-width: 0.7px;
             border-style: solid;
-            border-image: radial-gradient(
-              87.95% 87.95% at 50% 50%,
-              #ffffff 0%,
-              rgba(0, 0, 0, 0) 100%
-            );
+            border-image: radial-gradient(87.95% 87.95% at 50% 50%,
+                #ffffff 0%,
+                rgba(0, 0, 0, 0) 100%);
             backdrop-filter: blur(21px);
             font-family: "Helvetica";
             font-size: 18px;
@@ -3818,11 +3811,9 @@ body .verification_card_header {
         li {
           padding: 4px 10px;
           margin-right: 10px;
-          background: linear-gradient(
-            261.67deg,
-            rgba(58, 62, 71, 0.7) 14.2%,
-            rgba(46, 49, 58, 0.7) 92.52%
-          );
+          background: linear-gradient(261.67deg,
+              rgba(58, 62, 71, 0.7) 14.2%,
+              rgba(46, 49, 58, 0.7) 92.52%);
           backdrop-filter: blur(16.3097px);
           color: $white-color;
           border: 0.607143px solid #293036;
@@ -4037,11 +4028,9 @@ body .verification_card_header {
               }
 
               .message_content_send {
-                background: linear-gradient(
-                  261.67deg,
-                  rgba(58, 62, 71, 0.7) 14.2%,
-                  rgba(46, 49, 58, 0.7) 92.52%
-                );
+                background: linear-gradient(261.67deg,
+                    rgba(58, 62, 71, 0.7) 14.2%,
+                    rgba(46, 49, 58, 0.7) 92.52%);
                 border-radius: 15px 15px 5px 15px;
                 text-align: right;
               }
@@ -4163,11 +4152,9 @@ body .verification_card_header {
   -webkit-backdrop-filter: blur(27px);
   border-radius: 30px 30px 0px 0px;
   padding: 20px;
-  background: linear-gradient(
-    231.4deg,
+  background: linear-gradient(231.4deg,
     rgba(0, 0, 0, 0.7) 18.16%,
-    rgba(0, 0, 0, 0.7) 95.56%
-  );
+    rgba(0, 0, 0, 0.7) 95.56%);
 
   .close-button {
     float: right;
@@ -4462,7 +4449,7 @@ body .verification_card_header {
   font-size: 14px;
 }
 
-.message-confirmation > div {
+.message-confirmation>div {
   display: flex;
   justify-content: center;
 }
@@ -5536,6 +5523,7 @@ path {
     padding-right: 0px !important;
   }
 }
+
 .modal-open-1 {
   background: rgba(25, 27, 31, 0.72) !important;
 }

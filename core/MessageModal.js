@@ -147,6 +147,7 @@ function MessageModal({ user, date, toggle }) {
                     />
 
                     <button
+                    //className="icon-move"
                     id="message-icon"
                       type="button"
                       style={{

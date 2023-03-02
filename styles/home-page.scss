@@ -632,18 +632,22 @@
 //   }
 // }
 
-.animate-1 {
-  animation: 0.6s ease-in-out slide;
+@media only  screen and (min-width:768px){
+  .animate-1 {
+    animation: 0.6s ease-in-out slide;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes slide {
+    0%{
+      transform: translateX(150px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+  }
 }
 
-@keyframes slide {
-  0%{
-    transform: translateX(150px);
-  }
-  50%{
-    transform: translateX(0px);
-  }
-}
 
 // .animate-2 {
 //   animation: slide 0.5s ease-in-out;

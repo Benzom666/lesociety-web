@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import withAuth from "@/core/withAuth";
 import HomePagePopUp from "@/core/HomePagePopUp";
+import CreatedatesWarningPopUp from "@/modules/date/CreatedatesWarningPopUp";
 function payment() {
   const [show,setShow]= useState(false);
 
@@ -11,8 +12,9 @@ function payment() {
   return (
     //  <div>payment</div>
     <>
-     <button onClick={handleModal}>show modal</button>
-    { show && <HomePagePopUp onClose={handleModal} show={show}/>}
+     {/* <button onClick={handleModal}>show modal</button>
+    { show && <HomePagePopUp onClose={handleModal} show={show}/>} */}
+    <CreatedatesWarningPopUp/>
      </>
   );
 }
