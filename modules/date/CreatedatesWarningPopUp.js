@@ -12,12 +12,16 @@ const customStyles = {
         borderRadius: "30px",
         background: 'linear-gradient(231.4deg, rgba(46, 49, 58, 0.80844) 18.16%, rgba(25, 25, 25, 0.831845) 95.56%)',
     },
-    
+
 };
 
 const CreatedatesWarningPopUp = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [checked, setChecked] = useState(false);
 
+    const checkHandler = () => {
+        setChecked(!checked);
+    }
     function openModal() {
         setIsOpen(true);
     }
@@ -55,7 +59,11 @@ const CreatedatesWarningPopUp = () => {
                             <li>Scamming</li>
                         </ul>
                         <div className='dont-show'>
-                            <input type="checkbox" />
+                            <div className='dont-show-checkBox'>
+                                <input type="checkbox" checked={checked} />
+                                <span className="checkmark" aria-role="checkbox"
+                                    onClick={checkHandler} aria-hidden={true}></span>
+                            </div>
                             <p className='dont-show-text'>Don’t show this again.</p>
                         </div>
                     </div>

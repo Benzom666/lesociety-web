@@ -121,15 +121,15 @@ export default function HeaderLoggedIn({
     >
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-md-4 col-2">
+          <div className="col-md-4 col-2" style={{paddingLeft:"1.5rem"}}>
             <div className="logo">
               <>
                 <Link href="/auth/login">
                   {/* <h3 className="d-md-none mb-0 st-logo">ST</h3> */}
                   <img
                     src={Logo_Mob.src}
-                    width="30px"
-                    height="30px"
+                    width="25px"
+                    height="25px"
                     alt="Logo"
                     className=" d-md-none cursor-pointer"
                   />
