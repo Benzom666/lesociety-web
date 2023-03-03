@@ -24,7 +24,7 @@ export function HowItWorkMain({title,image,content}) {
 
 export const contentObject =[
     {
-        heading :"Morning Date",
+        heading :"Brunch Date",
         content :"Whether it’s grabbing an early-morning coffee from your favourite artisanal coffee shop, or going for a scenic stroll in one of your charming neighbourhoods, this option is for making the most out of your exciting new date earlier in the day.",
         imgUrl:Group225,
     },

@@ -6,6 +6,7 @@ import withAuth from "../core/withAuth";
 import useWindowSize from "utils/useWindowSize";
 import LeSlogoWhite from "../assets/LeS logoWhite.png";
 import MaskGroup22 from "../assets/img/Mask Group 22.png";
+//import Future_Vedio from '../assets/Future_Video.mp4';
 import FutureDates from "@/core/FutureDates";
 import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 import FutureDateMain from "@/core/FutureDateMain";
@@ -31,7 +32,7 @@ const futureDatesMiddleContent = {
     mainHeadingContent:
       "No more ghosting. See where your date is and track how long until your agreed meeting time. You don’t need to process payment until your date has arrived. Use our simple swipe to pay feature to process payment once you have met and enjoy your date.",
     imgText: "GPS tracking <br/>& in app payment",
-    imgUrl: MaskGroup22,
+    imgUrl:MaskGroup22,
   },
   futureDatesMiddleContent2: {
     heading: "Share your <span class='test'>live</span> location.",
@@ -60,7 +61,7 @@ function FutureDate() {
     <>
       <div className="inner-part-page auth-section future-dates-main">
         <div className="future-date-navbar">
-        <nav class="navbar navbar-dark bg-#080808">
+        <nav className="navbar navbar-dark bg-#080808">
           <div className="LeSociety-Icon-White d-flex">
             <div className="ls-logo">
               <img src={LeSlogoWhite.src} alt="ls-logo" width="35px" />

@@ -5,20 +5,22 @@ import { IoIosClose } from "react-icons/io";
 function HomePageMiddleNav(props) {
   //console.log(props)
   const [openNav, setOpenNav] = useState(false);
+  const [animate, setAnimate] = useState(false);
   const { width } = useWindowSize();
   const openNavBar = () => {
     setOpenNav(true);
+    setAnimate(!animate)
   };
   const closeNavBar = () => {
     setOpenNav(false);
+    setAnimate(!animate)
   };
+console.log(animate);
   return (
     <>
-      <nav
-        class="navbar fixed-bottom bg-dark mt-4 navbarfixedmain"
-        style={props.style}
-      >
-        <div className="container-fluid d-flex justify-content-end containernavbarfooter animate">
+      <nav className="navbar fixed-bottom bg-dark mt-4 navbarfixedmain"
+        style={props.style}>
+        <div className={`container-fluid d-flex justify-content-end containernavbarfooter ${animate ? 'animate-1' : ""}`}>
           <div className="navbarfooter-text">
             {width > 769 && (
               <div className="navfooter-text-1">
@@ -92,7 +94,7 @@ function HomePageMiddleNav(props) {
                 {width > 769 && (
                   <IoIosClose
                     className="mouse-point"
-                    size={44}
+                    size={42}
                     style={{ color: "#fff" }}
                     onClick={closeNavBar}
                   />
@@ -102,7 +104,7 @@ function HomePageMiddleNav(props) {
             {width > 769 && (
               <div>
                 {!openNav ? (
-                  <button id="signupbtn" type="button" onClick={openNavBar}>
+                  <button id="signupbtn"type="button" onClick={openNavBar}>
                     Sign Up
                   </button>
                 ) : null}

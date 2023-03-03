@@ -31,7 +31,7 @@ const ConfirmDate = ({ toggle, isOpen }) => {
         <p type="submit" className="a-wrapper" onClick={redirect}>
           Close page
         </p>
-      </div>
+      </div> 
     </Modal>
   );
 };

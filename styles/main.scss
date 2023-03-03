@@ -939,6 +939,7 @@ $GradientColor-second: rgba(#191919, 0.8);
 
           @media only screen and (max-width: 767px) {
             justify-content: center;
+            margin: 0 auto;
           }
         }
       }
@@ -1928,8 +1929,8 @@ $GradientColor-second: rgba(#191919, 0.8);
 .create-date-wrap {
   .step-wraps {
     // margin: 15px  50px;
-    width: 80%;
-    margin-left: 16px;
+    width: 100%;
+    //margin-left: 16px;
     margin-right: auto;
     margin-top: 15px;
     margin-bottom: 50px;
@@ -1941,22 +1942,24 @@ $GradientColor-second: rgba(#191919, 0.8);
       justify-content: space-around;
       padding: 0;
       max-width: 234px;
-      margin: 0 0 0 22%;
+      margin: 0 0 0 20.5%;
 
       @media only screen and (max-width: 435px) {
-        margin: 0 0 0 22%;
+        margin: 0 19%;
       }
 
       @media only screen and (max-width: 390px) {
-        margin: 0 0 0 84px;
+        //margin: 0 0 0 84px;
+        margin: 0 auto;
       }
 
       @media only screen and (max-width: 375px) {
-        margin: 0 0 0 78px;
+        // margin: 0 0 0 78px;
+        margin: 0 50px;
       }
 
       @media only screen and (max-width: 340px) {
-        margin: 0 0 0 64px;
+        margin: 0 0 0 22px;
       }
 
       li {
@@ -2008,6 +2011,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       margin-bottom: 15px;
       font-size: 20px;
       font-weight: 700;
+      text-transform: capitalize;
     }
 
     padding: 35px 0;
@@ -2058,7 +2062,7 @@ $GradientColor-second: rgba(#191919, 0.8);
     padding-top: 40px !important;
 
     .price-tag {
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 300;
       color: $primary-color;
     }
@@ -2264,8 +2268,8 @@ div[id="scrolldiv"] {
             padding: 8px;
             background: linear-gradient(
               231.4deg,
-              rgba(46, 49, 58, 0.40422) 18.16%,
-              rgba(25, 25, 25, 0.415923) 95.56%
+              rgba(46, 49, 58, 1.83422) 18.16%,
+              rgba(25, 25, 25, 1.835923) 95.56%
             );
             color: $white-color;
             border: 0.5px solid #293036;
@@ -2274,6 +2278,7 @@ div[id="scrolldiv"] {
             opacity: 0.9;
             cursor: pointer;
             margin-top: -6px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
             .icon-white {
               svg {
@@ -2510,6 +2515,14 @@ div[id="scrolldiv"] {
 
       .user-details {
         border-radius: 8px;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.0001) -0.01%,
+          rgba(0, 0, 0, 0.8) 67.72%,
+          #000000 99.92%
+        );
+        mix-blend-mode: normal;
+        opacity: 0.95;
       }
     }
   }
@@ -3049,6 +3062,7 @@ body {
       }
 
       @media only screen and (max-width: 991px) {
+        margin-top: 50px;
         text-align: center;
       }
 
@@ -3260,6 +3274,7 @@ body .verification_card_header {
       }
     }
   }
+
   .availabe_card_inner:hover {
     cursor: pointer;
     color: #fff;
@@ -5386,11 +5401,11 @@ path {
   }
 }
 
-@media only screen and (max-width: 400px) {
-  .create-date-wrap .step-wraps {
-    margin-left: -10px;
-  }
-}
+// @media only screen and (max-width: 400px) {
+//   .create-date-wrap .step-wraps {
+//     margin-left: -10px;
+//   }
+// }
 
 @media only screen and (max-width: 420px) {
   .inner-part-page .auth-section .login-text {
@@ -5549,6 +5564,7 @@ path {
     padding-right: 0px !important;
   }
 }
+
 .modal-open-1 {
   background: rgba(25, 27, 31, 0.72) !important;
 }

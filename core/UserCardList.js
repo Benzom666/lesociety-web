@@ -249,7 +249,7 @@ const UserCardList = ({
                             fill="#F24462"
                           />
                         </svg>
-                        <span className="address px-2">
+                        <span className="address px-1">
                           {date?.location}, {date?.province}
                         </span>
                       </span>
@@ -257,7 +257,8 @@ const UserCardList = ({
                         <ul>
                           <li style={{ display: "flex", alignItems: "center" }}>
                             <span>{category?.icon}</span>
-                            <span>{category?.label}</span>
+                            <span className="labelofcard-1">{category?.label}</span>
+                            <span className="labelofCard-2">{category?.label}</span>
                           </li>
                         </ul>
                       </div>

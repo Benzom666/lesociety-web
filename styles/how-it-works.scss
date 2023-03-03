@@ -136,7 +136,7 @@
         //margin: 5% 25% 0 25%;
         //width: 812px;
         text-align: center;
-        margin:0  auto;
+        margin: 0 auto;
 
         .container-2-title {
             width: 568px;
@@ -193,7 +193,7 @@
 
         .howitWork-heading {
             // padding-top: 20px !important;
-            padding:20px 50px 8px 77px;
+            padding: 20px 50px 8px 77px;
             font-size: 20px;
             font-weight: bold;
             font-stretch: normal;
@@ -233,13 +233,14 @@
         }
 
         .Rectangle-1 {
+            width: 179px;
             text-align: center;
             border-radius: 15px;
             background-color: #f24462;
             color: #fff;
             border: #f24462;
-            margin-left: 25%;
-            margin-right: 25%;
+            // margin-left: 25%;
+            // margin-right: 25%;
             padding: 10px 32px;
         }
 
@@ -264,14 +265,13 @@
         overflow-x: hidden;
 
         .container-1 {
-            margin-left: 0;
-            margin-right: 0;
+            width: 100%;
+            margin: 0 auto;
 
             .myCard {
                 flex-direction: column;
                 width: 365px;
-                margin: auto;
-                margin-top: 2rem;
+                margin: 2rem auto;
 
                 .textContent {
                     padding: 20px 0px;
@@ -337,8 +337,9 @@
             }
 
             .howitwork-main-card-image-section {
-                width: 75%;
+                width: 55%;
                 margin: auto;
+
             }
 
             .howitWork-heading {
@@ -346,7 +347,9 @@
             }
 
             .howitWork-content {
-                padding: 5px 43px;
+                width: 317px;
+                padding: 5px 3px;
+                margin: 0 auto;
             }
 
             .The-future-of-Le-Society {
@@ -354,7 +357,7 @@
             }
 
             .Rectangle-1 {
-                margin: 0% 30%;
+                margin: 0%;
             }
         }
     }
@@ -366,16 +369,13 @@
         overflow-x: hidden;
 
         .container-1 {
-            // margin-left: 0;
-            // margin-right: 0;
-            width: 365px !important;
-
-            // margin: auto;
+            width: 358px !important;
+            margin:0 auto;
             .myCard {
                 flex-direction: column;
                 width: 100%;
-                margin: auto;
-                margin-top: 2rem;
+                //margin: auto;
+                margin: 2rem auto;
 
                 .textContent {
                     padding: 20px 0px;
@@ -460,7 +460,7 @@
             }
 
             .Rectangle-1 {
-                margin: 0% 7%;
+                margin: 0%;
             }
         }
     }
@@ -501,35 +501,37 @@
         justify-content: center;
         align-items: center;
         width: 328px;
-        margin: 20px auto;
+        margin: 3rem auto;
     }
 }
 
 @media only screen and (max-width:480px) {
-    .how-it-works{
-     .howItWork-navbar{
-        margin: 10px auto !important;
-        // margin-bottom: 2rem;
-        .LeSociety-Icon-White{
-            padding: 0px !important;
+    .how-it-works {
+        .howItWork-navbar {
+            margin: 10px auto !important;
 
-            .ls-text{
-                padding-left: 1rem !important;
+            // margin-bottom: 2rem;
+            .LeSociety-Icon-White {
+                padding: 0px !important;
+
+                .ls-text {
+                    padding-left: 1rem !important;
+                }
             }
         }
-     }
     }
 }
 
+
 .parentdiv-1 .myCard:before {
     content: '';
-    background: url('../assets/img/Group 96.png') no-repeat;
-    height: 50px;
-    width: 50px;
+    background: url('../assets/svg/sun.svg') no-repeat;
+    height: 41px;
+    width: 41px;
     display: inline-block;
     position: absolute;
     left: -76px;
-    top:80px;
+    top: 80px;
     z-index: 99;
 }
 
@@ -540,9 +542,9 @@
 
 .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
     content: '';
-    background: url('../assets/img/Group 140.png') no-repeat;
-    height: 50px;
-    width: 50px;
+    background: url('../assets/svg/paint.svg') no-repeat;
+    height: 41px;
+    width: 41px;
     position: absolute;
     right: -74px;
     z-index: 99;
@@ -555,9 +557,9 @@
 
 .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
     content: '';
-    background: url('../assets/img/Group 573.png') no-repeat;
-    height: 50px;
-    width: 50px;
+    background: url('../assets/svg/moon.svg') no-repeat;
+    height: 41px;
+    width: 41px;
     position: absolute;
     left: -74px;
     z-index: 99;
@@ -567,9 +569,9 @@
 
 .container-2-title:after {
     content: '';
-    background: url('../assets/img/Group 29.png') no-repeat;
-    height: 50px;
-    width: 50px;
+    background: url('../assets/svg/bottle.svg') no-repeat;
+    height: 41px;
+    width: 41px;
     right: -70px;
     top: -100px;
     position: absolute;
@@ -578,3 +580,283 @@
 .container-2-title {
     position: relative;
 }
+
+
+.howitwork-main-card-image-section {
+    position: relative;
+}
+
+.howitwork-main-card-image-section .col-lg-6:nth-child(1):before {
+    content: '';
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    z-index: 99;
+    background: url( '../assets/svg/sun.svg') no-repeat;
+    top: 10px;
+    left: -30px;
+}
+
+.howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+    content: '';
+    background: url('../assets/svg/moon.svg') no-repeat;
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    right: -20px;
+    top: 250px;
+}
+
+
+.howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+    content: '';
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    z-index: 99;
+    background: url( '../assets/svg/paint.svg') no-repeat;
+    top: 30%;
+    left: -135px;
+}
+
+
+.howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+    content: '';
+    background: url('../assets/svg/sport.svg') no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -80px;
+    top: 46%;
+}
+
+
+.howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+    content: '';
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    z-index: 99;
+    background: url('../assets/svg/ticket.svg') no-repeat;
+    top: 66%;
+    left: -32px;
+}
+
+
+.howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+    content: '';
+    background: url('../assets/svg/dine.svg') no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -55px;
+    top: 74%;
+}
+
+.howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+    content: '';
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    z-index: 99;
+    background: url('../assets/svg/bottle.svg') no-repeat;
+    top: 91%;
+    left: -30px;
+}
+
+@media only screen and (max-width:768px)and (min-width:500px) {
+    .parentdiv-1 .myCard:before {
+        left: -5%;
+        top: -58px;
+        z-index: 99;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+        right: -15px;
+        z-index: 99;
+        top: -515%;
+    }
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
+        content: '';
+        background: url('../assets/svg/bottle.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        right: -15px;
+        z-index: 99;
+        top: -54px;
+    }
+    .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+        left: 20px;
+        z-index: 99;
+        top: -65px;
+    }
+
+    .container-2-title::before {
+        content: '';
+        background: url('../assets/svg/ticket.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        left: 113px;
+        top: 100%;
+    }
+
+    .container-2-title:after {
+        content: '';
+        background: url('../assets/svg/sport.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        right: 100px;
+        top: 7%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+        top: 8.25%;
+        left: 85%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+        left: 40px;
+        top: 21%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+        top: 35.25%;
+        left: 4%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+        right: 30px;
+        top: 48.5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+        top: 60.50%;
+        left: 88%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+        left: 33px;
+        top: 78%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+        top: 87%;
+        left: 84%;
+    }
+    .how-it-works button.backtoHomepage-btn::before{
+        content: '';
+        background: url('../assets/svg/paint.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        left: 182px;
+        z-index: 99;
+        top: 29px;
+    }
+}
+
+@media only screen and (max-width:499px) {
+    .parentdiv-1 .myCard:before {
+        left: -5%;
+        top: -58px;
+        z-index: 99;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+        right: -15px;
+        z-index: 99;
+        top: -508%;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
+        content: '';
+        background: url('../assets/svg/bottle.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        right: -12px;
+        z-index: 99;
+        top: -54px;
+    }
+    .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+        left: 20px;
+        z-index: 99;
+        top: -65px;
+    }
+
+    .container-2-title::before {
+        content: '';
+        background: url('../assets/svg/ticket.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        left: -22px;
+        top: 92%;
+    }
+
+    .container-2-title:after {
+        content: '';
+        background: url('../assets/svg/sport.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        right: -4px;
+        top: 8%;
+    }
+
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+        top: 7.5%;
+        left: 95%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+        left: 7px;
+        top: 20%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+        top: 34%;
+        left: -5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+        right: -14px;
+        top: 46.5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+        top: 59%;
+        left: 92%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+        left: 8px;
+        top: 77.5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+        top: 85%;
+        left: 92%;
+    }
+    .how-it-works button.backtoHomepage-btn::before{
+        content: '';
+        background: url('../assets/svg/paint.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        left: 14px;
+        z-index: 99;
+        top: 29px;
+    }
+}
+
+.how-it-works{
+    a {
+       position: relative;
+     }
+ }
+ 

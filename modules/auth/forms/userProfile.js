@@ -424,7 +424,9 @@ function UserProfile({ preview, editHandle }) {
   } else {
     return (
       <div className="inner-page">
-        {!preview && <HeaderLoggedIn />}
+        {!preview && <HeaderLoggedIn 
+        fixed={width < 767}
+         />}
         <div className="inner-part-page">
           <div
             className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${

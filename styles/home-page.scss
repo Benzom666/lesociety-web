@@ -52,7 +52,8 @@
     .ls-text {
       font-size: 20px;
       padding: 0px 10px;
-     margin-top: 2px !important;
+      margin-top: 2px !important;
+
       .leSocitey-heading {
         letter-spacing: 9.2px;
       }
@@ -87,6 +88,7 @@
       font-size: 20px;
       padding: 0px 10px;
       margin-top: 2px !important;
+
       .leSocitey-heading {
         letter-spacing: 6.2px;
       }
@@ -137,7 +139,7 @@
   font-family: "Montserrat";
   font-weight: 800;
   line-height: 0.75;
-  letter-spacing: 3.8px;
+  letter-spacing: 6.8px;
   line-height: 1.1;
   text-align: right;
 }
@@ -205,7 +207,7 @@
   .main-card-side-wraper-1 {
     img {
       text-align: center;
-      width:100%;
+      width: 100%;
       object-fit: contain;
       height: unset !important;
     }
@@ -221,10 +223,12 @@
       padding: 20px 10px;
 
       h5 {
+        width: 328px;
         font-family: "Montserrat";
         font-size: 30px;
         text-align: center;
         padding: 0 22px;
+        margin: 0 auto;
       }
     }
   }
@@ -239,7 +243,7 @@
 
   .aboutCardContent {
     max-width: 365px;
-    margin: auto;
+    margin: 0 auto;
     font-size: 16px !important;
     padding: 10px 4px !important;
   }
@@ -251,7 +255,11 @@
   }
 }
 
+// @media only screen and (min-width :769px) and (max-width:1200px){
+//   .home-main-section{
 
+//   }
+// }
 
 // .ls-logo-footer{
 // margin-left: 5rem;
@@ -317,6 +325,10 @@
       width: 290px;
       margin: 0 auto;
       padding: 0 10px;
+
+      .footer-text-1 {
+        text-align: center;
+      }
     }
   }
 
@@ -330,7 +342,7 @@
 
     .footer-icon-box {
       .footer-icon {
-        margin-left: 4rem;
+        margin-left: 2rem;
 
         img {
           text-align: center !important;
@@ -340,6 +352,10 @@
       }
 
       .footer-text {
+        width: 328px;
+        margin: 0 auto;
+        padding: 0 10px;
+
         .footer-text-1 {
           text-align: center;
         }
@@ -362,6 +378,9 @@
 }
 
 #signupbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 44px;
   border: #f24462;
   background-color: #f24462;
@@ -413,7 +432,8 @@
         width: 100% !important;
         padding: 0px 10px;
       }
-      .navfooter-text-1{
+
+      .navfooter-text-1 {
         margin-right: 3rem;
       }
     }
@@ -450,7 +470,7 @@
   }
 
   .navbarfooter-text {
-   // margin-left: 0rem !important;
+    // margin-left: 0rem !important;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -497,7 +517,8 @@
     background-image: url('../assets/img/card_1.png');
     background-repeat: no-repeat;
     background-size: 25rem;
-    //margin: 20px;
+    margin-right: 6%;
+
     .card_1 {
       margin-top: 5%;
       font-family: 'Montserrat', sans-serif;
@@ -515,6 +536,9 @@
       }
 
       #howitworkbtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 8px 0px;
         height: 44px;
         width: 179px;
@@ -530,7 +554,7 @@
     width: 420px;
     min-height: 268px;
     background-image: url('../assets/img/card_2.png');
-    background-size: 25rem;
+    background-size: 26rem;
     background-repeat: no-repeat;
     //margin-left: 2%;
 
@@ -546,18 +570,21 @@
         letter-spacing: 4.24px;
         text-align: center;
         text-transform: uppercase;
-        padding: 14px 123px 0px 11px;
+        padding: 14px 108px 0px 11px;
         margin: 0 auto;
       }
 
       #sneakPeakbtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 8px 0px;
         height: 44px;
         width: 179px;
         background-color: #f24462;
         border-radius: 15px;
         text-align: center;
-        margin: 5% 15%;
+        margin: 5% 17%;
       }
 
       .card-app-pay {
@@ -575,58 +602,91 @@
   }
 }
 
-@media only screen and (max-width:769px) and (min-width:481px) {
-  .bottom-box-container {
-    overflow-x: hidden;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .bottom-box-card-2{
-      margin-left: 20%;
+// @media only screen and (max-width:769px) and (min-width:481px) {
+//   .bottom-box-container {
+//     overflow-x: hidden;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+
+//     .bottom-box-card-2 {
+//       margin-left: 20%;
+//     }
+//   }
+// }
+
+// @media only screen and (max-width:480px) {
+//   .bottom-box-container {
+//     overflow-x: hidden;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+
+//     .bottom-box-card-1 {
+//       margin-right: 18%;
+//     }
+
+//     .bottom-box-card-2 {
+//       margin-left: 31%;
+//     }
+//   }
+// }
+
+@media only  screen and (min-width:768px){
+  .animate-1 {
+    animation: 0.6s ease-in-out slide;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes slide {
+    0%{
+      transform: translateX(150px);
+    }
+    100%{
+      transform: translateX(0px);
     }
   }
 }
 
-@media only screen and (max-width:480px) {
-  .bottom-box-container {
-    overflow-x: hidden;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .bottom-box-card-1{
-      margin-right: 17%;
-    }
-    .bottom-box-card-2{
-      margin-left: 20%;
-    }
-  }
-}
 
-.animate {
-  transition: mymove 5s ease-in-out;
-  // transition-delay: "15s";
-}
+// .animate-2 {
+//   animation: slide 0.5s ease-in-out;
+// }
 
-@keyframes mymove {
-  from {
-    right: 0px;
-  }
+// @keyframes slide {
+//   0%{
+//     transform: translateX(0px);
+//   }
+//   100%{
+//     transform: translateX(150px);
+//   }
+// }
 
-  to {
-    right: 500px;
-  }
-}
+
 
 
 // .bottom-Card-mobile {
-//   position: relative;
+//   //position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   //align-items: center;
 //   text-align: center;
+
 //   .card-1 {
-//     position: absolute;
-//     bottom: 70%;
-//     left: 32%;
+//     margin-top: 2rem;
+//     height: 21rem;
+//     background: url('../assets/img/CardMob_1.png') no-repeat;
+//     background-size: 45rem;
+//     background-position: inherit;
+//     background-attachment: inherit;
+//     // position: absolute;
+//     // bottom: 70%;
+//     // left: 32%;
 
 //     .card-title {
+//       margin-top: 2rem;
+
 //       .heading {
 //         // width: 264px;
 //         font-size: 24px;
@@ -649,12 +709,24 @@
 //   }
 
 //   .card-2 {
-//     position: absolute;
-//     bottom: 15%;
-//     left: 32%;
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+//     justify-content: center;
+//     height: 32rem;
+//     background: url('../assets/img/CardMob_2.png') no-repeat;
+//     background-size: 45rem;
+//     background-position: inherit;
+//     background-attachment: inherit;
+//     margin-top: -9rem;
+//     // position: absolute;
+//     // bottom: 15%;
+//     // left: 32%;
 
-//     .card-title {
-//       .heading {
+//     .card-title-1 {
+//       padding-top: 9rem;
+
+//       .heading-1 {
 //         // width: 264px;
 //         font-size: 24px;
 //         font-weight: bold;
@@ -670,7 +742,7 @@
 //       background-color: #f24462;
 //       border-radius: 15px;
 //       text-align: center;
-//       margin: 10% 24%;
+//       margin: 4% 24%;
 //       padding: 10px;
 //     }
 
@@ -681,23 +753,34 @@
 //       font-weight: normal;
 //       text-align: center;
 //       letter-spacing: normal;
-//       padding: 10px 76px;
-//       margin-top: -10%;
-//       margin-left: 9%;
+//       padding: 0px 76px;
+//       // margin-top: -10%;
+//       // margin-left: 9%;
 //     }
 //   }
 // }
 
-// @media only screen and (max-width:480px)  {
+// @media only screen and (max-width:480px) {
 //   .bottom-Card-mobile {
-//     position: relative;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     // position: relative;
 //     text-align: center;
+
 //     .card-1 {
-//       position: absolute;
-//       bottom: 60%;
-//       left: 20%;
-  
+//       // margin-top: 2rem;
+//       // height: 21rem;
+//       // background: url('../assets/img/CardMob_1.png') no-repeat;
+//       background-size: 35rem;
+//       background-position: center;
+//       background-attachment: inherit;
+//       // position: absolute;
+//       // bottom: 60%;
+//       // left: 20%;
+
 //       .card-title {
+//         margin: 3rem 0 0 2rem;
 //         .heading {
 //           // width: 264px;
 //           font-size: 24px;
@@ -705,27 +788,37 @@
 //           letter-spacing: 4.24px;
 //           text-align: center;
 //           text-transform: uppercase;
-//           padding: 10px 50px 15px 50px;
+//           padding: 10px 25px 15px 50px;
 //         }
 //       }
-  
+
 //       #howitworkbtn {
 //         width: 179px;
 //         background-color: #f24462;
 //         border-radius: 15px;
 //         text-align: center;
 //         padding: 10px;
-//         margin: 5% 20%;
+//         margin: 5% 0%;
 //       }
 //     }
-  
+
 //     .card-2 {
-//       position: absolute;
-//       bottom: -1%;
-//       left: 20%;
-  
-//       .card-title {
-//         .heading {
+//       // display: flex;
+//       // align-items: center;
+//       // flex-direction: column;
+//       // justify-content: center;
+//       // height: 32rem;
+//       // background: url('../assets/img/CardMob_2.png') no-repeat;
+//       background-size: 35rem;
+//       background-position: center;
+//       margin-top: -13rem;
+//       background-attachment: inherit;
+//       // position: absolute;
+//       // bottom: -1%;
+//       // left: 20%;
+
+//       .card-title-1 {
+//         .heading-1 {
 //           // width: 264px;
 //           font-size: 24px;
 //           font-weight: bold;
@@ -735,7 +828,7 @@
 //           padding: 10px 0px 0px 50px;
 //         }
 //       }
-  
+
 //       #sneakPeakbtn {
 //         width: 179px;
 //         background-color: #f24462;
@@ -744,7 +837,7 @@
 //         margin: 10% 24%;
 //         padding: 10px;
 //       }
-  
+
 //       .card-app-pay {
 //         color: #BCBCBC;
 //         width: 255px;
@@ -759,3 +852,111 @@
 //     }
 //   }
 // }
+
+.bottom-Card-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: -5%;
+
+  .card-1 {
+    //width: 700px;
+    position: relative;
+
+    .text-over-1 {
+      position: absolute;
+      top: 34px;
+      left: 33%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .card-title-1 {
+        .heading-1 {
+          font-size: 24px;
+          font-weight: bold;
+          letter-spacing: 4.24px;
+          text-align: center;
+          text-transform: uppercase;
+          padding: 10px 15px;
+        }
+      }
+
+      .card-btn-1 {
+        #howitworkbtn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          width: 179px;
+          background-color: #f24462;
+          border-radius: 15px;
+          text-align: center;
+          padding: 10px;
+          margin: 1rem auto;
+        }
+      }
+    }
+
+  }
+
+  .card-2 {
+    position: relative;
+    margin-top: -7rem;
+
+    .text-over-2 {
+      position: absolute;
+      bottom: 28px;
+      left: 32%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .card-title-2 {
+        .heading-2 {
+          font-size: 24px;
+          font-weight: bold;
+          letter-spacing: 4.24px;
+          text-align: center;
+          text-transform: uppercase;
+          padding: 10px 15px;
+        }
+      }
+
+      .card-btn-2 {
+        #sneakPeakbtn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          width: 179px;
+          background-color: #f24462;
+          border-radius: 15px;
+          text-align: center;
+          margin: 4% 15%;
+          padding: 10px;
+        }
+
+        .card-app-pay {
+          color: #BCBCBC;
+          width: 255px;
+          font-size: 14px;
+          font-weight: normal;
+          text-align: center;
+          letter-spacing: normal;
+          padding: 0px 76px;
+        }
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width:480px) {
+  .bottom-Card-mobile {
+    overflow-x: hidden !important;
+  }
+}

@@ -21,15 +21,17 @@ const CreateStepOne = (props) => {
     reset,
     submitting,
     onClose,
+    confirmPopup,
   } = props;
   const state = useSelector((state) => state.form.CreateStepOne);
   const { width } = useWindowSize();
-  const [confirmPopup, setConfirmPopup] = useState(false);
+  // const [confirmPopup, setConfirmPopup] = useState(false);
 
-  const toggle = () => setConfirmPopup(!confirmPopup);
+  // const toggle = () => setConfirmPopup(!confirmPopup);
 
   return (
     <>
+    {!confirmPopup ? <>
       <div className="inner_container">
         <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0 mt-0">
           <a onClick={previousPage} role="button">
@@ -52,11 +54,11 @@ const CreateStepOne = (props) => {
             Create a New Date
           </h6>
 
-          <div onClick={toggle} className="w-15 cursor-pointer">
+          <div onClick={onClose} className="w-15 cursor-pointer">
             <IoIosClose
               className="mouse-point"
               size={33}
-              onClick={toggle}
+              onClick={onClose}
               style={{ color: " rgba(255, 255, 255, 0.5)" }}
             />
           </div>
@@ -64,16 +66,16 @@ const CreateStepOne = (props) => {
         {width > 767 && (
           <div
             className="d-flex justify-content-center"
-            style={{ marginLeft: "30px" }}
+          // style={{ marginLeft: "22px" }}
           >
             <h3 className="text-center text-uppercase">Create a New Date</h3>
-            <div onClick={toggle} className="w-15 cursor-pointer">
+            {/* <div onClick={onClose} className="w-15 cursor-pointer">
               <IoIosClose
                 className="desk-close-first mouse-point"
                 size={33}
-                onClick={toggle}
+                onClick={onClose}
               />
-            </div>
+            </div> */}
           </div>
         )}
         <div className="step-wraps">
@@ -99,13 +101,12 @@ const CreateStepOne = (props) => {
           </ul>
         </div>
       </div>
-      {!confirmPopup ? (
         <>
           {" "}
           <div className="date-suggetion-text">
             <div
               className="inner_container"
-              style={{ paddingRight: "20px", paddingLeft: "20px" }}
+            // style={{ paddingRight: "20px", paddingLeft: "20px" }}
             >
               <h6>Suggest a date.</h6>
               <p>
@@ -128,10 +129,12 @@ const CreateStepOne = (props) => {
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Standard Class Dates</H5> */}
-                    <H5>
-                      When your availability is more important than a date
-                      suggestion.
-                    </H5>
+                    <div style={{ marginBottom: "1rem" }}>
+                      <H5>
+                        When your availability is more important than a date
+                        suggestion.
+                      </H5>
+                    </div>
                     {/* <span className="price-tag">$</span> */}
                   </div>
                   {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
@@ -178,10 +181,12 @@ const CreateStepOne = (props) => {
                 <div className="mb-5">
                   <div className=" d-flex align-items-center justify-content-between">
                     {/* <H5>Middle Class Dates</H5> */}
-                    <H5>
-                      When a date suggestion is more important than your
-                      availability.
-                    </H5>
+                    <div style={{ marginBottom: "1rem" }}>
+                      <H5>
+                        When a date suggestion is more important than your
+                        availability.
+                      </H5>
+                    </div>
                     {/* <span className="price-tag">$$</span> */}
                   </div>
                   {/* <div style={{ color: "#AFABAB", fontFamily: "Helvetica" }}>
@@ -322,9 +327,9 @@ const CreateStepOne = (props) => {
               </div>
             </form>
           </div>
-        </>
-      ) : null}
-      <ConfirmDate isOpen={confirmPopup} toggle={toggle} />
+        </> 
+      </>: null}
+      {/* <ConfirmDate isOpen={confirmPopup} toggle={toggle} /> */}
     </>
   );
 };

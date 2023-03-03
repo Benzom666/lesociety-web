@@ -156,6 +156,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                     />
 
                     <button
+                    //className="icon-move"
+                    id="message-icon"
                       type="button"
                       // className="message-user-popup-button icon-move-1"
                       className="message-user-popup-button"
