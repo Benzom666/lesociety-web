@@ -118,6 +118,15 @@ const CompleteProfile = (props) => {
       router.push({
         pathname: "/auth/update-profile",
       });
+    } else if (
+      router.query?.type &&
+      router.query?.edit
+      // user?.status === 2 &&
+      // user?.verified_screen_shown === true
+    ) {
+      router.push({
+        pathname: "/auth/update-profile",
+      });
     } else if (user?.status === 2 && user?.verified_screen_shown === true) {
       router.push({
         pathname: "/user/user-list",
@@ -185,12 +194,12 @@ const CompleteProfile = (props) => {
       <h2>
         {!loading && (router?.query?.token || user?.email_verified)
           ? //  user?.email_verified
-          //   ?
-          "Email Verified"
+            //   ?
+            "Email Verified"
           : // : "Email Verification"
           router?.query?.edit
-            ? "Profile Updated"
-            : "Profile Completed"}
+          ? "Profile Updated"
+          : "Profile Completed"}
       </h2>
       <p className="pt-4">
         {!loading &&
@@ -199,26 +208,32 @@ const CompleteProfile = (props) => {
           "You have already verified your email. Please provide us with 24hrs to conduct the review process. Le Society ensures optimal experience by only allowing serious members to join."}
         {!loading && user?.email_verified && (
           <>
-            <p className="mb-4" style={{color:"#fff"}}>
+            <p className="mb-4" style={{ color: "#fff" }}>
               Thanks for verifying your email address!
             </p>
             <p className="mb-4">
-              Your profile description and images are currently under review. Please provide us with 24 hours
-              to conduct the review process.
+              Your profile description and images are currently under review.
+              Please provide us with 24 hours to conduct the review process.
             </p>
             <p className="mb-4">
-              Le Society takes pride in only allowing serious members who follow our policy and guidelines to
-              join, which enables us to provide the most incredible experience to our users.
+              Le Society takes pride in only allowing serious members who follow
+              our policy and guidelines to join, which enables us to provide the
+              most incredible experience to our users.
             </p>
-            <a href="/home" style={{textDecoration:"none"}}>
-              <button className="explore-home-page-btn">Explore Our HomePage</button>
+            <a href="/home" style={{ textDecoration: "none" }}>
+              <button className="explore-home-page-btn">
+                Explore Our HomePage
+              </button>
             </a>
           </>
         )}
         {!loading && !user?.email_verified && (
           <>
             <p>
-              Thank you for creating your profile with Le Society. Please verify your account by clicking the link in the message sent to the email address on file. If you don't see the email, kindly check your spam folder.
+              Thank you for creating your profile with Le Society. Please verify
+              your account by clicking the link in the message sent to the email
+              address on file. If you don't see the email, kindly check your
+              spam folder.
             </p>
             {/* <p className="mt-4">
               please check your junk mail in case email not recieved on inbox.

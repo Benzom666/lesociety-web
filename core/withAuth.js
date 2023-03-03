@@ -26,7 +26,7 @@ const withAuth = (WrappedComponent) => {
             Router?.asPath?.includes("/messages") ||
             Router?.asPath?.includes("/chat") ||
             Router?.asPath?.includes("/future-date") ||
-            Router?.asPath?.includes("/home") ||
+            // Router?.asPath?.includes("/home") ||
             Router?.asPath?.includes("/howItWork") ||
             Router?.asPath?.includes("/payment") ||
             Router?.asPath?.includes("/verified-profile")
