@@ -114,8 +114,8 @@ const VerifyProfile = () => {
                     pathname: "/auth/profile",
                     query: {
                       edit: true,
-                      type: notifData.type,
-                      id: notifData._id,
+                      type: notifData?.type,
+                      id: notifData?._id,
                     },
                   })
                 }

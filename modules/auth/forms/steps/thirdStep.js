@@ -297,7 +297,8 @@ const ThirdStep = (props) => {
           handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
           min={100}
           max={250}
-          onChange={(val) => setTallValue(val)}
+          onChange={(val) => !router?.query?.type && setTallValue(val)}
+          disabled={router?.query?.type && router?.query?.edit}
         />
 
         <div className="auth-radio inner-radio">
@@ -307,6 +308,9 @@ const ThirdStep = (props) => {
             options={education}
             value={education}
             component={Inputs.radioField}
+            props={{
+              disabled: router?.query?.type && router?.query?.edit,
+            }}
           />
         </div>
         <div className="auth-radio inner-radio small-labels-radio">
@@ -316,6 +320,9 @@ const ThirdStep = (props) => {
             options={smoker}
             value={smoker}
             component={Inputs.radioField}
+            props={{
+              disabled: router?.query?.type && router?.query?.edit,
+            }}
           />
         </div>
         <div className="auth-radio inner-radio occupation-radio">
@@ -325,6 +332,9 @@ const ThirdStep = (props) => {
             options={occupation}
             value={occupation}
             component={Inputs.radioField}
+            props={{
+              disabled: router?.query?.type && router?.query?.edit,
+            }}
           />
           {!loadMore && (
             <a className="load-more" onClick={handleLoadMore}>

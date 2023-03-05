@@ -10,7 +10,7 @@ export function uploadFileField({
   value,
   type,
   meta: { touched, error, warning },
-  disabled
+  disabled,
 }) {
   return (
     <div className={`secret-input type-${type}`}>
@@ -111,7 +111,7 @@ export function inputField({
   isValid,
   loading,
   validationLength,
-  disabled
+  disabled,
 }) {
   let borderColor = "";
   if (meta.active || input.input === "") {
@@ -216,7 +216,7 @@ export function textarea({
   type,
   validationLength,
   meta: { touched, error, warning },
-  disabled
+  disabled,
 }) {
   return (
     <div className={`secret-input type-${type}`}>
@@ -289,6 +289,7 @@ export function radioField({
   onlyLabel,
   options,
   label,
+  disabled,
   meta: { touched, error, warning },
 }) {
   return (
@@ -320,6 +321,7 @@ export function radioField({
                       ? option.price + option.suptag == input.value
                       : option.id == input.value
                   }
+                  disabled={disabled}
                 />
                 <label
                   className="value-label"

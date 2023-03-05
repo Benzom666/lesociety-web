@@ -8,6 +8,7 @@ import Footer from "core/footer";
 import withAuth from "../../core/withAuth";
 import { apiRequest } from "utils/Utilities";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
+import { logout } from "@/modules/auth/authActions";
 
 const UpdatedProfile = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -16,12 +17,14 @@ const UpdatedProfile = (props) => {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
-      router.push({
-        pathname: "/user/user-list",
-      });
-    }, 5000);
-  }, [user]);
+    if (user?.status === 2) {
+      setTimeout(() => {
+        router.push({
+          pathname: "/user/user-list",
+        });
+      }, 5000);
+    }
+  }, [user?.status]);
 
   return (
     <div className="inner-page">
@@ -88,6 +91,17 @@ const UpdatedProfile = (props) => {
                     policies. A review of your most recent changes can take up
                     to 24 hours. Thank you for your patience!
                   </p>
+                  {user?.status === 1 && (
+                    <button
+                      className="explore-home-page-btn"
+                      onClick={() => {
+                        logout(router, dispatch);
+                      }}
+                    >
+                      Close Page
+                    </button>
+                  )}
+
                   {/* <p>
                     Le Society provide optimal experience by only allowing
                     serious members to join.

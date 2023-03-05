@@ -465,6 +465,7 @@ export const countriesCode = {
   Uganda: "UG",
   "United States Minor Outlying Islands (the)": "UM",
   "United States of America (the)": "US",
+  "United arab emirates (the)": "AE",
   Uruguay: "UY",
   Uzbekistan: "UZ",
   "Holy See (the)": "VA",

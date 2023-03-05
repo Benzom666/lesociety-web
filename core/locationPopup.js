@@ -237,9 +237,10 @@ function LocationPopup({
         },
       },
     },
-    ...defaultSearchData.filter(
-      (n) => n.data?.name?.toLowerCase() !== user?.location?.toLowerCase()
-    ),
+    ...defaultSearchData,
+    // .filter(
+    //   (n) => n.data?.name?.toLowerCase() !== user?.location?.toLowerCase()
+    // )
   ];
 
   return (
@@ -336,30 +337,30 @@ function LocationPopup({
                           } else {
                             setSearchStaus(true);
                           }
-                          // const search = {
-                          //   data,
-                          //   key,
-                          //   style,
-                          // };
-
-                          // updateSearch(search);
 
                           setTimeout(() => {
                             closeModal();
                           }, 1000);
-                          // closeModal();
                         }}
                       >
-                        <span>{data?.name}</span>
+                        <span>
+                          {user?.location === data?.name
+                            ? "Your location"
+                            : data?.name}
+                        </span>
                         <br />
                         <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                          {data?.province?.text}, {data?.country}
+                          {user?.location !== data?.name
+                            ? `${data?.province?.text}, ${data?.country}`
+                            : ""}
                         </span>
                         <input
                           type="radio"
                           checked={
-                            selectedLocation?.city?.toLowerCase() ===
-                            data?.name?.toLowerCase()
+                            selectedLocation?.city ===
+                            // ?.toLowerCase()
+                            data?.name
+                            // ?.toLowerCase()
                           }
                         />
                         <div className="check"></div>

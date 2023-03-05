@@ -59,7 +59,7 @@ export const defaultSearchData = [
     key: "tHamiltoncountry.8743",
     data: {
       country: "Canada",
-      name: "Brampton",
+      name: "Hamilton",
       short_code: "ca",
       province: {
         id: "region.17447",
