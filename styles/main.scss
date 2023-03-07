@@ -289,8 +289,13 @@ $GradientColor-second: rgba(#191919, 0.8);
             width: calc(50% - 12.5px);
             margin: 0px 5px 10px;
 
+            // input is hover but not disabled
+            input:hover:disabled + label {
+              background-color: #151515;
+            }
+
             input:checked + label,
-            input:hover + label {
+            input:hover:not(:disabled) + label {
               background-color: #151515;
               color: #fff;
               border: 1px solid rgba(255, 255, 255, 0.3);

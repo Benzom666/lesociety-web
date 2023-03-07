@@ -12,10 +12,10 @@ import io from "socket.io-client";
 import SideBarPopup from "./sideBarPopup";
 import Image from "next/image";
 import close1 from "../assets/close1.png";
-import LeSlogoWhite from '../assets/LeS logoWhite.png';
-import LeSlogoText from '../assets/img/LeSocietylogotext.png'
-import Logo_Mob from '../assets/img/Logo_Mob.png';
-import Logo_Web from '../assets/img/Logo_Web.png';
+import LeSlogoWhite from "../assets/LeS logoWhite.png";
+import LeSlogoText from "../assets/img/LeSocietylogotext.png";
+import Logo_Mob from "../assets/img/Logo_Mob.png";
+import Logo_Web from "../assets/img/Logo_Web.png";
 // const socket = io("https://staging-api.secrettime.com/", {
 //   autoConnect: true,
 // });
@@ -25,12 +25,18 @@ export default function HeaderLoggedIn({
   isBlack,
   unReadedConversationLength,
 }) {
+  const socket = io("https://staging-api.secrettime.com/", {
+    autoConnect: true,
+  });
+
   const [isActive, setActive] = useState(false);
   const width = useWindowSize();
   const router = useRouter();
   const user = useSelector((state) => state.authReducer.user);
-  const [conversations, setConversations] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  const [notifData, setNotifdata] = useState(null);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (modalIsOpen || isActive) {
@@ -42,45 +48,85 @@ export default function HeaderLoggedIn({
     }
   }, [modalIsOpen, isActive]);
 
+  useEffect(() => {
+    socket.auth = { user: "admin@getnada.com" };
+    socket.connect();
+    console.log("socket", socket.auth);
+    socket.on("connect", () => {
+      console.log("connected", socket.connected);
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+    console.log("socket Notif socket intiated called");
+  }, []);
+
+  useEffect(() => {
+    socket.on("connect_error", () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    });
+  }, [!socket.connected]);
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+      const unc = message?.notifications?.filter(
+        (item) => item.status === 0 && item.type !== "notification"
+      ).length;
+      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+      setCount(unc);
+    });
+  }, [socket.connected]);
+
+  useEffect(() => {
+    console.log("notiffff ", notifData);
+    const unc = notifData?.filter(
+      (item) => item.status === 0 && item.type !== "notification"
+    ).length;
+    console.log("count ", unc);
+    localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+    let unreadNotifCount;
+    unreadNotifCount = localStorage.getItem("unreadNotifCount");
+    setCount(unreadNotifCount);
+    console.log("unreadNotifCount ", unreadNotifCount);
+  }, [notifData]);
+
   function toggleModal() {
     setIsOpen(!modalIsOpen);
   }
-  // useEffect(() => {
-  //   getConversations();
-  // }, [user]);
 
-  // useEffect(() => {
-  //   socket.on(`request-${user?._id}`, (message) => {
-  //     console.log("reqested message header", message);
-  //     getConversations();
-  //   });
-  // }, [socket.connected]);
+  const fetchNotifications = async () => {
+    try {
+      const params = {
+        user_email: user.email,
+        sort: "sent_time",
+      };
+      const { data } = await apiRequest({
+        method: "GET",
+        url: `notification`,
+        params: params,
+      });
+      setNotifdata(data?.data?.notification);
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
 
-  // useEffect(() => {
-  //   if (socket.connected) {
-  //     socket.on(`recieve-${user?._id}`, (message) => {
-  //       console.log("recieve message header", message);
-  //       getConversations();
-  //     });
-  //   }
-  // }, [socket.connected]);
+  useEffect(() => {
+    fetchNotifications();
+  }, []);
 
-  // const getConversations = async () => {
-  //   try {
-  //     const res = await apiRequest({
-  //       method: "GET",
-  //       url: `chat/chatroom-list`,
-  //     });
-  //     // console.log("res", res.data?.data?.chatRooms);
-  //     const conversations =
-  //       res.data?.data?.chatRooms.length > 0
-  //         ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
-  //         : [];
-  //     setConversations(conversations);
-  //   } catch (err) {
-  //     console.log("err", err);
-  //   }
-  // };
+  useEffect(() => {
+    if (modalIsOpen || isActive) {
+      fetchNotifications();
+    }
+  }, [modalIsOpen, isActive]);
 
   const unReadMessagesLength = unReadedConversationLength
     ? unReadedConversationLength
@@ -121,7 +167,7 @@ export default function HeaderLoggedIn({
     >
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-md-4 col-2" style={{paddingLeft:"1.5rem"}}>
+          <div className="col-md-4 col-2" style={{ paddingLeft: "1.5rem" }}>
             <div className="logo">
               <>
                 <Link href="/auth/login">
@@ -180,7 +226,7 @@ export default function HeaderLoggedIn({
                 <li>
                   <div className="user-profile-details">
                     <figure
-                      className={`user_img_header ${
+                      className={`user_img_header user_notification ${
                         modalIsOpen ? "invisible" : ""
                       } `}
                       onClick={toggleClass}
@@ -194,6 +240,7 @@ export default function HeaderLoggedIn({
                         width={32}
                         height={32}
                       />
+                      {count > 0 && <span className="top-bages"></span>}
                     </figure>
                   </div>
                 </li>
@@ -210,7 +257,7 @@ export default function HeaderLoggedIn({
                     isActive ? "sidebar-nav open_nav_menu" : "sidebar-nav"
                   }
                 >
-                  <SideBar isActive={isActive}/>
+                  <SideBar isActive={isActive} />
                 </div>
               )}
             </nav>
