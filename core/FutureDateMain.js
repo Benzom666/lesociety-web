@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import useWindowSize from "utils/useWindowSize";
-
+//import Future_Video from '../assets/Future_Video.mp4'
 
 function FutureDateMain(props) {
   const { heading, mainHeadingContent, imgText, imgUrl } = props;
@@ -28,7 +28,9 @@ function FutureDateMain(props) {
           </div>
         </div>
       </div>
-
+  {/* <div className='future-vedio'>
+  <video src={Future_Video} autoPlay="true" />
+  </div> */}
     </>
   )
 }

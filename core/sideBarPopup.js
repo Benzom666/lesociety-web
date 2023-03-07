@@ -182,12 +182,18 @@ function sideBarPopup({ isOpen, toggle }) {
                 </div>
                 <div className="d-flex align-items-center mb-0 header_btn_wrap">
                   <Link href="/user/user-profile">
-                    <a style={{ height: "35px" }} onClick={toggle}>
+                    <a
+                      className=" d-flex align-items-center justify-content-center"
+                      onClick={toggle}
+                    >
                       View Profile
                     </a>
                   </Link>
                   <Link href="/auth/profile?edit=true">
-                    <a style={{ height: "35px" }} onClick={toggle}>
+                    <a
+                      className=" d-flex align-items-center justify-content-center"
+                      onClick={toggle}
+                    >
                       Edit Profile
                     </a>
                   </Link>
@@ -202,7 +208,7 @@ function sideBarPopup({ isOpen, toggle }) {
                       !documentUpoaded && router.push("/verified-profile")
                     }
                   >
-                    <span className="pt-1">
+                    <span className="pt-0">
                       {user?.documents_verified
                         ? "VERIFIED"
                         : !documentUpoaded
@@ -242,7 +248,7 @@ function sideBarPopup({ isOpen, toggle }) {
                     <button
                       onClick={() => router.push("/create-date/choose-city")}
                       type="button"
-                      className="create-date createdate-btn"
+                      className="create-date createdate-btn d-flex align-items-center justify-content-center"
                     >
                       Create New Date
                     </button>

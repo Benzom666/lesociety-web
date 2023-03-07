@@ -311,7 +311,7 @@ $GradientColor-second: rgba(#191919, 0.8);
               width: 100%;
               border-radius: 8px;
               font-size: 13px;
-              padding: 20px 10px;
+              padding: 22px 10px;
               background-color: #151515;
               color: #4e4d52;
               padding-left: 45px;
@@ -1328,7 +1328,7 @@ $GradientColor-second: rgba(#191919, 0.8);
       cursor: pointer;
       position: absolute;
       // top: 43px;
-      top: 35px;
+      top: 37px;
       right: 12px;
     }
 
@@ -1978,7 +1978,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         &:before {
           position: absolute;
           left: calc(100% - 50%);
-          top: calc(50% - 0px);
+          top: calc(50% - -1px);
           content: "";
           background-color: #d8d8d8;
           width: 100%;
@@ -5470,10 +5470,10 @@ path {
     font-size: 12px;
   }
 
-  .header_btn_wrap a {
-    line-height: 34px;
-    font-weight: 300;
-  }
+  // .header_btn_wrap a {
+  //   line-height: 34px;
+  //   font-weight: 300;
+  // }
 
   .profile-btn {
     height: 32px;

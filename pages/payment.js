@@ -12,9 +12,9 @@ function payment() {
   return (
     //  <div>payment</div>
     <>
-     {/* <button onClick={handleModal}>show modal</button>
-    { show && <HomePagePopUp onClose={handleModal} show={show}/>} */}
-    <CreatedatesWarningPopUp/>
+     <button onClick={handleModal}>show modal</button>
+    { show && <HomePagePopUp onClose={handleModal} show={show}/>}
+    {/* <CreatedatesWarningPopUp/> */}
      </>
   );
 }
