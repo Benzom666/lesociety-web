@@ -1,6 +1,6 @@
 import React from 'react'
 import Group246 from '../assets/img/Group 246.png'
-import ManImage from "../assets/img/man-img.jpeg";
+import HomePagePopUpImage from "../assets/img/HomePagePopUp_image.png";
 
 
 
@@ -14,13 +14,13 @@ function HomePagePopUp({show,onClose}) {
   
   return (
     <div className='modal_2' onClick={onClose}>
-      <div className='modal_content'>
+      <div className='modal_content_2'>
         <div className='modal_header'>
           <img src={Group246.src} alt="modal_logo" width="246px" />
         </div>
         <div className='modal_main_content'>
           <div className='modal_main_img'>
-            <img src={ManImage.src} alt="modal_main_img"/>
+            <img src={HomePagePopUpImage.src} alt="modal_main_img" width="100%"/>
           </div>
           <div className='modal_heading'>
             <h2>OUR STORY</h2>

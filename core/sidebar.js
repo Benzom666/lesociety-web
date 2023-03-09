@@ -134,10 +134,10 @@ export default function SideBar({ isActive }) {
             </div>
             <div className="d-flex align-items-center mb-0 header_btn_wrap">
               <Link href="/user/user-profile">
-                <a>View Profile</a>
+                <a className=" d-flex align-items-center justify-content-center">View Profile</a>
               </Link>
               <Link href="/auth/profile?edit=true">
-                <a>Edit Profile</a>
+                <a className=" d-flex align-items-center justify-content-center">Edit Profile</a>
               </Link>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function SideBar({ isActive }) {
                   !documentUpoaded && router.push("/verified-profile")
                 }
               >
-                <span className="pt-1">
+                <span className="pt-0">
                   {user?.documents_verified
                     ? "VERIFIED"
                     : !documentUpoaded
@@ -194,7 +194,7 @@ export default function SideBar({ isActive }) {
                 <button
                   onClick={() => router.push("/create-date/choose-city")}
                   type="button"
-                  className="create-date"
+                  className="create-date d-flex align-items-center justify-content-center"
                 >
                   Create New Date
                 </button>
@@ -247,7 +247,7 @@ export default function SideBar({ isActive }) {
         <div className="bottom-footer-sidebar">
           <div className="d-flex align-items-center mb-0 header_btn_wrap log-btn">
             <button
-              className="log-btn"
+              className="log-btn d-flex align-items-center justify-content-center "
               type="button"
               onClick={() => {
                 logout(router, dispatch);

@@ -1812,7 +1812,7 @@ $GradientColor-second: rgba(#191919, 0.8);
         border-bottom: 1px solid rgba(135, 135, 135, 0.2);
         padding: 10px;
         text-align: start;
-
+        cursor: pointer;
         span {
           font-size: 18px;
         }
@@ -2660,7 +2660,7 @@ div[id="scrolldiv"] {
       h5 {
         font-size: 18px;
         letter-spacing: 0.09px;
-        margin-bottom: 0;
+        margin-bottom: 8px;
         word-break: break-all;
       }
     }
@@ -5060,7 +5060,8 @@ path {
     font-size: 13px;
     line-height: 15px;
     text-align: center;
-    color: #4f4e54;
+    //color: #4f4e54;
+    color: #fff;
     margin-top: 2px;
   }
 }
@@ -5080,7 +5081,8 @@ path {
     font-size: 13px;
     line-height: 15px;
     text-align: center;
-    color: #4f4e54;
+    // color: #4f4e54;
+    color: #fff;
     margin-top: 2px;
   }
 }

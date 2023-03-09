@@ -130,7 +130,7 @@ function sideBarPopup({ isOpen, toggle }) {
     >
       <div
         className="modal-dialog modal-custom-dailog"
-        style={{ marginTop: "55px" }}
+        style={{ marginTop: "47px" }}
       >
         <div
           className="modal-content"
@@ -306,7 +306,7 @@ function sideBarPopup({ isOpen, toggle }) {
               >
                 <div className="d-flex align-items-center mb-0 header_btn_wrap log-btn login-btn">
                   <button
-                    className="log-btn"
+                    className="log-btn d-flex align-items-center justify-content-center"
                     type="button"
                     style={{ lineHeight: "3" }}
                     onClick={() => {
