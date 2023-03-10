@@ -116,7 +116,7 @@ const Verfied = (props) => {
                 </span>
                 <h2>Profile Verified</h2>
                 <p className="pt-4">
-                  <p className="mb-4">
+                  <p className="mb-4 text-white">
                     Your Profile with Le Society Has Been Approved!
                   </p>
                   <p>

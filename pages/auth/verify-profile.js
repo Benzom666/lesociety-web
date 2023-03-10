@@ -102,7 +102,10 @@ const VerifyProfile = () => {
               <div className="upload-pics profile-completion">
                 <h2>Verification Unsuccessful</h2>
                 <p className="pt-4">
-                  {`${PROFILE_UNVERIFIED} ${notifData?.message}`}
+                  {`${PROFILE_UNVERIFIED}`}
+                </p>
+                <p className="pt-4" style={{color:"#fff"}}>
+                  {`${notifData?.message}`}
                 </p>
               </div>
             </div>
