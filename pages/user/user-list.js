@@ -91,7 +91,9 @@ function UserList(props) {
         country: router?.query?.country,
         province: router?.query?.province,
       });
-      setSearchStaus(true);
+      if (user?.location !== router?.query?.city) {
+        setSearchStaus(true);
+      }
     } else {
       setLocation({
         city: user?.location,

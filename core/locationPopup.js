@@ -345,7 +345,7 @@ function LocationPopup({
                       >
                         <span>
                           {user?.location === data?.name
-                            ? "Your location"
+                            ? "Main Gallery"
                             : data?.name}
                         </span>
                         <br />

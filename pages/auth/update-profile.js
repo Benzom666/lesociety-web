@@ -16,15 +16,17 @@ const UpdatedProfile = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  useEffect(() => {
-    if (user?.status === 2) {
-      setTimeout(() => {
-        router.push({
-          pathname: "/user/user-list",
-        });
-      }, 5000);
-    }
-  }, [user?.status]);
+  // useEffect(() => {
+  //   if (user?.status === 2) {
+  //     setTimeout(() => {
+  //       router.push({
+  //         pathname: "/user/user-list",
+  //       });
+  //     }, 5000);
+  //   }
+  // }, [user?.status]);
+
+  // disable back and forword button of browser using router
 
   return (
     <div className="inner-page">
@@ -91,16 +93,22 @@ const UpdatedProfile = (props) => {
                     policies. A review of your most recent changes can take up
                     to 24 hours. Thank you for your patience!
                   </p>
-                  {user?.status === 1 && (
-                    <button
-                      className="explore-home-page-btn"
-                      onClick={() => {
+                  {/* {user?.status === 1 && ( */}
+                  <button
+                    className="explore-home-page-btn"
+                    onClick={() => {
+                      if (user?.status === 2) {
+                        router.push({
+                          pathname: "/user/user-list",
+                        });
+                      } else {
                         logout(router, dispatch);
-                      }}
-                    >
-                      Close Page
-                    </button>
-                  )}
+                      }
+                    }}
+                  >
+                    Close Page
+                  </button>
+                  {/* )} */}
 
                   {/* <p>
                     Le Society provide optimal experience by only allowing
