@@ -49,7 +49,6 @@
     .myCard {
         display: flex;
         justify-content: space-around;
-        //flex-direction: column;
         align-items: center;
         background-color: #f2f5f7;
         padding: 60px 0px;
@@ -193,7 +192,7 @@
 
         .howitWork-heading {
             // padding-top: 20px !important;
-            padding: 20px 50px 8px 77px;
+            padding: 14px 50px 8px 77px;
             font-size: 20px;
             font-weight: bold;
             font-stretch: normal;
@@ -215,7 +214,7 @@
             letter-spacing: 0px;
             text-align: center;
             color: #3a5e77;
-            padding: 5px 22px;
+            padding: 6px 22px;
         }
 
         .The-future-of-Le-Society {
@@ -272,6 +271,7 @@
                 flex-direction: column;
                 width: 365px;
                 margin: 2rem auto;
+                padding: 30px 0px !important;
 
                 .textContent {
                     padding: 20px 0px;
@@ -305,6 +305,7 @@
 
             .parentdiv-2 {
                 flex-direction: column;
+                margin-top: 0rem !important;
 
                 .myCard-1 {
                     // margin-left: 0;
@@ -370,12 +371,14 @@
 
         .container-1 {
             width: 358px !important;
-            margin:0 auto;
+            margin: 0 auto;
+
             .myCard {
                 flex-direction: column;
                 width: 100%;
                 //margin: auto;
                 margin: 2rem auto;
+                padding: 20px 0px !important;
 
                 .textContent {
                     padding: 20px 0px;
@@ -409,6 +412,7 @@
 
             .parentdiv-2 {
                 flex-direction: column;
+                margin-top: 0rem !important;
 
                 .myCard-1 {
                     // margin-left: 0;
@@ -447,7 +451,7 @@
 
             .howitWork-heading {
                 letter-spacing: 3.2px;
-                padding: 8px 12px;
+                padding: 8px 12px 4px 12px;
             }
 
             .howitWork-content {
@@ -592,7 +596,7 @@
     width: 41px;
     position: absolute;
     z-index: 99;
-    background: url( '../assets/svg/sun.svg') no-repeat;
+    background: url('../assets/svg/sun.svg') no-repeat;
     top: 10px;
     left: -30px;
 }
@@ -614,7 +618,7 @@
     width: 41px;
     position: absolute;
     z-index: 99;
-    background: url( '../assets/svg/paint.svg') no-repeat;
+    background: url('../assets/svg/paint.svg') no-repeat;
     top: 30%;
     left: -135px;
 }
@@ -676,6 +680,7 @@
         z-index: 99;
         top: -515%;
     }
+
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
         content: '';
         background: url('../assets/svg/bottle.svg') no-repeat;
@@ -686,6 +691,7 @@
         z-index: 99;
         top: -54px;
     }
+
     .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
         left: 20px;
         z-index: 99;
@@ -746,7 +752,8 @@
         top: 87%;
         left: 84%;
     }
-    .how-it-works button.backtoHomepage-btn::before{
+
+    .how-it-works button.backtoHomepage-btn::before {
         content: '';
         background: url('../assets/svg/paint.svg') no-repeat;
         height: 41px;
@@ -781,6 +788,7 @@
         z-index: 99;
         top: -54px;
     }
+
     .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
         left: 20px;
         z-index: 99;
@@ -842,7 +850,8 @@
         top: 85%;
         left: 92%;
     }
-    .how-it-works button.backtoHomepage-btn::before{
+
+    .how-it-works button.backtoHomepage-btn::before {
         content: '';
         background: url('../assets/svg/paint.svg') no-repeat;
         height: 41px;
@@ -854,9 +863,8 @@
     }
 }
 
-.how-it-works{
+.how-it-works {
     a {
-       position: relative;
-     }
- }
- 
+        position: relative;
+    }
+}

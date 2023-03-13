@@ -13,7 +13,10 @@ import Ticket from '../assets/svg/ticket.svg';
 import Paint from '../assets/svg/paint.svg';
 import Sport from '../assets/svg/sport.svg';
 import Moon from '../assets/svg/moon.svg';
-import Gentalman from '../assets/img/Gentalman (2).png'
+import Gentalman4 from '../assets/img/Gentalman_4.png';
+import Ladies4 from '../assets/img/Ladies4.png';
+import Goal4 from '../assets/img/Goal4.png';
+import Choice4 from '../assets/img/Choice4.png';
 import Ladies from '../assets/img/Ladies.png'
 import Goal from '../assets/img/Goal.png'
 import Choice from '../assets/img/Choice.png'
@@ -48,56 +51,56 @@ function Home({ items }) {
               </div>
               <div className="ls-text">
                 <Image className="leSocitey-heading" src={LeSlogoText} sizes={100} />
-                <p className="leSocitey-subheading">Date outside Your League</p>
+                <p className="leSocitey-subheading">Date Outside Your League</p>
               </div>
             </div>
           </nav>
         </div>
-        <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman}>
-          <p className="aboutCardContent">{content.aboutCardContent}</p>
+        <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman4}>
+          <p className="info-text">{content.aboutCardContent}</p>
         </HomePageMainSection>
-        <HomePageMiddleNav style={style1} />
-        <HomePageMainSection title="LADIES" maincardImage={Ladies}>
+        {/* <HomePageMiddleNav style={style1} /> */}
+        <HomePageMainSection title="LADIES" maincardImage={Ladies4}>
           <div className='main-content'>
-            <p className="aboutCardContent" style={{ padding: "30px 40px" }}>{content.aboutCardContent1}</p>
-            <p className="aboutCardContent" style={{ padding: "10px 30px" }}>{content.aboutCardContent4}</p>
-            <p className="aboutCardContent" style={{ textAlign: "center", fontSize: "16px", color: "#a2a2a2" }}>{content.aboutCardContent5}</p>
+            <p className="info-text info-text-Laidies">{content.aboutCardContent1}</p>
+            <p className="info-text info-text-Laidies">{content.aboutCardContent4}</p>
+            <p className="info-text" style={{ textAlign: "center", fontSize: "16px", color: "#a2a2a2" }}>{content.aboutCardContent5}</p>
             <div className='main-content-icon'>
               <div class="row align-items-center justify-content-evenly mt-3">
-                <div class="col-4" style={{ maxWidth: "120px", textAlign: "center" }}>
-                  <img src={Sun.src} alt="icon-img"  height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop:"0.5rem" }}>Brunch <br /> Date</p>
+                <div class="col-3" style={{ maxWidth: "120px", textAlign: "center" }}>
+                  <img src={Sun.src} alt="icon-img" height={41} width={41} />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Brunch <br /> Date</p>
                 </div>
-                <div class="col-4" style={{ maxWidth: "120px", textAlign: "center" }}>
-                  <img src={Ticket.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px",marginTop:"0.5rem"  }}>Entertainment <br />
+                <div class="col-6" style={{ maxWidth: "120px", textAlign: "center" }}>
+                    <img src={Ticket.src} alt="icon-img" height={41} width={41} style={{marginLeft:"20px"}} />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" ,marginRight:"-23px"}}>Entertainment
                     & Sports</p>
                 </div>
-                <div class="col-4" style={{ maxWidth: "120px", textAlign: "center" }}>
+                <div class="col-3" style={{ maxWidth: "120px", textAlign: "center" }}>
                   <img src={Paint.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px",marginTop:"0.5rem"  }}>Take A <br />Class</p>
+                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Take A <br />Class</p>
                 </div>
               </div>
               <div class="row align-items-center justify-content-center mt-4">
                 <div class="col-6" style={{ maxWidth: "120px", textAlign: "center" }}>
                   <img src={Bottle.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px",marginTop:"0.5rem"  }}>Bottles <br />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Bottles <br />
                     & Dance</p>
                 </div>
                 <div class="col-6" style={{ maxWidth: "120px", textAlign: "center" }}>
                   <img src={Dine.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px",marginTop:"0.5rem"  }}>Wine <br />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Wine <br />
                     & Dine</p>
                 </div>
               </div>
             </div>
           </div>
         </HomePageMainSection>
-        <HomePageMainSection title="THE GOAL" maincardImage={Goal}>
-          <p className="aboutCardContent">{content.aboutCardContent2}</p>
+        <HomePageMainSection title="THE GOAL" maincardImage={Goal4 }>
+          <p className="info-text">{content.aboutCardContent2}</p>
         </HomePageMainSection>
-        <HomePageMainSection title="A GENTLEMEN’S CHOICE" maincardImage={Choice}>
-          <p className="aboutCardContent">{content.aboutCardContent3}</p>
+        <HomePageMainSection title="A GENTLEMEN’S CHOICE" maincardImage={Choice4}>
+          <p className="info-text">{content.aboutCardContent3}</p>
         </HomePageMainSection>
         {width > 768 ? <HomePageCardSection /> : <HomePageCardSectionMobile />}
         {/* <HomePageCardSection/> */}

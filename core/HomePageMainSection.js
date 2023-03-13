@@ -8,8 +8,9 @@ function HomePageMainSection(props) {
   const { title, maincardImage, children,styles} = props;
   const { width } = useWindowSize();
   return (
+    <>
     <div className='container'>
-      <div className={`row align-items-center mx-0 home-main-section ${styles}`}>
+      {/* <div className={`row align-items-center mx-0 home-main-section ${styles}`}>
       {width >769 &&   <div className="col-lg-3 col-sm-12">
           <div className='main-title'>
             <h5>{title}</h5>
@@ -30,8 +31,15 @@ function HomePageMainSection(props) {
         <div className="col-lg-4 col-sm-12">
           {children}
         </div>
-      </div>
+      </div> */}
     </div>
+     <div className='main-container'>
+    { width > 769 && <h2 className='heading-text'>{title}</h2>}
+      <img src={maincardImage.src} alt="logo" className='main-image' width="100%"/>
+      { width < 769 && <h2 className='heading-text'>{title}</h2>}
+      <p className='info-text'>{children}</p>
+    </div>
+    </>
   )
 }
 

@@ -1,17 +1,18 @@
 import React from 'react'
-import Group261 from '../assets/img/Group 261.png'
+import Group261 from '../assets/img/Group 261.png';
+import DateCardImage from '../assets/img/Date Cards (1).png';
 export function HowitWorkCardComponent() {
   return (
     <>
       <div className='container-1'>
         <div className='parentdiv-1'>
-          <div className=' myCard '>
+          <div className=' myCard'>
             <div className='textContent'>
               <p className='sub-heading'>Introducing</p>
               <h3 className='main-heading'>Date Cards</h3>
             </div>
             <div className='childImg '>
-              <img src={Group261.src} alt="img-main" style={{ width: "100%" }} />
+              <img src={DateCardImage.src} alt="img-main" width="350px" />
             </div>
           </div>
         </div>

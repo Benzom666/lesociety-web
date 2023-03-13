@@ -6,11 +6,12 @@ import withAuth from "../core/withAuth";
 import useWindowSize from "utils/useWindowSize";
 import LeSlogoWhite from "../assets/LeS logoWhite.png";
 import MaskGroup22 from "../assets/img/Mask Group 22.png";
-//import Future_Vedio from '../assets/Future_Video.mp4';
+//import Future_Vedio from "../assets/LSViedo.mp4";
 import FutureDates from "@/core/FutureDates";
 import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 import FutureDateMain from "@/core/FutureDateMain";
 import HomeFooter from "@/core/HomeFooter";
+import FutureDateVediosection from "@/core/FutureDateVediosection";
 
 const futureDatesContent = {
   futureDatesContent1: {
@@ -32,7 +33,7 @@ const futureDatesMiddleContent = {
     mainHeadingContent:
       "No more ghosting. See where your date is and track how long until your agreed meeting time. You don’t need to process payment until your date has arrived. Use our simple swipe to pay feature to process payment once you have met and enjoy your date.",
     imgText: "GPS tracking <br/>& in app payment",
-    imgUrl:MaskGroup22,
+    imgUrl:MaskGroup22
   },
   futureDatesMiddleContent2: {
     heading: "Share your <span class='test'>live</span> location.",
@@ -71,11 +72,16 @@ function FutureDate() {
         </div>
         <FutureDates title={futureDatesContent.futureDatesContent1.title}
           contentaboutDating={futureDatesContent.futureDatesContent1.datingContent} />
-        <FutureDateMain heading={futureDatesMiddleContent.futureDatesMiddleContent1.heading}
+           <FutureDateVediosection heading={futureDatesMiddleContent.futureDatesMiddleContent1.heading}
+           mainHeadingContent ={futureDatesMiddleContent.futureDatesMiddleContent1.mainHeadingContent}
+           imgUrl={futureDatesMiddleContent.futureDatesMiddleContent1.imgUrl} 
+           imgText={futureDatesMiddleContent.futureDatesMiddleContent1.imgText}
+           />
+        {/* <FutureDateMain heading={futureDatesMiddleContent.futureDatesMiddleContent1.heading}
         mainHeadingContent ={futureDatesMiddleContent.futureDatesMiddleContent1.mainHeadingContent}
         imgUrl={futureDatesMiddleContent.futureDatesMiddleContent1.imgUrl} 
         imgText={futureDatesMiddleContent.futureDatesMiddleContent1.imgText}
-         />
+         /> */}
         <HomePageMiddleNav style={style1}/>
         <FutureDateMain heading={futureDatesMiddleContent.futureDatesMiddleContent2.heading}
         mainHeadingContent ={futureDatesMiddleContent.futureDatesMiddleContent2.mainHeadingContent}
