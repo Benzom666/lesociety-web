@@ -98,7 +98,7 @@ export default function HeaderLoggedIn({
   }, [notifData]);
 
   function toggleModal() {
-    setIsOpen(!modalIsOpen);
+    setIsOpen(!isBlack && !modalIsOpen);
   }
 
   const fetchNotifications = async () => {
@@ -156,7 +156,7 @@ export default function HeaderLoggedIn({
     if (width?.width > 480) {
       toggleModal();
     } else {
-      setActive(!isActive);
+      setActive(!isBlack && !isActive);
       document.body.classList.toggle("open-sidebar");
     }
   };
@@ -257,7 +257,7 @@ export default function HeaderLoggedIn({
                     isActive ? "sidebar-nav open_nav_menu" : "sidebar-nav"
                   }
                 >
-                  <SideBar isActive={isActive} />
+                  <SideBar isActive={isActive} locationPopupModal={isBlack} />
                 </div>
               )}
             </nav>

@@ -43,6 +43,7 @@ function UserProfile({ preview, editHandle }) {
 
   const [viewFullPage, setViewFullPage] = useState(false);
   const [slideShowIndex, setSlideShowIndex] = useState(0);
+  const [ladiesShow, setLadiesShow] = useState(false);
 
   const [image1Loading, setImage1Loading] = useState(true);
   const [image2Loading, setImage2Loading] = useState(true);
@@ -424,9 +425,7 @@ function UserProfile({ preview, editHandle }) {
   } else {
     return (
       <div className="inner-page">
-        {!preview && <HeaderLoggedIn 
-        fixed={width < 767}
-         />}
+        {!preview && <HeaderLoggedIn fixed={width < 767} />}
         <div className="inner-part-page">
           <div
             className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${
@@ -874,6 +873,12 @@ function UserProfile({ preview, editHandle }) {
                                                   ) {
                                                     setSelectedDate(date);
                                                     dateModalIsOpen();
+                                                  } else {
+                                                    if (
+                                                      user?.gender === "female"
+                                                    ) {
+                                                      setLadiesShow(true);
+                                                    }
                                                   }
                                                 }}
                                               >
@@ -1142,6 +1147,11 @@ function UserProfile({ preview, editHandle }) {
                                         </>
                                       )}
                                     </Modal>
+                                    {ladiesShow && (
+                                      <div className="already-messaged">
+                                        Ladies are not able to request dates
+                                      </div>
+                                    )}
                                   </div>
                                 </>
                               )}

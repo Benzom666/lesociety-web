@@ -5,8 +5,7 @@ import { deAuthenticateAction, logout } from "../modules/auth/authActions";
 import { useRouter } from "next/router";
 import _ from "lodash";
 import { initialize, reset } from "redux-form";
-import Logo_Web from '../assets/img/Logo_Web.png';
-
+import Logo_Web from "../assets/img/Logo_Web.png";
 
 export default function Header(props) {
   const user = useSelector((state) => state.authReducer.user);
@@ -17,16 +16,25 @@ export default function Header(props) {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-4">
-            <div className="logo" style={{cursor:"pointer"}}>
-              <Link href="/auth/login">
-                {/* <img src="/images/logo.svg" width="159" alt="Logo" /> */}
+            <div className="logo" style={{ cursor: "pointer" }}>
+              {router?.query?.edit ? (
                 <img
+                  src={Logo_Web.src}
+                  width="232"
+                  alt="Logo"
+                  className="d-none d-md-block cursor-pointer"
+                />
+              ) : (
+                <Link href="/auth/login">
+                  {/* <img src="/images/logo.svg" width="159" alt="Logo" /> */}
+                  <img
                     src={Logo_Web.src}
                     width="232"
                     alt="Logo"
                     className="d-none d-md-block cursor-pointer"
                   />
-              </Link>
+                </Link>
+              )}
             </div>
           </div>
           <div className="col-md-8 ">
