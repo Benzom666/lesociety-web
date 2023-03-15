@@ -9,10 +9,14 @@ import HomeFooter from "@/core/HomeFooter";
 import { HowItWorkMain, contentObject } from "@/core/HowItWorkComponent";
 import { HowitWorkCardComponent } from "@/core/HowitWorkCardComponent";
 
+const style1 = {
+  opacity: "0.9",
+  backgroundColor:"#1A1A1A"
+}
+
 const style2 = {
   color: "#fff",
-  fontSize: "18px",
-  opacity: 0.9,
+  fontSize: "16px",
 };
 
 const style3 = {
@@ -32,18 +36,18 @@ function HowItWork() {
       <div className="inner-part-page auth-section how-it-works">
         <div className="howItWork-navbar">
         <nav className="navbar navbar-light bg-#f2f5f7">
-          <div className="LeSociety-Icon-White d-flex">
+          <div className="LeSociety-Icon-White d-flex mt-3">
             <div className="ls-logo">
               <img src={LeSlogoBlack.src} alt="ls-logo" />
             </div>
-            <div className="ls-text mt-4 ">
+            <div className="ls-text mt-2 ">
               <p> How it Works</p>
             </div>
           </div>
         </nav>
         </div>
         <HowitWorkCardComponent />
-         <HomePageMiddleNav styleText={style2} />
+         <HomePageMiddleNav style={style1} styleText={style2}  />
         <div className="container-2 mb-5">
           <div className=" col-xl-12 col-lg-12 col-md-12 container-2-title">
             <h3 className="heading">Date Experiences</h3>

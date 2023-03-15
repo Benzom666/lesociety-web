@@ -24,7 +24,7 @@
                     letter-spacing: 0.2px;
                     color: black;
                     font-size: 23px;
-                    padding: 5px 0px;
+                    padding: 22px 0px;
                     text-transform: uppercase;
                 }
             }
@@ -507,25 +507,81 @@
         width: 328px;
         margin: 3rem auto;
     }
+    .container-2{
+        .The-future-of-Le-Society {
+            padding: 3px 5px;
+            letter-spacing: 0.2px;
+        }
+    }
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:769px) and (min-width:480px){
+    .how-it-works{
+        .LeSociety-Icon-White{
+            padding: 50px 75px 0px 75px !important;
+        }
+    }
+}
+
+@media only screen and (max-width:480px) and (min-width:340px) {
     .how-it-works {
         .howItWork-navbar {
             margin: 10px auto !important;
 
             // margin-bottom: 2rem;
             .LeSociety-Icon-White {
+                display: flex;
+                flex-direction: column;
                 padding: 0px !important;
 
                 .ls-text {
                     padding-left: 1rem !important;
                 }
+
+                .ls-logo {
+                    margin: 20px auto;
+                }
             }
+        }
+        .backtoHomepage-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 270px !important;
+            margin: 3rem auto;
         }
     }
 }
 
+@media only screen and (max-width:340px) {
+    .how-it-works {
+        .howItWork-navbar {
+            margin: 10px auto !important;
+
+            // margin-bottom: 2rem;
+            .LeSociety-Icon-White {
+                display: flex;
+                flex-direction: column;
+                padding: 0px !important;
+                margin: 0 auto;
+                .ls-text {
+                    padding-left: 1rem !important;
+                }
+
+                .ls-logo {
+                    margin: 20px auto 5px auto;
+                }
+            }
+        }
+        .backtoHomepage-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 230px !important;
+            margin: 3rem auto;
+        }
+    }
+}
 
 .parentdiv-1 .myCard:before {
     content: '';
@@ -670,7 +726,7 @@
 
 @media only screen and (max-width:768px)and (min-width:500px) {
     .parentdiv-1 .myCard:before {
-        left: -5%;
+        left: -2%;
         top: -58px;
         z-index: 99;
     }
@@ -678,7 +734,7 @@
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
         right: -15px;
         z-index: 99;
-        top: -515%;
+        top: -486%;
     }
 
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
@@ -767,15 +823,15 @@
 
 @media only screen and (max-width:499px) {
     .parentdiv-1 .myCard:before {
-        left: -5%;
+        left: 1%;
         top: -58px;
         z-index: 99;
     }
 
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
-        right: -15px;
+        right: 20px;
         z-index: 99;
-        top: -508%;
+        top: -460%;
     }
 
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
@@ -784,7 +840,7 @@
         height: 41px;
         width: 41px;
         position: absolute;
-        right: -12px;
+        right: 4px;
         z-index: 99;
         top: -54px;
     }

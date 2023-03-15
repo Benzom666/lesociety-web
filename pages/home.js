@@ -29,6 +29,7 @@ import HomePageCardSectionMobile from "@/core/HomePageCardSectionMobile";
 
 const style1 = {
   opacity: "0.9",
+  backgroundColor:"#1A1A1A"
 }
 const styleBackground = {
   backgroundColor: "#000000"
@@ -59,7 +60,7 @@ function Home({ items }) {
         <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman4}>
           <p className="info-text">{content.aboutCardContent}</p>
         </HomePageMainSection>
-        {/* <HomePageMiddleNav style={style1} /> */}
+        <HomePageMiddleNav style={style1} />
         <HomePageMainSection title="LADIES" maincardImage={Ladies4}>
           <div className='main-content'>
             <p className="info-text info-text-Laidies">{content.aboutCardContent1}</p>
@@ -68,28 +69,28 @@ function Home({ items }) {
             <div className='main-content-icon'>
               <div class="row align-items-center justify-content-evenly mt-3">
                 <div class="col-3" style={{ maxWidth: "120px", textAlign: "center" }}>
-                  <img src={Sun.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Brunch <br /> Date</p>
+                  <img src={Sun.src} alt="icon-img" height={35} width={35} />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "14px", marginTop: "0.5rem" }}>Brunch <br /> Date</p>
                 </div>
                 <div class="col-6" style={{ maxWidth: "120px", textAlign: "center" }}>
-                    <img src={Ticket.src} alt="icon-img" height={41} width={41} style={{marginLeft:"20px"}} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" ,marginRight:"-23px"}}>Entertainment
-                    & Sports</p>
+                    <img src={Ticket.src} alt="icon-img" height={35} width={35} style={{marginLeft:"20px"}} />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "14px", marginTop: "0.5rem" ,marginRight:"-13px"}}>Entertainment
+                  <br/> & Sports</p>
                 </div>
                 <div class="col-3" style={{ maxWidth: "120px", textAlign: "center" }}>
-                  <img src={Paint.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Take A <br />Class</p>
+                  <img src={Paint.src} alt="icon-img" height={35} width={35} />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "14px", marginTop: "0.5rem" }}>Take A <br />Class</p>
                 </div>
               </div>
               <div class="row align-items-center justify-content-center mt-4">
-                <div class="col-6" style={{ maxWidth: "120px", textAlign: "center" }}>
-                  <img src={Bottle.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Bottles <br />
+                <div class="col-6" style={{ maxWidth: "120px", textAlign: "center",paddingLeft:"-7px" }}>
+                  <img src={Bottle.src} alt="icon-img" height={35} width={35} />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "14px", marginTop: "0.5rem" }}>Bottles <br />
                     & Dance</p>
                 </div>
-                <div class="col-6" style={{ maxWidth: "120px", textAlign: "center" }}>
-                  <img src={Dine.src} alt="icon-img" height={41} width={41} />
-                  <p style={{ fontFamily: "Montserrat", fontSize: "16px", marginTop: "0.5rem" }}>Wine <br />
+                <div class="col-6" style={{ maxWidth: "120px", textAlign: "center",marginRight:"-7px" }}>
+                  <img src={Dine.src} alt="icon-img" height={35} width={35} />
+                  <p style={{ fontFamily: "Montserrat", fontSize: "14px", marginTop: "0.5rem" }}>Wine <br />
                     & Dine</p>
                 </div>
               </div>

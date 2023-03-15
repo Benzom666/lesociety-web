@@ -1,9 +1,9 @@
 import React from 'react'
 import useWindowSize from "utils/useWindowSize";
-
+import VideoComponent from './Video';
 
 function FutureDateVediosection(props) {
-    const { heading, mainHeadingContent, imgText, imgUrl } = props;
+  const { heading, mainHeadingContent, imgText, imgUrl } = props;
   const { width } = useWindowSize();
   return (
     <>
@@ -19,18 +19,16 @@ function FutureDateVediosection(props) {
             <div className='main-content-headig-2' style={{ textAlign: "center" }}>
               <p className='futureDates-content-over-img' dangerouslySetInnerHTML={{ __html: imgText }}></p>
               <div className='main-imagefuture'>
-                <img src={imgUrl.src} alt="mobileview" />
+                {/* <img src={imgUrl.src} alt="mobileview" /> */}
                 {/* <video width="100%" height="100%" preload='auto'controls>
                     <source src={imgUrl.src} type="video/mp4"/>
                 </video> */}
+                <VideoComponent />
               </div>
             </div>
           </div>
         </div>
       </div>
-  {/* <div className='future-vedio'>
-  <video src={Future_Video} autoPlay="true" />
-  </div> */}
     </>
   )
 }

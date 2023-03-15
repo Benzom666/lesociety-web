@@ -12,7 +12,7 @@ export function HowitWorkCardComponent() {
               <h3 className='main-heading'>Date Cards</h3>
             </div>
             <div className='childImg '>
-              <img src={DateCardImage.src} alt="img-main" width="350px" />
+              <img src={ Group261.src} alt="img-main" width="100%" />
             </div>
           </div>
         </div>
