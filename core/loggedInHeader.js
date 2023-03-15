@@ -24,10 +24,12 @@ export default function HeaderLoggedIn({
   fixed,
   isBlack,
   unReadedConversationLength,
+  count,
+  setCount,
 }) {
-  const socket = io("https://staging-api.secrettime.com/", {
-    autoConnect: true,
-  });
+  // const socket = io("https://staging-api.secrettime.com/", {
+  //   autoConnect: true,
+  // });
 
   const [isActive, setActive] = useState(false);
   const width = useWindowSize();
@@ -36,7 +38,7 @@ export default function HeaderLoggedIn({
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const [notifData, setNotifdata] = useState(null);
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (modalIsOpen || isActive) {
@@ -48,41 +50,41 @@ export default function HeaderLoggedIn({
     }
   }, [modalIsOpen, isActive]);
 
-  useEffect(() => {
-    socket.auth = { user: "admin@getnada.com" };
-    socket.connect();
-    console.log("socket", socket.auth);
-    socket.on("connect", () => {
-      console.log("connected", socket.connected);
-    });
-    socket.on("disconnect", (reason) => {
-      console.log("socket disconnected reason", reason);
-    });
-    console.log("socket Notif socket intiated called");
-  }, []);
+  // useEffect(() => {
+  //   socket.auth = { user: "admin@getnada.com" };
+  //   socket.connect();
+  //   console.log("socket", socket.auth);
+  //   socket.on("connect", () => {
+  //     console.log("connected", socket.connected);
+  //   });
+  //   socket.on("disconnect", (reason) => {
+  //     console.log("socket disconnected reason", reason);
+  //   });
+  //   console.log("socket Notif socket intiated called");
+  // }, []);
 
-  useEffect(() => {
-    socket.on("connect_error", () => {
-      console.log("connect_error");
-      socket.auth = { user: user };
-      socket.connect();
-    });
-  }, [!socket.connected]);
+  // useEffect(() => {
+  //   socket.on("connect_error", () => {
+  //     console.log("connect_error");
+  //     socket.auth = { user: user };
+  //     socket.connect();
+  //   });
+  // }, [!socket.connected]);
 
-  useEffect(() => {
-    console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
-    socket.on(`push-notification-${user.email}`, (message) => {
-      console.log("notif received", message);
-      const unc = message?.notifications?.filter(
-        (item) => item.status === 0 && item.type !== "notification"
-      ).length;
-      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
-      setCount(unc);
-    });
-  }, [socket.connected]);
+  // useEffect(() => {
+  //   console.log("Notif socket connected", socket.connected);
+  //   socket.on("connect", () => {
+  //     console.log(socket.id);
+  //   });
+  //   socket.on(`push-notification-${user.email}`, (message) => {
+  //     console.log("notif received", message);
+  //     const unc = message?.notifications?.filter(
+  //       (item) => item.status === 0 && item.type !== "notification"
+  //     ).length;
+  //     localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+  //     setCount(unc);
+  //   });
+  // }, [socket.connected]);
 
   useEffect(() => {
     console.log("notiffff ", notifData);
@@ -92,8 +94,8 @@ export default function HeaderLoggedIn({
     console.log("count ", unc);
     localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
     let unreadNotifCount;
-    unreadNotifCount = localStorage.getItem("unreadNotifCount");
-    setCount(unreadNotifCount);
+    unreadNotifCount = localStorage?.getItem("unreadNotifCount");
+    setCount && setCount(unreadNotifCount);
     console.log("unreadNotifCount ", unreadNotifCount);
   }, [notifData]);
 
@@ -249,6 +251,7 @@ export default function HeaderLoggedIn({
                 <SideBarPopup
                   isOpen={modalIsOpen}
                   toggle={toggleModal}
+                  count={count}
                 ></SideBarPopup>
               ) : (
                 <div
@@ -257,7 +260,11 @@ export default function HeaderLoggedIn({
                     isActive ? "sidebar-nav open_nav_menu" : "sidebar-nav"
                   }
                 >
-                  <SideBar isActive={isActive} locationPopupModal={isBlack} />
+                  <SideBar
+                    isActive={isActive}
+                    locationPopupModal={isBlack}
+                    count={count}
+                  />
                 </div>
               )}
             </nav>

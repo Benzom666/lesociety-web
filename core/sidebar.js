@@ -16,18 +16,19 @@ import { BiTime } from "react-icons/bi";
 import { reset } from "redux-form";
 import { apiRequest } from "utils/Utilities";
 import io from "socket.io-client";
+import { socket } from "pages/user/user-list";
 
-export default function SideBar({ isActive }) {
+export default function SideBar({ isActive, count }) {
   const user = useSelector((state) => state.authReducer.user);
   const formValue = useSelector((state) => state.form);
   const dispatch = useDispatch();
   const router = useRouter();
   const [documentUpoaded, setDocumentUpoaded] = useState(false);
   const [notifData, setNotifdata] = useState(null);
-  const [count, setCount] = useState(0);
-  const socket = io("https://staging-api.secrettime.com/", {
-    autoConnect: true,
-  });
+  // const [count, setCount] = useState(0);
+  // const socket = io("https://staging-api.secrettime.com/", {
+  //   autoConnect: true,
+  // });
 
   useEffect(() => {
     if (user?.selfie && user?.document) {
@@ -52,64 +53,64 @@ export default function SideBar({ isActive }) {
     }
   };
 
-  useEffect(() => {
-    fetchNotifications();
-  }, []);
+  // useEffect(() => {
+  //   fetchNotifications();
+  // }, []);
 
-  useEffect(() => {
-    if (isActive) {
-      fetchNotifications();
-    }
-  }, [isActive]);
+  // useEffect(() => {
+  //   if (isActive) {
+  //     fetchNotifications();
+  //   }
+  // }, [isActive]);
 
-  useEffect(() => {
-    socket.auth = { user: "admin@getnada.com" };
-    socket.connect();
-    console.log("socket", socket.auth);
-    socket.on("connect", () => {
-      console.log("connected", socket.connected);
-    });
-    socket.on("disconnect", (reason) => {
-      console.log("socket disconnected reason", reason);
-    });
-    console.log("socket Notif socket intiated called");
-  }, []);
+  // useEffect(() => {
+  //   socket.auth = { user: "admin@getnada.com" };
+  //   socket.connect();
+  //   console.log("socket", socket.auth);
+  //   socket.on("connect", () => {
+  //     console.log("connected", socket.connected);
+  //   });
+  //   socket.on("disconnect", (reason) => {
+  //     console.log("socket disconnected reason", reason);
+  //   });
+  //   console.log("socket Notif socket intiated called");
+  // }, []);
 
-  useEffect(() => {
-    socket.on("connect_error", () => {
-      console.log("connect_error");
-      socket.auth = { user: user };
-      socket.connect();
-    });
-  }, [!socket.connected]);
+  // useEffect(() => {
+  //   socket.on("connect_error", () => {
+  //     console.log("connect_error");
+  //     socket.auth = { user: user };
+  //     socket.connect();
+  //   });
+  // }, [!socket.connected]);
 
-  useEffect(() => {
-    console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
-    socket.on(`push-notification-${user.email}`, (message) => {
-      console.log("notif received", message);
-      const unc = message?.notifications?.filter(
-        (item) => item.status === 0 && item.type !== "notification"
-      ).length;
-      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
-      setCount(unc);
-    });
-  }, [socket.connected]);
+  // useEffect(() => {
+  //   console.log("Notif socket connected", socket.connected);
+  //   socket.on("connect", () => {
+  //     console.log(socket.id);
+  //   });
+  //   socket.on(`push-notification-${user.email}`, (message) => {
+  //     console.log("notif received", message);
+  //     const unc = message?.notifications?.filter(
+  //       (item) => item.status === 0 && item.type !== "notification"
+  //     ).length;
+  //     localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+  //     setCount(unc);
+  //   });
+  // }, [socket.connected]);
 
-  useEffect(() => {
-    console.log("notiffff ", notifData);
-    const unc = notifData?.filter(
-      (item) => item.status === 0 && item.type !== "notification"
-    ).length;
-    console.log("count ", unc);
-    localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
-    let unreadNotifCount;
-    unreadNotifCount = localStorage.getItem("unreadNotifCount");
-    setCount(unreadNotifCount);
-    console.log("unreadNotifCount ", unreadNotifCount);
-  }, [notifData]);
+  // useEffect(() => {
+  //   console.log("notiffff ", notifData);
+  //   const unc = notifData?.filter(
+  //     (item) => item.status === 0 && item.type !== "notification"
+  //   ).length;
+  //   console.log("count ", unc);
+  //   localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+  //   let unreadNotifCount;
+  //   unreadNotifCount = localStorage.getItem("unreadNotifCount");
+  //   setCount(unreadNotifCount);
+  //   console.log("unreadNotifCount ", unreadNotifCount);
+  // }, [notifData]);
 
   return (
     <>
@@ -134,10 +135,14 @@ export default function SideBar({ isActive }) {
             </div>
             <div className="d-flex align-items-center mb-0 header_btn_wrap">
               <Link href="/user/user-profile">
-                <a className=" d-flex align-items-center justify-content-center">View Profile</a>
+                <a className=" d-flex align-items-center justify-content-center">
+                  View Profile
+                </a>
               </Link>
               <Link href="/auth/profile?edit=true">
-                <a className=" d-flex align-items-center justify-content-center">Edit Profile</a>
+                <a className=" d-flex align-items-center justify-content-center">
+                  Edit Profile
+                </a>
               </Link>
             </div>
           </div>

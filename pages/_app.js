@@ -18,9 +18,9 @@ import io from "socket.io-client";
 import "styles/style.scss";
 import { removeCookie } from "utils/cookie";
 
-export const socket = io("https://staging-api.secrettime.com/", {
-  autoConnect: true,
-});
+// export const socket = io("https://staging-api.secrettime.com/", {
+//   autoConnect: true,
+// });
 
 class MyApp extends App {
   constructor(props) {
