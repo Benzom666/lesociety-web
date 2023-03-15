@@ -9,12 +9,53 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import HeaderLoggedIn from "@/core/loggedInHeader";
+import io from "socket.io-client";
+
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 
 const Notifications = () => {
   const [notifData, setNotifData] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    socket.auth = { user: user };
+    socket.connect();
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+  }, [!socket.connected]);
+
+  socket.on(
+    "connect_error",
+    () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    },
+    [!socket.connected]
+  );
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+      const unc = message?.notifications?.filter(
+        (item) => item.status === 0 && item.type !== "notification"
+      ).length;
+      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+      setCount(unc);
+    });
+  }, [socket.connected]);
 
   const user = useSelector((state) => state.authReducer.user);
   const { width } = useWindowSize();

@@ -11,7 +11,6 @@ import Link from "next/link";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { FiChevronRight } from "react-icons/fi";
 import withAuth from "../core/withAuth";
-import io from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import {
   apiRequest,
@@ -35,7 +34,11 @@ import VerifiedUploadIcon from "@/modules/verifiedProfile/VerifiedUploadIcon";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
 import { toast } from "react-toastify";
 import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
+import io from "socket.io-client";
 
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
   const [isActive, setActive] = useState(false);

@@ -25,6 +25,7 @@ import close1 from "../../../assets/close1.png";
 import ProfileImageSlider from "./ProfileImageSlider";
 import ImageSlider from "./ImageSlider";
 import MessageModal from "@/core/MessageModal";
+import io from "socket.io-client";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
