@@ -12,6 +12,7 @@ import { apiRequest } from "utils/Utilities";
 import SkeletonElement from "../SkeletonElement";
 import Shimmer from "../Shimmer";
 import io from "socket.io-client";
+import { useState } from "react";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
