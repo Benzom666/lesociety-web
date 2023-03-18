@@ -134,11 +134,17 @@ export default function SideBar({ isActive, count }) {
               </span>
             </div>
             <div className="d-flex align-items-center mb-0 header_btn_wrap">
-              <Link href="/user/user-profile">
-                <a className=" d-flex align-items-center justify-content-center">
+              {router.asPath === "/user/user-profile" ? (
+                <a className=" d-flex align-items-center justify-content-center cursor-pointer">
                   View Profile
                 </a>
-              </Link>
+              ) : (
+                <Link href="/user/user-profile">
+                  <a className=" d-flex align-items-center justify-content-center">
+                    View Profile
+                  </a>
+                </Link>
+              )}
               <Link href="/auth/profile?edit=true">
                 <a className=" d-flex align-items-center justify-content-center">
                   Edit Profile
