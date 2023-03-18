@@ -135,20 +135,14 @@ export default function SideBar({ isActive, count }) {
             </div>
             <div className="d-flex align-items-center mb-0 header_btn_wrap">
               {router.asPath === "/user/user-profile" ? (
-                <a className=" d-flex align-items-center justify-content-center cursor-pointer">
-                  View Profile
-                </a>
+                <a className="cursor-pointer">View Profile</a>
               ) : (
                 <Link href="/user/user-profile">
-                  <a className=" d-flex align-items-center justify-content-center">
-                    View Profile
-                  </a>
+                  <a>View Profile</a>
                 </Link>
               )}
               <Link href="/auth/profile?edit=true">
-                <a className=" d-flex align-items-center justify-content-center">
-                  Edit Profile
-                </a>
+                <a>Edit Profile</a>
               </Link>
             </div>
           </div>
@@ -205,7 +199,7 @@ export default function SideBar({ isActive, count }) {
                 <button
                   onClick={() => router.push("/create-date/choose-city")}
                   type="button"
-                  className="create-date d-flex align-items-center justify-content-center"
+                  className="create-date"
                 >
                   Create New Date
                 </button>

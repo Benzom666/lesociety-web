@@ -24,7 +24,7 @@
                     letter-spacing: 0.2px;
                     color: black;
                     font-size: 23px;
-                    padding: 5px 0px;
+                    padding: 22px 0px;
                     text-transform: uppercase;
                 }
             }
@@ -49,7 +49,6 @@
     .myCard {
         display: flex;
         justify-content: space-around;
-        //flex-direction: column;
         align-items: center;
         background-color: #f2f5f7;
         padding: 60px 0px;
@@ -192,8 +191,10 @@
         }
 
         .howitWork-heading {
+            // margin: 0 auto;
+            // width: 242px;
             // padding-top: 20px !important;
-            padding: 20px 50px 8px 77px;
+            padding: 14px 0px 0px 0px;
             font-size: 20px;
             font-weight: bold;
             font-stretch: normal;
@@ -215,7 +216,7 @@
             letter-spacing: 0px;
             text-align: center;
             color: #3a5e77;
-            padding: 5px 22px;
+            padding: 12px 5px;
         }
 
         .The-future-of-Le-Society {
@@ -272,6 +273,7 @@
                 flex-direction: column;
                 width: 365px;
                 margin: 2rem auto;
+                padding: 30px 0px !important;
 
                 .textContent {
                     padding: 20px 0px;
@@ -305,6 +307,7 @@
 
             .parentdiv-2 {
                 flex-direction: column;
+                margin-top: 0rem !important;
 
                 .myCard-1 {
                     // margin-left: 0;
@@ -348,7 +351,7 @@
 
             .howitWork-content {
                 width: 317px;
-                padding: 5px 3px;
+                padding: 10px 5px 0px 5px;
                 margin: 0 auto;
             }
 
@@ -370,12 +373,14 @@
 
         .container-1 {
             width: 358px !important;
-            margin:0 auto;
+            margin: 0 auto;
+
             .myCard {
                 flex-direction: column;
                 width: 100%;
                 //margin: auto;
                 margin: 2rem auto;
+                padding: 20px 0px !important;
 
                 .textContent {
                     padding: 20px 0px;
@@ -409,6 +414,7 @@
 
             .parentdiv-2 {
                 flex-direction: column;
+                margin-top: 0rem !important;
 
                 .myCard-1 {
                     // margin-left: 0;
@@ -447,7 +453,7 @@
 
             .howitWork-heading {
                 letter-spacing: 3.2px;
-                padding: 8px 12px;
+                padding: 13px 0px 4px 0;
             }
 
             .howitWork-content {
@@ -503,25 +509,85 @@
         width: 328px;
         margin: 3rem auto;
     }
+
+    .container-2 {
+        .The-future-of-Le-Society {
+            padding: 3px 5px;
+            letter-spacing: 0.2px;
+        }
+    }
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:769px) and (min-width:480px) {
+    .how-it-works {
+        .LeSociety-Icon-White {
+            padding: 50px 75px 0px 75px !important;
+        }
+    }
+}
+
+@media only screen and (max-width:480px) and (min-width:340px) {
     .how-it-works {
         .howItWork-navbar {
             margin: 10px auto !important;
 
             // margin-bottom: 2rem;
             .LeSociety-Icon-White {
+                display: flex;
+                flex-direction: column;
                 padding: 0px !important;
 
                 .ls-text {
                     padding-left: 1rem !important;
                 }
+
+                .ls-logo {
+                    margin: 20px auto;
+                }
             }
+        }
+
+        .backtoHomepage-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 270px !important;
+            margin: 3rem auto;
         }
     }
 }
 
+@media only screen and (max-width:340px) {
+    .how-it-works {
+        .howItWork-navbar {
+            margin: 10px auto !important;
+
+            // margin-bottom: 2rem;
+            .LeSociety-Icon-White {
+                display: flex;
+                flex-direction: column;
+                padding: 0px !important;
+                margin: 0 auto;
+
+                .ls-text {
+                    padding-left: 1rem !important;
+                }
+
+                .ls-logo {
+                    margin: 20px auto 5px auto;
+                }
+            }
+        }
+
+        .backtoHomepage-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 220px !important;
+            margin: 3rem auto;
+        }
+    }
+}
 
 .parentdiv-1 .myCard:before {
     content: '';
@@ -592,7 +658,7 @@
     width: 41px;
     position: absolute;
     z-index: 99;
-    background: url( '../assets/svg/sun.svg') no-repeat;
+    background: url('../assets/svg/sun.svg') no-repeat;
     top: 10px;
     left: -30px;
 }
@@ -614,7 +680,7 @@
     width: 41px;
     position: absolute;
     z-index: 99;
-    background: url( '../assets/svg/paint.svg') no-repeat;
+    background: url('../assets/svg/paint.svg') no-repeat;
     top: 30%;
     left: -135px;
 }
@@ -626,8 +692,8 @@
     height: 45px;
     width: 45px;
     position: absolute;
-    right: -80px;
-    top: 46%;
+    right: -50px;
+    top: 46.5%;
 }
 
 
@@ -649,8 +715,8 @@
     height: 45px;
     width: 45px;
     position: absolute;
-    right: -55px;
-    top: 74%;
+    right: -10px;
+    top: 73.5%;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
@@ -666,7 +732,7 @@
 
 @media only screen and (max-width:768px)and (min-width:500px) {
     .parentdiv-1 .myCard:before {
-        left: -5%;
+        left: -2%;
         top: -58px;
         z-index: 99;
     }
@@ -674,8 +740,9 @@
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
         right: -15px;
         z-index: 99;
-        top: -515%;
+        top: -486%;
     }
+
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
         content: '';
         background: url('../assets/svg/bottle.svg') no-repeat;
@@ -686,6 +753,7 @@
         z-index: 99;
         top: -54px;
     }
+
     .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
         left: 20px;
         z-index: 99;
@@ -698,7 +766,7 @@
         height: 45px;
         width: 45px;
         position: absolute;
-        left: 113px;
+        left: 100px;
         top: 100%;
     }
 
@@ -708,45 +776,46 @@
         height: 45px;
         width: 45px;
         position: absolute;
-        right: 100px;
-        top: 7%;
+        right: 116px;
+        top: 2%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
-        top: 8.25%;
-        left: 85%;
+        top: 9.25%;
+        left: 88%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-        left: 40px;
-        top: 21%;
+        left: 24px;
+        top: 22%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-        top: 35.25%;
+        top: 36.25%;
         left: 4%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-        right: 30px;
-        top: 48.5%;
+        right: 16px;
+        top: 49.5%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-        top: 60.50%;
+        top: 62%;
         left: 88%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-        left: 33px;
-        top: 78%;
+        left: 4px;
+        top: 78.5%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
-        top: 87%;
-        left: 84%;
+        top: 88%;
+        left: 87%;
     }
-    .how-it-works button.backtoHomepage-btn::before{
+
+    .how-it-works button.backtoHomepage-btn::before {
         content: '';
         background: url('../assets/svg/paint.svg') no-repeat;
         height: 41px;
@@ -758,17 +827,17 @@
     }
 }
 
-@media only screen and (max-width:499px) {
+@media only screen and (max-width:499px) and (min-width:340px) {
     .parentdiv-1 .myCard:before {
-        left: -5%;
+        left: 1%;
         top: -58px;
         z-index: 99;
     }
 
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
-        right: -15px;
+        right: 20px;
         z-index: 99;
-        top: -508%;
+        top: -460%;
     }
 
     .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
@@ -777,10 +846,11 @@
         height: 41px;
         width: 41px;
         position: absolute;
-        right: -12px;
+        right: 4px;
         z-index: 99;
         top: -54px;
     }
+
     .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
         left: 20px;
         z-index: 99;
@@ -804,6 +874,104 @@
         width: 45px;
         position: absolute;
         right: -4px;
+        top: 8%;
+    }
+
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+        top: 7.5%;
+        left: 95%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+        left: 7px;
+        top: 21%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+        top: 35%;
+        left: -5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+        right: 12px;
+        top: 47.5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+        top: 60%;
+        left: 88%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+        left: 8px;
+        top: 77.5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+        top: 85.5%;
+        left: 92%;
+    }
+
+    .how-it-works button.backtoHomepage-btn::before {
+        content: '';
+        background: url('../assets/svg/paint.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        left: 14px;
+        z-index: 99;
+        top: 29px;
+    }
+}
+
+@media only screen and (max-width:340px) {
+    .parentdiv-1 .myCard:before {
+        left: 4%;
+        top: -58px;
+        z-index: 99;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+        right: 48px;
+        z-index: 99;
+        top: -460%;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
+        content: '';
+        background: url('../assets/svg/bottle.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        right: 48px;
+        z-index: 99;
+        top: -54px;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+        left: 20px;
+        z-index: 99;
+        top: -65px;
+    }
+
+    .container-2-title::before {
+        content: '';
+        background: url('../assets/svg/ticket.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        left: -22px;
+        top: 92%;
+    }
+
+    .container-2-title:after {
+        content: '';
+        background: url('../assets/svg/sport.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        right: -28px;
         top: 8%;
     }
 
@@ -842,21 +1010,35 @@
         top: 85%;
         left: 92%;
     }
-    .how-it-works button.backtoHomepage-btn::before{
+
+    .how-it-works button.backtoHomepage-btn::before {
         content: '';
         background: url('../assets/svg/paint.svg') no-repeat;
         height: 41px;
         width: 41px;
         position: absolute;
-        left: 14px;
+        left: 7px;
         z-index: 99;
-        top: 29px;
+        top: 32px;
     }
 }
 
-.how-it-works{
+.how-it-works {
     a {
-       position: relative;
-     }
- }
- 
+        position: relative;
+    }
+}
+
+@media only screen and (min-width:992px) {
+
+    .how-it-works {
+        .howItWorkImageGroup {
+            column-gap: 40px;
+        }
+
+        .col-lg-6 {
+            width: 46%;
+        }
+    }
+
+}

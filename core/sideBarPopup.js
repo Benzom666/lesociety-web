@@ -183,30 +183,17 @@ function sideBarPopup({ isOpen, toggle, count }) {
                 </div>
                 <div className="d-flex align-items-center mb-0 header_btn_wrap">
                   {router.asPath === "/user/user-profile" ? (
-                    <a
-                      className=" d-flex align-items-center justify-content-center cursor-pointer"
-                      onClick={toggle}
-                    >
+                    <a className="cursor-pointer" onClick={toggle}>
                       View Profile
                     </a>
                   ) : (
                     <Link href="/user/user-profile">
-                      <a
-                        className=" d-flex align-items-center justify-content-center"
-                        onClick={toggle}
-                      >
-                        View Profile
-                      </a>
+                      <a onClick={toggle}>View Profile</a>
                     </Link>
                   )}
 
                   <Link href="/auth/profile?edit=true">
-                    <a
-                      className=" d-flex align-items-center justify-content-center"
-                      onClick={toggle}
-                    >
-                      Edit Profile
-                    </a>
+                    <a onClick={toggle}>Edit Profile</a>
                   </Link>
                 </div>
               </div>
@@ -259,7 +246,7 @@ function sideBarPopup({ isOpen, toggle, count }) {
                     <button
                       onClick={() => router.push("/create-date/choose-city")}
                       type="button"
-                      className="create-date createdate-btn d-flex align-items-center justify-content-center"
+                      className="create-date"
                     >
                       Create New Date
                     </button>

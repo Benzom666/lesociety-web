@@ -18,7 +18,7 @@ function HomePageMiddleNav(props) {
 console.log(animate);
   return (
     <>
-      <nav className="navbar fixed-bottom bg-dark mt-4 navbarfixedmain"
+      <nav className="navbar fixed-bottom bg-none mt-4 navbarfixedmain"
         style={props.style}>
         <div className={`container-fluid d-flex justify-content-end containernavbarfooter ${animate ? 'animate-1' : ""}`}>
           <div className="navbarfooter-text">
@@ -29,8 +29,8 @@ console.log(animate);
                   <span
                     style={{
                       color: " #f24462",
-                      //paddingRight: "10px",
                       fontSize: "16px",
+                      fontWeight: 400,
                     }}
                   >
                     Already a Member? Login
@@ -40,15 +40,16 @@ console.log(animate);
             )}
             {width < 769 && (
               <div className="navfooter-text-1">
-                <span style={{ fontSize: "18px",color:"#fff"}}>
+                <span style={{ fontSize: "16px",color:"#fff",fontWeight:"bold"}}>
                   Start a new adventure.
                   <br />
                   <p
                     style={{
                       color: " #f24462",
                       paddingTop: "5px",
-                      // padding:"3px 0px",
-                      fontSize: "16px",
+                       padding:"2px 5px 0px 5px",
+                      fontSize: "15px",
+                      fontWeight: 400,
                     }}
                   >
                     Already a Member? Login

@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import LeSlogoWhite from '../assets/LeS logoWhite.png'
-import MaskGroup2 from '../assets/img/Mask Group 2.png'
-import MaskGroup3 from '../assets/img/Mask Group 3.png'
-import MaskGroup4 from '../assets/img/Mask Group 4.png'
 import MaskGroup5 from '../assets/img/Mask Group 5.png'
-import MaskGroup6 from '../assets/img/Mask Group 6.png'
+import Facebook from '../assets/img/FB.png';
+import Twitter from '../assets/img/Twitter (1).png';
+import Insta from '../assets/img/Insta (1).png';
+import Tiktok from '../assets/img/Tiktok (1).png';
 export default function Footer(props) {
     console.log(props)
   return (
@@ -20,11 +20,11 @@ export default function Footer(props) {
              </div>
              <div className='footer-icon-box'>
                 <div className='footer-icon'>
-                 <img src={MaskGroup2.src} alt='twitter-img'/>
-                 <img src={MaskGroup4.src} alt='inst-img'/>
-                 <img src={MaskGroup5.src} alt='yoytube-img'/>
-                 <img src={MaskGroup6.src} alt='whtasap-img'/>
-                 <img src={MaskGroup3.src} alt='fb-img'/>
+                 <img src={Facebook.src} alt='fb-img'/>
+                 <img src={Twitter.src} alt='twiter-img'/>
+                 <img src={Insta.src} alt='Insta-img'/>
+                 <img src={Tiktok.src} alt='tiktok-img'/>
+                 {/* <img src={MaskGroup5.src} alt='youtube-img'/> */}
                 </div>
                 <div className='footer-text'>
                    <div className='footer-text-1 mb-2 mt-3'>

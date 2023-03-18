@@ -257,7 +257,7 @@ const UserCardList = ({
                         <ul>
                           <li style={{ display: "flex", alignItems: "center" }}>
                             <span>{category?.icon}</span>
-                            <span className="labelofcard-1">{category?.label}</span>
+                            {/* <span className="labelofcard-1">{category?.label}</span> */}
                             <span className="labelofCard-2">{category?.label}</span>
                           </li>
                         </ul>

@@ -44,9 +44,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin:5rem auto;
 
     .main-content-headig-1 {
+      text-align: -webkit-right;
       h3 {
         width: 462px;
         padding: 0px 21px;
@@ -88,7 +89,8 @@
           font-weight: bold;
           letter-spacing: 3.1px;
           line-height: normal;
-          padding: 15px 0px
+          padding: 15px 0px;
+          text-transform: uppercase;
         }
 
         .main-imagefuture {
@@ -159,7 +161,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-
+margin: 0 auto;
       .main-content-headig-1 {
         h3 {
           width: 348px;
@@ -226,7 +228,7 @@
       margin: auto;
 
       .LeSociety-Icon-White {
-        margin-top: 2rem;
+        margin: 2rem auto 0 auto;
         padding: 0px;
       }
     }
@@ -263,7 +265,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-
+      margin: 0 auto;
       .main-content-headig-1 {
         h3 {
           width: 340px;
@@ -283,11 +285,11 @@
             font-weight: bold;
           }
 
-          margin: 5rem auto 1rem auto;
+          margin: 3rem auto 1rem auto;
         }
 
         p {
-          margin: 2rem auto;
+          margin: 1rem auto;
           width: 336px;
           padding: 0 15px;
           font-size: 16px;
@@ -324,6 +326,111 @@
   }
 
 }
+
+// @media only screen and (min-width:340px) {
+//   .future-dates-main {
+//     .future-date-navbar {
+//       margin: auto;
+
+//       .LeSociety-Icon-White {
+//         margin: 2rem auto 0 auto;
+//         padding: 0px;
+//       }
+//     }
+
+//     .future-header-main {
+//       margin: 0 auto;
+
+//       .futuredate-header {
+//         .heading-title {
+//           color: "#fff";
+//           font-size: 18px;
+//           letter-spacing: 0.02px;
+//           line-height: normal;
+//         }
+
+//         .futureDatingContent {
+//           width: 352px !important;
+//           font-size: 16px;
+//           font-weight: normal;
+//           font-stretch: normal;
+//           line-height: 1.16;
+//           letter-spacing: normal;
+//           text-align: center;
+//           color: #fff;
+//           padding: 30px 24px;
+
+//         }
+//       }
+//     }
+
+//     .future-main-content {
+//       display: flex;
+//       flex-direction: column-reverse;
+//       justify-content: center;
+//       align-items: center;
+//       text-align: center;
+//       margin: 0 auto;
+//       .main-content-headig-1 {
+//         h3 {
+//           width: 340px;
+//           padding: 0px 21px;
+//           font-size: 18px;
+//           font-weight: normal;
+//           font-stretch: normal;
+//           font-style: normal;
+//           line-height: 1.3;
+//           letter-spacing: normal;
+//           text-align: center;
+//           color: #fff;
+
+//           span {
+//             text-transform: uppercase;
+//             font-size: 18px;
+//             font-weight: bold;
+//           }
+
+//           margin: 3rem auto 1rem auto;
+//         }
+
+//         p {
+//           margin: 1rem auto;
+//           width: 336px;
+//           padding: 0 15px;
+//           font-size: 16px;
+//           font-weight: normal;
+//           font-stretch: normal;
+//           font-style: normal;
+//           line-height: 1.16;
+//           letter-spacing: normal;
+//           text-align: center;
+//           color: #fff;
+//         }
+//       }
+
+//       .main-content-image-text {
+//         .main-content-headig-2 {
+//           .main-imagefuture {
+//             background-color: rgba(255, 255, 255, 0.13);
+//             border-radius: 22px;
+//             border: 2px solid #cbfaff;
+//             padding: 20px 0px;
+//             margin: auto;
+//             backdrop-filter: blur(2px);
+//             opacity: 0.5;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .test {
+//     font-size: 18px !important;
+//     text-transform: uppercase;
+//     font-weight: bold;
+//   }
+
+// }
 
 .future-dates-main {
   button {

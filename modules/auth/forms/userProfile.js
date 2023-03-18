@@ -112,8 +112,8 @@ function UserProfile({ preview, editHandle }) {
       item?.label === selectedDate?.middle_class_dates ||
       item?.label === selectedDate?.executive_class_dates
   );
-  // console.log(userDates);
-  // console.log(loading);
+  console.log(userDates);
+  console.log(loading);
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
   const toFeet = (n) => {
@@ -1015,7 +1015,7 @@ function UserProfile({ preview, editHandle }) {
                                               fontSize: "16px",
                                               fontWeight: "400",
                                               letterSpacing: "0.06px",
-                                              paddingTop: "5px",
+                                              //paddingTop: "5px",
                                               margin: "0px auto",
                                               marginTop: "10px",
                                             }}
