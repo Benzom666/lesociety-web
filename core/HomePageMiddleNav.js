@@ -30,6 +30,7 @@ console.log(animate);
                     style={{
                       color: " #f24462",
                       fontSize: "16px",
+                      fontWeight: 400,
                     }}
                   >
                     Already a Member? Login
@@ -46,8 +47,9 @@ console.log(animate);
                     style={{
                       color: " #f24462",
                       paddingTop: "5px",
-                       padding:"0px 5px",
+                       padding:"2px 5px 0px 5px",
                       fontSize: "15px",
+                      fontWeight: 400,
                     }}
                   >
                     Already a Member? Login

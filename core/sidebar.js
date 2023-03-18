@@ -134,10 +134,10 @@ export default function SideBar({ isActive }) {
             </div>
             <div className="d-flex align-items-center mb-0 header_btn_wrap">
               <Link href="/user/user-profile">
-                <a className=" d-flex align-items-center justify-content-center">View Profile</a>
+                <a>View Profile</a>
               </Link>
               <Link href="/auth/profile?edit=true">
-                <a className=" d-flex align-items-center justify-content-center">Edit Profile</a>
+                <a>Edit Profile</a>
               </Link>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default function SideBar({ isActive }) {
                 <button
                   onClick={() => router.push("/create-date/choose-city")}
                   type="button"
-                  className="create-date d-flex align-items-center justify-content-center"
+                  className="create-date"
                 >
                   Create New Date
                 </button>

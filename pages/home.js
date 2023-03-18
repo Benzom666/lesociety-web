@@ -31,6 +31,11 @@ const style1 = {
   opacity: "0.9",
   backgroundColor:"#1A1A1A"
 }
+const style2 = {
+  color: "#fff",
+  fontSize: "16px",
+  fontWeight:"bold"
+};
 const styleBackground = {
   backgroundColor: "#000000"
 }
@@ -60,7 +65,7 @@ function Home({ items }) {
         <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman4}>
           <p className="info-text">{content.aboutCardContent}</p>
         </HomePageMainSection>
-        <HomePageMiddleNav style={style1} />
+        <HomePageMiddleNav style={style1} styleText={style2} />
         <HomePageMainSection title="LADIES" maincardImage={Ladies4}>
           <div className='main-content'>
             <p className="info-text info-text-Laidies">{content.aboutCardContent1}</p>

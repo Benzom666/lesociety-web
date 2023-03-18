@@ -191,8 +191,10 @@
         }
 
         .howitWork-heading {
+            // margin: 0 auto;
+            // width: 242px;
             // padding-top: 20px !important;
-            padding: 14px 50px 8px 77px;
+            padding: 14px 0px 0px 0px;
             font-size: 20px;
             font-weight: bold;
             font-stretch: normal;
@@ -214,7 +216,7 @@
             letter-spacing: 0px;
             text-align: center;
             color: #3a5e77;
-            padding: 6px 22px;
+            padding: 12px 5px;
         }
 
         .The-future-of-Le-Society {
@@ -349,7 +351,7 @@
 
             .howitWork-content {
                 width: 317px;
-                padding: 5px 3px;
+                padding: 10px 5px 0px 5px;
                 margin: 0 auto;
             }
 
@@ -451,7 +453,7 @@
 
             .howitWork-heading {
                 letter-spacing: 3.2px;
-                padding: 8px 12px 4px 12px;
+                padding: 13px 0px 4px 0;
             }
 
             .howitWork-content {
@@ -507,7 +509,8 @@
         width: 328px;
         margin: 3rem auto;
     }
-    .container-2{
+
+    .container-2 {
         .The-future-of-Le-Society {
             padding: 3px 5px;
             letter-spacing: 0.2px;
@@ -515,9 +518,9 @@
     }
 }
 
-@media only screen and (max-width:769px) and (min-width:480px){
-    .how-it-works{
-        .LeSociety-Icon-White{
+@media only screen and (max-width:769px) and (min-width:480px) {
+    .how-it-works {
+        .LeSociety-Icon-White {
             padding: 50px 75px 0px 75px !important;
         }
     }
@@ -543,6 +546,7 @@
                 }
             }
         }
+
         .backtoHomepage-btn {
             display: flex;
             justify-content: center;
@@ -564,6 +568,7 @@
                 flex-direction: column;
                 padding: 0px !important;
                 margin: 0 auto;
+
                 .ls-text {
                     padding-left: 1rem !important;
                 }
@@ -573,11 +578,12 @@
                 }
             }
         }
+
         .backtoHomepage-btn {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 230px !important;
+            width: 220px !important;
             margin: 3rem auto;
         }
     }
@@ -686,8 +692,8 @@
     height: 45px;
     width: 45px;
     position: absolute;
-    right: -80px;
-    top: 46%;
+    right: -50px;
+    top: 46.5%;
 }
 
 
@@ -709,8 +715,8 @@
     height: 45px;
     width: 45px;
     position: absolute;
-    right: -55px;
-    top: 74%;
+    right: -10px;
+    top: 73.5%;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
@@ -760,7 +766,7 @@
         height: 45px;
         width: 45px;
         position: absolute;
-        left: 113px;
+        left: 100px;
         top: 100%;
     }
 
@@ -770,43 +776,43 @@
         height: 45px;
         width: 45px;
         position: absolute;
-        right: 100px;
-        top: 7%;
+        right: 116px;
+        top: 2%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
-        top: 8.25%;
-        left: 85%;
+        top: 9.25%;
+        left: 88%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-        left: 40px;
-        top: 21%;
+        left: 24px;
+        top: 22%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-        top: 35.25%;
+        top: 36.25%;
         left: 4%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-        right: 30px;
-        top: 48.5%;
+        right: 16px;
+        top: 49.5%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-        top: 60.50%;
+        top: 62%;
         left: 88%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-        left: 33px;
-        top: 78%;
+        left: 4px;
+        top: 78.5%;
     }
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
-        top: 87%;
-        left: 84%;
+        top: 88%;
+        left: 87%;
     }
 
     .how-it-works button.backtoHomepage-btn::before {
@@ -821,7 +827,7 @@
     }
 }
 
-@media only screen and (max-width:499px) {
+@media only screen and (max-width:499px) and (min-width:340px) {
     .parentdiv-1 .myCard:before {
         left: 1%;
         top: -58px;
@@ -879,6 +885,104 @@
 
     .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
         left: 7px;
+        top: 21%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+        top: 35%;
+        left: -5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+        right: 12px;
+        top: 47.5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+        top: 60%;
+        left: 88%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+        left: 8px;
+        top: 77.5%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+        top: 85.5%;
+        left: 92%;
+    }
+
+    .how-it-works button.backtoHomepage-btn::before {
+        content: '';
+        background: url('../assets/svg/paint.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        left: 14px;
+        z-index: 99;
+        top: 29px;
+    }
+}
+
+@media only screen and (max-width:340px) {
+    .parentdiv-1 .myCard:before {
+        left: 4%;
+        top: -58px;
+        z-index: 99;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+        right: 48px;
+        z-index: 99;
+        top: -460%;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
+        content: '';
+        background: url('../assets/svg/bottle.svg') no-repeat;
+        height: 41px;
+        width: 41px;
+        position: absolute;
+        right: 48px;
+        z-index: 99;
+        top: -54px;
+    }
+
+    .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+        left: 20px;
+        z-index: 99;
+        top: -65px;
+    }
+
+    .container-2-title::before {
+        content: '';
+        background: url('../assets/svg/ticket.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        left: -22px;
+        top: 92%;
+    }
+
+    .container-2-title:after {
+        content: '';
+        background: url('../assets/svg/sport.svg') no-repeat;
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        right: -28px;
+        top: 8%;
+    }
+
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+        top: 7.5%;
+        left: 95%;
+    }
+
+    .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+        left: 7px;
         top: 20%;
     }
 
@@ -913,9 +1017,9 @@
         height: 41px;
         width: 41px;
         position: absolute;
-        left: 14px;
+        left: 7px;
         z-index: 99;
-        top: 29px;
+        top: 32px;
     }
 }
 
@@ -923,4 +1027,18 @@
     a {
         position: relative;
     }
+}
+
+@media only screen and (min-width:992px) {
+
+    .how-it-works {
+        .howItWorkImageGroup {
+            column-gap: 40px;
+        }
+
+        .col-lg-6 {
+            width: 46%;
+        }
+    }
+
 }

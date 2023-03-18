@@ -60,7 +60,7 @@ const VideoComponent = ()=>{
     responsive: true,
     fluid: true,
     sources: [{
-      src: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+      src: 'https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/lasociety_3.mp4',
       type: 'video/mp4'
     }]
   };

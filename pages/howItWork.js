@@ -17,6 +17,7 @@ const style1 = {
 const style2 = {
   color: "#fff",
   fontSize: "16px",
+  fontWeight:"bold"
 };
 
 const style3 = {
@@ -59,7 +60,7 @@ function HowItWork() {
               man’s budget.
             </p>
           </div>
-          <div className="row container howitwork-main-card-image-section">
+          <div className="row container howitwork-main-card-image-section howItWorkImageGroup">
             {contentObject.map((e, index) => {
               return (
                 <HowItWorkMain

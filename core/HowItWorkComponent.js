@@ -1,11 +1,11 @@
 import React from 'react'
-import Group225 from '../assets/img/Group 225.png';
-import Group226 from '../assets/img/Group 226.png';
-import Group227 from '../assets/img/Group 227.png';
-import Group228 from '../assets/img/Group 228.png';
-import Group229 from '../assets/img/Group 229.png';
-import Group230 from '../assets/img/Group 230.png';
-import Group236 from '../assets/img/Group 236.png';
+import Group225 from '../assets/img/Brunch Date.png';
+import Group226 from '../assets/img/Evening Date.png';
+import Group227 from '../assets/img/Take a class.png';
+import Group228 from '../assets/img/Get Sporty.png';
+import Group229 from '../assets/img/Entertainment  & Sports.png';
+import Group230 from '../assets/img/Wine & Dine.png';
+import Group236 from '../assets/img/Bottles & Dance.png';
 
 
 
@@ -13,9 +13,9 @@ export function HowItWorkMain({title,image,content}) {
   return (
     <div className='col-lg-6 col-md-12 mt-5'> 
        <div className='howitWork-image'>
-        <img src={image} style={{width:"90%"}} alt="howitWork-image"/>
+        <img src={image} style={{width:"102%"}} alt="howitWork-image"/>
        </div>
-       <h3 className='howitWork-heading'>{title} </h3>
+       <h3 className='howitWork-heading' dangerouslySetInnerHTML={{ __html: title }}></h3>
        <p  className='howitWork-content'> {content}</p>
     </div>
   )
@@ -44,7 +44,7 @@ export const contentObject =[
         imgUrl :Group228
      },
      {
-        heading :"Entertainment & Sports" ,
+        heading :"Entertainment </br> & Sports" ,
         content :"See your favourite celebrity performing on the big stage, head to a Broadway show, or even attend a basketball, football, or baseball game with your next date for the most memorable one-of-a-kind experience.",
         imgUrl :Group229
      },
