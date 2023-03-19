@@ -362,7 +362,7 @@ const Messages = (props) => {
   };
 
   const toggleChat = (currentChat) => {
-    setChatModal(true);
+    // setChatModal(true);
     router.push(`messages/${currentChat?._id}`);
   };
 
