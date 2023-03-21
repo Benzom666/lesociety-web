@@ -11,7 +11,12 @@ import { useRouter } from "next/router";
 import { apiRequest } from "utils/Utilities";
 import SkeletonElement from "../SkeletonElement";
 import Shimmer from "../Shimmer";
+import io from "socket.io-client";
+import { useState } from "react";
 
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 function SkeletonUserProfile({ preview, editHandle, theme }) {
   const { width } = useWindowSize();
   const [userDetail, setUserDetail] = React.useState("");
@@ -19,6 +24,45 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const themeClass = theme || "dark";
+
+  // for notification
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    socket.auth = { user: user };
+    socket.connect();
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+  }, [!socket.connected]);
+
+  socket.on(
+    "connect_error",
+    () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    },
+    [!socket.connected]
+  );
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+      const unc = message?.notifications?.filter(
+        (item) => item.status === 0 && item.type !== "notification"
+      ).length;
+      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+      setCount(unc);
+    });
+  }, [socket.connected]);
 
   const fetchDates = async (userName) => {
     try {
@@ -76,7 +120,7 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
 
   return (
     <div className={`inner-page`}>
-      {!preview && <HeaderLoggedIn />}
+      {!preview && <HeaderLoggedIn count={count} setCount={setCount} />}
       <div className="inner-part-page ">
         <div
           className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${

@@ -11,7 +11,6 @@ import Link from "next/link";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { FiChevronRight } from "react-icons/fi";
 import withAuth from "../core/withAuth";
-import io from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import {
   apiRequest,
@@ -35,7 +34,11 @@ import VerifiedUploadIcon from "@/modules/verifiedProfile/VerifiedUploadIcon";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
 import { toast } from "react-toastify";
 import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
+import io from "socket.io-client";
 
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 const VerifiedProfilePage = (props) => {
   const { invalid, previousPage, pristine, reset, submitting, touched } = props;
   const [isActive, setActive] = useState(false);
@@ -51,6 +54,45 @@ const VerifiedProfilePage = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
   //  const [isUpload,setIsUpload] =useState(false);
+
+  // for notification
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    socket.auth = { user: user };
+    socket.connect();
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+  }, [!socket.connected]);
+
+  socket.on(
+    "connect_error",
+    () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    },
+    [!socket.connected]
+  );
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+      const unc = message?.notifications?.filter(
+        (item) => item.status === 0 && item.type !== "notification"
+      ).length;
+      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+      setCount(unc);
+    });
+  }, [socket.connected]);
 
   console.log(width);
   const selfieRef = useRef(null);
@@ -122,7 +164,11 @@ const VerifiedProfilePage = (props) => {
 
   return (
     <div className="inner-page">
-      {width > 450 ? <HeaderLoggedIn /> : <VerifiedProfileMobileHeader />}
+      {width > 450 ? (
+        <HeaderLoggedIn count={count} setCount={setCount} />
+      ) : (
+        <VerifiedProfileMobileHeader />
+      )}
       <div className="inner-part-page">
         <div
           //className="d-flex justify-content-center"
@@ -322,17 +368,17 @@ const VerifiedProfilePage = (props) => {
                     </div>
                   </div>
                   {width > 450 ? (
-                 <Link href="/user/user-list">
-                 <p 
-                       style={{
-                        textAlign: "center",
-                        textDecorationLine: "underline",
-                        cursor:"pointer"
-                      }}
-                    >
-                      Maybe Later
-                    </p>
-                 </Link>   
+                    <Link href="/user/user-list">
+                      <p
+                        style={{
+                          textAlign: "center",
+                          textDecorationLine: "underline",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Maybe Later
+                      </p>
+                    </Link>
                   ) : null}
                 </Form>
               );

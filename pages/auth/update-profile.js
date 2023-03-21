@@ -27,7 +27,12 @@ const UpdatedProfile = (props) => {
   // }, [user?.status]);
 
   // disable back and forword button of browser using router
-
+  useEffect(() => {
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener("popstate", function (event) {
+      window.history.pushState(null, document.title, window.location.href);
+    });
+  }, []);
   return (
     <div className="inner-page">
       <Header />

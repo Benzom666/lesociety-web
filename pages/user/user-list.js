@@ -57,6 +57,9 @@ function UserList(props) {
 
   const [show, setShow] = useState(false);
 
+  // for notification
+  const [count, setCount] = useState(0);
+
   // useEffect(() => {
   //   if (user?.gender === "male" && state?.showSelectedLocationPopup) {
   //     setShow(true);
@@ -118,6 +121,21 @@ function UserList(props) {
     socket.on(`recieve-${user?._id}`, (message) => {
       console.log("recieve message header", message);
       getConversations();
+    });
+  }, [socket.connected]);
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+      const unc = message?.notifications?.filter(
+        (item) => item.status === 0 && item.type !== "notification"
+      ).length;
+      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+      setCount(unc);
     });
   }, [socket.connected]);
 
@@ -323,6 +341,8 @@ function UserList(props) {
         fixed={width < 767}
         isBlack={locationPopup}
         unReadedConversationLength={unReadedConversationLength}
+        count={count}
+        setCount={setCount}
       />
       {/* <div
         className={classNames(

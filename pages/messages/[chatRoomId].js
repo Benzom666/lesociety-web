@@ -25,6 +25,7 @@ function ChatMessages({ ...props }) {
   const [isActive, setActive] = useState(false);
   const router = useRouter();
   const scrollRef = useRef();
+  const [chatLoading, setChatLoading] = useState(false);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -49,34 +50,45 @@ function ChatMessages({ ...props }) {
 
   useEffect(() => {
     if (router?.query?.chatRoomId) {
+      setChatLoading(true);
       getChatHistory(router?.query?.chatRoomId);
       getConversations();
     }
     return () => {};
   }, [router?.query]);
 
-  useEffect(() => {
-    // if (socket.connected) {
-    console.log("socket request Accept Event", socket.connected);
-    socket.on(`requestAccept-${user?._id}`, (message) => {
-      console.log("requestAccept message", message);
-      getConversations();
-    });
-    // }
-  }, [socket.connected]);
+  useEffect(
+    () => {
+      // if (socket.connected) {
+      console.log("socket request Accept Event", socket.connected);
+      socket.on(`requestAccept-${user?._id}`, (message) => {
+        console.log("requestAccept message", message);
+        getConversations();
+      });
+      // }
+    },
+    [
+      // socket.connected
+    ]
+  );
 
-  useEffect(() => {
-    // if (socket.connected) {
-    console.log("socket request message mobile", socket.connected);
-    socket.on(`request-${user?._id}`, (message) => {
-      console.log("reqested message", message);
-      getConversations();
-    });
-    // }
-  }, [socket.connected]);
+  useEffect(
+    () => {
+      // if (socket.connected) {
+      console.log("socket request message mobile", socket.connected);
+      socket.on(`request-${user?._id}`, (message) => {
+        console.log("reqested message", message);
+        getConversations();
+      });
+      // }
+    },
+    [
+      // socket.connected
+    ]
+  );
 
-  useEffect(() => {
-    if (socket.connected) {
+  useEffect(
+    () => {
       console.log("socket receiver message mobile", socket.connected);
       socket.on(`recieve-${user?._id}`, (message) => {
         console.log("reciever message", message);
@@ -93,8 +105,11 @@ function ChatMessages({ ...props }) {
           _id: message?._id,
         });
       });
-    }
-  }, [socket.connected]);
+    },
+    [
+      // socket.connected
+    ]
+  );
 
   useEffect(() => {
     if (arrivalMessage && currentChat?._id === arrivalMessage?.room_id) {
@@ -133,9 +148,10 @@ function ChatMessages({ ...props }) {
       });
     }
   }, [socket.connected]);
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, chatLoading]);
 
   useEffect(() => {
     if (currentChat && messages.length > 0 && socket.connected) {
@@ -197,18 +213,24 @@ function ChatMessages({ ...props }) {
     }
   }, [socket.connected]);
 
-  useEffect(() => {
-    // if (socket.connected) {
-    console.log("chat Room Cleared called", socket.connected);
-    socket.on(`chatRoomCleared-${user?._id}`, (message) => {
-      console.log("chatRoomCleared", message);
-      if (message?.deleted) {
-        setMessages([]);
-        getConversations();
-      }
-    });
-    // }
-  }, [socket.connected]);
+  useEffect(
+    () => {
+      // if (socket.connected) {
+      console.log("chat Room Cleared called", socket.connected);
+      socket.on(`chatRoomCleared-${user?._id}`, (message) => {
+        console.log("chatRoomCleared", message);
+        if (message?.deleted) {
+          setMessages([]);
+          setArrivalMessage("");
+          getConversations();
+        }
+      });
+      // }
+    },
+    [
+      // socket.connected
+    ]
+  );
 
   const toggleClass = () => {
     setActive(!isActive);
@@ -216,6 +238,7 @@ function ChatMessages({ ...props }) {
   };
 
   const getChatHistory = async (chatRoomId) => {
+    setChatLoading(true);
     try {
       const data = {
         chatRoomId: chatRoomId,
@@ -256,15 +279,17 @@ function ChatMessages({ ...props }) {
             : ""
           : "";
       setCurrentChat(conversations);
+      setChatLoading(false);
     } catch (err) {
       console.log("err", err);
+      setChatLoading(false);
     }
   };
 
   const blockChat = async (currentChat) => {
     try {
       const data = {
-        chatRoomId: currentChat?.message?.room_id,
+        chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
         recieverId: currentChat?.user?.id,
       };
 
@@ -286,10 +311,39 @@ function ChatMessages({ ...props }) {
     }
   };
 
+  const unblockChat = async (currentChat) => {
+    try {
+      const data = {
+        chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
+        recieverId: currentChat?.user?.id,
+      };
+
+      const res = await apiRequest({
+        data: data,
+        method: "POST",
+        url: `chat/unblock`,
+      });
+      console.log("res", res);
+      if (res?.data?.message === "Accepted!!") {
+        setCurrentChat(
+          (prev) =>
+            prev && {
+              ...prev,
+              status: 1,
+            }
+        );
+      }
+      getConversations();
+      getChatHistory(currentChat?.message?.room_id);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
   const deleteChat = async (currentChat) => {
     try {
       const data = {
-        chatRoomId: currentChat?.message?.room_id,
+        chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
         recieverId: currentChat?.user?.id,
       };
 
@@ -300,6 +354,8 @@ function ChatMessages({ ...props }) {
       });
       console.log("res", res);
       setMessages([]);
+      setNewMessage("");
+      setArrivalMessage("");
       getConversations();
     } catch (err) {
       console.log("err", err);
@@ -309,12 +365,17 @@ function ChatMessages({ ...props }) {
     e.preventDefault();
 
     const data = {
-      chatRoomId: currentChat?.message?.room_id ?? "",
+      chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
       recieverId: currentChat?.user?.id ?? "",
       message: newMessage,
     };
 
-    socket.emit("sendMessage", data);
+    // console.log("socket.connected data", socket.connected, data);
+    if (socket.connected) {
+      setTimeout(() => {
+        socket.emit("sendMessage", data);
+      }, 500);
+    }
     setMessages((prev) => [
       ...prev,
       {
@@ -401,7 +462,9 @@ function ChatMessages({ ...props }) {
                                   {currentChat?.status === 2 ? (
                                     currentChat?.blocked_by?._id ==
                                       user?._id && (
-                                      <li>
+                                      <li
+                                        onClick={() => unblockChat(currentChat)}
+                                      >
                                         <a>Unblock</a>
                                       </li>
                                     )
@@ -437,8 +500,11 @@ function ChatMessages({ ...props }) {
                     <div className="chat_message_wrap">
                       <div className="message_list_wrap">
                         <ul className="chat_message_scroll">
-                          {messages.filter((message) => message?.message !== "")
-                            .length > 0 &&
+                          {messages &&
+                            messages.length > 0 &&
+                            messages?.filter(
+                              (message) => message?.message !== ""
+                            ).length > 0 &&
                             messages
                               .filter((message) => message?.message !== "")
                               .map((message, index) => {

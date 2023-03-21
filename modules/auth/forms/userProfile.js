@@ -25,6 +25,11 @@ import close1 from "../../../assets/close1.png";
 import ProfileImageSlider from "./ProfileImageSlider";
 import ImageSlider from "./ImageSlider";
 import MessageModal from "@/core/MessageModal";
+import io from "socket.io-client";
+
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+});
 
 function UserProfile({ preview, editHandle }) {
   const { width } = useWindowSize();
@@ -49,6 +54,45 @@ function UserProfile({ preview, editHandle }) {
   const [image2Loading, setImage2Loading] = useState(true);
   const [image3Loading, setImage3Loading] = useState(true);
   const [image4Loading, setImage4Loading] = useState(true);
+
+  // for notification
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    socket.auth = { user: user };
+    socket.connect();
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+    socket.on("disconnect", (reason) => {
+      console.log("socket disconnected reason", reason);
+    });
+  }, [!socket.connected]);
+
+  socket.on(
+    "connect_error",
+    () => {
+      console.log("connect_error");
+      socket.auth = { user: user };
+      socket.connect();
+    },
+    [!socket.connected]
+  );
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.on(`push-notification-${user.email}`, (message) => {
+      console.log("notif received", message);
+      const unc = message?.notifications?.filter(
+        (item) => item.status === 0 && item.type !== "notification"
+      ).length;
+      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+      setCount(unc);
+    });
+  }, [socket.connected]);
 
   useEffect(() => {
     if (viewFullPage || dateModalOpen) {
@@ -425,7 +469,13 @@ function UserProfile({ preview, editHandle }) {
   } else {
     return (
       <div className="inner-page">
-        {!preview && <HeaderLoggedIn fixed={width < 767} />}
+        {!preview && (
+          <HeaderLoggedIn
+            fixed={width < 767}
+            count={count}
+            setCount={setCount}
+          />
+        )}
         <div className="inner-part-page">
           <div
             className={`top-spase pb-0 pt-5-lg-4 pb-5-lg-4 ${
