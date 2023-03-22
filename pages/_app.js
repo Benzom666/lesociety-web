@@ -21,6 +21,13 @@ import { removeCookie } from "utils/cookie";
 // export const socket = io("https://staging-api.secrettime.com/", {
 //   autoConnect: true,
 // });
+export const socket = io("https://staging-api.secrettime.com/", {
+  autoConnect: true,
+  // reconnection: true,
+  // reconnectionDelay: 1000,
+  // reconnectionDelayMax: 5000,
+  // reconnectionAttempts: Infinity,
+});
 
 class MyApp extends App {
   constructor(props) {

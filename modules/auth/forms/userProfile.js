@@ -81,9 +81,9 @@ function UserProfile({ preview, editHandle }) {
 
   useEffect(() => {
     console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
+    // socket.on("connect", () => {
+    //   console.log(socket.id);
+    // });
     socket.on(`push-notification-${user.email}`, (message) => {
       console.log("notif received", message);
       const unc = message?.notifications?.filter(
@@ -112,8 +112,8 @@ function UserProfile({ preview, editHandle }) {
       item?.label === selectedDate?.middle_class_dates ||
       item?.label === selectedDate?.executive_class_dates
   );
-  console.log(userDates);
-  console.log(loading);
+  // console.log(userDates);
+  // console.log(loading);
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
   const toFeet = (n) => {
@@ -866,10 +866,7 @@ function UserProfile({ preview, editHandle }) {
                                 (router?.pathname === "/user/user-profile" &&
                                   user?.gender === "female")) && (
                                 <>
-                                  <SubHeading
-                                    title="Available Experiences"
-                                    style1
-                                  />
+                                  <SubHeading title="Available Experiences" />
                                   <div className="verification_card_header text-center mb-5 mt-4">
                                     <div
                                       className={
@@ -1206,7 +1203,7 @@ function UserProfile({ preview, editHandle }) {
                                 </>
                               )}
                           </>
-                          <SubHeading title="About me" style2 />
+                          <SubHeading title="About me" />
                           <div className="image_wrap_slider about_me_card">
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">

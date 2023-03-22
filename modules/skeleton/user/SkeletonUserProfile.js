@@ -51,9 +51,9 @@ function SkeletonUserProfile({ preview, editHandle, theme }) {
 
   useEffect(() => {
     console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
+    // socket.on("connect", () => {
+    //   console.log(socket.id);
+    // });
     socket.on(`push-notification-${user.email}`, (message) => {
       console.log("notif received", message);
       const unc = message?.notifications?.filter(

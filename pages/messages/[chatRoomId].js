@@ -169,6 +169,7 @@ function ChatMessages({ ...props }) {
         };
         console.log("data", data);
 
+        console.log("socket readMessage fired from chatRoom");
         socket.emit(`readMessage`, data);
         setConversations((prev) => {
           return prev.map((conversation) => {

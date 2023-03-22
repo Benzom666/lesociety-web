@@ -26,6 +26,7 @@ import { format } from "timeago.js";
 import UserCardListForMessage from "./../core/UserCardListForMessage";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
+// import { socket } from "./_app";
 import { socket } from "./user/user-list";
 import NoConversationShowView from "@/modules/messages/NoConversationShowView";
 import MessageMobileHeader from "./../core/MessageMobileHeader";
@@ -263,6 +264,7 @@ const Messages = (props) => {
         };
         console.log("data", data);
 
+        console.log("socket readMessage fired from chatRoom");
         socket.emit(`readMessage`, data);
         setConversations((prev) => {
           return prev.map((conversation) => {
@@ -327,9 +329,9 @@ const Messages = (props) => {
 
   useEffect(() => {
     console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
+    // socket.on("connect", () => {
+    //   console.log(socket.id);
+    // });
     socket.on(`push-notification-${user.email}`, (message) => {
       console.log("notif received", message);
       const unc = message?.notifications?.filter(
@@ -394,9 +396,9 @@ const Messages = (props) => {
       message: newMessage,
     };
 
-    // console.log("socket.connected data", socket.connected, data);
     if (socket.connected) {
       setTimeout(() => {
+        console.log("socket.connected data", socket.connected, data);
         socket.emit("sendMessage", data);
       }, 500);
     }
