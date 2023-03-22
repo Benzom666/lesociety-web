@@ -55,9 +55,9 @@ class MyApp extends App {
     });
 
     // hide all console logs and errors
-    if (process.env.NODE_ENV === "production") {
-      console.log = console.error = console.warn = function () {};
-    }
+    // if (process.env.NODE_ENV === "production") {
+    //   console.log = console.error = console.warn = function () {};
+    // }
     document.body.style.overflow = "unset";
   }
 
@@ -73,9 +73,9 @@ class MyApp extends App {
         history: [...prevState.history, asPath],
       }));
     }
-    if (process.env.NODE_ENV === "production") {
-      console.log = console.error = console.warn = function () {};
-    }
+    // if (process.env.NODE_ENV === "production") {
+    //   console.log = console.error = console.warn = function () {};
+    // }
     document.body.style.overflow = "unset";
   }
 
