@@ -134,7 +134,7 @@ export default function HeaderLoggedIn({
     ? unReadedConversationLength
     : 0;
 
-  console.log("unReadMessagesLength", unReadMessagesLength);
+  // console.log("unReadMessagesLength", unReadMessagesLength);
   const sidbarCloseOutsideClick = (event) => {
     const target = document.querySelector("#sidebar-header");
     const withinBoundaries = event.composedPath().includes(target);

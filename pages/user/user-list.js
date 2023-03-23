@@ -31,6 +31,11 @@ import { changeSelectedLocationPopup } from "@/modules/auth/authActions";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
+  transports: ["websocket", "polling", "flashsocket"],
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000,
+  reconnectionAttempts: Infinity,
 });
 
 function UserList(props) {
