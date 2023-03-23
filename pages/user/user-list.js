@@ -30,9 +30,9 @@ import DateAndLocation from "@/modules/location/DateAndLocation";
 import { changeSelectedLocationPopup } from "@/modules/auth/authActions";
 
 export const socket = io("https://staging-api.secrettime.com/", {
+  reconnection: true,
   autoConnect: true,
   transports: ["websocket", "polling", "flashsocket"],
-  reconnection: true,
   reconnectionDelay: 1000,
   reconnectionDelayMax: 5000,
   reconnectionAttempts: Infinity,

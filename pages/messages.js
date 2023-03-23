@@ -388,7 +388,7 @@ const Messages = (props) => {
   };
 
   const sendMessage = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const data = {
       chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
@@ -396,11 +396,21 @@ const Messages = (props) => {
       message: newMessage,
     };
 
+    socket.connect();
+
     if (socket.connected) {
       setTimeout(() => {
-        console.log("socket.connected data", socket.connected, data);
+        console.log(
+          "socket.connected active disconnected id",
+          socket.connected,
+          socket.active,
+          socket.disconnected,
+          socket.id,
+          socket.connect()
+        );
+
         socket.emit("sendMessage", data);
-      }, 500);
+      }, 50);
     }
     setMessages((prev) => [
       ...prev,
