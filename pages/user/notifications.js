@@ -140,7 +140,7 @@ const Notifications = () => {
         {/* <Header /> */}
         <HeaderLoggedIn
           fixed={width < 767}
-          isBlack={true}
+          // isBlack={true}
           count={count}
           setCount={setCount}
           // unReadedConversationLength={unReadedConversationLength}

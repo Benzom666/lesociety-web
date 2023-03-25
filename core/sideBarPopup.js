@@ -114,6 +114,13 @@ function sideBarPopup({ isOpen, toggle, count }) {
   //   console.log("unreadNotifCount ", unreadNotifCount);
   // }, [notifData]);
 
+  const memberSince = user?.created_at
+    ? new Date(user?.created_at)?.toLocaleString("en-US", {
+        month: "long",
+        year: "numeric",
+      })
+    : "";
+
   return (
     <div
       className={classNames(
@@ -178,7 +185,7 @@ function sideBarPopup({ isOpen, toggle, count }) {
                   </figure>
                   <span className="userdetails">
                     <H5>{user?.user_name || ""}</H5>
-                    <SubHeading title="Member since Jan 2021" />
+                    <SubHeading title={memberSince} />
                   </span>
                 </div>
                 <div className="d-flex align-items-center mb-0 header_btn_wrap">

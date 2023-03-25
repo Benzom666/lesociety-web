@@ -1054,23 +1054,26 @@ const Messages = (props) => {
                                   }
                                   disabled={newMessage.trim() === ""}
                                 >
-                                  {/* <IoIosSend
-                                    size={25}
-                                    color={
-                                      newMessage.trim() === ""
-                                        ? "#686868"
-                                        : "#F24462"
-                                    }
-                                  /> */}
                                   <Image
                                     src={
-                                      newMessage === ""
-                                        ? MessageSend
-                                        : MessageSend2
+                                      !newMessage ? MessageSend : MessageSend2
                                     }
                                     alt="send-btn"
                                   />
                                 </button>
+                                {/* <div className="send_btn">
+                                  {newMessage.trim() !== "" ? (
+                                    <Image
+                                      src={MessageSend2}
+                                      alt="send-btn"
+                                      onClick={
+                                        newMessage.trim() !== "" && sendMessage
+                                      }
+                                    />
+                                  ) : (
+                                    <Image src={MessageSend} alt="send-btn" />
+                                  )}
+                                </div> */}
                               </div>
                             )}
                           </div>

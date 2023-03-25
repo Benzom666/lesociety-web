@@ -76,6 +76,8 @@ function DateAndLocation({
     };
   }, [scrollPosition]);
 
+  // console.log("scrollPosition position", scrollPosition, position);
+
   const nextPage = () => {
     setTimeout(() => {
       const params = searchStatus

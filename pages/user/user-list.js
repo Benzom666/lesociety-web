@@ -131,17 +131,19 @@ function UserList(props) {
 
   useEffect(() => {
     console.log("Notif socket connected", socket.connected);
-    // socket.on("connect", () => {
-    //   console.log(socket.id);
-    // });
-    socket.on(`push-notification-${user.email}`, (message) => {
-      console.log("notif received", message);
-      const unc = message?.notifications?.filter(
-        (item) => item.status === 0 && item.type !== "notification"
-      ).length;
-      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
-      setCount(unc);
+    socket.on("connect", () => {
+      console.log(socket.id);
     });
+    setTimeout(() => {
+      socket.on(`push-notification-${user.email}`, (message) => {
+        console.log("notif received", message);
+        const unc = message?.notifications?.filter(
+          (item) => item.status === 0 && item.type !== "notification"
+        ).length;
+        localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+        setCount(unc);
+      });
+    }, 500);
   }, [socket.connected]);
 
   useEffect(() => {

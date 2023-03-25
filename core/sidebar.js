@@ -112,6 +112,14 @@ export default function SideBar({ isActive, count }) {
   //   console.log("unreadNotifCount ", unreadNotifCount);
   // }, [notifData]);
 
+  // convert createat to month year format
+  const memberSince = user?.created_at
+    ? new Date(user?.created_at)?.toLocaleString("en-US", {
+        month: "long",
+        year: "numeric",
+      })
+    : "";
+
   return (
     <>
       <div className="sidebar_wrap">
@@ -130,7 +138,7 @@ export default function SideBar({ isActive, count }) {
                 <H5 style={{ fontSize: "18px", letterSpacing: "0.09px" }}>
                   {user?.user_name || ""}
                 </H5>
-                <SubHeading title="Member since Jan 2021" />
+                <SubHeading title={memberSince} />
               </span>
             </div>
             <div className="d-flex align-items-center mb-0 header_btn_wrap">

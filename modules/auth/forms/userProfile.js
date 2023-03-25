@@ -406,6 +406,10 @@ function UserProfile({ preview, editHandle }) {
       ? user?.un_verified_description
       : user?.description);
 
+  const documentVerified = userDetail
+    ? userDetail?.documents_verified
+    : user?.documents_verified;
+
   const slides =
     slideShowIndex === 0
       ? [
@@ -463,6 +467,8 @@ function UserProfile({ preview, editHandle }) {
     maxWidth: "40%",
     height: "100vh",
   };
+
+  console.log("userDetail", userDetail);
 
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
@@ -542,7 +548,7 @@ function UserProfile({ preview, editHandle }) {
                                   }}
                                 />
 
-                                {user?.documents_verified && (
+                                {documentVerified && (
                                   <span className="verified_check_tag">
                                     <HiBadgeCheck color={"white"} size={20} />
                                     Verified

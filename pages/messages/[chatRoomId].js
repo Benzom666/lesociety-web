@@ -54,7 +54,9 @@ function ChatMessages({ ...props }) {
       getChatHistory(router?.query?.chatRoomId);
       getConversations();
     }
-    return () => {};
+    return () => {
+      setChatLoading(false);
+    };
   }, [router?.query]);
 
   useEffect(
@@ -565,7 +567,11 @@ function ChatMessages({ ...props }) {
                             <button
                               type="button"
                               className="send_btn"
-                              onClick={newMessage.trim() !== "" && sendMessage}
+                              onClick={
+                                newMessage.trim() !== ""
+                                  ? sendMessage
+                                  : undefined
+                              }
                               disabled={newMessage.trim() === ""}
                             >
                               {/* <IoIosSend

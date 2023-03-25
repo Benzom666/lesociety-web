@@ -9,7 +9,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import "react-rangeslider/lib/index.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loadFromLocalStorage } from "utils/sessionStorage";
+import {
+  loadFromLocalStorage,
+  removeSessionStorage,
+} from "utils/sessionStorage";
 
 import Router from "next/router";
 import Loader from "@/modules/Loader/Loader";
@@ -59,9 +62,9 @@ class MyApp extends App {
     });
 
     // hide all console logs and errors
-    // if (process.env.NODE_ENV === "production") {
-    //   console.log = console.error = console.warn = function () {};
-    // }
+    if (process.env.NODE_ENV === "production") {
+      console.log = console.error = console.warn = function () {};
+    }
     document.body.style.overflow = "unset";
   }
 
@@ -77,9 +80,9 @@ class MyApp extends App {
         history: [...prevState.history, asPath],
       }));
     }
-    // if (process.env.NODE_ENV === "production") {
-    //   console.log = console.error = console.warn = function () {};
-    // }
+    if (process.env.NODE_ENV === "production") {
+      console.log = console.error = console.warn = function () {};
+    }
     document.body.style.overflow = "unset";
   }
 
@@ -106,6 +109,20 @@ class MyApp extends App {
         asPath !== "/user/user-list" &&
         !asPath.includes("/user/user-profile/")) ||
       (this.state.isLoading && !accessToken);
+
+    //  remove session after browser close
+
+    // ron this code only on prod
+
+    if (
+      typeof window !== "undefined" &&
+      process.env.NODE_ENV === "production"
+    ) {
+      window.onbeforeunload = function () {
+        removeSessionStorage("auth");
+        removeSessionStorage("form");
+      };
+    }
 
     return (
       <Provider store={store}>
