@@ -401,16 +401,22 @@ const Messages = (props) => {
     if (socket.connected) {
       setTimeout(() => {
         console.log(
-          "socket.connected active disconnected id",
+          "socket.connected:->",
           socket.connected,
+          " data ->",
+          data,
+          " active ->",
           socket.active,
+          " disconnected ->",
           socket.disconnected,
+          " id ->",
           socket.id,
+          " connection ->",
           socket.connect()
         );
 
         socket.emit("sendMessage", data);
-      }, 50);
+      }, 100);
     }
     setMessages((prev) => [
       ...prev,
