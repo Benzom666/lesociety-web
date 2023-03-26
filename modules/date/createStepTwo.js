@@ -183,7 +183,7 @@ const CreateStepTwo = (props) => {
                 Determine how expensive you are and please consider he’s paying
                 for the <br /> outing as well
               </p> */}
-              <p>How much is your time is worth?</p>
+              <p>How much is your time worth?</p>
             </div>
           </div>
           <div className="date-class-section choose-gender">

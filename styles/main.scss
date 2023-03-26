@@ -3215,7 +3215,7 @@ body .verification_card_header {
       letter-spacing: 0.06rem;
       margin-top: -5px;
       border-radius: 0 2px 2px 2px;
-      padding-top: 10px;
+      padding-top: 5px;
 
       &::before {
         position: absolute;
@@ -3256,7 +3256,7 @@ body .verification_card_header {
           //font-family: "Conv_HelveticaNeueCyr";
           font-style: normal;
           font-weight: 300;
-          padding-top: 4px;
+          padding-top: 2px;
         }
       }
     }
@@ -3284,7 +3284,7 @@ body .verification_card_header {
     cursor: pointer;
     color: #fff;
     // border: 1px solid rgba(255, 255, 255, 0.3);
-    border: 1px solid #f24462;
+    border: 1px solid #f24462 !important;
   }
 }
 

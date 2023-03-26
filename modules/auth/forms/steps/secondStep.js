@@ -454,8 +454,8 @@ const SecondStep = (props) => {
         </div>
         <div className="text-label">
           {router.query?.edit && router?.query?.type
-            ? "You can only edit what have been requested"
-            : `Please continue with your profile <br />
+            ? "You can only edit what has been requested"
+            : `Please continue with your profile
         to maximize your opportunity`}
         </div>
         <div className="images-uploads">

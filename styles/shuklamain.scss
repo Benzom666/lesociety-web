@@ -115,6 +115,7 @@
     height: 94px;
     padding: 26px;
   }
+
   .verifieed-upload-active {
     height: 94px;
     width: 380px;
@@ -225,10 +226,16 @@
       margin-right: 14px;
       flex: 1;
       min-width: 290px;
+
       // span.top-card_tag{
       //   height: 64px;
       //   width: 64px;
       // }
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        border: 1px solid #f24462 !important;
+      }
     }
   }
 }
@@ -351,6 +358,7 @@
         margin-bottom: 1.5rem;
         padding-left: 25px;
         user-select: none;
+
         input {
           position: absolute;
           opacity: 0;
@@ -358,6 +366,7 @@
           height: 0;
           width: 0;
         }
+
         .checkmark {
           position: absolute;
           top: 0;
@@ -368,14 +377,17 @@
           border: 1px solid #f24462;
           border-radius: 8px;
         }
+
         .checkmark:after {
           content: "";
           position: absolute;
           display: none;
         }
-        input:checked ~ .checkmark:after {
+
+        input:checked~.checkmark:after {
           display: block;
         }
+
         .checkmark:after {
           left: 7.3px;
           top: 4px;
