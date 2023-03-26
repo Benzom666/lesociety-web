@@ -541,9 +541,13 @@ function ChatMessages({ ...props }) {
                         </ul>
                       </div>
                       {currentChat?.status === 2 ? (
-                        currentChat?.blocked_by?._id == user?._id ? (
+                        currentChat?.date_id?.is_blocked_by_admin ? (
                           <div className="text-center">
-                            you have blocked this chat
+                            Admin has removed this date.
+                          </div>
+                        ) : currentChat?.blocked_by?._id == user?._id ? (
+                          <div className="text-center">
+                            User has been blocked
                           </div>
                         ) : (
                           <div className="text-center">

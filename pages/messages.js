@@ -233,6 +233,7 @@ const Messages = (props) => {
           ...prev,
           status: message?.status,
         }));
+        getConversations();
       });
     }
   }, [socket.connected]);
@@ -1027,7 +1028,11 @@ const Messages = (props) => {
                             {chatLoading ? (
                               ""
                             ) : currentChat?.status === 2 ? (
-                              currentChat?.blocked_by?._id == user?._id ? (
+                              currentChat?.date_id?.is_blocked_by_admin ? (
+                                <div className="text-center">
+                                  Admin has removed this date.
+                                </div>
+                              ) : currentChat?.blocked_by?._id == user?._id ? (
                                 <div className="text-center">
                                   {/* you have blocked this chat */}
                                   User has been blocked

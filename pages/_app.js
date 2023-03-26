@@ -114,15 +114,15 @@ class MyApp extends App {
 
     // ron this code only on prod
 
-    if (
-      typeof window !== "undefined" &&
-      process.env.NODE_ENV === "production"
-    ) {
-      window.onbeforeunload = function () {
-        removeSessionStorage("auth");
-        removeSessionStorage("form");
-      };
-    }
+    // if (
+    //   typeof window !== "undefined" &&
+    //   process.env.NODE_ENV === "production"
+    // ) {
+    //   window.onbeforeunload = function () {
+    //     removeSessionStorage("auth");
+    //     removeSessionStorage("form");
+    //   };
+    // }
 
     return (
       <Provider store={store}>
