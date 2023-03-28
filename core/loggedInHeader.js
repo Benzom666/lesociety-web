@@ -14,7 +14,8 @@ import Image from "next/image";
 import close1 from "../assets/close1.png";
 import LeSlogoWhite from "../assets/LeS logoWhite.png";
 import LeSlogoText from "../assets/img/LeSocietylogotext.png";
-import Logo_Mob from "../assets/img/Logo_Mob.png";
+//import Logo_Mob from "../assets/img/Logo_Mob.png";
+import Logo_Mob$ from "../assets/img/LeSociety Icon White.png";
 import Logo_Web from "../assets/img/Logo_Web.png";
 // const socket = io("https://staging-api.secrettime.com/", {
 //   autoConnect: true,
@@ -176,7 +177,7 @@ export default function HeaderLoggedIn({
                 <Link href="/auth/login">
                   {/* <h3 className="d-md-none mb-0 st-logo">ST</h3> */}
                   <img
-                    src={Logo_Mob.src}
+                    src={Logo_Mob$.src}
                     width="25px"
                     height="25px"
                     alt="Logo"
