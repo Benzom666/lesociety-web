@@ -56,7 +56,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   };
 
   const handleUserMessageSubmit = async (values) => {
-    moveIcon();
+    // moveIcon();
     try {
       const data = {
         senderId: user?._id ?? "",
@@ -156,8 +156,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                     />
 
                     <button
-                    //className="icon-move"
-                    id="message-icon"
+                      //className="icon-move"
+                      id="message-icon"
                       type="button"
                       // className="message-user-popup-button icon-move-1"
                       className="message-user-popup-button"

@@ -26,6 +26,7 @@ import { format } from "timeago.js";
 import UserCardListForMessage from "./../core/UserCardListForMessage";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
+// import { socket } from "./_app";
 import { socket } from "./user/user-list";
 import NoConversationShowView from "@/modules/messages/NoConversationShowView";
 import MessageMobileHeader from "./../core/MessageMobileHeader";
@@ -232,6 +233,7 @@ const Messages = (props) => {
           ...prev,
           status: message?.status,
         }));
+        getConversations();
       });
     }
   }, [socket.connected]);
@@ -263,6 +265,7 @@ const Messages = (props) => {
         };
         console.log("data", data);
 
+        console.log("socket readMessage fired from chatRoom");
         socket.emit(`readMessage`, data);
         setConversations((prev) => {
           return prev.map((conversation) => {
@@ -327,9 +330,9 @@ const Messages = (props) => {
 
   useEffect(() => {
     console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
+    // socket.on("connect", () => {
+    //   console.log(socket.id);
+    // });
     socket.on(`push-notification-${user.email}`, (message) => {
       console.log("notif received", message);
       const unc = message?.notifications?.filter(
@@ -386,7 +389,7 @@ const Messages = (props) => {
   };
 
   const sendMessage = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const data = {
       chatRoomId: currentChat?.message?.room_id ?? currentChat?._id,
@@ -394,11 +397,27 @@ const Messages = (props) => {
       message: newMessage,
     };
 
-    // console.log("socket.connected data", socket.connected, data);
+    socket.connect();
+
     if (socket.connected) {
       setTimeout(() => {
+        console.log(
+          "socket.connected:->",
+          socket.connected,
+          " data ->",
+          data,
+          " active ->",
+          socket.active,
+          " disconnected ->",
+          socket.disconnected,
+          " id ->",
+          socket.id,
+          " connection ->",
+          socket.connect()
+        );
+
         socket.emit("sendMessage", data);
-      }, 500);
+      }, 100);
     }
     setMessages((prev) => [
       ...prev,
@@ -1009,7 +1028,11 @@ const Messages = (props) => {
                             {chatLoading ? (
                               ""
                             ) : currentChat?.status === 2 ? (
-                              currentChat?.blocked_by?._id == user?._id ? (
+                              currentChat?.date_id?.is_blocked_by_admin ? (
+                                <div className="text-center">
+                                  Admin has removed this date.
+                                </div>
+                              ) : currentChat?.blocked_by?._id == user?._id ? (
                                 <div className="text-center">
                                   {/* you have blocked this chat */}
                                   User has been blocked
@@ -1042,23 +1065,26 @@ const Messages = (props) => {
                                   }
                                   disabled={newMessage.trim() === ""}
                                 >
-                                  {/* <IoIosSend
-                                    size={25}
-                                    color={
-                                      newMessage.trim() === ""
-                                        ? "#686868"
-                                        : "#F24462"
-                                    }
-                                  /> */}
                                   <Image
                                     src={
-                                      newMessage === ""
-                                        ? MessageSend
-                                        : MessageSend2
+                                      !newMessage ? MessageSend : MessageSend2
                                     }
                                     alt="send-btn"
                                   />
                                 </button>
+                                {/* <div className="send_btn">
+                                  {newMessage.trim() !== "" ? (
+                                    <Image
+                                      src={MessageSend2}
+                                      alt="send-btn"
+                                      onClick={
+                                        newMessage.trim() !== "" && sendMessage
+                                      }
+                                    />
+                                  ) : (
+                                    <Image src={MessageSend} alt="send-btn" />
+                                  )}
+                                </div> */}
                               </div>
                             )}
                           </div>

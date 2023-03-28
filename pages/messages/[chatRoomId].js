@@ -54,7 +54,9 @@ function ChatMessages({ ...props }) {
       getChatHistory(router?.query?.chatRoomId);
       getConversations();
     }
-    return () => {};
+    return () => {
+      setChatLoading(false);
+    };
   }, [router?.query]);
 
   useEffect(
@@ -169,6 +171,7 @@ function ChatMessages({ ...props }) {
         };
         console.log("data", data);
 
+        console.log("socket readMessage fired from chatRoom");
         socket.emit(`readMessage`, data);
         setConversations((prev) => {
           return prev.map((conversation) => {
@@ -538,9 +541,13 @@ function ChatMessages({ ...props }) {
                         </ul>
                       </div>
                       {currentChat?.status === 2 ? (
-                        currentChat?.blocked_by?._id == user?._id ? (
+                        currentChat?.date_id?.is_blocked_by_admin ? (
                           <div className="text-center">
-                            you have blocked this chat
+                            Admin has removed this date.
+                          </div>
+                        ) : currentChat?.blocked_by?._id == user?._id ? (
+                          <div className="text-center">
+                            User has been blocked
                           </div>
                         ) : (
                           <div className="text-center">
@@ -564,7 +571,11 @@ function ChatMessages({ ...props }) {
                             <button
                               type="button"
                               className="send_btn"
-                              onClick={newMessage.trim() !== "" && sendMessage}
+                              onClick={
+                                newMessage.trim() !== ""
+                                  ? sendMessage
+                                  : undefined
+                              }
                               disabled={newMessage.trim() === ""}
                             >
                               {/* <IoIosSend

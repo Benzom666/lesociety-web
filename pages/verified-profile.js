@@ -54,6 +54,7 @@ const VerifiedProfilePage = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
   //  const [isUpload,setIsUpload] =useState(false);
+  const [conversations, setConversations] = useState([]);
 
   // for notification
   const [count, setCount] = useState(0);
@@ -80,10 +81,52 @@ const VerifiedProfilePage = (props) => {
   );
 
   useEffect(() => {
-    console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
+    getConversations();
+  }, []);
+
+  useEffect(() => {
+    socket.on(`request-${user?._id}`, (message) => {
+      console.log("reqested message header", message);
+      getConversations();
     });
+  }, [socket.connected]);
+
+  useEffect(() => {
+    socket.on(`recieve-${user?._id}`, (message) => {
+      console.log("recieve message header", message);
+      getConversations();
+    });
+  }, [socket.connected]);
+
+  const unReadedConversationLength = conversations?.filter(
+    (c) =>
+      c?.message &&
+      !c.message?.read_date_time &&
+      c?.message?.sender_id !== user?._id
+  )?.length;
+
+  const getConversations = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `chat/chatroom-list`,
+      });
+      // console.log("res", res.data?.data?.chatRooms);
+      const conversations =
+        res.data?.data?.chatRooms.length > 0
+          ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
+          : [];
+      setConversations(conversations);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    // socket.on("connect", () => {
+    //   console.log(socket.id);
+    // });
     socket.on(`push-notification-${user.email}`, (message) => {
       console.log("notif received", message);
       const unc = message?.notifications?.filter(
@@ -165,7 +208,11 @@ const VerifiedProfilePage = (props) => {
   return (
     <div className="inner-page">
       {width > 450 ? (
-        <HeaderLoggedIn count={count} setCount={setCount} />
+        <HeaderLoggedIn
+          count={count}
+          setCount={setCount}
+          unReadedConversationLength={unReadedConversationLength}
+        />
       ) : (
         <VerifiedProfileMobileHeader />
       )}

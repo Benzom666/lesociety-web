@@ -20,6 +20,7 @@ const Notifications = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [count, setCount] = useState(0);
+  const [conversations, setConversations] = useState([]);
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -43,10 +44,52 @@ const Notifications = () => {
   );
 
   useEffect(() => {
-    console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
+    getConversations();
+  }, []);
+
+  useEffect(() => {
+    socket.on(`request-${user?._id}`, (message) => {
+      console.log("reqested message header", message);
+      getConversations();
     });
+  }, [socket.connected]);
+
+  useEffect(() => {
+    socket.on(`recieve-${user?._id}`, (message) => {
+      console.log("recieve message header", message);
+      getConversations();
+    });
+  }, [socket.connected]);
+
+  const unReadedConversationLength = conversations?.filter(
+    (c) =>
+      c?.message &&
+      !c.message?.read_date_time &&
+      c?.message?.sender_id !== user?._id
+  )?.length;
+
+  const getConversations = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `chat/chatroom-list`,
+      });
+      // console.log("res", res.data?.data?.chatRooms);
+      const conversations =
+        res.data?.data?.chatRooms.length > 0
+          ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
+          : [];
+      setConversations(conversations);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    // socket.on("connect", () => {
+    //   console.log(socket.id);
+    // });
     socket.on(`push-notification-${user.email}`, (message) => {
       console.log("notif received", message);
       const unc = message?.notifications?.filter(
@@ -140,10 +183,10 @@ const Notifications = () => {
         {/* <Header /> */}
         <HeaderLoggedIn
           fixed={width < 767}
-          isBlack={true}
+          // isBlack={true}
           count={count}
           setCount={setCount}
-          // unReadedConversationLength={unReadedConversationLength}
+          unReadedConversationLength={unReadedConversationLength}
         />
         <div
           className={
@@ -153,7 +196,7 @@ const Notifications = () => {
           }
         >
           <div className="main-header">
-            <h1 className="header"> Notifications</h1>
+            <h1 className="header">{width > 767 && "Notifications"} </h1>
           </div>
           {notifData[0] ? (
             <ul>

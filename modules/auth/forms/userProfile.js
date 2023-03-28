@@ -45,6 +45,7 @@ function UserProfile({ preview, editHandle }) {
   const [page, setPage] = useState(1);
   const [alreadyMessaged, setAlreadyMessaged] = useState(false);
   const [messageLoading, setMessageLoading] = useState(false);
+  const [conversations, setConversations] = useState([]);
 
   const [viewFullPage, setViewFullPage] = useState(false);
   const [slideShowIndex, setSlideShowIndex] = useState(0);
@@ -80,10 +81,52 @@ function UserProfile({ preview, editHandle }) {
   );
 
   useEffect(() => {
-    console.log("Notif socket connected", socket.connected);
-    socket.on("connect", () => {
-      console.log(socket.id);
+    getConversations();
+  }, []);
+
+  useEffect(() => {
+    socket.on(`request-${user?._id}`, (message) => {
+      console.log("reqested message header", message);
+      getConversations();
     });
+  }, [socket.connected]);
+
+  useEffect(() => {
+    socket.on(`recieve-${user?._id}`, (message) => {
+      console.log("recieve message header", message);
+      getConversations();
+    });
+  }, [socket.connected]);
+
+  const unReadedConversationLength = conversations?.filter(
+    (c) =>
+      c?.message &&
+      !c.message?.read_date_time &&
+      c?.message?.sender_id !== user?._id
+  )?.length;
+
+  const getConversations = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `chat/chatroom-list`,
+      });
+      // console.log("res", res.data?.data?.chatRooms);
+      const conversations =
+        res.data?.data?.chatRooms.length > 0
+          ? res.data?.data?.chatRooms.filter((chat) => chat !== null)
+          : [];
+      setConversations(conversations);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  useEffect(() => {
+    console.log("Notif socket connected", socket.connected);
+    // socket.on("connect", () => {
+    //   console.log(socket.id);
+    // });
     socket.on(`push-notification-${user.email}`, (message) => {
       console.log("notif received", message);
       const unc = message?.notifications?.filter(
@@ -112,8 +155,8 @@ function UserProfile({ preview, editHandle }) {
       item?.label === selectedDate?.middle_class_dates ||
       item?.label === selectedDate?.executive_class_dates
   );
-  console.log(userDates);
-  console.log(loading);
+  // console.log(userDates);
+  // console.log(loading);
   const convertToFeet = (cmValue) => (cmValue * 0.0328084).toPrecision(2);
 
   const toFeet = (n) => {
@@ -406,6 +449,10 @@ function UserProfile({ preview, editHandle }) {
       ? user?.un_verified_description
       : user?.description);
 
+  const documentVerified = userDetail
+    ? userDetail?.documents_verified
+    : user?.documents_verified;
+
   const slides =
     slideShowIndex === 0
       ? [
@@ -464,6 +511,8 @@ function UserProfile({ preview, editHandle }) {
     height: "100vh",
   };
 
+  console.log("userDetail", userDetail);
+
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
   } else {
@@ -474,6 +523,7 @@ function UserProfile({ preview, editHandle }) {
             fixed={width < 767}
             count={count}
             setCount={setCount}
+            unReadedConversationLength={unReadedConversationLength}
           />
         )}
         <div className="inner-part-page">
@@ -542,7 +592,7 @@ function UserProfile({ preview, editHandle }) {
                                   }}
                                 />
 
-                                {user?.documents_verified && (
+                                {documentVerified && (
                                   <span className="verified_check_tag">
                                     <HiBadgeCheck color={"white"} size={20} />
                                     Verified
@@ -866,10 +916,7 @@ function UserProfile({ preview, editHandle }) {
                                 (router?.pathname === "/user/user-profile" &&
                                   user?.gender === "female")) && (
                                 <>
-                                  <SubHeading
-                                    title="Available Experiences"
-                                    style1
-                                  />
+                                  <SubHeading title="Available Experiences" />
                                   <div className="verification_card_header text-center mb-5 mt-4">
                                     <div
                                       className={
@@ -1206,7 +1253,7 @@ function UserProfile({ preview, editHandle }) {
                                 </>
                               )}
                           </>
-                          <SubHeading title="About me" style2 />
+                          <SubHeading title="About me" />
                           <div className="image_wrap_slider about_me_card">
                             <div className="about_me_card_inner">
                               <div className="inner-box-me">

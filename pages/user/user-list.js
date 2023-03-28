@@ -30,7 +30,12 @@ import DateAndLocation from "@/modules/location/DateAndLocation";
 import { changeSelectedLocationPopup } from "@/modules/auth/authActions";
 
 export const socket = io("https://staging-api.secrettime.com/", {
+  reconnection: true,
   autoConnect: true,
+  transports: ["websocket", "polling", "flashsocket"],
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000,
+  reconnectionAttempts: Infinity,
 });
 
 function UserList(props) {
@@ -129,14 +134,16 @@ function UserList(props) {
     socket.on("connect", () => {
       console.log(socket.id);
     });
-    socket.on(`push-notification-${user.email}`, (message) => {
-      console.log("notif received", message);
-      const unc = message?.notifications?.filter(
-        (item) => item.status === 0 && item.type !== "notification"
-      ).length;
-      localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
-      setCount(unc);
-    });
+    setTimeout(() => {
+      socket.on(`push-notification-${user.email}`, (message) => {
+        console.log("notif received", message);
+        const unc = message?.notifications?.filter(
+          (item) => item.status === 0 && item.type !== "notification"
+        ).length;
+        localStorage.setItem("unreadNotifCount", JSON.stringify(unc));
+        setCount(unc);
+      });
+    }, 500);
   }, [socket.connected]);
 
   useEffect(() => {
