@@ -138,7 +138,7 @@ export default function SideBar({ isActive, count }) {
                 <H5 style={{ fontSize: "18px", letterSpacing: "0.09px" }}>
                   {user?.user_name || ""}
                 </H5>
-                <SubHeading title={memberSince} />
+                <SubHeading title={`Member since ${memberSince}`} />
               </span>
             </div>
             <div className="d-flex align-items-center mb-0 header_btn_wrap">

@@ -20,7 +20,7 @@ const CreateStepFour = (props) => {
     reset,
     submitting,
     onClose,
-    confirmPopup
+    confirmPopup,
   } = props;
   const state = useSelector((state) => state?.form?.CreateStepFour);
   const router = useRouter();
@@ -81,106 +81,114 @@ const CreateStepFour = (props) => {
   // };
   return (
     <>
-      {!confirmPopup ? <>
-        <div className="inner_container">
-          <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
-            <a onClick={previousPage}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-chevron-left"
+      {!confirmPopup ? (
+        <>
+          <div className="inner_container">
+            <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
+              <a onClick={previousPage}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-chevron-left"
+                >
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </a>
+              <h6 className="m-0 text-white-50 text-uppercase">
+                {router?.query?.new_edit
+                  ? "Edit Your Date body"
+                  : " Create a New Date"}
+              </h6>
+              <IoIosClose
+                className="mouse-point"
+                size={32}
+                style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                onClick={onClose}
+              />
+            </div>
+            {width > 767 && (
+              <div
+                className="d-flex justify-content-center"
+                //style={{ marginLeft: "22px" }}
               >
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </a>
-            <h6 className="m-0 text-white-50 text-uppercase">
-              Create a New Date
-            </h6>
-            <IoIosClose
-              className="mouse-point"
-              size={32}
-              style={{ color: " rgba(255, 255, 255, 0.5)" }}
-              onClick={onClose}
-            />
-          </div>
-          {width > 767 && (
-            <div
-              className="d-flex justify-content-center"
-            //style={{ marginLeft: "22px" }}
-            >
-              <h3 className="text-center text-uppercase">Create a New Date</h3>
-              {/* <IoIosClose
+                <h3 className="text-center text-uppercase">
+                  {router?.query?.new_edit
+                    ? "Edit Your Date body"
+                    : " Create a New Date"}
+                </h3>
+                {/* <IoIosClose
               className="desk-close-icon mouse-point"
               size={32}
               onClick={toggle}
             /> */}
-            </div>
-          )}
-          <div
-            className="step-wraps"
-          // style={{ marginLeft: "10px" }}
-          >
-            <ul>
-              <li className="complete active">
-                <span></span>
-              </li>
-              <li className="complete active">
-                <span></span>
-              </li>
-              <li className="complete active">
-                <span></span>
-              </li>
-              <li className="complete active">
-                <span></span>
-              </li>
-              <li className="active">
-                <span></span>
-              </li>
-              <li>
-                <span></span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <>
-          {" "}
-          <div className="date-suggetion-text">
+              </div>
+            )}
             <div
-              className="inner_container"
-            //style={{ paddingRight: "35px", paddingLeft: "35px" }}
+              className="step-wraps"
+              // style={{ marginLeft: "10px" }}
             >
-              <h6>Describe your date.</h6>
-              <p>
-                Write more about your date suggestion, and why someone should
-                choose you as their date.
-              </p>
+              <ul>
+                <li className="complete active">
+                  <span></span>
+                </li>
+                <li className="complete active">
+                  <span></span>
+                </li>
+                <li className="complete active">
+                  <span></span>
+                </li>
+                <li className="complete active">
+                  <span></span>
+                </li>
+                <li className="active">
+                  <span></span>
+                </li>
+                <li>
+                  <span></span>
+                </li>
+              </ul>
             </div>
           </div>
-          <form
-            onSubmit={handleSubmit}
-            className="date-class-section choose-gender"
-            style={{ paddingRight: "10px", paddingLeft: "10px" }}
-          >
-            <div className="inner_container">
-              <div className="mb-5 date-description">
-                <Field
-                  name="date_description"
-                  type="text"
-                  validationLength={500}
-                  component={Inputs.textarea}
-                  //label="Describe_Date_Details"
-                  placeholder="Write details here (expectations, itinerary, rules, etc.)"
-                />
+          <>
+            {" "}
+            <div className="date-suggetion-text">
+              <div
+                className="inner_container"
+                //style={{ paddingRight: "35px", paddingLeft: "35px" }}
+              >
+                <h6>Describe your date.</h6>
+                <p>
+                  {router?.query?.new_edit
+                    ? "You can only edit your date description."
+                    : "Write more about your date suggestion, and why someone should choose you as their date."}
+                </p>
               </div>
             </div>
-            {/* {width > 767 && (
+            <form
+              onSubmit={handleSubmit}
+              className="date-class-section choose-gender"
+              style={{ paddingRight: "10px", paddingLeft: "10px" }}
+            >
+              <div className="inner_container">
+                <div className="mb-5 date-description">
+                  <Field
+                    name="date_description"
+                    type="text"
+                    validationLength={500}
+                    component={Inputs.textarea}
+                    //label="Describe_Date_Details"
+                    placeholder="Write details here (expectations, itinerary, rules, etc.)"
+                  />
+                </div>
+              </div>
+              {/* {width > 767 && (
                     <div className="date-suggetion-text mb-5">
                         <div className="inner_container">
                             <h6>Want To Offer <br /> A Free Date To Mr. Right?</h6>
@@ -188,9 +196,9 @@ const CreateStepFour = (props) => {
                         </div>
                     </div>
                  )}    */}
-            <div className="inner_container">
-              <>
-                {/* <div className="mb-4">
+              <div className="inner_container">
+                <>
+                  {/* <div className="mb-4">
                                 <div className="secret-input type-text select-wrap-icon">
                                     <select className="form-control">
                                         <option>Minimum yearly income</option>
@@ -200,7 +208,7 @@ const CreateStepFour = (props) => {
                                     </select>
                                 </div>    
                             </div> */}
-                {/* <div className="mb-5">
+                  {/* <div className="mb-5">
                                 <Field
                                     name="education"
                                     options={education_plan}
@@ -208,47 +216,47 @@ const CreateStepFour = (props) => {
                                     component={Inputs.checkboxField}
                                 />
                             </div> */}
-                <div className="mb-2 text-center">
-                  <CustomIcon.Diamond color={"#fff"} size={120} />
-                </div>
-              </>
+                  <div className="mb-2 text-center">
+                    <CustomIcon.Diamond color={"#fff"} size={120} />
+                  </div>
+                </>
 
-              <div
-                className="mb-8 bottom-content text-center"
-                style={{ marginBottom: "28px" }}
-              >
-                <p style={{ fontSize: "16px", paddingBottom: "30px" }}>
-                  Thank you for being one of our early adopters! To show you our
-                  appreciation, we will keep your posts active until you delete
-                  it. This allows you to earn multiple times for each post.
-                  Goodluck!
-                </p>
-              </div>
-              <div className="bottom-mobile register-bottom">
-                <div className="secret-input type-submit next-prev">
-                  {!confirmPopup && (
-                    <button
-                      type="submit"
-                      className="next"
-                      onClick={postDate}
-                      disabled={!state?.values?.date_description || invalid}
-                    >
-                      {loader ? (
-                        <span className="spin-loader-button"></span>
-                      ) : (
-                        <>
-                          Next <FiArrowRight />
-                        </>
-                      )}
-                    </button>
-                  )}
+                <div
+                  className="mb-8 bottom-content text-center"
+                  style={{ marginBottom: "28px" }}
+                >
+                  <p style={{ fontSize: "16px", paddingBottom: "30px" }}>
+                    Thank you for being one of our early adopters! To show you
+                    our appreciation, we will keep your posts active until you
+                    delete it. This allows you to earn multiple times for each
+                    post. Goodluck!
+                  </p>
+                </div>
+                <div className="bottom-mobile register-bottom">
+                  <div className="secret-input type-submit next-prev">
+                    {!confirmPopup && (
+                      <button
+                        type="submit"
+                        className="next"
+                        onClick={postDate}
+                        disabled={!state?.values?.date_description || invalid}
+                      >
+                        {loader ? (
+                          <span className="spin-loader-button"></span>
+                        ) : (
+                          <>
+                            Next <FiArrowRight />
+                          </>
+                        )}
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </>
         </>
-
-      </> : null}
+      ) : null}
       {/* <ConfirmDate isOpen={confirmPopup} toggle={toggle} /> */}
     </>
   );

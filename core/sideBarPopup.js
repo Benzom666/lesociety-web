@@ -116,7 +116,7 @@ function sideBarPopup({ isOpen, toggle, count }) {
 
   const memberSince = user?.created_at
     ? new Date(user?.created_at)?.toLocaleString("en-US", {
-        month: "long",
+        month: "short",
         year: "numeric",
       })
     : "";
@@ -185,7 +185,7 @@ function sideBarPopup({ isOpen, toggle, count }) {
                   </figure>
                   <span className="userdetails">
                     <H5>{user?.user_name || ""}</H5>
-                    <SubHeading title={memberSince} />
+                    <SubHeading title={`Member since ${memberSince}`} />
                   </span>
                 </div>
                 <div className="d-flex align-items-center mb-0 header_btn_wrap">
