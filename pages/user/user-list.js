@@ -559,6 +559,9 @@ function UserList(props) {
                         border: "none",
                         paddingBottom: "10px",
                         paddingTop: "8px",
+                        maxWidth: "100%",
+                        display: "flex",
+                        justifyContent: "flex-start",
                       }}
                       // className="icon-move-1"
                     >
@@ -574,8 +577,8 @@ function UserList(props) {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
                         }}
-                        width={50}
-                        height={50}
+                        width={30}
+                        height={30}
                       />
                     </button>
                   </div>
