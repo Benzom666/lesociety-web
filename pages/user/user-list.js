@@ -570,13 +570,21 @@ function UserList(props) {
                     <button
                       type="button"
                       style={{
-                        background: "transparent",
-                        border: "none",
-                        paddingBottom: "10px",
-                        paddingTop: "8px",
-                        width: "20%",
+                        // background: "transparent",
+                        // border: "none",
+                        // paddingBottom: "10px",
+                        // paddingTop: "8px",
+                        // width: "20%",
+                        // display: "flex",
+                        // justifyContent: "flex-start",
+                        background: "white",
+                        border: "2px solid red",
+                        borderRadius: "5px",
+                        padding: "10px 20px",
                         display: "flex",
-                        justifyContent: "flex-start",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
                       }}
                       // className="icon-move-1"
                     >
@@ -592,6 +600,7 @@ function UserList(props) {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
                         }}
+                        style={{ border: "2px solid black " }}
                         width={35}
                         height={35}
                       />
