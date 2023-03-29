@@ -27,7 +27,10 @@ import LocationModalPopUp from "@/core/locationModalPopUp";
 import classNames from "classnames";
 import { change } from "redux-form";
 import DateAndLocation from "@/modules/location/DateAndLocation";
-import { changeSelectedLocationPopup } from "@/modules/auth/authActions";
+import {
+  changeSelectedLocationPopup,
+  logout,
+} from "@/modules/auth/authActions";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   reconnection: true,
@@ -177,6 +180,15 @@ function UserList(props) {
       setConversations(conversations);
     } catch (err) {
       console.log("err", err);
+      //   if (
+      //     err?.response?.status === 401 &&
+      //     err?.response?.data?.message === "Failed to authenticate token!"
+      //   ) {
+      //     setTimeout(() => {
+      //       logout(router, dispatch);
+      //     }, 100);
+      //   }
+      //   return err;
     }
   };
 
@@ -218,7 +230,17 @@ function UserList(props) {
       values.message = "";
     } catch (err) {
       setMessageError(err.response?.data?.message ?? "");
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
+
     return;
   };
 
@@ -531,7 +553,7 @@ function UserList(props) {
                       component={CustomInput}
                     />
 
-                    <button
+                    {/* <button
                       type="button"
                       style={{
                         background: "transparent",
@@ -540,21 +562,21 @@ function UserList(props) {
                         paddingTop: "8px",
                       }}
                       // className="icon-move-1"
-                    >
-                      <Image
-                        src={
-                          formProps.values.message === ""
-                            ? MessageSend
-                            : MessageSend2
-                        }
-                        alt="send-btn"
-                        type="submit"
-                        onClick={() => {
-                          handleSubmit(formProps.values);
-                          formProps.resetForm();
-                        }}
-                      />
-                    </button>
+                    > */}
+                    <Image
+                      src={
+                        formProps.values.message === ""
+                          ? MessageSend
+                          : MessageSend2
+                      }
+                      alt="send-btn"
+                      type="submit"
+                      onClick={() => {
+                        handleSubmit(formProps.values);
+                        formProps.resetForm();
+                      }}
+                    />
+                    {/* </button> */}
                   </div>
                 </div>
               </Form>
