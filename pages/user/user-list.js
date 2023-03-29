@@ -74,6 +74,11 @@ function UserList(props) {
   //   }
   // }, [user]);
 
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const isAndroid = /Android/.test(navigator.userAgent);
+
+  console.log("isIOS", isIOS, isAndroid);
+
   useEffect(() => {
     socket.auth = { user: user };
     socket.connect();
@@ -544,13 +549,23 @@ function UserList(props) {
                   "
                 </p>
                 <div>
-                  <div className="">
+                  <div
+                    className=""
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      width: "100%",
+                    }}
+                  >
                     <Field
                       className={`${textClass}`}
                       placeholder="Type your message here…"
                       name="message"
                       id="message"
                       component={CustomInput}
+                      style={{
+                        width: "80%",
+                      }}
                     />
                     <button
                       type="button"
@@ -559,7 +574,7 @@ function UserList(props) {
                         border: "none",
                         paddingBottom: "10px",
                         paddingTop: "8px",
-                        width: "30%",
+                        width: "20%",
                         display: "flex",
                         justifyContent: "flex-start",
                       }}
@@ -577,8 +592,8 @@ function UserList(props) {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
                         }}
-                        width={50}
-                        height={50}
+                        width={35}
+                        height={35}
                       />
                     </button>
                   </div>
