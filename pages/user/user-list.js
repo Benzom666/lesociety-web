@@ -555,7 +555,8 @@ function UserList(props) {
                     <button
                       type="button"
                       style={{
-                        background: "transparent",
+                        background: "white",
+                        // background: "transparent",
                         border: "none",
                         paddingBottom: "10px",
                         paddingTop: "8px",
