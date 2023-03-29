@@ -559,7 +559,7 @@ function UserList(props) {
                         border: "none",
                         paddingBottom: "10px",
                         paddingTop: "8px",
-                        maxWidth: "100%",
+                        width: "30%",
                         display: "flex",
                         justifyContent: "flex-start",
                       }}
@@ -577,8 +577,8 @@ function UserList(props) {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
                         }}
-                        width={30}
-                        height={30}
+                        width={50}
+                        height={50}
                       />
                     </button>
                   </div>
