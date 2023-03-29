@@ -22,7 +22,7 @@ import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
 import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
 import MessageSend from "assets/message_send.png";
-import MessageSend2 from "assets/close1.png";
+import MessageSend2 from "assets/message_send2.png";
 import LocationModalPopUp from "@/core/locationModalPopUp";
 import classNames from "classnames";
 import { change } from "redux-form";
@@ -555,9 +555,7 @@ function UserList(props) {
                     <button
                       type="button"
                       style={{
-                        background: "red",
-                        // background: "transparent",
-                        color: "yellow",
+                        background: "transparent",
                         border: "none",
                         paddingBottom: "10px",
                         paddingTop: "8px",
@@ -566,10 +564,9 @@ function UserList(props) {
                     >
                       <Image
                         src={
-                          // formProps.values.message === ""
-                          //   ? MessageSend
-                          // :
-                          MessageSend2
+                          formProps.values.message === ""
+                            ? MessageSend
+                            : MessageSend2
                         }
                         alt="send-btn"
                         type="submit"
@@ -577,8 +574,9 @@ function UserList(props) {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
                         }}
+                        width={50}
+                        height={50}
                       />
-                      hello
                     </button>
                   </div>
                 </div>
