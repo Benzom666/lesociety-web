@@ -552,8 +552,7 @@ function UserList(props) {
                       id="message"
                       component={CustomInput}
                     />
-
-                    {/* <button
+                    <button
                       type="button"
                       style={{
                         background: "transparent",
@@ -562,21 +561,22 @@ function UserList(props) {
                         paddingTop: "8px",
                       }}
                       // className="icon-move-1"
-                    > */}
-                    <Image
-                      src={
-                        formProps.values.message === ""
-                          ? MessageSend
-                          : MessageSend2
-                      }
-                      alt="send-btn"
-                      type="submit"
-                      onClick={() => {
-                        handleSubmit(formProps.values);
-                        formProps.resetForm();
-                      }}
-                    />
-                    {/* </button> */}
+                    >
+                      <Image
+                        src={
+                          // formProps.values.message === ""
+                          //   ? MessageSend
+                          // :
+                          MessageSend2
+                        }
+                        alt="send-btn"
+                        type="submit"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                      />
+                    </button>
                   </div>
                 </div>
               </Form>
