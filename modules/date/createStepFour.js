@@ -102,9 +102,7 @@ const CreateStepFour = (props) => {
                 </svg>
               </a>
               <h6 className="m-0 text-white-50 text-uppercase">
-                {router?.query?.new_edit
-                  ? "Edit Your Date body"
-                  : " Create a New Date"}
+                Create a New Date
               </h6>
               <IoIosClose
                 className="mouse-point"
@@ -119,9 +117,7 @@ const CreateStepFour = (props) => {
                 //style={{ marginLeft: "22px" }}
               >
                 <h3 className="text-center text-uppercase">
-                  {router?.query?.new_edit
-                    ? "Edit Your Date body"
-                    : " Create a New Date"}
+                  Create a New Date
                 </h3>
                 {/* <IoIosClose
               className="desk-close-icon mouse-point"
@@ -163,7 +159,10 @@ const CreateStepFour = (props) => {
                 className="inner_container"
                 //style={{ paddingRight: "35px", paddingLeft: "35px" }}
               >
-                <h6>Describe your date.</h6>
+                <h6>
+                  {" "}
+                  {router?.query?.new_edit ? "Edit" : "Describe"} your date.
+                </h6>
                 <p>
                   {router?.query?.new_edit
                     ? "You can only edit your date description."

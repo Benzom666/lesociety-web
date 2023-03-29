@@ -302,11 +302,14 @@ const DatePreview = (props) => {
               {!confirmPopup && (
                 <div className="bottom-mobile register-bottom">
                   <div className="secret-input type-submit next-prev">
-                    <button type="button" className="edit next">
-                      <Link href="/create-date/choose-city?edit=true">
-                        <a>Edit</a>
-                      </Link>
-                    </button>
+                    {!router?.query?.new_edit && (
+                      <button type="button" className="edit next">
+                        <Link href="/create-date/choose-city?edit=true">
+                          <a>Edit</a>
+                        </Link>
+                      </button>
+                    )}
+
                     <button
                       type="button"
                       className="next"

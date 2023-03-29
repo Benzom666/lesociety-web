@@ -39,9 +39,14 @@ const CreateDate = (props) => {
     window.scrollTo(0, 0);
   };
   const previousPage = () => {
+    if (router?.query?.new_edit && page === 3) {
+      router.push("/user/user-profile");
+    }
+
     if (mobile && page === 0) {
       router.push("/create-date/choose-city");
     }
+
     setPage(page - 1);
     window.scrollTo(0, 0);
   };
@@ -66,7 +71,7 @@ const CreateDate = (props) => {
         page !== 4 &&
         !router.query?.new_edit &&
         !router.query?.drafted && (
-          < div className="d-flex justify-content-between align-items-center">
+          <div className="d-flex justify-content-between align-items-center">
             <div
               onClick={() => {
                 if (page > 0) {
@@ -85,21 +90,27 @@ const CreateDate = (props) => {
                 />
               </span>
             </div>
-            <div onClick={toggle} className="w-15 d-none d-sm-block cursor-pointer text-end pe-5"
-                  >
-                      <IoIosClose
-                        className="mouse-point"
-                        size={33}
-                        //style={{ color: " rgba(255, 255, 255, 0.5)" }}
-                        onClick={toggle}
-                      />
-          </div>
+            <div
+              onClick={toggle}
+              className="w-15 d-none d-sm-block cursor-pointer text-end pe-5"
+            >
+              <IoIosClose
+                className="mouse-point"
+                size={33}
+                //style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                onClick={toggle}
+              />
+            </div>
           </div>
         )}
 
       {!router.query.drafted && page == 0 && (
-        <CreateStepOne previousPage={previousPage} onSubmit={nextPage} onClose={toggle} 
-        confirmPopup={confirmPopup} />
+        <CreateStepOne
+          previousPage={previousPage}
+          onSubmit={nextPage}
+          onClose={toggle}
+          confirmPopup={confirmPopup}
+        />
       )}
       {!router.query.drafted && page == 1 && (
         <>

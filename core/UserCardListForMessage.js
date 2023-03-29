@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import UserImg from "assets/img/profile.png";
 import UserImg3 from "assets/img/user-3.png";
 import UserImg4 from "assets/img/user-4.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { CustomIcon } from "core/icon";
 import Modal from "react-modal";
@@ -20,6 +20,8 @@ import SkeletonUserCardListForMessage from "@/modules/skeleton/SkeletonUserCardL
 import SkeletonElement from "@/modules/skeleton/SkeletonElement";
 import ImageShow from "@/modules/ImageShow";
 import useWindowSize from "utils/useWindowSize";
+import { logout } from "@/modules/auth/authActions";
+import { useEffect } from "react";
 
 const UserCardListForMessage = ({
   conversations,
@@ -40,6 +42,18 @@ const UserCardListForMessage = ({
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
+
+  useEffect(() => {
+    if (modalIsOpen) {
+      // stop scrolling page
+      document.body.style.overflow = "hidden";
+    } else {
+      // allow scrolling page
+      document.body.style.overflow = "unset";
+    }
+  }, [modalIsOpen]);
+
+  const dispatch = useDispatch();
 
   const width = useWindowSize();
   function openModal() {
@@ -82,6 +96,16 @@ const UserCardListForMessage = ({
       tabIndexChange(0);
     } catch (err) {
       console.log("err", err);
+
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
 
     // const data = {
