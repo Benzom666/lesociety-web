@@ -22,7 +22,7 @@ import SkeletonArticle from "@/modules/skeleton/SkeletonArticle";
 import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
 import MessageSend from "assets/message_send.png";
-import MessageSend2 from "assets/message_send2.png";
+import MessageSend2 from "assets/close1.png";
 import LocationModalPopUp from "@/core/locationModalPopUp";
 import classNames from "classnames";
 import { change } from "redux-form";
