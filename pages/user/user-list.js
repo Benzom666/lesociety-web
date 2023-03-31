@@ -574,7 +574,7 @@ function UserList(props) {
                     <button
                       type="button"
                       style={{
-                        background: "white",
+                        background: "transparent",
                         border: "none",
                         paddingBottom: "10px",
                         paddingTop: "8px",
@@ -582,41 +582,13 @@ function UserList(props) {
                         display: "flex",
                         justifyContent: "flex-start",
                       }}
-                      className="icon-move-1"
+                      // className="icon-move-1"
                     >
                       <Image
                         src={
                           formProps.values.message === ""
-                            ? MessageSend
-                            : MessageSend2
-                        }
-                        alt="send-btn"
-                        onClick={() => {
-                          handleSubmit(formProps.values);
-                          formProps.resetForm();
-                        }}
-                        width={35}
-                        height={35}
-                      />
-                      <Image
-                        src={
-                          formProps.values.message === ""
-                            ? MessageSend3
-                            : MessageSend4
-                        }
-                        alt="send-btn"
-                        onClick={() => {
-                          handleSubmit(formProps.values);
-                          formProps.resetForm();
-                        }}
-                        width={35}
-                        height={35}
-                      />
-                      <Image
-                        src={
-                          formProps.values.message === ""
                             ? MessageSend5
-                            : MessageSend5
+                            : MessageSend2
                         }
                         alt="send-btn"
                         onClick={() => {
