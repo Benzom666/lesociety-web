@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { apiRequest, dateCategory } from "utils/Utilities";
 import io from "socket.io-client";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -11,8 +11,9 @@ import withAuth from "@/core/withAuth";
 import { socket } from "../user/user-list";
 import NoImage from "assets/img/no-image.png";
 import { IoIosArrowBack } from "react-icons/io";
-import MessageSend from "assets/message_send.png";
+import MessageSend from "assets/Send.jpg";
 import MessageSend2 from "assets/message_send2.png";
+import { logout } from "@/modules/auth/authActions";
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
 function ChatMessages({ ...props }) {
@@ -26,6 +27,8 @@ function ChatMessages({ ...props }) {
   const router = useRouter();
   const scrollRef = useRef();
   const [chatLoading, setChatLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -255,6 +258,15 @@ function ChatMessages({ ...props }) {
       setMessages(res.data?.data?.chat);
     } catch (err) {
       console.log("err", err);
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
   };
   const category = dateCategory.find(
@@ -286,6 +298,15 @@ function ChatMessages({ ...props }) {
     } catch (err) {
       console.log("err", err);
       setChatLoading(false);
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
   };
 
@@ -311,6 +332,15 @@ function ChatMessages({ ...props }) {
       }));
     } catch (err) {
       console.log("err", err);
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
   };
 
@@ -340,6 +370,15 @@ function ChatMessages({ ...props }) {
       getChatHistory(currentChat?.message?.room_id);
     } catch (err) {
       console.log("err", err);
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
   };
 
@@ -362,6 +401,15 @@ function ChatMessages({ ...props }) {
       getConversations();
     } catch (err) {
       console.log("err", err);
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
   };
   const sendMessage = async (e) => {

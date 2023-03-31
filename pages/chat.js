@@ -1,6 +1,6 @@
 import React from "react";
 import withAuth from "../core/withAuth";
-import MessageSend from "../assets/message_send.png";
+import MessageSend from "../assets/Send.svg";
 import MessageSend2 from "../assets/message_send2.png";
 function Chat({ currentChat, category }) {
   return (

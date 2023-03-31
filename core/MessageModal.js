@@ -2,10 +2,13 @@ import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { apiRequest } from "utils/Utilities";
 import CustomInput from "Views/CustomInput";
-import MessageSend from "assets/message_send.png";
+import MessageSend from "assets/Send.svg";
 import MessageSend2 from "assets/message_send2.png";
 import * as Yup from "yup";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { logout } from "@/modules/auth/authActions";
 
 function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   const [classPopup, setPopupClass] = React.useState("hide");
@@ -13,6 +16,9 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
 
   const [messageError, setMessageError] = React.useState("");
   const [textClass, setTextSlideClass] = React.useState("");
+
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   const closePopup = () => {
     setPopupClass("hide");
@@ -75,6 +81,15 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
       close();
     } catch (err) {
       setMessageError(err.response?.data?.message ?? "");
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
     return;
   };
@@ -108,6 +123,15 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
       values.message = "";
     } catch (err) {
       setMessageError(err.response?.data?.message ?? "");
+      // if (
+      //   err?.response?.status === 401 &&
+      //   err?.response?.data?.message === "Failed to authenticate token!"
+      // ) {
+      //   setTimeout(() => {
+      //     logout(router, dispatch);
+      //   }, 100);
+      // }
+      // return err;
     }
     return;
   };
