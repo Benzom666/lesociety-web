@@ -12,11 +12,13 @@ const customStyles = {
         borderRadius: "30px",
         background: 'linear-gradient(231.4deg, rgba(46, 49, 58, 0.80844) 18.16%, rgba(25, 25, 25, 0.831845) 95.56%)',
     },
-
+    overlay: {
+        backdropFilter: "blur(5px)",
+    },
 };
 
-const CreatedatesWarningPopUp = () => {
-    const [modalIsOpen, setIsOpen] = useState(false);
+const CreatedatesWarningPopUp = ({ setHideModal, hideModal }) => {
+    const [modalIsOpen, setIsOpen] = useState(!hideModal);
     const [checked, setChecked] = useState(false);
 
     const checkHandler = () => {
@@ -31,19 +33,20 @@ const CreatedatesWarningPopUp = () => {
     }
     return (
         <div>
-            <button onClick={openModal}>Open Modal</button>
+            {/* <button onClick={openModal}>Open Modal</button> */}
             <Modal
                 isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
+                //onRequestClose={closeModal}
+                //style={customStyles}
                 contentLabel="Example Modal"
+                className="Warning_Popup"
             >
                 <div className='warning_modal_main'>
                     <div className='w-15 text-end pe-1'>
                         <IoIosClose
                             className="mouse-point"
                             size={33}
-                            onClick={closeModal}
+                            onClick={() => setHideModal(true)}
                         />
                     </div>
                     <div className='WarnigPopUp_Heading'>
@@ -68,7 +71,7 @@ const CreatedatesWarningPopUp = () => {
                         </div>
                     </div>
                     <div className='warning_modal_footer'>
-                        <button type="button">Agree and Continue</button>
+                        <button type="button" onClick={() => setHideModal(true)}>Agree and Continue</button>
                         <p className='footer-text-war'>No Refunds will be Issued</p>
                     </div>
                 </div>

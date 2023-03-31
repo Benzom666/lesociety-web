@@ -2502,6 +2502,7 @@ div[id="scrolldiv"] {
 }
 
 .user_list_wrap {
+  
   .top-space {
     margin-top: 18px;
     padding-right: 7px;
@@ -4142,7 +4143,7 @@ body .verification_card_header {
 
 #message-icon,
 .icon-move {
-  transition: left 1s ease-out, top 1s ease-out;
+  transition: left 10s ease-in-out, top 10s ease-in-out;
   cursor: pointer;
 }
 

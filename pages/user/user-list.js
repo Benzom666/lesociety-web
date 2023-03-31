@@ -345,7 +345,7 @@ function UserList(props) {
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
-        fixed={width < 767}
+        fixed={width < 767 || width >767}
         isBlack={locationPopup}
         unReadedConversationLength={unReadedConversationLength}
         count={count}
@@ -360,7 +360,7 @@ function UserList(props) {
       <div className="inner-part-page">
         <div className="pt-5 pb-4">
           <div className="container user_list_wrap">
-            <div className="row">
+            <div className="row topSpace_Desk">
               <div className="col-md-2"></div>
               <div className="col-md-8">
                 <div className="row">

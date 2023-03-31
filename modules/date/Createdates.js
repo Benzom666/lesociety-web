@@ -11,6 +11,7 @@ import useWindowSize from "utils/useWindowSize";
 import { useEffect } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
+import CreatedatesWarningPopUp from "./CreatedatesWarningPopUp";
 
 const CreateDate = (props) => {
   const [page, setPage] = useState(0);
@@ -18,6 +19,7 @@ const CreateDate = (props) => {
   const [confirmPopup, setConfirmPopup] = useState(false);
   const cityState = useSelector((state) => state?.form?.ChooseCity?.values);
   const { width } = useWindowSize();
+  const [hideModal, setHideModal] = useState(false);
 
   const mobile = width < 768;
 
@@ -86,20 +88,20 @@ const CreateDate = (props) => {
               </span>
             </div>
             <div onClick={toggle} className="w-15 d-none d-sm-block cursor-pointer text-end pe-5"
-                  >
-                      <IoIosClose
-                        className="mouse-point"
-                        size={33}
-                        //style={{ color: " rgba(255, 255, 255, 0.5)" }}
-                        onClick={toggle}
-                      />
-          </div>
+            >
+              <IoIosClose
+                className="mouse-point"
+                size={33}
+                //style={{ color: " rgba(255, 255, 255, 0.5)" }}
+                onClick={toggle}
+              />
+            </div>
           </div>
         )}
 
       {!router.query.drafted && page == 0 && (
-        <CreateStepOne previousPage={previousPage} onSubmit={nextPage} onClose={toggle} 
-        confirmPopup={confirmPopup} />
+        <CreateStepOne previousPage={previousPage} onSubmit={nextPage} onClose={toggle}
+          confirmPopup={confirmPopup} />
       )}
       {!router.query.drafted && page == 1 && (
         <>
@@ -123,14 +125,19 @@ const CreateDate = (props) => {
       )}
       {!router.query.drafted && page == 3 && (
         <>
-          <CreateStepFour
-            previousPage={previousPage}
-            onSubmit={nextPage}
-            onClose={toggle}
-            confirmPopup={confirmPopup}
-          />
+          {hideModal ? (
+            <CreateStepFour
+              previousPage={previousPage}
+              onSubmit={nextPage}
+              onClose={toggle}
+              confirmPopup={confirmPopup}
+            />
+          ) : <CreatedatesWarningPopUp setHideModal={setHideModal} hideModal={hideModal} />
+          }
         </>
-      )}
+      )
+
+      }
       {(router.query.drafted || page == 4) && (
         <>
           <DatePreview />
