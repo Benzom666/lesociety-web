@@ -199,6 +199,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           formProps.resetForm();
                         }}
                         className="no-radius"
+                        width={35}
+                        height={35}
                       />
                     </button>
                   </div>
@@ -309,6 +311,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                               formProps.resetForm();
                             }}
                             className="no-radius"
+                            width={35}
+                            height={35}
                           />
                         </button>
                       </div>

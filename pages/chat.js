@@ -118,6 +118,8 @@ function Chat({ currentChat, category }) {
                   src={newMessage === "" ? MessageSend : MessageSend2}
                   alt="send-btn"
                   size={25}
+                  width={35}
+                  height={35}
                 />
               </button>
             </div>
