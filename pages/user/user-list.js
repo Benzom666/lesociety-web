@@ -23,6 +23,9 @@ import io from "socket.io-client";
 import { removeCookie } from "utils/cookie";
 import MessageSend from "assets/message_send.png";
 import MessageSend2 from "assets/message_send2.png";
+import MessageSend3 from "assets/Send.jpg";
+import MessageSend4 from "assets/Send.png";
+import MessageSend5 from "assets/Send.svg";
 import LocationModalPopUp from "@/core/locationModalPopUp";
 import classNames from "classnames";
 import { change } from "redux-form";
@@ -31,6 +34,7 @@ import {
   changeSelectedLocationPopup,
   logout,
 } from "@/modules/auth/authActions";
+import ImageShow from "@/modules/ImageShow";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   reconnection: true,
@@ -570,23 +574,15 @@ function UserList(props) {
                     <button
                       type="button"
                       style={{
-                        // background: "transparent",
-                        // border: "none",
-                        // paddingBottom: "10px",
-                        // paddingTop: "8px",
-                        // width: "20%",
-                        // display: "flex",
-                        // justifyContent: "flex-start",
                         background: "white",
-                        border: "2px solid red",
-                        borderRadius: "5px",
-                        padding: "10px 20px",
+                        border: "none",
+                        paddingBottom: "10px",
+                        paddingTop: "8px",
+                        width: "20%",
                         display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
+                        justifyContent: "flex-start",
                       }}
-                      // className="icon-move-1"
+                      className="icon-move-1"
                     >
                       <Image
                         src={
@@ -595,12 +591,38 @@ function UserList(props) {
                             : MessageSend2
                         }
                         alt="send-btn"
-                        type="submit"
                         onClick={() => {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
                         }}
-                        style={{ border: "2px solid black " }}
+                        width={35}
+                        height={35}
+                      />
+                      <Image
+                        src={
+                          formProps.values.message === ""
+                            ? MessageSend3
+                            : MessageSend4
+                        }
+                        alt="send-btn"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                        width={35}
+                        height={35}
+                      />
+                      <Image
+                        src={
+                          formProps.values.message === ""
+                            ? MessageSend5
+                            : MessageSend5
+                        }
+                        alt="send-btn"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
                         width={35}
                         height={35}
                       />
