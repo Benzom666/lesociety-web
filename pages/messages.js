@@ -1126,8 +1126,8 @@ const Messages = (props) => {
                                       !newMessage ? MessageSend : MessageSend2
                                     }
                                     alt="send-btn"
-                                    width={35}
-                                    height={35}
+                                    width={30}
+                                    height={30}
                                   />
                                 </button>
                                 {/* <div className="send_btn">

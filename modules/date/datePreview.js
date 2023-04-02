@@ -48,6 +48,8 @@ const DatePreview = (props) => {
   const previousPage = () => {
     router.asPath.includes("drafted")
       ? router.push("/user/user-list")
+      : router.query?.new_edit
+      ? props.setPage(3)
       : router.back();
   };
 

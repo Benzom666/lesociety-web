@@ -131,8 +131,8 @@ const ChooseCity = (props) => {
           router.push("/create-date/date-event?drafted=true");
         }
       }
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
       setDraftDateLoading(false);
       // dispatch(initialize("ChooseCity", ""));
       dispatch(initialize("CreateStepOne", ""));

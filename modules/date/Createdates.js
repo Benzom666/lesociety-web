@@ -144,7 +144,7 @@ const CreateDate = (props) => {
       )}
       {(router.query.drafted || page == 4) && (
         <>
-          <DatePreview />
+          <DatePreview setPage={setPage} />
         </>
       )}
       {/* {width < 767 && ( */}
