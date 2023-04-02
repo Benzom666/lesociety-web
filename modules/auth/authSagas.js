@@ -2,8 +2,10 @@ import { call, put, race, take, takeLatest } from "redux-saga/effects";
 import { apiRequest, showToast } from "../../utils/Utilities";
 import { AUTHENTICATE, AUTHENTICATE_UPDATE } from "./actionConstants";
 import { stopSubmit, reset } from "redux-form";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { SIGNUP1, SIGNUP2, SIGNUP3, LOGIN, SIGNUP4 } from "./actionConstants";
+import { useDispatch } from "react-redux";
+import { logout } from "./authActions";
 
 export function* login(action) {
   action.loader(true);
@@ -171,6 +173,18 @@ function* signupStep2(data) {
       error?.response ? error.response.data.message : error.message,
       "error"
     );
+    const router = useRouter();
+    const dispatch = useDispatch();
+
+    if (
+      error?.response?.status === 401 &&
+      error?.response?.data?.message === "Failed to authenticate token!"
+    ) {
+      setTimeout(() => {
+        logout(router, dispatch);
+      }, 100);
+    }
+    return error;
   }
 }
 
@@ -212,6 +226,19 @@ function* signupStep3(data) {
       "error"
     );
     data.loader(false);
+
+    const router = useRouter();
+    const dispatch = useDispatch();
+
+    if (
+      error?.response?.status === 401 &&
+      error?.response?.data?.message === "Failed to authenticate token!"
+    ) {
+      setTimeout(() => {
+        logout(router, dispatch);
+      }, 100);
+    }
+    return error;
   }
 }
 
@@ -244,6 +271,18 @@ function* signupStep4(data) {
       "error"
     );
     data.loader(false);
+    const router = useRouter();
+    const dispatch = useDispatch();
+
+    if (
+      error?.response?.status === 401 &&
+      error?.response?.data?.message === "Failed to authenticate token!"
+    ) {
+      setTimeout(() => {
+        logout(router, dispatch);
+      }, 100);
+    }
+    return error;
   }
 }
 

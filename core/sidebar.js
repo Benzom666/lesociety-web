@@ -50,6 +50,15 @@ export default function SideBar({ isActive, count }) {
       setNotifdata(data?.data?.notification);
     } catch (err) {
       console.error("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -115,7 +124,7 @@ export default function SideBar({ isActive, count }) {
   // convert createat to month year format
   const memberSince = user?.created_at
     ? new Date(user?.created_at)?.toLocaleString("en-US", {
-        month: "long",
+        month: "short",
         year: "numeric",
       })
     : "";

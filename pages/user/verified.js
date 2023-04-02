@@ -8,6 +8,7 @@ import Footer from "core/footer";
 import withAuth from "../../core/withAuth";
 import { apiRequest } from "utils/Utilities";
 import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
+import { logout } from "@/modules/auth/authActions";
 
 const Verfied = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -51,6 +52,15 @@ const Verfied = (props) => {
         });
     } catch (err) {
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
   return (

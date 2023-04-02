@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import UserImg from "assets/img/profile.png";
 import UserImg3 from "assets/img/user-3.png";
 import UserImg4 from "assets/img/user-4.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { CustomIcon } from "core/icon";
 import Modal from "react-modal";
@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import userImageMain from "../assets/img/user2.jpg";
 import ImageShow from "@/modules/ImageShow";
 import MessageModal from "./MessageModal";
+import { logout } from "@/modules/auth/authActions";
 
 const UserCardList = ({
   date,
@@ -45,6 +46,8 @@ const UserCardList = ({
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
+
+  const dispatch = useDispatch();
 
   const [mobileLoader, setMobileLoading] = useState(false);
 
@@ -100,6 +103,15 @@ const UserCardList = ({
       setMobileLoading(false);
       setLoading(false);
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -258,7 +270,9 @@ const UserCardList = ({
                           <li style={{ display: "flex", alignItems: "center" }}>
                             <span>{category?.icon}</span>
                             {/* <span className="labelofcard-1">{category?.label}</span> */}
-                            <span className="labelofCard-2">{category?.label}</span>
+                            <span className="labelofCard-2">
+                              {category?.label}
+                            </span>
                           </li>
                         </ul>
                       </div>

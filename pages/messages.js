@@ -166,15 +166,15 @@ const Messages = (props) => {
       }
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -396,15 +396,15 @@ const Messages = (props) => {
     } catch (err) {
       setLoading(false);
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -492,15 +492,15 @@ const Messages = (props) => {
     } catch (err) {
       setChatLoading(false);
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -535,15 +535,15 @@ const Messages = (props) => {
       getChatHistory(currentChat);
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
   const unblockChat = async (currentChat) => {
@@ -572,15 +572,15 @@ const Messages = (props) => {
       getChatHistory(currentChat);
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -602,15 +602,15 @@ const Messages = (props) => {
       getConversations();
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 

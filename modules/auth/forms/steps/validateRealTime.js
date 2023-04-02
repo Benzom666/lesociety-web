@@ -2,6 +2,9 @@ import _ from "lodash";
 import { stopSubmit, updateSyncErrors } from "redux-form";
 import axios from "axios";
 import { apiRequest } from "../../../../utils/Utilities";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { logout } from "../../authActions";
 
 export const existEmail = _.debounce(
   async (value, setLoader, setValid, dispatch, gender, error, setMailTest) => {
@@ -40,6 +43,17 @@ export const existEmail = _.debounce(
         setLoader(false);
         setMailTest(true);
         // dispatch(stopSubmit('RegisterForm', {email: 'checking'}))
+        const router = useRouter();
+        const dispatch = useDispatch();
+        if (
+          err?.response?.status === 401 &&
+          err?.response?.data?.message === "Failed to authenticate token!"
+        ) {
+          setTimeout(() => {
+            logout(router, dispatch);
+          }, 100);
+        }
+        return err;
       }
     }
   },
@@ -85,6 +99,17 @@ export const existUsername = _.debounce(
         setLoader(false);
         setUserTest(true);
         // dispatch(stopSubmit('RegisterForm', {email: 'checking'}))
+        const router = useRouter();
+        const dispatch = useDispatch();
+        if (
+          err?.response?.status === 401 &&
+          err?.response?.data?.message === "Failed to authenticate token!"
+        ) {
+          setTimeout(() => {
+            logout(router, dispatch);
+          }, 100);
+        }
+        return err;
       }
     }
   },
@@ -98,8 +123,19 @@ export const fetchLocation = async () => {
       url: `country`,
     });
     return res.data.data;
-  } catch (e) {
-    console.log(e);
+  } catch (err) {
+    console.log(err);
+    const router = useRouter();
+    const dispatch = useDispatch();
+    if (
+      err?.response?.status === 401 &&
+      err?.response?.data?.message === "Failed to authenticate token!"
+    ) {
+      setTimeout(() => {
+        logout(router, dispatch);
+      }, 100);
+    }
+    return err;
   }
 };
 

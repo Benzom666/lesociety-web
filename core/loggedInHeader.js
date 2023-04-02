@@ -4,7 +4,7 @@ import { CustomIcon } from "core/icon";
 import UserImg from "assets/img/profile.png";
 import SideBar from "./sidebar";
 import useWindowSize from "utils/useWindowSize";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import { useRouter } from "next/router";
 import { apiRequest } from "utils/Utilities";
@@ -17,6 +17,7 @@ import LeSlogoText from "../assets/img/LeSocietylogotext.png";
 //import Logo_Mob from "../assets/img/Logo_Mob.png";
 import Logo_Mob$ from "../assets/img/LeSociety Icon White.png";
 import Logo_Web from "../assets/img/Logo_Web.png";
+import { logout } from "@/modules/auth/authActions";
 // const socket = io("https://staging-api.secrettime.com/", {
 //   autoConnect: true,
 // });
@@ -39,6 +40,7 @@ export default function HeaderLoggedIn({
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const [notifData, setNotifdata] = useState(null);
+  const dispatch = useDispatch();
   // const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -118,6 +120,15 @@ export default function HeaderLoggedIn({
       setNotifdata(data?.data?.notification);
     } catch (err) {
       console.error("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 

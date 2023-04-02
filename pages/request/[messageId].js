@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import UserImg from "assets/img/profile.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { CustomIcon } from "core/icon";
 import Modal from "react-modal";
@@ -17,6 +17,7 @@ import SkeletonUserCardListForMessage from "@/modules/skeleton/SkeletonUserCardL
 import SkeletonElement from "@/modules/skeleton/SkeletonElement";
 import ImageShow from "@/modules/ImageShow";
 import useWindowSize from "utils/useWindowSize";
+import { logout } from "@/modules/auth/authActions";
 
 const UserCardListForMessage = ({
   conversations,
@@ -37,6 +38,8 @@ const UserCardListForMessage = ({
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
+
+  const dispatch = useDispatch();
 
   const width = useWindowSize();
   function openModal() {
@@ -79,6 +82,15 @@ const UserCardListForMessage = ({
       tabIndexChange(0);
     } catch (err) {
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
 
     // const data = {

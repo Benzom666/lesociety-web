@@ -81,15 +81,15 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
       close();
     } catch (err) {
       setMessageError(err.response?.data?.message ?? "");
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
     return;
   };
@@ -123,15 +123,15 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
       values.message = "";
     } catch (err) {
       setMessageError(err.response?.data?.message ?? "");
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
     return;
   };

@@ -258,15 +258,15 @@ function ChatMessages({ ...props }) {
       setMessages(res.data?.data?.chat);
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
   const category = dateCategory.find(
@@ -298,15 +298,15 @@ function ChatMessages({ ...props }) {
     } catch (err) {
       console.log("err", err);
       setChatLoading(false);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -332,15 +332,15 @@ function ChatMessages({ ...props }) {
       }));
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -370,15 +370,15 @@ function ChatMessages({ ...props }) {
       getChatHistory(currentChat?.message?.room_id);
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -401,15 +401,15 @@ function ChatMessages({ ...props }) {
       getConversations();
     } catch (err) {
       console.log("err", err);
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
   const sendMessage = async (e) => {

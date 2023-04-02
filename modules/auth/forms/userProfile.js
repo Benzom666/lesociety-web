@@ -15,7 +15,7 @@ import Modal from "react-modal";
 import Link from "next/link";
 import TopBadgeCard from "../../../assets/img/TopCardBadge.png";
 import moment from "moment";
-import { signupStep4 } from "../authActions";
+import { logout, signupStep4 } from "../authActions";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
@@ -119,6 +119,15 @@ function UserProfile({ preview, editHandle }) {
       setConversations(conversations);
     } catch (err) {
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -196,6 +205,15 @@ function UserProfile({ preview, editHandle }) {
     } catch (err) {
       setMessageLoading(false);
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -225,6 +243,15 @@ function UserProfile({ preview, editHandle }) {
       setUserDates([]);
       setDateloading(false);
       setLoading(false);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -238,6 +265,15 @@ function UserProfile({ preview, editHandle }) {
       }
     } catch (e) {
       console.log(e);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -364,6 +400,15 @@ function UserProfile({ preview, editHandle }) {
       }
     } catch (e) {
       console.log(e);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 

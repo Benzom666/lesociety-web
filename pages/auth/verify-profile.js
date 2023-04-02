@@ -8,6 +8,7 @@ import Footer from "core/footer";
 import withAuth from "@/core/withAuth";
 import { apiRequest } from "utils/Utilities";
 import { PROFILE_UNVERIFIED } from "data/constants";
+import { logout } from "@/modules/auth/authActions";
 
 const VerifyProfile = () => {
   const user = useSelector((state) => state.authReducer.user);
@@ -32,6 +33,15 @@ const VerifyProfile = () => {
       );
     } catch (err) {
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -101,10 +111,8 @@ const VerifyProfile = () => {
             <div>
               <div className="upload-pics profile-completion">
                 <h2>Verification Unsuccessful</h2>
-                <p className="pt-4">
-                  {`${PROFILE_UNVERIFIED}`}
-                </p>
-                <p className="pt-4" style={{color:"#fff"}}>
+                <p className="pt-4">{`${PROFILE_UNVERIFIED}`}</p>
+                <p className="pt-4" style={{ color: "#fff" }}>
                   {`${notifData?.message}`}
                 </p>
               </div>

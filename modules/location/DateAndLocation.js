@@ -5,13 +5,16 @@ import UserCardList from "@/core/UserCardList";
 import SkeletonDate from "@/modules/skeleton/Dates/SkeletonDates";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NoImage from "assets/img/no-image.png";
 import Image from "next/image";
 import { apiRequest } from "utils/Utilities";
 import { fetchCities } from "../auth/forms/steps/validateRealTime";
 import useWindowSize from "utils/useWindowSize";
 import { useRef } from "react";
+import { toast } from "react-toastify";
+import { logout } from "../auth/authActions";
+import { useRouter } from "next/router";
 
 function DateAndLocation({
   currentLocationLoading,
@@ -36,6 +39,9 @@ function DateAndLocation({
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = React.useState(0);
   const [scrollType, setScrollType] = React.useState("down");
+
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setDateLength(dates?.length);
@@ -138,6 +144,15 @@ function DateAndLocation({
     } catch (err) {
       setDates([]);
       setLoader(false);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 

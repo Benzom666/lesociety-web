@@ -4,12 +4,13 @@ import Footer from "core/footer";
 import useWindowSize from "../../utils/useWindowSize";
 import withAuth from "@/core/withAuth";
 import { apiRequest } from "utils/Utilities";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import HeaderLoggedIn from "@/core/loggedInHeader";
 import io from "socket.io-client";
+import { logout } from "@/modules/auth/authActions";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -21,6 +22,7 @@ const Notifications = () => {
   const router = useRouter();
   const [count, setCount] = useState(0);
   const [conversations, setConversations] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     socket.auth = { user: user };
@@ -82,6 +84,15 @@ const Notifications = () => {
       setConversations(conversations);
     } catch (err) {
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -121,6 +132,15 @@ const Notifications = () => {
       setLoading(false);
     } catch (err) {
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 

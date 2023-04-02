@@ -35,6 +35,7 @@ import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
 import { toast } from "react-toastify";
 import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
 import io from "socket.io-client";
+import { logout } from "@/modules/auth/authActions";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -119,6 +120,15 @@ const VerifiedProfilePage = (props) => {
       setConversations(conversations);
     } catch (err) {
       console.log("err", err);
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -193,6 +203,15 @@ const VerifiedProfilePage = (props) => {
           setError(err.response?.data?.message ?? "");
           setLoading(false);
           console.log("err", err);
+          if (
+            err?.response?.status === 401 &&
+            err?.response?.data?.message === "Failed to authenticate token!"
+          ) {
+            setTimeout(() => {
+              logout(router, dispatch);
+            }, 100);
+          }
+          return err;
         }
       }
     } catch (err) {

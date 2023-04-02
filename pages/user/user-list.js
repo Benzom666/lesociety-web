@@ -189,15 +189,15 @@ function UserList(props) {
       setConversations(conversations);
     } catch (err) {
       console.log("err", err);
-      //   if (
-      //     err?.response?.status === 401 &&
-      //     err?.response?.data?.message === "Failed to authenticate token!"
-      //   ) {
-      //     setTimeout(() => {
-      //       logout(router, dispatch);
-      //     }, 100);
-      //   }
-      //   return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
   };
 
@@ -239,15 +239,15 @@ function UserList(props) {
       values.message = "";
     } catch (err) {
       setMessageError(err.response?.data?.message ?? "");
-      // if (
-      //   err?.response?.status === 401 &&
-      //   err?.response?.data?.message === "Failed to authenticate token!"
-      // ) {
-      //   setTimeout(() => {
-      //     logout(router, dispatch);
-      //   }, 100);
-      // }
-      // return err;
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
     }
 
     return;
