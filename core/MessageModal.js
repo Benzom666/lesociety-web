@@ -13,6 +13,7 @@ import { logout } from "@/modules/auth/authActions";
 import MessageSend3 from "assets/Send.jpg";
 import MessageSend4 from "assets/Send.png";
 import MessageSend5 from "assets/Send.svg";
+import useWindowSize from "utils/useWindowSize";
 
 function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   const [classPopup, setPopupClass] = React.useState("hide");
@@ -23,6 +24,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
 
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const { width } = useWindowSize();
 
   const closePopup = () => {
     setPopupClass("hide");
@@ -182,8 +185,38 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       id="message"
                       component={CustomInput}
                     />
-
                     <button
+                      type="button"
+                      style={{
+                        position: "absolute",
+                        right: width > 767 ? "5%" : "10%",
+                        bottom: "6.5%",
+                        background: "transparent",
+                        border: "none",
+                        paddingBottom: "5px",
+                        width: "12%",
+                        borderRadius: "0",
+                      }}
+                      // className="icon-move-1"
+                    >
+                      <Image
+                        src={
+                          formProps.values.message === ""
+                            ? MessageSend
+                            : MessageSend2
+                        }
+                        alt="send-btn"
+                        type="submit"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                        className="no-radius"
+                        width={30}
+                        height={30}
+                      />
+                    </button>
+                    {/* <button
                       //className="icon-move"
                       id="message-icon"
                       type="submit"
@@ -249,7 +282,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         width={50}
                         height={50}
                       />
-                    </button>
+                    </button> */}
                   </div>
                 </Form>
               );
