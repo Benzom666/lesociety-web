@@ -10,6 +10,10 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { logout } from "@/modules/auth/authActions";
 
+import MessageSend3 from "assets/Send.jpg";
+import MessageSend4 from "assets/Send.png";
+import MessageSend5 from "assets/Send.svg";
+
 function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   const [classPopup, setPopupClass] = React.useState("hide");
   const [receiverData, setReceiverData] = React.useState("");
@@ -182,7 +186,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                     <button
                       //className="icon-move"
                       id="message-icon"
-                      type="button"
+                      type="submit"
                       // className="message-user-popup-button icon-move-1"
                       className="message-user-popup-button"
                     >
@@ -193,7 +197,6 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                             : MessageSend2
                         }
                         alt="send-btn"
-                        type="submit"
                         onClick={() => {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
@@ -201,6 +204,50 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         className="no-radius"
                         width={30}
                         height={30}
+                      />
+                      <Image
+                        src={MessageSend3}
+                        alt="send-btn"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                        className="no-radius"
+                        width={50}
+                        height={50}
+                      />
+                      <Image
+                        src={MessageSend4}
+                        alt="send-btn"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                        className="no-radius"
+                        width={50}
+                        height={50}
+                      />
+                      <Image
+                        src={MessageSend4}
+                        alt="send-btn"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                        className="no-radius"
+                        width={50}
+                        height={50}
+                      />
+                      <Image
+                        src={MessageSend5}
+                        alt="send-btn"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                        className="no-radius"
+                        width={50}
+                        height={50}
                       />
                     </button>
                   </div>
