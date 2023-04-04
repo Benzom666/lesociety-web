@@ -194,7 +194,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         background: "transparent",
                         border: "none",
                         paddingBottom: "5px",
-                        width: "12%",
+                        width: "40px",
                         borderRadius: "0",
                       }}
                       // className="icon-move-1"
@@ -216,6 +216,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         height={30}
                       />
                     </button>
+
                     {/* <button
                       //className="icon-move"
                       id="message-icon"
