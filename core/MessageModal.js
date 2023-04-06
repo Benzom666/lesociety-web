@@ -160,7 +160,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
         />
       </svg> */}
       {userMessageNoModal ? (
-        <div>
+        <>
           <Formik
             initialValues={{
               message: "",
@@ -349,7 +349,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
               );
             }}
           </Formik> */}
-        </div>
+        </>
       ) : (
         <>
           <button onClick={() => openPopup(date)} className="next">
