@@ -188,17 +188,15 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                     <button
                       type="button"
                       style={{
-                        position: "absolute",
-                        right: width > 767 ? "5%" : "10%",
-                        bottom: "6.5%",
+                        // position: "absolute",
+                        // right: width > 767 ? "5%" : "10%",
+                        // bottom: "6.5%",
                         background: "transparent",
                         border: "none",
                         paddingBottom: "5px",
                         borderRadius: "0",
-                        // compatible for ios
-                        WebkitAppearance: "none",
-                        MozAppearance: "none",
-                        appearance: "none",
+                        marginTop: "30px",
+                        marginLeft: "10px",
                       }}
                       // className="icon-move-1"
                     >
@@ -215,6 +213,9 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           formProps.resetForm();
                         }}
                         className="no-radius"
+                        layout="fixed"
+                        objectFit="cover"
+                        objectPosition="center"
                         width={30}
                         height={30}
                       />
