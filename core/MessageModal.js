@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { logout } from "@/modules/auth/authActions";
 
-import MessageSend3 from "assets/Send.jpg";
+import MessageSend3 from "assets/message_new.svg";
 import MessageSend4 from "assets/Send.png";
 import MessageSend5 from "assets/Send.svg";
 import useWindowSize from "utils/useWindowSize";
@@ -202,7 +202,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       <Image
                         src={
                           formProps.values.message === ""
-                            ? MessageSend
+                            ? MessageSend3
                             : MessageSend2
                         }
                         alt="send-btn"
