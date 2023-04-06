@@ -203,7 +203,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       <Image
                         src={
                           formProps.values.message === ""
-                            ? MessageSend3
+                            ? MessageSend
                             : MessageSend2
                         }
                         alt="send-btn"
@@ -214,7 +214,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         }}
                         className="no-radius"
                         layout="intrinsic"
-                        objectFit="cover"
+                        objectFit="contain"
                         width={45}
                         height={45}
                       />
