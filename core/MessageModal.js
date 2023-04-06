@@ -194,8 +194,11 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         background: "transparent",
                         border: "none",
                         paddingBottom: "5px",
-                        width: "40px",
                         borderRadius: "0",
+                        // compatible for ios
+                        WebkitAppearance: "none",
+                        MozAppearance: "none",
+                        appearance: "none",
                       }}
                       // className="icon-move-1"
                     >
