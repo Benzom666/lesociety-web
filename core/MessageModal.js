@@ -196,7 +196,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         paddingBottom: "5px",
                         borderRadius: "0",
                         marginTop: "30px",
-                        marginLeft: "10px",
+                        marginLeft: "8px",
                       }}
                       // className="icon-move-1"
                     >
@@ -213,11 +213,10 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           formProps.resetForm();
                         }}
                         className="no-radius"
-                        layout="fixed"
+                        layout="intrinsic"
                         objectFit="cover"
-                        objectPosition="center"
-                        width={30}
-                        height={30}
+                        width={45}
+                        height={45}
                       />
                     </button>
 
