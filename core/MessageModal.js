@@ -203,7 +203,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       <Image
                         src={
                           formProps.values.message === ""
-                            ? MessageSend
+                            ? MessageSend4
                             : MessageSend2
                         }
                         alt="send-btn"
