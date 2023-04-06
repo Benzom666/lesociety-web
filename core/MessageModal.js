@@ -160,68 +160,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
         />
       </svg> */}
       {userMessageNoModal ? (
-        <>
+        <div>
           <Formik
-            initialValues={{
-              message: "",
-            }}
-            validationSchema={Yup.object({
-              message: Yup.string().required("Please enter your message"),
-            })}
-            onSubmit={(values) => {
-              if (values.message?.trim() !== "") {
-                handleSubmit(values);
-              }
-            }}
-          >
-            {(formProps) => {
-              return (
-                <Form>
-                  <div className="position-relative">
-                    <Field
-                      className={`${textClass}`}
-                      placeholder="Type your message here…"
-                      name="message"
-                      id="message"
-                      component={CustomInput}
-                    />
-
-                    <button
-                      type="button"
-                      style={{
-                        position: "absolute",
-                        left: "82%",
-                        background: "transparent",
-                        border: "none",
-                        paddingBottom: "5px",
-                        width: "12%",
-                        borderRadius: "0",
-                      }}
-                      // className="icon-move-1"
-                    >
-                      <Image
-                        src={
-                          formProps.values.message === ""
-                            ? MessageSend
-                            : MessageSend2
-                        }
-                        alt="send-btn"
-                        type="submit"
-                        onClick={() => {
-                          handleSubmit(formProps.values);
-                          formProps.resetForm();
-                        }}
-                        className="no-radius"
-                        width={30}
-                        height={30}
-                      />
-                    </button>
-                  </div>
-                </Form>
-              );
-            }}
-          </Formik>
-          {/* <Formik
             initialValues={{
               message: "",
             }}
@@ -277,7 +217,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       />
                     </button>
 
-                    <button
+                    {/* <button
                       //className="icon-move"
                       id="message-icon"
                       type="submit"
@@ -343,13 +283,13 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         width={50}
                         height={50}
                       />
-                    </button>
+                    </button> */}
                   </div>
                 </Form>
               );
             }}
-          </Formik> */}
-        </>
+          </Formik>
+        </div>
       ) : (
         <>
           <button onClick={() => openPopup(date)} className="next">
