@@ -177,7 +177,9 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
             {(formProps) => {
               return (
                 <Form>
-                  <div className="user-message-popup">
+                  <div
+                  // className="user-message-popup"
+                  >
                     <Field
                       className={`user-message-popup-input`}
                       placeholder="Type your message here…"
@@ -188,9 +190,9 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                     <button
                       type="button"
                       style={{
-                        position: "absolute",
-                        right: width > 767 ? "5%" : "10%",
-                        bottom: "6.5%",
+                        // position: "absolute",
+                        // right: width > 767 ? "5%" : "10%",
+                        // bottom: "6.5%",
                         background: "transparent",
                         border: "none",
                         paddingBottom: "5px",
