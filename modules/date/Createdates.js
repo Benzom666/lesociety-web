@@ -11,6 +11,7 @@ import useWindowSize from "utils/useWindowSize";
 import { useEffect } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
+import CreatedatesWarningPopUp from "./CreatedatesWarningPopUp";
 
 const CreateDate = (props) => {
   const [page, setPage] = useState(0);
@@ -18,6 +19,7 @@ const CreateDate = (props) => {
   const [confirmPopup, setConfirmPopup] = useState(false);
   const cityState = useSelector((state) => state?.form?.ChooseCity?.values);
   const { width } = useWindowSize();
+  const [hideModal, setHideModal] = useState(false);
 
   const mobile = width < 768;
 
@@ -134,12 +136,19 @@ const CreateDate = (props) => {
       )}
       {!router.query.drafted && page == 3 && (
         <>
-          <CreateStepFour
-            previousPage={previousPage}
-            onSubmit={nextPage}
-            onClose={toggle}
-            confirmPopup={confirmPopup}
-          />
+          {hideModal ? (
+            <CreateStepFour
+              previousPage={previousPage}
+              onSubmit={nextPage}
+              onClose={toggle}
+              confirmPopup={confirmPopup}
+            />
+          ) : (
+            <CreatedatesWarningPopUp
+              setHideModal={setHideModal}
+              hideModal={hideModal}
+            />
+          )}
         </>
       )}
       {(router.query.drafted || page == 4) && (

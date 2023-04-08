@@ -49,6 +49,7 @@ const ChooseCity = (props) => {
   const fetchDraftedDate = async () => {
     setDraftDateLoading(true);
     try {
+      //debugger
       const res = await apiRequest({
         url: "date",
         params: {
