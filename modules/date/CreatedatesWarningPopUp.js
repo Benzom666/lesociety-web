@@ -101,8 +101,6 @@ const CreatedatesWarningPopUp = ({ setHideModal, hideModal }) => {
     }
   };
 
-  s;
-
   return (
     <div>
       {/* <button onClick={openModal}>Open Modal</button> */}
