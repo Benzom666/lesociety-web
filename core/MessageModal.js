@@ -174,7 +174,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                     <button
                       type="button"
                       style={{
-                        // position: "absolute",
+                        position: "absolute",
                         // right: width > 767 ? "5%" : "10%",
                         // bottom: "6.5%",
                         background: "transparent",

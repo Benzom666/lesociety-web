@@ -1244,16 +1244,16 @@ function UserProfile({ preview, editHandle }) {
                                                       }
                                                     </p>
                                                   </div>
-                                                  <div className="">
-                                                    <MessageModal
-                                                      date={selectedDate}
-                                                      user={user}
-                                                      userMessageNoModal={true}
-                                                      close={() =>
-                                                        dateSetIsOpen(false)
-                                                      }
-                                                    />
-                                                  </div>
+                                                  {/* <div className=""> */}
+                                                  <MessageModal
+                                                    date={selectedDate}
+                                                    user={user}
+                                                    userMessageNoModal={true}
+                                                    close={() =>
+                                                      dateSetIsOpen(false)
+                                                    }
+                                                  />
+                                                  {/* </div> */}
                                                 </div>
                                               )}
                                             </div>
