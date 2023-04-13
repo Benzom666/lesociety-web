@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "@/modules/auth/authActions";
 
 import MessageSend3 from "assets/message_new.svg";
-import MessageSend4 from "assets/Send.png";
+import MessageSend4 from "assets/Path.svg";
 import MessageSend5 from "assets/Send.svg";
 import useWindowSize from "utils/useWindowSize";
 
