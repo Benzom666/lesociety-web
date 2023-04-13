@@ -22,6 +22,9 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   const [messageError, setMessageError] = React.useState("");
   const [textClass, setTextSlideClass] = React.useState("");
 
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const isAndroid = /Android/.test(navigator.userAgent);
+
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -175,8 +178,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       type="button"
                       style={{
                         position: "absolute",
-                        // right: width > 767 ? "5%" : "10%",
-                        // bottom: "6.5%",
+                        right: width > 767 ? "5%" : "10%",
+                        bottom: "6.5%",
                         background: "transparent",
                         border: "none",
                         paddingBottom: "5px",
@@ -201,8 +204,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         className="no-radius"
                         layout="intrinsic"
                         objectFit="contain"
-                        width={45}
-                        height={45}
+                        width={isIOS ? 55 : 30}
+                        height={isIOS ? 55 : 30}
                       />
                     </button>
                   </div>
