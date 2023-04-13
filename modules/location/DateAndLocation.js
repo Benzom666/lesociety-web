@@ -181,7 +181,7 @@ function DateAndLocation({
       <div className="row">
         {currentLocationLoading || (loading && dates.length === 0)
           ? [1, 2, 3, 4, 5, 6].map((n) => (
-              <div className={`col-xl-6 col-lg-12`}>
+              <div className={`col-lg-6`}>
                 <SkeletonDate key={n} theme="dark" />
               </div>
             ))
@@ -191,7 +191,7 @@ function DateAndLocation({
               .filter((item) => item?.date_status === true)
               .map((item, index) => (
                 <div
-                  className={`col-xl-6 col-lg-12 ${
+                  className={` col-lg-6 ${
                     (width > 767 && (index === 2 || index === 3)) ||
                     index === 0 ||
                     index === 1 ||
