@@ -182,10 +182,10 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         bottom: "6.5%",
                         background: "transparent",
                         border: "none",
-                        paddingBottom: "5px",
-                        borderRadius: "0",
-                        marginTop: "30px",
-                        marginLeft: "8px",
+                        // paddingBottom: "5px",
+                        // borderRadius: "0",
+                        // marginTop: "30px",
+                        // marginLeft: "8px",
                       }}
                       // className="icon-move-1"
                     >
@@ -204,8 +204,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         className="no-radius"
                         layout="intrinsic"
                         objectFit="contain"
-                        width={isIOS ? 55 : 30}
-                        height={isIOS ? 55 : 30}
+                        width={30}
+                        height={30}
                       />
                     </button>
                   </div>
