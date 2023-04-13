@@ -146,73 +146,71 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   return (
     <>
       {userMessageNoModal ? (
-        <div className="">
-          <div>
-            <Formik
-              initialValues={{
-                message: "",
-              }}
-              validationSchema={Yup.object({
-                message: Yup.string().required("Please enter your message"),
-              })}
-              onSubmit={(values) => {
-                if (values.message?.trim() !== "") {
-                  handleSubmit(values);
-                }
-              }}
-            >
-              {(formProps) => {
-                return (
-                  <Form>
-                    <div className="user-message-popup">
-                      <Field
-                        className={`user-message-popup-input`}
-                        placeholder="Type your message here…"
-                        name="message"
-                        id="message"
-                        component={CustomInput}
-                      />
-                      <button
-                        type="button"
-                        style={{
-                          // position: "absolute",
-                          // right: width > 767 ? "5%" : "10%",
-                          // bottom: "6.5%",
-                          background: "transparent",
-                          border: "none",
-                          paddingBottom: "5px",
-                          borderRadius: "0",
-                          marginTop: "30px",
-                          marginLeft: "8px",
+        <>
+          <Formik
+            initialValues={{
+              message: "",
+            }}
+            validationSchema={Yup.object({
+              message: Yup.string().required("Please enter your message"),
+            })}
+            onSubmit={(values) => {
+              if (values.message?.trim() !== "") {
+                handleSubmit(values);
+              }
+            }}
+          >
+            {(formProps) => {
+              return (
+                <Form>
+                  <div className="user-message-popup">
+                    <Field
+                      className={`user-message-popup-input`}
+                      placeholder="Type your message here…"
+                      name="message"
+                      id="message"
+                      component={CustomInput}
+                    />
+                    <button
+                      type="button"
+                      style={{
+                        // position: "absolute",
+                        // right: width > 767 ? "5%" : "10%",
+                        // bottom: "6.5%",
+                        background: "transparent",
+                        border: "none",
+                        paddingBottom: "5px",
+                        borderRadius: "0",
+                        marginTop: "30px",
+                        marginLeft: "8px",
+                      }}
+                      // className="icon-move-1"
+                    >
+                      <Image
+                        src={
+                          formProps.values.message === ""
+                            ? MessageSend4
+                            : MessageSend2
+                        }
+                        alt="send-btn"
+                        type="submit"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
                         }}
-                        // className="icon-move-1"
-                      >
-                        <Image
-                          src={
-                            formProps.values.message === ""
-                              ? MessageSend4
-                              : MessageSend2
-                          }
-                          alt="send-btn"
-                          type="submit"
-                          onClick={() => {
-                            handleSubmit(formProps.values);
-                            formProps.resetForm();
-                          }}
-                          className="no-radius"
-                          layout="intrinsic"
-                          objectFit="contain"
-                          width={45}
-                          height={45}
-                        />
-                      </button>
-                    </div>
-                  </Form>
-                );
-              }}
-            </Formik>
-          </div>
-        </div>
+                        className="no-radius"
+                        layout="intrinsic"
+                        objectFit="contain"
+                        width={45}
+                        height={45}
+                      />
+                    </button>
+                  </div>
+                </Form>
+              );
+            }}
+          </Formik>
+        </>
       ) : (
         <>
           <button onClick={() => openPopup(date)} className="next">
