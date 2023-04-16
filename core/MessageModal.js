@@ -178,8 +178,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       type="button"
                       style={{
                         position: "absolute",
-                        right: width > 767 ? "5%" : "10%",
-                        bottom: "6.5%",
+                        right: width > 767 ? "6%" : "10%",
+                        bottom: "8%",
                         background: "transparent",
                         border: "none",
                         // paddingBottom: "5px",
@@ -190,9 +190,14 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       // className="icon-move-1"
                     >
                       <Image
+                        // src={
+                        //   formProps.values.message === ""
+                        //     ? MessageSend4
+                        //     : MessageSend2
+                        // }
                         src={
                           formProps.values.message === ""
-                            ? MessageSend4
+                            ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
                             : MessageSend2
                         }
                         alt="send-btn"
