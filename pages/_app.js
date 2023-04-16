@@ -20,6 +20,7 @@ import io from "socket.io-client";
 
 import "styles/style.scss";
 import { removeCookie } from "utils/cookie";
+import LanscapeDecline from "@/core/LanscapeDecline";
 
 // export const socket = io("https://staging-api.secrettime.com/", {
 //   autoConnect: true,
@@ -42,8 +43,18 @@ class MyApp extends App {
     this.state = {
       isLoading: false,
       history: [],
+      screenSize: this.getCurrentDimension(),
     };
   }
+
+  getCurrentDimension = () => {
+    if (typeof window !== "undefined") {
+      return {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    }
+  };
 
   componentDidMount() {
     const { asPath } = this.props.router;
@@ -62,11 +73,20 @@ class MyApp extends App {
     });
 
     // hide all console logs and errors
-    // if (process.env.NODE_ENV === "production") {
-    //   console.log = console.error = console.warn = function () {};
-    // }
+    if (process.env.NODE_ENV === "production") {
+      console.log = console.error = console.warn = function () {};
+    }
     document.body.style.overflow = "unset";
+    window.addEventListener("resize", this.updateDimension);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimension);
+  }
+
+  updateDimension = () => {
+    this.setState({ screenSize: this.getCurrentDimension() });
+  };
 
   componentDidUpdate() {
     const { history } = this.state;
@@ -80,9 +100,9 @@ class MyApp extends App {
         history: [...prevState.history, asPath],
       }));
     }
-    // if (process.env.NODE_ENV === "production") {
-    //   console.log = console.error = console.warn = function () {};
-    // }
+    if (process.env.NODE_ENV === "production") {
+      console.log = console.error = console.warn = function () {};
+    }
     document.body.style.overflow = "unset";
   }
 
@@ -98,7 +118,6 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, store } = this.props;
     const { asPath } = this.props.router;
-    // prevent site from rotating in mobile put restriction
     const accessToken = loadFromLocalStorage();
 
     const lsLoader =
@@ -110,30 +129,19 @@ class MyApp extends App {
         !asPath.includes("/user/user-profile/")) ||
       (this.state.isLoading && !accessToken);
 
-    //  remove session after browser close
+    const islandScapeInMobile =
+      this.state.screenSize?.width < 1181 &&
+      this.state.screenSize?.width > this.state.screenSize?.height;
 
-    // ron this code only on prod
-
-    // if (
-    //   typeof window !== "undefined" &&
-    //   process.env.NODE_ENV === "production"
-    // ) {
-    //   window.onbeforeunload = function () {
-    //     removeSessionStorage("auth");
-    //     removeSessionStorage("form");
-    //   };
-    // }
+    if (islandScapeInMobile) {
+      return <LanscapeDecline />;
+    }
 
     return (
       <Provider store={store}>
         <Head>
           <title>Secret Time</title>
           <link rel="icon" href="/favicon.svg" />
-          {/* <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, maximum-scale=1"
-          />
-          <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" /> */}
           <meta
             name="viewport"
             content="width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no"
