@@ -63,7 +63,7 @@ function UserList(props) {
   const dispatch = useDispatch();
   const country = user?.country && countriesCode[user?.country];
   const [searchStatus, setSearchStaus] = useState(false);
-
+  console.log(useWindowSize());
   // for current location
   const [currentLocationLoading, setCurrentLocationLoading] = useState(false);
 
@@ -373,6 +373,27 @@ function UserList(props) {
   //   );
   // }
 
+  const [screenSize, setScreenSize] = useState(getCurrentDimension());
+
+  function getCurrentDimension() {
+      return {
+          width: window.innerWidth,
+          height: window.innerHeight
+      }
+  }
+  useEffect(() => {
+      const updateDimension = () => {
+          setScreenSize(getCurrentDimension())
+      }
+      window.addEventListener('resize', updateDimension);
+      return (() => {
+          window.removeEventListener('resize', updateDimension);
+      })
+  }, [screenSize])
+
+  const islandScapeInMobile = (screenSize.width < 991 && screenSize.width > screenSize.height);
+  console.log(screenSize, islandScapeInMobile);
+
   return (
     <div className="inner-page" id="infiniteScroll">
       <HeaderLoggedIn
@@ -401,23 +422,23 @@ function UserList(props) {
                       {width < 430 ? (
                         <div
                           className="d-flex align-items-center justify-content-end"
-                          // style={
-                          //   (scrollType === "up" || "down") &&
-                          //   scrollPosition > 5 &&
-                          //   !locationPopup
-                          //     ? width > 767
-                          //       ? {
-                          //           position: "fixed",
-                          //           width: "59%",
-                          //           zIndex: "10",
-                          //         }
-                          //       : {
-                          //           position: "fixed",
-                          //           left: "34%",
-                          //           zIndex: "10",
-                          //         }
-                          //     : { position: "relative" }
-                          // }
+                        // style={
+                        //   (scrollType === "up" || "down") &&
+                        //   scrollPosition > 5 &&
+                        //   !locationPopup
+                        //     ? width > 767
+                        //       ? {
+                        //           position: "fixed",
+                        //           width: "59%",
+                        //           zIndex: "10",
+                        //         }
+                        //       : {
+                        //           position: "fixed",
+                        //           left: "34%",
+                        //           zIndex: "10",
+                        //         }
+                        //     : { position: "relative" }
+                        // }
                         >
                           {/* <span className="hidden-sm">Nearby</span> */}
                           <div
@@ -455,15 +476,15 @@ function UserList(props) {
                   <div
                     className="d-flex align-items-center justify-content-end"
                     style={{ marginTop: "26px" }}
-                    // style={
-                    //   (scrollType === "up" || "down") &&
-                    //   scrollPosition > 5 &&
-                    //   !locationPopup
-                    //     ? width > 767
-                    //       ? { position: "fixed", width: "59%", zIndex: "99" }
-                    //       : { position: "fixed", left: "34%", zIndex: "99" }
-                    //     : { position: "relative" }
-                    // }
+                  // style={
+                  //   (scrollType === "up" || "down") &&
+                  //   scrollPosition > 5 &&
+                  //   !locationPopup
+                  //     ? width > 767
+                  //       ? { position: "fixed", width: "59%", zIndex: "99" }
+                  //       : { position: "fixed", left: "34%", zIndex: "99" }
+                  //     : { position: "relative" }
+                  // }
                   >
                     {/* <span className="hidden-sm">Nearby</span> */}
                     <div
@@ -582,7 +603,7 @@ function UserList(props) {
                         // display: "flex",
                         // justifyContent: "flex-start",
                       }}
-                      // className="icon-move-1"
+                    // className="icon-move-1"
                     >
                       <Image
                         src={
