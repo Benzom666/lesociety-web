@@ -166,6 +166,66 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
             {(formProps) => {
               return (
                 <Form>
+                  <div className="position-relative">
+                    <Field
+                      className={`${textClass}`}
+                      placeholder="Type your message here…"
+                      name="message"
+                      id="message"
+                      component={CustomInput}
+                    />
+
+                    <button
+                      type="button"
+                      style={{
+                        position: "absolute",
+                        left: "82%",
+                        background: "transparent",
+                        border: "none",
+                        paddingBottom: "5px",
+                        width: "12%",
+                        borderRadius: "0",
+                      }}
+                      // className="icon-move-1"
+                    >
+                      <Image
+                        src={
+                          formProps.values.message === ""
+                            ? MessageSend
+                            : MessageSend2
+                        }
+                        alt="send-btn"
+                        type="submit"
+                        onClick={() => {
+                          handleSubmit(formProps.values);
+                          formProps.resetForm();
+                        }}
+                        className="no-radius"
+                        width={30}
+                        height={30}
+                      />
+                    </button>
+                  </div>
+                </Form>
+              );
+            }}
+          </Formik>
+          {/* <Formik
+            initialValues={{
+              message: "",
+            }}
+            validationSchema={Yup.object({
+              message: Yup.string().required("Please enter your message"),
+            })}
+            onSubmit={(values) => {
+              if (values.message?.trim() !== "") {
+                handleSubmit(values);
+              }
+            }}
+          >
+            {(formProps) => {
+              return (
+                <Form>
                   <div className="user-message-popup">
                     <Field
                       className={`user-message-popup-input`}
@@ -175,7 +235,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       component={CustomInput}
                     />
                     <button
-                      type="button"
+                      type="submit"
                       style={{
                         position: "absolute",
                         right: width > 767 ? "6%" : "10%",
@@ -201,7 +261,6 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                             : MessageSend2
                         }
                         alt="send-btn"
-                        type="submit"
                         onClick={() => {
                           handleSubmit(formProps.values);
                           formProps.resetForm();
@@ -217,7 +276,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                 </Form>
               );
             }}
-          </Formik>
+          </Formik> */}
         </>
       ) : (
         <>
