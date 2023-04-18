@@ -134,7 +134,7 @@ const CreateDate = (props) => {
           />
         </>
       )}
-      {!router.query.drafted && page == 3 && (
+      {/* {!router.query.drafted && page == 3 && (
         <>
           {hideModal ? (
             <CreateStepFour
@@ -149,6 +149,16 @@ const CreateDate = (props) => {
               hideModal={hideModal}
             />
           )}
+        </>
+      )} */}
+       {!router.query.drafted && page == 3 && (
+        <>
+          <CreateStepFour
+            previousPage={previousPage}
+            onSubmit={nextPage}
+            onClose={toggle}
+            confirmPopup={confirmPopup}
+          />
         </>
       )}
       {(router.query.drafted || page == 4) && (

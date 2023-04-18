@@ -1140,12 +1140,11 @@ $GradientColor-second: rgba(#191919, 0.8);
         transform: translateX(-50%);
         background: black;
         width: 100%;
-        z-index: 9999;
+        z-index: 999;
 
         &.register-bottom {
           padding-top: 20px;
           padding-bottom: 20px;
-
           .secret-input {
             margin-bottom: 20px;
           }

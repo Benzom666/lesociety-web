@@ -24,10 +24,11 @@ const customStyles = {
   },
 };
 
-const CreatedatesWarningPopUp = ({ setHideModal, hideModal }) => {
+const CreatedatesWarningPopUp = ({ setHideModal, hideModal, showWarningPopup }) => {
   const user = useSelector((state) => state.authReducer.user);
   const [modalIsOpen, setIsOpen] = useState(!hideModal);
   const [checked, setChecked] = useState(false);
+  console.log(showWarningPopup)
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -108,8 +109,9 @@ const CreatedatesWarningPopUp = ({ setHideModal, hideModal }) => {
         isOpen={modalIsOpen}
         //onRequestClose={closeModal}
         //style={customStyles}
+
         contentLabel="Example Modal"
-        className="Warning_Popup"
+        className={`Warning_Popup ${showWarningPopup ? "show-1" : "show-2"}`}
       >
         <div className="warning_modal_main">
           <div className="w-15 text-end pe-1">
