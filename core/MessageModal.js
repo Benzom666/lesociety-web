@@ -193,10 +193,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         src={
                           // "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
                           // "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Send.jpg"
-                          formProps.values.message === ""
-                            ? // "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Send.png"
-                              "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Path%20%281%29.png"
-                            : MessageSend2
+                          "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Send.png"
                         }
                         alt="send-btn"
                         onClick={() => {
