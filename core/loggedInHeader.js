@@ -177,7 +177,7 @@ export default function HeaderLoggedIn({
   };
   return (
     <header
-      style={fixed ? { position: "fixed", width: "100%", zIndex: "99" } : {}}
+      style={fixed ? { position: "fixed", width: "100%", zIndex: "99",background:"black" } : {}}
       className={`py-3 py-md-3 loggedin_user ${isBlack && "is-black-head"}`}
     >
       <div className="container">
