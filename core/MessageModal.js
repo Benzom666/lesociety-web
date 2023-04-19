@@ -182,31 +182,10 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         bottom: "8%",
                         background: "transparent",
                         border: "none",
-                        // paddingBottom: "5px",
-                        // borderRadius: "0",
-                        // marginTop: "30px",
-                        // marginLeft: "8px",
                       }}
                       // className="icon-move-1"
                     >
                       <Image
-                        src={
-                          // "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
-                          // "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Send.jpg"
-                          "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/Send.png"
-                        }
-                        alt="send-btn"
-                        onClick={() => {
-                          handleSubmit(formProps.values);
-                          formProps.resetForm();
-                        }}
-                        className="no-radius"
-                        width={30}
-                        height={30}
-                      />
-
-                      {/* <Image
-                        
                         src={
                           formProps.values.message === ""
                             ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
@@ -218,11 +197,9 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           formProps.resetForm();
                         }}
                         className="no-radius"
-                        layout="intrinsic"
-                        objectFit="contain"
-                        width={30}
-                        height={30}
-                      /> */}
+                        width={28}
+                        height={28}
+                      />
                     </button>
                   </div>
                 </Form>
@@ -332,8 +309,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                               formProps.resetForm();
                             }}
                             className="no-radius"
-                            width={30}
-                            height={30}
+                            width={28}
+                            height={28}
                           />
                         </button>
                       </div>

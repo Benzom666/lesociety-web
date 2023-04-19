@@ -1123,7 +1123,9 @@ const Messages = (props) => {
                                 >
                                   <Image
                                     src={
-                                      !newMessage ? MessageSend : MessageSend2
+                                      !newMessage
+                                        ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
+                                        : MessageSend2
                                     }
                                     alt="send-btn"
                                     width={30}
