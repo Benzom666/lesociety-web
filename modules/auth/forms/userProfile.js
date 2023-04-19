@@ -81,8 +81,10 @@ function UserProfile({ preview, editHandle }) {
   );
 
   useEffect(() => {
-    getConversations();
-  }, []);
+    if (user?.token) {
+      getConversations();
+    }
+  }, [user?.token]);
 
   useEffect(() => {
     socket.on(`request-${user?._id}`, (message) => {
@@ -264,7 +266,6 @@ function UserProfile({ preview, editHandle }) {
         setUserDetail(res?.data?.data?.user);
       }
     } catch (e) {
-      console.log(e);
       if (
         err?.response?.status === 401 &&
         err?.response?.data?.message === "Failed to authenticate token!"
@@ -278,7 +279,7 @@ function UserProfile({ preview, editHandle }) {
   };
 
   useEffect(() => {
-    if (router?.query?.userName) {
+    if (router?.query?.userName && user?.token) {
       fetchUserDetails(router?.query?.userName);
       const params = {
         current_page: page,
@@ -291,13 +292,14 @@ function UserProfile({ preview, editHandle }) {
       setUserDetail("");
       setUserDates([]);
     };
-  }, [router?.query]);
+  }, [router?.query, user?.token]);
 
   useEffect(() => {
     if (
       user?.gender === "female" &&
       user?.user_name &&
-      !router?.query?.userName
+      !router?.query?.userName &&
+      user?.token
     ) {
       const params = {
         current_page: page,
@@ -310,7 +312,7 @@ function UserProfile({ preview, editHandle }) {
       setUserDetail("");
       setUserDates([]);
     };
-  }, []);
+  }, [user?.token]);
 
   const onSubmit = () => {
     dispatch(
