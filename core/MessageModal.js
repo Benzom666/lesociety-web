@@ -179,7 +179,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       style={{
                         position: "absolute",
                         right: width > 767 ? "6%" : "10%",
-                        bottom: width < 767 ? "8%" : width < 768 ? "30%" : "9%",
+                        bottom: "8%",
                         background: "transparent",
                         border: "none",
                       }}
