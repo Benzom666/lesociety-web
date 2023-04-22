@@ -642,8 +642,8 @@ function ChatMessages({ ...props }) {
                                   newMessage === "" ? MessageSend : MessageSend2
                                 }
                                 alt="send-btn"
-                                width={30}
-                                height={30}
+                                width={25}
+                                height={25}
                               />
                             </button>
                           </div>
