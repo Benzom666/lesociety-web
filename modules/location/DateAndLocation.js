@@ -15,6 +15,7 @@ import { useRef } from "react";
 import { toast } from "react-toastify";
 import { logout } from "../auth/authActions";
 import { useRouter } from "next/router";
+import Loader from "../Loader/Loader";
 
 function DateAndLocation({
   currentLocationLoading,
@@ -28,6 +29,7 @@ function DateAndLocation({
   setLocation,
   growDiv,
   searchStatus,
+  setLogoutLoading,
 }) {
   const [dateLength, setDateLength] = useState(0);
   const [loading, setLoader] = React.useState(true);
@@ -148,9 +150,11 @@ function DateAndLocation({
         err?.response?.status === 401 &&
         err?.response?.data?.message === "Failed to authenticate token!"
       ) {
+        setLogoutLoading(true);
         setTimeout(() => {
           logout(router, dispatch);
-        }, 100);
+          setLogoutLoading(false);
+        }, 2000);
       }
       return err;
     }

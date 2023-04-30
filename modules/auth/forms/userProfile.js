@@ -247,7 +247,8 @@ function UserProfile({ preview, editHandle }) {
       setLoading(false);
       if (
         err?.response?.status === 401 &&
-        err?.response?.data?.message === "Failed to authenticate token!"
+        err?.response?.data?.message === "Failed to authenticate token!" &&
+        user?.token
       ) {
         setTimeout(() => {
           logout(router, dispatch);
@@ -298,8 +299,7 @@ function UserProfile({ preview, editHandle }) {
     if (
       user?.gender === "female" &&
       user?.user_name &&
-      !router?.query?.userName &&
-      user?.token
+      !router?.query?.userName
     ) {
       const params = {
         current_page: page,
@@ -312,7 +312,7 @@ function UserProfile({ preview, editHandle }) {
       setUserDetail("");
       setUserDates([]);
     };
-  }, [user?.token]);
+  }, []);
 
   const onSubmit = () => {
     dispatch(

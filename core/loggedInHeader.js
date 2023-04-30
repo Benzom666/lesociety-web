@@ -28,6 +28,7 @@ export default function HeaderLoggedIn({
   unReadedConversationLength,
   count,
   setCount,
+  setLogoutLoading,
 }) {
   // const socket = io("https://staging-api.secrettime.com/", {
   //   autoConnect: true,
@@ -124,9 +125,17 @@ export default function HeaderLoggedIn({
         err?.response?.status === 401 &&
         err?.response?.data?.message === "Failed to authenticate token!"
       ) {
-        setTimeout(() => {
-          logout(router, dispatch);
-        }, 100);
+        if (setLogoutLoading) {
+          setLogoutLoading(true);
+          setTimeout(() => {
+            logout(router, dispatch);
+            setLogoutLoading(false);
+          }, 2000);
+        } else {
+          setTimeout(() => {
+            logout(router, dispatch);
+          }, 100);
+        }
       }
       return err;
     }
@@ -177,7 +186,16 @@ export default function HeaderLoggedIn({
   };
   return (
     <header
-      style={fixed ? { position: "fixed", width: "100%", zIndex: "99",background:"black" } : {}}
+      style={
+        fixed
+          ? {
+              position: "fixed",
+              width: "100%",
+              zIndex: "99",
+              background: "black",
+            }
+          : {}
+      }
       className={`py-3 py-md-3 loggedin_user ${isBlack && "is-black-head"}`}
     >
       <div className="container">

@@ -9,17 +9,19 @@ import useWindowSize from "../../utils/useWindowSize";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 import router, { useRouter } from "next/router";
+import { useState } from "react";
 
 function RegisterPage({ dispatch }) {
   const user = useSelector((state) => state.authReducer.user);
   const { width } = useWindowSize();
-  const router = useRouter()
-  console.log("qqq ",router.query)
+  const router = useRouter();
+  const [page, setPage] = useState(0);
+
   return (
     <div className="inner-page">
-      <Header />
+      <Header page={page} setPage={setPage} />
       {/* {_.isEmpty(user) ? <Header /> : <LoggedInHeader/>} */}
-      <Profile />
+      <Profile page={page} setPage={setPage} />
       <Footer />
     </div>
   );

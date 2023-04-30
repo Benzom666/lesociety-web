@@ -6,11 +6,22 @@ import { useRouter } from "next/router";
 import _ from "lodash";
 import { initialize, reset } from "redux-form";
 import Logo_Web from "../assets/img/Logo_Web.png";
+import { useEffect } from "react";
 
-export default function Header(props) {
+export default function Header({ page, setPage, ...props }) {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  useEffect(() => {
+    if (_.isEmpty(user) && page == 0) {
+      console.log("I am working");
+      setTimeout(() => {
+        logout(router, dispatch);
+      }, 200);
+    }
+  }, [page, user]);
+
   return (
     <header className="py-4">
       <div className="container">

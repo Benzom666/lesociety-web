@@ -35,6 +35,7 @@ import {
   logout,
 } from "@/modules/auth/authActions";
 import ImageShow from "@/modules/ImageShow";
+import Loader from "@/modules/Loader/Loader";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   reconnection: true,
@@ -71,6 +72,7 @@ function UserList(props) {
 
   // for notification
   const [count, setCount] = useState(0);
+  const [logoutLoading, setLogoutLoading] = useState(false);
 
   // useEffect(() => {
   //   if (user?.gender === "male" && state?.showSelectedLocationPopup) {
@@ -243,9 +245,11 @@ function UserList(props) {
         err?.response?.status === 401 &&
         err?.response?.data?.message === "Failed to authenticate token!"
       ) {
+        setLogoutLoading(true);
         setTimeout(() => {
           logout(router, dispatch);
-        }, 100);
+          setLogoutLoading(false);
+        }, 2000);
       }
       return err;
     }
@@ -391,9 +395,9 @@ function UserList(props) {
     };
   }, [screenSize]);
 
-  const islandScapeInMobile =
-    screenSize.width < 991 && screenSize.width > screenSize.height;
-  console.log(screenSize, islandScapeInMobile);
+  if (logoutLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="inner-page" id="infiniteScroll">
@@ -403,6 +407,7 @@ function UserList(props) {
         unReadedConversationLength={unReadedConversationLength}
         count={count}
         setCount={setCount}
+        setLogoutLoading={setLogoutLoading}
       />
       {/* <div
         className={classNames(
@@ -470,6 +475,7 @@ function UserList(props) {
                   setLocation={setLocation}
                   growDiv={growDiv}
                   searchStatus={searchStatus}
+                  setLogoutLoading={setLogoutLoading}
                 />
               </div>
               {width > 767 && (

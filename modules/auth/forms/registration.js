@@ -10,9 +10,9 @@ import { registration } from "../authActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-const RegisterForm = (props) => {
+const RegisterForm = ({ page, setPage, ...props }) => {
   const router = useRouter();
-  const [page, setPage] = useState(0);
+  // const [page, setPage] = useState(0);
   const [male, setMale] = useState(false);
   const [gender, setGender] = useState("");
   const [female, setFemale] = useState(false);
