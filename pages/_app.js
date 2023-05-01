@@ -130,7 +130,7 @@ class MyApp extends App {
       (this.state.isLoading && !accessToken);
 
     const islandScapeInMobile =
-      this.state.screenSize?.width < 1181 &&
+      this.state.screenSize?.width < 500 &&
       this.state.screenSize?.width > this.state.screenSize?.height;
 
     if (islandScapeInMobile) {
