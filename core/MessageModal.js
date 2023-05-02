@@ -209,7 +209,10 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
         </>
       ) : (
         <>
-          <button onClick={() => openPopup(date)} className="next">
+          <button
+            onClick={() => openPopup(date)}
+            className="next dangerous-btn"
+          >
             Message
           </button>
           {/* <svg

@@ -4153,7 +4153,7 @@ body .verification_card_header {
 
 .message-popup.show {
   height: 310px !important;
-  // top: unset !important;
+  top: unset !important;
 }
 
 /* For iPad Pro (12.9-inch) (4th generation) */
@@ -4162,12 +4162,19 @@ body .verification_card_header {
   .message-popup.show {
     height: 310px !important;
     bottom: 0% !important;
-    // top: 0% !important;
   }
 
   .message-popup {
-    overflow: visible;
-    max-width: 100%;
+    position: absolute !important;
+  }
+  .dangerous-btn {
+    position: relative;
+  }
+
+  .message-popup.hide {
+    height: 0 !important;
+    // display: none;
+    top: -200%;
   }
 }
 
