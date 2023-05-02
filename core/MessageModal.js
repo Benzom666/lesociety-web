@@ -296,7 +296,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                             background: "transparent",
                             border: "none",
                             paddingBottom: "5px",
-                            width: "12%",
+                            width: "auto",
                             borderRadius: "0",
                           }}
                           // className="icon-move-1"
