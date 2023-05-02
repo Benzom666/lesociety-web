@@ -292,11 +292,11 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           type="button"
                           style={{
                             position: "absolute",
-                            left: "76%",
+                            left: "77%",
                             background: "transparent",
                             border: "none",
                             paddingBottom: "5px",
-                            width: width > 768 && width < 1366 ? "50%" : "12%",
+                            width: "12%",
                             borderRadius: "0",
                           }}
                           // className="icon-move-1"
