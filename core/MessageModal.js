@@ -276,10 +276,12 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
               >
                 {(formProps) => {
                   return (
-                    <Form>
-                      <div className="position-relative">
+                    <Form className="w-100">
+                      <div
+                      // className="position-relative"
+                      >
                         <Field
-                          className={`${textClass}`}
+                          className={`position-relative ${textClass}`}
                           placeholder="Type your message here…"
                           name="message"
                           id="message"
@@ -290,14 +292,15 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           type="button"
                           style={{
                             position: "absolute",
-                            left: "82%",
+                            left: "76%",
                             background: "transparent",
                             border: "none",
                             paddingBottom: "5px",
-                            width: "12%",
+                            width: width > 768 && width < 1366 ? "50%" : "12%",
                             borderRadius: "0",
                           }}
                           // className="icon-move-1"
+                          className="message-date-btn"
                         >
                           <Image
                             src={

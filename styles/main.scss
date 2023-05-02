@@ -4174,9 +4174,23 @@ body .verification_card_header {
   .message-popup.hide {
     height: 0 !important;
     // display: none;
-    top: -200%;
+    top: -200% !important;
   }
+  // .message-date-btn {
+  //   width: 50%;
+  //   left: 65%;
+  // }
 }
+
+// .message-date-btn {
+//   position: absolute;
+//   left: 78%;
+//   background: transparent;
+//   border: none;
+//   padding-bottom: 5px;
+//   width: 12%;
+//   border-radius: 0;
+// }
 
 .message-popup.hide {
   height: 0 !important;
@@ -4257,7 +4271,8 @@ body .verification_card_header {
     input {
       background: #1e2023;
       border-radius: 25px;
-      width: 320px;
+      // width: 320px;
+      width: 90%;
       height: 50px;
       border: none;
       padding: 20px;
