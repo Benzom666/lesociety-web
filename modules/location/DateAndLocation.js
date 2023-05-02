@@ -226,7 +226,7 @@ function DateAndLocation({
                     // }
                   }}
                 >
-                  {width > 500 ? (
+                  {width > 1200 ? (
                     <UserCardList
                       setDateId={setDateId}
                       date={item}
