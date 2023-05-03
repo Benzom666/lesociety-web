@@ -11,6 +11,7 @@ import { IoIosClose } from "react-icons/io";
 import { apiRequest } from "utils/Utilities";
 import ConfirmDate from "./../../modules/date/confirmDate";
 import CreatedatesWarningPopUp from "./CreatedatesWarningPopUp";
+import DateWarningModal from "./DateWarningModal";
 
 const CreateStepFour = (props) => {
   const {
@@ -87,15 +88,15 @@ const CreateStepFour = (props) => {
     console.log(e.target.value);
   }
   const showWarningPopup =(!hideModal && val.length > 0) ;
-  console.log(showWarningPopup)
+  //const [showAnimation, setShowAnimation] = useState (true)
+  //console.log(showWarningPopup)
   return (
     <>
-      {
-       showWarningPopup && <CreatedatesWarningPopUp setHideModal={setHideModal}
-          hideModal={hideModal} showWarningPopup={showWarningPopup} /> }
+    { showWarningPopup  &&  <DateWarningModal setHideModal={setHideModal}
+          hideModal={hideModal} val={val} /> }
           <>
             {!confirmPopup ? (
-              <>
+              <div className="outer_container">
                 <div className="inner_container">
                   <div className="d-flex d-md-none justify-content-between align-items-center login-text mb-0">
                     <a onClick={previousPage}>
@@ -269,11 +270,11 @@ const CreateStepFour = (props) => {
                     </div>
                   </form>
                 </>
-              </>
+              </div>
             ) : null}
             {/* <ConfirmDate isOpen={confirmPopup} toggle={toggle} /> */}
           </>
-      
+
     </>
   );
 };
