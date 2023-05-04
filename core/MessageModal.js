@@ -195,21 +195,29 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                         border: "none",
                       }}
                     >
-                      <Image
-                        src={
-                          formProps.values.message === ""
-                            ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
-                            : MessageSend2
-                        }
-                        alt="send-btn"
-                        onClick={() => {
-                          handleSubmit(formProps.values);
-                          formProps.resetForm();
+                      <div
+                        ref={iconRef}
+                        style={{
+                          background: "transparent",
+                          border: "none",
                         }}
-                        className="no-radius"
-                        width={28}
-                        height={28}
-                      />
+                      >
+                        <Image
+                          src={
+                            formProps.values.message === ""
+                              ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
+                              : MessageSend2
+                          }
+                          alt="send-btn"
+                          onClick={() => {
+                            handleSubmit(formProps.values);
+                            formProps.resetForm();
+                          }}
+                          className="no-radius"
+                          width={28}
+                          height={28}
+                        />
+                      </div>
                     </button>
                   </div>
                 </Form>
@@ -295,25 +303,32 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                             width: "auto",
                             borderRadius: "0",
                           }}
-                          // className="icon-move-1"
                           className="message-date-btn"
                         >
-                          <Image
-                            src={
-                              formProps.values.message === ""
-                                ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
-                                : MessageSend2
-                            }
-                            alt="send-btn"
-                            type="submit"
-                            onClick={() => {
-                              handleSubmit(formProps.values);
-                              formProps.resetForm();
-                            }}
-                            className="no-radius"
-                            width={28}
-                            height={28}
-                          />
+                          <div
+                          ref={iconRef}
+                          style={{
+                            background: "transparent",
+                            border: "none",
+                          }}
+                          >
+                            <Image
+                              src={
+                                formProps.values.message === ""
+                                  ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
+                                  : MessageSend2
+                              }
+                              alt="send-btn"
+                              type="submit"
+                              onClick={() => {
+                                handleSubmit(formProps.values);
+                                formProps.resetForm();
+                              }}
+                              className="no-radius"
+                              width={28}
+                              height={28}
+                            />
+                          </div>
                         </button>
                       </div>
                     </Form>
