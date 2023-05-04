@@ -163,7 +163,7 @@ function UserList(props) {
     if (classPopup === "show") {
       // stop scrolling page
       document.body.style.overflow = "hidden";
-      setMoveIcon();
+      initializeMoveIconPosition();
     } else {
       // allow scrolling page
       document.body.style.overflow = "unset";
@@ -207,17 +207,14 @@ function UserList(props) {
     setPopupClass("hide");
   };
 
-  const setMoveIcon = () => {
-    const icon = document?.querySelector(".icon-move");
-    console.log('333', iconRef)
+  const initializeMoveIconPosition = () => {
+    const icon = document.querySelector(".icon-move");
     if (icon && iconRef.current) {
       const dummyIcon = iconRef.current;
-    const dimension = dummyIcon?.getBoundingClientRect();
-    console.log('222', dimension)
-    icon.style.left = dimension?.left + "px";
-    icon.style.top = (dimension?.top - 310) + "px";
+      const dimension = dummyIcon.getBoundingClientRect();
+      icon.style.left = `${dimension.left}px`;
+      icon.style.top = `${(dimension.top - 310)}px`;
     }
-    
   }
 
   const openPopup = (item) => {
@@ -598,27 +595,30 @@ function UserList(props) {
                         border: "none",
                         paddingBottom: "5px",
                         paddingTop: "11px",
-                        // width: "20%",
-                        // display: "flex",
-                        // justifyContent: "flex-start",
                       }}
-                      ref={iconRef}
                     >
-                      <Image
-                        src={
-                          formProps.values.message === ""
-                            ? MessageSend5
-                            : MessageSend2
-                        }
-                        alt="send-btn"
-                        onClick={() => {
-                          handleSubmit(formProps.values);
-                          formProps.resetForm();
+                      <div
+                        ref={iconRef}
+                        style={{
+                          background: "transparent",
+                          border: "none",
                         }}
-                        width={30}
-                        height={30}
-                        className="icon-move-1"
-                      />
+                      >
+                        <Image
+                          src={
+                            formProps.values.message === ""
+                              ? MessageSend5
+                              : MessageSend2
+                          }
+                          alt="send-btn"
+                          onClick={() => {
+                            handleSubmit(formProps.values);
+                            formProps.resetForm();
+                          }}
+                          width={30}
+                          height={30}
+                        />
+                      </div>
                     </button>
                   </div>
                 </div>
@@ -628,33 +628,20 @@ function UserList(props) {
         </Formik>
         <p className="tip">Tip: ask her which date she prefers</p>
       </div>
-      <div className="icon-move" style={{
-        background: "transparent",
-        border: "none",
-        paddingBottom: "5px",
-        paddingTop: "11px",
-      }}>
+      <div
+        className="icon-move"
+        style={{
+          background: "transparent",
+          border: "none",
+        }}
+      >
         <Image
-          src={MessageSend2}
+          src={MessageSend5}
           alt="icon-move"
           width={30}
           height={30}
         />
       </div>
-      {/* <svg
-        onClick={moveIcon}
-        className="icon-move"
-        width="30"
-        height="30"
-        viewBox="0 0 14 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.6048 0.407386C13.2546 0.0480202 12.7364 -0.0858618 12.2532 0.0550622L0.9856 3.33166C0.47579 3.4733 0.114443 3.87988 0.0171013 4.39639C-0.0823407 4.92205 0.265006 5.58935 0.718788 5.86838L4.24193 8.03376C4.60328 8.25573 5.06967 8.20008 5.36869 7.89845L9.40303 3.83901C9.6061 3.62762 9.94224 3.62762 10.1454 3.83901C10.3484 4.04336 10.3484 4.37455 10.1454 4.58594L6.104 8.64612C5.80426 8.94698 5.74826 9.41556 5.96883 9.77914L8.12154 13.3377C8.37361 13.7604 8.80782 14 9.28396 14C9.34003 14 9.40303 14 9.4591 13.9929C10.0053 13.9225 10.4395 13.5491 10.6005 13.0206L13.9409 1.76735C14.088 1.2882 13.9549 0.766759 13.6048 0.407386Z"
-          fill="#686868"
-        />
-      </svg> */}
       {/* <DatePopup
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
