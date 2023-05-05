@@ -184,17 +184,23 @@ export default function HeaderLoggedIn({
       document.body.classList.toggle("open-sidebar");
     }
   };
+  console.log(fixed, width?.width)
   return (
     <header
       style={
-        fixed
+        fixed && width?.width > 500
           ? {
+            position: "fixed",
+            width: "100%",
+            zIndex: "99",
+            background: "black",
+          }
+          : fixed ?
+            {
               position: "fixed",
               width: "100%",
               zIndex: "99",
-              background: "black",
-            }
-          : {}
+            } : {}
       }
       className={`py-3 py-md-3 loggedin_user ${isBlack && "is-black-head"}`}
     >
@@ -259,9 +265,8 @@ export default function HeaderLoggedIn({
                 <li>
                   <div className="user-profile-details">
                     <figure
-                      className={`user_img_header user_notification ${
-                        modalIsOpen ? "invisible" : ""
-                      } `}
+                      className={`user_img_header user_notification ${modalIsOpen ? "invisible" : ""
+                        } `}
                       onClick={toggleClass}
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
