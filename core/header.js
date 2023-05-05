@@ -14,7 +14,7 @@ export default function Header({ page, setPage, ...props }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (_.isEmpty(user) && page == 0) {
+    if (!router?.query.token && _.isEmpty(user) && page == 0) {
       console.log("I am working");
       // setTimeout(() => {
       //   logout(router, dispatch);
