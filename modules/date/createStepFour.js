@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Field, reduxForm } from "redux-form";
 import { Inputs } from "core";
 import { FiArrowRight } from "react-icons/fi";
@@ -29,6 +29,27 @@ const CreateStepFour = (props) => {
   const [loader, setLoader] = useState(false);
   const [hideModal, setHideModal] = useState(false);
   const [val, setVal] = useState("");
+  const [showWarningPopup, setShowWarningPopup] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
+
+  useEffect(() => {
+    if (!hideModal && val.length > 0) {
+      setShowWarningPopup(true);
+      setTimeout(() => {
+        setShowAnimation(true);
+      }, 50);
+    }
+  }, [hideModal, val]);
+
+  useEffect(() => {
+    if (hideModal) {
+      setShowAnimation(false);
+      setTimeout(() => {
+        setShowWarningPopup(false);
+      }, 2000)
+    }
+  }, [hideModal]);
+  
   const user = useSelector((state) => state?.authReducer.user);
   const cityState = useSelector((state) => state?.form?.ChooseCity?.values);
   const dateSuggestion = useSelector(
@@ -87,13 +108,18 @@ const CreateStepFour = (props) => {
     setVal(e.target.value);
     console.log(e.target.value);
   }
-  const showWarningPopup =(!hideModal && val.length > 0) ;
-  //const [showAnimation, setShowAnimation] = useState (true)
-  //console.log(showWarningPopup)
+
   return (
     <>
-    { showWarningPopup  &&  <DateWarningModal setHideModal={setHideModal}
-          hideModal={hideModal} val={val} /> }
+      {showWarningPopup && (
+        <DateWarningModal
+          showAnimation={showAnimation}
+          setHideModal={setHideModal}
+          hideModal={hideModal}
+          val={val}
+        />
+      )}
+
           <>
             {!confirmPopup ? (
               <div className="outer_container">

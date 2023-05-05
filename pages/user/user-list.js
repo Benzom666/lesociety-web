@@ -641,7 +641,7 @@ function UserList(props) {
           border: "none",
         }}
       >
-        <Image src={MessageSend5} alt="icon-move" width={30} height={30} />
+        <Image src={MessageSend2} alt="icon-move" width={30} height={30} />
       </div>
       {/* <DatePopup
                 modalIsOpen={modalIsOpen}

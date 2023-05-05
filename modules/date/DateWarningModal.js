@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { AUTHENTICATE_UPDATE } from "../auth/actionConstants";
 
-function DateWarningModal({ setHideModal, hideModal, val }) {
+function DateWarningModal({ setHideModal, hideModal, val, showAnimation }) {
     const [checked, setChecked] = useState(false);
     const user = useSelector((state) => state.authReducer.user);
     const router = useRouter();
@@ -82,17 +82,16 @@ function DateWarningModal({ setHideModal, hideModal, val }) {
             return err;
         }
     };
-    const showWarningPopup = !hideModal && val.length > 0;
-    const [showAnimation, setShowAnimation] = useState (true)
+
     const closeDateWarningPopup = () => {
-        setShowAnimation(false)
+        setHideModal(true);
         setIsOpen(false);
     }
     
 
     return (
         <div className='popup_container'>
-         <div className={`warning_popup ${ (showWarningPopup && showAnimation) ? "show_1" : ""}`}>
+         <div className={`warning_popup ${ (showAnimation) ? "show_1" : ""}`}>
                 <div className="w-15 text-end pe-1">
                     <IoIosClose
                         className="mouse-point"
