@@ -560,6 +560,22 @@ function UserProfile({ preview, editHandle }) {
 
   console.log("userDetail", userDetail);
 
+  const [isTouchHover, setIsTouchHover] = useState({});
+
+  const handleTouchStart = (touchIndex) => {
+    setIsTouchHover({
+      ...isTouchHover,
+      [touchIndex]: true,
+    });
+  }
+
+  const handleTouchEnd = (touchIndex) => {
+    setIsTouchHover({
+      ...isTouchHover,
+      [touchIndex]: false,
+    });
+  }
+
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
   } else {
@@ -995,7 +1011,7 @@ function UserProfile({ preview, editHandle }) {
                                           .filter(
                                             (item) => item?.date_status === true
                                           )
-                                          .map((date) => {
+                                          .map((date, touchIndex) => {
                                             const category = dateCategory.find(
                                               (item) =>
                                                 item?.label ===
@@ -1007,7 +1023,7 @@ function UserProfile({ preview, editHandle }) {
                                             );
                                             return (
                                               <div
-                                                className="availabe_card_inner"
+                                                className={`availabe_card_inner ${isTouchHover[touchIndex] ? 'hover' : ''}`}
                                                 onClick={() => {
                                                   if (
                                                     !router?.query?.userName ||
@@ -1025,6 +1041,8 @@ function UserProfile({ preview, editHandle }) {
                                                     }
                                                   }
                                                 }}
+                                                onTouchStart={() => handleTouchStart(touchIndex)}
+                                                onTouchEnd={() => handleTouchEnd(touchIndex)}
                                               >
                                                 <ul className="date_list">
                                                   <li>
