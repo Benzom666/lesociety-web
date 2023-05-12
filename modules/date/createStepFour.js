@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Field, reduxForm } from "redux-form";
 import { Inputs } from "core";
 import { FiArrowRight } from "react-icons/fi";
@@ -10,6 +10,7 @@ import useWindowSize from "utils/useWindowSize";
 import { IoIosClose } from "react-icons/io";
 import { apiRequest } from "utils/Utilities";
 import DateWarningModal from "./DateWarningModal";
+import {findDOMNode} from 'react-dom'
 
 const CreateStepFour = (props) => {
   const {
@@ -30,6 +31,7 @@ const CreateStepFour = (props) => {
   const [val, setVal] = useState("");
   const [showWarningPopup, setShowWarningPopup] = useState(user?.date_warning_popup || false);
   const [showAnimation, setShowAnimation] = useState(false);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (user?.date_warning_popup && !hideModal) {
@@ -39,6 +41,12 @@ const CreateStepFour = (props) => {
 
   useEffect(() => {
     if (!hideModal && val.length > 0) {
+      
+      if (inputRef.current) {
+        const node = findDOMNode(inputRef.current);
+        const inputEl = node.getElementsByTagName('textarea');
+        if (inputEl.length > 0) inputEl[0].blur();
+      }
       setShowWarningPopup(true);
       setTimeout(() => {
         setShowAnimation(true);
@@ -221,6 +229,8 @@ const CreateStepFour = (props) => {
                     <div className="inner_container">
                       <div className="mb-5 date-description">
                         <Field
+                          ref={inputRef}
+                          withRef
                           name="date_description"
                           type="text"
                           validationLength={500}
