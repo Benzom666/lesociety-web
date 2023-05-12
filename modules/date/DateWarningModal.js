@@ -4,10 +4,9 @@ import { apiRequest } from "utils/Utilities";
 import { logout } from "../auth/authActions";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { AUTHENTICATE_UPDATE } from "../auth/actionConstants";
 
-function DateWarningModal({ setHideModal, hideModal, val, showAnimation }) {
+function DateWarningModal({ setHideModal, showAnimation }) {
     const [checked, setChecked] = useState(false);
     const user = useSelector((state) => state.authReducer.user);
     const router = useRouter();
@@ -15,20 +14,6 @@ function DateWarningModal({ setHideModal, hideModal, val, showAnimation }) {
     const checkHandler = () => {
         setChecked(!checked);
     };
-
-    // const closeModal = () => {
-    //     setIsOpen(false);
-    // }
-    const [isOpen, setIsOpen] = useState(!hideModal);
-    // const openModal = () => {
-    //     setIsOpen(true);
-    // }
-
-    useEffect(() => {
-        if (user?.date_warning_popup) {
-            setHideModal(true);
-        }
-    }, [user]);
 
     const handleSubmit = async (values) => {
         if (!checked) {
@@ -85,20 +70,24 @@ function DateWarningModal({ setHideModal, hideModal, val, showAnimation }) {
 
     const closeDateWarningPopup = () => {
         setHideModal(true);
-        setIsOpen(false);
     }
     
 
     return (
         <div className='popup_container'>
-         <div className={`warning_popup ${ (showAnimation) ? "show_1" : ""}`}>
-                <div className="w-15 text-end pe-1">
-                    <IoIosClose
-                        className="mouse-point"
-                        size={35}
-                        onClick={closeDateWarningPopup}
-                    />
-                </div>
+         <div className={`warning_popup ${ (showAnimation) ? "show_1" : ""}`} style={{padding: '65px 30px 30px'}}
+         >
+                
+                <IoIosClose
+                    className="mouse-point"
+                    size={35}
+                    onClick={closeDateWarningPopup}
+                    style={{
+                        position: 'absolute',
+                        top: 30,
+                        right: 30,
+                    }}
+                />
                 < div className='popup_heading'>
                     <h2>Any content that contains the</h2>
                     <h2>following will be removed.</h2>

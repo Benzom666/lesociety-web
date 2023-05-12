@@ -9,8 +9,6 @@ import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
 import { IoIosClose } from "react-icons/io";
 import { apiRequest } from "utils/Utilities";
-import ConfirmDate from "./../../modules/date/confirmDate";
-import CreatedatesWarningPopUp from "./CreatedatesWarningPopUp";
 import DateWarningModal from "./DateWarningModal";
 
 const CreateStepFour = (props) => {
@@ -25,12 +23,19 @@ const CreateStepFour = (props) => {
     confirmPopup,
   } = props;
   const state = useSelector((state) => state?.form?.CreateStepFour);
+  const user = useSelector((state) => state?.authReducer.user);
   const router = useRouter();
   const [loader, setLoader] = useState(false);
   const [hideModal, setHideModal] = useState(false);
   const [val, setVal] = useState("");
-  const [showWarningPopup, setShowWarningPopup] = useState(false);
+  const [showWarningPopup, setShowWarningPopup] = useState(user?.date_warning_popup || false);
   const [showAnimation, setShowAnimation] = useState(false);
+
+  useEffect(() => {
+    if (user?.date_warning_popup && !hideModal) {
+      setHideModal(true);
+    }
+  }, [user]);
 
   useEffect(() => {
     if (!hideModal && val.length > 0) {
@@ -50,7 +55,6 @@ const CreateStepFour = (props) => {
     }
   }, [hideModal]);
   
-  const user = useSelector((state) => state?.authReducer.user);
   const cityState = useSelector((state) => state?.form?.ChooseCity?.values);
   const dateSuggestion = useSelector(
     (state) => state?.form?.CreateStepOne?.values
@@ -99,14 +103,13 @@ const CreateStepFour = (props) => {
   };
 
   const { width } = useWindowSize();
-  // const [confirmPopup, setConfirmPopup] = useState(false);
 
-  // const toggle = () => {
-  //   setConfirmPopup(!confirmPopup);
-  // };
   const changeHandler = (e) => {
-    setVal(e.target.value);
-    console.log(e.target.value);
+    if (!showWarningPopup) {
+      setVal(e.target.value);
+    } else {
+      e.preventDefault()
+    }
   }
 
   return (
