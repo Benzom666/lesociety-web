@@ -26,6 +26,7 @@ import ProfileImageSlider from "./ProfileImageSlider";
 import ImageSlider from "./ImageSlider";
 import MessageModal from "@/core/MessageModal";
 import io from "socket.io-client";
+import { AUTHENTICATE_UPDATE } from "../actionConstants";
 
 export const socket = io("https://staging-api.secrettime.com/", {
   autoConnect: true,
@@ -425,6 +426,36 @@ function UserProfile({ preview, editHandle }) {
     }
   };
 
+  const getUpdatedUserDetails = async () => {
+    setLoading(true);
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `user/user-by-name?user_name=${user?.user_name}`,
+      });
+      dispatch({
+        type: AUTHENTICATE_UPDATE,
+        payload: { ...res.data?.data?.user },
+      });
+    } catch (err) {
+      console.log("err", err);
+
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        // setTimeout(() => {
+        //   logout(router, dispatch);
+        // }, 100);
+      }
+      return err;
+    }
+  };
+
+  useEffect(() => {
+    getUpdatedUserDetails();
+  }, []);
+
   // useEffect(() => {
   //   if (router?.query?.edit && user?.step_completed === 4) {
   //     router.push({
@@ -567,14 +598,14 @@ function UserProfile({ preview, editHandle }) {
       ...isTouchHover,
       [touchIndex]: true,
     });
-  }
+  };
 
   const handleTouchEnd = (touchIndex) => {
     setIsTouchHover({
       ...isTouchHover,
       [touchIndex]: false,
     });
-  }
+  };
 
   if (pageLoading) {
     return <SkeletonUserProfile preview={preview} />;
@@ -1023,7 +1054,11 @@ function UserProfile({ preview, editHandle }) {
                                             );
                                             return (
                                               <div
-                                                className={`availabe_card_inner ${isTouchHover[touchIndex] ? 'hover' : ''}`}
+                                                className={`availabe_card_inner ${
+                                                  isTouchHover[touchIndex]
+                                                    ? "hover"
+                                                    : ""
+                                                }`}
                                                 onClick={() => {
                                                   if (
                                                     !router?.query?.userName ||
@@ -1041,8 +1076,12 @@ function UserProfile({ preview, editHandle }) {
                                                     }
                                                   }
                                                 }}
-                                                onTouchStart={() => handleTouchStart(touchIndex)}
-                                                onTouchEnd={() => handleTouchEnd(touchIndex)}
+                                                onTouchStart={() =>
+                                                  handleTouchStart(touchIndex)
+                                                }
+                                                onTouchEnd={() =>
+                                                  handleTouchEnd(touchIndex)
+                                                }
                                               >
                                                 <ul className="date_list">
                                                   <li>
