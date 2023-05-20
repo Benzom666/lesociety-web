@@ -60,6 +60,9 @@ function UserProfile({ preview, editHandle }) {
   // for notification
   const [count, setCount] = useState(0);
 
+  const checkIpad =
+    width > 768 && width < 1366 && width !== 1024 && width !== 768;
+
   useEffect(() => {
     socket.auth = { user: user };
     socket.connect();
@@ -677,7 +680,7 @@ function UserProfile({ preview, editHandle }) {
                                   priority={true}
                                   alt="user image"
                                   width={270}
-                                  height={270}
+                                  height={checkIpad ? 300 : 270}
                                   placeholder="blur"
                                   blurDataURL={userImageProfile}
                                   onClick={() => {
