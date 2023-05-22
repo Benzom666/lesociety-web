@@ -2194,10 +2194,19 @@ div[id="scrolldiv"] {
 
     .date-preview-img {
       object-fit: cover;
+      position: relative;
     }
 
     img {
       border-radius: 5px;
+    }
+
+    .img-container {
+      position: relative; /* Add this line */
+
+      img {
+        border-radius: 5px;
+      }
     }
 
     .user-details {
@@ -2220,6 +2229,7 @@ div[id="scrolldiv"] {
 
       .user-top-sec {
         width: 100%;
+        // position: relative;
 
         h5 {
           display: flex;

@@ -33,6 +33,7 @@ import MessageMobileHeader from "./../core/MessageMobileHeader";
 import MessageSend from "assets/Send.svg";
 import MessageSend2 from "assets/message_send2.png";
 import { logout } from "@/modules/auth/authActions";
+import moment from "moment";
 // const socket = io.connect("https://staging-api.secrettime.com/");
 
 // const socket = io("https://staging-api.secrettime.com/", {
@@ -128,6 +129,17 @@ const Messages = (props) => {
       // socket.connected
     ]
   );
+
+  const customFormat = (date, normalDate) => {
+    const now = moment(); // Current date and time
+    const diff = now.diff(date, "hours"); // Time difference in hours
+
+    if (diff < 24) {
+      return format(normalDate); // Use relative time format
+    } else {
+      return date.format("DD/MM/YYYY"); // Full date format: DD/MM/YYYY
+    }
+  };
 
   const getChatHistoryConversation = async (chatRoomId) => {
     console.log("chatRoomId", chatRoomId);
@@ -1069,7 +1081,10 @@ const Messages = (props) => {
                                                   : "message_time_send"
                                               }`}
                                             >
-                                              {format(message?.sent_time)}
+                                              {customFormat(
+                                                moment(message?.sent_time),
+                                                message?.sent_time
+                                              )}
                                             </span>
                                             <span className="message_text">
                                               {message?.message}

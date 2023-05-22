@@ -19,6 +19,9 @@ import userImageMain from "../assets/img/user2.jpg";
 import ImageShow from "@/modules/ImageShow";
 import MessageModal from "./MessageModal";
 import { logout } from "@/modules/auth/authActions";
+import verifiedIcon from "assets/Group 6.png";
+import useWindowSize from "utils/useWindowSize";
+import { HiBadgeCheck } from "react-icons/hi";
 
 const UserCardList = ({
   date,
@@ -46,6 +49,9 @@ const UserCardList = ({
   const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const growRef = useRef(null);
+  const { width } = useWindowSize();
+
+  const logoTopPostion = width > 768 ? "100px" : "-100px";
 
   const dispatch = useDispatch();
 
@@ -195,7 +201,37 @@ const UserCardList = ({
     );
   } else {
     return (
-      <>
+      <div
+        style={{
+          position: "relative",
+        }}
+      >
+        {date?.user_data?.length > 0 &&
+          !dateDetailsIsOpen &&
+          date?.user_data[0]?.documents_verified && (
+            <div
+              class="gallery_verified_icon"
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "12px",
+                zIndex: "1",
+              }}
+            >
+              {/* <Image
+                src={verifiedIcon}
+                alt="user image"
+                width={25}
+                height={25}
+                loader={myLoader}
+                priority={true}
+                blurDataURL="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
+                // className="gallery_verified_icon"
+              /> */}
+              <HiBadgeCheck color={"white"} size={25} />
+            </div>
+          )}
+
         <div className="date_card_wrap" ref={ref}>
           <figure
             className="user_img_date"
@@ -221,6 +257,7 @@ const UserCardList = ({
                   priority={true}
                   blurDataURL="https://img.freepik.com/premium-photo/black-stone-texture-dark-slate-background-top-view_88281-1206.jpg?w=2000"
                 />
+
                 {/* <ImageShow
                   alt="not fount"
                   width={500}
@@ -372,7 +409,7 @@ const UserCardList = ({
                   )}
                   <button
                     type="button"
-                    className="edit"
+                    className="edit view__profile__btn"
                     onClick={() =>
                       router.push(`/user/user-profile/${date?.user_name}`)
                     }
@@ -519,7 +556,7 @@ const UserCardList = ({
             </div>
           </Modal>
         )}
-      </>
+      </div>
     );
   }
 };
