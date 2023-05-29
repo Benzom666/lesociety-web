@@ -305,30 +305,30 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           }}
                           className="message-date-btn"
                         >
-                          <div
-                          ref={iconRef}
-                          style={{
-                            background: "transparent",
-                            border: "none",
-                          }}
-                          >
-                            <Image
-                              src={
-                                formProps.values.message === ""
-                                  ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
-                                  : MessageSend2
-                              }
-                              alt="send-btn"
-                              type="submit"
-                              onClick={() => {
-                                handleSubmit(formProps.values);
-                                formProps.resetForm();
-                              }}
-                              className="no-radius"
-                              width={28}
-                              height={28}
-                            />
-                          </div>
+                          {/* <div
+                            ref={iconRef}
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                            }}
+                          > */}
+                          <Image
+                            src={
+                              formProps.values.message === ""
+                                ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
+                                : MessageSend2
+                            }
+                            alt="send-btn"
+                            type="submit"
+                            onClick={() => {
+                              handleSubmit(formProps.values);
+                              formProps.resetForm();
+                            }}
+                            className="no-radius"
+                            width={28}
+                            height={28}
+                          />
+                          {/* </div> */}
                         </button>
                       </div>
                     </Form>
