@@ -337,7 +337,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                               src={
                                 formProps.values.message === ""
                                   ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
-                                  : "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
+                                  : "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send2.png"
                               }
                               alt="send-btn"
                               onClick={() => {
