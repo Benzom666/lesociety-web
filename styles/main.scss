@@ -4165,6 +4165,7 @@ body .verification_card_header {
 .message-popup.show {
   height: 310px !important;
   top: unset !important;
+  z-index: 2;
 }
 
 /* For iPad Pro (12.9-inch) (4th generation) */
@@ -4173,6 +4174,7 @@ body .verification_card_header {
   .message-popup.show {
     height: 310px !important;
     bottom: 0% !important;
+    z-index: 2;
   }
 
   .message-popup {
