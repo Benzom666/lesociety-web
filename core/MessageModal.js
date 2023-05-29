@@ -202,22 +202,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           border: "none",
                         }}
                       >
-                        {/* <Image
-                          src={
-                            formProps.values.message === ""
-                              ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
-                              : MessageSend2
-                          }
-                          alt="send-btn"
-                          onClick={() => {
-                            handleSubmit(formProps.values);
-                            formProps.resetForm();
-                          }}
-                          className="no-radius"
-                          width={28}
-                          height={28}
-                        /> */}
-                        <img
+                        <Image
                           src={
                             formProps.values.message === ""
                               ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
@@ -327,7 +312,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                               border: "none",
                             }}
                           >
-                            <Image
+                            {/* <Image
                               src={
                                 formProps.values.message === ""
                                   ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
@@ -335,6 +320,24 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                               }
                               alt="send-btn"
                               type="submit"
+                              onClick={() => {
+                                handleSubmit(formProps.values);
+                                formProps.resetForm();
+                              }}
+                              className="no-radius"
+                              width={28}
+                              height={28}
+                            /> */}
+                            <img
+                              // src={
+                              //   formProps.values.message === ""
+                              //     ? "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/message_send.png"
+                              //     : MessageSend2
+                              // }
+                              src={
+                                "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/5503E782-90F3-4111-A8D9-8391D30CC8B7.jpeg"
+                              }
+                              alt="send-btn"
                               onClick={() => {
                                 handleSubmit(formProps.values);
                                 formProps.resetForm();
