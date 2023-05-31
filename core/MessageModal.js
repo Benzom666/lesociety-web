@@ -26,6 +26,19 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
   const isAndroid = /Android/.test(navigator.userAgent);
 
+  const [isIPadPro, setIsIPadPro] = useState(false);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      const isIPadPro =
+        /Mac|iPod|iPad/.test(navigator.platform) &&
+        navigator.maxTouchPoints > 1;
+      setIsIPadPro(isIPadPro);
+    };
+
+    checkDevice();
+  }, []);
+
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -296,7 +309,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                           type="button"
                           style={{
                             position: "absolute",
-                            left: "77%",
+                            left: isIPadPro ? "73%" : "77%",
                             background: "transparent",
                             border: "none",
                             paddingBottom: "5px",
