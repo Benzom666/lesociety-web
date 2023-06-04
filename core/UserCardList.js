@@ -53,6 +53,8 @@ const UserCardList = ({
 
   const logoTopPostion = width > 768 ? "100px" : "-100px";
 
+  const isIPad = /iPad/.test(navigator.userAgent);
+
   const dispatch = useDispatch();
 
   const [mobileLoader, setMobileLoading] = useState(false);
@@ -414,7 +416,7 @@ const UserCardList = ({
                       router.push(`/user/user-profile/${date?.user_name}`)
                     }
                   >
-                    <a>View profile</a>
+                    {isIPad ? "Profile" : "View profile"}
                   </button>
                 </div>
               </div>
