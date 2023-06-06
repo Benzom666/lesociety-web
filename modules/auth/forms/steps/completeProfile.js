@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Loader from "@/modules/Loader/Loader";
-import { logout } from "../../authActions";
+import _ from "lodash";
 
 const CompleteProfile = (props) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -164,6 +164,10 @@ const CompleteProfile = (props) => {
     } else if (user?.status === 3) {
       router.push({
         pathname: "/auth/block",
+      });
+    } else if (_.isEmpty(user)) {
+      router.push({
+        pathname: "/auth/login",
       });
     }
   }, [user?.status]);
