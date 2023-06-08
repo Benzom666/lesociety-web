@@ -165,11 +165,12 @@ const CompleteProfile = (props) => {
       router.push({
         pathname: "/auth/block",
       });
-    } else if (_.isEmpty(user)) {
-      router.push({
-        pathname: "/auth/login",
-      });
     }
+    //  else if (_.isEmpty(user)) {
+    //   router.push({
+    //     pathname: "/auth/login",
+    //   });
+    // }
   }, [user?.status]);
 
   if (loading) {
