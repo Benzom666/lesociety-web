@@ -251,7 +251,7 @@ const FirstStep = ({ gender, ...props }) => {
         label="Username"
         placeholder="Visible by all members"
         // remove spaces
-        normalize={(value) => value.replace(/\s+/g, "")}
+        normalize={(value) => value.replace(/\s+/g, ".")}
         onChange={handleChangeUser}
         loading={loadingUsername}
         isValid={isValidUsername}
