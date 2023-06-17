@@ -250,6 +250,8 @@ const FirstStep = ({ gender, ...props }) => {
         component={Inputs.inputField}
         label="Username"
         placeholder="Visible by all members"
+        // remove spaces
+        normalize={(value) => value.replace(/\s+/g, "")}
         onChange={handleChangeUser}
         loading={loadingUsername}
         isValid={isValidUsername}
