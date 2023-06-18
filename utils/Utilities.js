@@ -8,11 +8,11 @@ import { loadFromLocalStorage } from "./sessionStorage";
 export const socketURL =
   process.env.NODE_ENV === "production"
     ? process.env.NEXT_PUBLIC_PROD_SOCKET_URL
-    : process.env.NEXT_PUBLIC_DEV_SOCKET_URL;
+    : process.env.NEXT_PUBLIC_PROD_SOCKET_URL;
 export const apiURL =
   process.env.NODE_ENV === "production"
     ? process.env.NEXT_PUBLIC_PROD_API_URL
-    : process.env.NEXT_PUBLIC_DEV_API_URL;
+    : process.env.NEXT_PUBLIC_PROD_API_URL;
 
 // export const apiRequest = async (args = {}) => {
 //   let token = "";
