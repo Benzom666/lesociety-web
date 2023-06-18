@@ -3,7 +3,7 @@ import Header from "core/header";
 import Footer from "core/footer";
 import useWindowSize from "../../utils/useWindowSize";
 import withAuth from "@/core/withAuth";
-import { apiRequest } from "utils/Utilities";
+import { apiRequest, socketURL } from "utils/Utilities";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -12,7 +12,7 @@ import HeaderLoggedIn from "@/core/loggedInHeader";
 import io from "socket.io-client";
 import { logout } from "@/modules/auth/authActions";
 
-export const socket = io("https://staging-api.secrettime.com/", {
+export const socket = io(socketURL, {
   autoConnect: true,
 });
 

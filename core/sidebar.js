@@ -26,7 +26,7 @@ export default function SideBar({ isActive, count }) {
   const [documentUpoaded, setDocumentUpoaded] = useState(false);
   const [notifData, setNotifdata] = useState(null);
   // const [count, setCount] = useState(0);
-  // const socket = io("https://staging-api.secrettime.com/", {
+  // const socket = io(socketURL, {
   //   autoConnect: true,
   // });
 

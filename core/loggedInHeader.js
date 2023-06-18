@@ -18,7 +18,7 @@ import LeSlogoText from "../assets/img/LeSocietylogotext.png";
 import Logo_Mob$ from "../assets/img/LeSociety Icon White.png";
 import Logo_Web from "../assets/img/Logo_Web.png";
 import { logout } from "@/modules/auth/authActions";
-// const socket = io("https://staging-api.secrettime.com/", {
+// const socket = io(socketURL, {
 //   autoConnect: true,
 // });
 
@@ -30,7 +30,7 @@ export default function HeaderLoggedIn({
   setCount,
   setLogoutLoading,
 }) {
-  // const socket = io("https://staging-api.secrettime.com/", {
+  // const socket = io(socketURL, {
   //   autoConnect: true,
   // });
 

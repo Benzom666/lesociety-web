@@ -34,9 +34,9 @@ import MessageSend from "assets/Send.svg";
 import MessageSend2 from "assets/message_send2.png";
 import { logout } from "@/modules/auth/authActions";
 import moment from "moment";
-// const socket = io.connect("https://staging-api.secrettime.com/");
+// const socket = io.connect(socketURL);
 
-// const socket = io("https://staging-api.secrettime.com/", {
+// const socket = io(socketURL, {
 //   autoConnect: true,
 // });
 

@@ -17,6 +17,7 @@ import {
   apiRequestChatHistory,
   dateCategory,
   imageUploader,
+  socketURL,
 } from "utils/Utilities";
 import { format } from "timeago.js";
 import qs from "qs";
@@ -37,7 +38,7 @@ import VerifiedProfileMobileHeader from "@/core/VerifiedProfileMobileHeader";
 import io from "socket.io-client";
 import { logout } from "@/modules/auth/authActions";
 
-export const socket = io("https://staging-api.secrettime.com/", {
+export const socket = io(socketURL, {
   autoConnect: true,
 });
 const VerifiedProfilePage = (props) => {

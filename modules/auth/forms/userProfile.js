@@ -18,7 +18,12 @@ import moment from "moment";
 import { logout, signupStep4 } from "../authActions";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { apiRequest, dateCategory, countriesCode } from "utils/Utilities";
+import {
+  apiRequest,
+  dateCategory,
+  countriesCode,
+  socketURL,
+} from "utils/Utilities";
 import SkeletonUserProfile from "@/modules/skeleton/user/SkeletonUserProfile";
 
 import close1 from "../../../assets/close1.png";
@@ -28,7 +33,7 @@ import MessageModal from "@/core/MessageModal";
 import io from "socket.io-client";
 import { AUTHENTICATE_UPDATE } from "../actionConstants";
 
-export const socket = io("https://staging-api.secrettime.com/", {
+export const socket = io(socketURL, {
   autoConnect: true,
 });
 

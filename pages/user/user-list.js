@@ -5,7 +5,7 @@ import Footer from "core/footer";
 import router from "next/router";
 import LocationPopup from "@/core/locationPopup";
 import withAuth from "../../core/withAuth";
-import { apiRequest, countriesCode } from "utils/Utilities";
+import { apiRequest, countriesCode, socketURL } from "utils/Utilities";
 import {
   fetchCities,
   fetchLiveLocation,
@@ -37,7 +37,7 @@ import {
 import ImageShow from "@/modules/ImageShow";
 import Loader from "@/modules/Loader/Loader";
 
-export const socket = io("https://staging-api.secrettime.com/", {
+export const socket = io(socketURL, {
   reconnection: true,
   autoConnect: true,
   transports: ["websocket", "polling", "flashsocket"],

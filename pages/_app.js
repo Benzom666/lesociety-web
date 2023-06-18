@@ -21,15 +21,16 @@ import io from "socket.io-client";
 import "styles/style.scss";
 import { removeCookie } from "utils/cookie";
 import LanscapeDecline from "@/core/LanscapeDecline";
+import { socketURL } from "utils/Utilities";
 
-// export const socket = io("https://staging-api.secrettime.com/", {
+// export const socket = io(socketURL, {
 //   autoConnect: true,
 // });
-export const socket = io("https://staging-api.secrettime.com/", {
+export const socket = io(socketURL, {
   autoConnect: true,
 });
 
-// export const socket = io("https://staging-api.secrettime.com/", {
+// export const socket = io(socketURL, {
 //   autoConnect: true,
 //   // reconnection: true,
 //   // reconnectionDelay: 1000,

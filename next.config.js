@@ -1,28 +1,13 @@
 const path = require("path");
+require("dotenv").config();
 
 module.exports = {
-  // compiler: {
-  //   removeConsole: true,
-  // },
   images: {
-    domains: ["secrettime-cdn.s3.eu-west-2.amazonaws.com"],
+    domains:
+      process.env.NODE_ENV === "production"
+        ? [`${process.env.NEXT_PUBLIC_PROD_BUCKET_URL}`]
+        : [`${process.env.NEXT_PUBLIC_DEV_BUCKET_URL}`],
   },
-  // remove console log
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.resolve.alias["@sentry/node"] = "@sentry/browser";
-  //   }
-  //   if (isServer) {
-  //     config.externals = config.externals || [];
-  //     config.externals.push((context, request, callback) => {
-  //       if (/^@sentry/.test(request)) {
-  //         return callback(null, "commonjs " + request);
-  //       }
-  //       callback();
-  //     });
-  //   }
-  //   return config;
-  // },
 
   devIndicators: {
     autoPrerender: false,

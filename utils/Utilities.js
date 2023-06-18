@@ -5,6 +5,15 @@ import { CustomIcon } from "core/icon";
 import { getCookie } from "./cookie";
 import { loadFromLocalStorage } from "./sessionStorage";
 
+export const socketURL =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_PROD_SOCKET_URL
+    : process.env.NEXT_PUBLIC_DEV_SOCKET_URL;
+export const apiURL =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_PROD_API_URL
+    : process.env.NEXT_PUBLIC_DEV_API_URL;
+
 // export const apiRequest = async (args = {}) => {
 //   let token = "";
 //   const authCookie = getCookie("auth");
@@ -27,7 +36,7 @@ export const apiRequest = async (args = {}) => {
   if (authCookie) {
     token = authCookie.user?.token;
   }
-  args.url = `${"https://staging-api.secrettime.com/api/v1"}/${args.url}`;
+  args.url = `${`${apiURL}/api/v1`}/${args.url}`;
   return axios({
     ...args,
     headers: {

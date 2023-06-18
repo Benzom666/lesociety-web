@@ -14,7 +14,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import MessageSend from "assets/Send.svg";
 import MessageSend2 from "assets/message_send2.png";
 import { logout } from "@/modules/auth/authActions";
-// const socket = io.connect("https://staging-api.secrettime.com/");
+// const socket = io.connect(socketURL);
 
 function ChatMessages({ ...props }) {
   const [currentChat, setCurrentChat] = React.useState(null);

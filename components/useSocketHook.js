@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 import io from "socket.io-client";
+import { socketURL } from "utils/Utilities";
 
 const useSocket = () => {
   const socketRef = useRef();
 
-  const url = "https://staging-api.secrettime.com/";
+  const url = socketURL;
 
   useEffect(() => {
     socketRef.current = io(url, {
