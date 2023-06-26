@@ -16,7 +16,7 @@ pipelines:
                   nvm use
                   cd /home/node/secret-time-next
                   git pull origin production
-                  npm install
+                  npm install --force
                   npm run build
                   npx pm2 restart 0
                   echo "NextJS Productin Deployed"
