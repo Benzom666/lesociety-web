@@ -267,6 +267,7 @@ const FirstStep = ({ gender, ...props }) => {
           type={showPassword ? "text" : "password"}
           label="Password"
           placeholder="Minimum 6 character"
+          normalize={(value) => value.replace(/\s+/g, "")}
           validate={passwordValidate}
         />
         <span
@@ -380,7 +381,7 @@ const FirstStep = ({ gender, ...props }) => {
             <div className="d-flex checkbox-label">
               <p className="next-text">
                 By clicking “Next” I certify that I’m at least 18 years old and
-                agree to the Secret Time <Link href="/">PrivacyPolicy</Link> and{" "}
+                agree to the Le Society <Link href="/">PrivacyPolicy</Link> and{" "}
                 <Link href="/">Terms</Link>
               </p>
             </div>
@@ -416,7 +417,7 @@ const FirstStep = ({ gender, ...props }) => {
             </div>
             <p className="next-text">
               By clicking “Next” I certify that I’m at least 18 years old and
-              agree to the Secret Time <Link href="/">PrivacyPolicy</Link> and{" "}
+              agree to the Le Society <Link href="/">PrivacyPolicy</Link> and{" "}
               <Link href="/">Terms</Link>
             </p>
           </div>

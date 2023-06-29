@@ -158,6 +158,7 @@ const SimpleForm = (props) => {
               label="Password"
               // validate={[passwordRequired]}
               placeholder="Password"
+              normalize={(value) => value.replace(/\s+/g, "")}
               refName={passRef}
               withRef={true}
             />
@@ -233,6 +234,7 @@ const SimpleForm = (props) => {
               type={showPassword ? "text" : "password"}
               label="Password"
               placeholder="Enter your password"
+              normalize={(value) => value.replace(/\s+/g, "")}
               refName={passRef}
               withRef={true}
             />

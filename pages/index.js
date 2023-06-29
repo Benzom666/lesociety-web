@@ -9,7 +9,7 @@ function Home({ dispatch }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Secret Time</title>
+        <title>Le Society</title>
         <link rel="icon" href="/favicon.svg" />
         <meta
           name="viewport"

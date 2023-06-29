@@ -141,7 +141,7 @@ class MyApp extends App {
     return (
       <Provider store={store}>
         <Head>
-          <title>Secret Time</title>
+          <title>Le Society</title>
           <link rel="icon" href="/favicon.svg" />
           <meta
             name="viewport"

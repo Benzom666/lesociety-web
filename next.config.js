@@ -3,10 +3,10 @@ require("dotenv").config();
 
 module.exports = {
   images: {
-    domains:
-      process.env.NODE_ENV === "production"
-        ? [`${process.env.NEXT_PUBLIC_PROD_BUCKET_URL}`]
-        : [`${process.env.NEXT_PUBLIC_DEV_BUCKET_URL}`],
+    domains: [
+      "lesociety.s3.ca-central-1.amazonaws.com",
+      "secrettime-cdn.s3.eu-west-2.amazonaws.com",
+    ],
   },
 
   devIndicators: {

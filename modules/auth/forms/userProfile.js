@@ -435,7 +435,7 @@ function UserProfile({ preview, editHandle }) {
   };
 
   const getUpdatedUserDetails = async () => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const res = await apiRequest({
         method: "GET",
