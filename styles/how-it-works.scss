@@ -1,1044 +1,1027 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 
 .how-it-works {
-    font-family: 'Montserrat';
+  font-family: "Montserrat";
 
-    .howItWork-navbar {
-        margin-left: 55px;
-        margin-bottom: 2rem;
+  .howItWork-navbar {
+    margin-left: 55px;
+    margin-bottom: 2rem;
 
-        .LeSociety-Icon-White {
-            padding: 0 75px;
+    .LeSociety-Icon-White {
+      padding: 0 75px;
 
-            .ls-logo {
-                margin: 20px 20px;
+      .ls-logo {
+        margin: 20px 20px;
 
-                img {
-                    width: 35px;
-                }
-            }
-
-            .ls-text {
-                p {
-                    font-weight: 800;
-                    letter-spacing: 0.2px;
-                    color: black;
-                    font-size: 23px;
-                    padding: 22px 0px;
-                    text-transform: uppercase;
-                }
-            }
+        img {
+          width: 35px;
         }
-    }
+      }
 
-
-    .container-1 {
-        display: flex;
-        flex-direction: column;
-        // margin-left: 5rem;
-        // margin-right: 5rem;
-        // margin-bottom: 4rem;
-        width: 812px;
-        margin: auto;
-
-        .parentdiv-1 {
-            margin-bottom: 2rem;
+      .ls-text {
+        p {
+          font-weight: 800;
+          letter-spacing: 0.2px;
+          color: black;
+          font-size: 23px;
+          padding: 22px 0px;
+          text-transform: uppercase;
         }
+      }
+    }
+  }
+
+  .container-1 {
+    display: flex;
+    flex-direction: column;
+    // margin-left: 5rem;
+    // margin-right: 5rem;
+    // margin-bottom: 4rem;
+    width: 812px;
+    margin: auto;
+
+    .parentdiv-1 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .myCard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f2f5f7;
+    padding: 60px 0px;
+    border-radius: 14px;
+    box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .parentdiv-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+
+    .myCard-1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 365px;
+      //margin-left: 2rem;
+    }
+  }
+
+  .sub-heading {
+    font-size: 16px;
+    font-family: "Montserrat";
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #1a415c;
+  }
+
+  .main-heading {
+    font-size: 40px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    color: #1a415c;
+    text-transform: uppercase;
+  }
+
+  .myCard {
+    .subCard-heading {
+      font-size: 24px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.84px;
+      text-align: center;
+      color: #1a415c;
+      text-transform: uppercase;
     }
 
-    .myCard {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #f2f5f7;
-        padding: 60px 0px;
-        border-radius: 14px;
-        box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
+    span {
+      font-size: 16px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #1a415c;
+      padding: 10px 45px;
+      text-transform: capitalize;
     }
 
-    .parentdiv-2 {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 3rem;
-
-        .myCard-1 {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            width: 365px;
-            //margin-left: 2rem;
-        }
+    .subCard-sub-heading {
+      font-size: 18px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #3a5e77;
+      //padding: 5px 10px;
     }
+  }
 
-    .sub-heading {
-        font-size: 16px;
-        font-family: 'Montserrat';
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: #1a415c;
-    }
+  .container-2 {
+    //margin: 5% 25% 0 25%;
+    //width: 812px;
+    text-align: center;
+    margin: 0 auto;
 
-    .main-heading {
+    .container-2-title {
+      width: 568px;
+      margin: 5rem auto 2rem auto;
+      padding: 5px;
+      //margin: 10px 0px;
+
+      .heading {
+        //margin-left: auto;
+        //width: 523px;
         font-size: 40px;
         font-weight: bold;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
         letter-spacing: 1.4px;
+        text-align: center;
         color: #1a415c;
         text-transform: uppercase;
+      }
+
+      .sub-heading {
+        //margin-left: auto;
+        // width: 568px;
+        font-size: 18px;
+        font-family: "Montserrat";
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #3a5e77;
+        // margin: 10px 0px 25px 0px;
+        padding: 20px 10px;
+      }
     }
 
-    .myCard {
-        .subCard-heading {
-            font-size: 24px;
-            font-weight: bold;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: 1.84px;
-            text-align: center;
-            color: #1a415c;
-            text-transform: uppercase;
+    .howitwork-main-card-image-section {
+      width: 812px;
+      margin: 0 auto;
+    }
+
+    .myCard-3 {
+      height: 238px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #f2f5f7;
+      border-radius: 14px;
+      box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .howitWork-heading {
+      // margin: 0 auto;
+      // width: 242px;
+      // padding-top: 20px !important;
+      padding: 14px 0px 0px 0px;
+      font-size: 20px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 3.2px;
+      text-align: center;
+      color: #1a415c;
+      text-transform: uppercase;
+    }
+
+    .howitWork-content {
+      //width: 317px;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 0px;
+      text-align: center;
+      color: #3a5e77;
+      padding: 12px 5px;
+    }
+
+    .The-future-of-Le-Society {
+      font-size: 20px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 3.2px;
+      text-align: center;
+      color: #1a415c;
+      text-transform: uppercase;
+      //padding: 20px 65px;
+      //margin-bottom: 8px;
+    }
+
+    .Rectangle-1 {
+      width: 179px;
+      text-align: center;
+      border-radius: 15px;
+      background-color: #f24462;
+      color: #fff;
+      border: #f24462;
+      // margin-left: 25%;
+      // margin-right: 25%;
+      padding: 10px 32px;
+    }
+
+    .In-App-Payment-GPS-Tracking-and-more {
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #2c2c2c;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 769px) and (min-width: 500px) {
+  .how-it-works {
+    overflow-x: hidden;
+
+    .container-1 {
+      width: 100%;
+      margin: 0 auto;
+
+      .myCard {
+        flex-direction: column;
+        width: 365px;
+        margin: 2rem auto;
+        padding: 30px 0px !important;
+
+        .textContent {
+          padding: 20px 0px;
         }
 
-        span {
+        .myCard-1 {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .textContent {
+          .sub-heading {
             font-size: 16px;
-            font-weight: 600;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
+            margin-top: 10px;
             text-align: center;
-            color: #1a415c;
-            padding: 10px 45px;
-            text-transform: capitalize;
+          }
+
+          .main-heading {
+            font-family: Montserrat;
+            font-size: 20px;
+            margin: 5px 0 5px 0;
+          }
         }
 
-        .subCard-sub-heading {
-            font-size: 18px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            text-align: center;
-            color: #3a5e77;
-            //padding: 5px 10px;
+        .subCard-heading {
+          font-size: 20px;
         }
+      }
+
+      .parentdiv-2 {
+        flex-direction: column;
+        margin-top: 0rem !important;
+
+        .myCard-1 {
+          // margin-left: 0;
+          // margin-top: 1rem;
+          // margin: auto;
+        }
+      }
     }
 
     .container-2 {
-        //margin: 5% 25% 0 25%;
-        //width: 812px;
+      margin: 0 10%;
+
+      .container-2-title {
+        margin: 2rem auto;
         text-align: center;
+        padding: 10px 0px;
+
+        .heading {
+          font-size: 20px;
+          padding: 2px 10px;
+          letter-spacing: 3.2px;
+        }
+
+        .sub-heading {
+          width: 344px !important;
+          font-size: 16px;
+          padding: 5px 3px;
+          margin: auto;
+        }
+      }
+
+      .howitwork-main-card-image-section {
+        width: 55%;
+        margin: auto;
+      }
+
+      .howitWork-heading {
+        letter-spacing: 3.2px;
+      }
+
+      .howitWork-content {
+        width: 317px;
+        padding: 10px 5px 0px 5px;
         margin: 0 auto;
+      }
 
-        .container-2-title {
-            width: 568px;
-            margin: 5rem auto 2rem auto;
-            padding: 5px;
-            //margin: 10px 0px;
+      .The-future-of-Le-Society {
+        padding: 12px 50px;
+      }
 
-            .heading {
-                //margin-left: auto;
-                //width: 523px;
-                font-size: 40px;
-                font-weight: bold;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: 1.4px;
-                text-align: center;
-                color: #1a415c;
-                text-transform: uppercase;
-            }
+      .Rectangle-1 {
+        margin: 0%;
+      }
+    }
+  }
+}
 
-            .sub-heading {
-                //margin-left: auto;
-                // width: 568px;
-                font-size: 18px;
-                font-family: 'Montserrat';
-                font-weight: normal;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                text-align: center;
-                color: #3a5e77;
-                // margin: 10px 0px 25px 0px;
-                padding: 20px 10px;
-            }
+@media only screen and (max-width: 500px) {
+  .how-it-works {
+    overflow-x: hidden;
+
+    .container-1 {
+      width: 358px !important;
+      margin: 0 auto;
+
+      .myCard {
+        flex-direction: column;
+        width: 100%;
+        //margin: auto;
+        margin: 2rem auto;
+        padding: 20px 0px !important;
+
+        .textContent {
+          padding: 20px 0px;
         }
 
-        .howitwork-main-card-image-section {
-            width: 812px;
-            margin: 0 auto;
+        .myCard-1 {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
         }
 
-        .myCard-3 {
-            height: 238px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background-color: #f2f5f7;
-            border-radius: 14px;
-            box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px 0 rgba(0, 0, 0, 0.15);
-        }
-
-        .howitWork-heading {
-            // margin: 0 auto;
-            // width: 242px;
-            // padding-top: 20px !important;
-            padding: 14px 0px 0px 0px;
-            font-size: 20px;
-            font-weight: bold;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: 3.2px;
-            text-align: center;
-            color: #1a415c;
-            text-transform: uppercase;
-        }
-
-        .howitWork-content {
-            //width: 317px;
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: 0px;
-            text-align: center;
-            color: #3a5e77;
-            padding: 12px 5px;
-        }
-
-        .The-future-of-Le-Society {
-            font-size: 20px;
-            font-weight: bold;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: 3.2px;
-            text-align: center;
-            color: #1a415c;
-            text-transform: uppercase;
-            //padding: 20px 65px;
-            //margin-bottom: 8px;
-        }
-
-        .Rectangle-1 {
-            width: 179px;
-            text-align: center;
-            border-radius: 15px;
-            background-color: #f24462;
-            color: #fff;
-            border: #f24462;
-            // margin-left: 25%;
-            // margin-right: 25%;
-            padding: 10px 32px;
-        }
-
-        .In-App-Payment-GPS-Tracking-and-more {
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            text-align: center;
-            color: #2c2c2c;
+        .textContent {
+          .sub-heading {
+            font-size: 16px;
             margin-top: 10px;
-            margin-bottom: 20px;
-        }
-    }
-}
-
-
-@media only screen and (max-width:769px) and (min-width:500px) {
-    .how-it-works {
-        overflow-x: hidden;
-
-        .container-1 {
-            width: 100%;
-            margin: 0 auto;
-
-            .myCard {
-                flex-direction: column;
-                width: 365px;
-                margin: 2rem auto;
-                padding: 30px 0px !important;
-
-                .textContent {
-                    padding: 20px 0px;
-                }
-
-                .myCard-1 {
-                    display: flex;
-                    flex-direction: column;
-                    text-align: center;
-
-                }
-
-                .textContent {
-                    .sub-heading {
-                        font-size: 16px;
-                        margin-top: 10px;
-                        text-align: center;
-                    }
-
-                    .main-heading {
-                        font-family: Montserrat;
-                        font-size: 20px;
-                        margin: 5px 0 5px 0;
-                    }
-                }
-
-                .subCard-heading {
-                    font-size: 20px;
-                }
-            }
-
-            .parentdiv-2 {
-                flex-direction: column;
-                margin-top: 0rem !important;
-
-                .myCard-1 {
-                    // margin-left: 0;
-                    // margin-top: 1rem;
-                    // margin: auto;
-                }
-            }
-        }
-
-        .container-2 {
-            margin: 0 10%;
-
-            .container-2-title {
-                margin: 2rem auto;
-                text-align: center;
-                padding: 10px 0px;
-
-                .heading {
-                    font-size: 20px;
-                    padding: 2px 10px;
-                    letter-spacing: 3.2px;
-                }
-
-                .sub-heading {
-                    width: 344px !important;
-                    font-size: 16px;
-                    padding: 5px 3px;
-                    margin: auto;
-                }
-            }
-
-            .howitwork-main-card-image-section {
-                width: 55%;
-                margin: auto;
-
-            }
-
-            .howitWork-heading {
-                letter-spacing: 3.2px;
-            }
-
-            .howitWork-content {
-                width: 317px;
-                padding: 10px 5px 0px 5px;
-                margin: 0 auto;
-            }
-
-            .The-future-of-Le-Society {
-                padding: 12px 50px;
-            }
-
-            .Rectangle-1 {
-                margin: 0%;
-            }
-        }
-    }
-}
-
-
-@media only screen and (max-width:500px) {
-    .how-it-works {
-        overflow-x: hidden;
-
-        .container-1 {
-            width: 358px !important;
-            margin: 0 auto;
-
-            .myCard {
-                flex-direction: column;
-                width: 100%;
-                //margin: auto;
-                margin: 2rem auto;
-                padding: 20px 0px !important;
-
-                .textContent {
-                    padding: 20px 0px;
-                }
-
-                .myCard-1 {
-                    display: flex;
-                    flex-direction: column;
-                    text-align: center;
-
-                }
-
-                .textContent {
-                    .sub-heading {
-                        font-size: 16px;
-                        margin-top: 10px;
-                        text-align: center;
-                    }
-
-                    .main-heading {
-                        font-family: Montserrat;
-                        font-size: 20px;
-                        margin: 5px 0 5px 0;
-                    }
-                }
-
-                .subCard-heading {
-                    font-size: 20px;
-                }
-            }
-
-            .parentdiv-2 {
-                flex-direction: column;
-                margin-top: 0rem !important;
-
-                .myCard-1 {
-                    // margin-left: 0;
-                    // margin-top: 1rem;
-                    // margin: auto;
-                }
-            }
-        }
-
-        .container-2 {
-            margin-left: 10%;
-            margin-right: 10%;
-
-            .container-2-title {
-                margin: 30px 0;
-                padding: 10px 0px;
-                width: 100%;
-
-                .heading {
-                    font-size: 20px;
-                    padding: 5px 14px;
-                    width: 100%;
-                }
-
-                .sub-heading {
-                    font-size: 16px;
-                    padding: 5px 1px;
-                    width: 100%;
-                }
-            }
-
-            .howitwork-main-card-image-section {
-                width: 100%;
-                margin: auto;
-            }
-
-            .howitWork-heading {
-                letter-spacing: 3.2px;
-                padding: 13px 0px 4px 0;
-            }
-
-            .howitWork-content {
-                padding: 4px;
-            }
-
-            .The-future-of-Le-Society {
-                padding: 10px 5px;
-                letter-spacing: 1.2px;
-            }
-
-            .Rectangle-1 {
-                margin: 0%;
-            }
-        }
-    }
-}
-
-@media only screen and (max-width:1024px) and (min-width :767px) {
-    .how-it-works {
-        .container-2 {
-            margin: 0 auto;
             text-align: center;
+          }
+
+          .main-heading {
+            font-family: Montserrat;
+            font-size: 20px;
+            margin: 5px 0 5px 0;
+          }
         }
+
+        .subCard-heading {
+          font-size: 20px;
+        }
+      }
+
+      .parentdiv-2 {
+        flex-direction: column;
+        margin-top: 0rem !important;
+
+        .myCard-1 {
+          // margin-left: 0;
+          // margin-top: 1rem;
+          // margin: auto;
+        }
+      }
     }
+
+    .container-2 {
+      margin-left: 10%;
+      margin-right: 10%;
+
+      .container-2-title {
+        margin: 30px 0;
+        padding: 10px 0px;
+        width: 100%;
+
+        .heading {
+          font-size: 20px;
+          padding: 5px 14px;
+          width: 100%;
+        }
+
+        .sub-heading {
+          font-size: 16px;
+          padding: 5px 1px;
+          width: 100%;
+        }
+      }
+
+      .howitwork-main-card-image-section {
+        width: 100%;
+        margin: auto;
+      }
+
+      .howitWork-heading {
+        letter-spacing: 3.2px;
+        padding: 13px 0px 4px 0;
+      }
+
+      .howitWork-content {
+        padding: 4px;
+      }
+
+      .The-future-of-Le-Society {
+        padding: 10px 5px;
+        letter-spacing: 1.2px;
+      }
+
+      .Rectangle-1 {
+        margin: 0%;
+      }
+    }
+  }
 }
 
-@media only screen and (max-width:768px) and (min-width :500px) {
-    .how-it-works {
-        .container-2 {
-            margin: 0 auto;
-            text-align: center;
-            // width: 100%;
-        }
+@media only screen and (max-width: 1024px) and (min-width: 767px) {
+  .how-it-works {
+    .container-2 {
+      margin: 0 auto;
+      text-align: center;
     }
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 500px) {
+  .how-it-works {
+    .container-2 {
+      margin: 0 auto;
+      text-align: center;
+      // width: 100%;
+    }
+  }
 }
 
 .how-it-works {
-    button {
-        //width: 180px;
-        height: 44px;
-        background: #F24462 0% 0% no-repeat padding-box;
-        border: #F24462;
-        color: #fff;
-        border-radius: 15px;
-        opacity: 1;
+  button {
+    //width: 180px;
+    height: 44px;
+    background: #f24462 0% 0% no-repeat padding-box;
+    border: #f24462;
+    color: #fff;
+    border-radius: 15px;
+    opacity: 1;
+  }
+
+  .backtoHomepage-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 328px;
+    margin: 3rem auto;
+  }
+
+  .container-2 {
+    .The-future-of-Le-Society {
+      padding: 3px 5px;
+      letter-spacing: 0.2px;
+    }
+  }
+}
+
+@media only screen and (max-width: 769px) and (min-width: 480px) {
+  .how-it-works {
+    .LeSociety-Icon-White {
+      padding: 50px 75px 0px 75px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 340px) {
+  .how-it-works {
+    .howItWork-navbar {
+      margin: 10px auto !important;
+
+      // margin-bottom: 2rem;
+      .LeSociety-Icon-White {
+        display: flex;
+        flex-direction: column;
+        padding: 0px !important;
+
+        .ls-text {
+          padding-left: 1rem !important;
+        }
+
+        .ls-logo {
+          margin: 20px auto;
+        }
+      }
     }
 
     .backtoHomepage-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 270px !important;
+      margin: 3rem auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .how-it-works {
+    .howItWork-navbar {
+      margin: 10px auto !important;
+
+      // margin-bottom: 2rem;
+      .LeSociety-Icon-White {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 328px;
-        margin: 3rem auto;
+        flex-direction: column;
+        padding: 0px !important;
+        margin: 0 auto;
+
+        .ls-text {
+          padding-left: 1rem !important;
+        }
+
+        .ls-logo {
+          margin: 20px auto 5px auto;
+        }
+      }
     }
 
-    .container-2 {
-        .The-future-of-Le-Society {
-            padding: 3px 5px;
-            letter-spacing: 0.2px;
-        }
+    .backtoHomepage-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 220px !important;
+      margin: 3rem auto;
     }
-}
-
-@media only screen and (max-width:769px) and (min-width:480px) {
-    .how-it-works {
-        .LeSociety-Icon-White {
-            padding: 50px 75px 0px 75px !important;
-        }
-    }
-}
-
-@media only screen and (max-width:480px) and (min-width:340px) {
-    .how-it-works {
-        .howItWork-navbar {
-            margin: 10px auto !important;
-
-            // margin-bottom: 2rem;
-            .LeSociety-Icon-White {
-                display: flex;
-                flex-direction: column;
-                padding: 0px !important;
-
-                .ls-text {
-                    padding-left: 1rem !important;
-                }
-
-                .ls-logo {
-                    margin: 20px auto;
-                }
-            }
-        }
-
-        .backtoHomepage-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 270px !important;
-            margin: 3rem auto;
-        }
-    }
-}
-
-@media only screen and (max-width:340px) {
-    .how-it-works {
-        .howItWork-navbar {
-            margin: 10px auto !important;
-
-            // margin-bottom: 2rem;
-            .LeSociety-Icon-White {
-                display: flex;
-                flex-direction: column;
-                padding: 0px !important;
-                margin: 0 auto;
-
-                .ls-text {
-                    padding-left: 1rem !important;
-                }
-
-                .ls-logo {
-                    margin: 20px auto 5px auto;
-                }
-            }
-        }
-
-        .backtoHomepage-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 220px !important;
-            margin: 3rem auto;
-        }
-    }
+  }
 }
 
 .parentdiv-1 .myCard:before {
-    content: '';
-    background: url('../assets/svg/sun.svg') no-repeat;
-    height: 41px;
-    width: 41px;
-    display: inline-block;
-    position: absolute;
-    left: -76px;
-    top: 80px;
-    z-index: 99;
+  content: "";
+  background: url("../assets/svg/sun.svg") no-repeat;
+  height: 41px;
+  width: 41px;
+  display: inline-block;
+  position: absolute;
+  left: -76px;
+  top: 80px;
+  z-index: 99;
 }
 
 .parentdiv-1 .myCard {
-    position: relative;
+  position: relative;
 }
 
-
 .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
-    content: '';
-    background: url('../assets/svg/paint.svg') no-repeat;
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    right: -74px;
-    z-index: 99;
-    top: -33px;
+  content: "";
+  background: url("../assets/svg/paint.svg") no-repeat;
+  height: 41px;
+  width: 41px;
+  position: absolute;
+  right: -74px;
+  z-index: 99;
+  top: -33px;
 }
 
 .parentdiv-2 .myCard.myCard-1 {
-    position: relative;
+  position: relative;
 }
 
 .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
-    content: '';
-    background: url('../assets/svg/moon.svg') no-repeat;
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    left: -74px;
-    z-index: 99;
-    top: 100px;
+  content: "";
+  background: url("../assets/svg/moon.svg") no-repeat;
+  height: 41px;
+  width: 41px;
+  position: absolute;
+  left: -74px;
+  z-index: 99;
+  top: 100px;
 }
 
-
 .container-2-title:after {
-    content: '';
-    background: url('../assets/svg/bottle.svg') no-repeat;
-    height: 41px;
-    width: 41px;
-    right: -70px;
-    top: -100px;
-    position: absolute;
+  content: "";
+  background: url("../assets/svg/bottle.svg") no-repeat;
+  height: 41px;
+  width: 41px;
+  right: -70px;
+  top: -100px;
+  position: absolute;
 }
 
 .container-2-title {
-    position: relative;
+  position: relative;
 }
 
-
 .howitwork-main-card-image-section {
-    position: relative;
+  position: relative;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(1):before {
-    content: '';
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    z-index: 99;
-    background: url('../assets/svg/sun.svg') no-repeat;
-    top: 10px;
-    left: -30px;
+  content: "";
+  height: 41px;
+  width: 41px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/sun.svg") no-repeat;
+  top: 10px;
+  left: -30px;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-    content: '';
-    background: url('../assets/svg/moon.svg') no-repeat;
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    right: -20px;
-    top: 250px;
+  content: "";
+  background: url("../assets/svg/moon.svg") no-repeat;
+  height: 41px;
+  width: 41px;
+  position: absolute;
+  right: -20px;
+  top: 250px;
 }
-
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-    content: '';
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    z-index: 99;
-    background: url('../assets/svg/paint.svg') no-repeat;
-    top: 30%;
-    left: -135px;
+  content: "";
+  height: 41px;
+  width: 41px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/paint.svg") no-repeat;
+  top: 30%;
+  left: -135px;
 }
-
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-    content: '';
-    background: url('../assets/svg/sport.svg') no-repeat;
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    right: -50px;
-    top: 46.5%;
+  content: "";
+  background: url("../assets/svg/sport.svg") no-repeat;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  right: -50px;
+  top: 46.5%;
 }
-
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-    content: '';
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    z-index: 99;
-    background: url('../assets/svg/ticket.svg') no-repeat;
-    top: 66%;
-    left: -32px;
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/ticket.svg") no-repeat;
+  top: 66%;
+  left: -32px;
 }
 
-
 .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-    content: '';
-    background: url('../assets/svg/dine.svg') no-repeat;
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    right: -10px;
-    top: 73.5%;
+  content: "";
+  background: url("../assets/svg/dine.svg") no-repeat;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  right: -10px;
+  top: 73.5%;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
-    content: '';
+  content: "";
+  height: 41px;
+  width: 41px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/bottle.svg") no-repeat;
+  top: 91%;
+  left: -30px;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 500px) {
+  .parentdiv-1 .myCard:before {
+    left: -2%;
+    top: -58px;
+    z-index: 99;
+  }
+
+  .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+    right: -15px;
+    z-index: 99;
+    top: -486%;
+  }
+
+  .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
     height: 41px;
     width: 41px;
     position: absolute;
+    right: -15px;
     z-index: 99;
-    background: url('../assets/svg/bottle.svg') no-repeat;
-    top: 91%;
-    left: -30px;
+    top: -54px;
+  }
+
+  .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+    left: 20px;
+    z-index: 99;
+    top: -65px;
+  }
+
+  .container-2-title::before {
+    content: "";
+    background: url("../assets/svg/ticket.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    left: 100px;
+    top: 100%;
+  }
+
+  .container-2-title:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: 116px;
+    top: 2%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+    top: 9.25%;
+    left: 88%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+    left: 24px;
+    top: 22%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+    top: 36.25%;
+    left: 4%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+    right: 16px;
+    top: 49.5%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+    top: 62%;
+    left: 88%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+    left: 4px;
+    top: 78.5%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+    top: 88%;
+    left: 87%;
+  }
+
+  .how-it-works button.backtoHomepage-btn::before {
+    content: "";
+    background: url("../assets/svg/paint.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    left: 182px;
+    z-index: 99;
+    top: 29px;
+  }
 }
 
-@media only screen and (max-width:768px)and (min-width:500px) {
-    .parentdiv-1 .myCard:before {
-        left: -2%;
-        top: -58px;
-        z-index: 99;
-    }
+@media only screen and (max-width: 499px) and (min-width: 340px) {
+  .parentdiv-1 .myCard:before {
+    left: 1%;
+    top: -58px;
+    z-index: 99;
+  }
 
-    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
-        right: -15px;
-        z-index: 99;
-        top: -486%;
-    }
+  .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+    right: 20px;
+    z-index: 99;
+    top: -460%;
+  }
 
-    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
-        content: '';
-        background: url('../assets/svg/bottle.svg') no-repeat;
-        height: 41px;
-        width: 41px;
-        position: absolute;
-        right: -15px;
-        z-index: 99;
-        top: -54px;
-    }
+  .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    right: 4px;
+    z-index: 99;
+    top: -54px;
+  }
 
-    .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
-        left: 20px;
-        z-index: 99;
-        top: -65px;
-    }
+  .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+    left: 20px;
+    z-index: 99;
+    top: -65px;
+  }
 
-    .container-2-title::before {
-        content: '';
-        background: url('../assets/svg/ticket.svg') no-repeat;
-        height: 45px;
-        width: 45px;
-        position: absolute;
-        left: 100px;
-        top: 100%;
-    }
+  .container-2-title::before {
+    content: "";
+    background: url("../assets/svg/ticket.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    left: -22px;
+    top: 92%;
+  }
 
-    .container-2-title:after {
-        content: '';
-        background: url('../assets/svg/sport.svg') no-repeat;
-        height: 45px;
-        width: 45px;
-        position: absolute;
-        right: 116px;
-        top: 2%;
-    }
+  .container-2-title:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -4px;
+    top: 8%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
-        top: 9.25%;
-        left: 88%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+    top: 7.5%;
+    left: 95%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-        left: 24px;
-        top: 22%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+    left: 7px;
+    top: 21%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-        top: 36.25%;
-        left: 4%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+    top: 35%;
+    left: -5%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-        right: 16px;
-        top: 49.5%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+    right: 12px;
+    top: 47.5%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-        top: 62%;
-        left: 88%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+    top: 60%;
+    left: 88%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-        left: 4px;
-        top: 78.5%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+    left: 0px;
+    top: 77.5%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
-        top: 88%;
-        left: 87%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+    top: 85.5%;
+    left: 92%;
+  }
 
-    .how-it-works button.backtoHomepage-btn::before {
-        content: '';
-        background: url('../assets/svg/paint.svg') no-repeat;
-        height: 41px;
-        width: 41px;
-        position: absolute;
-        left: 182px;
-        z-index: 99;
-        top: 29px;
-    }
+  .how-it-works button.backtoHomepage-btn::before {
+    content: "";
+    background: url("../assets/svg/paint.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    left: 14px;
+    z-index: 99;
+    top: 29px;
+  }
 }
 
-@media only screen and (max-width:499px) and (min-width:340px) {
-    .parentdiv-1 .myCard:before {
-        left: 1%;
-        top: -58px;
-        z-index: 99;
-    }
+@media only screen and (max-width: 340px) {
+  .parentdiv-1 .myCard:before {
+    left: 4%;
+    top: -58px;
+    z-index: 99;
+  }
 
-    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
-        right: 20px;
-        z-index: 99;
-        top: -460%;
-    }
+  .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
+    right: 48px;
+    z-index: 99;
+    top: -460%;
+  }
 
-    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
-        content: '';
-        background: url('../assets/svg/bottle.svg') no-repeat;
-        height: 41px;
-        width: 41px;
-        position: absolute;
-        right: 4px;
-        z-index: 99;
-        top: -54px;
-    }
+  .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    right: 48px;
+    z-index: 99;
+    top: -54px;
+  }
 
-    .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
-        left: 20px;
-        z-index: 99;
-        top: -65px;
-    }
+  .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
+    left: 20px;
+    z-index: 99;
+    top: -65px;
+  }
 
-    .container-2-title::before {
-        content: '';
-        background: url('../assets/svg/ticket.svg') no-repeat;
-        height: 45px;
-        width: 45px;
-        position: absolute;
-        left: -22px;
-        top: 92%;
-    }
+  .container-2-title::before {
+    content: "";
+    background: url("../assets/svg/ticket.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    left: -22px;
+    top: 92%;
+  }
 
-    .container-2-title:after {
-        content: '';
-        background: url('../assets/svg/sport.svg') no-repeat;
-        height: 45px;
-        width: 45px;
-        position: absolute;
-        right: -4px;
-        top: 8%;
-    }
+  .container-2-title:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -28px;
+    top: 8%;
+  }
 
+  .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+    top: 7.5%;
+    left: 95%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
-        top: 7.5%;
-        left: 95%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
+    left: 7px;
+    top: 20%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-        left: 7px;
-        top: 21%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
+    top: 34%;
+    left: -5%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-        top: 35%;
-        left: -5%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
+    right: -14px;
+    top: 46.5%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-        right: 12px;
-        top: 47.5%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
+    top: 59%;
+    left: 92%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-        top: 60%;
-        left: 88%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
+    left: 8px;
+    top: 77.5%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-        left: 8px;
-        top: 77.5%;
-    }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+    top: 85%;
+    left: 92%;
+  }
 
-    .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
-        top: 85.5%;
-        left: 92%;
-    }
-
-    .how-it-works button.backtoHomepage-btn::before {
-        content: '';
-        background: url('../assets/svg/paint.svg') no-repeat;
-        height: 41px;
-        width: 41px;
-        position: absolute;
-        left: 14px;
-        z-index: 99;
-        top: 29px;
-    }
-}
-
-@media only screen and (max-width:340px) {
-    .parentdiv-1 .myCard:before {
-        left: 4%;
-        top: -58px;
-        z-index: 99;
-    }
-
-    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:after {
-        right: 48px;
-        z-index: 99;
-        top: -460%;
-    }
-
-    .parentdiv-2 .myCard.myCard-1.myCard-gentalman:before {
-        content: '';
-        background: url('../assets/svg/bottle.svg') no-repeat;
-        height: 41px;
-        width: 41px;
-        position: absolute;
-        right: 48px;
-        z-index: 99;
-        top: -54px;
-    }
-
-    .parentdiv-2 .myCard.myCard-1.myCard-ladies::before {
-        left: 20px;
-        z-index: 99;
-        top: -65px;
-    }
-
-    .container-2-title::before {
-        content: '';
-        background: url('../assets/svg/ticket.svg') no-repeat;
-        height: 45px;
-        width: 45px;
-        position: absolute;
-        left: -22px;
-        top: 92%;
-    }
-
-    .container-2-title:after {
-        content: '';
-        background: url('../assets/svg/sport.svg') no-repeat;
-        height: 45px;
-        width: 45px;
-        position: absolute;
-        right: -28px;
-        top: 8%;
-    }
-
-
-    .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
-        top: 7.5%;
-        left: 95%;
-    }
-
-    .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-        left: 7px;
-        top: 20%;
-    }
-
-    .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-        top: 34%;
-        left: -5%;
-    }
-
-    .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-        right: -14px;
-        top: 46.5%;
-    }
-
-    .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-        top: 59%;
-        left: 92%;
-    }
-
-    .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-        left: 8px;
-        top: 77.5%;
-    }
-
-    .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
-        top: 85%;
-        left: 92%;
-    }
-
-    .how-it-works button.backtoHomepage-btn::before {
-        content: '';
-        background: url('../assets/svg/paint.svg') no-repeat;
-        height: 41px;
-        width: 41px;
-        position: absolute;
-        left: 7px;
-        z-index: 99;
-        top: 32px;
-    }
+  .how-it-works button.backtoHomepage-btn::before {
+    content: "";
+    background: url("../assets/svg/paint.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    position: absolute;
+    left: 7px;
+    z-index: 99;
+    top: 32px;
+  }
 }
 
 .how-it-works {
-    a {
-        position: relative;
-    }
+  a {
+    position: relative;
+  }
 }
 
-@media only screen and (min-width:992px) {
-
-    .how-it-works {
-        .howItWorkImageGroup {
-            column-gap: 40px;
-        }
-
-        .col-lg-6 {
-            width: 46%;
-        }
+@media only screen and (min-width: 992px) {
+  .how-it-works {
+    .howItWorkImageGroup {
+      column-gap: 40px;
     }
 
+    .col-lg-6 {
+      width: 46%;
+    }
+  }
 }
