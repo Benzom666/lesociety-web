@@ -256,9 +256,9 @@ const FirstStep = ({ gender, ...props }) => {
           component={Inputs.inputField}
           label="Username"
           placeholder="Visible by all members"
-          // remove spaces and can use sepcial characters
-
-          normalize={(value) => value.replace(/\s+/g, ".")}
+          normalize={(value) =>
+            value.replace(/[^a-zA-Z0-9.\s]/g, "").replace(/\s+/g, ".")
+          }
           onChange={handleChangeUser}
           loading={loadingUsername}
           isValid={isValidUsername}
