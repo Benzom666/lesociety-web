@@ -155,7 +155,7 @@ const Notifications = () => {
         },
       };
       const url =
-        "https://staging-api.secrettime.com/api/v1/notification/read-all-notification";
+        "https://api.lesociety.com/api/v1/notification/read-all-notification";
       const data = await axios.put(url, params1, config);
       console.log("Read all notifications ", data);
     } catch (err) {
