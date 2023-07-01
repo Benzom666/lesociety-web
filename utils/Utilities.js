@@ -53,7 +53,7 @@ export const apiRequestChatHistory = async (url, data) => {
   if (authCookie) {
     token = JSON.parse(decodeURIComponent(authCookie))?.user?.token;
   }
-  args.url = `${"https://staging-api.secrettime.com/api/v1"}/${args.url}`;
+  args.url = `${"https://api.lesociety.com/api/v1"}/${args.url}`;
   return axios({
     method: "GET",
     url: `${url}`,
