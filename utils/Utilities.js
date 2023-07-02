@@ -5,8 +5,8 @@ import { CustomIcon } from "core/icon";
 import { getCookie } from "./cookie";
 import { loadFromLocalStorage } from "./sessionStorage";
 
-export const socketURL = "http://99.79.166.7:3001/";
-export const apiURL = "http://99.79.166.7:3001/";
+export const socketURL = "https://api.lesociety.com/";
+export const apiURL = "https://api.lesociety.com/";
 
 /*export const socketURL =
   process.env.NODE_ENV === "production"
