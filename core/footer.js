@@ -25,7 +25,7 @@ export default function Footer() {
               <Link href="#">Press</Link>
             </li>
           </ul>
-          <p className="mb-0">2021 Le Society</p>
+          <p className="mb-0">2023 Le Society</p>
         </div>
       </div>
     </footer>

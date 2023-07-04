@@ -103,10 +103,7 @@ const loadMoreOptions = [
     id: "Designer",
     name: "Designer",
   },
-  {
-    id: "Medical",
-    name: "Medical",
-  },
+
   {
     id: "Legal",
     name: "Legal",

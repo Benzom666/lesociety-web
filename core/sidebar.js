@@ -278,7 +278,7 @@ export default function SideBar({ isActive, count }) {
               Log Out
             </button>
           </div>
-          <SubHeading title="SecretTime. Copywrite 2021" />
+          <SubHeading title="LeSociety. Copywrite 2023 " />
         </div>
       </div>
     </>
