@@ -251,9 +251,14 @@ const FirstStep = ({ gender, ...props }) => {
         label="Username"
         placeholder="Visible by all members"
         // use period, letters, numbers only and replace space with period
-        normalize={(value) =>
-          value.replace(/[^a-zA-Z0-9.\s]/g, "").replace(/\s+/g, ".")
-        }
+        normalize={(value) => {
+          // value.replace(/[^a-zA-Z0-9.\s]/g, "").replace(/\s+/g, ".")
+          let normalizedValue = value.replace(/[^a-zA-Z0-9.\s]/g, ""); // Remove unwanted characters
+          normalizedValue = normalizedValue.replace(/\s{2,}/g, " "); // Replace consecutive spaces with a single space
+          normalizedValue = normalizedValue.replace(/\s/g, "."); // Replace spaces with a period
+          normalizedValue = normalizedValue.replace(/\.(?=.*\.)/g, ""); // Remove all periods except the first one
+          return normalizedValue;
+        }}
         onChange={handleChangeUser}
         loading={loadingUsername}
         isValid={isValidUsername}
@@ -317,7 +322,7 @@ const FirstStep = ({ gender, ...props }) => {
           type="text"
           component={Inputs.renderDropdown}
           label="Location"
-          placeholder="Enter the city you currently reside in"
+          placeholder="Enter your city"
           valueField="value"
           id="location1"
           withIcon={true}
