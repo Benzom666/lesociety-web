@@ -60,7 +60,7 @@ const VideoComponent = () => {
     fluid: true,
     sources: [
       {
-        src: "https://secrettime-cdn.s3.eu-west-2.amazonaws.com/secret-time/uploads/lasociety_3.mp4",
+        src: "https://lesociety.s3.ca-central-1.amazonaws.com/secret-time/uploads/lasociety_3.mp4",
         type: "video/mp4",
       },
     ],
