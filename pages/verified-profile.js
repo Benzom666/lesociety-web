@@ -308,7 +308,7 @@ const VerifiedProfilePage = (props) => {
                       </p>
                       <p className="m-0">
                         {" "}
-                        by other members. It takes just a minute!
+                        by other members. It only takes a minute!
                       </p>
                     </div>
 
@@ -354,7 +354,7 @@ const VerifiedProfilePage = (props) => {
                             File is successfully uploaded
                           </p>
                         ) : (
-                          <p className="mb-0">Upload clear selfie</p>
+                          <p className="mb-0">Upload a clear selfie</p>
                         )}
                       </div>
                     </div>
@@ -399,7 +399,7 @@ const VerifiedProfilePage = (props) => {
                             </p>
                           ) : (
                             <p className="mb-0">
-                              Upload a valid passport or driverâ€™s license
+                              Upload a valid passport or driver’s license
                             </p>
                           )}
                         </p>
