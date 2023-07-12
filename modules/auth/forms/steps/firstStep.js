@@ -228,7 +228,7 @@ const FirstStep = ({ gender, ...props }) => {
       </div>
       <h2>Let’s sign you up.</h2>
       <p className="auth-register-p-text">
-        Unlock Your VIP Status: Enjoy a <span>Free</span>{" "}
+        Unlock Your VIP Status: Enjoy a <span> Free</span>{" "}
         <label>1-Year Membership!</label>
       </p>
 
