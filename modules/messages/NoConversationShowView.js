@@ -27,7 +27,7 @@ function NoConversationShowView({ request, selectedTabIndex }) {
         title={
           user?.gender === "male"
             ? "Find a girl you like and lock in your first date!"
-            : "Stay ahead of the crowd by creating more date"
+            : "Stay ahead of the crowd by creating more dates."
         }
       />
       <div className="d-flex align-items-center my-4 header_btn_wrap">
@@ -55,7 +55,7 @@ function NoConversationShowView({ request, selectedTabIndex }) {
             {user?.gender === "male" ? (
               <p>Find a girl you like and lock in your first date!</p>
             ) : (
-              <p>Stay ahead of the crowd by creating more date</p>
+              <p>Stay ahead of the crowd by creating more dates.</p>
             )}
           </div>
         </div>
