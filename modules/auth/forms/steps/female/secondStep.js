@@ -163,7 +163,7 @@ const SecondStep = (props) => {
       </div>
       <div className="text-label">
         Continue building your profile <br />
-        to maximize your opportunities
+        to maximize your opportunities.
       </div>
       <div className="images-uploads">
         <div className="big-image">
@@ -399,7 +399,7 @@ const SecondStep = (props) => {
             component={Inputs.textarea}
             type="text"
             label="What do you offer?"
-            placeholder="Describe yourself and explain why someone should choose you as their date "
+            placeholder="Describe yourself and explain why someone should choose you as their date. "
           />
         </div>
       </div>
