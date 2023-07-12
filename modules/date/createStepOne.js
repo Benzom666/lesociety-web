@@ -132,7 +132,7 @@ const CreateStepOne = (props) => {
                     <div style={{ marginBottom: "1rem" }}>
                       <H5>
                         When your availability is more important than a date
-                        suggestion.
+                        suggestion,you will select one of the following.
                       </H5>
                     </div>
                     {/* <span className="price-tag">$</span> */}
@@ -184,7 +184,7 @@ const CreateStepOne = (props) => {
                     <div style={{ marginBottom: "1rem" }}>
                       <H5>
                         When a date suggestion is more important than your
-                        availability.
+                        availability,you will select one of the following.
                       </H5>
                     </div>
                     {/* <span className="price-tag">$$</span> */}
