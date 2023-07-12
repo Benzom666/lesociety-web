@@ -285,7 +285,7 @@ const UserCardListForMessage = ({
                                 {/* </Link> */}
                                 <p>
                                   {conversation?.user?.user_name} has granted
-                                  you the access to his profile
+                                  you access to his profile.
                                 </p>
                               </div>
                             </div>
