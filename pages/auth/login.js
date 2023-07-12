@@ -23,7 +23,7 @@ function LoginPage({ dispatch }) {
               Let's sign you in.
             </h2>
             <p>
-              Welcome back. <span>Youâ€™ve been missed!</span>
+              Welcome back. <span>You’ve been missed!</span>
             </p>
             <Login />
             {width > 767 && (
@@ -34,7 +34,7 @@ function LoginPage({ dispatch }) {
             )}
           </div>
           {width > 767 && (
-            <p className="terms-cond-text">By clicking login you agree to our <Link href="#">terms</Link> and <Link href="#">privacy policy</Link>.</p>
+            <p className="terms-cond-text">By clicking sign in you agree to our <Link href="#">terms</Link> and <Link href="#">privacy policy</Link>.</p>
           )}
         </div>
       </div>
