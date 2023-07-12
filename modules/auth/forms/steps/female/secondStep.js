@@ -162,8 +162,8 @@ const SecondStep = (props) => {
         </svg>
       </div>
       <div className="text-label">
-        Please continue with your profile <br />
-        to maximize your opportunity
+        Continue building your profile <br />
+        to maximize your opportunities
       </div>
       <div className="images-uploads">
         <div className="big-image">
