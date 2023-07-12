@@ -23,7 +23,7 @@ function LoginPage({ dispatch }) {
               Let's sign you in.
             </h2>
             <p>
-              Welcome back. <span>You’ve been missed!</span>
+              Welcome back. <span>You've been missed!</span>
             </p>
             <Login />
             {width > 767 && (
