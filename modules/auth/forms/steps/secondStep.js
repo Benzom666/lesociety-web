@@ -841,7 +841,7 @@ const SecondStep = (props) => {
               component={Inputs.textarea}
               type="text"
               label="What do you offer?"
-              placeholder="Describe yourself, and explain why someone should want to take you out as their date "
+              placeholder="Describe yourself and explain why someone should choose you as their date "
               validationLength={500}
               disabled={
                 fromNotifPage &&
