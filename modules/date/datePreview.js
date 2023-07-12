@@ -262,7 +262,7 @@ const DatePreview = (props) => {
                     <div className="city-suggestion-text">
                       <h6>Date Preview</h6>
                       <p>
-                        Please review all the details of your date before posting. You will only have an opportunity to edit your description in the future.
+                        Please review all the details of your date before posting. You will only have an opportunity to edit your description in the future. 
                       </p>
                     </div>
                   </>
