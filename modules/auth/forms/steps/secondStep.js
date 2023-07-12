@@ -454,9 +454,9 @@ const SecondStep = (props) => {
         </div>
         <div className="text-label">
           {router.query?.edit && router?.query?.type
-            ? "You can only edit what have been requested"
+            ? "You can only edit what has been requested."
             : `Continue building your profile 
-            to maximize your opportunities`}
+            to maximize your opportunities.`}
         </div>
         <div className="images-uploads">
           <div className="big-image">
@@ -841,7 +841,7 @@ const SecondStep = (props) => {
               component={Inputs.textarea}
               type="text"
               label="What do you offer?"
-              placeholder="Describe yourself and explain why someone should choose you as their date "
+              placeholder="Describe yourself and explain why someone should choose you as their date. "
               validationLength={500}
               disabled={
                 fromNotifPage &&
