@@ -212,6 +212,7 @@ const ThirdStep = (props) => {
     touched,
   } = props;
 
+  console.log("tallValue", tallValue);
   return (
     <form onSubmit={handleSubmit} className="almost-done-page">
       <div className="d-block d-md-none login-text mb-0">
@@ -290,6 +291,7 @@ const ThirdStep = (props) => {
           handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
           max={250}
           onChange={(val) => setTallValue(val)}
+          onAfterChange={(val) => setTallValue(val)}
         />
 
         <div className="auth-radio inner-radio">

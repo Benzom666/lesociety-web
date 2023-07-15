@@ -84,6 +84,7 @@ const UserCardList = ({
       user?.gender === "male"
     ) {
       setLoading(true);
+
       setMobileLoading(true);
       checkMessage();
     }
@@ -103,7 +104,7 @@ const UserCardList = ({
       setTimeout(() => {
         setLoading(false);
         setMobileLoading(false);
-      }, 500);
+      }, 3000);
       if (res?.data?.message) {
         setAlreadyMessaged(true);
       }

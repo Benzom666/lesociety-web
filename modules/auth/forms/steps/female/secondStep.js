@@ -9,6 +9,7 @@ import { FiPlus } from "react-icons/fi";
 import useWindowSize from "../../../../../utils/useWindowSize";
 import { imageUploader } from "../../../../../utils/Utilities";
 import { deAuthenticateAction } from "@/modules/auth/authActions";
+import { useRouter } from "next/router";
 
 const imageRequired = (value) => (!value ? "Image is required" : undefined);
 
@@ -24,6 +25,8 @@ const SecondStep = (props) => {
   const [selectedChildImage, setSelectedChildImage] = useState(null);
   const [selectedChildImageTwo, setSelectedChildImageTwo] = useState(null);
   const [selectedChildImageThree, setSelectedChildImageThree] = useState(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (images.length < 4) {
@@ -162,8 +165,10 @@ const SecondStep = (props) => {
         </svg>
       </div>
       <div className="text-label">
-        Continue building your profile <br />
-        to maximize your opportunities.
+        {router.query?.edit && router?.query?.type
+          ? "You can only edit what has been requested."
+          : `Continue building your profile 
+            to maximize your opportunities.`}
       </div>
       <div className="images-uploads">
         <div className="big-image">

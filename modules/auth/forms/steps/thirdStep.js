@@ -296,6 +296,8 @@ const ThirdStep = (props) => {
           max={250}
           onChange={(val) => !router?.query?.type && setTallValue(val)}
           disabled={router?.query?.type && router?.query?.edit}
+          // this is not working on iphone
+          onAfterChange={(val) => setTallValue(val)}
         />
 
         <div className="auth-radio inner-radio">

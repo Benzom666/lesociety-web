@@ -7,7 +7,7 @@ function LanscapeDecline({ islandScapeInMobile }) {
         className={`blank ${islandScapeInMobile ? "landScape" : ""}`}
         style={{ color: "#fff", fontSize: "20px" }}
       >
-        Please Open Only Portrait Mode
+        Le Society shines brightest when you resist the urge to tilt your device
       </h2>
     </div>
   );
