@@ -233,7 +233,6 @@ const ThirdStep = (props) => {
     submitting,
     touched,
   } = props;
-  console.log("tallValue", tallValue);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="almost-done-page">
       <div className="d-block d-md-none login-text mb-0">
