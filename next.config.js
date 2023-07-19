@@ -6,6 +6,7 @@ module.exports = {
     domains: [
       "lesociety.s3.ca-central-1.amazonaws.com",
       "secrettime-cdn.s3.eu-west-2.amazonaws.com",
+      "d2hill0ae3zx76.cloudfront.net",
     ],
   },
 
