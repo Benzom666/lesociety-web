@@ -9,51 +9,67 @@ function HomePageMiddleNav(props) {
   const { width } = useWindowSize();
   const openNavBar = () => {
     setOpenNav(true);
-    setAnimate(!animate)
+    setAnimate(!animate);
   };
   const closeNavBar = () => {
     setOpenNav(false);
-    setAnimate(!animate)
+    setAnimate(!animate);
   };
-console.log(animate);
+  console.log(animate);
   return (
     <>
-      <nav className="navbar fixed-bottom bg-none mt-4 navbarfixedmain"
-        style={props.style}>
-        <div className={`container-fluid d-flex justify-content-end containernavbarfooter ${animate ? 'animate-1' : ""}`}>
+      <nav
+        className="navbar fixed-bottom bg-none mt-4 navbarfixedmain"
+        style={props.style}
+      >
+        <div
+          className={`container-fluid d-flex justify-content-end containernavbarfooter ${
+            animate ? "animate-1" : ""
+          }`}
+        >
           <div className="navbarfooter-text">
             {width > 769 && (
               <div className="navfooter-text-1">
                 <span style={props.styleText}>
                   Start a new adventure.{" "}
-                  <span
-                    style={{
-                      color: " #f24462",
-                      fontSize: "16px",
-                      fontWeight: 400,
-                    }}
-                  >
-                    Already a Member? Login
-                  </span>
+                  <a href="/auth/login" style={{ textDecoration: "none" }}>
+                    <span
+                      style={{
+                        color: " #f24462",
+                        fontSize: "16px",
+                        fontWeight: 400,
+                      }}
+                    >
+                      Already a Member? Login
+                    </span>
+                  </a>
                 </span>
               </div>
             )}
             {width < 769 && (
               <div className="navfooter-text-1">
-                <span style={{ fontSize: "16px",color:"#fff",fontWeight:"bold"}}>
+                <span
+                  style={{
+                    fontSize: "16px",
+                    color: "#fff",
+                    fontWeight: "bold",
+                  }}
+                >
                   Start a new adventure.
                   <br />
-                  <p
-                    style={{
-                      color: " #f24462",
-                      paddingTop: "5px",
-                       padding:"2px 5px 0px 5px",
-                      fontSize: "15px",
-                      fontWeight: 400,
-                    }}
-                  >
-                    Already a Member? Login
-                  </p>
+                  <a href="/auth/login" style={{ textDecoration: "none" }}>
+                    <p
+                      style={{
+                        color: " #f24462",
+                        paddingTop: "5px",
+                        padding: "2px 5px 0px 5px",
+                        fontSize: "15px",
+                        fontWeight: 400,
+                      }}
+                    >
+                      Already a Member? Login
+                    </p>
+                  </a>
                 </span>
               </div>
             )}
@@ -105,7 +121,7 @@ console.log(animate);
             {width > 769 && (
               <div>
                 {!openNav ? (
-                  <button id="signupbtn"type="button" onClick={openNavBar}>
+                  <button id="signupbtn" type="button" onClick={openNavBar}>
                     Sign Up
                   </button>
                 ) : null}

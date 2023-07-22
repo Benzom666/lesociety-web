@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { connect, useSelector } from "react-redux";
 import Login from "modules/auth/forms/login";
+import HomePage from "./home";
+import React from "react";
 
 function Home({ dispatch }) {
   //   const user = useSelector((state) => state.authReducer.user);
@@ -16,8 +18,9 @@ function Home({ dispatch }) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </Head>
+      <HomePage />
     </React.Fragment>
   );
 }
 
-export default connect()(Home);
+export default Home;

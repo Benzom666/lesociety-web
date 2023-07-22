@@ -22,11 +22,11 @@ module.exports = {
   },
   async redirects() {
     return [
-      {
-        source: "/",
-        destination: "/auth/login",
-        permanent: true,
-      },
+      // {
+      //   source: "/home",
+      //   destination: "/",
+      //   permanent: true,
+      // },
     ];
   },
 };
