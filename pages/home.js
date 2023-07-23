@@ -28,8 +28,10 @@ import HomePageCardSectionMobile from "@/core/HomePageCardSectionMobile";
 import useWindowSize from "utils/useWindowSize";
 
 const style1 = {
-  opacity: "0.9",
-  backgroundColor: "#1A1A1A",
+  // opacity: "0.9",
+  // backgroundColor: "#1A1A1A",
+  opacity: "1",
+  backgroundColor: "transparent",
 };
 const style2 = {
   color: "#fff",
@@ -200,15 +202,13 @@ function HomePage({ items }) {
         >
           <p className="info-text">{content.aboutCardContent3}</p>
         </HomePageMainSection>
-        {width < 769 ? "" : <HomePageCardSection />}
 
-        {width < 769 && <HomePageCardSectionMobile />}
-        {/* {width > 768 ? <HomePageCardSection /> : <HomePageCardSectionMobile />} */}
+        {width > 768 ? <HomePageCardSection /> : <HomePageCardSectionMobile />}
         {/* <HomePageCardSection/> */}
         <HomeFooter logo={LeSlogoWhite} styleBackground={styleBackground} />
       </div>
     </>
   );
 }
-// export default (HomePage);
-export default HomePage;
+export default withAuth(HomePage);
+// export default HomePage;

@@ -15,13 +15,21 @@ function HomePageMiddleNav(props) {
     setOpenNav(false);
     setAnimate(!animate);
   };
-  console.log(animate);
+
+  const backgroundHeightChange = width < 769 && openNav;
   return (
     <>
       <nav
         className="navbar fixed-bottom bg-none mt-4 navbarfixedmain"
         style={props.style}
       >
+        <div
+          className={
+            backgroundHeightChange
+              ? "home-background-navbar-open"
+              : "home-background-navbar"
+          }
+        ></div>
         <div
           className={`container-fluid d-flex justify-content-end containernavbarfooter ${
             animate ? "animate-1" : ""
@@ -32,17 +40,25 @@ function HomePageMiddleNav(props) {
               <div className="navfooter-text-1">
                 <span style={props.styleText}>
                   Start a new adventure.{" "}
-                  <a href="/auth/login" style={{ textDecoration: "none" }}>
-                    <span
+                  <span
+                    style={{
+                      color: " #f24462",
+                      fontSize: "16px",
+                      fontWeight: 400,
+                    }}
+                  >
+                    Already a Member?{" "}
+                    <a
+                      href="/auth/login"
                       style={{
+                        textDecoration: "none",
                         color: " #f24462",
-                        fontSize: "16px",
-                        fontWeight: 400,
                       }}
+                      className="already__login__member"
                     >
-                      Already a Member? Login
-                    </span>
-                  </a>
+                      Login
+                    </a>
+                  </span>
                 </span>
               </div>
             )}
@@ -57,26 +73,39 @@ function HomePageMiddleNav(props) {
                 >
                   Start a new adventure.
                   <br />
-                  <a href="/auth/login" style={{ textDecoration: "none" }}>
-                    <p
+                  <p
+                    style={{
+                      color: " #f24462",
+                      paddingTop: "5px",
+                      padding: "2px 5px 0px 5px",
+                      fontSize: "15px",
+                      fontWeight: 400,
+                    }}
+                  >
+                    Already a Member?{" "}
+                    <a
+                      href="/auth/login"
                       style={{
+                        textDecoration: "none",
                         color: " #f24462",
-                        paddingTop: "5px",
-                        padding: "2px 5px 0px 5px",
-                        fontSize: "15px",
-                        fontWeight: 400,
                       }}
+                      className="already__login__member"
                     >
-                      Already a Member? Login
-                    </p>
-                  </a>
+                      Login
+                    </a>
+                  </p>
                 </span>
               </div>
             )}
             {width < 769 && (
               <div>
                 {!openNav ? (
-                  <button id="signupbtn" type="button" onClick={openNavBar}>
+                  <button
+                    id="signupbtn"
+                    type="button"
+                    className="signup-button"
+                    onClick={openNavBar}
+                  >
                     Sign Up
                   </button>
                 ) : null}
@@ -125,9 +154,22 @@ function HomePageMiddleNav(props) {
             {width > 769 && (
               <div>
                 {!openNav ? (
-                  <button id="signupbtn" type="button" onClick={openNavBar}>
-                    Sign Up
-                  </button>
+                  <>
+                    <button
+                      id="signupbtn"
+                      type="button"
+                      className="signup-button"
+                      onClick={openNavBar}
+                      style={{
+                        backgroundColor: "#f24462",
+                        color: "#fff",
+                        opacity: 1, // Set the opacity to 1 (fully opaque)
+                        /* Add any other specific styles you need for the button */
+                      }}
+                    >
+                      Sign Up
+                    </button>
+                  </>
                 ) : null}
               </div>
             )}

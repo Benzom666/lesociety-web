@@ -8,6 +8,10 @@ const withAuth = (WrappedComponent) => {
     if (typeof window !== "undefined") {
       const Router = useRouter();
 
+      if (Router.asPath === "/") {
+        return <WrappedComponent {...props} />;
+      }
+
       // const accessToken = getCookie("auth");
       const accessToken = loadFromLocalStorage();
 
