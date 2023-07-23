@@ -256,9 +256,15 @@ const FirstStep = ({ gender, ...props }) => {
           component={Inputs.inputField}
           label="Username"
           placeholder="Visible by all members"
-          normalize={(value) =>
-            value.replace(/[^a-zA-Z0-9.\s]/g, "").replace(/\s+/g, ".")
-          }
+          // use period, letters, numbers only and replace space with period
+          normalize={(value) => {
+            // value.replace(/[^a-zA-Z0-9.\s]/g, "").replace(/\s+/g, ".")
+            let normalizedValue = value.replace(/[^a-zA-Z0-9.\s]/g, ""); // Remove unwanted characters
+            normalizedValue = normalizedValue.replace(/\s{2,}/g, " "); // Replace consecutive spaces with a single space
+            normalizedValue = normalizedValue.replace(/\s/g, "."); // Replace spaces with a period
+            normalizedValue = normalizedValue.replace(/\.(?=.*\.)/g, ""); // Remove all periods except the first one
+            return normalizedValue;
+          }}
           onChange={handleChangeUser}
           loading={loadingUsername}
           isValid={isValidUsername}

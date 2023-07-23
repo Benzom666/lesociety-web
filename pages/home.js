@@ -48,7 +48,7 @@ function HomePage({ items }) {
     }
   }, []);
   const desktop = width > 768;
-  console.log("width", desktop);
+  console.log("width", width < 769);
   return (
     <>
       <div className="inner-part-page auth-section home_page_style">
@@ -64,7 +64,7 @@ function HomePage({ items }) {
                   src={LeSlogoText}
                   sizes={100}
                 />
-                <p className="leSocitey-subheading">Date Outside Your League</p>
+                <p className="leSocitey-subheading">Dating Reimagined</p>
               </div>
             </div>
           </nav>
@@ -200,13 +200,15 @@ function HomePage({ items }) {
         >
           <p className="info-text">{content.aboutCardContent3}</p>
         </HomePageMainSection>
+        {width < 769 ? "" : <HomePageCardSection />}
 
-        {width > 768 ? <HomePageCardSection /> : <HomePageCardSectionMobile />}
+        {width < 769 && <HomePageCardSectionMobile />}
+        {/* {width > 768 ? <HomePageCardSection /> : <HomePageCardSectionMobile />} */}
         {/* <HomePageCardSection/> */}
         <HomeFooter logo={LeSlogoWhite} styleBackground={styleBackground} />
       </div>
     </>
   );
 }
-// export default withAuth(HomePage);
+// export default (HomePage);
 export default HomePage;

@@ -102,12 +102,16 @@ function HomePageMiddleNav(props) {
           <div className="navbarfooter-btn">
             {openNav ? (
               <div id="sidebarhome" className="sidebarhome">
-                <button type="button" className="signUpLadybtn">
-                  Sign Up as Lady
-                </button>
-                <button type="button" className="signUpLadybtn">
-                  Sign Up as Gentlemen
-                </button>
+                <a href="/auth/registration" style={{ textDecoration: "none" }}>
+                  <button type="button" className="signUpLadybtn">
+                    Sign Up as Lady
+                  </button>
+                </a>
+                <a href="/auth/registration" style={{ textDecoration: "none" }}>
+                  <button type="button" className="signUpLadybtn">
+                    Sign Up as Gentlemen
+                  </button>
+                </a>
                 {width > 769 && (
                   <IoIosClose
                     className="mouse-point"

@@ -3723,7 +3723,8 @@ body .verification_card_header {
           padding: 20px 0;
           // min-height: calc(100vh - 255px);
           // max-height: calc(100vh - 255px);
-          overflow-y: auto;
+          overflow-y: scroll;
+          height: calc(100vh - 255px);
 
           ul {
             margin: 0;
