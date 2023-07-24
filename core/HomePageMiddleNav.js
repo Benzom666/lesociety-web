@@ -119,8 +119,6 @@ function HomePageMiddleNav(props) {
                     size={55}
                     style={{
                       color: "#fff",
-                      //marginBottom: "5px",
-                      //marginLeft: "30px",
                     }}
                     onClick={closeNavBar}
                   />
@@ -160,12 +158,6 @@ function HomePageMiddleNav(props) {
                       type="button"
                       className="signup-button"
                       onClick={openNavBar}
-                      style={{
-                        backgroundColor: "#f24462",
-                        color: "#fff",
-                        opacity: 1, // Set the opacity to 1 (fully opaque)
-                        /* Add any other specific styles you need for the button */
-                      }}
                     >
                       Sign Up
                     </button>
