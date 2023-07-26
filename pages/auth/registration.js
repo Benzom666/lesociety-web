@@ -6,7 +6,7 @@ import { useState } from "react";
 
 function RegistrationPage({ dispatch }) {
   const { width } = useWindowSize();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
   return (
     <div className="inner-page">

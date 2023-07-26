@@ -65,14 +65,14 @@ export default function Header({ page, setPage, ...props }) {
                   </li>
                 ) : (
                   <>
-                    {!props.isSingUp ? (
+                    {/* {!props.isSingUp ? (
                       <li>
                         <Link href="/auth/registration">Sign Up</Link>
                       </li>
                     ) : null}
                     <li>
                       <Link href="/auth/login">Sign In</Link>
-                    </li>
+                    </li> */}
                   </>
                 )}
               </ul>

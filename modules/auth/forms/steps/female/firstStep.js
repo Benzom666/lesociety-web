@@ -235,7 +235,7 @@ const FirstStep = ({ gender, ...props }) => {
             <img src="/images/line.png" alt="line" />
           </span>
         </div>
-        <h2>Let’s sign you up.</h2>
+        <h2>Let’s Sign You Up.</h2>
         <p className="auth-register-p-text">Unlock The Vault.</p>
 
         <Field

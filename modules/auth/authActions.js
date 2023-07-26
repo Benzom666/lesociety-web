@@ -8,6 +8,7 @@ import {
   SIGNUP4,
   LOGIN,
   CHANGE_SELECTED_LOCATION_POPUP,
+  SET_GENDER,
 } from "./actionConstants";
 
 import { reset, initialize } from "redux-form";
@@ -30,6 +31,13 @@ export const deAuthenticateAction = () => {
 export const changeSelectedLocationPopup = (payload) => {
   return {
     type: CHANGE_SELECTED_LOCATION_POPUP,
+    payload,
+  };
+};
+
+export const storeUserGender = (payload) => {
+  return {
+    type: SET_GENDER,
     payload,
   };
 };

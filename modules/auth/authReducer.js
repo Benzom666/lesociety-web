@@ -5,6 +5,7 @@ import {
   AUTHENTICATE_UPDATE,
   DELETE_FORM_DATA,
   CHANGE_SELECTED_LOCATION_POPUP,
+  SET_GENDER,
 } from "./actionConstants";
 import { getCookie, setCookie, removeCookie } from "../../utils/cookie";
 import {
@@ -29,6 +30,7 @@ if (typeof localStorage !== "undefined") {
     initialState = {
       isLoggedIn: false,
       showSelectedLocationPopup: true,
+      gender: "",
       user: {},
     };
   }
@@ -36,6 +38,7 @@ if (typeof localStorage !== "undefined") {
   initialState = {
     isLoggedIn: false,
     showSelectedLocationPopup: true,
+    gender: "",
     user: {},
   };
 }
@@ -93,6 +96,17 @@ const authReducer = (state = initialState, action) => {
       };
       saveToLocalStorage(selectedLocationObj);
       return selectedLocationObj;
+
+    case SET_GENDER:
+      const setGender = {
+        ...state,
+        showSelectedLocationPopup: true,
+        isLoggedIn: false,
+        user: { ...state.user },
+        gender: action.payload,
+      };
+      saveToLocalStorage(setGender);
+      return setGender;
 
     default:
       return { ...state };

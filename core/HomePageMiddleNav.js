@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import useWindowSize from "utils/useWindowSize";
 import { IoIosClose } from "react-icons/io";
+import { storeUserGender } from "@/modules/auth/authActions";
+import { useDispatch } from "react-redux";
 
 function HomePageMiddleNav(props) {
   //console.log(props)
   const [openNav, setOpenNav] = useState(false);
   const [animate, setAnimate] = useState(false);
   const { width } = useWindowSize();
+
+  const dispatch = useDispatch();
+
   const openNavBar = () => {
     setOpenNav(true);
     setAnimate(!animate);
@@ -39,7 +44,7 @@ function HomePageMiddleNav(props) {
             {width > 769 && (
               <div className="navfooter-text-1">
                 <span style={props.styleText}>
-                  Start a new adventure.{" "}
+                  Start A New Adventure.{" "}
                   <span
                     style={{
                       color: " #f24462",
@@ -47,7 +52,7 @@ function HomePageMiddleNav(props) {
                       fontWeight: 400,
                     }}
                   >
-                    Already a Member?{" "}
+                    Already A Member?{" "}
                     <a
                       href="/auth/login"
                       style={{
@@ -71,7 +76,7 @@ function HomePageMiddleNav(props) {
                     fontWeight: "bold",
                   }}
                 >
-                  Start a new adventure.
+                  Start A New Adventure.
                   <br />
                   <p
                     style={{
@@ -82,7 +87,7 @@ function HomePageMiddleNav(props) {
                       fontWeight: 400,
                     }}
                   >
-                    Already a Member?{" "}
+                    Already A Member?{" "}
                     <a
                       href="/auth/login"
                       style={{
@@ -130,12 +135,20 @@ function HomePageMiddleNav(props) {
             {openNav ? (
               <div id="sidebarhome" className="sidebarhome">
                 <a href="/auth/registration" style={{ textDecoration: "none" }}>
-                  <button type="button" className="signUpLadybtn">
+                  <button
+                    type="button"
+                    className="signUpLadybtn"
+                    onClick={() => dispatch(storeUserGender("female"))}
+                  >
                     Sign Up as Lady
                   </button>
                 </a>
                 <a href="/auth/registration" style={{ textDecoration: "none" }}>
-                  <button type="button" className="signUpLadybtn">
+                  <button
+                    type="button"
+                    className="signUpLadybtn"
+                    onClick={() => dispatch(storeUserGender("male"))}
+                  >
                     Sign Up as Gentlemen
                   </button>
                 </a>

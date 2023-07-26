@@ -283,8 +283,7 @@ const SimpleForm = (props) => {
           <div className="bottom-mobile">
             <div className="dont-have">
               <p>
-                Don't have an account?{" "}
-                <Link href="/auth/registration">Register</Link>
+                Don't have an account? <Link href="/">Register</Link>
               </p>
             </div>
             <Inputs.buttonField
