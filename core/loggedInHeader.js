@@ -241,27 +241,29 @@ export default function HeaderLoggedIn({
             <nav>
               <ul className="d-flex justify-content-end mb-0 align-items-center">
                 <li>
-                  <button
-                    id="message-icon"
-                    className="message_link"
-                    onClick={() => router.push("/messages")}
-                    type="button"
-                  >
-                    <CustomIcon.Envelope color={"#fff"} size={20} />
+                  <Link href="/messages">
+                    <button
+                      id="message-icon"
+                      className="message_link"
+                      onClick={() => router.push("/messages")}
+                      type="button"
+                    >
+                      <CustomIcon.Envelope color={"#fff"} size={20} />
 
-                    {width?.width > 767 && (
-                      <>
-                        <Link href="/messages">
-                          <a className="forgot-passwrd">Messages</a>
-                        </Link>
-                      </>
-                    )}
-                    {unReadMessagesLength > 0 && (
-                      <span className="top-bages">
-                        {/* {unReadMessagesLength} */}
-                      </span>
-                    )}
-                  </button>
+                      {width?.width > 767 && (
+                        <>
+                          <Link href="/messages">
+                            <a className="forgot-passwrd">Messages</a>
+                          </Link>
+                        </>
+                      )}
+                      {unReadMessagesLength > 0 && (
+                        <span className="top-bages">
+                          {/* {unReadMessagesLength} */}
+                        </span>
+                      )}
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <div className="user-profile-details">
