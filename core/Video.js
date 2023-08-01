@@ -62,7 +62,7 @@ const VideoComponent = () => {
       {
         // src: "https://lesociety.s3.ca-central-1.amazonaws.com/secret-time/uploads/lasociety_3.mp4",
         src: "https://d2hill0ae3zx76.cloudfront.net/secret-time/uploads/lasociety_3.webm",
-        type: "video/webm",
+        type: "video/mp4",
       },
     ],
   };
