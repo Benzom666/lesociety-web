@@ -366,7 +366,39 @@
   margin: 0 10px;
 }
 
+.signup-button {
+  background-color: #f24462 !important; /* Set the background color of the button */
+  color: #fff !important; /* Set the text color of the button */
+  opacity: 1;
+}
+
+.home-background-navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.9;
+  z-index: -1;
+  background-color: #1a1a1a;
+  height: 60px;
+}
+
+.home-background-navbar-open {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.9;
+  z-index: -1;
+  background-color: #1a1a1a;
+  height: 60px;
+}
+
 @media only screen and (max-width: 769px) and (min-width: 480px) {
+  .home-background-navbar {
+    height: 80px;
+  }
+  .home-background-navbar-open {
+    height: 230px;
+  }
   .navbarfixedmain {
     border-radius: 22px 22px 0px 0px;
   }
@@ -561,7 +593,7 @@
   margin: 5% 17%;
 }
 .bottom-box-container .bottom-box-card-2 .card_2 .card-app-pay {
-  color: #BCBCBC;
+  color: #bcbcbc;
   width: 255px;
   font-size: 14px;
   font-weight: normal;
@@ -570,6 +602,10 @@
   padding: 10px 61px;
   margin-top: -5%;
   margin-left: 6%;
+}
+
+.already__login__member:hover {
+  color: white;
 }
 
 @media only screen and (min-width: 768px) {
@@ -661,7 +697,7 @@
   padding: 10px;
 }
 .bottom-Card-mobile .card-2 .text-over-2 .card-btn-2 .card-app-pay {
-  color: #BCBCBC;
+  color: #bcbcbc;
   width: 255px;
   font-size: 14px;
   font-weight: normal;
@@ -671,11 +707,23 @@
 }
 
 @media only screen and (max-width: 480px) and (min-width: 340px) {
+  .home-background-navbar {
+    height: 80px;
+  }
   .bottom-Card-mobile {
     overflow-x: hidden !important;
   }
+  .home-background-navbar-open {
+    height: 230px;
+  }
 }
 @media only screen and (max-width: 340px) {
+  .home-background-navbar {
+    height: 80px;
+  }
+  .home-background-navbar-open {
+    height: 230px;
+  }
   .bottom-Card-mobile {
     overflow-x: hidden !important;
   }

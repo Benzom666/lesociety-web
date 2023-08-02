@@ -1,0 +1,104 @@
+.footer__content {
+  background-color: #fff;
+  width: 100%;
+  color: #000000;
+}
+
+.footer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 75px;
+}
+.footer__header .LeSociety-Icon-Black .ls-logo {
+  width: 232px;
+}
+.footer__header .LeSociety-Icon-Black .ls-text {
+  width: 229px;
+  padding: 15px 0px;
+  color: #fff;
+  margin-left: 9px;
+  margin-top: 19px;
+}
+.footer__header .LeSociety-Icon-Black .ls-text .leSocitey-heading {
+  margin-bottom: 2rem;
+}
+.footer__header .LeSociety-Icon-Black .ls-text .leSocitey-subheading {
+  font-size: 13px;
+  padding-top: 5px;
+  font-family: "Montserrat";
+}
+.footer__header .login__button {
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  padding: 13px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: 30px;
+}
+.footer__header .home__button {
+  border-radius: 15px;
+  background: #f24462;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: inline-flex;
+  padding: 13px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  color: #ffffff;
+}
+
+.content__wrapper {
+  padding: 20px 200px;
+  font-family: Montserrat;
+}
+.content__wrapper .content__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content__wrapper .content__header h3 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.content__wrapper .content__header span {
+  font-size: 12px;
+  font-weight: 400;
+}
+.content__wrapper .content__text {
+  margin-top: 50px;
+  margin-bottom: 80px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #000;
+}
+.content__wrapper .content__text .text__starter {
+  margin-bottom: 20px;
+}
+.content__wrapper .content__text .text__red {
+  color: #f24462;
+}
+.content__wrapper .content__text .content__paragraph {
+  margin-bottom: 20px;
+}
+.content__wrapper .content__text .content__paragraph .paragraph__heading {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+.content__wrapper .content__text .content__paragraph ul {
+  list-style: disc !important;
+  padding-left: 20px;
+}/*# sourceMappingURL=footer-pages.css.map */

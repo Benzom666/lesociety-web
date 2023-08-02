@@ -375,8 +375,8 @@
 }
 .how-it-works button {
   height: 44px;
-  background: #F24462 0% 0% no-repeat padding-box;
-  border: #F24462;
+  background: #f24462 0% 0% no-repeat padding-box;
+  border: #f24462;
   color: #fff;
   border-radius: 15px;
   opacity: 1;
@@ -727,7 +727,7 @@
     left: 88%;
   }
   .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-    left: 8px;
+    left: 0px;
     top: 77.5%;
   }
   .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
