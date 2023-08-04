@@ -374,6 +374,7 @@ function LocationPopup({
                           setLocation({
                             city: data?.name,
                             country: data?.short_code,
+                            countryName: data?.country,
                             province: data?.province?.short_code?.split("-")[1],
                           });
                           setSearchStaus(true);
@@ -396,11 +397,14 @@ function LocationPopup({
                         <span style={{ fontSize: "16px", marginLeft: "5px" }}>
                           {data?.province?.text}, {data?.country}
                         </span>
+                        {console.log("data", data, selectedLocation)}
                         <input
                           type="radio"
                           checked={
                             selectedLocation?.city?.toLowerCase() ===
-                            data?.name?.toLowerCase()
+                              data?.name?.toLowerCase() &&
+                            selectedLocation?.countryName?.toLowerCase() ===
+                              data?.country?.toLowerCase()
                           }
                         />
                         <div className="check"></div>

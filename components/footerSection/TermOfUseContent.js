@@ -420,100 +420,173 @@ function TermOfUseContent() {
                     deciphering, decompiling or otherwise disassembling any
                     portion of the Service or the Website, or any software used
                     on or for the Service or the Website, or causing others to
-                    do so.  Summary: Don’t do things to or on the Website that
-                    You aren’t authorized to do. 
+                    do so. 
                   </li>
-                  <li></li>
                 </ul>
-                The Website may be used only for lawful purposes by individuals
-                seeking relationships. As one of the conditions of your use of
-                the Website and the Service, You represent, warrant, and agree
-                that You will not use (or plan, encourage or help others to use)
-                the Website or the Service for any purpose or in any manner that
-                is prohibited by this Agreement or by applicable law. It is your
-                responsibility to ensure that your use of the Website and the
-                Service complies with this Agreement, and to seek prior written
-                consent from Le Society for any uses not permitted or not
-                expressly specified herein. Le Society specifically prohibits
-                any use of the Website or the Service, and You hereby agree not
-                to use the Website or the Service, for any of the following:
-                Using the Website as an escort or prostitute or using the
-                Service to promote, solicit, or engage clients for an escort or
-                prostitution service, or to engage or facilitate human
-                trafficking of any kind, including past escort activities or
-                affiliation with an escort site or service; Posting or sending
-                material that exploits people under the age of 18, soliciting
-                personal information from anyone under 18, failing to report
-                knowledge of a person under the age of 18
-                to info@lesociety.com, or continuing to use the site to interact
-                in any way with anyone You know or believe is under the age of
-                18. Any violation of these prohibitions will result in
-                termination of your Membership and possible referral to law
-                enforcement or other agencies, such as the National Center for
-                Missing and Exploited Children. Posting any incomplete, false,
-                misleading or inaccurate Content about yourself and/or your
-                profile; Posting any Content that is not entirely your own or
-                which You do not have full rights to use; Impersonating or
-                otherwise misrepresenting an affiliation, connection or
-                association with any person or entity; If You have a password,
-                allowing any other person to access a non-public area of the
-                Website, disclosing or sharing your password to or with any
-                third parties or using your password for any unauthorized
-                purpose; using meta tags or code or other devices containing any
-                reference (express or implied) to the Website or the Service (or
-                any trademark, trade name, service mark, logo or slogan of the
-                Website) to direct any person to any other website for any
-                purpose; Soliciting, from other users, passwords or personal
-                identifying information for commercial or unlawful purposes, or
-                for any other reason that would constitute a violation of this
-                Agreement; Engaging in advertising to, or solicitation of, other
-                Members to send money, or buy or sell any products or services.
-                You may not transmit any chain letters or junk/spam email to
-                other Members. If You breach the terms of this subsection and
-                send or post unsolicited bulk email, spam, or other unsolicited
-                communications of any kind through the Service, You acknowledge
-                that You will have caused substantial harm to Le Society;
-                Initiating contact with Members off site by any other means
-                without first obtaining explicit permission from them to do so
-                via the Website; Posting advertisements or solicitations of
-                employment, business or pyramid schemes; Using the Website or
-                Service for activities that violate any law, statute, ordinance
-                or regulations; Using the Website or Service to encourage,
-                promote, facilitate or instruct others to engage in illegal
-                activity; Engage in any activity that violates criminal laws of
-                the jurisdiction in which the Member resides, visits or contacts
-                Members; Bullying, stalking, intimidating or otherwise harassing
-                any other Members or Company employees or representatives;
-                Framing or mirroring any part of the Service or the Website,
-                without the Company’s prior written authorization; Using the
-                Service in order to damage Le Society affiliates or
-                subsidiaries;  Using the Website for any competitive purpose,
-                including copying, soliciting, competitive or market analysis or
-                any other use by a competitor; Recruiting, including for
-                pornography, modeling, or escort sites or brothels;  Commercial
-                Use as defined above, in Section 4; Any other use that violates
-                any applicable law, including without limitation laws related to
-                export controls.  Summary: You may only use the Website as it is
-                intended. No escorts or prostitutes. No human trafficking of any
-                kind. Report any minors using the Website. Don’t seek out minors
-                and don’t use the site if You are a minor. Don’t use the Website
-                for unlawful purposes. If You use the Website in a way that is
-                not authorized or is illegal, we will take legal action against
-                You and/or refer You to the proper law enforcement authorities. 
-                Commercial Use and Competitive Violations and Liquidated
-                Damages. Commercial Users (as defined in Section 4) act in
-                violation of the terms of this Agreement and acknowledge that
-                they are not using the Website for its intended purpose. Each
-                and every instance of Commercial Use or competitive use of the
-                Website is in violation of this Agreement and is subject to a
-                $100,000 award for damages as liquidated damages for each
-                breach. You acknowledge that any Commercial Use of the Website
-                or Service will cause harm in an amount that would be extremely
-                difficult to ascertain and that $100,000 for each and every
-                commercial or competitor violation is a reasonable estimate of
-                such harm.  Summary: The Website is for personal use only. Each
-                use of the Website for commercial or competitive reasons will
-                result in a $100,000 award for damages.
+                Summary: Don’t do things to or on the Website that You aren’t
+                authorized to do. 
+                <ul>
+                  <li>
+                    The Website may be used only for lawful purposes by
+                    individuals seeking relationships. As one of the conditions
+                    of your use of the Website and the Service, You represent,
+                    warrant, and agree that You will not use (or plan, encourage
+                    or help others to use) the Website or the Service for any
+                    purpose or in any manner that is prohibited by this
+                    Agreement or by applicable law. It is your responsibility to
+                    ensure that your use of the Website and the Service complies
+                    with this Agreement, and to seek prior written consent from
+                    Le Society for any uses not permitted or not expressly
+                    specified herein. Le Society specifically prohibits any use
+                    of the Website or the Service, and You hereby agree not to
+                    use the Website or the Service, for any of the following:
+                    <ul>
+                      <li>
+                        Using the Website as an escort or prostitute or using
+                        the Service to promote, solicit, or engage clients for
+                        an escort or prostitution service, or to engage or
+                        facilitate human trafficking of any kind, including past
+                        escort activities or affiliation with an escort site or
+                        service;
+                      </li>
+                      <li>
+                        Posting or sending material that exploits people under
+                        the age of 18, soliciting personal information from
+                        anyone under 18, failing to report knowledge of a person
+                        under the age of 18 to info@lesociety.com, or continuing
+                        to use the site to interact in any way with anyone You
+                        know or believe is under the age of 18. Any violation of
+                        these prohibitions will result in termination of your
+                        Membership and possible referral to law enforcement or
+                        other agencies, such as the National Center for Missing
+                        and Exploited Children.
+                      </li>
+                      <li>
+                        Posting any incomplete, false, misleading or inaccurate
+                        Content about yourself and/or your profile;{" "}
+                      </li>
+                      <li>
+                        {" "}
+                        Posting any Content that is not entirely your own or
+                        which You do not have full rights to use;
+                      </li>
+                      <li>
+                        Impersonating or otherwise misrepresenting an
+                        affiliation, connection or association with any person
+                        or entity;
+                      </li>
+                      <li>
+                        If You have a password, allowing any other person to
+                        access a non-public area of the Website, disclosing or
+                        sharing your password to or with any third parties or
+                        using your password for any unauthorized purpose; using
+                        meta tags or code or other devices containing any
+                        reference (express or implied) to the Website or the
+                        Service (or any trademark, trade name, service mark,
+                        logo or slogan of the Website) to direct any person to
+                        any other website for any purpose;
+                      </li>
+                      <li>
+                        Soliciting, from other users, passwords or personal
+                        identifying information for commercial or unlawful
+                        purposes, or for any other reason that would constitute
+                        a violation of this Agreement;
+                      </li>
+                      <li>
+                        {" "}
+                        Engaging in advertising to, or solicitation of, other
+                        Members to send money, or buy or sell any products or
+                        services. You may not transmit any chain letters or
+                        junk/spam email to other Members. If You breach the
+                        terms of this subsection and send or post unsolicited
+                        bulk email, spam, or other unsolicited communications of
+                        any kind through the Service, You acknowledge that You
+                        will have caused substantial harm to Le Society;{" "}
+                      </li>
+                      <li>
+                        Initiating contact with Members off site by any other
+                        means without first obtaining explicit permission from
+                        them to do so via the Website;
+                      </li>
+                      <li>
+                        Posting advertisements or solicitations of employment,
+                        business or pyramid schemes;
+                      </li>
+                      <li>
+                        Using the Website or Service for activities that violate
+                        any law, statute, ordinance or regulations;
+                      </li>
+                      <li>
+                        Using the Website or Service to encourage, promote,
+                        facilitate or instruct others to engage in illegal
+                        activity;{" "}
+                      </li>
+                      <li>
+                        Engage in any activity that violates criminal laws of
+                        the jurisdiction in which the Member resides, visits or
+                        contacts Members;
+                      </li>
+                      <li>
+                        Bullying, stalking, intimidating or otherwise harassing
+                        any other Members or Company employees or
+                        representatives;
+                      </li>
+                      <li>
+                        Framing or mirroring any part of the Service or the
+                        Website, without the Company’s prior written
+                        authorization;
+                      </li>
+                      <li>
+                        Using the Service in order to damage Le Society
+                        affiliates or subsidiaries; 
+                      </li>
+                      <li>
+                        Using the Website for any competitive purpose, including
+                        copying, soliciting, competitive or market analysis or
+                        any other use by a competitor;
+                      </li>
+                      <li>
+                        Recruiting, including for pornography, modeling, or
+                        escort sites or brothels;
+                      </li>
+                      <li>Commercial Use as defined above, in Section 4;</li>
+                      <li>
+                        Any other use that violates any applicable law,
+                        including without limitation laws related to export
+                        controls.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                Summary: You may only use the Website as it is intended. No
+                escorts or prostitutes. No human trafficking of any kind. Report
+                any minors using the Website. Don’t seek out minors and don’t
+                use the site if You are a minor. Don’t use the Website for
+                unlawful purposes. If You use the Website in a way that is not
+                authorized or is illegal, we will take legal action against You
+                and/or refer You to the proper law enforcement authorities.
+                <ul>
+                  <li>
+                    Commercial Use and Competitive Violations and Liquidated
+                    Damages. Commercial Users (as defined in Section 4) act in
+                    violation of the terms of this Agreement and acknowledge
+                    that they are not using the Website for its intended
+                    purpose. Each and every instance of Commercial Use or
+                    competitive use of the Website is in violation of this
+                    Agreement and is subject to a $100,000 award for damages as
+                    liquidated damages for each breach. You acknowledge that any
+                    Commercial Use of the Website or Service will cause harm in
+                    an amount that would be extremely difficult to ascertain and
+                    that $100,000 for each and every commercial or competitor
+                    violation is a reasonable estimate of such harm. 
+                  </li>
+                  <li>
+                    Summary: The Website is for personal use only. Each use of
+                    the Website for commercial or competitive reasons will
+                    result in a $100,000 award for damages.
+                  </li>
+                </ul>
+                 
               </>
             }
           />
@@ -559,61 +632,87 @@ function TermOfUseContent() {
           />
           <ContentParagraph
             heading={`11. Subscription and Membership`}
-            content={`You must provide current, complete and accurate
-          information for your Billing Account. You must promptly update all
-          information to keep your Billing Account current, complete and
-          accurate (such as a change in billing address, card number or
-          expiration date) and You must promptly notify Le Society  if your
-          payment method is canceled (including if You lose your card or it is
-          stolen), or if You become aware of a potential breach of security
-          (such as an unauthorized disclosure or use of your username or
-          password). Changes to such information can be made at “Account
-          Settings” on the Website. If You fail to provide us any of the
-          foregoing information, You agree that You are responsible for fees
-          accrued under your Billing Account. In addition, You authorize us to
-          obtain updated or replacement expiration dates and card numbers for
-          your credit or debit card as provided by your credit or debit card
-          issuer. You agree that all payments made on the Website are final and
-          that You will not challenge or dispute the charge with your bank. You
-          further agree that should You have any issues relating to your payment
-          (such as duplicate billing), You will open a support ticket through
-          the Website to resolve the issue. Should a dispute be initiated with
-          your bank, You agree that You will be held responsible for any
-          outstanding balance owed to us plus any dispute case fees charged by
-          our bank, which may be as much as CAN$60 per instance. You agree that
-          You will pay any outstanding balance You have with  Le Society  within
-          30 days from the date of notification. Any outstanding balance left
-          unpaid after 30 days may be submitted to a collections agency and You
-          agree that a collections fee of up to 50% of the outstanding balance
-          or $100 (whichever is higher) will be added to the amount that You
-          owe. Le Society  MAINTAINS A STRICT NO-REFUND POLICY. ALL PURCHASES
-          MADE ON THE WEBSITE ARE FINAL. IF YOU CHOOSE TO PURCHASE A POST ON THE
-          WEBSITE, YOU AGREE THAT ABSOLUTELY NO REFUNDS, EITHER FULL OR PARTIAL,
-          WILL BE ISSUED FOR ANY REASON OR FOR ANY UNUSED OR REMAINING
-          SUBSCRIPTION OR CREDITS.  Posts purchased for a specific Le
-          Society account are strictly non-transferable. You agree that any
-          remaining or unused posts associated with an active or deactivated Le
-          Society account will not be transferred to any other account belonging
-          to You or to someone else. Le Society reserves the right to offer free
-          Membership to any person(s) of its choice at any given time, for any
-          duration, while charging other Members, at the same time. Le Society
-          also reserves the right to cancel the free trial period at any time,
-          for all or any of its Members. A Member profile (whether that profile
-          relates to a paying subscription or a free Membership) may remain
-          posted on the Website even if that Member is not actively using the
-          Service. You acknowledge that although a Member’s profile may be
-          viewed, You may not (even as a subscriber) be able to use the Service
-          to communicate with that Member if he or she is not then actively
-          using the Service.  Summary: You need to give us accurate information
-          for your billing account and You need to keep the information updated.
-          All payments made are final—no refunds—even if You or we terminate
-          your account early (exceptions for Members located in certain
-          specified geographic locations). Credits or subscriptions can’t be
-          transferred to any other account. If You think there has been an error
-          in billing, You must contact us immediately. Your account may be
-          automatically renewed. We can grant free Memberships to whomever and
-          whenever we want, and we can cancel any free trial periods when we
-          want.  `}
+            content={
+              <>
+                <ul>
+                  <li>
+                    You must provide current, complete and accurate information
+                    for your Billing Account. You must promptly update all
+                    information to keep your Billing Account current, complete
+                    and accurate (such as a change in billing address, card
+                    number or expiration date) and You must promptly notify Le
+                    Society  if your payment method is canceled (including if
+                    You lose your card or it is stolen), or if You become aware
+                    of a potential breach of security (such as an unauthorized
+                    disclosure or use of your username or password). Changes to
+                    such information can be made at “Account Settings” on the
+                    Website. If You fail to provide us any of the foregoing
+                    information, You agree that You are responsible for fees
+                    accrued under your Billing Account. In addition, You
+                    authorize us to obtain updated or replacement expiration
+                    dates and card numbers for your credit or debit card as
+                    provided by your credit or debit card issuer.
+                  </li>
+                  <li>
+                    You agree that all payments made on the Website are final
+                    and that You will not challenge or dispute the charge with
+                    your bank. You further agree that should You have any issues
+                    relating to your payment (such as duplicate billing), You
+                    will open a support ticket through the Website to resolve
+                    the issue. Should a dispute be initiated with your bank, You
+                    agree that You will be held responsible for any outstanding
+                    balance owed to us plus any dispute case fees charged by our
+                    bank, which may be as much as CAN$60 per instance. You agree
+                    that You will pay any outstanding balance You have with  Le
+                    Society  within 30 days from the date of notification. Any
+                    outstanding balance left unpaid after 30 days may be
+                    submitted to a collections agency and You agree that a
+                    collections fee of up to 50% of the outstanding balance or
+                    $100 (whichever is higher) will be added to the amount that
+                    You owe.{" "}
+                  </li>
+                  <li>
+                    Le Society  MAINTAINS A STRICT NO-REFUND POLICY. ALL
+                    PURCHASES MADE ON THE WEBSITE ARE FINAL. IF YOU CHOOSE TO
+                    PURCHASE A POST ON THE WEBSITE, YOU AGREE THAT ABSOLUTELY NO
+                    REFUNDS, EITHER FULL OR PARTIAL, WILL BE ISSUED FOR ANY
+                    REASON OR FOR ANY UNUSED OR REMAINING SUBSCRIPTION OR
+                    CREDITS. 
+                  </li>
+                  <li>
+                    Posts purchased for a specific Le Society account are
+                    strictly non-transferable. You agree that any remaining or
+                    unused posts associated with an active or deactivated Le
+                    Society account will not be transferred to any other account
+                    belonging to You or to someone else.{" "}
+                  </li>
+                  <li>
+                    Le Society reserves the right to offer free Membership to
+                    any person(s) of its choice at any given time, for any
+                    duration, while charging other Members, at the same time. Le
+                    Society also reserves the right to cancel the free trial
+                    period at any time, for all or any of its Members. A Member
+                    profile (whether that profile relates to a paying
+                    subscription or a free Membership) may remain posted on the
+                    Website even if that Member is not actively using the
+                    Service. You acknowledge that although a Member’s profile
+                    may be viewed, You may not (even as a subscriber) be able to
+                    use the Service to communicate with that Member if he or she
+                    is not then actively using the Service. 
+                  </li>
+                </ul>
+                Summary: You need to give us accurate information for your
+                billing account and You need to keep the information updated.
+                All payments made are final—no refunds—even if You or we
+                terminate your account early (exceptions for Members located in
+                certain specified geographic locations). Credits or
+                subscriptions can’t be transferred to any other account. If You
+                think there has been an error in billing, You must contact us
+                immediately. Your account may be automatically renewed. We can
+                grant free Memberships to whomever and whenever we want, and we
+                can cancel any free trial periods when we want. 
+              </>
+            }
           />
           <ContentParagraph
             heading={`12. Service and
@@ -644,44 +743,67 @@ function TermOfUseContent() {
           />
           <ContentParagraph
             heading={`13. User Information`}
-            content={`When You register for our Service on the Website, You will
-          be asked to provide us with certain information, including but not
-          limited to, a valid email address (your “User Information”). Le
-          Society’ right to use your User Information is described in our
-          Privacy Policy. Please see our Privacy Policy for further details
-          regarding use of your User Information. Le Society reserves the right
-          to offer third-party services and products to You based on the
-          preferences that You identify in your User Information and at any time
-          thereafter; such offers may be made by us or by third parties and are
-          governed by our Privacy Policy. You acknowledge and agree that Le
-          Society may disclose in whole or in part your User Information and
-          Content if required to do so by law, at the request of a third party
-          (subject to our Privacy Policy), or if we, in our sole discretion,
-          believe that disclosure is reasonable to: (i) comply with the law,
-          requests or orders from law enforcement, or any compulsory legal
-          process; (ii) protect or defend Le Society, or a third party’s rights
-          or property; or (iii) protect someone’s health or safety, such as when
-          harm or violence against any person (including the user) is
-          threatened. Notwithstanding any other provision of this Agreement or
-          the Privacy Policy, Le Society reserves the right, but has no
-          obligation, to disclose any User Information and Content that You
-          submit to the Service, if, in its sole opinion, Le Society suspects or
-          has reason to suspect that the information involves a party who may
-          seek to commit a crime, be committing a crime, or be the victim of a
-          crime or of any form of abuse. Abuse may include, without limitation,
-          elder abuse, child abuse, spousal abuse, neglect, domestic violence,
-          or human trafficking. Information may be disclosed to authorities that
-          Le Society, in its sole discretion, deems appropriate to handle such
-          disclosure. Appropriate authorities may include, without limitation,
-          law enforcement agencies, child protection agencies, or court
-          officials. You hereby acknowledge and agree that Le Society is
-          permitted to make such disclosure. User profiles that have been
-          inactive (i.e., user has not logged into their account) for more than
-          365 days will be removed from the Service and profile content will be
-          deleted.  User account settings and contact emails will continue to be
-          maintained by Le Society, subject to Le Society’s Privacy Policy.  
-          Summary: We collect personal information from You and may share it, so
-          You need to read our Privacy Policy.`}
+            content={
+              <>
+                <ul>
+                  <li>
+                    When You register for our Service on the Website, You will
+                    be asked to provide us with certain information, including
+                    but not limited to, a valid email address (your “User
+                    Information”). Le Society’ right to use your User
+                    Information is described in our Privacy Policy. Please see
+                    our Privacy Policy for further details regarding use of your
+                    User Information. Le Society reserves the right to offer
+                    third-party services and products to You based on the
+                    preferences that You identify in your User Information and
+                    at any time thereafter; such offers may be made by us or by
+                    third parties and are governed by our Privacy Policy.
+                  </li>
+                  <li>
+                    You acknowledge and agree that Le Society may disclose in
+                    whole or in part your User Information and Content if
+                    required to do so by law, at the request of a third party
+                    (subject to our Privacy Policy), or if we, in our sole
+                    discretion, believe that disclosure is reasonable to: (i)
+                    comply with the law, requests or orders from law
+                    enforcement, or any compulsory legal process; (ii) protect
+                    or defend Le Society, or a third party’s rights or property;
+                    or (iii) protect someone’s health or safety, such as when
+                    harm or violence against any person (including the user) is
+                    threatened.
+                  </li>
+                  <li>
+                    Notwithstanding any other provision of this Agreement or the
+                    Privacy Policy, Le Society reserves the right, but has no
+                    obligation, to disclose any User Information and Content
+                    that You submit to the Service, if, in its sole opinion, Le
+                    Society suspects or has reason to suspect that the
+                    information involves a party who may seek to commit a crime,
+                    be committing a crime, or be the victim of a crime or of any
+                    form of abuse. Abuse may include, without limitation, elder
+                    abuse, child abuse, spousal abuse, neglect, domestic
+                    violence, or human trafficking. Information may be disclosed
+                    to authorities that Le Society, in its sole discretion,
+                    deems appropriate to handle such disclosure. Appropriate
+                    authorities may include, without limitation, law enforcement
+                    agencies, child protection agencies, or court officials. You
+                    hereby acknowledge and agree that Le Society is permitted to
+                    make such disclosure.
+                  </li>
+                  <li>
+                    {" "}
+                    User profiles that have been inactive (i.e., user has not
+                    logged into their account) for more than 365 days will be
+                    removed from the Service and profile content will be
+                    deleted.  User account settings and contact emails will
+                    continue to be maintained by Le Society, subject to Le
+                    Society’s Privacy Policy.  {" "}
+                  </li>
+                </ul>
+                Summary: We collect personal information from You and may share
+                it, so You need to read our Privacy Policy.
+              </>
+            }
           />
           <ContentParagraph
             heading={`14. Links`}
@@ -712,172 +834,267 @@ function TermOfUseContent() {
           />
           <ContentParagraph
             heading={`15. Disclaimers`}
-            content={`Le Society is not responsible for any incorrect or
-          inaccurate Content posted on the Website or in connection with the
-          Service, whether caused by users of the Website, Members, or by any of
-          the equipment or programming associated with or utilized in the
-          Service. Le Society is not responsible for user or Member conduct of
-          any kind, whether online or offline. Le Society is not responsible for
-          any error, omission, interruption, deletion, defect, delay in
-          operation or transmission, communications line failure, theft or
-          destruction or unauthorized access to, or alteration of, user or
-          Member communications. Le Society is not responsible for any problems
-          or technical malfunction of any telephone network or lines, computer
-          online systems, servers or providers, computer equipment, software,
-          failure of email or players on account of technical problems or
-          traffic congestion on the Internet or at any website or combination
-          thereof, including injury or damage to users and/or Members or to any
-          other person’s computer related to or resulting from participating or
-          downloading materials in connection with the Website and/or in
-          connection with the Service. Under no circumstances will Le Society be
-          responsible for any loss or damage, including personal injury or
-          death, resulting from anyone’s use of the Website or the Service, any
-          Content posted on the Website or transmitted to Members, or any
-          interaction or contact between users of the Website, whether online or
-          offline. THIS SITE IS FOR ENTERTAINMENT AND INFORMATIONAL PURPOSES
-          ONLY. TO THE MAXIMUM EXTENT ALLOWED BY APPLICABLE LAW, Le Society
-          PROVIDES THE WEBSITE AND SERVICE ON AN “AS IS” AND “AS AVAILABLE”
-          BASIS AND GRANTS NO WARRANTIES OF ANY KIND, EITHER EXPRESS, IMPLIED,
-          STATUTORY OR OTHERWISE WITH RESPECT TO THE SERVICE OR THE WEBSITE
-          (INCLUDING ALL CONTENT CONTAINED THEREIN) INCLUDING (WITHOUT
-          LIMITATION) ANY IMPLIED WARRANTIES OF SATISFACTORY QUALITY,
-          MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, EXPECTATIONS OF
-          PRIVACY OR NON-INFRINGEMENT. Le Society DOES NOT WARRANT THAT THE
-          WEBSITE OR SERVICE WILL BE UNINTERRUPTED OR ERROR-FREE, SECURE OR THAT
-          ANY DEFECTS OR ERRORS WILL BE CORRECTED. ANY MATERIAL DOWNLOADED OR
-          OTHERWISE OBTAINED THROUGH THE USE OF THE SERVICE OR WEBSITE IS
-          ACCESSED AT YOUR OWN DISCRETION AND RISK, AND YOU WILL BE SOLELY
-          RESPONSIBLE FOR AND HEREBY WAIVE ANY AND ALL CLAIMS AND CAUSES OF
-          ACTION WITH RESPECT TO ANY DAMAGE TO YOUR COMPUTER SYSTEM, INTERNET
-          ACCESS, DOWNLOAD OR DISPLAY DEVICE OR LOSS OR CORRUPTION OF DATA THAT
-          RESULTS OR MAY RESULT FROM THE DOWNLOAD OF ANY SUCH MATERIAL. IF YOU
-          DO NOT ACCEPT THIS LIMITATION OF LIABILITY, YOU ARE NOT AUTHORIZED TO
-          DOWNLOAD OR OBTAIN ANY MATERIAL THROUGH THE SERVICE OR WEBSITE. From
-          time to time, Le Society may make third-party opinions, advice,
-          statements, offers, or other third-party information or content
-          available on the Website and/or through the Service. All third-party
-          content is the responsibility of the respective authors thereof and
-          should not necessarily be relied upon. Such third-party authors are
-          solely responsible for such content. Le Society DOES NOT: (I)
-          GUARANTEE THE ACCURACY, COMPLETENESS OR USEFULNESS OF ANY THIRD-PARTY
-          CONTENT ON THE WEBSITE OR PROVIDED THROUGH THE SERVICE; OR (II) ADOPT,
-          ENDORSE OR ACCEPT RESPONSIBILITY FOR THE ACCURACY OR RELIABILITY OF
-          ANY OPINION, ADVICE OR STATEMENT MADE BY ANY PARTY THAT APPEARS ON THE
-          WEBSITE OR SERVICE. UNDER NO CIRCUMSTANCES WILL Le Society OR ITS
-          AFFILIATES OR SUBSIDIARIES BE RESPONSIBLE OR LIABLE FOR ANY LOSS OR
-          DAMAGE RESULTING FROM YOUR RELIANCE ON INFORMATION OR OTHER CONTENT
-          POSTED ON THE WEBSITE OR SERVICE OR TRANSMITTED TO OR BY ANY MEMBERS.
-          Le Society cannot guarantee and does not promise any specific results
-          from use of the Website and/or the Service. This Website is only a
-          venue—it acts as a venue for individuals to post personal and contact
-          information for purposes of dating. Le Society is not required to
-          screen or censor information posted on the Website, including but not
-          limited to, the identity of any user and any user content. We are not
-          involved in any actual communication between Members. As a result, we
-          have no control over the quality, safety, or legality of the
-          information or profiles posted or the truth or accuracy of such
-          information. You agree that You are solely responsible for your
-          interactions with other Members and that Le Society is not liable in
-          any way for Member communications. Le Society reserves the right, but
-          has no obligation, to monitor communications on the Website between
-          You and other Members, or any other correspondence or interaction that
-          occurs outside the scope of the Website. The Website and Service is a
-          tool for providing the initial contact between Members, and anything
-          beyond that is not in our control and is carried out at the Members’
-          own risk. Members must use common sense about what information they
-          reveal to others via email or any other means of communication. It is
-          your responsibility to ensure your safety and to investigate Members
-          and verify they are legitimate relationship seekers. There are many
-          different frauds, schemes, and deceptions on the Internet, and we
-          strongly caution You to be skeptical of any Member until You learn
-          more about them and verify their background. In addition to the
-          preceding information under this Agreement, any advice or thoughts
-          that may be posted on the Website or through the Service provided for
-          under this Agreement are for informational and entertainment purposes
-          only and are not intended to replace, or substitute for, any
-          professional, financial, medical, legal or other advice. The Company
-          makes no representations or warranties and expressly disclaims any and
-          all liability concerning any treatment, action by, or effect on any
-          person following the information offered or provided within or through
-          the Website. If You have specific concerns or a situation arises in
-          which You require professional or medical advice, You should consult
-          with an appropriately trained and qualified specialist and seek
-          immediate attention of the proper professional. You specifically
-          acknowledge and agree that Le Society is not liable for your
-          defamatory, offensive, infringing or illegal materials or conduct or
-          that of third parties, and we reserve the right to remove such
-          materials from the Website without liability or notice to You. 
-          Summary: We are not responsible or liable for a number of things
-          related to the Website and your use of the Website. You are using the
-          Website and Service at your own risk and any communications between
-          You and other users/Members are at your own risk. If You read
-          something on our site, don’t take it on its face—use common sense, do
-          your research and take precautions. `}
+            content={
+              <>
+                <ul>
+                  <li>
+                    Le Society is not responsible for any incorrect or
+                    inaccurate Content posted on the Website or in connection
+                    with the Service, whether caused by users of the Website,
+                    Members, or by any of the equipment or programming
+                    associated with or utilized in the Service.
+                  </li>
+                  <li>
+                    Le Society is not responsible for user or Member conduct of
+                    any kind, whether online or offline.
+                  </li>
+                  <li>
+                    Le Society is not responsible for any error, omission,
+                    interruption, deletion, defect, delay in operation or
+                    transmission, communications line failure, theft or
+                    destruction or unauthorized access to, or alteration of,
+                    user or Member communications.
+                  </li>
+                  <li>
+                    Le Society is not responsible for any problems or technical
+                    malfunction of any telephone network or lines, computer
+                    online systems, servers or providers, computer equipment,
+                    software, failure of email or players on account of
+                    technical problems or traffic congestion on the Internet or
+                    at any website or combination thereof, including injury or
+                    damage to users and/or Members or to any other person’s
+                    computer related to or resulting from participating or
+                    downloading materials in connection with the Website and/or
+                    in connection with the Service.{" "}
+                  </li>
+                  <li>
+                    Under no circumstances will Le Society be responsible for
+                    any loss or damage, including personal injury or death,
+                    resulting from anyone’s use of the Website or the Service,
+                    any Content posted on the Website or transmitted to Members,
+                    or any interaction or contact between users of the Website,
+                    whether online or offline.
+                  </li>
+                  <li>
+                    THIS SITE IS FOR ENTERTAINMENT AND INFORMATIONAL PURPOSES
+                    ONLY. TO THE MAXIMUM EXTENT ALLOWED BY APPLICABLE LAW, Le
+                    Society PROVIDES THE WEBSITE AND SERVICE ON AN “AS IS” AND
+                    “AS AVAILABLE” BASIS AND GRANTS NO WARRANTIES OF ANY KIND,
+                    EITHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE WITH RESPECT
+                    TO THE SERVICE OR THE WEBSITE (INCLUDING ALL CONTENT
+                    CONTAINED THEREIN) INCLUDING (WITHOUT LIMITATION) ANY
+                    IMPLIED WARRANTIES OF SATISFACTORY QUALITY, MERCHANTABILITY,
+                    FITNESS FOR A PARTICULAR PURPOSE, EXPECTATIONS OF PRIVACY OR
+                    NON-INFRINGEMENT. Le Society DOES NOT WARRANT THAT THE
+                    WEBSITE OR SERVICE WILL BE UNINTERRUPTED OR ERROR-FREE,
+                    SECURE OR THAT ANY DEFECTS OR ERRORS WILL BE CORRECTED.{" "}
+                  </li>
+                  <li>
+                    ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE
+                    USE OF THE SERVICE OR WEBSITE IS ACCESSED AT YOUR OWN
+                    DISCRETION AND RISK, AND YOU WILL BE SOLELY RESPONSIBLE FOR
+                    AND HEREBY WAIVE ANY AND ALL CLAIMS AND CAUSES OF ACTION
+                    WITH RESPECT TO ANY DAMAGE TO YOUR COMPUTER SYSTEM, INTERNET
+                    ACCESS, DOWNLOAD OR DISPLAY DEVICE OR LOSS OR CORRUPTION OF
+                    DATA THAT RESULTS OR MAY RESULT FROM THE DOWNLOAD OF ANY
+                    SUCH MATERIAL. IF YOU DO NOT ACCEPT THIS LIMITATION OF
+                    LIABILITY, YOU ARE NOT AUTHORIZED TO DOWNLOAD OR OBTAIN ANY
+                    MATERIAL THROUGH THE SERVICE OR WEBSITE.
+                  </li>
+                  <li>
+                    From time to time, Le Society may make third-party opinions,
+                    advice, statements, offers, or other third-party information
+                    or content available on the Website and/or through the
+                    Service. All third-party content is the responsibility of
+                    the respective authors thereof and should not necessarily be
+                    relied upon. Such third-party authors are solely responsible
+                    for such content. Le Society DOES NOT: (I) GUARANTEE THE
+                    ACCURACY, COMPLETENESS OR USEFULNESS OF ANY THIRD-PARTY
+                    CONTENT ON THE WEBSITE OR PROVIDED THROUGH THE SERVICE; OR
+                    (II) ADOPT, ENDORSE OR ACCEPT RESPONSIBILITY FOR THE
+                    ACCURACY OR RELIABILITY OF ANY OPINION, ADVICE OR STATEMENT
+                    MADE BY ANY PARTY THAT APPEARS ON THE WEBSITE OR SERVICE.
+                    UNDER NO CIRCUMSTANCES WILL Le Society OR ITS AFFILIATES OR
+                    SUBSIDIARIES BE RESPONSIBLE OR LIABLE FOR ANY LOSS OR DAMAGE
+                    RESULTING FROM YOUR RELIANCE ON INFORMATION OR OTHER CONTENT
+                    POSTED ON THE WEBSITE OR SERVICE OR TRANSMITTED TO OR BY ANY
+                    MEMBERS.
+                  </li>
+                  <li>
+                    Le Society cannot guarantee and does not promise any
+                    specific results from use of the Website and/or the Service.
+                  </li>
+                  <li>
+                    This Website is only a venue—it acts as a venue for
+                    individuals to post personal and contact information for
+                    purposes of dating. Le Society is not required to screen or
+                    censor information posted on the Website, including but not
+                    limited to, the identity of any user and any user content.
+                    We are not involved in any actual communication between
+                    Members. As a result, we have no control over the quality,
+                    safety, or legality of the information or profiles posted or
+                    the truth or accuracy of such information. You agree that
+                    You are solely responsible for your interactions with other
+                    Members and that Le Society is not liable in any way for
+                    Member communications. Le Society reserves the right, but
+                    has no obligation, to monitor communications on the Website
+                    between You and other Members, or any other correspondence
+                    or interaction that occurs outside the scope of the Website.
+                    The Website and Service is a tool for providing the initial
+                    contact between Members, and anything beyond that is not in
+                    our control and is carried out at the Members’ own risk.
+                    Members must use common sense about what information they
+                    reveal to others via email or any other means of
+                    communication. It is your responsibility to ensure your
+                    safety and to investigate Members and verify they are
+                    legitimate relationship seekers. There are many different
+                    frauds, schemes, and deceptions on the Internet, and we
+                    strongly caution You to be skeptical of any Member until You
+                    learn more about them and verify their background.
+                  </li>
+                  <li>
+                    In addition to the preceding information under this
+                    Agreement, any advice or thoughts that may be posted on the
+                    Website or through the Service provided for under this
+                    Agreement are for informational and entertainment purposes
+                    only and are not intended to replace, or substitute for, any
+                    professional, financial, medical, legal or other advice. The
+                    Company makes no representations or warranties and expressly
+                    disclaims any and all liability concerning any treatment,
+                    action by, or effect on any person following the information
+                    offered or provided within or through the Website. If You
+                    have specific concerns or a situation arises in which You
+                    require professional or medical advice, You should consult
+                    with an appropriately trained and qualified specialist and
+                    seek immediate attention of the proper professional.
+                  </li>
+                  <li>
+                    You specifically acknowledge and agree that Le Society is
+                    not liable for your defamatory, offensive, infringing or
+                    illegal materials or conduct or that of third parties, and
+                    we reserve the right to remove such materials from the
+                    Website without liability or notice to You. 
+                  </li>
+                </ul>
+                Summary: We are not responsible or liable for a number of things
+                related to the Website and your use of the Website. You are
+                using the Website and Service at your own risk and any
+                communications between You and other users/Members are at your
+                own risk. If You read something on our site, don’t take it on
+                its face—use common sense, do your research and take
+                precautions.
+              </>
+            }
           />
           <ContentParagraph
             heading={`16. Limitation on Liability`}
-            content={` TO THE MAXIMUM
-            EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL  BE LIABLE FOR
-            ANY INCIDENTAL, SPECIAL, CONSEQUENTIAL Le Society INDIRECT DAMAGES
-            ARISING OUT OF OR RELATING TO YOUR USE, OR INABILITY TO USE, THE
-            SERVICES, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OR
-            CORRUPTION OF DATA OR PROGRAMS, OR FOR SERVICE INTERRUPTIONS OR
-            PROCUREMENT OF SUBSTITUTE SERVICES, EVEN IF Le Society KNOWS OR HAS
-            BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. TO THE MAXIMUM EXTENT
-            PERMITTED BY APPLICABLE LAW, UNDER NO CIRCUMSTANCES WILL Le Society’
-            AGGREGATE LIABILITY, IN ANY FORM OF ACTION WHATSOEVER IN CONNECTION
-            WITH THIS AGREEMENT OR THE USE OF THE SERVICE OR THE WEBSITE, EXCEED
-            THE PRICE PAID BY YOU FOR YOUR POST, OR, IF YOU HAVE NOT PAID Le
-            Society FOR THE USE OF ANY SERVICE, THE AMOUNT OF CAN$10.00 OR ITS
-            EQUIVALENT. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO
-            EVENT WILL Le Society BE LIABLE FOR ANY DAMAGES WHATSOEVER, WHETHER
-            DIRECT, INDIRECT, GENERAL, SPECIAL, COMPENSATORY, CONSEQUENTIAL AND/OR
-            INCIDENTAL ARISING OUT OF, OR RELATING TO, THE CONDUCT OF YOU OR
-            ANYONE ELSE IN CONNECTION WITH THE USE OF THE SERVICE, INCLUDING
-            WITHOUT LIMITATION, BODILY INJURY, EMOTIONAL DISTRESS, AND/OR ANY
-            OTHER DAMAGES RESULTING FROM COMMUNICATIONS OR MEETINGS WITH OTHER
-            MEMBERS OF THE SERVICE. THIS INCLUDES ANY CLAIMS, LOSSES OR DAMAGES
-            ARISING FROM THE CONDUCT OF MEMBERS WHO HAVE REGISTERED UNDER FALSE
-            PRETENSES OR WHO ATTEMPT TO DEFRAUD OR HARM YOU. To the fullest extent
-            permitted by applicable law, You release the Company from
-            responsibility, liability, claims, demands or damages of every kind
-            and nature, known and unknown (including, but not limited to, claims
-            of negligence), arising out of, or related to, disputes between users
-            and the acts or omissions of third parties. You expressly waive any
-            rights You may have under Canadian Criminal Code, as well as any other
-            statute or common law principles that would otherwise limit the
-            coverage of this release to include only those claims which You may
-            know or suspect to exist in your favor at the time of agreeing to this
-            release. THE LIMITATION OF LIABILITY PROVISIONS SET FORTH IN THIS
-            SECTION SHALL APPLY EVEN IF YOUR REMEDIES UNDER THIS AGREEMENT FAIL
-            WITH RESPECT TO THEIR ESSENTIAL PURPOSE.  Summary: We have built our
-            Service for You, but we can’t promise it is perfect. We are not liable
-            for various things and You release us from responsibility and
-            liability for those things.`}
+            content={
+              <>
+                <ul>
+                  <li>
+                    TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO
+                    EVENT WILL  BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
+                    CONSEQUENTIAL Le Society INDIRECT DAMAGES ARISING OUT OF OR
+                    RELATING TO YOUR USE, OR INABILITY TO USE, THE SERVICES,
+                    INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OR
+                    CORRUPTION OF DATA OR PROGRAMS, OR FOR SERVICE INTERRUPTIONS
+                    OR PROCUREMENT OF SUBSTITUTE SERVICES, EVEN IF Le Society
+                    KNOWS OR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+                    DAMAGES. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW,
+                    UNDER NO CIRCUMSTANCES WILL Le Society’ AGGREGATE LIABILITY,
+                    IN ANY FORM OF ACTION WHATSOEVER IN CONNECTION WITH THIS
+                    AGREEMENT OR THE USE OF THE SERVICE OR THE WEBSITE, EXCEED
+                    THE PRICE PAID BY YOU FOR YOUR POST, OR, IF YOU HAVE NOT
+                    PAID Le Society FOR THE USE OF ANY SERVICE, THE AMOUNT OF
+                    CAN$10.00 OR ITS EQUIVALENT.
+                  </li>
+                  <li>
+                    {" "}
+                    TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO
+                    EVENT WILL Le Society BE LIABLE FOR ANY DAMAGES WHATSOEVER,
+                    WHETHER DIRECT, INDIRECT, GENERAL, SPECIAL, COMPENSATORY,
+                    CONSEQUENTIAL AND/OR INCIDENTAL ARISING OUT OF, OR RELATING
+                    TO, THE CONDUCT OF YOU OR ANYONE ELSE IN CONNECTION WITH THE
+                    USE OF THE SERVICE, INCLUDING WITHOUT LIMITATION, BODILY
+                    INJURY, EMOTIONAL DISTRESS, AND/OR ANY OTHER DAMAGES
+                    RESULTING FROM COMMUNICATIONS OR MEETINGS WITH OTHER MEMBERS
+                    OF THE SERVICE. THIS INCLUDES ANY CLAIMS, LOSSES OR DAMAGES
+                    ARISING FROM THE CONDUCT OF MEMBERS WHO HAVE REGISTERED
+                    UNDER FALSE PRETENSES OR WHO ATTEMPT TO DEFRAUD OR HARM YOU.
+                  </li>
+                  <li>
+                    To the fullest extent permitted by applicable law, You
+                    release the Company from responsibility, liability, claims,
+                    demands or damages of every kind and nature, known and
+                    unknown (including, but not limited to, claims of
+                    negligence), arising out of, or related to, disputes between
+                    users and the acts or omissions of third parties. You
+                    expressly waive any rights You may have under Canadian
+                    Criminal Code, as well as any other statute or common law
+                    principles that would otherwise limit the coverage of this
+                    release to include only those claims which You may know or
+                    suspect to exist in your favor at the time of agreeing to
+                    this release.{" "}
+                  </li>
+                  <li>
+                    THE LIMITATION OF LIABILITY PROVISIONS SET FORTH IN THIS
+                    SECTION SHALL APPLY EVEN IF YOUR REMEDIES UNDER THIS
+                    AGREEMENT FAIL WITH RESPECT TO THEIR ESSENTIAL PURPOSE. {" "}
+                  </li>
+                </ul>
+                Summary: We have built our Service for You, but we can’t promise
+                it is perfect. We are not liable for various things and You
+                release us from responsibility and liability for those things.
+              </>
+            }
           />
           <ContentParagraph
             heading={`17. Litigation and Arbitration`}
-            content={`Le Society is always interested in attempting to
-          resolve any dispute by amicable and informal means, and we encourage
-          You to contact us at info@lesociety.com before resorting to
-          litigation. However, neither You nor Le Society are required to
-          resolve any dispute before bringing that dispute in arbitration. Both
-          You and Le Society agree that all disputes, with the exception of
-          privacy disputes as outlined in our Privacy Policy, will be referred
-          to and finally resolved by arbitration administered by the
-          International Centre for Dispute Resolution (“ICDR”).  By accessing
-          and using the Website and/or Service, You hereby irrevocably consent
-          to the jurisdiction and venue of the ICDR.  YOU AND Le Society
-          ACKNOWLEDGE THAT NEITHER OF US WILL BRING OR PARTICIPATE IN ANY CLASS
-          ACTION OR OTHER CLASS PROCEEDING IN CONNECTION WITH ANY DISPUTE WITH
-          THE OTHER PARTY. This Agreement, and any dispute between You and Le
-          Society, with the exception of Privacy Disputes as noted above, shall
-          be governed by the laws of the country of Canada without regard to
-          principles of conflicts of law.  Summary: If You use the Website or
-          Service, You must arbitrate any disputes through the International
-          Centre for Dispute Resolution.  Further, You will be governed by and
-          subject to the laws of Canada.  However, any privacy disputes will be
-          determined as per our Privacy Policy. `}
+            content={
+              <>
+                <ul>
+                  <li>
+                    {" "}
+                    Le Society is always interested in attempting to resolve any
+                    dispute by amicable and informal means, and we encourage You
+                    to contact us at info@lesociety.com before resorting to
+                    litigation.
+                  </li>
+                  <li>
+                    However, neither You nor Le Society are required to resolve
+                    any dispute before bringing that dispute in arbitration.{" "}
+                  </li>
+                  <li>
+                    Both You and Le Society agree that all disputes, with the
+                    exception of privacy disputes as outlined in our Privacy
+                    Policy, will be referred to and finally resolved by
+                    arbitration administered by the International Centre for
+                    Dispute Resolution (“ICDR”). 
+                  </li>
+                  <li>
+                    By accessing and using the Website and/or Service, You
+                    hereby irrevocably consent to the jurisdiction and venue of
+                    the ICDR.
+                  </li>
+                  <li>
+                    YOU AND Le Society ACKNOWLEDGE THAT NEITHER OF US WILL BRING
+                    OR PARTICIPATE IN ANY CLASS ACTION OR OTHER CLASS PROCEEDING
+                    IN CONNECTION WITH ANY DISPUTE WITH THE OTHER PARTY.
+                  </li>
+                  <li>
+                    This Agreement, and any dispute between You and Le Society,
+                    with the exception of Privacy Disputes as noted above, shall
+                    be governed by the laws of the country of Canada without
+                    regard to principles of conflicts of law. 
+                  </li>
+                </ul>
+                Summary: If You use the Website or Service, You must arbitrate
+                any disputes through the International Centre for Dispute
+                Resolution.  Further, You will be governed by and subject to the
+                laws of Canada.  However, any privacy disputes will be
+                determined as per our Privacy Policy. 
+              </>
+            }
           />
           <ContentParagraph
             heading={`18. Consent to Service of Process by Email`}
@@ -924,33 +1141,62 @@ function TermOfUseContent() {
           />
           <ContentParagraph
             heading={`21. General Provisions`}
-            content={`Violation of this Agreement may cause Le Society
-          irreparable harm, and You therefore agree that Le Society will be
-          entitled to seek extraordinary relief in court, including but not
-          limited to, temporary restraining orders, preliminary injunctions and
-          permanent injunctions without the necessity of posting a bond or other
-          security, in addition to and without prejudice to any other rights or
-          remedies that Le Society may have for a breach of this Agreement. This
-          Agreement (which You accept  by using the Website and further affirm
-          by becoming a Member of the Service), along with the Le Society
-          Privacy Policy located on the Website and any applicable payment,
-          renewal and additional Service terms, comprise the entire agreement
-          between You and Le Society regarding the use of the Website and/or the
-          Service, superseding any prior agreements between You and Le Society
-          related to your use of the Website or Service (including, but not
-          limited to, any prior versions of this Agreement). Unless otherwise
-          explicitly stated, this Agreement will survive termination of your
-          registration to the Service. If any provision of this Agreement is
-          held invalid, the remainder of this Agreement shall continue in full
-          force and effect. The failure of Le Society to exercise or enforce any
-          right or provision of this Agreement shall not constitute a waiver of
-          such right or provision. You agree that your online account is
-          non-transferable and all of your rights to your profile or contents
-          within your account terminate upon your death. No agency, partnership,
-          joint venture or employment is created as a result of this Agreement
-          and You may not make any representations or bind Le Society in any
-          manner.  Summary: These are general terms to which You agree, just
-          like You are agreeing to all the other terms in this agreement.`}
+            content={
+              <>
+                <ul>
+                  <li>
+                    Violation of this Agreement may cause Le Society irreparable
+                    harm, and You therefore agree that Le Society will be
+                    entitled to seek extraordinary relief in court, including
+                    but not limited to, temporary restraining orders,
+                    preliminary injunctions and permanent injunctions without
+                    the necessity of posting a bond or other security, in
+                    addition to and without prejudice to any other rights or
+                    remedies that Le Society may have for a breach of this
+                    Agreement.
+                  </li>
+                  <li>
+                    This Agreement (which You accept  by using the Website and
+                    further affirm by becoming a Member of the Service), along
+                    with the Le Society Privacy Policy located on the Website
+                    and any applicable payment, renewal and additional Service
+                    terms, comprise the entire agreement between You and Le
+                    Society regarding the use of the Website and/or the Service,
+                    superseding any prior agreements between You and Le Society
+                    related to your use of the Website or Service (including,
+                    but not limited to, any prior versions of this Agreement).{" "}
+                  </li>
+                  <li>
+                    Unless otherwise explicitly stated, this Agreement will
+                    survive termination of your registration to the Service.{" "}
+                  </li>
+                  <li>
+                    If any provision of this Agreement is held invalid, the
+                    remainder of this Agreement shall continue in full force and
+                    effect.{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    The failure of Le Society to exercise or enforce any right
+                    or provision of this Agreement shall not constitute a waiver
+                    of such right or provision.{" "}
+                  </li>
+                  <li>
+                    You agree that your online account is non-transferable and
+                    all of your rights to your profile or contents within your
+                    account terminate upon your death.{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    No agency, partnership, joint venture or employment is
+                    created as a result of this Agreement and You may not make
+                    any representations or bind Le Society in any manner. 
+                  </li>
+                </ul>
+                Summary: These are general terms to which You agree, just like
+                You are agreeing to all the other terms in this agreement.
+              </>
+            }
           />
                      
           <ContentParagraph
