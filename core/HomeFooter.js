@@ -6,6 +6,7 @@ import Facebook from "../assets/img/FB.png";
 import Twitter from "../assets/img/Twitter (1).png";
 import Insta from "../assets/img/Insta (1).png";
 import Tiktok from "../assets/img/Tiktok (1).png";
+
 export default function Footer(props) {
   console.log(props);
   return (
@@ -40,7 +41,23 @@ export default function Footer(props) {
             <div className="footer-text">
               <div className="footer-text-1 mb-2 mt-3">
                 <span>
-                  FAQ | Safety Tips | Terms | Privacy Settings | Our Story
+                  <Link href="/FAQ">FAQ </Link>
+                </span>
+                |
+                <span>
+                  <Link href="/SafetyTips"> Safety Tips </Link>
+                </span>
+                |
+                <span>
+                  <Link href="/TermOfUse"> Terms </Link>
+                </span>
+                |
+                <span>
+                  <Link href="/PrivacyPolicies"> Privacy Settings </Link>
+                </span>
+                |
+                <span>
+                  <Link href="/OurStory"> Our Story </Link>
                 </span>
               </div>
               <div className="footer-text-2 mb-2 mt-3">
