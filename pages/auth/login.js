@@ -50,8 +50,9 @@ function LoginPage({ dispatch }) {
           </div>
           {width > 767 && (
             <p className="terms-cond-text">
-              By clicking sign in you agree to our <Link href="#">terms</Link>{" "}
-              and <Link href="#">privacy policy</Link>.
+              By clicking sign in you agree to our{" "}
+              <Link href="/TermOfUse">terms</Link> and{" "}
+              <Link href="/PrivacyPolicies">privacy policy</Link>.
             </p>
           )}
         </div>

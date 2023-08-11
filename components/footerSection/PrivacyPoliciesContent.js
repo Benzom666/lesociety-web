@@ -67,19 +67,33 @@ function PrivacyPoliciesContent() {
           Personal Data:`}
             content={
               <>
-                Le Society uses this information to: Provide, maintain, and
-                improve the Services; Personalize the content you see; Provide
-                Customer Service; Help protect the safety of Le Society and its
-                users, which includes blocking suspected spammers, investigating
-                and addressing abuse, and enforcing the Le Society Terms of Use
-                and Privacy Policy; Inform you of updates to our services,
-                security alerts, and other support and administrative messages;
-                Communicate with you about products, services, offers,
-                promotions, and events, and provide other news and information
-                we think will be of interest to you (for information about how
-                to opt out of these communications, see “Choices” below); and
-                Monitor and analyze trends, usage, and activities in connection
-                with the Services.
+                Le Society uses this information to:
+                <ul>
+                  <li>Provide, maintain, and improve the Services; </li>
+                  <li>Personalize the content you see;</li>
+                  <li>Provide Customer Service; </li>
+                  <li>
+                    Help protect the safety of Le Society and its users, which
+                    includes blocking suspected spammers, investigating and
+                    addressing abuse, and enforcing the Le Society Terms of Use
+                    and Privacy Policy;
+                  </li>
+                  <li>
+                    Inform you of updates to our services, security alerts, and
+                    other support and administrative messages;
+                  </li>
+                  <li>
+                    Communicate with you about products, services, offers,
+                    promotions, and events, and provide other news and
+                    information we think will be of interest to you (for
+                    information about how to opt out of these communications,
+                    see “Choices” below); and{" "}
+                  </li>
+                  <li>
+                    Monitor and analyze trends, usage, and activities in
+                    connection with the Services.
+                  </li>
+                </ul>
               </>
             }
           />
@@ -115,17 +129,22 @@ function PrivacyPoliciesContent() {
             heading={`Cookies`}
             content={
               <>
-                When you utilize the Services, we—along with certain business
-                partners and vendors—may use cookies and other tracking
-                technologies (collectively, “Cookies”). We use Cookies as
-                outlined in the “How Your Information Is Used Section.”  
-                Certain aspects and features of the Services are only available
-                through the use of Cookies, so if you choose to disable or
-                decline Cookies, your use of the Services may be limited or not
-                possible. Certain aspects and features of the FD Services are
-                only available through the use of Cookies, so if you choose to
-                disable or decline Cookies, your use of the FD Services may be
-                limited or not possible.
+                <p>
+                  When you utilize the Services, we—along with certain business
+                  partners and vendors—may use cookies and other tracking
+                  technologies (collectively, “Cookies”). We use Cookies as
+                  outlined in the “How Your Information Is Used Section.”
+                  Certain aspects and features of the Services are only
+                  available through the use of Cookies, so if you choose to
+                  disable or decline Cookies, your use of the Services may be
+                  limited or not possible.
+                </p>
+                <p className="privacy__policies__cookies">
+                  Certain aspects and features of the FD Services are only
+                  available through the use of Cookies, so if you choose to
+                  disable or decline Cookies, your use of the FD Services may be
+                  limited or not possible.
+                </p>
               </>
             }
           />
@@ -145,49 +164,82 @@ function PrivacyPoliciesContent() {
             content={
               <>
                 When you use the Services, certain information may be shared
-                with other users and the public. For example: When you submit a
-                post or comment to the Services, visitors to and users of the
-                Services will be able to see the content of your posts and
-                descriptions such as the username associated with your posts,
-                and the date and time you originally submitted the posts and
-                descriptions. Although some parts of the services may be private
-                or quarantined, they may become public and you should take that
-                into consideration before posting to the Services. When you send
-                private messages or messages, the recipients of those messages
-                will be able to see the content of your message, your username,
-                and the date and time the message was sent. Please use caution
-                when sharing information about yourself to third parties, as we
-                have no control over how they will use the information you share
-                with them. When other users view your profile, they will be able
-                to see information about your activities on the Services, such
-                as your username, prior posts and personal information, etc. We
-                will not share, sell, or give away any of our users’ personal
-                information to third parties, unless one of the following
-                circumstances applies: We may share information with vendors,
-                consultants, and other service providers who need access to such
-                information to carry out work for us. A complete list of the
-                types of these third parties is at Appendix I at the end of this
-                Policy. These companies may have access to your personal
-                information as necessary to perform their functions, and they
-                are contractually obligated to maintain the confidentiality of
-                any personal information in which they come in contact as part
-                of their services to Le Society. If you participate in
-                promotions, special offers, or other events or activities in
-                connection with the Services, we may share information with
-                entities that partner with us to provide these offerings; We may
-                share information in response to a request for information if we
-                believe disclosure is in accordance with, or required by, any
-                applicable law, regulation, legal process or governmental
-                request, including, but not limited to meeting national security
-                or law enforcement requirements; We may share information in
-                response to an emergency if we believe it is necessary to
-                prevent imminent and serious bodily harm to a person; We may
-                share aggregated or anonymized information, which cannot
-                reasonably be used to identify you; We may share information
-                between and among Le Society, and its current and future
-                parents, affiliates, subsidiaries, and other companies under
-                common control and ownership; and We may share information with
-                your consent or at your direction.
+                with other users and the public. For example:
+                <ul>
+                  <li>
+                    When you submit a post or comment to the Services, visitors
+                    to and users of the Services will be able to see the content
+                    of your posts and descriptions such as the username
+                    associated with your posts, and the date and time you
+                    originally submitted the posts and descriptions. Although
+                    some parts of the services may be private or quarantined,
+                    they may become public and you should take that into
+                    consideration before posting to the Services.
+                  </li>
+                  <li>
+                    {" "}
+                    When you send private messages or messages, the recipients
+                    of those messages will be able to see the content of your
+                    message, your username, and the date and time the message
+                    was sent. Please use caution when sharing information about
+                    yourself to third parties, as we have no control over how
+                    they will use the information you share with them.
+                  </li>
+                  <li>
+                    When other users view your profile, they will be able to see
+                    information about your activities on the Services, such as
+                    your username, prior posts and personal information, etc.
+                  </li>
+                  <li>
+                    We will not share, sell, or give away any of our users’
+                    personal information to third parties, unless one of the
+                    following circumstances applies:
+                  </li>
+                  <li>
+                    We may share information with vendors, consultants, and
+                    other service providers who need access to such information
+                    to carry out work for us. A complete list of the types of
+                    these third parties is at Appendix I at the end of this
+                    Policy. These companies may have access to your personal
+                    information as necessary to perform their functions, and
+                    they are contractually obligated to maintain the
+                    confidentiality of any personal information in which they
+                    come in contact as part of their services to Le Society.{" "}
+                  </li>
+                  <li>
+                    If you participate in promotions, special offers, or other
+                    events or activities in connection with the Services, we may
+                    share information with entities that partner with us to
+                    provide these offerings;{" "}
+                  </li>
+                  <li>
+                    We may share information in response to a request for
+                    information if we believe disclosure is in accordance with,
+                    or required by, any applicable law, regulation, legal
+                    process or governmental request, including, but not limited
+                    to meeting national security or law enforcement
+                    requirements;{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    We may share information in response to an emergency if we
+                    believe it is necessary to prevent imminent and serious
+                    bodily harm to a person;{" "}
+                  </li>
+                  <li>
+                    We may share aggregated or anonymized information, which
+                    cannot reasonably be used to identify you;{" "}
+                  </li>
+                  <li>
+                    We may share information between and among Le Society, and
+                    its current and future parents, affiliates, subsidiaries,
+                    and other companies under common control and ownership; and
+                  </li>
+                  <li>
+                    We may share information with your consent or at your
+                    direction.
+                  </li>
+                </ul>
               </>
             }
           />
@@ -373,8 +425,14 @@ function PrivacyPoliciesContent() {
             heading={`Appendix I`}
             content={
               <>
-                Types of Vendor Third Parties Web server hosting Data analysis
-                Marketing services Security services Card and payment processors
+                Types of Vendor Third Parties
+                <ul>
+                  <li>Web server hosting</li>
+                  <li>Data analysis</li>
+                  <li>Marketing services</li>
+                  <li>Security services</li>
+                  <li>Card and payment processors</li>
+                </ul>
               </>
             }
           />

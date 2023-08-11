@@ -143,6 +143,10 @@ class MyApp extends App {
         <Head>
           <title>Le Society</title>
           <link rel="icon" href="/favicon.svg" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Pacifico"
+            rel="stylesheet"
+          />
           <meta
             name="viewport"
             content="width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no"

@@ -205,7 +205,7 @@ const FirstStep = ({ gender, ...props }) => {
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
       <div className="d-block d-md-none login-text">
-        <a href="registration">
+        <a href="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
