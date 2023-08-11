@@ -53,7 +53,7 @@ export default function Footer(props) {
                 </span>
                 |
                 <span>
-                  <Link href="/PrivacyPolicies"> Privacy Settings </Link>
+                  <Link href="/PrivacyPolicies"> Privacy </Link>
                 </span>
                 |
                 <span>
