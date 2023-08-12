@@ -44,7 +44,7 @@ function HomePageMiddleNav(props) {
             {width > 769 && (
               <div className="navfooter-text-1">
                 <span style={props.styleText}>
-                  Start A New Adventure.{" "}
+                  Highly Secure & Exclusive.{" "}
                   <span
                     style={{
                       color: " #f24462",
@@ -76,7 +76,7 @@ function HomePageMiddleNav(props) {
                     fontWeight: "bold",
                   }}
                 >
-                  Start A New Adventure.
+                  Highly Secure & Exclusive.
                   <br />
                   <p
                     style={{

@@ -276,7 +276,7 @@ const CreateStepFour = (props) => {
                       validationLength={500}
                       component={Inputs.textarea}
                       //label="Describe_Date_Details"
-                      placeholder="Write details here (expectations, itinerary, rules, etc.)"
+                      placeholder="Help our gentlemen understand your choice for this date and give them insight into your personality. This will help them know what to expect from the experience. (You can also include expectations, your availability or any rules you might have.)"
                       onChange={changeHandler}
                       value={val}
                     />

@@ -399,7 +399,7 @@ const VerifiedProfilePage = (props) => {
                             </p>
                           ) : (
                             <p className="mb-0">
-                              Upload a valid passport or driver’s license
+                              Upload a valid passport or drivers license
                             </p>
                           )}
                         </p>

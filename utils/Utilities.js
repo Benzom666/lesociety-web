@@ -544,6 +544,10 @@ export const femaleBodyType = [
     id: "Plus",
     name: "Plus",
   },
+  {
+    id: "Average",
+    name: "Average",
+  },
 ];
 
 export const maleBodyType = [
@@ -589,6 +593,14 @@ export const Ethnicity = [
   {
     id: "Asian",
     name: "Asian",
+  },
+  {
+    id: "Middle Eastern",
+    name: "Middle Eastern",
+  },
+  {
+    id: "East Indian",
+    name: "East Indian",
   },
   {
     id: "Other",

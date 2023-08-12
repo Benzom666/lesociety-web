@@ -39,6 +39,10 @@ const education = [
     id: "7",
     name: "Undergraduate",
   },
+  {
+    id: "8",
+    name: "PHD",
+  },
 ];
 
 const smoker = [
@@ -80,6 +84,18 @@ let occupation = [
   {
     id: "7",
     name: "Retired",
+  },
+  {
+    id: "8",
+    name: "Executive",
+  },
+  {
+    id: "9",
+    name: "Photography",
+  },
+  {
+    id: "10",
+    name: "CEO",
   },
 ];
 

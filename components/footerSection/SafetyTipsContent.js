@@ -17,13 +17,12 @@ function SafetyTipsContent() {
             Never meet someone at their car, in the parking lot, at a hotel or
             motel, or any other location where you feel you can't leave right
             away or safely. Whenever you feel uneasy, trust your instincts and
-            leave the situation. Don't think twice. Just in case Avoid using
-            your full name as
+            leave the situation. Don't think twice.
           </li>
           <li>
-            your username when chatting online. Just use your first name or come
-            up with a harmless email address and a random name. Come up with a
-            clever name to use.
+            Just in case Avoid using your full name as your username when
+            chatting online. Just use your first name or come up with a harmless
+            email address and a random name. Come up with a clever name to use.
           </li>
 
           <li>

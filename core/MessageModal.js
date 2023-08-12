@@ -369,7 +369,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                 }}
               </Formik>
             </div>
-            <p className="tip">Tip: ask her which date she prefers</p>
+            <p className="tip">Tip: Maybe mention why you’re here.</p>
           </div>
         </>
       )}

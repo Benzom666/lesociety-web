@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { IoIosClose } from "react-icons/io";
 import { apiRequest } from "utils/Utilities";
-import { logout } from "../auth/authActions";
+import { logout } from "../../modules/auth/authActions";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { AUTHENTICATE_UPDATE } from "../auth/actionConstants";
 import { CSSTransition } from "react-transition-group";
+import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
 
 const customStyles = {
   content: {
@@ -26,13 +26,12 @@ const customStyles = {
   },
 };
 
-const MainPhotoGuide = ({ setHideModal, hideModal, val }) => {
+const MainPhotoGuideModal = ({ setHideModal, hideModal, val }) => {
   const user = useSelector((state) => state.authReducer.user);
   const [modalIsOpen, setIsOpen] = useState(!hideModal);
   const [checked, setChecked] = useState(false);
   const [showAnimation, setShowAnimation] = useState(showWarningPopup);
-  // console.log("show Animation>>", showAnimation);
-  // console.log("show showWarningPopup>>", showWarningPopup);
+
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -48,7 +47,7 @@ const MainPhotoGuide = ({ setHideModal, hideModal, val }) => {
   }
 
   useEffect(() => {
-    if (user?.date_warning_popup) {
+    if (user?.image_warning_popup) {
       setHideModal(true);
     }
   }, [user]);
@@ -60,17 +59,17 @@ const MainPhotoGuide = ({ setHideModal, hideModal, val }) => {
     }
     try {
       const data = {
-        date_warning_popup: checked,
+        image_warning_popup: checked,
       };
       const res = await apiRequest({
         data: data,
         method: "POST",
-        url: `user/update-date-warning-status`,
+        url: `user/update-image-warning-popup`,
       });
 
       dispatch({
         type: AUTHENTICATE_UPDATE,
-        payload: { date_warning_popup: true },
+        payload: { image_warning_popup: true },
       });
       setHideModal(true);
     } catch (err) {
@@ -105,7 +104,7 @@ const MainPhotoGuide = ({ setHideModal, hideModal, val }) => {
       return err;
     }
   };
-  const showWarningPopup = !hideModal && val.length > 0;
+  const showWarningPopup = !hideModal;
   const [openWarningPopup, setOpenWarningPopup] = useState(true);
   const closeDateWarningPopup = () => {
     setShowAnimation(false);
@@ -169,4 +168,4 @@ const MainPhotoGuide = ({ setHideModal, hideModal, val }) => {
   ) : null;
 };
 
-export default MainPhotoGuide;
+export default MainPhotoGuideModal;
