@@ -92,6 +92,9 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
       element.style.opacity = 0;
       closePopup();
       setTextSlideClass("");
+      // reset elements position added by aakash prajapati
+      element.style.left = "0px";
+      element.style.top = "0px";
     }, 3000);
   };
 
