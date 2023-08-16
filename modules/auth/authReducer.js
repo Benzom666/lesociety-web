@@ -6,6 +6,7 @@ import {
   DELETE_FORM_DATA,
   CHANGE_SELECTED_LOCATION_POPUP,
   SET_GENDER,
+  CHANGE_IMAGE_WARNING_POPUP,
 } from "./actionConstants";
 import { getCookie, setCookie, removeCookie } from "../../utils/cookie";
 import {
@@ -30,6 +31,7 @@ if (typeof localStorage !== "undefined") {
     initialState = {
       isLoggedIn: false,
       showSelectedLocationPopup: true,
+      showImageWarningPopup: true,
       gender: "",
       user: {},
     };
@@ -38,6 +40,7 @@ if (typeof localStorage !== "undefined") {
   initialState = {
     isLoggedIn: false,
     showSelectedLocationPopup: true,
+    showImageWarningPopup: true,
     gender: "",
     user: {},
   };
@@ -58,6 +61,7 @@ const authReducer = (state = initialState, action) => {
     case AUTHENTICATE:
       const authObj = {
         showSelectedLocationPopup: true,
+        showImageWarningPopup: true,
         isLoggedIn: true,
         user: action.payload,
       };
@@ -73,6 +77,7 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: { ...state.user, ...action.payload },
         showSelectedLocationPopup: true,
+        showImageWarningPopup: true,
       };
       // setCookie("auth", JSON.stringify(updateAuth));
       // setSessionStorage("auth", JSON.stringify(updateAuth));
@@ -92,15 +97,27 @@ const authReducer = (state = initialState, action) => {
         ...state,
         showSelectedLocationPopup: action.payload,
         isLoggedIn: true,
+        showImageWarningPopup: true,
         user: { ...state.user },
       };
       saveToLocalStorage(selectedLocationObj);
       return selectedLocationObj;
 
+    case CHANGE_IMAGE_WARNING_POPUP:
+      const WaringPopupnObj = {
+        ...state,
+        showSelectedLocationPopup: true,
+        isLoggedIn: true,
+        showImageWarningPopup: action.payload,
+      };
+      saveToLocalStorage(WaringPopupnObj);
+      return WaringPopupnObj;
+
     case SET_GENDER:
       const setGender = {
         ...state,
         showSelectedLocationPopup: true,
+        showImageWarningPopup: true,
         isLoggedIn: false,
         user: { ...state.user },
         gender: action.payload,

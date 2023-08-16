@@ -1,58 +1,26 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
-import { IoIosClose } from "react-icons/io";
 import { apiRequest } from "utils/Utilities";
-import { logout } from "../../modules/auth/authActions";
+import { changeImageWaringPopup, logout } from "../../modules/auth/authActions";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { CSSTransition } from "react-transition-group";
-import { AUTHENTICATE_UPDATE } from "@/modules/auth/actionConstants";
+import Modal from "react-modal";
+import NoImage from "assets/image_warning_popup.png";
+import Image from "next/image";
+import useWindowSize from "utils/useWindowSize";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    borderRadius: "30px",
-    background:
-      "linear-gradient(231.4deg, rgba(46, 49, 58, 0.80844) 18.16%, rgba(25, 25, 25, 0.831845) 95.56%)",
-  },
-  overlay: {
-    backdropFilter: "blur(5px)",
-  },
-};
-
-const MainPhotoGuideModal = ({ setHideModal, hideModal, val }) => {
-  const user = useSelector((state) => state.authReducer.user);
-  const [modalIsOpen, setIsOpen] = useState(!hideModal);
+const MainPhotoGuideModal = ({ hideModal, setHideModal, showAnimation }) => {
   const [checked, setChecked] = useState(false);
-  const [showAnimation, setShowAnimation] = useState(showWarningPopup);
-
+  const [modalIsOpen, setIsOpen] = useState(!hideModal);
+  const user = useSelector((state) => state.authReducer.user);
   const router = useRouter();
   const dispatch = useDispatch();
-
   const checkHandler = () => {
     setChecked(!checked);
   };
-  function openModal() {
-    setIsOpen(true);
-  }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const { width } = useWindowSize();
 
-  useEffect(() => {
-    if (user?.image_warning_popup) {
-      setHideModal(true);
-    }
-  }, [user]);
-
-  const handleSubmit = async (values) => {
+  const modalHandleSubmit = async (values) => {
     if (!checked) {
       setHideModal(true);
       return;
@@ -66,11 +34,8 @@ const MainPhotoGuideModal = ({ setHideModal, hideModal, val }) => {
         method: "POST",
         url: `user/update-image-warning-popup`,
       });
+      dispatch(changeImageWaringPopup(false));
 
-      dispatch({
-        type: AUTHENTICATE_UPDATE,
-        payload: { image_warning_popup: true },
-      });
       setHideModal(true);
     } catch (err) {
       if (
@@ -86,86 +51,76 @@ const MainPhotoGuideModal = ({ setHideModal, hideModal, val }) => {
     return;
   };
 
-  const getUpdatedUserDetails = async () => {
-    try {
-      const res = await apiRequest({
-        method: "GET",
-        url: `user/user-by-name?user_name=${user?.user_name}`,
-      });
-    } catch (err) {
-      if (
-        err?.response?.status === 401 &&
-        err?.response?.data?.message === "Failed to authenticate token!"
-      ) {
-        setTimeout(() => {
-          logout(router, dispatch);
-        }, 100);
-      }
-      return err;
-    }
-  };
-  const showWarningPopup = !hideModal;
-  const [openWarningPopup, setOpenWarningPopup] = useState(true);
-  const closeDateWarningPopup = () => {
-    setShowAnimation(false);
-    setIsOpen(false);
-  };
-  return showWarningPopup ? (
-    <div>
-      {/* <CSSTransition in={modalIsOpen} timeout={300} classNames="dialog"> */}
-      <Modal
-        isOpen={modalIsOpen}
-        //style={customStyles}
-        ariaHideApp={false}
-        closeTimeoutMS={2000}
-        contentLabel="Example Modal"
-        // className={`Warning_Popup ${openWarningPopup ? "show-1" :"hide-1"}`}
-        className="Warning_Popup"
+  return (
+    <div className="image__popup__container">
+      <div
+        className={`image__warning__popup show_1 ${
+          showAnimation ? "show_1" : ""
+        }`}
       >
-        <div className="warning_modal_main">
-          {/* <div className="w-15 text-end pe-1">
-                <IoIosClose
-                  className="mouse-point"
-                  size={33}
-                  onClick={closeDateWarningPopup}
-                />
-              </div> */}
-          <div className="WarnigPopUp_Heading">
-            <h2>Any content that contains the </h2>
-            <h2>following will be removed</h2>
+        <div className="popup_heading">Main Photo Guidelines</div>
+        <div className="popup_text">
+          For a top-notch experience,
+          {width <= 600 && <br />}
+          please follow the instructions.
+        </div>
+        <div className="popup__image">
+          <Image src={NoImage} alt="NoImage" width={169} height={254} />
+        </div>
+        <div className="list-of-warning">
+          <ul>
+            <li> Should feature ONLY you</li>
+            <li>Photo must be clear</li>
+            <li>Filters are NOT allowed</li>
+            <li>Criminal Activity</li>
+            <li>Keep it classy</li>
+          </ul>
+          <div className="follow_instruction_text">
+            Please follow these rules to gain access.
+            <br />
+            No filters are allowed, as you cannot
+            {width <= 600 && <br />}bring your filter to your date.
           </div>
-          <div className="list-of-warning">
-            <ul>
-              <li>Escorting/Prostitution</li>
-              <li>Personal Contact Info</li>
-              <li>Commercial Activity</li>
-              <li>Criminal Activity</li>
-              <li>Scamming</li>
-            </ul>
-            <div className="dont-show">
-              <div className="dont-show-checkBox">
-                <input type="checkbox" checked={checked} />
-                <span
-                  className="checkmark"
-                  aria-role="checkbox"
-                  onClick={checkHandler}
-                  aria-hidden={true}
-                ></span>
-              </div>
-              <p className="dont-show-text">Don’t show this again.</p>
+          {/* <div className="dont-show">
+            <div className="dont-show-checkBox">
+              <input type="checkbox" checked={checked} />
+              <span
+                className="checkmark"
+                aria-role="checkbox"
+                onClick={checkHandler}
+                aria-hidden={true}
+              ></span>
             </div>
-          </div>
-          <div className="warning_modal_footer">
-            <button type="button" onClick={() => handleSubmit()}>
-              Agree and Continue
-            </button>
-            <p className="footer-text-war">No Refunds will be Issued</p>
+            <p className="dont-show-text">Don’t show this again.</p>
+          </div> */}
+          <div className="dont-show">
+            <div className="dont-show-checkBox">
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={() => setChecked(!checked)} // Assuming you're using state to manage 'checked'
+              />
+              <label
+                className="checkmark"
+                aria-role="checkbox"
+                onClick={() => setChecked(!checked)} // Also toggle the state on label click
+              ></label>
+            </div>
+            <p className="dont-show-text">Don’t show this again.</p>
           </div>
         </div>
-      </Modal>
-      {/* </CSSTransition> */}
+        <div className="warning_modal_footer">
+          <button
+            type="button"
+            className="agree-btn"
+            onClick={() => modalHandleSubmit()}
+          >
+            Continue
+          </button>
+        </div>
+      </div>
     </div>
-  ) : null;
+  );
 };
 
 export default MainPhotoGuideModal;

@@ -9,6 +9,7 @@ import {
   LOGIN,
   CHANGE_SELECTED_LOCATION_POPUP,
   SET_GENDER,
+  CHANGE_IMAGE_WARNING_POPUP,
 } from "./actionConstants";
 
 import { reset, initialize } from "redux-form";
@@ -31,6 +32,13 @@ export const deAuthenticateAction = () => {
 export const changeSelectedLocationPopup = (payload) => {
   return {
     type: CHANGE_SELECTED_LOCATION_POPUP,
+    payload,
+  };
+};
+
+export const changeImageWaringPopup = (payload) => {
+  return {
+    type: CHANGE_IMAGE_WARNING_POPUP,
     payload,
   };
 };

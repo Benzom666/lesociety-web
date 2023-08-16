@@ -39,7 +39,7 @@ const CreateStepFour = (props) => {
     if (user?.date_warning_popup && !hideModal) {
       setHideModal(true);
     }
-  }, [user]);
+  }, [user?.date_warning_popup]);
 
   useEffect(() => {
     if (!hideModal && val.length > 0) {
