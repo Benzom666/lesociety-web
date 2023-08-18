@@ -199,6 +199,7 @@
     height: 750px !important;
     .popup_heading {
       font-size: 18px !important;
+      font-weight: 900;
     }
 
     .popup_text {
@@ -210,6 +211,11 @@
       padding-left: 40px;
       padding-right: 40px;
       // add break after comma
+    }
+    .warning_modal_footer {
+      .agree-btn {
+        width: 100%;
+      }
     }
   }
 

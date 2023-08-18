@@ -72,7 +72,6 @@ const MainPhotoGuideModal = ({ hideModal, setHideModal, showAnimation }) => {
             <li> Should feature ONLY you</li>
             <li>Photo must be clear</li>
             <li>Filters are NOT allowed</li>
-            <li>Criminal Activity</li>
             <li>Keep it classy</li>
           </ul>
           <div className="follow_instruction_text">
