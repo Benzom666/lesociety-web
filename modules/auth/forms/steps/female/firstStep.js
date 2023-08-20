@@ -394,8 +394,8 @@ const FirstStep = ({ gender, ...props }) => {
                 <p className="next-text">
                   By clicking “Next” I certify that I’m at least 18 years old
                   and agree to the Le Society{" "}
-                  <Link href="/">PrivacyPolicy</Link> and{" "}
-                  <Link href="/">Terms</Link>
+                  <Link href="/PrivacyPolicies">PrivacyPolicy</Link> and{" "}
+                  <Link href="/TermOfUse">Terms</Link>
                 </p>
               </div>
               <div className="bottom-mobile register-bottom">
