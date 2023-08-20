@@ -100,7 +100,7 @@ function DateWarningModal({ setHideModal, showAnimation }) {
             <li>Criminal Activity</li>
             <li>Scamming</li>
           </ul>
-          <div className="dont-show">
+          {/* <div className="dont-show">
             <div className="dont-show-checkBox">
               <input type="checkbox" checked={checked} />
               <span
@@ -109,6 +109,21 @@ function DateWarningModal({ setHideModal, showAnimation }) {
                 onClick={checkHandler}
                 aria-hidden={true}
               ></span>
+            </div>
+            <p className="dont-show-text">Don’t show this again.</p>
+          </div> */}
+          <div className="dont-show">
+            <div className="dont-show-checkBox">
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={() => setChecked(!checked)} // Assuming you're using state to manage 'checked'
+              />
+              <label
+                className="checkmark"
+                aria-role="checkbox"
+                onClick={() => setChecked(!checked)} // Also toggle the state on label click
+              ></label>
             </div>
             <p className="dont-show-text">Don’t show this again.</p>
           </div>
