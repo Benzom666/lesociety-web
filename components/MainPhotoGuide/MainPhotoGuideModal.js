@@ -20,6 +20,8 @@ const MainPhotoGuideModal = ({ hideModal, setHideModal, showAnimation }) => {
 
   const { width } = useWindowSize();
 
+  console.log("user?._id", user?._id);
+
   const modalHandleSubmit = async (values) => {
     if (!checked) {
       setHideModal(true);
@@ -32,7 +34,7 @@ const MainPhotoGuideModal = ({ hideModal, setHideModal, showAnimation }) => {
       const res = await apiRequest({
         data: data,
         method: "POST",
-        url: `user/update-image-warning-popup`,
+        url: `user/update-image-warning-popup/${user?._id}`,
       });
       dispatch(changeImageWaringPopup(false));
 
