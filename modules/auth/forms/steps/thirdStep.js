@@ -12,6 +12,7 @@ import { deAuthenticateAction, logout, signupStep3 } from "../../authActions";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import { useRouter } from "next/router";
+import { Slider as HeightSlider } from "antd";
 
 const education = [
   {
@@ -303,7 +304,7 @@ const ThirdStep = (props) => {
             <IoSync /> {tallValueUnit ? "feet" : "cm"}
           </a>
         </label>
-        <Slider
+        {/* <Slider
           value={tallValue}
           tooltip={true}
           handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
@@ -311,7 +312,24 @@ const ThirdStep = (props) => {
           max={250}
           onChange={(val) => !router?.query?.type && setTallValue(val)}
           disabled={router?.query?.type && router?.query?.edit}
-          // this is not working on iphone
+          onAfterChange={(val) => setTallValue(val)}
+        /> */}
+        <HeightSlider
+          value={tallValue}
+          tooltip={{
+            open: true,
+            placement: "bottom",
+            autoAdjustOverflow: false,
+          }}
+          min={100}
+          max={250}
+          handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
+          onChange={(val) => !router?.query?.type && setTallValue(val)}
+          disabled={router?.query?.type && router?.query?.edit}
+          tipFormatter={(value) =>
+            tallValueUnit ? toFeet(tallValue) : tallValue
+          }
+          // use
           onAfterChange={(val) => setTallValue(val)}
         />
 

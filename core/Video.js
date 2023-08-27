@@ -21,6 +21,11 @@ const VideoJS = (props) => {
         onReady && onReady(player);
       }));
 
+      player.on("ended", () => {
+        player.currentTime(0); // Reset the current time to replay
+        player.play();
+      });
+
       // You could update an existing player in the `else` block here
       // on prop change, for example:
     } else {

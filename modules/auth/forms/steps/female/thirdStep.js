@@ -9,6 +9,7 @@ import { IoSync } from "react-icons/io5";
 import useWindowSize from "utils/useWindowSize";
 import Slider from "react-rangeslider";
 import { deAuthenticateAction } from "@/modules/auth/authActions";
+import { Slider as HeightSlider } from "antd";
 
 const education = [
   {
@@ -299,13 +300,31 @@ const ThirdStep = (props) => {
             <IoSync /> {tallValueUnit ? "feet" : "cm"}
           </a>
         </label>
-        <Slider
+        {/* <Slider
           value={tallValue}
           tooltip={true}
           min={0}
           handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
           max={250}
           onChange={(val) => setTallValue(val)}
+          onAfterChange={(val) => setTallValue(val)}
+        /> */}
+        <HeightSlider
+          value={tallValue}
+          tooltip={{
+            open: true,
+            placement: "bottom",
+            autoAdjustOverflow: false,
+          }}
+          min={100}
+          max={250}
+          handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
+          onChange={(val) => !router?.query?.type && setTallValue(val)}
+          disabled={router?.query?.type && router?.query?.edit}
+          tipFormatter={(value) =>
+            tallValueUnit ? toFeet(tallValue) : tallValue
+          }
+          // use
           onAfterChange={(val) => setTallValue(val)}
         />
 
