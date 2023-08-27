@@ -304,7 +304,7 @@ const ThirdStep = (props) => {
             <IoSync /> {tallValueUnit ? "feet" : "cm"}
           </a>
         </label>
-        {/* <Slider
+        <Slider
           value={tallValue}
           tooltip={true}
           handleLabel={tallValueUnit ? toFeet(tallValue) : tallValue}
@@ -313,7 +313,7 @@ const ThirdStep = (props) => {
           onChange={(val) => !router?.query?.type && setTallValue(val)}
           disabled={router?.query?.type && router?.query?.edit}
           onAfterChange={(val) => setTallValue(val)}
-        /> */}
+        />
         <HeightSlider
           value={tallValue}
           tooltip={{
