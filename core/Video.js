@@ -35,6 +35,12 @@ const VideoJS = (props) => {
       player.on("dblclick", (event) => {
         event.preventDefault();
       });
+      // stop open fullscreen on iphone
+      player.on("fullscreenchange", (event) => {
+        if (player.isFullscreen()) {
+          player.exitFullscreen();
+        }
+      });
     } else {
       const player = playerRef.current;
 
@@ -72,11 +78,14 @@ const VideoComponent = () => {
     fluid: true,
     sources: [
       {
-        // src: "https://lesociety.s3.ca-central-1.amazonaws.com/secret-time/uploads/lasociety_3.mp4",
         src: "https://d2hill0ae3zx76.cloudfront.net/secret-time/uploads/output.mp4",
         type: "video/mp4",
       },
     ],
+    html5: {
+      // Enable inline playback on iOS
+      playsinline: true,
+    },
   };
 
   const handlePlayerReady = (player) => {
