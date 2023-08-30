@@ -21,13 +21,20 @@ const VideoJS = (props) => {
         onReady && onReady(player);
       }));
 
-      player.on("ended", () => {
-        player.currentTime(0); // Reset the current time to replay
-        player.play();
-      });
+      // player.on("ended", () => {
+      //   player.currentTime(0); // Reset the current time to replay
+      //   player.play();
+      // });
 
       // You could update an existing player in the `else` block here
       // on prop change, for example:
+      // Hide fullscreen button
+      player.controlBar.removeChild("FullscreenToggle");
+      player.controlBar.removeChild("PictureInPictureToggle");
+      // Disable double-click to fullscreen feature
+      player.on("dblclick", (event) => {
+        event.preventDefault();
+      });
     } else {
       const player = playerRef.current;
 
@@ -59,7 +66,7 @@ const VideoComponent = () => {
   const playerRef = React.useRef(null);
 
   const videoJsOptions = {
-    autoplay: true,
+    autoplay: false,
     controls: true,
     responsive: true,
     fluid: true,
