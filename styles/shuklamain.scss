@@ -733,8 +733,8 @@
 
   .warning_popup.show_1 {
     top: unset;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%) !important;
     opacity: 1;
-    bottom: 0;
+    bottom: 0 !important;
   }
 }
