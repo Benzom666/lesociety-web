@@ -34,11 +34,13 @@ const ChooseCity = (props) => {
   const user = useSelector((state) => state.authReducer.user);
 
   const handleChange = async (value, inputAction) => {
+    console.log("countriesCode", state?.enter_country);
     if (inputAction.action === "input-change") {
       setInputValue(value);
       fetchRealLocation(
         value,
-        countriesCode[state?.enter_country?.value],
+        countriesCode[state?.enter_country?.value] ||
+          countriesCode[state?.enter_country?.label],
         setPlaces
       );
     }

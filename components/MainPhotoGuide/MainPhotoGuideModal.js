@@ -80,7 +80,7 @@ const MainPhotoGuideModal = ({ hideModal, setHideModal, showAnimation }) => {
             Please follow these rules to gain access.
             <br />
             No filters are allowed, as you cannot
-            {width <= 600 && <br />}bring your filter to your date.
+            {width <= 600 && <br />} bring your filter to your date.
           </div>
           {/* <div className="dont-show">
             <div className="dont-show-checkBox">
