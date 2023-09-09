@@ -1,16 +1,15 @@
-import { element } from 'prop-types';
-import React, { useState } from 'react'
+import { element } from "prop-types";
+import React, { useState } from "react";
 import useWindowSize from "utils/useWindowSize";
-
-
+import Image from "next/image";
 
 function HomePageMainSection(props) {
-  const { title, maincardImage, children,styles} = props;
+  const { title, maincardImage, children, styles } = props;
   const { width } = useWindowSize();
   return (
     <>
-    <div className='container'>
-      {/* <div className={`row align-items-center mx-0 home-main-section ${styles}`}>
+      <div className="container">
+        {/* <div className={`row align-items-center mx-0 home-main-section ${styles}`}>
       {width >769 &&   <div className="col-lg-3 col-sm-12">
           <div className='main-title'>
             <h5>{title}</h5>
@@ -32,15 +31,29 @@ function HomePageMainSection(props) {
           {children}
         </div>
       </div> */}
-    </div>
-     <div className='main-container'>
-    { width > 769 && <h2 className='heading-text'>{title}</h2>}
-      <img src={maincardImage.src} alt="logo" className='main-image' width="100%"/>
-      { width < 769 && <h2 className='heading-text'>{title}</h2>}
-      <p className='info-text'>{children}</p>
-    </div>
+      </div>
+      <div className="main-container">
+        {width > 769 && <h2 className="heading-text">{title}</h2>}
+        {/* <img
+          src={maincardImage.src}
+          alt="logo"
+          className="main-image"
+          style={{
+            width: "100%",
+          }}
+        /> */}
+        <Image
+          src={maincardImage.src}
+          alt="logo"
+          className="main-image"
+          height={width > 768 ? 980 : 695}
+          width={width > 768 ? 450 : 320}
+        />
+        {width < 769 && <h2 className="heading-text">{title}</h2>}
+        <p className="info-text">{children}</p>
+      </div>
     </>
-  )
+  );
 }
 
-export default HomePageMainSection
+export default HomePageMainSection;

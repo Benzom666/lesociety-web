@@ -26,6 +26,7 @@ import { content } from "@/core/HomePageContent";
 import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 import HomePageCardSectionMobile from "@/core/HomePageCardSectionMobile";
 import useWindowSize from "utils/useWindowSize";
+import Loader from "@/modules/Loader/Loader";
 
 const style1 = {
   // opacity: "0.9",
@@ -44,13 +45,31 @@ const styleBackground = {
 function HomePage({ items }) {
   const { width } = useWindowSize();
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }
+  }, [loading]);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.document.body.style.backgroundColor = "#080808";
     }
   }, []);
   const desktop = width > 768;
-  console.log("width", width < 769);
+
+  if (loading) {
+    return (
+      <div className="home__loader__section">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="inner-part-page auth-section home_page_style">
