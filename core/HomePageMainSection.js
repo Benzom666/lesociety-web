@@ -6,6 +6,9 @@ import Image from "next/image";
 function HomePageMainSection(props) {
   const { title, maincardImage, children, styles } = props;
   const { width } = useWindowSize();
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 50}`;
+  };
   return (
     <>
       <div className="container">
@@ -46,8 +49,12 @@ function HomePageMainSection(props) {
           src={maincardImage.src}
           alt="logo"
           className="main-image"
+          loader={myLoader}
+          priority={true}
           height={width > 768 ? 980 : 695}
           width={width > 768 ? 450 : 320}
+          placeholder="blur"
+          blurDataURL={maincardImage.src}
         />
         {width < 769 && <h2 className="heading-text">{title}</h2>}
         <p className="info-text">{children}</p>
