@@ -54,7 +54,7 @@ function HomePageMainSection(props) {
           height={width > 768 ? 980 : 695}
           width={width > 768 ? 450 : 320}
           placeholder="blur"
-          blurDataURL={maincardImage.src}
+          blurDataURL="https://i.ibb.co/y8RhMrL/Untitled-design.png"
         />
         {width < 769 && <h2 className="heading-text">{title}</h2>}
         <p className="info-text">{children}</p>
