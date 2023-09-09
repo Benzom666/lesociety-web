@@ -62,17 +62,31 @@ function HomePage({ items }) {
   }, []);
   const desktop = width > 768;
 
-  if (loading) {
-    return (
-      <div className="home__loader__section">
-        <Loader />
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+      // also hide scrollbar for all browsers
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      // scroll to top
 
+      document.body.style.overflow = "unset";
+      // also unhide scrollbar for all browsers
+      document.documentElement.style.overflow = "unset";
+    }
+  }, [loading]);
+
+  console.log("loading", loading);
   return (
     <>
       <div className="inner-part-page auth-section home_page_style">
+        {loading && (
+          <div className="home__loader__layout">
+            <div className="home__loader__section">
+              <Loader />
+            </div>
+          </div>
+        )}
         <div className="home-page-navbar">
           <nav className="navbar navbar-dark bg-#080808">
             <div className="LeSociety-Icon-White d-flex">
@@ -90,10 +104,12 @@ function HomePage({ items }) {
             </div>
           </nav>
         </div>
+
         <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman4}>
           <p className="info-text">{content.aboutCardContent}</p>
         </HomePageMainSection>
-        <HomePageMiddleNav style={style1} styleText={style2} />
+        {!loading && <HomePageMiddleNav style={style1} styleText={style2} />}
+
         <HomePageMainSection title="LADIES" maincardImage={Ladies4}>
           <div className="main-content">
             <p className="info-text info-text-Laidies">
@@ -224,6 +240,7 @@ function HomePage({ items }) {
 
         {width > 768 ? <HomePageCardSection /> : <HomePageCardSectionMobile />}
         {/* <HomePageCardSection/> */}
+
         <HomeFooter logo={LeSlogoWhite} styleBackground={styleBackground} />
       </div>
     </>
