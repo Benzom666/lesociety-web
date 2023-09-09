@@ -37,15 +37,15 @@ function HomePageMainSection(props) {
       </div>
       <div className="main-container">
         {width > 769 && <h2 className="heading-text">{title}</h2>}
-        {/* <img
+        <img
           src={maincardImage.src}
           alt="logo"
           className="main-image"
           style={{
             width: "100%",
           }}
-        /> */}
-        <Image
+        />
+        {/* <Image
           src={maincardImage.src}
           alt="logo"
           className="main-image"
@@ -55,7 +55,7 @@ function HomePageMainSection(props) {
           width={width > 768 ? 450 : 320}
           // placeholder="blur"
           // blurDataURL="https://i.ibb.co/y8RhMrL/Untitled-design.png"
-        />
+        /> */}
         {width < 769 && <h2 className="heading-text">{title}</h2>}
         <p className="info-text">{children}</p>
       </div>
