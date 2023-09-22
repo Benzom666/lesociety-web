@@ -8,8 +8,8 @@ import { loadFromLocalStorage } from "./sessionStorage";
 // export const socketURL = "https://api.lesociety.com/";
 // export const apiURL = "https://api.lesociety.com/";
 
-export const socketURL = "https://staging-api.secrettime.com/";
-export const apiURL = "https://staging-api.secrettime.com";
+export const socketURL = "https://staging-api.nsmatka.com/";
+export const apiURL = "https://staging-api.nsmatka.com";
 
 /*export const socketURL =
   process.env.NODE_ENV === "production"
