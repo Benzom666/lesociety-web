@@ -56,6 +56,7 @@ export const renderDropdown = ({
     borderColor = "";
   }
 
+  console.log("input", input);
   return (
     <React.Fragment>
       <div className={`secret-input type-${type}`}>

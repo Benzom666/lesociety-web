@@ -22,6 +22,8 @@ import { logout } from "@/modules/auth/authActions";
 import verifiedIcon from "assets/Group 6.png";
 import useWindowSize from "utils/useWindowSize";
 import { HiBadgeCheck } from "react-icons/hi";
+import StarIcon from "../assets/Star.png";
+import ShowLessIcon from "../assets/show-less-icon.png";
 
 const UserCardList = ({
   date,
@@ -279,9 +281,9 @@ const UserCardList = ({
                           {date?.user_data[0]?.age || "-"}
                         </span>
                       </span>
-                      <span className="price_per_hour">
+                      {/* <span className="price_per_hour">
                         ${date?.price} / <small>{date?.date_length}</small>
-                      </span>
+                      </span> */}
                     </h5>
                   </div>
                   <div className="user_location">
@@ -317,6 +319,10 @@ const UserCardList = ({
                         </ul>
                       </div>
                     </span>
+                    <div className="user__aspiration">
+                      <span className="user__aspiration1">Chef</span>
+                      <span className="user__aspiration2">ASPIRING</span>
+                    </div>
                   </div>
                 </div>
               </>
@@ -375,22 +381,58 @@ const UserCardList = ({
                 className="date_details_desktop"
                 //onClick={toggle}
               >
-                <div onClick={toggle} className="less-txt">
-                  Show less
-                </div>
                 <div>
-                  <h4 style={{ fontWeight: "700", letterSpacing: "0.066px" }}>
-                    Date Details
-                  </h4>
-                  <p
-                    style={{
-                      fontWeight: "300",
-                      letterSpacing: "0.06px",
-                      paddingTop: "1.1rem",
-                    }}
-                  >
-                    {date?.date_details}
-                  </p>
+                  <div onClick={toggle} className="less-txt">
+                    Show less
+                  </div>
+                  <div>
+                    <h4
+                      style={{
+                        fontWeight: "700",
+                        letterSpacing: "0.066px",
+                        marginTop: "20px",
+                        marginBottom: "16px",
+                      }}
+                    >
+                      Date Details
+                    </h4>
+                    <div className="date__detail__time__frame">
+                      <span className="time__frame">Time Frame:</span>
+                      <span className="time__value"> 2 hours</span>
+                    </div>
+                    <div className="time__together">
+                      (Estimated Time Together)
+                    </div>
+                    <div className="super__interested__div">
+                      <Image src={StarIcon} height={15} width={15} />
+
+                      <span className="super__interested">
+                        Super Interested?
+                      </span>
+                    </div>
+                    <div className="support__aspirations__div">
+                      <span className="support__aspirations">
+                        Support Her Aspirations:
+                      </span>
+                      <span className="support__price"> $120</span>
+                    </div>
+                    <div className="suggested__gift">(Suggested Gift)</div>
+                    <div className="date__description__desktop">
+                      <div
+                        style={{
+                          fontWeight: "300",
+                          letterSpacing: "0.06px",
+                          fontSize:
+                            date?.date_details.length <= 400 ? "14px" : "13px",
+                          // overflowY: "scroll",
+                          // height:
+                          //   date?.date_details.length <= 400 ? "auto" : "130px",
+                        }}
+                      >
+                        {date?.date_details}
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="button-wrapper">
                   {user?.gender === "male" && !alreadyMessaged && (
@@ -442,6 +484,25 @@ const UserCardList = ({
                 ) : ( */}
                 <>
                   <h4>Date Details</h4>
+                  <div className="date__detail__time__frame">
+                    <span className="time__frame">Time Frame:</span>
+                    <span className="time__value"> 2 hours</span>
+                  </div>
+                  <div className="time__together">
+                    (Estimated Time Together)
+                  </div>
+                  <div className="super__interested__div">
+                    <Image src={StarIcon} height={15} width={15} />
+
+                    <span className="super__interested">Super Interested?</span>
+                  </div>
+                  <div className="support__aspirations__div">
+                    <span className="support__aspirations">
+                      Support Her Aspirations:
+                    </span>
+                    <span className="support__price"> $120</span>
+                  </div>
+                  <div className="suggested__gift">(Suggested Gift)</div>
                   <p>{date?.date_details}</p>
                   <div className="button-wrapper mt-3">
                     {mobileLoader && (
@@ -466,6 +527,17 @@ const UserCardList = ({
                     >
                       <a>View profile</a>
                     </button>
+                  </div>
+                  <div
+                    onClick={() => {
+                      growDiv(cardId);
+                      setMobileDateDetailsIsOpen(!dateMobileDetailsIsOpen);
+                      setAlreadyMessagedFromUser(false);
+                    }}
+                    className="mobile__less__txt"
+                  >
+                    <Image src={ShowLessIcon} height={10} width={10} />
+                    <span>Show less</span>
                   </div>
                 </>
                 {/* )} */}

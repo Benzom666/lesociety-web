@@ -1,6 +1,7 @@
 import ImageShow from "@/modules/ImageShow";
 import UserImg from "assets/img/userimg.jpg";
 import Image from "next/image";
+import StarIcon from "../assets/Star.png";
 
 const UserCardDetail = ({
   user,
@@ -43,9 +44,9 @@ const UserCardDetail = ({
               <span>
                 {user?.user_name}, <span className="user_age">{user?.age}</span>
               </span>
-              <span className="price_per_hour">
+              {/* <span className="price_per_hour">
                 ${priceState?.education} / <small>{timeState?.education}</small>
-              </span>
+              </span> */}
             </h5>
           </div>
           <div className="user_location">
@@ -83,11 +84,30 @@ const UserCardDetail = ({
                 </ul>
               </div>
             </span>
+            <div className="user__aspiration">
+              <span className="user__aspiration1">Chef</span>
+              <span className="user__aspiration2">ASPIRING</span>
+            </div>
           </div>
         </div>
       </figure>
       <div className="date_details">
         <h4>Date Details</h4>
+        <div className="date__detail__time__frame">
+          <span className="time__frame">Time Frame:</span>
+          <span className="time__value"> 2 hours</span>
+        </div>
+        <div className="time__together">(Estimated Time Together)</div>
+        <div className="super__interested__div">
+          <Image src={StarIcon} height={15} width={15} />
+
+          <span className="super__interested">Super Interested?</span>
+        </div>
+        <div className="support__aspirations__div">
+          <span className="support__aspirations">Support Her Aspirations:</span>
+          <span className="support__price"> $120</span>
+        </div>
+        <div className="suggested__gift">(Suggested Gift)</div>
         <p>{dateDescription?.date_description}</p>
       </div>
     </div>
