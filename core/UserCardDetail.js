@@ -85,7 +85,7 @@ const UserCardDetail = ({
               </div>
             </span>
             <div className="user__aspiration">
-              <span className="user__aspiration1">Chef</span>
+              <span className="user__aspiration1">{user?.aspirationName}</span>
               <span className="user__aspiration2">ASPIRING</span>
             </div>
           </div>
@@ -95,7 +95,7 @@ const UserCardDetail = ({
         <h4>Date Details</h4>
         <div className="date__detail__time__frame">
           <span className="time__frame">Time Frame:</span>
-          <span className="time__value"> 2 hours</span>
+          <span className="time__value"> {timeState?.education}</span>
         </div>
         <div className="time__together">(Estimated Time Together)</div>
         <div className="super__interested__div">
@@ -105,7 +105,7 @@ const UserCardDetail = ({
         </div>
         <div className="support__aspirations__div">
           <span className="support__aspirations">Support Her Aspirations:</span>
-          <span className="support__price"> $120</span>
+          <span className="support__price"> ${priceState?.education}</span>
         </div>
         <div className="suggested__gift">(Suggested Gift)</div>
         <p>{dateDescription?.date_description}</p>

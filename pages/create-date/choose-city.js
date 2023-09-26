@@ -117,7 +117,11 @@ const ChooseCity = (props) => {
           );
           dispatch(initialize("CreateStepOne", { search_type: category }));
           dispatch(
-            initialize("CreateStepTwo", { education: draftedDate?.price })
+            initialize("CreateStepTwo", {
+              education: draftedDate?.price,
+              enter__category: user?.categatoryId,
+              enter__aspiration: user?.aspirationId,
+            })
           );
           dispatch(
             initialize("CreateStepThree", {

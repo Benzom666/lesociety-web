@@ -3,7 +3,7 @@ import Header from "core/header";
 import Footer from "core/footer";
 import useWindowSize from "../../utils/useWindowSize";
 import withAuth from "@/core/withAuth";
-import { apiRequest, socketURL } from "utils/Utilities";
+import { apiRequest, apiURL, socketURL } from "utils/Utilities";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -154,8 +154,8 @@ const Notifications = () => {
           Authorization: `Bearer ${user.token || ""}`,
         },
       };
-      const url =
-        "https://api.lesociety.com/api/v1/notification/read-all-notification";
+
+      const url = `${`${apiURL}/api/v1`}/notification/read-all-notification`;
       const data = await axios.put(url, params1, config);
       console.log("Read all notifications ", data);
     } catch (err) {

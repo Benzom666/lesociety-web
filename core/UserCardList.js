@@ -320,7 +320,9 @@ const UserCardList = ({
                       </div>
                     </span>
                     <div className="user__aspiration">
-                      <span className="user__aspiration1">Chef</span>
+                      <span className="user__aspiration1">
+                        {user?.aspirationName}
+                      </span>
                       <span className="user__aspiration2">ASPIRING</span>
                     </div>
                   </div>
@@ -398,7 +400,7 @@ const UserCardList = ({
                     </h4>
                     <div className="date__detail__time__frame">
                       <span className="time__frame">Time Frame:</span>
-                      <span className="time__value"> 2 hours</span>
+                      <span className="time__value"> {date?.date_length}</span>
                     </div>
                     <div className="time__together">
                       (Estimated Time Together)
@@ -414,7 +416,7 @@ const UserCardList = ({
                       <span className="support__aspirations">
                         Support Her Aspirations:
                       </span>
-                      <span className="support__price"> $120</span>
+                      <span className="support__price"> ${date?.price}</span>
                     </div>
                     <div className="suggested__gift">(Suggested Gift)</div>
                     <div className="date__description__desktop">
@@ -486,7 +488,7 @@ const UserCardList = ({
                   <h4>Date Details</h4>
                   <div className="date__detail__time__frame">
                     <span className="time__frame">Time Frame:</span>
-                    <span className="time__value"> 2 hours</span>
+                    <span className="time__value"> {date?.date_length}</span>
                   </div>
                   <div className="time__together">
                     (Estimated Time Together)
@@ -500,7 +502,7 @@ const UserCardList = ({
                     <span className="support__aspirations">
                       Support Her Aspirations:
                     </span>
-                    <span className="support__price"> $120</span>
+                    <span className="support__price"> ${date?.price}</span>
                   </div>
                   <div className="suggested__gift">(Suggested Gift)</div>
                   <p>{date?.date_details}</p>

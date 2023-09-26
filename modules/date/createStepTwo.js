@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Field, reduxForm, change } from "redux-form";
-import { useSelector } from "react-redux";
+import { Field, reduxForm, change, initialize } from "redux-form";
+import { useDispatch, useSelector } from "react-redux";
 import validate from "modules/auth/forms/validate/validate";
 import { Inputs } from "core";
 import { FiArrowRight } from "react-icons/fi";
@@ -9,6 +9,12 @@ import PriceSelection from "core/priceSelection";
 import useWindowSize from "utils/useWindowSize";
 import ConfirmDate from "./../../modules/date/confirmDate";
 import { Select } from "antd";
+
+import { useEffect } from "react";
+import { apiRequest } from "utils/Utilities";
+import { logout } from "../auth/authActions";
+import { useRouter } from "next/router";
+import { AUTHENTICATE_UPDATE } from "../auth/actionConstants";
 
 const education = [
   {
@@ -91,82 +97,170 @@ const CreateStepTwo = (props) => {
     confirmPopup,
   } = props;
   const state = useSelector((state) => state.form.CreateStepTwo);
+  const user = useSelector((state) => state.authReducer.user);
   const { width } = useWindowSize();
+  const router = useRouter();
 
-  const [category, setCategory] = useState([
-    {
-      label: "category1",
-      value: "category1",
-    },
-    {
-      label: "category2",
-      value: "category2",
-    },
-    {
-      label: "category3",
-      value: "category3",
-    },
-    {
-      label: "category4",
-      value: "category4",
-    },
-    {
-      label: "category5",
-      value: "category5",
-    },
-    {
-      label: "category6",
-      value: "category6",
-    },
-    {
-      label: "category7",
-      value: "category7",
-    },
-    {
-      label: "category8",
-      value: "category8",
-    },
-    {
-      label: "category9",
-      value: "category9",
-    },
-    {
-      label: "category10",
-      value: "category10",
-    },
-    {
-      label: "category11",
-      value: "category11",
-    },
-    {
-      label: "category12",
-      value: "category12",
-    },
-  ]);
-  const [aspiration, setAspiration] = useState([
-    {
-      label: "aspiration1",
-      value: "aspiration1",
-    },
-    {
-      label: "aspiration2",
-      value: "aspiration2",
-    },
-    {
-      label: "aspiration3",
-      value: "aspiration3",
-    },
-  ]);
+  const [category, setCategory] = useState([]);
+  const [aspiration, setAspiration] = useState([]);
+  const [categoryId, setCategoryId] = useState("");
+  const [aspirationId, setAspirationId] = useState("");
+  const dispatch = useDispatch();
 
-  const categoryChange = (value) => {
-    console.log("value");
+  useEffect(() => {
+    getcategoryData();
+  }, []);
+
+  const getcategoryData = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `categories`,
+      });
+
+      const category =
+        res.data?.data?.length > 0
+          ? res.data?.data?.map((da) => ({
+              label: da?.name,
+              value: da?._id,
+            }))
+          : [];
+      setCategory(category);
+    } catch (err) {
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
+    }
+    return;
   };
 
-  // const [confirmPopup, setConfirmPopup] = useState(false);
+  const getAspirationData = async (categoryId) => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `aspirations?category_id=${categoryId?.value}`,
+      });
+      const aspiration =
+        res.data?.data?.length > 0
+          ? res.data?.data?.map((da) => ({
+              label: da?.name,
+              value: da?._id,
+            }))
+          : [];
+      setAspiration(aspiration);
+    } catch (err) {
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
+    }
+    return;
+  };
 
-  // const toggle = () => {
-  //   setConfirmPopup(!confirmPopup);
-  // };
+  const dropDownHandleSubmit = async (values) => {
+    try {
+      const data = {
+        categatoryName: categoryId?.label,
+        aspirationName: aspirationId?.label,
+        aspirationId: aspirationId?.value,
+        categatoryId: categoryId?.value,
+      };
+      const res = await apiRequest({
+        data: data,
+        method: "POST",
+        url: `user/save-aspiration`,
+      });
+      getUpdatedUserDetails();
+    } catch (err) {
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
+    }
+    return;
+  };
+
+  const getUpdatedUserDetails = async () => {
+    try {
+      const res = await apiRequest({
+        method: "GET",
+        url: `user/user-by-name?user_name=${user?.user_name}`,
+      });
+      dispatch({
+        type: AUTHENTICATE_UPDATE,
+        payload: { ...res.data?.data?.user },
+      });
+    } catch (err) {
+      if (
+        err?.response?.status === 401 &&
+        err?.response?.data?.message === "Failed to authenticate token!"
+      ) {
+        setTimeout(() => {
+          logout(router, dispatch);
+        }, 100);
+      }
+      return err;
+    }
+  };
+
+  useEffect(() => {
+    if (categoryId) {
+      getAspirationData(categoryId);
+    }
+  }, [categoryId]);
+
+  useEffect(() => {
+    setCategoryId(
+      user?.categatoryId
+        ? {
+            value: user?.categatoryId,
+            label: user?.categatoryName,
+          }
+        : ""
+    );
+
+    setAspirationId(
+      user?.aspirationId
+        ? {
+            value: user?.aspirationId,
+            label: user?.aspirationName,
+          }
+        : ""
+    );
+    dispatch(
+      initialize("CreateStepTwo", {
+        enter__category: user?.categatoryId,
+        enter__aspiration: user?.aspirationId,
+      })
+    );
+  }, []);
+
+  const first30DaysDateCreateTime = user?.first30DaysDateCreateTime;
+
+  // disable both dropdowns if first_30_days_date_create_time is not null and less than 30 days
+  const disableDropdowns =
+    first30DaysDateCreateTime &&
+    new Date(first30DaysDateCreateTime).getTime() +
+      30 * 24 * 60 * 60 * 1000 -
+      new Date().getTime() >
+      0;
+
   return (
     <>
       {!confirmPopup ? (
@@ -300,12 +394,21 @@ const CreateStepTwo = (props) => {
                             placeholder="Select A Category"
                             className="aspiration__antd__dropdown"
                             showSearch={true}
-                            value={input.value}
-                            onChange={(value) => input.onChange(value)}
+                            value={categoryId}
+                            onChange={(value, event) => {
+                              dispatch(initialize("CreateStepTwo", {}));
+                              setAspiration([]);
+                              input.onChange(value);
+                              setCategoryId({
+                                value: value,
+                                label: event.children,
+                              });
+                            }}
                             validate={validate}
                             onBlur={(e) => {
                               e.preventDefault();
                             }}
+                            disabled={disableDropdowns}
                             // options={category}
                           >
                             <Option value="">Select A Category</Option>
@@ -339,14 +442,30 @@ const CreateStepTwo = (props) => {
                               placeholder="Select Your Aspiration"
                               className="aspiration__antd__dropdown"
                               showSearch={true}
-                              value={input.value}
-                              onChange={(value) => input.onChange(value)}
+                              value={aspirationId}
+                              onChange={(value, event) => {
+                                input.onChange(value);
+                                setAspirationId({
+                                  value: value,
+                                  label: event.children,
+                                });
+                              }}
                               validate={validate}
                               onBlur={(e) => {
                                 e.preventDefault();
                               }}
-                              options={aspiration}
-                            />
+                              disabled={
+                                !categoryId ||
+                                !(aspiration.length > 0) ||
+                                disableDropdowns
+                              }
+                              // options={aspiration}
+                            >
+                              <Option value="">Select Your Aspiration</Option>
+                              {aspiration.map((item) => (
+                                <Option value={item.value}>{item.label}</Option>
+                              ))}
+                            </Select>
                             {meta.error && meta.touched && (
                               <span>{meta.error}</span>
                             )}
@@ -379,6 +498,12 @@ const CreateStepTwo = (props) => {
                         type="submit"
                         className="next"
                         disabled={!state.values?.education || invalid}
+                        onClick={() => {
+                          if (disableDropdowns) {
+                            return;
+                          }
+                          dropDownHandleSubmit();
+                        }}
                       >
                         Next <FiArrowRight />
                       </button>
