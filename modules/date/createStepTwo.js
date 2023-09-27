@@ -398,6 +398,7 @@ const CreateStepTwo = (props) => {
                             onChange={(value, event) => {
                               dispatch(initialize("CreateStepTwo", {}));
                               setAspiration([]);
+                              setAspirationId("");
                               input.onChange(value);
                               setCategoryId({
                                 value: value,
