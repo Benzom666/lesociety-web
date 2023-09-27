@@ -74,57 +74,46 @@
     background: #151515 !important;
   }
 
-  .css-dev-only-do-not-override-17a39f8 {
-    .ant-select-dropdown {
-      border-radius: 8px !important;
-      border: 1px solid #4f4e54 !important;
-      background: #000 !important;
-      backdrop-filter: blur(13.591408729553223px);
-    }
-  }
-
   .ant-select-selection-search-input {
     display: flex;
     align-items: center;
   }
+  .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+  }
 }
-.ant-select-show-search:where(
-    .css-dev-only-do-not-override-17a39f8
-  ).ant-select:not(.ant-select-customize-input)
-  .ant-select-selector
-  input {
+
+.aspiration__antd__dropdown__popup {
+  border-radius: 8px !important;
+  border: 1px solid #4f4e54 !important;
+  background: #000 !important;
+  backdrop-filter: blur(13.591408729553223px);
+  color: #fff !important;
+}
+
+.aspiration__antd__dropdown2 {
+  margin-top: 20px;
+}
+
+.ant-select-show-search .ant-select-selector input {
   height: 50px !important;
 }
 
-.ant-select-selection-item {
-  display: flex;
-  align-items: center;
-}
-
-:where(.css-dev-only-do-not-override-17a39f8).ant-select-dropdown
+.ant-select-dropdown
   .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
   background-color: #4f4e54 !important;
   color: #fff !important;
 }
 
-.ant-select-show-search:where(
-    .css-dev-only-do-not-override-17a39f8
-  ).ant-select:not(.ant-select-customize-input)
+.ant-select-show-search.ant-select:not(.ant-select-customize-input)
   .ant-select-selector
   input {
   display: flex !important;
   align-items: center !important;
 }
 
-:where(.css-dev-only-do-not-override-17a39f8).ant-select-dropdown {
-  border-radius: 8px !important;
-  border: 1px solid #4f4e54 !important;
-  background: #000 !important;
-  backdrop-filter: blur(13.591408729553223px);
-}
-
-:where(.css-dev-only-do-not-override-17a39f8).ant-select-dropdown
-  .ant-select-item {
+.ant-select-dropdown .ant-select-item {
   color: #fff !important;
   border-bottom: 1px solid #4f4e54 !important;
   padding: 10px;
@@ -136,11 +125,6 @@
   margin-left: 7px;
 }
 
-.aspiration__antd__dropdown2 {
-  margin-top: 20px;
-}
-
-:where(.css-dev-only-do-not-override-17a39f8).ant-empty-normal
-  .ant-empty-description {
+.ant-empty-normal .ant-empty-description {
   color: white;
 }

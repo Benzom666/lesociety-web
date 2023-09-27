@@ -410,7 +410,7 @@ const CreateStepTwo = (props) => {
                             }}
                             disabled={disableDropdowns}
                             // options={category}
-                            open={true}
+                            popupClassName="aspiration__antd__dropdown__popup"
                           >
                             <Option value="">Select A Category</Option>
                             {category.map((item) => (
@@ -460,8 +460,7 @@ const CreateStepTwo = (props) => {
                                 !(aspiration.length > 0) ||
                                 disableDropdowns
                               }
-                              // options={aspiration}
-                              open={true}
+                              popupClassName="aspiration__antd__dropdown__popup"
                             >
                               <Option value="">Select Your Aspiration</Option>
                               {aspiration.map((item) => (
