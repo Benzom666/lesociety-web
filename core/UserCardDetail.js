@@ -98,6 +98,12 @@ const UserCardDetail = ({
           <span className="time__value"> {timeState?.education}</span>
         </div>
         <div className="time__together">(Estimated Time Together)</div>
+        <div className="interested__only">
+          <span className="interested__span1">Interested?</span>
+          <span className="interested__span2">
+            Take her out on her choice of date experience.
+          </span>
+        </div>
         <div className="super__interested__div">
           <Image src={StarIcon} height={15} width={15} />
 

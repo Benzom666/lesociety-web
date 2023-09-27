@@ -393,7 +393,7 @@ const UserCardList = ({
                         fontWeight: "700",
                         letterSpacing: "0.066px",
                         marginTop: "20px",
-                        marginBottom: "16px",
+                        marginBottom: "5px",
                       }}
                     >
                       Date Details
@@ -404,6 +404,12 @@ const UserCardList = ({
                     </div>
                     <div className="time__together">
                       (Estimated Time Together)
+                    </div>
+                    <div className="interested__only">
+                      <span className="interested__span1">Interested?</span>
+                      <span className="interested__span2">
+                        Take her out on her choice of date experience.
+                      </span>
                     </div>
                     <div className="super__interested__div">
                       <Image src={StarIcon} height={15} width={15} />
@@ -425,7 +431,7 @@ const UserCardList = ({
                           fontWeight: "300",
                           letterSpacing: "0.06px",
                           fontSize:
-                            date?.date_details.length <= 400 ? "14px" : "13px",
+                            date?.date_details.length <= 350 ? "14px" : "12px",
                           // overflowY: "scroll",
                           // height:
                           //   date?.date_details.length <= 400 ? "auto" : "130px",
@@ -492,6 +498,12 @@ const UserCardList = ({
                   </div>
                   <div className="time__together">
                     (Estimated Time Together)
+                  </div>
+                  <div className="interested__only">
+                    <span className="interested__span1">Interested?</span>
+                    <span className="interested__span2">
+                      Take her out on her choice of date experience.
+                    </span>
                   </div>
                   <div className="super__interested__div">
                     <Image src={StarIcon} height={15} width={15} />
