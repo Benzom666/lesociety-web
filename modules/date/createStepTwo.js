@@ -410,6 +410,7 @@ const CreateStepTwo = (props) => {
                             }}
                             disabled={disableDropdowns}
                             // options={category}
+                            open={true}
                           >
                             <Option value="">Select A Category</Option>
                             {category.map((item) => (
@@ -460,6 +461,7 @@ const CreateStepTwo = (props) => {
                                 disableDropdowns
                               }
                               // options={aspiration}
+                              open={true}
                             >
                               <Option value="">Select Your Aspiration</Option>
                               {aspiration.map((item) => (
