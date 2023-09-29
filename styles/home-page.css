@@ -265,6 +265,10 @@
   color: #fff;
   text-align: start;
 }
+.footer-text-1 a {
+  color: #fff;
+  text-decoration: none;
+}
 
 .footer-text-2 {
   font-size: 16px;
@@ -459,6 +463,9 @@
   .navbarfooter-text-1 {
     width: 100% !important;
     padding: 0px 10px;
+  }
+  #signupbtn {
+    padding: 0 15px !important;
   }
   .navbarfooter-btn .sidebarhome {
     padding: 10px;
@@ -790,6 +797,23 @@
 
 .main-image {
   width: 100%;
+}
+
+.home__loader__layout {
+  height: 100vh;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  background-color: black;
+  width: 100%;
+  z-index: 99999;
+}
+
+.home__loader__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 769px) {

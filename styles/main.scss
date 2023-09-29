@@ -2281,11 +2281,18 @@ div[id="scrolldiv"] {
 
           li {
             padding: 8px;
+            // background: linear-gradient(
+            //   231.4deg,
+            //   rgba(46, 49, 58, 1.83422) 18.16%,
+            //   rgba(25, 25, 25, 1.835923) 95.56%
+            // );
+            border: 0.5px solid #293036;
             background: linear-gradient(
-              231.4deg,
-              rgba(46, 49, 58, 1.83422) 18.16%,
-              rgba(25, 25, 25, 1.835923) 95.56%
+              231deg,
+              rgba(46, 49, 58, 0.4) 18.16%,
+              rgba(25, 25, 25, 0.42) 95.56%
             );
+            backdrop-filter: blur(4.5px);
             color: $white-color;
             border: 0.5px solid #293036;
             backdrop-filter: blur(4.5px);
@@ -4134,15 +4141,24 @@ body .verification_card_header {
         li {
           padding: 4px 10px;
           margin-right: 10px;
-          background: linear-gradient(
-            261.67deg,
-            rgba(58, 62, 71, 0.7) 14.2%,
-            rgba(46, 49, 58, 0.7) 92.52%
-          );
-          backdrop-filter: blur(16.3097px);
+          // background: linear-gradient(
+          //   261.67deg,
+          //   rgba(58, 62, 71, 0.7) 14.2%,
+          //   rgba(46, 49, 58, 0.7) 92.52%
+          // );
+
+          // backdrop-filter: blur(16.3097px);
           color: $white-color;
-          border: 0.607143px solid #293036;
-          backdrop-filter: blur(10.9286px);
+          // border: 0.607143px solid #293036;
+          // backdrop-filter: blur(10.9286px);
+          border-radius: 5px;
+          border: 0.5px solid #293036;
+          background: linear-gradient(
+            231deg,
+            rgba(46, 49, 58, 0.4) 18.16%,
+            rgba(25, 25, 25, 0.42) 95.56%
+          );
+          backdrop-filter: blur(4.5px);
           border-radius: 8px;
           cursor: pointer;
 

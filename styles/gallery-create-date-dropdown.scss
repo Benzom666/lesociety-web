@@ -92,6 +92,14 @@
   color: #fff !important;
 }
 
+// change background color for disabled
+.ant-select-disabled .ant-select-selector {
+  border-radius: 8px;
+  border: 0.7px solid #293036 !important;
+  background: #000000 !important;
+  color: gray !important;
+}
+
 .aspiration__antd__dropdown2 {
   margin-top: 20px;
 }

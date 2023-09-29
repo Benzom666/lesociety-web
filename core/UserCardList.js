@@ -321,7 +321,8 @@ const UserCardList = ({
                     </span>
                     <div className="user__aspiration">
                       <span className="user__aspiration1">
-                        {user?.aspirationName}
+                        {date?.user_data?.length > 0 &&
+                          date?.user_data[0]?.aspirationName}
                       </span>
                       <span className="user__aspiration2">ASPIRING</span>
                     </div>

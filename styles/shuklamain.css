@@ -298,13 +298,13 @@
   list-style-position: inside;
   padding-left: 0 !important;
 }
-.warning_popup .list-of-warning .dont-show {
+.warning_popup .dont-show {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px auto;
 }
-.warning_popup .list-of-warning .dont-show .dont-show-checkBox {
+.warning_popup .dont-show .dont-show-checkBox {
   display: block;
   position: relative;
   cursor: pointer;
@@ -314,14 +314,14 @@
      -moz-user-select: none;
           user-select: none;
 }
-.warning_popup .list-of-warning .dont-show .dont-show-checkBox input {
+.warning_popup .dont-show .dont-show-checkBox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-.warning_popup .list-of-warning .dont-show .dont-show-checkBox .checkmark {
+.warning_popup .dont-show .dont-show-checkBox .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -331,15 +331,15 @@
   border: 1px solid #f24462;
   border-radius: 8px;
 }
-.warning_popup .list-of-warning .dont-show .dont-show-checkBox .checkmark:after {
+.warning_popup .dont-show .dont-show-checkBox .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-.warning_popup .list-of-warning .dont-show .dont-show-checkBox input:checked ~ .checkmark:after {
+.warning_popup .dont-show .dont-show-checkBox input:checked ~ .checkmark:after {
   display: block;
 }
-.warning_popup .list-of-warning .dont-show .dont-show-checkBox .checkmark:after {
+.warning_popup .dont-show .dont-show-checkBox .checkmark:after {
   left: 7.3px;
   top: 4px;
   width: 8px;
@@ -348,7 +348,7 @@
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
-.warning_popup .list-of-warning .dont-show .dont-show-text {
+.warning_popup .dont-show .dont-show-text {
   font-family: "Helvetica";
   font-style: normal;
   font-weight: 300;
@@ -404,13 +404,13 @@
     height: auto;
     width: 100%;
     border-radius: 30px 30px 0 0;
-    transform: translate(-50%, 50%);
-    z-index: 99999;
+    transform: translate(-50%, 0%) !important;
+    z-index: 99999 !important;
   }
   .warning_popup.show_1 {
-    top: unset;
-    transform: translate(-50%, 0%);
-    opacity: 1;
-    bottom: 0;
+    top: unset !important;
+    transform: translate(-50%, 0%) !important;
+    opacity: 1 !important;
+    bottom: 0 !important;
   }
 }/*# sourceMappingURL=shuklamain.css.map */
