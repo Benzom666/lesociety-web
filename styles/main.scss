@@ -4550,7 +4550,7 @@ body .verification_card_header {
     font-size: 20px;
     line-height: 23px;
     text-align: center;
-    padding: 52px 32px;
+    padding: 52px 32px 24px 32px;
     margin-bottom: 0;
   }
 
@@ -4584,8 +4584,8 @@ body .verification_card_header {
       width: 90%;
       height: 50px;
       border: none;
-      padding: 20px !important;
-      padding-right: 65px !important;
+      // padding: 20px !important;
+      // padding-right: 65px !important;
       color: white;
       margin-bottom: 20px;
     }

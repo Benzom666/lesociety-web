@@ -22,6 +22,7 @@ import ImageShow from "@/modules/ImageShow";
 import useWindowSize from "utils/useWindowSize";
 import { logout } from "@/modules/auth/authActions";
 import { useEffect } from "react";
+import StarIcon from "../assets/request star.png";
 
 const UserCardListForMessage = ({
   conversations,
@@ -242,24 +243,54 @@ const UserCardListForMessage = ({
                               <H5 style1={true}>
                                 {conversation?.user?.user_name} is
                               </H5>
-                              <CustomIcon.IntrestedText
-                                color={"white"}
-                                size={150}
-                              />
-                              <figure>
-                                <ImageShow
-                                  className="requested-profile-img"
-                                  max-width={312}
-                                  width="95%"
-                                  height={320}
-                                  src={profilePic}
-                                  alt="user image"
-                                  placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
+                              {/* <div ">
+                                Super
+                              </div> */}
+                              <div className="request__message__super__text">
+                                {conversation?.isSuperInterested && <div className="super">
+                                  <CustomIcon.RequestSuperText
+                                    color={"white"}
+                                    size={150}
+                                  />
+                                </div>}
+                                
+                                <CustomIcon.IntrestedText
+                                  color={"white"}
+                                  size={150}
                                 />
-                                <span className="image_tagline">
-                                  "{showText(conversation?.message?.message)}"
-                                </span>
-                              </figure>
+                              </div>
+                              <div
+                                className={`superinterested__icon__div ${
+                                  conversation?.isSuperInterested
+                                    ? "superinterested__margin"
+                                    : ""
+                                }`}
+                              >
+                                {conversation?.isSuperInterested && (
+                                  <div className="superinterested__icon">
+                                    <Image
+                                      src={StarIcon}
+                                      height={53}
+                                      width={53}
+                                    />
+                                  </div>
+                                )}
+
+                                <figure>
+                                  <ImageShow
+                                    className="requested-profile-img"
+                                    max-width={312}
+                                    width="95%"
+                                    height={320}
+                                    src={profilePic}
+                                    alt="user image"
+                                    placeholderImg="https://i.ibb.co/y8RhMrL/Untitled-design.png"
+                                  />
+                                  <span className="image_tagline">
+                                    "{showText(conversation?.message?.message)}"
+                                  </span>
+                                </figure>
+                              </div>
                               <div className="d-flex align-items-center my-4 header_btn_wrap">
                                 <a
                                   className="create-date"

@@ -36,6 +36,8 @@ import {
 } from "@/modules/auth/authActions";
 import ImageShow from "@/modules/ImageShow";
 import Loader from "@/modules/Loader/Loader";
+import StarIcon from "../../assets/Star.png";
+import StarBlankIcon from "../../assets/Star_blank.png";
 
 export const socket = io(socketURL, {
   reconnection: true,
@@ -74,6 +76,8 @@ function UserList(props) {
   const [count, setCount] = useState(0);
   const [logoutLoading, setLogoutLoading] = useState(false);
   const iconRef = useRef(null);
+
+  const [isSuperInterested, setIsSuperInterested] = useState(false);
 
   // useEffect(() => {
   //   if (user?.gender === "male" && state?.showSelectedLocationPopup) {
@@ -574,6 +578,22 @@ function UserList(props) {
                     receiverData?.user_data[0]?.tagline}
                   "
                 </p>
+                <div
+                  className={`super__interested__star ${
+                    isSuperInterested ? "active" : ""
+                  }`}
+                  onClick={() => setIsSuperInterested(!isSuperInterested)}
+                >
+                  <Image
+                    src={isSuperInterested ? StarIcon : StarBlankIcon}
+                    height={15}
+                    width={15}
+                  />
+
+                  <span className="super__interested">
+                    I’m Super Interested!
+                  </span>
+                </div>
                 <div>
                   <div
                     className=""
@@ -584,7 +604,12 @@ function UserList(props) {
                     }}
                   >
                     <Field
-                      className={`${textClass}`}
+                      // className={`${textClass}`}
+                      className={`${textClass} ${
+                        isSuperInterested
+                          ? "is__super__interested__message__input"
+                          : "message__modal__input"
+                      }`}
                       placeholder="Type your message here…"
                       name="message"
                       id="message"
@@ -593,6 +618,27 @@ function UserList(props) {
                         width: "90%",
                       }}
                     />
+                    {isSuperInterested && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "14%",
+                          height: "50px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Image
+                          src={StarIcon}
+                          alt="star"
+                          width={15}
+                          height={15}
+                          style={{
+                            paddingTop: "10px !important",
+                          }}
+                        />
+                      </div>
+                    )}
                     <button
                       type="button"
                       style={{

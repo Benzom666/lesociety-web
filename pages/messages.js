@@ -34,6 +34,8 @@ import MessageSend from "assets/Send.svg";
 import MessageSend2 from "assets/message_send2.png";
 import { logout } from "@/modules/auth/authActions";
 import moment from "moment";
+import StarIcon from "../assets/request star.png";
+
 // const socket = io.connect(socketURL);
 
 // const socket = io(socketURL, {
@@ -844,9 +846,26 @@ const Messages = (props) => {
                                           </figure>
                                           <div className="w-100">
                                             <div className="user-details">
-                                              <h3>
-                                                {c?.user?.user_name ?? ""}
+                                              <h3 className="user__detail__star">
+                                                {c?.isSuperInterested && (
+                                                  <Image
+                                                    src={StarIcon}
+                                                    height={20}
+                                                    width={20}
+                                                  />
+                                                )}
+
+                                                <span
+                                                  className={
+                                                    c?.isSuperInterested
+                                                      ? "super__interested__username"
+                                                      : ""
+                                                  }
+                                                >
+                                                  {c?.user?.user_name ?? ""}
+                                                </span>
                                               </h3>
+
                                               <span>
                                                 {c?.message &&
                                                   showTime(

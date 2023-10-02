@@ -9,7 +9,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { logout } from "@/modules/auth/authActions";
-
+import StarIcon from "../assets/Star.png";
+import StarBlankIcon from "../assets/Star_blank.png";
 import MessageSend3 from "assets/message_new.svg";
 import MessageSend4 from "assets/Path.svg";
 import MessageSend5 from "assets/Send.svg";
@@ -22,6 +23,8 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
   const [messageError, setMessageError] = React.useState("");
   const [textClass, setTextSlideClass] = React.useState("");
   const iconRef = useRef(null);
+
+  const [isSuperInterested, setIsSuperInterested] = useState(false);
 
   const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
   const isAndroid = /Android/.test(navigator.userAgent);
@@ -148,6 +151,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
             : "",
         message: values.message ?? "",
         dateId: receiverData?._id ?? "",
+        isSuperInterested: isSuperInterested,
       };
       const res = await apiRequest({
         data: data,
@@ -280,6 +284,20 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                 receiverData?.user_data[0]?.tagline}
               "
             </p>
+            <div
+              className={`super__interested__star ${
+                isSuperInterested ? "active" : ""
+              }`}
+              onClick={() => setIsSuperInterested(!isSuperInterested)}
+            >
+              <Image
+                src={isSuperInterested ? StarIcon : StarBlankIcon}
+                height={15}
+                width={15}
+              />
+
+              <span className="super__interested">I’m Super Interested!</span>
+            </div>
             <div>
               <Formik
                 initialValues={{
@@ -301,12 +319,38 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
                       // className="position-relative"
                       >
                         <Field
-                          className={`position-relative ${textClass}`}
+                          className={`position-relative ${textClass} ${
+                            isSuperInterested
+                              ? "is__super__interested__message__input"
+                              : "message__modal__input"
+                          }`}
                           placeholder="Type your message here…"
                           name="message"
                           id="message"
                           component={CustomInput}
                         />
+
+                        {isSuperInterested && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: "14%",
+                              height: "50px",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Image
+                              src={StarIcon}
+                              alt="star"
+                              width={15}
+                              height={15}
+                              style={{
+                                paddingTop: "10px !important",
+                              }}
+                            />
+                          </div>
+                        )}
 
                         <button
                           type="button"
