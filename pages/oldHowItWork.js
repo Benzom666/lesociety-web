@@ -8,11 +8,6 @@ import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 import HomeFooter from "@/core/HomeFooter";
 import { HowItWorkMain, contentObject } from "@/core/HowItWorkComponent";
 import { HowitWorkCardComponent } from "@/core/HowitWorkCardComponent";
-import { CustomIcon } from "@/core/icon";
-import LadiesFirstHowItWorks from "components/howItWorks/LadiesFirstHowItWorks";
-import GentlemenSecondHowItWorks from "components/howItWorks/GentlemenSecondHowItWorks";
-import GentlemenPrivacy from "components/howItWorks/GentlemenPrivacy";
-import LadiesCreatePerfectDate from "components/howItWorks/LadiesCreatePerfectDate";
 
 const style1 = {
   opacity: "0.9",
@@ -47,24 +42,17 @@ function HowItWork() {
                 <img src={LeSlogoBlack.src} alt="ls-logo" />
               </div>
               <div className="ls-text mt-2 ">
-                <p> Learn More</p>
+                <p> How it Works</p>
               </div>
             </div>
           </nav>
         </div>
-
-        <LadiesFirstHowItWorks />
-        <GentlemenSecondHowItWorks />
-        <GentlemenPrivacy />
-        <LadiesCreatePerfectDate />
-
+        <HowitWorkCardComponent />
         <HomePageMiddleNav style={style1} styleText={style2} />
         <div className="container-2 mb-5">
           <div className=" col-xl-12 col-lg-12 col-md-12 container-2-title">
-            <h3 className="heading">
-              <CustomIcon.DateExperiencesIcon color={"white"} size={150} />
-            </h3>
-            <h3 className="heading">You Can Enjoy</h3>
+            <h3 className="heading">Date Experiences</h3>
+            <h3 className="heading">you can enjoy</h3>
             <p className="sub-heading">
               Ladies, you can choose a date category while the men can select
               their preferred specifics of the date experience, with both
@@ -82,6 +70,31 @@ function HowItWork() {
                 />
               );
             })}
+            <div className="col mt-5 mx-4 myCard-3">
+              <h3
+                className="The-future-of-Le-Society"
+                style={{ paddingTop: "32px" }}
+              >
+                The future of
+              </h3>
+              <h3
+                className="The-future-of-Le-Society"
+                style={{ padding: "5px", marginBottom: "1rem" }}
+              >
+                Le Society
+              </h3>
+              <a href="/future-date" style={{ textDecoration: "none" }}>
+                <button type="button" className="btn btn-danger Rectangle-1">
+                  Sneak Peak
+                </button>
+              </a>
+              <p className="In-App-Payment-GPS-Tracking-and-more">
+                In App Payment <br />
+                GPS Tracking
+                <br />
+                …and more
+              </p>
+            </div>
           </div>
         </div>
         <a href="/home" style={{ textDecoration: "none" }}>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import withAuth from "../core/withAuth";
 import LeSlogoWhite from "../assets/LeS logoWhite.png";
+import HomePageLogo from "../assets/homeLogo.png";
 import LeSlogoText from "../assets/img/LeSocietylogotext.png";
 import Sun from "../assets/svg/sun.svg";
 import Bottle from "../assets/svg/bottle.svg";
@@ -13,7 +14,9 @@ import Paint from "../assets/svg/paint.svg";
 import Sport from "../assets/svg/sport.svg";
 import Moon from "../assets/svg/moon.svg";
 import Gentalman4 from "../assets/img/Gentalman_4.png";
+import GentalmanHomePage from "../assets/homePage/iPhone 13 Pro-gentleman.png";
 import Ladies4 from "../assets/img/Ladies4.png";
+import LadiesHomePage from "../assets/homePage/iPhone 13 Pro-Ladies.png";
 import Goal4 from "../assets/img/Goal4.png";
 import Choice4 from "../assets/img/Choice4.png";
 import Ladies from "../assets/img/Ladies.png";
@@ -27,6 +30,8 @@ import HomePageMiddleNav from "@/core/HomePageMiddleNav";
 import HomePageCardSectionMobile from "@/core/HomePageCardSectionMobile";
 import useWindowSize from "utils/useWindowSize";
 import Loader from "@/modules/Loader/Loader";
+import NewHomePageMainSection from "@/core/NewHomePageMainSection";
+import AccelerateToFutureOfDating from "@/core/AccelerateToFutureOfDating";
 
 const style1 = {
   // opacity: "0.9",
@@ -76,10 +81,9 @@ function HomePage({ items }) {
     }
   }, [loading]);
 
-  console.log("loading", loading);
   return (
     <>
-      <div className="inner-part-page auth-section home_page_style">
+      <div className="inner-part-page auth-section home_page_style  new__home__page">
         {loading && (
           <div className="home__loader__layout">
             <div className="home__loader__section">
@@ -89,157 +93,30 @@ function HomePage({ items }) {
         )}
         <div className="home-page-navbar">
           <nav className="navbar navbar-dark bg-#080808">
-            <div className="LeSociety-Icon-White d-flex">
-              <div className="ls-logo">
-                <Image src={LeSlogoWhite} alt="ls-logo" sizes={10} />
-              </div>
-              <div className="ls-text">
-                <Image
-                  className="leSocitey-heading"
-                  src={LeSlogoText}
-                  sizes={100}
-                />
-                <p className="leSocitey-subheading">Dating Reimagined</p>
-              </div>
+            <div className="LeSociety-Icon-White">
+              <Image
+                src={HomePageLogo}
+                alt="ls-logo"
+                height={260}
+                width={279}
+              />
             </div>
           </nav>
         </div>
 
-        <HomePageMainSection title="GENTLEMEN" maincardImage={Gentalman4}>
-          <p className="info-text">{content.aboutCardContent}</p>
-        </HomePageMainSection>
+        <NewHomePageMainSection
+          title="LADIES"
+          maincardImage={LadiesHomePage}
+        ></NewHomePageMainSection>
+
         {!loading && <HomePageMiddleNav style={style1} styleText={style2} />}
 
-        <HomePageMainSection title="LADIES" maincardImage={Ladies4}>
-          <div className="main-content">
-            <p className="info-text info-text-Laidies">
-              {content.aboutCardContent1}
-            </p>
-            <p className="info-text info-text-Laidies">
-              {content.aboutCardContent4}
-            </p>
-            <p
-              className="info-text"
-              style={{
-                textAlign: "center",
-                fontSize: "16px",
-                color: "#a2a2a2",
-              }}
-            >
-              {content.aboutCardContent5}
-            </p>
-            <div className="main-content-icon">
-              <div class="row align-items-center justify-content-evenly mt-3">
-                <div
-                  class="col-3"
-                  style={{ maxWidth: "120px", textAlign: "center" }}
-                >
-                  <img src={Sun.src} alt="icon-img" height={35} width={35} />
-                  <p
-                    style={{
-                      fontFamily: "Montserrat",
-                      fontSize: "14px",
-                      marginTop: "0.5rem",
-                    }}
-                  >
-                    Brunch <br /> Date
-                  </p>
-                </div>
-                <div
-                  class="col-6"
-                  style={{ maxWidth: "120px", textAlign: "center" }}
-                >
-                  <img
-                    src={Ticket.src}
-                    alt="icon-img"
-                    height={35}
-                    width={35}
-                    style={{ marginLeft: "20px" }}
-                  />
-                  <p
-                    style={{
-                      fontFamily: "Montserrat",
-                      fontSize: "14px",
-                      marginTop: "0.5rem",
-                      marginRight: "-13px",
-                    }}
-                  >
-                    Entertainment
-                    <br /> & Sports
-                  </p>
-                </div>
-                <div
-                  class="col-3"
-                  style={{ maxWidth: "120px", textAlign: "center" }}
-                >
-                  <img src={Paint.src} alt="icon-img" height={35} width={35} />
-                  <p
-                    style={{
-                      fontFamily: "Montserrat",
-                      fontSize: "14px",
-                      marginTop: "0.5rem",
-                    }}
-                  >
-                    Take A <br />
-                    Class
-                  </p>
-                </div>
-              </div>
-              <div class="row align-items-center justify-content-center mt-4">
-                <div
-                  class="col-6"
-                  style={{
-                    maxWidth: "120px",
-                    textAlign: "center",
-                    paddingLeft: "-7px",
-                  }}
-                >
-                  <img src={Bottle.src} alt="icon-img" height={35} width={35} />
-                  <p
-                    style={{
-                      fontFamily: "Montserrat",
-                      fontSize: "14px",
-                      marginTop: "0.5rem",
-                    }}
-                  >
-                    Bottles <br />& Dance
-                  </p>
-                </div>
-                <div
-                  class="col-6"
-                  style={{
-                    maxWidth: "120px",
-                    textAlign: "center",
-                    marginRight: "-7px",
-                  }}
-                >
-                  <img src={Dine.src} alt="icon-img" height={35} width={35} />
-                  <p
-                    style={{
-                      fontFamily: "Montserrat",
-                      fontSize: "14px",
-                      marginTop: "0.5rem",
-                    }}
-                  >
-                    Wine <br />& Dine
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </HomePageMainSection>
-        <HomePageMainSection title="THE GOAL" maincardImage={Goal4}>
-          <p className="info-text">{content.aboutCardContent2}</p>
-        </HomePageMainSection>
-        <HomePageMainSection
-          title="A GENTLEMEN’S CHOICE"
-          maincardImage={Choice4}
-        >
-          <p className="info-text">{content.aboutCardContent3}</p>
-        </HomePageMainSection>
+        <NewHomePageMainSection
+          title="GENTLEMEN"
+          maincardImage={GentalmanHomePage}
+        ></NewHomePageMainSection>
 
-        {width > 768 ? <HomePageCardSection /> : <HomePageCardSectionMobile />}
-        {/* <HomePageCardSection/> */}
+        <AccelerateToFutureOfDating />
 
         <HomeFooter logo={LeSlogoWhite} styleBackground={styleBackground} />
       </div>

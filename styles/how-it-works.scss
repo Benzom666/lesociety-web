@@ -145,7 +145,7 @@
       .heading {
         //margin-left: auto;
         //width: 523px;
-        font-size: 40px;
+        font-size: 30px;
         font-weight: bold;
         font-stretch: normal;
         font-style: normal;
@@ -153,7 +153,7 @@
         letter-spacing: 1.4px;
         text-align: center;
         color: #1a415c;
-        text-transform: uppercase;
+        // text-transform: uppercase;
       }
 
       .sub-heading {
@@ -1024,4 +1024,105 @@
       width: 46%;
     }
   }
+}
+
+.ladies__first__page {
+  display: flex;
+  justify-content: center;
+
+  .ladies__iphone__group__img {
+    position: relative;
+  }
+
+  .ladies-iphone-image {
+    width: 350px;
+  }
+
+  .ladies-down-iphone-image {
+    position: absolute;
+    left: 83%;
+    top: 50%;
+    width: 250px;
+  }
+
+  .text__content {
+    margin-left: 18%;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+    flex: 0.7;
+
+    .text__content__heading {
+      font-size: 30px;
+      font-weight: 400;
+      text-transform: capitalize;
+      color: #3a5e77;
+
+      .ladies__text {
+        color: #3a5e77;
+        font-weight: 700;
+      }
+
+      .commitment__text {
+        color: #f24462 !important;
+        font-weight: 700;
+      }
+
+      .commitment__level {
+        color: #3a5e77;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .shared__interested__text {
+        color: #3a5e77;
+        font-size: 26px;
+        font-weight: 700;
+      }
+    }
+
+    .text__content__ptext {
+      max-width: 80% !important;
+      color: #3a5e77;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .commitment__level {
+      color: #3a5e77;
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+
+    .shared__interested__text {
+      color: #3a5e77;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: end;
+
+      .shared__interested__equalTo {
+        margin-left: 10px;
+      }
+    }
+
+    .Advantages {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #3a5e77;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .text__content__p__spantext {
+      font-weight: 600;
+    }
+  }
+}
+
+.marginTop__20px {
+  margin-top: 20px;
 }

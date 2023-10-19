@@ -2,9 +2,13 @@
 
 .home-page-navbar {
   margin-left: 55px;
+  display: flex;
+  justify-content: center;
 
   .LeSociety-Icon-White {
     padding: 0 75px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 
     .ls-logo {
       width: 45px;
@@ -1090,5 +1094,212 @@
       padding: 8px 35px;
       margin: 0 auto 1rem auto;
     }
+  }
+}
+
+.new-home-main-container {
+  display: flex;
+
+  color: #fff;
+  font-family: Montserrat;
+
+  .ladies__container {
+    margin-left: 27%;
+    display: flex;
+  }
+
+  .main-image {
+    width: 300px;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .main__text__contents {
+    margin-top: 100px;
+    flex: 0.7;
+
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+  }
+
+  .text__container__margin {
+    margin-left: 150px;
+  }
+
+  .gender__icon {
+    margin-bottom: 20px;
+  }
+
+  .reach__your__goals {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 40px;
+
+    .faster {
+      font-weight: 700;
+    }
+  }
+
+  .gentlemen__container {
+    display: flex;
+    margin-left: 19%;
+    margin-top: 70px;
+    .main__text__contents {
+      flex: 0.55;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      margin-right: 75px;
+      p {
+        text-align: end;
+      }
+    }
+  }
+}
+
+.accelerate__wrapper {
+  margin-top: 200px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-family: Inter;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .learn__more__wrapper {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .learn__more {
+    width: 300px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #f24462;
+    padding: 13px 0;
+    text-align: center;
+    margin: 100px 0;
+    font-family: Montserrat;
+    cursor: pointer;
+  }
+
+  .accelerate__container {
+    display: flex;
+    margin-top: 80px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    color: #fff;
+    font-family: Montserrat;
+    position: relative;
+
+    .super__interested__icon {
+      margin-top: 25px;
+      margin-bottom: 25px;
+      .super {
+        padding-left: 40px;
+        margin-bottom: -20px;
+      }
+    }
+
+    .only__interested__icon {
+      margin-bottom: 25px;
+      margin-top: 10px;
+    }
+
+    .level2 {
+      align-self: self-end;
+      margin-bottom: 50px;
+    }
+
+    .level1 {
+      margin-top: 50px;
+    }
+
+    h6 {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .inerested__text {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .progress__text {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    .line__progress {
+      margin-top: 12px;
+      margin-bottom: 12px;
+      margin-left: -5px;
+    }
+
+    .image__progress1 {
+      position: absolute;
+      bottom: 28px;
+      left: 0;
+    }
+
+    .image__progress2 {
+      position: absolute;
+      top: 42%;
+      right: 0;
+      width: 40.5%;
+      height: 2px;
+      background-color: white;
+    }
+    .diagonal-line {
+      width: 37%;
+      height: 2px;
+      background-color: white; /* You can choose your preferred line color */
+      position: absolute;
+      transform-origin: 0.2% 60%;
+      transform: rotate(132deg);
+    }
+
+    .progress__circle {
+      position: absolute;
+      right: 0;
+      top: -160%;
+      padding: 5px;
+      border-radius: 50%;
+      background-color: white;
+    }
+  }
+
+  .line-container {
+    margin-top: 20px;
+  }
+
+  .accelerate-iphone-image {
+    width: 630px;
+    height: 830px;
+    margin-left: -80px;
+    object-fit: contain;
+    // width: 692.5px;
+    // height: 868px;
   }
 }
