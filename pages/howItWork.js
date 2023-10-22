@@ -13,6 +13,7 @@ import LadiesFirstHowItWorks from "components/howItWorks/LadiesFirstHowItWorks";
 import GentlemenSecondHowItWorks from "components/howItWorks/GentlemenSecondHowItWorks";
 import GentlemenPrivacy from "components/howItWorks/GentlemenPrivacy";
 import LadiesCreatePerfectDate from "components/howItWorks/LadiesCreatePerfectDate";
+import LadiesExplore from "components/howItWorks/LadiesExplore";
 
 const style1 = {
   opacity: "0.9",
@@ -84,6 +85,8 @@ function HowItWork() {
             })}
           </div>
         </div>
+
+        <LadiesExplore />
         <a href="/home" style={{ textDecoration: "none" }}>
           <button type="btn" className="backtoHomepage-btn">
             Go back to homepage

@@ -630,7 +630,7 @@
   background: url("../assets/svg/bottle.svg") no-repeat;
   height: 41px;
   width: 41px;
-  right: -70px;
+  right: -250px;
   top: -100px;
   position: absolute;
 }
@@ -650,8 +650,8 @@
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/sun.svg") no-repeat;
-  top: 10px;
-  left: -30px;
+  top: 36px;
+  left: -200px;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
@@ -660,8 +660,8 @@
   height: 41px;
   width: 41px;
   position: absolute;
-  right: -20px;
-  top: 250px;
+  right: -25px;
+  top: -30px;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
@@ -671,7 +671,7 @@
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/paint.svg") no-repeat;
-  top: 30%;
+  top: 26%;
   left: -135px;
 }
 
@@ -681,8 +681,8 @@
   height: 45px;
   width: 45px;
   position: absolute;
-  right: -50px;
-  top: 46.5%;
+  right: -150px;
+  top: 28%;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
@@ -692,7 +692,7 @@
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/ticket.svg") no-repeat;
-  top: 66%;
+  top: 64%;
   left: -32px;
 }
 
@@ -702,19 +702,19 @@
   height: 45px;
   width: 45px;
   position: absolute;
-  right: -10px;
-  top: 73.5%;
+  right: -34px;
+  top: 52%;
 }
 
-.howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+.howitwork__bottles__dance:after {
   content: "";
-  height: 41px;
-  width: 41px;
+  height: 45px;
+  width: 45px;
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/bottle.svg") no-repeat;
-  top: 91%;
-  left: -30px;
+  bottom: -80px;
+  right: -550px;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 500px) {
@@ -1045,8 +1045,22 @@
     width: 250px;
   }
 
-  .text__content {
+  .gentlemen-down-iphone-image {
+    position: absolute;
+    left: 57%;
+    top: 34%;
+    width: 250px;
+  }
+
+  .text__content__margin {
     margin-left: 18%;
+  }
+
+  .text__content__gentlemen {
+    flex: 0.5 !important;
+  }
+
+  .text__content {
     font-family: Montserrat;
     font-style: normal;
     line-height: normal;
@@ -1086,6 +1100,8 @@
       color: #3a5e77;
       font-size: 18px;
       font-weight: 400;
+      font-style: normal;
+      line-height: normal;
     }
 
     .commitment__level {
@@ -1123,6 +1139,324 @@
   }
 }
 
+.commitment__level2:after {
+  content: "";
+  background: url("../assets/howItWorks/Group 140.png") no-repeat;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  right: 30px;
+  bottom: -38%;
+  z-index: 99;
+}
+
 .marginTop__20px {
   margin-top: 20px;
+}
+
+.ladies__first__page__margin {
+  margin-bottom: 15%;
+}
+
+.gentlemen__image__wrapper {
+  flex: 0.33;
+}
+
+.gentlemen__privacy {
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
+  .gentlmen__privacy__image {
+    flex: 0.32;
+    .main__image {
+      width: 350px;
+    }
+  }
+
+  .gentlemen__privacy__text__margin {
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+
+  .gentlemen__text__content {
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+    flex: 0.5;
+
+    .text__content__heading {
+      font-size: 30px;
+      font-weight: 400;
+      text-transform: capitalize;
+      color: #3a5e77;
+
+      .ladies__text {
+        color: #3a5e77;
+        font-weight: 700;
+      }
+
+      .commitment__text {
+        color: #f24462 !important;
+        font-weight: 700;
+      }
+
+      .commitment__level {
+        color: #3a5e77;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .shared__interested__text {
+        color: #3a5e77;
+        font-size: 26px;
+        font-weight: 700;
+      }
+    }
+
+    .text__content__ptext {
+      max-width: 85% !important;
+      color: #3a5e77;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: normal;
+    }
+
+    .commitment__level {
+      color: #3a5e77;
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+
+    .shared__interested__text {
+      color: #3a5e77;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: end;
+
+      .shared__interested__equalTo {
+        margin-left: 10px;
+      }
+    }
+
+    .Advantages {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #3a5e77;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .text__content__p__spantext {
+      font-weight: 600;
+    }
+  }
+}
+
+.ladies__explore {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15%;
+
+  .ladies__iphone__group__img {
+    position: relative;
+  }
+
+  .ladies-iphone-image {
+    width: 300px;
+  }
+
+  .ladies-down-iphone-image {
+    position: absolute;
+    left: 90%;
+    top: 31%;
+    width: 270px;
+  }
+
+  .ladies__explore__content {
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+    margin-top: 130px;
+    margin-left: 350px;
+    flex: 1;
+
+    ol {
+      list-style: decimal;
+      padding-left: 20px;
+    }
+
+    .text__content__heading {
+      font-size: 30px;
+      font-weight: 400;
+      text-transform: capitalize;
+      color: #3a5e77;
+      margin-bottom: 50px;
+
+      .ladies__text {
+        color: #3a5e77;
+        font-weight: 700;
+      }
+
+      .commitment__text {
+        color: #f24462 !important;
+        font-weight: 700;
+      }
+
+      .commitment__level {
+        color: #3a5e77;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .shared__interested__text {
+        color: #3a5e77;
+        font-size: 26px;
+        font-weight: 700;
+      }
+    }
+
+    .text__content__ptext {
+      max-width: 100% !important;
+      color: #3a5e77;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: normal;
+      margin-bottom: 25px;
+    }
+
+    .text__content__p__spantext {
+      font-weight: 600;
+    }
+  }
+}
+
+.howitwork__bottles__dance {
+  margin-left: -40px;
+  position: relative;
+}
+
+.text__content__gentlemen:after {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 581.png") no-repeat;
+  bottom: -90px;
+  right: 25px;
+}
+
+.gentlmen__privacy__image__content {
+  position: relative !important;
+}
+
+.gentlmen__privacy__image__content:before {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/ticket.svg") no-repeat;
+  top: 65%;
+  left: -100px;
+}
+
+.ladies__explore__iphone__group__img {
+  position: relative !important;
+}
+
+.ladies__explore__iphone__group__img:before {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 691.png") no-repeat;
+  top: 27%;
+  left: -90px;
+}
+
+.ladies__explore__content {
+  position: relative;
+}
+
+.ladies__explore__content:after {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 690.png") no-repeat;
+  bottom: -150px;
+  right: -50px;
+}
+
+.text__content__ladies__icon {
+  position: relative !important;
+}
+
+.text__content__ladies__icon:before {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 580.png") no-repeat;
+  top: 2%;
+  left: -90px;
+}
+
+.text__content__ladies__image__icon {
+  position: relative !important;
+}
+
+.text__content__ladies__image__icon:before {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 573.png") no-repeat;
+  bottom: 140px;
+  left: -50px;
+}
+
+.gentlemen__content__sun__icon {
+  position: relative !important;
+}
+
+.gentlemen__content__sun__icon:before {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 137.png") no-repeat;
+  bottom: -12px;
+  left: -80px;
+}
+
+.commitment__level__dish__icon {
+  position: relative !important;
+}
+
+.commitment__level__dish__icon:after {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 140.png") no-repeat;
+  bottom: 0px;
+  right: 0px;
 }

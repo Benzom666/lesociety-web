@@ -9,16 +9,21 @@ import Group236 from "../assets/img/Bottles & Dance.png";
 
 export function HowItWorkMain({ title, image, content }) {
   return (
-    <div className="col-lg-6 col-md-12 mt-5">
-      <div className="howitWork-image">
-        <img src={image} style={{ width: "102%" }} alt="howitWork-image" />
+    <>
+      {title === "Bottles & Dance" && (
+        <div className={`col-lg-3 mt-5 howitwork__bottles__dance`}></div>
+      )}
+      <div className={`col-lg-6 col-md-12 mt-5`}>
+        <div className="howitWork-image">
+          <img src={image} style={{ width: "102%" }} alt="howitWork-image" />
+        </div>
+        <h3
+          className="howitWork-heading"
+          dangerouslySetInnerHTML={{ __html: title }}
+        ></h3>
+        <p className="howitWork-content"> {content}</p>
       </div>
-      <h3
-        className="howitWork-heading"
-        dangerouslySetInnerHTML={{ __html: title }}
-      ></h3>
-      <p className="howitWork-content"> {content}</p>
-    </div>
+    </>
   );
 }
 

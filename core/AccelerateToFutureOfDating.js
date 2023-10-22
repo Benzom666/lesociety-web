@@ -77,13 +77,22 @@ function AccelerateToFutureOfDating() {
           </div>
         </div>
 
-        <a
+        {/* <a
           href="/howItWork"
           className="learn__more__wrapper"
           id="howitworkbtn"
           // onClick={() => router.push("/howItWork")}
         >
           <div className="learn__more">Learn More</div>
+        </a> */}
+        <a
+          href="/howItWork"
+          style={{ textDecoration: "none", color: "white" }}
+          className="learn__more__wrapper"
+        >
+          <button type="btn" className="learn__more" style={{ color: "white" }}>
+            Learn More
+          </button>
         </a>
       </div>
     </>

@@ -5,8 +5,8 @@ import { CustomIcon } from "@/core/icon";
 
 function LadiesFirstHowItWorks() {
   return (
-    <div className="ladies__first__page">
-      <div className="ladies__iphone__group__img">
+    <div className="ladies__first__page ladies__first__page__margin">
+      <div className="ladies__iphone__group__img text__content__ladies__image__icon">
         <img
           src={firstLadiesIphone13pro.src}
           alt="logo"
@@ -18,7 +18,7 @@ function LadiesFirstHowItWorks() {
           className="ladies-down-iphone-image"
         />
       </div>
-      <div className="text__content">
+      <div className="text__content text__content__margin text__content__ladies__icon">
         <div className="text__content__heading">
           <span className="ladies__text">Ladies, </span>
           <span> He's Unveiling His </span>
@@ -59,7 +59,9 @@ function LadiesFirstHowItWorks() {
           messages or matches.
         </p>
 
-        <div className="commitment__level">Level 2 Commitment:</div>
+        <div className="commitment__level commitment__level__dish__icon">
+          Level 2 Commitment:
+        </div>
 
         <div className="shared__interested__text">
           <div className="super__interested__icon">
