@@ -26,7 +26,9 @@ function LadiesFirstHowItWorks() {
         </div>
         <div className="commitment__level">Level 1 Commitment:</div>
         <div className="shared__interested__text">
-          <CustomIcon.IntrestedBlackText color={"black"} />
+          <div className="shared__interest__text__icon">
+            <CustomIcon.IntrestedBlackText color={"black"} />
+          </div>
           <span className="shared__interested__equalTo">
             {" "}
             = Shared Interests
@@ -63,8 +65,8 @@ function LadiesFirstHowItWorks() {
           Level 2 Commitment:
         </div>
 
-        <div className="shared__interested__text">
-          <div className="super__interested__icon">
+        <div className="shared__interested__text level__2__super__interested__text">
+          <div className="super__interested__icon ">
             <CustomIcon.RequestSuperText color={"white"} />
 
             <CustomIcon.IntrestedBlackText color={"white"} />

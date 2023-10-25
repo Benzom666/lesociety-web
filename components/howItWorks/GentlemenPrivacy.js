@@ -9,7 +9,7 @@ function GentlemenPrivacy() {
         <img src={privacy.src} alt="logo" className="main__image" />
       </div>
       <div className="gentlemen__text__content text__content__gentlemen">
-        <div className="text__content__heading gentlemen__privacy__text__margin">
+        <div className="text__content__heading gentlemen__privacy__priority__icon gentlemen__privacy__text__margin">
           <span className="ladies__text">Gentlemen, </span>
           <span>Your </span>
           <span className="commitment__text">PRIVACY</span>

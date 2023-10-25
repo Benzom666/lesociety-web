@@ -2,16 +2,25 @@ import React from "react";
 import { CustomIcon } from "./icon";
 import Iphone15 from "../assets/homePage/iPhone 15.png";
 import { router, useRouter } from "next/router";
+import useWindowSize from "utils/useWindowSize";
 
 function AccelerateToFutureOfDating() {
   const router = useRouter();
 
+  const { width } = useWindowSize();
+
   return (
     <>
       <div className="accelerate__wrapper">
-        <h1>
-          Accelerate to the Future of{" "}
-          <CustomIcon.AccelerateFutureOfDatingIcon color={"white"} size={150} />
+        <h1 className="accelerate__future__dating__icon">
+          <span>
+            {width > 1024 ? (
+              <CustomIcon.AccelerateFutureOfDatingIcon />
+            ) : (
+              <CustomIcon.AccelerateFutureOfDatingMobileIcon />
+            )}
+          </span>
+          to the Future of Dating
         </h1>
         <div className="accelerate__container">
           <div className="level2">
@@ -22,33 +31,43 @@ function AccelerateToFutureOfDating() {
               </div>
               <CustomIcon.IntrestedText color={"white"} size={150} />
             </div>
-            <p className="inerested__text">
+            <p className="inerested__text beyond__date__experience">
               Beyond the date experience, you're also keen on supporting her
               aspirations, which accelerates the path to a memorable first date.
               This supercharges presence, making you stand out even more
             </p>
-            <div className="line__progress">
+            {/* <div className="line__progress">
               <CustomIcon.AccelerateFutureOfDatingProgressBarIcon
                 color={"white"}
                 size={150}
               />
+            </div> */}
+            <div className="progress__line__wrapper">
+              <div class="progress-line"></div>
+              <div className="progress__line__black"></div>
             </div>
             <p className="progress__text">
               Your Chance of Securing a Date Compared to Traditional Dating
               Sites.
             </p>
-            <div className="image__progress1">
+            {/* <div className="image__progress1">
               <CustomIcon.AccelerateFutureOfDatingImageProgressBarIcon1
                 color={"white"}
                 size={150}
               />
+            </div> */}
+            <div className="image__progress1">
+              <div className="diagonal-line"></div>
+              <div className="progress__circle"></div>
             </div>
           </div>
-          <img
-            src={Iphone15.src}
-            alt="logo"
-            className="accelerate-iphone-image"
-          />
+          <div className="accelerate-iphone-image__wrapper">
+            <img
+              src={Iphone15.src}
+              alt="logo"
+              className="accelerate-iphone-image"
+            />
+          </div>
           <div className="level1">
             <h6>Level 1: </h6>
             <div className="only__interested__icon">
@@ -59,12 +78,16 @@ function AccelerateToFutureOfDating() {
               to treat her to the date experience she's handpicked, laying the
               foundation for a genuine connection.
             </p>
-            <div className="line__progress">
+            {/* <div className="line__progress">
               {" "}
               <CustomIcon.AccelerateFutureOfDatingProgressBarIcon
                 color={"white"}
                 size={150}
               />
+            </div> */}
+            <div className="progress__line__wrapper">
+              <div class="progress-line"></div>
+              <div className="progress__line__black"></div>
             </div>
             <p className="progress__text">
               Your Chance of Securing a Date Compared to Traditional Dating

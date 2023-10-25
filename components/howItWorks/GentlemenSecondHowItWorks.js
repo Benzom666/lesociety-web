@@ -5,16 +5,18 @@ import { CustomIcon } from "@/core/icon";
 
 function GentlemenSecondHowItWorks() {
   return (
-    <div className="ladies__first__page">
-      <div className="text__content text__content__gentlemen">
+    <div className="ladies__first__page ">
+      <div className="text__content text__content__gentlemen text__content__gentlemen__shoe__icon">
         <div className="text__content__heading">
           <span className="ladies__text">Gentlemen, </span>
           <span className="commitment__text">STAND OUT</span>
           <span> From The crowd</span>
         </div>
         <div className="commitment__level">Level 1 Commitment:</div>
-        <div className="shared__interested__text">
-          <CustomIcon.IntrestedBlackText color={"black"} />
+        <div className="shared__interested__text level__2__super__interested__text">
+          <div className="super__interested__icon">
+            <CustomIcon.IntrestedBlackText color={"black"} />
+          </div>
           <span className="shared__interested__equalTo">
             {" "}
             = Amplify Your Presence
@@ -42,8 +44,8 @@ function GentlemenSecondHowItWorks() {
 
         <div className="commitment__level">Level 2 Commitment:</div>
 
-        <div className="shared__interested__text">
-          <div className="super__interested__icon">
+        <div className="shared__interested__text level__2__super__interested__text">
+          <div className="super__interested__icon ">
             <CustomIcon.RequestSuperText color={"white"} />
 
             <CustomIcon.IntrestedBlackText color={"white"} />

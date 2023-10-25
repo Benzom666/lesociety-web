@@ -681,7 +681,7 @@
   height: 45px;
   width: 45px;
   position: absolute;
-  right: -150px;
+  right: -30px;
   top: 28%;
 }
 
@@ -767,7 +767,7 @@
     top: 2%;
   }
 
-  .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+  .howitwork-main-card-image-section .col-lg-6:nth-child(1):before {
     top: 9.25%;
     left: 88%;
   }
@@ -864,29 +864,49 @@
     top: 8%;
   }
 
-  .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
-    top: 7.5%;
-    left: 95%;
+  .howitwork-main-card-image-section .col-lg-6:nth-child(1):before {
+    top: 0%;
+    left: 92%;
   }
 
   .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-    left: 7px;
-    top: 21%;
+    left: 8px;
+    top: 13.5%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(3) {
+    position: relative;
   }
 
   .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-    top: 35%;
+    top: -15%;
     left: -5%;
   }
 
+  .howitwork-main-card-image-section .col-lg-6:nth-child(4) {
+    position: relative;
+  }
+
   .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-    right: 12px;
-    top: 47.5%;
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -25px;
+    top: -50px;
+  }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(5) {
+    position: relative;
   }
 
   .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-    top: 60%;
+    top: -60px;
     left: 88%;
+  }
+
+  .howitwork-main-card-image-section .col-lg-6:nth-child(6) {
+    position: relative;
   }
 
   .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
@@ -1030,12 +1050,9 @@
   display: flex;
   justify-content: center;
 
-  .ladies__iphone__group__img {
-    position: relative;
-  }
-
   .ladies-iphone-image {
     width: 350px;
+    position: relative;
   }
 
   .ladies-down-iphone-image {
@@ -1345,7 +1362,11 @@
   position: relative;
 }
 
-.text__content__gentlemen:after {
+.text__content__gentlemen__shoe__icon {
+  position: relative !important;
+}
+
+.text__content__gentlemen__shoe__icon:after {
   content: "";
   height: 45px;
   width: 45px;
@@ -1459,4 +1480,1186 @@
   background: url("../assets/howItWorks/Group 140.png") no-repeat;
   bottom: 0px;
   right: 0px;
+}
+
+.gentlemen__image__wrapper {
+  position: relative !important;
+}
+
+.gentlemen__image__wrapper:after {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/bottle.svg") no-repeat;
+  top: 50px;
+  right: 10px;
+}
+
+@media only screen and (max-width: 1366px) and (min-width: 769px) {
+  .howItWork-navbar {
+    margin: 70px auto !important;
+    display: flex;
+    justify-content: center;
+
+    // margin-bottom: 2rem;
+    .LeSociety-Icon-White {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0px !important;
+
+      .ls-text {
+        padding-left: 1rem !important;
+      }
+
+      p {
+        padding: 0 !important;
+      }
+
+      .ls-logo {
+        margin: 20px auto;
+      }
+    }
+  }
+
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+
+    .ladies__iphone__group__img {
+      margin-bottom: 180px;
+      margin-left: -25%;
+    }
+
+    .gentlemen__image__wrapper {
+      margin-bottom: 120px !important;
+    }
+
+    .text__content {
+      flex: 1;
+      padding: 0 15%;
+
+      .text__content__heading {
+        font-size: 26px;
+        text-align: center;
+      }
+      .commitment__level {
+        font-size: 16px;
+        text-align: center;
+      }
+      .shared__interested__text {
+        font-size: 18px;
+        justify-content: center;
+      }
+
+      .shared__interest__text__icon {
+        span {
+          max-width: 30% !important;
+          object-fit: contain;
+        }
+      }
+
+      .text__content__ptext {
+        min-width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .Advantages {
+        text-align: center;
+      }
+
+      .level__2__super__interested__text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .super__interested__icon {
+        margin-bottom: 10px;
+      }
+    }
+
+    .text__content__margin {
+      margin-left: 0;
+    }
+
+    .ladies-iphone-image {
+      width: 270px;
+      position: relative;
+    }
+
+    .ladies-down-iphone-image {
+      width: 200px;
+      left: 230px;
+    }
+
+    .gentlemen-down-iphone-image {
+      width: 200px;
+      left: 220px;
+    }
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+    padding: 0 15%;
+  }
+
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+
+    .gentlmen__privacy__image {
+      .main__image {
+        width: 300px;
+      }
+    }
+
+    .gentlemen__text__content {
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ladies__explore {
+    flex-direction: column;
+    margin-bottom: 8%;
+
+    .ladies__iphone__group__img {
+      margin-left: -20%;
+
+      .ladies-iphone-image {
+        width: 270px;
+      }
+      .ladies-down-iphone-image {
+        width: 220px;
+        left: 240px;
+      }
+    }
+
+    .ladies__explore__content {
+      margin-left: 0;
+      margin-top: 120px;
+
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -40px;
+    top: -25px;
+    position: absolute;
+  }
+
+  .gentlmen__privacy__image__content:before {
+    top: 45%;
+    left: -100px;
+  }
+
+  // .ladies__explore__iphone__group__img:before {
+  //   display: none;
+  // }
+
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+
+  // .gentlemen__content__sun__icon:before {
+  //   top: -42px;
+  //   left: -20px;
+  // }
+
+  // .gentlemen__image__wrapper:after {
+  //   left: 0px;
+  //   top: -60px;
+  // }
+
+  // .commitment__level__dish__icon:after {
+  //   bottom: -75px;
+  // }
+
+  .text__content__ladies__image__icon:before {
+    bottom: 20px;
+    left: -60px;
+  }
+
+  .text__content__ladies__icon:before {
+    top: -690px;
+    left: 660px;
+  }
+
+  .gentlemen__privacy__priority__icon:after {
+    right: 10px;
+    top: -75px;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 500px) {
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+
+    .ladies__iphone__group__img {
+      margin-bottom: 180px;
+      margin-left: -30%;
+    }
+
+    .gentlemen__image__wrapper {
+      margin-bottom: 120px !important;
+    }
+
+    .text__content {
+      flex: 1;
+      padding: 0 25px;
+
+      .text__content__heading {
+        font-size: 26px;
+        text-align: center;
+      }
+      .commitment__level {
+        font-size: 16px;
+        text-align: center;
+      }
+      .shared__interested__text {
+        font-size: 18px;
+        justify-content: center;
+      }
+
+      .shared__interest__text__icon {
+        span {
+          max-width: 30% !important;
+          object-fit: contain;
+        }
+      }
+
+      .text__content__ptext {
+        min-width: 70%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .Advantages {
+        text-align: center;
+      }
+
+      .level__2__super__interested__text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .super__interested__icon {
+        margin-bottom: 10px;
+      }
+    }
+
+    .text__content__margin {
+      margin-left: 0;
+    }
+
+    .ladies-iphone-image {
+      width: 270px;
+      position: relative;
+    }
+
+    .ladies-down-iphone-image {
+      width: 200px;
+      left: 230px;
+    }
+
+    .gentlemen-down-iphone-image {
+      width: 200px;
+      left: 220px;
+    }
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+
+    .gentlmen__privacy__image {
+      .main__image {
+        width: 300px;
+      }
+    }
+
+    .gentlemen__text__content {
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ladies__explore {
+    flex-direction: column;
+    margin-bottom: 8%;
+
+    .ladies__iphone__group__img {
+      margin-left: -20%;
+
+      .ladies-iphone-image {
+        width: 180px;
+      }
+      .ladies-down-iphone-image {
+        width: 140px;
+        left: 150px;
+      }
+    }
+
+    .ladies__explore__content {
+      margin-left: 0;
+      margin-top: 80px;
+
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+
+  .text__content__ladies__icon:before {
+    top: -690px;
+    left: 450px;
+  }
+}
+
+@media only screen and (max-width: 499px) and (min-width: 420px) {
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+
+    .ladies__iphone__group__img {
+      margin-bottom: 150px;
+      margin-left: -30%;
+    }
+
+    .gentlemen__image__wrapper {
+      margin-bottom: 120px !important;
+    }
+
+    .text__content {
+      flex: 1;
+      padding: 0 25px;
+
+      .text__content__heading {
+        font-size: 26px;
+        text-align: center;
+      }
+      .commitment__level {
+        font-size: 16px;
+        text-align: center;
+      }
+      .shared__interested__text {
+        font-size: 18px;
+        justify-content: center;
+      }
+
+      .shared__interest__text__icon {
+        span {
+          max-width: 30% !important;
+          object-fit: contain;
+        }
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .Advantages {
+        text-align: center;
+      }
+
+      .level__2__super__interested__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .super__interested__icon {
+        margin-bottom: 10px;
+      }
+    }
+
+    .text__content__margin {
+      margin-left: 0;
+    }
+
+    .ladies-iphone-image {
+      width: 180px;
+      position: relative;
+    }
+
+    .ladies-down-iphone-image {
+      width: 140px;
+      left: 150px;
+    }
+
+    .gentlemen-down-iphone-image {
+      width: 140px;
+      left: 140px;
+    }
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+
+    .gentlmen__privacy__image {
+      .main__image {
+        width: 300px;
+      }
+    }
+
+    .gentlemen__text__content {
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ladies__explore {
+    flex-direction: column;
+
+    .ladies__iphone__group__img {
+      margin-left: -38%;
+
+      .ladies-iphone-image {
+        width: 180px;
+      }
+      .ladies-down-iphone-image {
+        width: 140px;
+        left: 150px;
+      }
+    }
+
+    .ladies__explore__content {
+      margin-left: 0;
+      margin-top: 80px;
+
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+
+  .text__content__ladies__icon:before {
+    top: -500px;
+    left: 300px;
+  }
+}
+
+@media only screen and (max-width: 419px) and (min-width: 341px) {
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+
+    .ladies__iphone__group__img {
+      margin-bottom: 150px;
+      margin-left: -30%;
+    }
+
+    .gentlemen__image__wrapper {
+      margin-bottom: 120px !important;
+    }
+
+    .text__content {
+      flex: 1;
+      padding: 0 25px;
+
+      .text__content__heading {
+        font-size: 26px;
+        text-align: center;
+      }
+      .commitment__level {
+        font-size: 16px;
+        text-align: center;
+      }
+      .shared__interested__text {
+        font-size: 18px;
+        justify-content: center;
+      }
+
+      .shared__interest__text__icon {
+        span {
+          max-width: 30% !important;
+          object-fit: contain;
+        }
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .Advantages {
+        text-align: center;
+      }
+
+      .level__2__super__interested__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .super__interested__icon {
+        margin-bottom: 10px;
+      }
+    }
+
+    .text__content__margin {
+      margin-left: 0;
+    }
+
+    .ladies-iphone-image {
+      width: 180px;
+      position: relative;
+    }
+
+    .ladies-down-iphone-image {
+      width: 140px;
+      left: 150px;
+    }
+
+    .gentlemen-down-iphone-image {
+      width: 140px;
+      left: 140px;
+    }
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+
+    .gentlmen__privacy__image {
+      .main__image {
+        width: 300px;
+      }
+    }
+
+    .gentlemen__privacy__text__margin {
+      margin-bottom: 30px;
+    }
+
+    .gentlemen__text__content {
+      .text__content__heading {
+        text-align: center;
+        font-size: 26px;
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ladies__explore {
+    flex-direction: column;
+
+    .ladies__iphone__group__img {
+      margin-left: -38%;
+
+      .ladies-iphone-image {
+        width: 180px;
+      }
+      .ladies-down-iphone-image {
+        width: 140px;
+        left: 150px;
+      }
+    }
+
+    .ladies__explore__content {
+      margin-left: 0;
+      margin-top: 80px;
+
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+
+  .text__content__ladies__icon:before {
+    top: -500px;
+    left: 300px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+
+    .ladies__iphone__group__img {
+      margin-bottom: 150px;
+      margin-left: -30%;
+    }
+
+    .gentlemen__image__wrapper {
+      margin-bottom: 120px !important;
+    }
+
+    .text__content {
+      flex: 1;
+      padding: 0 25px;
+
+      .text__content__heading {
+        font-size: 26px;
+        text-align: center;
+      }
+      .commitment__level {
+        font-size: 16px;
+        text-align: center;
+      }
+      .shared__interested__text {
+        font-size: 18px;
+        justify-content: center;
+      }
+
+      .shared__interest__text__icon {
+        span {
+          max-width: 30% !important;
+          object-fit: contain;
+        }
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .Advantages {
+        text-align: center;
+      }
+
+      .level__2__super__interested__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .super__interested__icon {
+        margin-bottom: 10px;
+      }
+    }
+
+    .text__content__margin {
+      margin-left: 0;
+    }
+
+    .ladies-iphone-image {
+      width: 170px;
+      position: relative;
+    }
+
+    .ladies-down-iphone-image {
+      width: 130px;
+      left: 140px;
+    }
+
+    .gentlemen-down-iphone-image {
+      width: 130px;
+      left: 135px;
+    }
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+
+    .gentlmen__privacy__image {
+      .main__image {
+        width: 260px;
+      }
+    }
+
+    .gentlemen__text__content {
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ladies__explore {
+    flex-direction: column;
+
+    .ladies__iphone__group__img {
+      margin-left: -38%;
+
+      .ladies-iphone-image {
+        width: 170px;
+      }
+      .ladies-down-iphone-image {
+        width: 130px;
+        left: 140px;
+      }
+    }
+
+    .ladies__explore__content {
+      margin-left: 0;
+      margin-top: 80px;
+
+      .text__content__heading {
+        text-align: center;
+      }
+
+      .text__content__ptext {
+        min-width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+
+  .text__content__ladies__icon:before {
+    top: -500px;
+    left: 300px;
+  }
 }
