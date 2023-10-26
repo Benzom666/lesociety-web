@@ -41,17 +41,15 @@ function HowItWork() {
   return (
     <>
       <div className="inner-part-page auth-section how-it-works">
-        <div className="howItWork-navbar">
-          <nav className="navbar navbar-light bg-#f2f5f7">
-            <div className="LeSociety-Icon-White d-flex mt-3">
-              <div className="ls-logo">
-                <img src={LeSlogoBlack.src} alt="ls-logo" />
-              </div>
-              <div className="ls-text mt-2 ">
-                <p> Learn More</p>
-              </div>
+        <div className="howItWork__navbar">
+          <div className="LeSociety__Icon__White">
+            <div className="ls__logo">
+              <img src={LeSlogoBlack.src} alt="ls__logo" />
             </div>
-          </nav>
+            <div className="ls__text mt-2 ">
+              <p> Learn More</p>
+            </div>
+          </div>
         </div>
 
         <LadiesFirstHowItWorks />

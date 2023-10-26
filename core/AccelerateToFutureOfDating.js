@@ -1,6 +1,7 @@
 import React from "react";
 import { CustomIcon } from "./icon";
 import Iphone15 from "../assets/homePage/iPhone 15.png";
+import Iphone15Mobile from "../assets/homePage/iPhone 15 -mobile.png";
 import { router, useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
 
@@ -8,6 +9,8 @@ function AccelerateToFutureOfDating() {
   const router = useRouter();
 
   const { width } = useWindowSize();
+
+  const accelarateImage = width > 768 ? Iphone15.src : Iphone15Mobile.src;
 
   return (
     <>
@@ -63,7 +66,7 @@ function AccelerateToFutureOfDating() {
           </div>
           <div className="accelerate-iphone-image__wrapper">
             <img
-              src={Iphone15.src}
+              src={accelarateImage}
               alt="logo"
               className="accelerate-iphone-image"
             />
