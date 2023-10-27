@@ -1095,26 +1095,59 @@
     margin-top: 80px !important;
   }
   .accelerate__wrapper .accelerate__future__dating__icon {
-    flex-direction: column;
+    flex-direction: row;
   }
   .accelerate__wrapper .accelerate__container {
     flex-direction: column;
     margin-top: 10px;
     text-align: center;
+    width: 320px;
+  }
+  .accelerate__wrapper .accelerate__container .accelerate-iphone-image {
+    width: 320px;
+    height: 490px;
+    margin-left: 0;
+  }
+  .accelerate__wrapper .accelerate__container .super__interested__icon {
+    margin-top: 10px;
   }
   .accelerate__wrapper .accelerate__container .accelerate-iphone-image__wrapper {
     order: 1;
     display: flex;
     justify-content: center;
   }
+  .accelerate__wrapper .accelerate__container .image__progress1 {
+    bottom: 320px;
+    left: -30px;
+    transform: rotate(90deg);
+    width: 140px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress1 .diagonal-line {
+    transform: rotate(221deg);
+    width: 135px;
+    top: 0px;
+    left: 1px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress2 {
+    top: 395px;
+    transform: rotate(270deg);
+    right: -30px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress2 .diagonal-line {
+    width: 195px;
+    height: 2px;
+    background-color: white; /* You can choose your preferred line color */
+    position: absolute;
+    transform-origin: 0.2% 60%;
+    transform: rotate(218deg);
+  }
   .accelerate__wrapper .accelerate__container .level2 {
-    margin-top: 30px;
+    margin-top: 0px;
     margin-bottom: 0;
     order: 2;
     align-self: normal;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
   .accelerate__wrapper .accelerate__container .level1 {
@@ -1163,6 +1196,9 @@
     margin-top: 50px;
     text-align: center;
   }
+  .new-home-main-container .main__text__contents p {
+    font-size: 16px;
+  }
   .new-home-main-container .gentlemen__container {
     margin-left: 0px;
     flex-direction: column;
@@ -1176,6 +1212,7 @@
   }
   .new-home-main-container .gentlemen__container .main__text__contents p {
     text-align: center;
+    font-size: 16px;
   }
   .accelerate__wrapper {
     margin-top: 80px !important;
@@ -1187,6 +1224,7 @@
     flex-direction: column;
     margin-top: 10px;
     text-align: center;
+    width: 320px;
   }
   .accelerate__wrapper .accelerate__container .accelerate-iphone-image {
     width: 320px;
@@ -1265,12 +1303,13 @@
     margin-left: 0;
   }
   .new-home-main-container {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 100%;
   }
   .new-home-main-container .ladies__container {
     flex-direction: column;
+    align-items: center;
     margin-left: 0;
   }
   .new-home-main-container .text__container__margin {
@@ -1280,9 +1319,13 @@
     margin-top: 50px;
     text-align: center;
   }
+  .new-home-main-container .main__text__contents p {
+    font-size: 16px;
+  }
   .new-home-main-container .gentlemen__container {
     margin-left: 0px;
     flex-direction: column;
+    align-items: center;
   }
   .new-home-main-container .gentlemen__container .main__text__contents {
     order: 1;
@@ -1303,15 +1346,53 @@
     flex-direction: column;
     margin-top: 10px;
     text-align: center;
+    width: 290px;
+  }
+  .accelerate__wrapper .accelerate__container .accelerate-iphone-image {
+    width: 290px;
+    height: 490px;
+    margin-left: 0;
+  }
+  .accelerate__wrapper .accelerate__container .super__interested__icon {
+    margin-top: 10px;
+  }
+  .accelerate__wrapper .accelerate__container .accelerate-iphone-image__wrapper {
+    order: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress1 {
+    bottom: 340px;
+    left: -25px;
+    transform: rotate(90deg);
+    width: 110px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress1 .diagonal-line {
+    transform: rotate(221deg);
+    width: 135px;
+    top: 0px;
+    left: 1px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress2 {
+    top: 422px;
+    transform: rotate(270deg);
+    right: -35px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress2 .diagonal-line {
+    width: 195px;
+    height: 2px;
+    background-color: white; /* You can choose your preferred line color */
+    position: absolute;
+    transform-origin: 0.2% 60%;
+    transform: rotate(218deg);
   }
   .accelerate__wrapper .accelerate__container .level2 {
-    margin-top: 30px;
+    margin-top: 0px;
     margin-bottom: 0;
     order: 2;
     align-self: normal;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
   .accelerate__wrapper .accelerate__container .level1 {
