@@ -14,6 +14,7 @@ import GentlemenSecondHowItWorks from "components/howItWorks/GentlemenSecondHowI
 import GentlemenPrivacy from "components/howItWorks/GentlemenPrivacy";
 import LadiesCreatePerfectDate from "components/howItWorks/LadiesCreatePerfectDate";
 import LadiesExplore from "components/howItWorks/LadiesExplore";
+import Loader from "@/modules/Loader/Loader";
 
 const style1 = {
   opacity: "0.9",
@@ -31,6 +32,7 @@ const style3 = {
 };
 function HowItWork() {
   const { width } = useWindowSize();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -38,8 +40,38 @@ function HowItWork() {
       window.document.body.style.color = "black";
     }
   }, []);
+
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+      // also hide scrollbar for all browsers
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      // scroll to top
+
+      document.body.style.overflow = "unset";
+      // also unhide scrollbar for all browsers
+      document.documentElement.style.overflow = "unset";
+    }
+  }, [loading]);
+
   return (
     <>
+      {loading && (
+        <div className="home__loader__layout">
+          <div className="home__loader__section">
+            <Loader />
+          </div>
+        </div>
+      )}
       <div className="inner-part-page auth-section how-it-works">
         <div className="howItWork__navbar">
           <div className="LeSociety__Icon__White">
@@ -57,7 +89,8 @@ function HowItWork() {
         <GentlemenPrivacy />
         <LadiesCreatePerfectDate />
 
-        <HomePageMiddleNav style={style1} styleText={style2} />
+        {!loading && <HomePageMiddleNav style={style1} styleText={style2} />}
+
         <div className="container-2 mb-5">
           <div className=" col-xl-12 col-lg-12 col-md-12 container-2-title">
             <h3 className="heading">

@@ -56,7 +56,7 @@ function HomePage({ items }) {
     if (loading) {
       setTimeout(() => {
         setLoading(false);
-      }, 3000);
+      }, 5000);
     }
   }, [loading]);
 

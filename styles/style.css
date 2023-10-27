@@ -2498,7 +2498,7 @@ div[id=scrolldiv] {
   display: flex;
   justify-content: space-between;
   font-size: 1.25rem;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 .date_card_wrap .user_img_date .user-details h5 .user_age {
   color: #F24462;
@@ -2532,11 +2532,13 @@ div[id=scrolldiv] {
 }
 .date_card_wrap .user_img_date .user-details .tag_wrap ul li {
   padding: 8px;
-  background: linear-gradient(231.4deg, rgb(46, 49, 58) 18.16%, rgb(25, 25, 25) 95.56%);
-  color: #fff;
   border: 0.5px solid #293036;
+  background: linear-gradient(231deg, rgba(46, 49, 58, 0.4) 18.16%, rgba(25, 25, 25, 0.42) 95.56%);
   -webkit-backdrop-filter: blur(4.5px);
           backdrop-filter: blur(4.5px);
+  color: #fff;
+  border: 0.5px solid #293036;
+  backdrop-filter: blur(4.5px);
   border-radius: 8px;
   opacity: 0.9;
   cursor: pointer;
@@ -4088,13 +4090,12 @@ body .verification_card_header .availabe_card_inner:hover {
 .message .message-content-side .tag_wrap ul li {
   padding: 4px 10px;
   margin-right: 10px;
-  background: linear-gradient(261.67deg, rgba(58, 62, 71, 0.7) 14.2%, rgba(46, 49, 58, 0.7) 92.52%);
-  -webkit-backdrop-filter: blur(16.3097px);
-          backdrop-filter: blur(16.3097px);
   color: #fff;
-  border: 0.607143px solid #293036;
-  -webkit-backdrop-filter: blur(10.9286px);
-          backdrop-filter: blur(10.9286px);
+  border-radius: 5px;
+  border: 0.5px solid #293036;
+  background: linear-gradient(231deg, rgba(46, 49, 58, 0.4) 18.16%, rgba(25, 25, 25, 0.42) 95.56%);
+  -webkit-backdrop-filter: blur(4.5px);
+          backdrop-filter: blur(4.5px);
   border-radius: 8px;
   cursor: pointer;
 }
@@ -4399,7 +4400,7 @@ body .verification_card_header .availabe_card_inner:hover {
   font-size: 20px;
   line-height: 23px;
   text-align: center;
-  padding: 52px 32px;
+  padding: 52px 32px 24px 32px;
   margin-bottom: 0;
 }
 .message-popup .tip {
@@ -4428,8 +4429,6 @@ body .verification_card_header .availabe_card_inner:hover {
   width: 90%;
   height: 50px;
   border: none;
-  padding: 20px !important;
-  padding-right: 65px !important;
   color: white;
   margin-bottom: 20px;
 }
@@ -6385,27 +6384,6 @@ footer p {
 .how-it-works {
   font-family: "Montserrat";
 }
-.how-it-works .howItWork-navbar {
-  margin-left: 55px;
-  margin-bottom: 2rem;
-}
-.how-it-works .howItWork-navbar .LeSociety-Icon-White {
-  padding: 0 75px;
-}
-.how-it-works .howItWork-navbar .LeSociety-Icon-White .ls-logo {
-  margin: 20px 20px;
-}
-.how-it-works .howItWork-navbar .LeSociety-Icon-White .ls-logo img {
-  width: 35px;
-}
-.how-it-works .howItWork-navbar .LeSociety-Icon-White .ls-text p {
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  color: black;
-  font-size: 23px;
-  padding: 22px 0px;
-  text-transform: uppercase;
-}
 .how-it-works .container-1 {
   display: flex;
   flex-direction: column;
@@ -6498,7 +6476,7 @@ footer p {
   padding: 5px;
 }
 .how-it-works .container-2 .container-2-title .heading {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -6506,7 +6484,6 @@ footer p {
   letter-spacing: 1.4px;
   text-align: center;
   color: #1a415c;
-  text-transform: uppercase;
 }
 .how-it-works .container-2 .container-2-title .sub-heading {
   font-size: 18px;
@@ -6782,20 +6759,6 @@ footer p {
   }
 }
 @media only screen and (max-width: 480px) and (min-width: 340px) {
-  .how-it-works .howItWork-navbar {
-    margin: 10px auto !important;
-  }
-  .how-it-works .howItWork-navbar .LeSociety-Icon-White {
-    display: flex;
-    flex-direction: column;
-    padding: 0px !important;
-  }
-  .how-it-works .howItWork-navbar .LeSociety-Icon-White .ls-text {
-    padding-left: 1rem !important;
-  }
-  .how-it-works .howItWork-navbar .LeSociety-Icon-White .ls-logo {
-    margin: 20px auto;
-  }
   .how-it-works .backtoHomepage-btn {
     display: flex;
     justify-content: center;
@@ -6805,21 +6768,6 @@ footer p {
   }
 }
 @media only screen and (max-width: 340px) {
-  .how-it-works .howItWork-navbar {
-    margin: 10px auto !important;
-  }
-  .how-it-works .howItWork-navbar .LeSociety-Icon-White {
-    display: flex;
-    flex-direction: column;
-    padding: 0px !important;
-    margin: 0 auto;
-  }
-  .how-it-works .howItWork-navbar .LeSociety-Icon-White .ls-text {
-    padding-left: 1rem !important;
-  }
-  .how-it-works .howItWork-navbar .LeSociety-Icon-White .ls-logo {
-    margin: 20px auto 5px auto;
-  }
   .how-it-works .backtoHomepage-btn {
     display: flex;
     justify-content: center;
@@ -6875,7 +6823,7 @@ footer p {
   background: url("../assets/svg/bottle.svg") no-repeat;
   height: 41px;
   width: 41px;
-  right: -70px;
+  right: -250px;
   top: -100px;
   position: absolute;
 }
@@ -6895,8 +6843,8 @@ footer p {
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/sun.svg") no-repeat;
-  top: 10px;
-  left: -30px;
+  top: 36px;
+  left: -200px;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
@@ -6905,8 +6853,8 @@ footer p {
   height: 41px;
   width: 41px;
   position: absolute;
-  right: -20px;
-  top: 250px;
+  right: -25px;
+  top: -30px;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
@@ -6916,7 +6864,7 @@ footer p {
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/paint.svg") no-repeat;
-  top: 30%;
+  top: 26%;
   left: -135px;
 }
 
@@ -6926,8 +6874,8 @@ footer p {
   height: 45px;
   width: 45px;
   position: absolute;
-  right: -50px;
-  top: 46.5%;
+  right: -30px;
+  top: 28%;
 }
 
 .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
@@ -6937,7 +6885,7 @@ footer p {
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/ticket.svg") no-repeat;
-  top: 66%;
+  top: 64%;
   left: -32px;
 }
 
@@ -6947,19 +6895,19 @@ footer p {
   height: 45px;
   width: 45px;
   position: absolute;
-  right: -10px;
-  top: 73.5%;
+  right: -34px;
+  top: 52%;
 }
 
-.howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
+.howitwork__bottles__dance:after {
   content: "";
-  height: 41px;
-  width: 41px;
+  height: 45px;
+  width: 45px;
   position: absolute;
   z-index: 99;
   background: url("../assets/svg/bottle.svg") no-repeat;
-  top: 91%;
-  left: -30px;
+  bottom: -80px;
+  right: -550px;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 500px) {
@@ -6989,13 +6937,7 @@ footer p {
     top: -65px;
   }
   .container-2-title::before {
-    content: "";
-    background: url("../assets/svg/ticket.svg") no-repeat;
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    left: 100px;
-    top: 100%;
+    display: none;
   }
   .container-2-title:after {
     content: "";
@@ -7006,7 +6948,7 @@ footer p {
     right: 116px;
     top: 2%;
   }
-  .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
+  .howitwork-main-card-image-section .col-lg-6:nth-child(1):before {
     top: 9.25%;
     left: 88%;
   }
@@ -7033,16 +6975,6 @@ footer p {
   .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
     top: 88%;
     left: 87%;
-  }
-  .how-it-works button.backtoHomepage-btn::before {
-    content: "";
-    background: url("../assets/svg/paint.svg") no-repeat;
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    left: 182px;
-    z-index: 99;
-    top: 29px;
   }
 }
 @media only screen and (max-width: 499px) and (min-width: 340px) {
@@ -7072,13 +7004,7 @@ footer p {
     top: -65px;
   }
   .container-2-title::before {
-    content: "";
-    background: url("../assets/svg/ticket.svg") no-repeat;
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    left: -22px;
-    top: 92%;
+    display: none;
   }
   .container-2-title:after {
     content: "";
@@ -7089,43 +7015,50 @@ footer p {
     right: -4px;
     top: 8%;
   }
-  .howitwork-main-card-image-section .col-lg-6:nth-child(1)::before {
-    top: 7.5%;
-    left: 95%;
+  .howitwork-main-card-image-section .col-lg-6:nth-child(1):before {
+    top: 0%;
+    left: 92%;
   }
   .howitwork-main-card-image-section .col-lg-6:nth-child(2):after {
-    left: 7px;
-    top: 21%;
+    left: 8px;
+    top: 13.5%;
+  }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(3) {
+    position: relative;
   }
   .howitwork-main-card-image-section .col-lg-6:nth-child(3):before {
-    top: 35%;
+    top: -15%;
     left: -5%;
   }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(4) {
+    position: relative;
+  }
   .howitwork-main-card-image-section .col-lg-6:nth-child(4):after {
-    right: 12px;
-    top: 47.5%;
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -25px;
+    top: -50px;
+  }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(5) {
+    position: relative;
   }
   .howitwork-main-card-image-section .col-lg-6:nth-child(5):before {
-    top: 60%;
+    top: -60px;
     left: 88%;
   }
+  .howitwork-main-card-image-section .col-lg-6:nth-child(6) {
+    position: relative;
+  }
   .howitwork-main-card-image-section .col-lg-6:nth-child(6):after {
-    left: 0px;
-    top: 77.5%;
+    left: -20px;
+    top: 45%;
   }
   .howitwork-main-card-image-section .col-lg-6:nth-child(7):before {
     top: 85.5%;
     left: 92%;
-  }
-  .how-it-works button.backtoHomepage-btn::before {
-    content: "";
-    background: url("../assets/svg/paint.svg") no-repeat;
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    left: 14px;
-    z-index: 99;
-    top: 29px;
   }
 }
 @media only screen and (max-width: 340px) {
@@ -7155,13 +7088,7 @@ footer p {
     top: -65px;
   }
   .container-2-title::before {
-    content: "";
-    background: url("../assets/svg/ticket.svg") no-repeat;
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    left: -22px;
-    top: 92%;
+    display: none;
   }
   .container-2-title:after {
     content: "";
@@ -7200,16 +7127,6 @@ footer p {
     top: 85%;
     left: 92%;
   }
-  .how-it-works button.backtoHomepage-btn::before {
-    content: "";
-    background: url("../assets/svg/paint.svg") no-repeat;
-    height: 41px;
-    width: 41px;
-    position: absolute;
-    left: 7px;
-    z-index: 99;
-    top: 32px;
-  }
 }
 .how-it-works a {
   position: relative;
@@ -7224,11 +7141,1458 @@ footer p {
     width: 46%;
   }
 }
+.ladies__first__page {
+  display: flex;
+  justify-content: center;
+}
+.ladies__first__page .ladies-iphone-image {
+  width: 350px;
+  position: relative;
+}
+.ladies__first__page .ladies-down-iphone-image {
+  position: absolute;
+  left: 83%;
+  top: 50%;
+  width: 250px;
+}
+.ladies__first__page .gentlemen-down-iphone-image {
+  position: absolute;
+  left: 57%;
+  top: 34%;
+  width: 250px;
+}
+.ladies__first__page .text__content__margin {
+  margin-left: 18%;
+}
+.ladies__first__page .text__content__gentlemen {
+  flex: 0.5 !important;
+}
+.ladies__first__page .text__content {
+  font-family: Montserrat;
+  font-style: normal;
+  line-height: normal;
+  flex: 0.7;
+}
+.ladies__first__page .text__content .text__content__heading {
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #3a5e77;
+}
+.ladies__first__page .text__content .text__content__heading .ladies__text {
+  color: #3a5e77;
+  font-weight: 700;
+}
+.ladies__first__page .text__content .text__content__heading .commitment__text {
+  color: #f24462 !important;
+  font-weight: 700;
+}
+.ladies__first__page .text__content .text__content__heading .commitment__level {
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+}
+.ladies__first__page .text__content .text__content__heading .shared__interested__text {
+  color: #3a5e77;
+  font-size: 26px;
+  font-weight: 700;
+}
+.ladies__first__page .text__content .text__content__ptext {
+  max-width: 80% !important;
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+.ladies__first__page .text__content .commitment__level {
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.ladies__first__page .text__content .shared__interested__text {
+  color: #3a5e77;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: end;
+}
+.ladies__first__page .text__content .shared__interested__text .shared__interested__equalTo {
+  margin-left: 10px;
+}
+.ladies__first__page .text__content .Advantages {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+}
+.ladies__first__page .text__content .text__content__p__spantext {
+  font-weight: 600;
+}
+
+.commitment__level2:after {
+  content: "";
+  background: url("../assets/howItWorks/Group 140.png") no-repeat;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  right: 30px;
+  bottom: -38%;
+  z-index: 99;
+}
+
+.marginTop__20px {
+  margin-top: 20px;
+}
+
+.ladies__first__page__margin {
+  margin-bottom: 15%;
+}
+
+.gentlemen__image__wrapper {
+  flex: 0.33;
+}
+
+.gentlemen__privacy {
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
+}
+.gentlemen__privacy .gentlmen__privacy__image {
+  flex: 0.32;
+}
+.gentlemen__privacy .gentlmen__privacy__image .main__image {
+  width: 350px;
+}
+.gentlemen__privacy .gentlemen__privacy__text__margin {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+.gentlemen__privacy .gentlemen__text__content {
+  font-family: Montserrat;
+  font-style: normal;
+  line-height: normal;
+  flex: 0.5;
+}
+.gentlemen__privacy .gentlemen__text__content .text__content__heading {
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #3a5e77;
+}
+.gentlemen__privacy .gentlemen__text__content .text__content__heading .ladies__text {
+  color: #3a5e77;
+  font-weight: 700;
+}
+.gentlemen__privacy .gentlemen__text__content .text__content__heading .commitment__text {
+  color: #f24462 !important;
+  font-weight: 700;
+}
+.gentlemen__privacy .gentlemen__text__content .text__content__heading .commitment__level {
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+}
+.gentlemen__privacy .gentlemen__text__content .text__content__heading .shared__interested__text {
+  color: #3a5e77;
+  font-size: 26px;
+  font-weight: 700;
+}
+.gentlemen__privacy .gentlemen__text__content .text__content__ptext {
+  max-width: 85% !important;
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+.gentlemen__privacy .gentlemen__text__content .commitment__level {
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.gentlemen__privacy .gentlemen__text__content .shared__interested__text {
+  color: #3a5e77;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: end;
+}
+.gentlemen__privacy .gentlemen__text__content .shared__interested__text .shared__interested__equalTo {
+  margin-left: 10px;
+}
+.gentlemen__privacy .gentlemen__text__content .Advantages {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+}
+.gentlemen__privacy .gentlemen__text__content .text__content__p__spantext {
+  font-weight: 600;
+}
+
+.ladies__explore {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15%;
+}
+.ladies__explore .ladies__iphone__group__img {
+  position: relative;
+}
+.ladies__explore .ladies-iphone-image {
+  width: 300px;
+}
+.ladies__explore .ladies-down-iphone-image {
+  position: absolute;
+  left: 90%;
+  top: 31%;
+  width: 270px;
+}
+.ladies__explore .ladies__explore__content {
+  font-family: Montserrat;
+  font-style: normal;
+  line-height: normal;
+  margin-top: 130px;
+  margin-left: 350px;
+  flex: 1;
+}
+.ladies__explore .ladies__explore__content ol {
+  list-style: decimal;
+  padding-left: 20px;
+}
+.ladies__explore .ladies__explore__content .text__content__heading {
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #3a5e77;
+  margin-bottom: 50px;
+}
+.ladies__explore .ladies__explore__content .text__content__heading .ladies__text {
+  color: #3a5e77;
+  font-weight: 700;
+}
+.ladies__explore .ladies__explore__content .text__content__heading .commitment__text {
+  color: #f24462 !important;
+  font-weight: 700;
+}
+.ladies__explore .ladies__explore__content .text__content__heading .commitment__level {
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+}
+.ladies__explore .ladies__explore__content .text__content__heading .shared__interested__text {
+  color: #3a5e77;
+  font-size: 26px;
+  font-weight: 700;
+}
+.ladies__explore .ladies__explore__content .text__content__ptext {
+  max-width: 100% !important;
+  color: #3a5e77;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  margin-bottom: 25px;
+}
+.ladies__explore .ladies__explore__content .text__content__p__spantext {
+  font-weight: 600;
+}
+
+.howitwork__bottles__dance {
+  margin-left: -40px;
+  position: relative;
+}
+
+.text__content__gentlemen__shoe__icon {
+  position: relative !important;
+}
+
+.text__content__gentlemen__shoe__icon:after {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 581.png") no-repeat;
+  bottom: -90px;
+  right: 25px;
+}
+
+.gentlmen__privacy__image__content {
+  position: relative !important;
+}
+
+.gentlmen__privacy__image__content:before {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/ticket.svg") no-repeat;
+  top: 65%;
+  left: -100px;
+}
+
+.ladies__explore__iphone__group__img {
+  position: relative !important;
+}
+
+.ladies__explore__iphone__group__img:before {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 691.png") no-repeat;
+  top: 27%;
+  left: -90px;
+}
+
+.ladies__explore__content {
+  position: relative;
+}
+
+.ladies__explore__content:after {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 690.png") no-repeat;
+  bottom: -150px;
+  right: -50px;
+}
+
+.text__content__ladies__icon {
+  position: relative !important;
+}
+
+.text__content__ladies__icon:before {
+  content: "";
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 580.png") no-repeat;
+  top: 2%;
+  left: -90px;
+}
+
+.text__content__ladies__image__icon {
+  position: relative !important;
+}
+
+.text__content__ladies__image__icon:before {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 573.png") no-repeat;
+  bottom: 140px;
+  left: -50px;
+}
+
+.gentlemen__content__sun__icon {
+  position: relative !important;
+}
+
+.gentlemen__content__sun__icon:before {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 137.png") no-repeat;
+  bottom: -12px;
+  left: -80px;
+}
+
+.commitment__level__dish__icon {
+  position: relative !important;
+}
+
+.commitment__level__dish__icon:after {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/howItWorks/Group 140.png") no-repeat;
+  bottom: 0px;
+  right: 0px;
+}
+
+.gentlemen__image__wrapper {
+  position: relative !important;
+}
+
+.gentlemen__image__wrapper:after {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 99;
+  background: url("../assets/svg/bottle.svg") no-repeat;
+  top: 50px;
+  right: 10px;
+}
+
+.howItWork__navbar {
+  margin-left: 55px;
+  margin-bottom: 2rem;
+}
+.howItWork__navbar .LeSociety__Icon__White {
+  padding: 0 75px;
+  display: flex;
+}
+.howItWork__navbar .LeSociety__Icon__White .ls__logo {
+  margin: 20px 20px;
+}
+.howItWork__navbar .LeSociety__Icon__White .ls__logo img {
+  width: 35px;
+}
+.howItWork__navbar .LeSociety__Icon__White .ls__text p {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: black;
+  font-size: 23px;
+  padding: 22px 0px;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1366px) and (min-width: 769px) {
+  .howItWork__navbar {
+    margin: 70px auto !important;
+    display: flex;
+    justify-content: center;
+  }
+  .howItWork__navbar .LeSociety__Icon__White {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px !important;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__text {
+    padding-left: 1rem !important;
+  }
+  .howItWork__navbar .LeSociety__Icon__White p {
+    padding: 0 !important;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo {
+    margin: 20px auto;
+  }
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+  }
+  .ladies__first__page .ladies__iphone__group__img {
+    margin-bottom: 180px;
+    margin-left: -25%;
+  }
+  .ladies__first__page .gentlemen__image__wrapper {
+    margin-bottom: 120px !important;
+  }
+  .ladies__first__page .text__content {
+    flex: 1;
+    padding: 0 15%;
+  }
+  .ladies__first__page .text__content .text__content__heading {
+    font-size: 26px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .commitment__level {
+    font-size: 16px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .shared__interested__text {
+    font-size: 18px;
+    justify-content: center;
+  }
+  .ladies__first__page .text__content .shared__interest__text__icon span {
+    max-width: 30% !important;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .ladies__first__page .text__content .text__content__ptext {
+    min-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__first__page .text__content .Advantages {
+    text-align: center;
+  }
+  .ladies__first__page .text__content .level__2__super__interested__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ladies__first__page .text__content .super__interested__icon {
+    margin-bottom: 10px;
+  }
+  .ladies__first__page .text__content__margin {
+    margin-left: 0;
+  }
+  .ladies__first__page .ladies-iphone-image {
+    width: 270px;
+    position: relative;
+  }
+  .ladies__first__page .ladies-down-iphone-image {
+    width: 200px;
+    left: 230px;
+  }
+  .ladies__first__page .gentlemen-down-iphone-image {
+    width: 200px;
+    left: 220px;
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+    padding: 0 15%;
+  }
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .gentlemen__privacy .gentlmen__privacy__image .main__image {
+    width: 300px;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__heading {
+    text-align: center;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__ptext {
+    min-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__explore {
+    flex-direction: column;
+    margin-bottom: 8%;
+  }
+  .ladies__explore .ladies__iphone__group__img {
+    margin-left: -20%;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-iphone-image {
+    width: 270px;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-down-iphone-image {
+    width: 220px;
+    left: 240px;
+  }
+  .ladies__explore .ladies__explore__content {
+    margin-left: 0;
+    margin-top: 120px;
+  }
+  .ladies__explore .ladies__explore__content .text__content__heading {
+    text-align: center;
+  }
+  .ladies__explore .ladies__explore__content .text__content__ptext {
+    min-width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -40px;
+    top: -25px;
+    position: absolute;
+  }
+  .gentlmen__privacy__image__content:before {
+    top: 45%;
+    left: -100px;
+  }
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+  .text__content__ladies__image__icon:before {
+    bottom: 20px;
+    left: -60px;
+  }
+  .text__content__ladies__icon:before {
+    top: -690px;
+    left: 660px;
+  }
+  .gentlemen__privacy__priority__icon:after {
+    right: 10px;
+    top: -75px;
+  }
+}
+@media only screen and (max-width: 768px) and (min-width: 500px) {
+  .howItWork__navbar {
+    margin-left: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo {
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo img {
+    width: 35px;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__text p {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+  }
+  .ladies__first__page .ladies__iphone__group__img {
+    margin-bottom: 180px;
+    margin-left: -30%;
+  }
+  .ladies__first__page .gentlemen__image__wrapper {
+    margin-bottom: 120px !important;
+  }
+  .ladies__first__page .text__content {
+    flex: 1;
+    padding: 0 25px;
+  }
+  .ladies__first__page .text__content .text__content__heading {
+    font-size: 26px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .commitment__level {
+    font-size: 16px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .shared__interested__text {
+    font-size: 18px;
+    justify-content: center;
+  }
+  .ladies__first__page .text__content .shared__interest__text__icon span {
+    max-width: 30% !important;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .ladies__first__page .text__content .text__content__ptext {
+    min-width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__first__page .text__content .Advantages {
+    text-align: center;
+  }
+  .ladies__first__page .text__content .level__2__super__interested__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ladies__first__page .text__content .super__interested__icon {
+    margin-bottom: 10px;
+  }
+  .ladies__first__page .text__content__margin {
+    margin-left: 0;
+  }
+  .ladies__first__page .ladies-iphone-image {
+    width: 270px;
+    position: relative;
+  }
+  .ladies__first__page .ladies-down-iphone-image {
+    width: 200px;
+    left: 230px;
+  }
+  .ladies__first__page .gentlemen-down-iphone-image {
+    width: 200px;
+    left: 220px;
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .gentlemen__privacy .gentlmen__privacy__image .main__image {
+    width: 300px;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__heading {
+    text-align: center;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__ptext {
+    min-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__explore {
+    flex-direction: column;
+    margin-bottom: 8%;
+  }
+  .ladies__explore .ladies__iphone__group__img {
+    margin-left: -20%;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-iphone-image {
+    width: 180px;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-down-iphone-image {
+    width: 140px;
+    left: 150px;
+  }
+  .ladies__explore .ladies__explore__content {
+    margin-left: 0;
+    margin-top: 80px;
+  }
+  .ladies__explore .ladies__explore__content .text__content__heading {
+    text-align: center;
+  }
+  .ladies__explore .ladies__explore__content .text__content__ptext {
+    min-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+  .text__content__ladies__icon:before {
+    top: -690px;
+    left: 450px;
+  }
+}
+@media only screen and (max-width: 499px) and (min-width: 420px) {
+  .howItWork__navbar {
+    margin-left: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo {
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo img {
+    width: 35px;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__text p {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+  }
+  .ladies__first__page .ladies__iphone__group__img {
+    margin-bottom: 150px;
+    margin-left: -30%;
+  }
+  .ladies__first__page .gentlemen__image__wrapper {
+    margin-bottom: 120px !important;
+  }
+  .ladies__first__page .text__content {
+    flex: 1;
+    padding: 0 25px;
+  }
+  .ladies__first__page .text__content .text__content__heading {
+    font-size: 26px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .commitment__level {
+    font-size: 16px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .shared__interested__text {
+    font-size: 18px;
+    justify-content: center;
+  }
+  .ladies__first__page .text__content .shared__interest__text__icon span {
+    max-width: 30% !important;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .ladies__first__page .text__content .text__content__ptext {
+    min-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__first__page .text__content .Advantages {
+    text-align: center;
+  }
+  .ladies__first__page .text__content .level__2__super__interested__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ladies__first__page .text__content .super__interested__icon {
+    margin-bottom: 10px;
+  }
+  .ladies__first__page .text__content__margin {
+    margin-left: 0;
+  }
+  .ladies__first__page .ladies-iphone-image {
+    width: 180px;
+    position: relative;
+  }
+  .ladies__first__page .ladies-down-iphone-image {
+    width: 140px;
+    left: 150px;
+  }
+  .ladies__first__page .gentlemen-down-iphone-image {
+    width: 140px;
+    left: 140px;
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .gentlemen__privacy .gentlmen__privacy__image .main__image {
+    width: 300px;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__heading {
+    text-align: center;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__ptext {
+    min-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__explore {
+    flex-direction: column;
+  }
+  .ladies__explore .ladies__iphone__group__img {
+    margin-left: -38%;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-iphone-image {
+    width: 180px;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-down-iphone-image {
+    width: 140px;
+    left: 150px;
+  }
+  .ladies__explore .ladies__explore__content {
+    margin-left: 0;
+    margin-top: 80px;
+  }
+  .ladies__explore .ladies__explore__content .text__content__heading {
+    text-align: center;
+  }
+  .ladies__explore .ladies__explore__content .text__content__ptext {
+    min-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+  .text__content__ladies__icon:before {
+    top: -500px;
+    left: 300px;
+  }
+}
+@media only screen and (max-width: 419px) and (min-width: 341px) {
+  .howItWork__navbar {
+    margin-left: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo {
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo img {
+    width: 35px;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__text p {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+  }
+  .ladies__first__page .ladies__iphone__group__img {
+    margin-bottom: 150px;
+    margin-left: -30%;
+  }
+  .ladies__first__page .gentlemen__image__wrapper {
+    margin-bottom: 120px !important;
+  }
+  .ladies__first__page .text__content {
+    flex: 1;
+    padding: 0 25px;
+  }
+  .ladies__first__page .text__content .text__content__heading {
+    font-size: 26px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .commitment__level {
+    font-size: 16px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .shared__interested__text {
+    font-size: 18px;
+    justify-content: center;
+  }
+  .ladies__first__page .text__content .shared__interest__text__icon span {
+    max-width: 30% !important;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .ladies__first__page .text__content .text__content__ptext {
+    min-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__first__page .text__content .Advantages {
+    text-align: center;
+  }
+  .ladies__first__page .text__content .level__2__super__interested__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ladies__first__page .text__content .super__interested__icon {
+    margin-bottom: 10px;
+  }
+  .ladies__first__page .text__content__margin {
+    margin-left: 0;
+  }
+  .ladies__first__page .ladies-iphone-image {
+    width: 180px;
+    position: relative;
+  }
+  .ladies__first__page .ladies-down-iphone-image {
+    width: 140px;
+    left: 150px;
+  }
+  .ladies__first__page .gentlemen-down-iphone-image {
+    width: 140px;
+    left: 140px;
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .gentlemen__privacy .gentlmen__privacy__image .main__image {
+    width: 300px;
+  }
+  .gentlemen__privacy .gentlemen__privacy__text__margin {
+    margin-bottom: 30px;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__heading {
+    text-align: center;
+    font-size: 26px;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__ptext {
+    min-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__explore {
+    flex-direction: column;
+  }
+  .ladies__explore .ladies__iphone__group__img {
+    margin-left: -38%;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-iphone-image {
+    width: 180px;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-down-iphone-image {
+    width: 140px;
+    left: 150px;
+  }
+  .ladies__explore .ladies__explore__content {
+    margin-left: 0;
+    margin-top: 80px;
+  }
+  .ladies__explore .ladies__explore__content .text__content__heading {
+    text-align: center;
+  }
+  .ladies__explore .ladies__explore__content .text__content__ptext {
+    min-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+  .text__content__ladies__icon:before {
+    top: -500px;
+    left: 300px;
+  }
+}
+@media only screen and (max-width: 340px) {
+  .howItWork__navbar {
+    margin-left: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo {
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__logo img {
+    width: 35px;
+  }
+  .howItWork__navbar .LeSociety__Icon__White .ls__text p {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .ladies__first__page {
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+  }
+  .ladies__first__page .ladies__iphone__group__img {
+    margin-bottom: 150px;
+    margin-left: -30%;
+  }
+  .ladies__first__page .gentlemen__image__wrapper {
+    margin-bottom: 120px !important;
+  }
+  .ladies__first__page .text__content {
+    flex: 1;
+    padding: 0 25px;
+  }
+  .ladies__first__page .text__content .text__content__heading {
+    font-size: 26px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .commitment__level {
+    font-size: 16px;
+    text-align: center;
+  }
+  .ladies__first__page .text__content .shared__interested__text {
+    font-size: 18px;
+    justify-content: center;
+  }
+  .ladies__first__page .text__content .shared__interest__text__icon span {
+    max-width: 30% !important;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .ladies__first__page .text__content .text__content__ptext {
+    min-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__first__page .text__content .Advantages {
+    text-align: center;
+  }
+  .ladies__first__page .text__content .level__2__super__interested__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ladies__first__page .text__content .super__interested__icon {
+    margin-bottom: 10px;
+  }
+  .ladies__first__page .text__content__margin {
+    margin-left: 0;
+  }
+  .ladies__first__page .ladies-iphone-image {
+    width: 170px;
+    position: relative;
+  }
+  .ladies__first__page .ladies-down-iphone-image {
+    width: 130px;
+    left: 140px;
+  }
+  .ladies__first__page .gentlemen-down-iphone-image {
+    width: 130px;
+    left: 135px;
+  }
+  .text__content__gentlemen {
+    order: 1 !important;
+  }
+  .gentlemen__privacy {
+    flex-direction: column;
+    padding: 0 25px;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .gentlemen__privacy .gentlmen__privacy__image .main__image {
+    width: 260px;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__heading {
+    text-align: center;
+  }
+  .gentlemen__privacy .gentlemen__text__content .text__content__ptext {
+    min-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ladies__explore {
+    flex-direction: column;
+  }
+  .ladies__explore .ladies__iphone__group__img {
+    margin-left: -38%;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-iphone-image {
+    width: 170px;
+  }
+  .ladies__explore .ladies__iphone__group__img .ladies-down-iphone-image {
+    width: 130px;
+    left: 140px;
+  }
+  .ladies__explore .ladies__explore__content {
+    margin-left: 0;
+    margin-top: 80px;
+  }
+  .ladies__explore .ladies__explore__content .text__content__heading {
+    text-align: center;
+  }
+  .ladies__explore .ladies__explore__content .text__content__ptext {
+    min-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .how-it-works .container-2 .container-2-title {
+    margin-top: 100px !important;
+  }
+  .container-2-title:after {
+    display: none !important;
+  }
+  .gentlemen__eliminate__icon {
+    position: relative;
+  }
+  .gentlemen__eliminate__icon:after {
+    content: "";
+    background: url("../assets/svg/bottle.svg") no-repeat;
+    height: 41px;
+    width: 41px;
+    right: -10px;
+    top: 35px;
+    position: absolute;
+  }
+  .gentlmen__privacy__image__content:before {
+    top: -60px;
+    left: 10px;
+  }
+  .ladies__explore__iphone__group__img:before {
+    display: none;
+  }
+  .text__content__gentlemen__shoe__icon:after {
+    display: none;
+  }
+  .gentlemen__privacy__priority__icon {
+    position: relative;
+  }
+  .gentlemen__privacy__priority__icon:after {
+    content: "";
+    background: url("../assets/svg/sport.svg") no-repeat;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: 75px;
+  }
+  .ladies__explore__content:after {
+    bottom: -30px;
+    right: -10px;
+  }
+  .howitwork__bottles__dance:after {
+    top: -10px;
+    right: -55px;
+  }
+  .gentlemen__content__sun__icon:before {
+    top: -42px;
+    left: -20px;
+  }
+  .gentlemen__image__wrapper:after {
+    left: 0px;
+    top: -60px;
+  }
+  .commitment__level__dish__icon:after {
+    bottom: -75px;
+  }
+  .text__content__ladies__image__icon:before {
+    bottom: -250px;
+    left: -10px;
+  }
+  .text__content__ladies__icon:before {
+    top: -500px;
+    left: 300px;
+  }
+}
 .home-page-navbar {
   margin-left: 55px;
+  display: flex;
+  justify-content: center;
 }
 .home-page-navbar .LeSociety-Icon-White {
   padding: 0 75px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 .home-page-navbar .LeSociety-Icon-White .ls-logo {
   width: 45px;
@@ -7250,88 +8614,6 @@ footer p {
   font-family: "Montserrat";
 }
 
-@media only screen and (max-width: 769px) and (min-width: 501px) {
-  .home-page-navbar {
-    margin-left: 0px !important;
-  }
-  .LeSociety-Icon-White {
-    display: contents;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding: 50px 75px !important;
-  }
-  .LeSociety-Icon-White .ls-logo {
-    margin: 30px 20px 0px 20px;
-    margin-bottom: 0px !important;
-  }
-  .LeSociety-Icon-White .ls-text {
-    font-size: 20px;
-    padding: 0px 10px;
-    margin-top: 2px !important;
-  }
-  .LeSociety-Icon-White .ls-text .leSocitey-heading {
-    letter-spacing: 9.2px;
-  }
-  .LeSociety-Icon-White .ls-text .leSocitey-subheading {
-    text-align: center;
-    padding: 5px 10px;
-  }
-}
-@media only screen and (max-width: 500px) and (min-width: 350px) {
-  .home-page-navbar {
-    margin-left: 0px !important;
-  }
-  .LeSociety-Icon-White {
-    display: contents;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px !important;
-    margin: 3rem auto 0 auto;
-  }
-  .LeSociety-Icon-White .ls-logo {
-    margin: 30px 20px 0px 20px;
-    margin-bottom: 0px !important;
-  }
-  .LeSociety-Icon-White .ls-text {
-    font-size: 20px;
-    padding: 0px 10px;
-    margin-left: 0px !important;
-    margin-top: 12px !important;
-  }
-  .LeSociety-Icon-White .ls-text .leSocitey-heading {
-    letter-spacing: 6.2px;
-  }
-  .LeSociety-Icon-White .ls-text .leSocitey-subheading {
-    text-align: center;
-    padding: 10px 10px 0 10px !important;
-  }
-}
-@media only screen and (max-width: 349px) {
-  .home-page-navbar {
-    margin-left: 0px !important;
-  }
-  .home-page-navbar .LeSociety-Icon-White {
-    display: contents;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0px !important;
-  }
-  .home-page-navbar .LeSociety-Icon-White .ls-logo {
-    margin-bottom: 0px !important;
-  }
-  .home-page-navbar .LeSociety-Icon-White .ls-text {
-    margin-left: 0px;
-    margin-top: 0px;
-  }
-  .home-page-navbar .LeSociety-Icon-White .leSocitey-subheading {
-    text-align: center;
-  }
-}
 .home-main-section {
   margin-top: 45px;
   display: flex;
@@ -8133,6 +9415,511 @@ footer p {
     margin-bottom: 1rem;
     padding: 8px 35px;
     margin: 0 auto 1rem auto;
+  }
+}
+.new-home-main-container {
+  display: flex;
+  color: #fff;
+  font-family: Montserrat;
+}
+.new-home-main-container .ladies__container {
+  margin-left: 27%;
+  display: flex;
+}
+.new-home-main-container .main-image {
+  width: 300px;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.new-home-main-container .main__text__contents {
+  margin-top: 100px;
+  flex: 0.7;
+}
+.new-home-main-container .main__text__contents p {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.new-home-main-container .text__container__margin {
+  margin-left: 150px;
+}
+.new-home-main-container .gender__icon {
+  margin-bottom: 20px;
+}
+.new-home-main-container .reach__your__goals {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 40px;
+}
+.new-home-main-container .reach__your__goals .faster {
+  font-weight: 700;
+}
+.new-home-main-container .gentlemen__container {
+  display: flex;
+  margin-left: 19%;
+  margin-top: 70px;
+}
+.new-home-main-container .gentlemen__container .main__text__contents {
+  flex: 0.55;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-right: 75px;
+}
+.new-home-main-container .gentlemen__container .main__text__contents p {
+  text-align: end;
+}
+
+.accelerate__wrapper {
+  margin-top: 200px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.accelerate__wrapper h1 {
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.accelerate__wrapper .learn__more__wrapper {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+.accelerate__wrapper .learn__more {
+  width: 300px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #f24462;
+  padding: 13px 0;
+  text-align: center;
+  margin: 100px 0;
+  font-family: Montserrat;
+  cursor: pointer;
+}
+.accelerate__wrapper .accelerate__container {
+  display: flex;
+  margin-top: 80px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
+  font-family: Montserrat;
+  position: relative;
+}
+.accelerate__wrapper .accelerate__container .super__interested__icon {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.accelerate__wrapper .accelerate__container .super__interested__icon .super {
+  padding-left: 40px;
+  margin-bottom: -20px;
+}
+.accelerate__wrapper .accelerate__container .only__interested__icon {
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+.accelerate__wrapper .accelerate__container .level2 {
+  align-self: self-end;
+  margin-bottom: 70px;
+}
+.accelerate__wrapper .accelerate__container .level1 {
+  margin-top: 50px;
+}
+.accelerate__wrapper .accelerate__container h6 {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.accelerate__wrapper .accelerate__container .inerested__text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.accelerate__wrapper .accelerate__container .progress__text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.accelerate__wrapper .accelerate__container .line__progress {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: -5px;
+}
+.accelerate__wrapper .accelerate__container .image__progress1 {
+  position: absolute;
+  bottom: 6%;
+  left: 0;
+  width: 32%;
+  height: 2px;
+  background-color: #f24462;
+  transform: rotate(180deg);
+}
+.accelerate__wrapper .accelerate__container .image__progress1 .diagonal-line {
+  width: 280px;
+  background-color: #f24462;
+  height: 2px;
+  position: absolute;
+  transform-origin: 0.2% 60%;
+  transform: rotate(130.5deg) scaleY(-1);
+}
+.accelerate__wrapper .accelerate__container .image__progress1 .progress__circle {
+  position: absolute;
+  right: 0;
+  top: -170%;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #f24462;
+}
+.accelerate__wrapper .accelerate__container .image__progress2 {
+  position: absolute;
+  top: 42%;
+  right: 0;
+  width: 40.5%;
+  height: 2px;
+  background-color: white;
+}
+.accelerate__wrapper .accelerate__container .image__progress2 .diagonal-line {
+  width: 200px;
+  height: 2px;
+  background-color: white; /* You can choose your preferred line color */
+  position: absolute;
+  transform-origin: 0.2% 60%;
+  transform: rotate(132deg);
+}
+.accelerate__wrapper .accelerate__container .image__progress2 .progress__circle {
+  position: absolute;
+  right: 0;
+  top: -170%;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: white;
+}
+.accelerate__wrapper .line-container {
+  margin-top: 20px;
+}
+.accelerate__wrapper .accelerate-iphone-image {
+  width: 630px;
+  height: 830px;
+  margin-left: -80px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.accelerate__wrapper .accelerate__future__dating__icon {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+.accelerate__wrapper .accelerate__future__dating__icon span {
+  margin-right: 10px;
+}
+
+.progress__line__wrapper {
+  display: flex;
+  margin: 20px 0;
+}
+.progress__line__wrapper .progress-line {
+  width: 68%;
+  height: 5px;
+  background: linear-gradient(90deg, #1712ff, #ff007a);
+  position: relative;
+  border-radius: 2.5px;
+}
+.progress__line__wrapper .progress__line__black {
+  width: 27%;
+  height: 5px;
+  background: linear-gradient(90deg, #303030);
+  border-radius: 0 2.5px 2.5px 0;
+}
+
+@media only screen and (min-width: 1580px) {
+  .image__progress1 .diagonal-line {
+    width: 300px !important;
+    transform: rotate(135deg) scaleY(-1) !important;
+  }
+}
+@media only screen and (max-width: 1366px) and (min-width: 769px) {
+  .new-home-main-container {
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .new-home-main-container .ladies__container {
+    margin-left: 0;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .new-home-main-container .text__container__margin {
+    margin-left: 50px;
+  }
+  .new-home-main-container .gentlemen__container {
+    margin-left: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .new-home-main-container .gentlemen__container .main__text__contents {
+    margin-right: 40px;
+    margin-top: 10px;
+  }
+  .new-home-main-container .gentlemen__container .reach__your__goals {
+    text-align: end;
+  }
+  .accelerate__wrapper {
+    margin-top: 80px !important;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon {
+    flex-direction: column;
+  }
+  .accelerate__wrapper .accelerate__container {
+    flex-direction: column;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .accelerate__wrapper .accelerate__container .accelerate-iphone-image__wrapper {
+    order: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .accelerate__wrapper .accelerate__container .level2 {
+    margin-top: 30px;
+    margin-bottom: 0;
+    order: 2;
+    align-self: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .accelerate__wrapper .accelerate__container .level1 {
+    margin-top: 40px;
+  }
+  .accelerate__wrapper .accelerate__container .super__interested__icon .super {
+    padding-left: 0;
+  }
+  .accelerate__wrapper .accelerate__container .line__progress span {
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    -o-object-fit: contain;
+       object-fit: contain;
+    width: 320px;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon span {
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width: 768px) and (min-width: 341px) {
+  .home-page-navbar {
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+  }
+  .new-home-main-container {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%;
+  }
+  .new-home-main-container .ladies__container {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+  .new-home-main-container .text__container__margin {
+    margin-left: 0;
+  }
+  .new-home-main-container .main__text__contents {
+    margin-top: 50px;
+    text-align: center;
+  }
+  .new-home-main-container .gentlemen__container {
+    margin-left: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .new-home-main-container .gentlemen__container .main__text__contents {
+    order: 1;
+    text-align: center;
+    align-items: center;
+    margin-right: 0px;
+  }
+  .new-home-main-container .gentlemen__container .main__text__contents p {
+    text-align: center;
+  }
+  .accelerate__wrapper {
+    margin-top: 80px !important;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon {
+    flex-direction: column;
+  }
+  .accelerate__wrapper .accelerate__container {
+    flex-direction: column;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .accelerate__wrapper .accelerate__container .accelerate-iphone-image {
+    width: 320px;
+    height: 490px;
+    margin-left: 0;
+  }
+  .accelerate__wrapper .accelerate__container .super__interested__icon {
+    margin-top: 10px;
+  }
+  .accelerate__wrapper .accelerate__container .accelerate-iphone-image__wrapper {
+    order: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress1 {
+    bottom: 320px;
+    left: -30px;
+    transform: rotate(90deg);
+    width: 140px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress1 .diagonal-line {
+    transform: rotate(221deg);
+    width: 135px;
+    top: 0px;
+    left: 1px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress2 {
+    top: 395px;
+    transform: rotate(270deg);
+    right: -30px;
+  }
+  .accelerate__wrapper .accelerate__container .image__progress2 .diagonal-line {
+    width: 195px;
+    height: 2px;
+    background-color: white; /* You can choose your preferred line color */
+    position: absolute;
+    transform-origin: 0.2% 60%;
+    transform: rotate(218deg);
+  }
+  .accelerate__wrapper .accelerate__container .level2 {
+    margin-top: 0px;
+    margin-bottom: 0;
+    order: 2;
+    align-self: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .accelerate__wrapper .accelerate__container .level1 {
+    margin-top: 40px;
+  }
+  .accelerate__wrapper .accelerate__container .super__interested__icon .super {
+    padding-left: 0;
+  }
+  .accelerate__wrapper .accelerate__container .line__progress span {
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    -o-object-fit: contain;
+       object-fit: contain;
+    width: 320px;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon span {
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width: 340px) {
+  .home-page-navbar {
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+  }
+  .new-home-main-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+  }
+  .new-home-main-container .ladies__container {
+    flex-direction: column;
+    margin-left: 0;
+  }
+  .new-home-main-container .text__container__margin {
+    margin-left: 0;
+  }
+  .new-home-main-container .main__text__contents {
+    margin-top: 50px;
+    text-align: center;
+  }
+  .new-home-main-container .gentlemen__container {
+    margin-left: 0px;
+    flex-direction: column;
+  }
+  .new-home-main-container .gentlemen__container .main__text__contents {
+    order: 1;
+    text-align: center;
+    align-items: center;
+    margin-right: 0px;
+  }
+  .new-home-main-container .gentlemen__container .main__text__contents p {
+    text-align: center;
+  }
+  .accelerate__wrapper {
+    margin-top: 80px !important;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon {
+    flex-direction: column;
+  }
+  .accelerate__wrapper .accelerate__container {
+    flex-direction: column;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .accelerate__wrapper .accelerate__container .level2 {
+    margin-top: 30px;
+    margin-bottom: 0;
+    order: 2;
+    align-self: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .accelerate__wrapper .accelerate__container .level1 {
+    margin-top: 40px;
+  }
+  .accelerate__wrapper .accelerate__container .super__interested__icon .super {
+    padding-left: 0;
+  }
+  .accelerate__wrapper .accelerate__container .line__progress span {
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    -o-object-fit: contain;
+       object-fit: contain;
+    width: 320px;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+  .accelerate__wrapper .accelerate__future__dating__icon span {
+    margin-right: 10px;
   }
 }
 .future-dates-main {
@@ -9186,6 +10973,13 @@ footer p {
   color: #fff !important;
 }
 
+.ant-select-disabled .ant-select-selector {
+  border-radius: 8px;
+  border: 0.7px solid #293036 !important;
+  background: #000000 !important;
+  color: gray !important;
+}
+
 .aspiration__antd__dropdown2 {
   margin-top: 20px;
 }
@@ -9218,4 +11012,81 @@ footer p {
 
 .ant-empty-normal .ant-empty-description {
   color: white;
+}
+
+.super__interested__star {
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 30px;
+  border: 1px solid #d8d8d8;
+  background: #1e2023;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 20px !important;
+}
+.super__interested__star.active {
+  border-radius: 30px;
+  border: 1px solid #f24462;
+  background: #151515;
+}
+
+.is__super__interested__message__input {
+  padding-left: 45px !important;
+  padding-right: 65px !important;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.message__modal__input {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 65px !important;
+  padding-left: 20px;
+}
+
+.user__detail__star {
+  display: flex;
+  align-items: end;
+}
+.user__detail__star .super__interested__username {
+  margin-left: 5px;
+}
+.user__detail__star span {
+  color: white !important;
+  font-size: 15px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.058px;
+}
+
+.request__message__super__text {
+  display: flex;
+  flex-direction: column;
+}
+.request__message__super__text .super {
+  margin-top: 10px;
+  margin-bottom: -15px;
+}
+
+.superinterested__icon__div {
+  position: relative;
+}
+.superinterested__icon__div .superinterested__icon {
+  position: absolute;
+  top: -6.4%;
+  left: 40%;
+  z-index: 10;
+}
+
+.superinterested__margin {
+  margin-top: 18px !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .super__interested__star {
+    margin-bottom: 10px !important;
+  }
 }/*# sourceMappingURL=style.css.map */
