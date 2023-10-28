@@ -1181,7 +1181,7 @@
   .learn__more__wrapper {
     display: flex;
     justify-content: center;
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   .learn__more {
@@ -1195,6 +1195,8 @@
     margin: 100px 0;
     font-family: Montserrat;
     cursor: pointer;
+    color: #fff;
+    border: 1px solid #f24462;
   }
 
   .accelerate__container {
@@ -1402,63 +1404,7 @@
       }
     }
   }
-  // .accelerate__wrapper {
-  //   margin-top: 80px !important;
-  //   .accelerate__future__dating__icon {
-  //     flex-direction: column;
-  //   }
 
-  //   .accelerate__container {
-  //     flex-direction: column;
-  //     margin-top: 10px;
-  //     text-align: center;
-
-  //     .accelerate-iphone-image__wrapper {
-  //       order: 1;
-  //       display: flex;
-  //       justify-content: center;
-  //     }
-
-  //     .level2 {
-  //       margin-top: 30px;
-  //       margin-bottom: 0;
-  //       order: 2;
-  //       align-self: normal;
-  //       display: flex;
-  //       flex-direction: column;
-  //       align-items: center;
-  //       justify-content: center;
-  //     }
-  //     .level1 {
-  //       margin-top: 40px;
-  //     }
-
-  //     .super__interested__icon {
-  //       .super {
-  //         padding-left: 0;
-  //       }
-  //     }
-
-  //     .line__progress {
-  //       span {
-  //         max-width: fit-content;
-  //         object-fit: contain;
-  //         width: 320px;
-  //       }
-  //     }
-  //   }
-
-  //   .accelerate__future__dating__icon {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     font-size: 30px;
-
-  //     span {
-  //       margin-right: 10px;
-  //     }
-  //   }
-  // }
   .accelerate__wrapper {
     margin-top: 80px !important;
     .accelerate__future__dating__icon {
@@ -1469,10 +1415,10 @@
       flex-direction: column;
       margin-top: 10px;
       text-align: center;
-      width: 320px;
+      width: 320px !important;
 
       .accelerate-iphone-image {
-        width: 320px;
+        width: 320px !important;
         height: 490px;
         margin-left: 0;
       }
@@ -1539,7 +1485,7 @@
         span {
           max-width: fit-content;
           object-fit: contain;
-          width: 320px;
+          width: 320px !important;
         }
       }
     }
@@ -1621,10 +1567,10 @@
       flex-direction: column;
       margin-top: 10px;
       text-align: center;
-      width: 320px;
+      width: 320px !important;
 
       .accelerate-iphone-image {
-        width: 320px;
+        width: 320px !important;
         height: 490px;
         margin-left: 0;
       }
@@ -1691,7 +1637,7 @@
         span {
           max-width: fit-content;
           object-fit: contain;
-          width: 320px;
+          width: 320px !important;
         }
       }
     }
@@ -1837,7 +1783,7 @@
         span {
           max-width: fit-content;
           object-fit: contain;
-          width: 320px;
+          width: 320px !important;
         }
       }
     }
@@ -1853,4 +1799,8 @@
       }
     }
   }
+}
+
+.border__bottom__red {
+  border-bottom: 2px solid #f24462 !important;
 }

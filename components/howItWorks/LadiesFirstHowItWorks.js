@@ -31,7 +31,7 @@ function LadiesFirstHowItWorks() {
           </div>
           <span className="shared__interested__equalTo">
             {" "}
-            = Shared Interests
+            = <span className="border__bottom__red">Shared</span> Interests
           </span>
         </div>
         <p className="text__content__ptext">
@@ -71,7 +71,9 @@ function LadiesFirstHowItWorks() {
 
             <CustomIcon.IntrestedBlackText color={"white"} />
           </div>
-          <span className="shared__interested__equalTo">= Empowerment</span>
+          <span className="shared__interested__equalTo">
+            = <span className="border__bottom__red">Empowerment</span>
+          </span>
         </div>
         <p className="text__content__ptext">
           Financial support demonstrates that the gentleman is invested in your

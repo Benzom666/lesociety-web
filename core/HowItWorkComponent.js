@@ -1,5 +1,5 @@
 import React from "react";
-import Group225 from "../assets/img/Brunch Date.png";
+import Group225 from "../assets/img/Brunch Date (1).png";
 import Group226 from "../assets/img/Evening Date.png";
 import Group227 from "../assets/img/Take a class.png";
 import Group228 from "../assets/img/Get Sporty.png";

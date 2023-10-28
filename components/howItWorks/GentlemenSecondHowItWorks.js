@@ -19,7 +19,7 @@ function GentlemenSecondHowItWorks() {
           </div>
           <span className="shared__interested__equalTo">
             {" "}
-            = Amplify Your Presence
+            = <span className="border__bottom__red">Amplify</span> Your Presence
           </span>
         </div>
         <p className="text__content__ptext">
@@ -51,7 +51,8 @@ function GentlemenSecondHowItWorks() {
             <CustomIcon.IntrestedBlackText color={"white"} />
           </div>
           <span className="shared__interested__equalTo">
-            = Supercharge Your Presence
+            = <span className="border__bottom__red">Supercharge</span> Your
+            Presence
           </span>
         </div>
         <p className="text__content__ptext">

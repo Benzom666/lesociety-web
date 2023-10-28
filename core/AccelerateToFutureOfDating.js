@@ -111,12 +111,8 @@ function AccelerateToFutureOfDating() {
         >
           <div className="learn__more">Learn More</div>
         </a> */}
-        <a
-          href="/howItWork"
-          style={{ textDecoration: "none", color: "white" }}
-          className="learn__more__wrapper"
-        >
-          <button type="btn" className="learn__more" style={{ color: "white" }}>
+        <a href="/howItWork" className="learn__more__wrapper">
+          <button type="btn" className="learn__more">
             Learn More
           </button>
         </a>
