@@ -1411,6 +1411,15 @@
       flex-direction: row;
     }
 
+    .progress__line__wrapper {
+      .progress-line {
+        width: 70% !important;
+      }
+      .progress__line__black {
+        width: 30% !important;
+      }
+    }
+
     .accelerate__container {
       flex-direction: column;
       margin-top: 10px;
@@ -1561,6 +1570,15 @@
     margin-top: 80px !important;
     .accelerate__future__dating__icon {
       flex-direction: column;
+    }
+
+    .progress__line__wrapper {
+      .progress-line {
+        width: 70% !important;
+      }
+      .progress__line__black {
+        width: 30% !important;
+      }
     }
 
     .accelerate__container {
@@ -1717,6 +1735,15 @@
     margin-top: 80px !important;
     .accelerate__future__dating__icon {
       flex-direction: column;
+    }
+
+    .progress__line__wrapper {
+      .progress-line {
+        width: 70% !important;
+      }
+      .progress__line__black {
+        width: 30% !important;
+      }
     }
 
     .accelerate__container {
