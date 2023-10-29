@@ -55,10 +55,10 @@ export default function Footer(props) {
                 <span>
                   <Link href="/PrivacyPolicies"> Privacy </Link>
                 </span>
-                |
+                {/* |
                 <span>
                   <Link href="/OurStory"> Our Story </Link>
-                </span>
+                </span> */}
               </div>
               <div className="footer-text-2 mb-2 mt-3">
                 <span>© 2023 Le Society | All Rights Reserved</span>

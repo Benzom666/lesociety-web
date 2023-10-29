@@ -50,7 +50,7 @@ function AccelerateToFutureOfDating() {
                 size={150}
               />
             </div> */}
-            <div className="progress__line__wrapper">
+            <div className="progress__line2__wrapper">
               <div class="progress-line"></div>
               <div className="progress__line__black"></div>
             </div>
