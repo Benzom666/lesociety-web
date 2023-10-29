@@ -12,6 +12,11 @@ function AccelerateToFutureOfDating() {
 
   const accelarateImage = width > 768 ? Iphone15.src : Iphone15Mobile.src;
 
+  // detect for iphone
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+  console.log("isIOS", isIOS);
+
   return (
     <>
       <div className="accelerate__wrapper">
@@ -59,7 +64,11 @@ function AccelerateToFutureOfDating() {
                 size={150}
               />
             </div> */}
-            <div className="image__progress1">
+            <div
+              className={`image__progress1 ${
+                isIOS ? "iphone__image__progress1" : undefined
+              }`}
+            >
               <div className="diagonal-line"></div>
               <div className="progress__circle"></div>
             </div>
@@ -96,7 +105,11 @@ function AccelerateToFutureOfDating() {
               Your Chance of Securing a Date Compared to Traditional Dating
               Sites.
             </p>
-            <div className="image__progress2">
+            <div
+              className={`image__progress2 ${
+                isIOS ? "iphone__image__progress2" : undefined
+              }`}
+            >
               <div className="diagonal-line"></div>
               <div className="progress__circle"></div>
             </div>

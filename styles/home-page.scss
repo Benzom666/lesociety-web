@@ -1599,6 +1599,12 @@
         }
       }
 
+      .iphone__image__progress1 {
+        bottom: 340px !important;
+      }
+
+      // handle above class for iphone
+
       .image__progress2 {
         top: 405px !important;
         transform: rotate(270deg) !important;
@@ -1611,6 +1617,10 @@
           transform-origin: 0.2% 60% !important;
           transform: rotate(220deg) !important;
         }
+      }
+
+      .iphone__image__progress2 {
+        top: 418px !important;
       }
 
       .level2 {
