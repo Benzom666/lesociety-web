@@ -1571,7 +1571,7 @@
 
       .accelerate-iphone-image {
         width: 320px !important;
-        height: 490px;
+        height: 490px !important;
         margin-left: 0;
       }
 
@@ -1586,30 +1586,30 @@
       }
 
       .image__progress1 {
-        bottom: 322px;
-        left: -30px;
-        transform: rotate(90deg);
-        width: 145px;
+        bottom: 322px !important;
+        left: -30px !important;
+        transform: rotate(90deg) !important;
+        width: 145px !important;
 
         .diagonal-line {
-          transform: rotate(221deg);
-          width: 135px;
-          top: 0px;
-          left: 1px;
+          transform: rotate(221deg) !important;
+          width: 135px !important;
+          top: 0px !important;
+          left: 1px !important;
         }
       }
 
       .image__progress2 {
-        top: 405px;
-        transform: rotate(270deg);
-        right: -30px;
+        top: 405px !important;
+        transform: rotate(270deg) !important;
+        right: -30px !important;
         .diagonal-line {
-          width: 195px;
-          height: 2px;
+          width: 195px !important;
+          height: 2px !important;
           background-color: white; /* You can choose your preferred line color */
           position: absolute;
-          transform-origin: 0.2% 60%;
-          transform: rotate(220deg);
+          transform-origin: 0.2% 60% !important;
+          transform: rotate(220deg) !important;
         }
       }
 
