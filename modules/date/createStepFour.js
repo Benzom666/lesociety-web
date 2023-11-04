@@ -160,6 +160,16 @@ const CreateStepFour = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (showWarningPopup) {
+      // stop scrolling page
+      document.body.style.overflow = "hidden";
+    } else {
+      // allow scrolling page
+      document.body.style.overflow = "unset";
+    }
+  }, [showWarningPopup]);
+
   return (
     <>
       {showWarningPopup && (

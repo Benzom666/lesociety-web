@@ -1202,7 +1202,7 @@
   .accelerate__container {
     display: flex;
     margin-top: 80px;
-    width: 100%;
+    width: 1366px !important;
     margin-right: auto;
     margin-left: auto;
     color: #fff;
@@ -1384,12 +1384,12 @@
   }
 }
 @media only screen and (min-width: 1580px) {
-  .image__progress1 {
-    .diagonal-line {
-      width: 300px !important;
-      transform: rotate(135deg) scaleY(-1) !important;
-    }
-  }
+  // .image__progress1 {
+  //   .diagonal-line {
+  //     width: 300px !important;
+  //     transform: rotate(135deg) scaleY(-1) !important;
+  //   }
+  // }
 }
 
 @media only screen and (max-width: 1366px) and (min-width: 769px) {

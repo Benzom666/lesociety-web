@@ -531,9 +531,10 @@ const SecondStep = (props) => {
                     }}
                     onChange={(event) => {
                       if (
-                        !event.target.files[0]?.name.match(
-                          /\.(jpg|jpeg|png|gif)$/
-                        )
+                        // !event.target.files[0]?.name.match(
+                        //   /\.(jpg|jpeg|png|gif)$/
+                        // )
+                        !event.target.files[0]?.name.match(/\.(jpg|jpeg|png)$/)
                       ) {
                         setImageError(true);
                         event.preventDefault();
@@ -603,9 +604,10 @@ const SecondStep = (props) => {
                     accept="image/*"
                     onChange={(event) => {
                       if (
-                        !event.target.files[0]?.name.match(
-                          /\.(jpg|jpeg|png|gif)$/
-                        )
+                        // !event.target.files[0]?.name.match(
+                        //   /\.(jpg|jpeg|png|gif)$/
+                        // )
+                        !event.target.files[0]?.name.match(/\.(jpg|jpeg|png)$/)
                       ) {
                         setImageError(true);
                         event.preventDefault();
@@ -684,9 +686,10 @@ const SecondStep = (props) => {
                     accept="image/*"
                     onChange={(event) => {
                       if (
-                        !event.target.files[0]?.name.match(
-                          /\.(jpg|jpeg|png|gif)$/
-                        )
+                        // !event.target.files[0]?.name.match(
+                        //   /\.(jpg|jpeg|png|gif)$/
+                        // )
+                        !event.target.files[0]?.name.match(/\.(jpg|jpeg|png)$/)
                       ) {
                         setImageError(true);
                         event.preventDefault();
@@ -765,9 +768,10 @@ const SecondStep = (props) => {
                     accept="image/*"
                     onChange={(event) => {
                       if (
-                        !event.target.files[0]?.name.match(
-                          /\.(jpg|jpeg|png|gif)$/
-                        )
+                        // !event.target.files[0]?.name.match(
+                        //   /\.(jpg|jpeg|png|gif)$/
+                        // )
+                        !event.target.files[0]?.name.match(/\.(jpg|jpeg|png)$/)
                       ) {
                         setImageError(true);
                         event.preventDefault();
