@@ -230,7 +230,6 @@ function UserList(props) {
   };
 
   const handleSubmit = async (values) => {
-    moveIcon();
     console.log("values", values);
     try {
       const data = {
@@ -241,12 +240,14 @@ function UserList(props) {
             : "",
         message: values.message ?? "",
         dateId: receiverData?._id ?? "",
+        isSuperInterested: isSuperInterested,
       };
       const res = await apiRequest({
         data: data,
         method: "POST",
         url: `chat/request`,
       });
+      moveIcon();
       setAlreadyMessagedFromUser(true);
       console.log("res", res);
       values.message = "";
@@ -301,6 +302,7 @@ function UserList(props) {
       element.style.opacity = 0;
       closePopup();
       setTextSlideClass("");
+      setIsSuperInterested(false);
     }, 3000);
   };
 

@@ -1392,7 +1392,40 @@
   // }
 }
 
-@media only screen and (max-width: 1366px) and (min-width: 769px) {
+@media only screen and (max-width: 1480px) and (min-width: 1241px) {
+  .accelerate-iphone-image {
+    width: 550px !important;
+    height: 750px !important;
+    margin-left: -60px !important;
+    object-fit: contain;
+  }
+
+  .accelerate__wrapper {
+    .accelerate__container {
+      width: 1165px !important;
+
+      .image__progress1 {
+        width: 30%;
+        .diagonal-line {
+          width: 270px;
+          transform: rotate(131.4deg) scaleY(-1);
+        }
+      }
+
+      .image__progress2 {
+        top: 47%;
+        width: 39%;
+        .diagonal-line {
+          width: 170px;
+
+          transform: rotate(143deg);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1240px) and (min-width: 769px) {
   .new-home-main-container {
     width: 95%;
     margin-right: auto;
@@ -1885,4 +1918,11 @@
 
 .border__bottom__red {
   border-bottom: 2px solid #f24462 !important;
+}
+
+.price__radio__gentlemen {
+  text-align: left !important;
+  font-size: 16px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

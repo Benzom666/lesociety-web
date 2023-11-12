@@ -476,9 +476,20 @@ const CreateStepTwo = (props) => {
                       />
                     </div>
                   </div>
-                  <label htmlFor="category" className="price__radio__label">
+                  {/* <label htmlFor="category" className="price__radio__label">
                     What is your suggested contribution for a speedy first date?
+                  </label> */}
+                  <label htmlFor="category" className="price__radio__label">
+                    Set your "Super Interested" offer
                   </label>
+                  <p className="price__radio__gentlemen">
+                    {" "}
+                    A gentlemen who wishes to support your aspirations is
+                    expressing his desire to empower you in your pursuit of
+                    those goals. Please select the amount that piques your
+                    interest for a speedy first date.
+                  </p>
+
                   <div className="auth-radio inner-radio">
                     <Field
                       // label="Level of education"

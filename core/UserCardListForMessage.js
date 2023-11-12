@@ -247,13 +247,15 @@ const UserCardListForMessage = ({
                                 Super
                               </div> */}
                               <div className="request__message__super__text">
-                                {conversation?.isSuperInterested && <div className="super">
-                                  <CustomIcon.RequestSuperText
-                                    color={"white"}
-                                    size={150}
-                                  />
-                                </div>}
-                                
+                                {conversation?.isSuperInterested && (
+                                  <div className="super">
+                                    <CustomIcon.RequestSuperText
+                                      color={"white"}
+                                      size={150}
+                                    />
+                                  </div>
+                                )}
+
                                 <CustomIcon.IntrestedText
                                   color={"white"}
                                   size={150}

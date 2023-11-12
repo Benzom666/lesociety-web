@@ -109,6 +109,7 @@ function MessageModal({ user, date, toggle, userMessageNoModal, close }) {
         recieverId: date?.user_data?.length > 0 ? date?.user_data[0]?._id : "",
         message: values.message ?? "",
         dateId: date?._id ?? "",
+        isSuperInterested: false,
       };
       const res = await apiRequest({
         data: data,
