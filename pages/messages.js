@@ -867,8 +867,15 @@ const Messages = (props) => {
                                               </h3>
 
                                               <span>
-                                                {c?.message &&
+                                                {/* {c?.message &&
                                                   showTime(
+                                                    c?.message?.sent_time
+                                                  )} */}
+                                                {c?.message &&
+                                                  customFormat(
+                                                    moment(
+                                                      c?.message?.sent_time
+                                                    ),
                                                     c?.message?.sent_time
                                                   )}
                                               </span>

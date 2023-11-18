@@ -412,6 +412,14 @@ const CreateStepTwo = (props) => {
                             disabled={disableDropdowns}
                             // options={category}
                             popupClassName="aspiration__antd__dropdown__popup"
+                            onDropdownVisibleChange={(open) => {
+                              // If dropdown is open then disabled background scroll
+                              if (open) {
+                                document.body.style.overflow = "hidden";
+                              } else {
+                                document.body.style.overflow = "unset";
+                              }
+                            }}
                           >
                             <Option value="">Select A Category</Option>
                             {category.map((item) => (
@@ -462,6 +470,14 @@ const CreateStepTwo = (props) => {
                                 disableDropdowns
                               }
                               popupClassName="aspiration__antd__dropdown__popup"
+                              onDropdownVisibleChange={(open) => {
+                                // If dropdown is open then disabled background scroll
+                                if (open) {
+                                  document.body.style.overflow = "hidden";
+                                } else {
+                                  document.body.style.overflow = "unset";
+                                }
+                              }}
                             >
                               <Option value="">Select Your Aspiration</Option>
                               {aspiration.map((item) => (
