@@ -210,8 +210,12 @@ function UserList(props) {
     }
   };
 
-  const closePopup = () => {
+  const closePopup = (formProps) => {
     setPopupClass("hide");
+
+    if (formProps) {
+      formProps?.setFieldValue("message", "");
+    }
   };
 
   const initializeMoveIconPosition = () => {
@@ -546,7 +550,7 @@ function UserList(props) {
               <Form>
                 <span
                   onClick={() => {
-                    closePopup();
+                    closePopup(formProps);
                     formProps.setFieldValue("message", "");
                   }}
                   className="close-button"
