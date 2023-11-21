@@ -393,7 +393,7 @@ const CreateStepTwo = (props) => {
                           <Select
                             placeholder="Select A Category"
                             className="aspiration__antd__dropdown"
-                            showSearch={true}
+                            showSearch={false}
                             value={categoryId}
                             onChange={(value, event) => {
                               dispatch(initialize("CreateStepTwo", {}));
@@ -409,13 +409,14 @@ const CreateStepTwo = (props) => {
                             onBlur={(e) => {
                               e.preventDefault();
                             }}
-                            disabled={disableDropdowns}
+                            // disabled={disableDropdowns}
                             // options={category}
                             popupClassName="aspiration__antd__dropdown__popup"
                             onDropdownVisibleChange={(open) => {
                               // If dropdown is open then disabled background scroll
                               if (open) {
                                 document.body.style.overflow = "hidden";
+                                // this is not working in iphone
                               } else {
                                 document.body.style.overflow = "unset";
                               }
